@@ -87,7 +87,7 @@ class Business
 
     public function __construct()
     {
-        $this->updatedAt = new \DateTime();
+        $this->updatedAt  = new \DateTime();
         $this->categories = new ArrayCollection();
     }
 

@@ -50,9 +50,20 @@ class Category
      */
     private $businesses;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
+     */
+    private $children;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
+     */
+    private $parent;
+
     public function __construct()
     {
         $this->businesses = new ArrayCollection();
+        $this->children   = new ArrayCollection();
     }
 
     /**
@@ -158,5 +169,37 @@ class Category
     public function setBusinesses($businesses)
     {
         $this->businesses = $businesses;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * @param ArrayCollection $children
+     */
+    public function setChildren($children)
+    {
+        $this->children = $children;
+    }
+
+    /**
+     * @return Category
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * @param Category $parent
+     */
+    public function setParent(Category $parent)
+    {
+        $this->parent = $parent;
     }
 }
