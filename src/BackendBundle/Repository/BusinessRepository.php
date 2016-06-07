@@ -12,4 +12,49 @@ use Doctrine\ORM\EntityRepository;
  */
 class BusinessRepository extends EntityRepository
 {
+    /**
+     * Returns all businesses ordered alphabetically by the business's name
+     *
+     * @return array
+     */
+    public function findAllOrderedByName()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT b FROM BackendBundle:Business b ORDER BY b.name ASC')
+            ->getResult()
+        ;
+    }
+
+    /**
+     * Returns all businesses ordered alphabetically by the name of the
+     * categories
+     *
+     * @return array
+     */
+    public function findAllOrderedByCategory()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT b FROM BackendBundle:Business b JOIN b.categories c ORDER BY c.name ASC'
+            )
+            ->getResult()
+        ;
+    }
+
+    /**
+     * Returns all businesses ordered by the createdAt attribute of the
+     * associated deals, so the businesses with the most recent deals
+     * will come on top of the list
+     *
+     * @return array
+     */
+    public function findAllOrderedByRecentDeals()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT b FROM BackendBundle:Business b JOIN b.deals d ORDER BY d.createdAt DESC'
+            )
+            ->getResult()
+        ;
+    }
 }
