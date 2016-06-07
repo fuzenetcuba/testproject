@@ -1,4 +1,16 @@
 services:
-#    backend.example:
-#        class: BackendBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    business.manager:
+        class: BackendBundle\Model\BusinessManager
+        arguments: ["@doctrine.orm.entity_manager"]
+
+    category.manager:
+        class: BackendBundle\Model\CategoryManager
+        arguments: ["@doctrine.orm.entity_manager"]
+
+    deal.manager:
+        class: BackendBundle\Model\DealManager
+        arguments: ["@doctrine.orm.entity_manager"]
+
+    reward.manager:
+        class: BackendBundle\Model\RewardManager
+        arguments: ["@doctrine.orm.entity_manager"]
