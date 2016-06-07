@@ -1,0 +1,34 @@
+business:
+    path:     /
+    defaults: { _controller: "BackendBundle:Business:index" }
+    methods:  GET
+
+business_find:
+    path:     /find
+    defaults: { _controller: "BackendBundle:Business:find" }
+    methods:  [POST, GET]
+
+business_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:Business:show" }
+    methods:  GET
+
+business_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:Business:new" }
+    methods:  [GET, POST]
+
+business_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:Business:edit" }
+    methods:  [GET, POST, PUT]
+
+business_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:Business:delete" }
+    methods:  [POST, DELETE]
+    
+business_batch:
+    path:     /business_batch
+    defaults: { _controller: "BackendBundle:Business:batch" }
+    methods:  POST

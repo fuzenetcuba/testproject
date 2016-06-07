@@ -1,3 +1,7 @@
+backend_business:
+    resource: "@BackendBundle/Resources/config/routing/business.yml"
+    prefix:   /business
+
 backend_helpers:
     resource: "@BackendBundle/Resources/config/routing/helpers.yml"
     prefix:   /helpers

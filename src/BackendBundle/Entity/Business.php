@@ -4,10 +4,13 @@ namespace BackendBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Business class
  *
+ * @Vich\Uploadable
  * @ORM\Table(name="business")
  * @ORM\Entity(repositoryClass="BackendBundle\Repository\BusinessRepository")
  */
@@ -51,6 +54,16 @@ class Business
     private $logo;
 
     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="business_image", fileNameProperty="logo",
+     *      groups={"creation"}
+     * )
+     * @var File
+     */
+    private $logoFile;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="social_media", type="string", length=255)
@@ -81,9 +94,18 @@ class Business
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\Deal", mappedBy="business")
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\Deal", mappedBy="business",
+     *     cascade={"persist", "remove", "merge"}
+     * )
      */
     private $deals;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="SystemUser", mappedBy="business")
+     */
+    private $customers;
 
     public function __construct()
     {
@@ -94,6 +116,7 @@ class Business
         }
 
         $this->categories = new ArrayCollection();
+        $this->customers = new ArrayCollection();
     }
 
     /**
@@ -251,6 +274,34 @@ class Business
     }
 
     /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\File $image
+     */
+    public function setLogoFile(File $image = null)
+    {
+        $this->logoFile = $image;
+
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    /**
+     * @return File
+     */
+    public function getLogoFile()
+    {
+        return $this->logoFile;
+    }
+
+    /**
      * @return string
      */
     public function getSocialMedia()
@@ -328,5 +379,49 @@ class Business
     public function setDeals($deals)
     {
         $this->deals = $deals;
+    }
+
+    /**
+     * Add customers
+     *
+     * @param SystemUser $customers
+     * @return Business
+     */
+    public function addCustomer(SystemUser $customers)
+    {
+        if (!$this->customers->contains($customers)) {
+            $this->customers->add($customers);
+        }
+        return $this;
+    }
+
+    /**
+     * Remove customers
+     *
+     * @param SystemUser $customers
+     */
+    public function removeCustomer(SystemUser $customers)
+    {
+        if ($this->customers->contains($customers)) {
+            $this->customers->removeElement($customers);
+        }
+    }
+
+    /**
+     * Get customers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCustomers()
+    {
+        return $this->customers;
+    }
+
+    /**
+     * @param ArrayCollection $customers
+     */
+    public function setCustomers($customers)
+    {
+        $this->customers = $customers;
     }
 }

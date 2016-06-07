@@ -118,9 +118,15 @@ knp_paginator:
 vich_uploader:
     db_driver: orm # or mongodb or propel or phpcr
     mappings:
-        properties_pictures:
-            uri_prefix:         /images/pictures
-            upload_destination: %kernel.root_dir%/../web/images/pictures
+        business_image:
+            uri_prefix:         /images/business
+            upload_destination: %kernel.root_dir%/../web/images/business
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+        deal_image:
+            uri_prefix:         /images/deals
+            upload_destination: %kernel.root_dir%/../web/images/deals
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true

@@ -42,12 +42,12 @@
 
                     <li class="{% block active_helpers %}{% endblock %}">
                         <a href="{{ path('helpers') }}"><i class="fa fa-android"></i><span
-                                    class="nav-label">Menu 1</span></a>
+                                    class="nav-label">Helpers</span></a>
                     </li>
 
-                    <li {#class="active"#}>
-                        <a href="index.html"><i class="fa fa-shopping-cart"></i> <span
-                                    class="nav-label">Menu 2</span></a>
+                    <li class="{% block active_business %}{% endblock %}">
+                        <a href="{{ path('business') }}"><i class="fa fa-money"></i> <span
+                                    class="nav-label">Business</span></a>
                     </li>
 
                     <li {#class="active"#}>

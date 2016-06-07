@@ -14,8 +14,8 @@ security:
         FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
-        ROLE_BUSSINES:      ROLE_USER
-        ROLE_ADMIN:         ROLE_BUSSINES
+        ROLE_BUSINESS:      ROLE_USER
+        ROLE_ADMIN:         ROLE_BUSINESS
 
 
     firewalls:

@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\DBAL\Exception\InvalidArgumentException;
 
@@ -47,6 +48,21 @@ class Reward
      * @ORM\Column(type="string")
      */
     private $cost;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="SystemUser", mappedBy="rewards")
+     */
+    private $customers;
+
+    /**
+     * Reward constructor.
+     */
+    public function __construct()
+    {
+        $this->customers = new ArrayCollection();
+    }
 
     /**
      * @return integer
@@ -133,4 +149,50 @@ class Reward
     {
         $this->cost = $cost;
     }
+
+    /**
+     * Add customers
+     *
+     * @param SystemUser $customers
+     * @return Reward
+     */
+    public function addCustomer(SystemUser $customers)
+    {
+        if (!$this->customers->contains($customers)) {
+            $this->customers->add($customers);
+        }
+        return $this;
+    }
+
+    /**
+     * Remove customers
+     *
+     * @param SystemUser $customers
+     */
+    public function removeCustomer(SystemUser $customers)
+    {
+        if ($this->customers->contains($customers)) {
+            $this->customers->removeElement($customers);
+        }
+    }
+
+    /**
+     * Get customers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCustomers()
+    {
+        return $this->customers;
+    }
+
+    /**
+     * @param ArrayCollection $customers
+     */
+    public function setCustomers($customers)
+    {
+        $this->customers = $customers;
+    }
+
+
 }

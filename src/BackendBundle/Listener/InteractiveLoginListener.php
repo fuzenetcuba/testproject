@@ -23,7 +23,7 @@ class InteractiveLoginListener
         $frontend = "frontend_loged_in";
         $backend = "backend_homepage";
         if ($this->autorization->isGranted('IS_AUTHENTICATED_FULLY')) {
-            if ($this->autorization->isGranted('ROLE_BUSSINES')) {
+            if ($this->autorization->isGranted('ROLE_BUSINESS')) {
                 $this->redirectRoute($event, $backend);
             } elseif ($this->autorization->isGranted('ROLE_USER')) {
                 $this->redirectRoute($event, $frontend);

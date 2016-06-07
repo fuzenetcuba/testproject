@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -22,23 +23,23 @@ class SystemUser extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-  
-    /** 
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $facebookId;
-  
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $facebookAccessToken;
-  
-    /** 
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $googleId;
-  
-    /** 
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $googleAccessToken;
@@ -54,9 +55,26 @@ class SystemUser extends BaseUser
      */
     protected $plainPassword;
 
+    /**
+     * @var Business
+     *
+     * @ORM\ManyToMany(targetEntity="Business", inversedBy="customers")
+     */
+    private $business;
+
+    /**
+     * @var Business
+     *
+     * @ORM\ManyToMany(targetEntity="Reward", inversedBy="customers")
+     */
+    private $rewards;
+
     function __construct()
     {
         parent::__construct();
+
+        $this->business = new ArrayCollection();
+        $this->rewards = new ArrayCollection();
     }
 
     public function getExpiresAt()
@@ -269,5 +287,93 @@ class SystemUser extends BaseUser
     public function getGoogleAccessToken()
     {
         return $this->googleAccessToken;
+    }
+
+    /**
+     * Add business
+     *
+     * @param Business $business
+     * @return SystemUser
+     */
+    public function addBusiness(Business $business)
+    {
+        if (!$this->business->contains($business)) {
+            $this->business->add($business);
+        }
+        return $this;
+    }
+
+    /**
+     * Remove business
+     *
+     * @param Business $business
+     */
+    public function removeBusiness(Business $business)
+    {
+        if ($this->business->contains($business)) {
+            $this->business->removeElement($business);
+        }
+    }
+
+    /**
+     * Get business
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBusiness()
+    {
+        return $this->business;
+    }
+
+    /**
+     * @param Business $business
+     */
+    public function setBusiness($business)
+    {
+        $this->business = $business;
+    }
+
+    /**
+     * Add rewards
+     *
+     * @param Reward $rewards
+     * @return SystemUser
+     */
+    public function addReward(Reward $rewards)
+    {
+        if (!$this->rewards->contains($rewards)) {
+            $this->rewards->add($rewards);
+        }
+        return $this;
+    }
+
+    /**
+     * Remove rewards
+     *
+     * @param Reward $rewards
+     */
+    public function removeReward(Reward $rewards)
+    {
+        if ($this->rewards->contains($rewards)) {
+            $this->rewards->removeElement($rewards);
+        }
+    }
+
+    /**
+     * Get rewards
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRewards()
+    {
+        return $this->rewards;
+    }
+
+    /**
+     * @param Business $rewards
+     */
+    public function setRewards($rewards)
+    {
+        $this->rewards = $rewards;
     }
 }
