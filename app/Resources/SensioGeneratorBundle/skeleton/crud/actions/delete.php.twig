@@ -1,0 +1,58 @@
+
+    /**
+{% block phpdoc_method_header %}
+     * Deletes a {{ entity }} entity.
+{% endblock phpdoc_method_header %}
+     *
+{% block phpdoc_method_annotations %}
+{% if 'annotation' == format %}
+     * @Route("/{{ "{" ~ identifier ~ "}" }}", name="{{ route_name_prefix }}_delete")
+     * @Method({"DELETE", "POST"})
+{% endif %}
+{% endblock phpdoc_method_annotations %}
+     */
+{% block method_definition %}
+    public function deleteAction(Request $request, {{ entity_class }} $entity)
+{% endblock method_definition %}
+    {
+{% block method_body %}
+        $form = $this->createDeleteForm($entity);
+        $form->handleRequest($request);
+
+        $em = $this->getDoctrine()->getManager();
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find {{ entity }} entity.');
+        }
+
+        $em->remove($entity);
+        $em->flush();
+
+        // Mostrando mensaje
+        $this->get('session')->getFlashBag()->add('success', 'The {{ entity_class|lower }} was deleted succesfully.');
+        return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
+
+{% endblock method_body %}
+
+{% block method_return %}
+
+{% endblock method_return %}
+    }
+
+{% block form %}
+    /**
+    * Creates a form to delete a {{ entity }} entity.
+    *
+    * @param {{ entity_class }} $entity The {{ entity }} entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createDeleteForm({{ entity_class }} $entity)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('{{ route_name_prefix }}_delete', array('{{ identifier }}' => $entity->get{{ identifier|first|upper ~ identifier|slice(1) }}())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
+    }
+{% endblock form %}

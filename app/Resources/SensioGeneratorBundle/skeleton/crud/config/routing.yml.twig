@@ -1,0 +1,44 @@
+{% if 'index' in actions %}
+{{ route_name_prefix }}:
+    path:     /
+    defaults: { _controller: "{{ bundle }}:{{ entity }}:index" }
+    methods:  GET
+
+{{ route_name_prefix }}_find:
+    path:     /find
+    defaults: { _controller: "{{ bundle }}:{{ entity }}:find" }
+    methods:  [POST, GET]
+{% endif %}
+
+{% if 'show' in actions %}
+{{ route_name_prefix }}_show:
+    path:     /{{ "{" ~ identifier ~ "}" }}/show
+    defaults: { _controller: "{{ bundle }}:{{ entity }}:show" }
+    methods:  GET
+{% endif %}
+
+{% if 'new' in actions %}
+{{ route_name_prefix }}_new:
+    path:     /new
+    defaults: { _controller: "{{ bundle }}:{{ entity }}:new" }
+    methods:  [GET, POST]
+{% endif %}
+
+{% if 'edit' in actions %}
+{{ route_name_prefix }}_edit:
+    path:     /{{ "{" ~ identifier ~ "}" }}/edit
+    defaults: { _controller: "{{ bundle }}:{{ entity }}:edit" }
+    methods:  [GET, POST, PUT]
+{% endif %}
+
+{% if 'delete' in actions %}
+{{ route_name_prefix }}_delete:
+    path:     /{{ "{" ~ identifier ~ "}" }}/delete
+    defaults: { _controller: "{{ bundle }}:{{ entity }}:delete" }
+    methods:  [POST, DELETE]
+    
+{{ route_name_prefix }}_batch:
+    path:     /{{ route_name_prefix }}_batch
+    defaults: { _controller: "{{ bundle }}:{{ entity }}:batch" }
+    methods:  POST
+{% endif %}

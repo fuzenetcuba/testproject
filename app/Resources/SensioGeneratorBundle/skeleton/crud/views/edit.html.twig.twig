@@ -1,0 +1,315 @@
+{# Extendiendo del layout del backend  #}
+{% block extends %}
+    {{ "{% extends 'BackendBundle::layout.html.twig' %}" }}
+{% endblock extends %}
+
+{# Incluyendo CSS necesarios para fomularios #}
+{{ "{% block custom_css %}" }}
+    {{ "{{ parent() }}" }}
+
+    {# variables de assets #}
+    {% set datepicker_css = false %}
+    {% set datepicker_js = false %}
+    {% set datepicker_conf_js = false %}
+
+    {% for field, metadata in fields %}
+        {% if metadata.type in ['boolean'] %}
+            <!-- iCheck Styles -->
+            <link rel="stylesheet" href="{{ "{{ asset('bundles/backend/css/plugins/iCheck/custom.css') }}" }}"
+                  type="text/css"/>
+        {% elseif metadata.type in ['array','collection'] and associations is not defined %}
+            <!-- select2 Styles -->
+            <link rel="stylesheet" href="{{ "{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}" }}"
+                  type="text/css"/>
+        {% elseif metadata.type in ['datetime','date'] and not datepicker_css %}
+            <!-- datepicker3 Styles -->
+            <link rel="stylesheet"
+                  href="{{ "{{ asset('bundles/backend/css/plugins/datapicker/datepicker3.css') }}" }}"
+                  type="text/css"/>
+            {% set datepicker_css = true %}
+        {% elseif metadata.type in ['time'] %}
+            <!-- clockpicker Styles -->
+            <link rel="stylesheet"
+                  href="{{ "{{ asset('bundles/backend/css/plugins/clockpicker/clockpicker.css') }}" }}"
+                  type="text/css"/>
+        {% endif %}
+    {% endfor %}
+
+    {#   verificando que existan asociaciones con otras entidades   #}
+    {% if associations is defined %}
+        <!-- select2 Styles -->
+        <link rel="stylesheet" href="{{ "{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}" }}"
+              type="text/css"/>
+    {% endif %}
+
+{{ "{% endblock %}" }}
+
+{% block body %}
+    {# Resaltando menus#}
+    {{ "{% block active_" ~ entity|lower ~ "  %}active{% endblock %}" }}
+
+    {# Titulo de pagina    #}
+    {{ "{% block page_heading_title %}" }}
+    <a class="btn btn-default navbar-btn" href="{{ "{{ path('" ~ route_name_prefix ~ "')}}" }}"
+       style="margin-bottom: 7px;">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+    {{ entity ~ " edition" }}
+    {{ "{% endblock %}" }}
+
+    {# Contenido de la pagina #}
+    {{ "{% block page_content %}" }}
+
+    {# Formulario de la vista #}
+    {{ "{{ form_start(edit_form, {'attr': {'class':'form-horizontal'}}) }}" }}
+
+    {#  verificando si se realiza una generacion con el comando
+    doctrine:detailed:generate:crud     #}
+    {% if fields is defined %}
+        {% for field, metadata in fields %}
+            {#{% if metadata.id is not defined %}#}
+
+                {% if metadata.type in ['boolean'] %}
+
+                    <div class="form-group{{ "{% if(edit_form."~ field ~".vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}" }}">
+                        <label for="" class="col-md-2 control-label">{{ "{{ form_label(edit_form."~ field ~") }}" }}</label>
+
+                        <div class="col-md-1">
+                            <div class="checkbox-inline">
+                                {{ "{{ form_widget(edit_form."~ field ~", { 'attr': {'class' : 'form-control i-checks'}}) }}" }}
+                                {{ "{% if edit_form."~ field ~".vars['errors']|length > 0 %}" }}
+                                <ul class="message">
+                                    {{ "{% for error in edit_form."~ field ~".vars['errors'] %}" }}
+                                    <li>{{ "{{ error.message }}" }}</li>
+                                    {{ "{% endfor %}" }}
+                                </ul>
+                                {{ "{% endif %}" }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                {% elseif metadata.type in ['datetime', 'date'] %}
+
+                    <div class="form-group{{ "{% if(edit_form."~ field ~".vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}" }}">
+                        <label for="" class="col-md-2 control-label">{{ "{{ form_label(edit_form."~ field ~") }}" }}</label>
+
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                                {{ "{{ form_widget(edit_form."~ field ~", { 'attr': {'class' : 'form-control datepicker'}}) }}" }}
+                                {{ "{% if edit_form."~ field ~".vars['errors']|length > 0 %}" }}
+                                <ul class="message">
+                                    {{ "{% for error in edit_form."~ field ~".vars['errors'] %}" }}
+                                    <li>{{ "{{ error.message }}" }}</li>
+                                    {{ "{% endfor %}" }}
+                                </ul>
+                                {{ "{% endif %}" }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                {% elseif metadata.type in ['time'] %}
+
+                    <div class="form-group{{ "{% if(edit_form."~ field ~".vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}" }}">
+                        <label for="" class="col-md-2 control-label">{{ "{{ form_label(edit_form."~ field ~") }}" }}</label>
+
+                        <div class="col-md-6">
+                            <div class="input-group clockpicker" data-autoclose="true">
+                                <span class="input-group-addon">
+                                    <span class="fa fa-clock-o"></span>
+                                </span>
+                                {{ "{{ form_widget(edit_form."~ field ~", { 'attr': {'class' : 'form-control'}}) }}" }}
+                                {{ "{% if edit_form."~ field ~".vars['errors']|length > 0 %}" }}
+                                <ul class="message">
+                                    {{ "{% for error in edit_form."~ field ~".vars['errors'] %}" }}
+                                    <li>{{ "{{ error.message }}" }}</li>
+                                    {{ "{% endfor %}" }}
+                                </ul>
+                                {{ "{% endif %}" }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                {% else %}
+
+                    <div class="form-group{{ "{% if(edit_form."~ field ~".vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}" }}">
+                        <label for="" class="col-md-2 control-label">{{ "{{ form_label(edit_form."~ field ~") }}" }}</label>
+
+                        <div class="col-md-6">
+                            {{ "{{ form_widget(edit_form."~ field ~", { 'attr': {'class' : 'form-control'}}) }}" }}
+                            {{ "{% if edit_form."~ field ~".vars['errors']|length > 0 %}" }}
+                            <ul class="message">
+                                {{ "{% for error in edit_form."~ field ~".vars['errors'] %}" }}
+                                <li>{{ "{{ error.message }}" }}</li>
+                                {{ "{% endfor %}" }}
+                            </ul>
+                            {{ "{% endif %}" }}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                {% endif %}
+            {#{% endif %}#}
+        {% endfor %}
+
+        {#   verificando que existan asociaciones con otras entidades   #}
+        {% if associations is defined %}
+            {% for assoc in associations %}
+
+                <div class="form-group{{ "{% if(edit_form."~ assoc.fieldName ~".vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}" }}">
+                    <label for=""
+                           class="col-md-2 control-label">{{ "{{ form_label(edit_form."~ assoc.fieldName ~") }}" }}</label>
+
+                    <div class="col-md-6">
+                        {{ "{{ form_widget(edit_form."~ assoc.fieldName ~", { 'attr': {'class' : 'form-control select2-field', 'style' : 'width: 100%'}}) }}" }}
+                        {{ "{% if edit_form."~ assoc.fieldName ~".vars['errors']|length > 0 %}" }}
+                        <ul class="message">
+                            {{ "{% for error in edit_form."~ assoc.fieldName ~".vars['errors'] %}" }}
+                            <li>{{ "{{ error.message }}" }}</li>
+                            {{ "{% endfor %}" }}
+                        </ul>
+                        {{ "{% endif %}" }}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+
+            {% endfor %}
+
+        {% endif %}
+    {% else %}
+
+        {{ "{% for field in edit_form %}" }}
+
+        {{ "{% if (field.vars['name'] != 'submit' and field.vars['name'] != 'submitback' and field.vars['name'] != '_token') %}" }}
+        <div class="form-group{{ "{% if(field.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}" }}">
+            <label for="" class="col-md-2 control-label">{{ "{{ form_label(field) }}" }}</label>
+
+            <div class="col-md-6">
+                {{ "{{ form_widget(field, { 'attr': {'class' : 'form-control'}}) }}" }}
+                {{ "{% if field.vars['errors']|length > 0 %}" }}
+                <ul class="message">
+                    {{ "{% for error in field.vars['errors'] %}" }}
+                    <li>{{ "{{ error.message }}" }}</li>
+                    {{ "{% endfor %}" }}
+                </ul>
+                {{ "{% endif %}" }}
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        {{ "{% endif %}" }}
+
+        {{ "{% endfor %}" }}
+
+    {% endif %}
+
+    {% set show_submit = true %}
+    {% set type_submit = "edit" %}
+    {% set hide_edit = true %}
+    {% set hide_delete = false %}
+    {% include 'crud/views/others/record_actions.html.twig.twig' %}
+
+    {{ "{{ form_end(edit_form) }}" }}
+
+    {{ "{% endblock %}" }}
+
+    {{ "{% block custom_js %}" }}
+    {{ "{{ parent() }}" }}
+
+    {#  verificando si se realiza una generacion con el comando
+    doctrine:detailed:generate:crud     #}
+    {% if fields is defined %}
+        {% for field, metadata in fields %}
+            {% if metadata.type in ['boolean'] %}
+                <!-- iCheck Scripts -->
+                <script src="{{ "{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}" }}"
+                        type="text/javascript"></script>
+            {% elseif metadata.type in ['array','collection'] and associations is not defined %}
+                <!-- select2 Scripts -->
+                <script src="{{ "{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}" }}"
+                        type="text/javascript"></script>
+            {% elseif metadata.type in ['datetime','date'] and not datepicker_js %}
+                <!-- datepicker3 Scripts -->
+                <script src="{{ "{{ asset('bundles/backend/js/plugins/datapicker/bootstrap-datepicker.js') }}" }}"
+                        type="text/javascript"></script>
+                {% set datepicker_js = true %}
+            {% elseif metadata.type in ['time'] %}
+                <!-- clockpicker Scripts -->
+                <script src="{{ "{{ asset('bundles/backend/js/plugins/clockpicker/clockpicker.js') }}" }}"
+                        type="text/javascript"></script>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {#   verificando que existan asociaciones con otras entidades   #}
+    {% if associations is defined %}
+        <!-- select2 Scripts -->
+        <script src="{{ "{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}" }}"
+                type="text/javascript"></script>
+    {% endif %}
+    {{ "{% endblock %}" }}
+
+    {{ '{% block inline_js %}' }}
+    {{ '<script type="text/javascript">' }}
+
+    {{ '$(document).ready(function () {' }}
+
+    {#  verificando si se realiza una generacion con el comando
+    doctrine:detailed:generate:crud     #}
+    {% if fields is defined %}
+        {% for field, metadata in fields %}
+            {% if metadata.type in ['boolean'] %}
+                {{ '
+                //  iCheck scripts for checkboxes and radios
+                $(".i-checks").iCheck({
+                    checkboxClass: "icheckbox_square-green",
+                    radioClass: "iradio_square-green",
+                });
+                ' }}
+            {% elseif metadata.type in ['array','collection'] and associations is not defined %}
+                {{ '
+                //  select2 scripts for batch actions combobox
+                $(".select2-field").select2({
+                    placeholder: "--- Select a value ---"
+                });
+                ' }}
+            {% elseif metadata.type in ['datetime','date'] and not datepicker_conf_js %}
+                {{ '
+                //  datepicker3 script for input datetime and date
+                $("form input.datepicker").datepicker({
+                    todayBtn: "linked",
+                    keyboardNavigation: false,
+                    forceParse: false,
+                    autoclose: true,
+                    format: "yyyy-mm-dd"
+                });
+                ' }}
+                {% set datepicker_conf_js = true %}
+            {% elseif metadata.type in ['time'] %}
+                {{ '
+                //  clockpicker script for input time
+                $("form .clockpicker").clockpicker();
+                ' }}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {#   verificando que existan asociaciones con otras entidades   #}
+    {% if associations is defined %}
+        {{ '
+        //  select2 scripts for batch actions combobox
+        $(".select2-field").select2({
+            placeholder: "--- Select a value ---"
+        });
+        ' }}
+    {% endif %}
+
+    {{ '});' }}
+
+    {{ '</script>' }}
+    {{ '{% endblock %}' }}
+{% endblock body %}

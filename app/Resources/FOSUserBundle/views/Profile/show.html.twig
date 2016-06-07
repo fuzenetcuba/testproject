@@ -1,0 +1,27 @@
+{% extends 'BackendBundle::layout.html.twig' %}
+
+{% block active_users %}active{% endblock %}
+{% block page_heading_title %}
+    Profile of <b>{{ user.username }}</b>
+{% endblock %}
+
+{% block page_content %}
+    <dl class="dl-horizontal">
+        <dt>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}</dt>
+        <dd>{{ user.username }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}</dt>
+        <dd>{{ user.email }}</dd>
+        <div class="hr-line-dashed"></div>
+    </dl>
+    <div class="form-group border-top padding-basic-top">
+        <div class="col-md-12">
+            <a class="btn btn-success" role="button" href="{{ path('fos_user_profile_edit') }}">
+                <span class="fa fa-pencil"></span> Edit info
+            </a>
+            <a class="btn btn-primary" role="button" href="{{ path('fos_user_change_password') }}">
+                <span class="fa fa-key"></span> Change password
+            </a>
+        </div>
+    </div>
+{% endblock %}

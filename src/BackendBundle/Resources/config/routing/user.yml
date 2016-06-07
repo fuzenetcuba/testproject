@@ -1,0 +1,46 @@
+user:
+    path:  /
+    defaults: { _controller: "BackendBundle:User:index" }
+
+user_show:
+    path:  /{id}/show
+    defaults: { _controller: "BackendBundle:User:show" }
+
+user_new:
+    path:  /new
+    defaults: { _controller: "BackendBundle:User:new" }
+
+user_create:
+    path:  /create
+    defaults: { _controller: "BackendBundle:User:create" }
+    requirements: { methods: post }
+
+user_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "BackendBundle:User:edit" }
+
+user_update:
+    path:  /{id}/update
+    defaults: { _controller: "BackendBundle:User:update" }
+    requirements: { methods: post|put }
+
+user_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "BackendBundle:User:delete" }
+    requirements: { methods: post|delete }
+
+user_enable:
+    path:  /{id}/enable
+    defaults: { _controller: "BackendBundle:User:enable" }
+    options:
+        expose: true
+
+user_batch:
+    path:     /user_batch
+    defaults: { _controller: "BackendBundle:User:batch" }
+    requirements: { methods: post }
+
+user_find:
+    path:  /find
+    defaults: { _controller: "BackendBundle:User:find" }
+    methods:  [POST, GET]

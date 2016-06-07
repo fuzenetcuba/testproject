@@ -1,0 +1,32 @@
+<li class="nav-header">
+    <div class="dropdown profile-element">
+        <span>
+            <img alt="image" class="img-avatar-small img-circle"
+                 src="{{ asset('bundles/backend/images/avatar.jpg') }}"/>
+        </span>
+        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <span class="clear">
+                <span class="block m-t-xs">
+                    <strong class="font-bold">
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            {{ app.user.username }}
+                        {% endif %}
+                    </strong>
+                    <b class="caret"></b>
+                </span>
+            </span>
+        </a>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-fw fa-clipboard"></i> Profile</a></li>
+                <li><a href="{{ path('fos_user_change_password') }}"><i class="fa fa-fw fa-key"></i> Change password</a></li>
+                <li class="divider"></li>
+                <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-fw fa-sign-out"></i> Logout</a></li>
+            </ul>
+        {% endif %}
+    </div>
+    <div class="logo-element">
+        IN+
+    </div>
+</li>

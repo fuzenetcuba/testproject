@@ -1,0 +1,50 @@
+
+body {
+	background: none repeat scroll 0 0 #ECECEC;
+}
+
+div#login_box {
+	background-color: #F1F1F1;
+    border: 1px solid #DDDDDD;
+    padding: 25px;
+	max-width: 400px;
+	margin: 10px auto;
+}
+
+div#login_box h4 {
+	margin-bottom: 0;
+	color: #555;
+}
+
+div#login_box hr {
+	margin-top: 5px;
+}
+
+h2 {
+	color: #555;
+	text-align: center;
+	margin: 0 0 5px 0;
+	font-weight: bold;
+}
+
+div#login_box span.error {
+	color: red;
+}
+
+h6 {	
+	text-align: center;
+	margin: 0 0 5px 0;
+}
+
+div#login_box input {
+	border-radius: 0;
+}
+
+div#login_box span {
+	border-radius: 0 !important; 
+}
+
+div#login_box button {
+	border-radius: 0 !important; 
+	background-color: #2C6AA0;
+} 

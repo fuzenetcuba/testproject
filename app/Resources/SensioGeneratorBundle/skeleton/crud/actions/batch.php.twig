@@ -1,0 +1,52 @@
+    /**
+{% block phpdoc_method_header %}
+     * Do several batch actions over {{ entity }} entities.
+{% endblock phpdoc_method_header %}
+     *
+{% block phpdoc_method_annotations %}
+{% if 'annotation' == format %}
+     * @Route("/", name="{{ route_name_prefix }}_batch")
+     * @Method("POST")
+{% endif %}
+{% endblock phpdoc_method_annotations %}
+     */
+{% block method_definition %}
+    public function batchAction(Request $request)
+{% endblock method_definition %}
+    {
+{% block method_body %}
+        $action = $request->get('batch_action_do');
+        ${{ identifier }}s = $request->get('batch_action_checkbox');
+        $recordsSelected = false;
+        
+        if (${{ identifier }}s) {
+            $em = $this->getDoctrine()->getManager();
+
+            if ($action == "delete") {
+                foreach (${{ identifier }}s as ${{ identifier }}) {
+                    $entity = $em->getRepository('{{ bundle }}:{{ entity }}')->find(${{ identifier }});
+
+                    if (!$entity) {
+                        throw $this->createNotFoundException('Unable to find {{ entity }} entity.');
+                    } else {
+                        $em->remove($entity);
+                        $recordsSelected = true;
+                    }
+                }
+                if ($recordsSelected) {
+                    $this->get('session')->getFlashBag()->add('success', '{{ entity }}s deleted succesfully.');
+                }
+            }
+            $em->flush();
+        }
+
+{% endblock method_body %}
+
+{% block method_return %}
+{% if 'annotation' == format %}
+        return array();
+{% else %}
+        return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
+{% endif %}
+{% endblock method_return %}
+    }

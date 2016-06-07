@@ -1,0 +1,105 @@
+<?php
+
+namespace {{ namespace }}\Form{{ entity_namespace ? '\\' ~ entity_namespace : '' }};
+
+{% block use_statements %}
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+{% if not configure_options_available %}
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+{% endif %}
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+{#- declaring uses variables #}
+{%- set datetimeUse, timeUse = false, false %}
+
+{%- for field, metadata in fields %}
+    {% if metadata.type in ['datetime', 'date'] and datetimeUse == false %}
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+    {%- set datetimeUse = true %}
+    {% elseif metadata.type in ['time'] and timeUse == false %}
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
+    {%- set timeUse = true %}
+    {% endif %}
+{%- endfor %}
+{% endblock use_statements %}
+
+{% block class_definition %}
+class {{ form_class }} extends AbstractType
+{% endblock class_definition %}
+{
+{% block class_body %}
+    {%- if fields|length > 0 %}
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+    {%- for field, metadata in fields %}
+        {% if metadata.type in ['datetime', 'date'] %}
+        ->add('{{ field }}', DateType::class, array('widget' => 'single_text', 'html5' => false))
+        {% elseif metadata.type in ['time'] %}
+        ->add('{{ field }}', TimeType::class, array('widget' => 'single_text', 'html5' => false))
+        {% else %}
+        ->add('{{ field }}')
+        {% endif %}
+    {%- endfor %}
+
+    {%- for association in associations %}
+        ->add('{{ association.fieldName }}')
+    {%- endfor %}
+    ;
+    }
+    {% endif %}
+
+
+    {%- if not configure_options_available %}
+
+    /**
+    * Sets the default options for this type.
+    *
+    * This method should be removed when upgrading to Symfony 2.7.
+    *
+    * @param OptionsResolverInterface $resolver
+    */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+    $this->configureOptions($resolver);
+    }
+    {% endif %}
+    /**
+    * @param OptionsResolver $resolver
+    */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+    $resolver->setDefaults(array(
+    'data_class' => '{{ namespace }}\Entity{{ entity_namespace ? '\\' ~ entity_namespace : '' }}\{{ entity_class }}'
+    ));
+    }
+
+    /**
+    * Returns the prefix of the template block name for this type.
+    *
+    * The block prefixes default to the underscored short class name with
+    * the "Type" suffix removed (e.g. "UserProfileType" => "user_profile").
+    *
+    * @return string The prefix of the template block name
+    */
+    public function getBlockPrefix()
+    {
+    return '{{ form_type_name }}';
+    }
+
+
+    /**
+    * @return string
+    */
+    public function getName()
+    {
+    return $this->getBlockPrefix();
+    }
+
+{% endblock class_body %}
+}

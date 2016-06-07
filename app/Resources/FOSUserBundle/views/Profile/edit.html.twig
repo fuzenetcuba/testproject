@@ -1,0 +1,68 @@
+{% extends 'BackendBundle::layout.html.twig' %}
+
+{% block active_users %}active{% endblock %}
+{% block page_heading_title %}
+    Edit profile of <b>{{ app.user.username }}</b>
+{% endblock %}
+
+{% block page_content %}
+    <div class="content-hr-both show-content">
+        <form class="form-horizontal" action="{{ path('fos_user_profile_edit') }}"
+              method="post" {{ form_enctype(form) }}>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Username</label>
+
+                <div class="col-md-6">
+                    <p class="form-control-static">{{ app.user.username }}</p>
+
+                    <div class="hidden"><input type="text" disabled="" class="form-control"
+                                               value="{{ app.user.username }}"></div>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group{% if(form.email.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="email" class="col-md-2 control-label">{{ form_label(form.email) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.email, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.email.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.email.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group{% if(form.current_password.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="email" class="col-md-2 control-label">{{ form_label(form.current_password) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.current_password, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.current_password.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.current_password.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group border-top padding-basic-top">
+                <div class="col-md-10 col-md-offset-2">
+                    <input type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}"
+                           class="btn btn-success btn-small"/>
+                    <a class="btn btn-primary" href="{{ path('fos_user_profile_show') }}">
+                        <span class="fa fa-clipboard"></span>
+                        System User Profile
+                    </a>
+                    {{ form(form) }}
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+{% endblock %}

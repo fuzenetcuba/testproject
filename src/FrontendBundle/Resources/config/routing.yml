@@ -1,0 +1,7 @@
+frontend_homepage:
+    path:     /
+    defaults: { _controller: FrontendBundle:Default:index }
+
+frontend_loged_in:
+    path:     /frontend_loged
+    defaults: { _controller: FrontendBundle:Default:logedIn }

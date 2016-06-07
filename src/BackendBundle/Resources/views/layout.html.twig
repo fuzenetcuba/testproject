@@ -1,0 +1,252 @@
+{% extends "::base.html.twig" %}
+
+
+{% block custom_css %}
+    <!-- Bootstrap Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/bootstrap.min.css') }}" type="text/css"/>
+    <!-- Font Awesome Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/font-awesome/css/font-awesome.min.css') }}"
+          type="text/css"/>
+    <!-- Animate Effects Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/animate.css') }}" type="text/css"/>
+    <!-- Template Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/style.css') }}" type="text/css"/>
+    <!-- Toastr Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/toastr/toastr.min.css') }}" type="text/css"/>
+
+    <!-- Custom Style sheet -->
+    <style type="text/css">
+        .highlight {
+            background-color: #FFFF88;
+        }
+    </style>
+{% endblock %}
+
+
+{% block body %}
+
+    <div id="wrapper">
+
+        {#  Including basic profile info with avatar and global menu    #}
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+
+                    {#  Including basic profile info and avatar #}
+                    {% include '@Backend/Layout/profile.html.twig' %}
+
+                    <li class="{% block active_dashboard %}{% endblock %}">
+                        <a href="{{ path('backend_homepage') }}"><i class="fa fa-th-large"></i> <span
+                                    class="nav-label">Dashboard</span></a>
+                    </li>
+
+                    <li class="{% block active_helpers %}{% endblock %}">
+                        <a href="{{ path('helpers') }}"><i class="fa fa-android"></i><span
+                                    class="nav-label">Menu 1</span></a>
+                    </li>
+
+                    <li {#class="active"#}>
+                        <a href="index.html"><i class="fa fa-shopping-cart"></i> <span
+                                    class="nav-label">Menu 2</span></a>
+                    </li>
+
+                    <li {#class="active"#}>
+                        <a href="index.html"><i class="fa fa-shopping-cart"></i> <span
+                                    class="nav-label">Menu 3</span></a>
+                    </li>
+
+                    <li {#class="active"#}>
+                        <a href="index.html"><i class="fa fa-shopping-cart"></i><span
+                                    class="nav-label">Menu 4</span></a>
+                    </li>
+
+                    <li class="{% block active_users %}{% endblock %}">
+                        <a href="{{ path('user') }}"><i class="fa fa-users"></i> <span
+                                    class="nav-label">Users</span></a>
+                    </li>
+
+                    <li class="special_link">
+                        <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> <span
+                                    class="nav-label">Log out</span></a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+        {#  END menu and profile area   #}
+
+
+        <div id="page-wrapper" class="gray-bg">
+
+            {#  Top Navbar  #}
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i
+                                    class="fa fa-bars"></i> </a>
+
+                        <div class="navbar-title navbar-text text-muted">
+                            <h2><a class="text-muted" href="{{ path('backend_homepage') }}">INSPINIA+ Template</a>
+                            </h2>
+                        </div>
+                    </div>
+
+                    {#  Including the global notification list and notification panels  #}
+                    {% include '@Backend/Layout/notifications.html.twig' %}
+
+                </nav>
+            </div>
+
+            {#  Page Body    #}
+
+            {#  Page heading    #}
+            {% block page_heading %}
+                <div class="row wrapper border-bottom white-bg page-heading">
+                    <div class="col-sm-6">
+                        <h2>{% block page_heading_title %}This is main title{% endblock %}</h2>
+                        {% block page_heading_subtitle %}
+                            {#<ol class="breadcrumb">#}
+                            {#<li>#}
+                            {#<a href="index.html">This is</a>#}
+                            {#</li>#}
+                            {#<li class="active">#}
+                            {#<strong>Breadcrumb</strong>#}
+                            {#</li>#}
+                            {#</ol>#}
+                        {% endblock %}
+                    </div>
+                    <div class="col-sm-6">
+                        {% block page_heading_action_button %}
+                            {#<div class="title-action">#}
+                            {#<a href="empty_page.html" class="btn btn-primary">This is action area</a>#}
+                            {#</div>#}
+                        {% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+            {#  END Page Heading#}
+
+            {#  Fash bag block  #}
+            {% block flash_bags %}
+                <!-- bloque de mensajes FlashBag -->
+                {% for type, messages in app.session.flashBag.all %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ type|replace({'fos_user_': ""}) }} fade in">
+                            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                            {% if(type|replace({'fos_user_': ""}) == 'danger') %}
+                                <span class="fa fa-exclamation-triangle"></span>
+                            {% elseif(type|replace({'fos_user_': ""}) == 'error') %}
+                                <span class="fa fa-exclamation-triangle"></span>
+                            {% elseif(type|replace({'fos_user_': ""}) == 'warning') %}
+                                <span class="fa fa-flash"></span>
+                            {% elseif(type|replace({'fos_user_': ""}) == 'success') %}
+                                <span class="fa fa-check"></span>
+                            {% elseif(type|replace({'fos_user_': ""}) == 'notice') %}
+                                <span class="fa fa-info"></span>
+                            {% elseif(type|replace({'fos_user_': ""}) == 'info') %}
+                                <span class="fa fa-info"></span>
+                            {% elseif(type|replace({'fos_user_': ""}) == 'message') %}
+                                <span class="fa fa-info"></span>
+                            {% endif %}
+                            {{ message|trans({}, 'FOSUserBundle')|raw }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for type, messages in app.session.flashBag.all %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ type|replace({'fos_user_': ""}) }} fade in">
+                            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                            <span class="glyphicon glyphicon-remove-sign"></span>
+                            {% if(type|replace({'fos_user_': ""}) == 'danger') %}
+                                <span class="fa fa-exclamation-triangle"></span>
+                            {% elseif(type|replace({'fos_user_': ""}) == 'error') %}
+                                <span class="fa fa-exclamation-triangle"></span>
+                            {% elseif(type|replace({'fos_user_': ""}) == 'warning') %}
+                                <span class="fa fa-flash"></span>
+                            {% elseif(type|replace({'fos_user_': ""}) == 'success') %}
+                                <span class="fa fa-check"></span>
+                            {% elseif(type|replace({'fos_user_': ""}) == 'notice') %}
+                                <span class="fa fa-info"></span>
+                            {% elseif(type|replace({'fos_user_': ""}) == 'info') %}
+                                <span class="fa fa-info"></span>
+                            {% elseif(type|replace({'fos_user_': ""}) == 'message') %}
+                                <span class="fa fa-info"></span>
+                            {% endif %}
+                            {{ message|trans()|raw }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                <!-- FIN - bloque de mensajes FlashBag -->
+            {% endblock %}
+            {#  END Fash bag block  #}
+
+            {#  Page content   #}
+            <div class="wrapper wrapper-content">
+                {% block page_content %}
+                    dljkfgsdjfdsjlkfhlj
+                {% endblock %}
+            </div>
+            {#  END Page content   #}
+
+            {#  END Page Body    #}
+
+            {#  Footer  #}
+            {#<div class="footer">#}
+            {#<div class="pull-right">#}
+            {#10GB of <strong>250GB</strong> Free.#}
+            {#</div>#}
+            {#<div>#}
+            {#<strong>Copyright</strong> Example Company &copy; 2014-2015#}
+            {#</div>#}
+            {#</div>#}
+
+        </div>
+
+        {#  Including the global config panel  #}
+        {% include '@Backend/Layout/global_config.html.twig' %}
+
+    </div>
+
+{% endblock %}
+
+{% block custom_js %}
+    <!-- jQuery Scripts -->
+    <script src="{{ asset('bundles/backend/js/jquery-2.1.1.js') }}" type="text/javascript"></script>
+    <!-- Bootstrap Scripts -->
+    <script src="{{ asset('bundles/backend/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <!-- MetisMenu Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/metisMenu/jquery.metisMenu.js') }}"
+            type="text/javascript"></script>
+    <!-- Slimscroll Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"
+            type="text/javascript"></script>
+    <!-- Template Scripts -->
+    <script src="{{ asset('bundles/backend/js/inspinia.js') }}" type="text/javascript"></script>
+    <!-- Template PACE Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/pace/pace.min.js') }}" type="text/javascript"></script>
+    <!-- Toastr Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/toastr/toastr.min.js') }}" type="text/javascript"></script>
+    <!-- Highlight Scripts -->
+    <script src="{{ asset('bundles/backend/js/jquery.highlight.js') }}" type="text/javascript"></script>
+    <!-- Idle Timer Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/idle-timer/idle-timer.min.js') }}"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            // Set idle time
+            $(document).idleTimer(3600000);
+        });
+
+        $(document).on("idle.idleTimer", function (event, elem, obj) {
+            //  Logout of app
+            window.location.href = Routing.generate('fos_user_logout_ajax');
+        });
+    </script>
+
+{% endblock %}
+
+
+{% block inline_js %}
+{% endblock %}

@@ -1,0 +1,305 @@
+{% extends 'BackendBundle::layout.html.twig' %}
+
+{% block custom_css %}
+    {{ parent() }}
+
+
+    <!-- datepicker3 Styles -->
+    <link rel="stylesheet"
+          href="{{ asset('bundles/backend/css/plugins/datapicker/datepicker3.css') }}"
+          type="text/css"/>
+    <!-- clockpicker Styles -->
+    <link rel="stylesheet"
+          href="{{ asset('bundles/backend/css/plugins/clockpicker/clockpicker.css') }}"
+          type="text/css"/>
+    <!-- iCheck Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/iCheck/custom.css') }}"
+          type="text/css"/>
+
+    <!-- select2 Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
+          type="text/css"/>
+
+{% endblock %}
+
+        {% block active_helpers %}active{% endblock %}
+
+        {% block page_heading_title %}
+            <a class="btn btn-default navbar-btn" href="{{ path('helpers') }}"
+               style="margin-bottom: 7px;">
+                <span class="glyphicon glyphicon-chevron-up"></span>
+            </a>
+            Helpers creation
+        {% endblock %}
+
+        {% block page_content %}
+
+            {{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
+
+
+
+            <div class="form-group{% if(form.date.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.date) }}</label>
+
+                <div class="col-md-6">
+                    <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                        {{ form_widget(form.date, { 'attr': {'class' : 'form-control datepicker'}}) }}
+                        {% if form.date.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.date.vars['errors'] %}
+                                    <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+
+
+            <div class="form-group{% if(form.time.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.time) }}</label>
+
+                <div class="col-md-6">
+                    <div class="input-group clockpicker" data-autoclose="true">
+                                <span class="input-group-addon">
+                                    <span class="fa fa-clock-o"></span>
+                                </span>
+                        {{ form_widget(form.time, { 'attr': {'class' : 'form-control'}}) }}
+                        {% if form.time.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.time.vars['errors'] %}
+                                    <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+
+
+            <div class="form-group{% if(form.dateTime.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.dateTime) }}</label>
+
+                <div class="col-md-6">
+                    <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                        {{ form_widget(form.dateTime, { 'attr': {'class' : 'form-control datepicker'}}) }}
+                        {% if form.dateTime.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.dateTime.vars['errors'] %}
+                                    <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+
+
+            <div class="form-group{% if(form.dateRange.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.dateRange) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.dateRange, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.dateRange.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.dateRange.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+
+
+            <div class="form-group{% if(form.timeRange.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.timeRange) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.timeRange, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.timeRange.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.timeRange.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+
+
+            <div class="form-group{% if(form.isActive.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.isActive) }}</label>
+
+                <div class="col-md-1">
+                    <div class="checkbox-inline">
+                        {{ form_widget(form.isActive, { 'attr': {'class' : 'form-control i-checks'}}) }}
+                        {% if form.isActive.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.isActive.vars['errors'] %}
+                                    <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+
+
+            <div class="form-group{% if(form.imageFile.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.imageFile) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.imageFile, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.imageFile.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.imageFile.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+
+
+            <div class="form-group{% if(form.updatedAt.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.updatedAt) }}</label>
+
+                <div class="col-md-6">
+                    <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                        {{ form_widget(form.updatedAt, { 'attr': {'class' : 'form-control datepicker'}}) }}
+                        {% if form.updatedAt.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.updatedAt.vars['errors'] %}
+                                    <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+
+
+            <div class="form-group{% if(form.person.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for=""
+                       class="col-md-2 control-label">{{ form_label(form.person) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.person, { 'attr': {'class' : 'form-control select2-field', 'style' : 'width: 100%'}}) }}
+                    {% if form.person.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.person.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-2 text-right">
+                    <a class="btn btn-success" href="{{ path('helpers') }}">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        Back to the list
+                    </a>
+                </div>
+                <div class="col-md-10">
+
+                    {{ form_widget(form.submit, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
+                    {{ form_widget(form.submitback, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
+
+
+
+
+                    {{ form(form) }}
+
+                </div>
+            </div>
+
+
+            {{ form_end(form) }}
+
+        {% endblock %}
+
+    {% block custom_js %}
+        {{ parent() }}
+
+        <!-- datepicker3 Scripts -->
+        <script src="{{ asset('bundles/backend/js/plugins/datapicker/bootstrap-datepicker.js') }}"
+                type="text/javascript"></script>
+        <!-- clockpicker Scripts -->
+        <script src="{{ asset('bundles/backend/js/plugins/clockpicker/clockpicker.js') }}"
+                type="text/javascript"></script>
+        <!-- iCheck Scripts -->
+        <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
+                type="text/javascript"></script>
+
+        <!-- select2 Scripts -->
+        <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"
+                type="text/javascript"></script>
+    {% endblock %}
+
+    {% block inline_js %}
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+
+
+                //  datepicker3 script for input datetime and date
+                $("form input.datepicker").datepicker({
+                    todayBtn: "linked",
+                    keyboardNavigation: false,
+                    forceParse: false,
+                    autoclose: true,
+                    format: "yyyy-mm-dd"
+                });
+
+
+                //  clockpicker script for input time
+                $("form .clockpicker").clockpicker();
+
+
+                //  iCheck scripts for checkboxes and radios
+                $(".i-checks").iCheck({
+                    checkboxClass: "icheckbox_square-green",
+                    radioClass: "iradio_square-green",
+                });
+
+
+                //  select2 scripts for batch actions combobox
+                $(".select2-field").select2({
+                    placeholder: "--- Select a value ---"
+                });
+
+
+            });
+
+        </script>
+    {% endblock %}

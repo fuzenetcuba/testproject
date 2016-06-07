@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Administration | FuzenetCuba</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Fav and touch icons -->
+        <link rel="shortcut icon" href="{{ asset('bundles/backend/ico/favicon.ico') }}">
+
+        <link rel="stylesheet" href="{{ asset('bundles/backend/css/bootstrap.min.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('bundles/backend/css/animate.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('bundles/backend/css/style.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('bundles/backend/font-awesome/css/font-awesome.min.css') }}" type="text/css"/>
+
+    </head>
+
+    <body class="gray-bg">
+        <noscript>
+        <h1>You should ACTIVATE JavaScript in your browser</h1>
+        </noscript>
+
+        {# Block for FOSUserBundle actions #}
+        {% block fos_user_content %}
+            {% if error %}
+                <div class="alert alert-danger fade in">
+                    <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                    <strong>Error! </strong>
+                    {{ error.message|trans({}, 'FOSUserBundle') }}
+                </div>
+            {% endif %}
+
+
+            <div class="loginColumns animated fadeInDown">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <h2 class="font-bold">Welcome to FuzenetCuba</h2>
+
+                        <p>
+                            Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
+                        </p>
+
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                        </p>
+
+                        <p>
+                            When an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        </p>
+
+                        <p>
+                            <small>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</small>
+                        </p>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="ibox-content">
+                            <form class="m-t" role="form" action="{{ path('fos_user_security_check') }}" method="post">
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Username" type="text" id="username" name="_username" value="{{ last_username }}" required="required" autofocus="true" >
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Password" type="password" id="password" name="_password" required="required" >
+                                </div>
+                                <button type="submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" class="btn btn-primary block full-width m-b" >{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+
+                                <a class="text-center" href="{{ path('fos_user_resetting_request') }}">
+                                    <small>Forgot password?</small>
+                                </a>
+
+                                <p class="text-muted text-center">
+                                    <small>Do not have an account?</small>
+                                </p>
+                                <a class="btn btn-sm btn-info btn-block" href="{{ path('fos_user_registration_register') }}">Create an account</a>
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                            </form>
+                            <p class="m-t">
+                                <small></small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-md-6">
+                        FuzenetCuba
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <small>Copyright © 2016 {#{ '-' ~ 'now'|date('Y') }#}</small>
+                    </div>
+                </div>
+            </div>
+
+        {% endblock %}
+        {% block javascripts %}
+        {% endblock %}
+    </body>
+</html>

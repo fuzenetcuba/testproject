@@ -1,0 +1,31 @@
+<div class="ibox-content">
+
+    <h2 class="font-bold">Forgot password</h2>
+
+    <p>
+        Enter your username or email address and we will email you with a link for resetting your password.
+    </p>
+    {% if invalid_username is defined %}
+        <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}, 'FOSUserBundle') }}</p>
+    {% endif %}
+    <div class="row">
+
+        <div class="col-lg-12">
+            <form class="m-t" role="form" action="{{ path('fos_user_resetting_send_email') }}"
+                  method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Email or Username" id="username"
+                           name="username" required="required"/>
+                </div>
+
+                <button type="submit" class="btn btn-primary block full-width m-b">Reset password
+                </button>
+
+            </form>
+
+            <a class="text-center" href="{{ path('fos_user_security_login') }}">
+                <small>Back to login</small>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+{%- for action in record_actions %}
+    <a class="btn btn-xs btn-outline btn-primary"
+       href="{{ "{{ path('" ~ route_name_prefix ~ "_" ~ action ~ "', { '"~ identifier ~"': entity."~ identifier ~" }) }}" }}">
+        {%- if (action == "show") %}
+            <span class="fa fa-search"></span>
+        {%- elseif (action == "edit") %}
+            <span class="fa fa-pencil"></span>
+        {%- endif %}
+    </a>
+{%- endfor %}

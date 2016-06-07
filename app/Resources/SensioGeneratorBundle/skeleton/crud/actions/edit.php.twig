@@ -1,0 +1,62 @@
+
+    /**
+{% block phpdoc_method_header %}
+     * Displays a form to edit an existing {{ entity }} entity.
+{% endblock phpdoc_method_header %}
+     *
+{% block phpdoc_method_annotations %}
+{% if 'annotation' == format %}
+     * @Route("/{{ "{" ~ identifier ~ "}" }}/edit", name="{{ route_name_prefix }}_edit")
+     * @Method({"GET", "POST", "PUT"})
+{% endif %}
+{% endblock phpdoc_method_annotations %}
+     */
+{% block method_definition %}
+    public function editAction(Request $request, {{ entity_class }} $entity)
+{% endblock method_definition %}
+    {
+{% block method_body %}
+        $deleteForm = $this->createDeleteForm($entity);
+        $editForm = $this->createEditForm($entity);
+        $editForm->handleRequest($request);
+    
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($entity);
+            $em->flush();
+
+            // Mostrando mensaje
+            $this->get('session')->getFlashBag()->add('success', 'The {{ entity_class|lower }} was updated succesfully.');
+            return $this->redirectToRoute('{{ route_name_prefix }}_show', array('{{ identifier }}' => $entity->get{{ identifier|first|upper ~ identifier|slice(1) }}()));
+        }
+{% endblock method_body %}
+
+{% block method_return %}
+    return $this->render('{{ entity|lower|replace({'\\': '/'}) }}/edit.html.twig', array(
+        'entity' => $entity,
+        'edit_form' => $editForm->createView(),
+        'delete_form' => $deleteForm->createView(),
+    ));
+{% endblock method_return %}
+    }
+
+{% block form %}
+    /**
+    * Creates a form to edit a {{ entity }} entity.
+    *
+    * @param {{ entity_class }} $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createEditForm({{ entity_class }} $entity)
+    {
+        $form = $this->createForm('{{ namespace }}\Form\{{ entity_class }}Type', $entity, array(
+            'action' => $this->generateUrl('{{ route_name_prefix }}_edit', array('{{ identifier }}' => $entity->get{{ identifier|first|upper ~ identifier|slice(1) }}())),
+            'method' => 'PUT',
+        ));
+
+        $form->add('submit', SubmitType::class, array('label' => 'Update'));
+
+        return $form;
+    }
+{% endblock form %}

@@ -1,0 +1,34 @@
+helpers:
+    path:     /
+    defaults: { _controller: "BackendBundle:Helpers:index" }
+    methods:  GET
+
+helpers_find:
+    path:     /find
+    defaults: { _controller: "BackendBundle:Helpers:find" }
+    methods:  [POST, GET]
+
+helpers_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:Helpers:show" }
+    methods:  GET
+
+helpers_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:Helpers:new" }
+    methods:  [GET, POST]
+
+helpers_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:Helpers:edit" }
+    methods:  [GET, POST, PUT]
+
+helpers_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:Helpers:delete" }
+    methods:  [POST, DELETE]
+    
+helpers_batch:
+    path:     /helpers_batch
+    defaults: { _controller: "BackendBundle:Helpers:batch" }
+    methods:  POST

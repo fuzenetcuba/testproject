@@ -1,0 +1,20 @@
+backend_helpers:
+    resource: "@BackendBundle/Resources/config/routing/helpers.yml"
+    prefix:   /helpers
+    
+backend_homepage:
+    path:     /
+    defaults: { _controller: BackendBundle:Default:index }
+
+config_routing_user:
+    resource: "@BackendBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+fos_user_logout_ajax:
+    path: /logout-ajax
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: fos_user_security_logout
+        permanent: true
+    options:
+        expose: true

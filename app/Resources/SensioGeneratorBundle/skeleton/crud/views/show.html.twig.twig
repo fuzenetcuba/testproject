@@ -1,0 +1,77 @@
+{#- Extendiendo de layout de backend    -#}
+{%- block extends %}
+    {{ "{% extends 'BackendBundle::layout.html.twig' %}" }}
+{%- endblock extends %}
+
+{%- block body %}
+    {#- Resaltado de menu   -#}
+    {{ "{% block active_" ~ entity|lower ~ "  %}active{% endblock %}" }}
+
+    {#- Titulo de pagina    -#}
+    {{ "{% block page_heading_title %}" }}
+    <a class="btn btn-default navbar-btn" href="{{ "{{ path('" ~ route_name_prefix ~ "')}}" }}"
+       style="margin-bottom: 7px;">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+    {{ entity ~ " data" }}
+    {{ "{% endblock %}" }}
+
+    {#- Contenido de la pagina  -#}
+    {{ "{% block page_content %}" }}
+    <dl class="dl-horizontal">
+        <tbody>
+        {%- for field, metadata in fields %}
+
+            <dt>{{ field|capitalize }}</dt>
+
+            {%- if metadata.type in ['date'] %}
+
+                <dd>{{ "{{ entity." ~ field|replace({'_': ''}) ~ "|date('d-M-Y') }}" }}</dd>
+
+            {%- elseif metadata.type in ['datetime'] %}
+
+                <dd>{{ "{{ entity." ~ field|replace({'_': ''}) ~ "|date('d-M-Y h:i A') }}" }}</dd>
+
+            {%- elseif metadata.type in ['time'] %}
+
+                <dd>{{ "{{ entity." ~ field|replace({'_': ''}) ~ "|date('h:i A') }}" }}</dd>
+
+            {%- elseif metadata.type in ['array', 'collection'] %}
+
+                <dd>
+                    {{ "{%- for " ~ field ~ "Item in entity." ~ field ~ " %}" }}
+                    <span class="label label-primary">{{ "{{ "~ field ~ "Item"|replace({'_': ''}) ~ " }}" }}</span>
+                    {{ "{% endfor %}" }}
+                </dd>
+
+            {%- elseif metadata.type in ['boolean'] %}
+
+                <dd>
+                    <div class="onoffswitch-ios switch-xs">
+                        {{ '{% if (entity.' ~ field ~ ') %}' }}
+                        <label class="onoffswitch-ios-label checked"></label>
+                        {{ '{% else %}' }}
+                        <label class="onoffswitch-ios-label"></label>
+                        {{ '{% endif %}' }}
+                    </div>
+                </dd>
+
+            {%- else %}
+
+                <dd>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</dd>
+
+            {%- endif %}
+
+            <div class="hr-line-dashed"></div>
+        {%- endfor %}
+
+        </tbody>
+    </dl>
+
+    {#- Botones de acciones adicionales   -#}
+    {% set hide_edit, hide_delete = false, false %}
+    {% include 'crud/views/others/record_actions.html.twig.twig' %}
+
+    {{ "{% endblock %}" }}
+
+{%- endblock body -%}

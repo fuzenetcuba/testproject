@@ -1,0 +1,78 @@
+<div class="form-group">
+    <div class="col-md-2 text-right">
+        <a class="btn btn-success" href="{{ "{{ path('" ~ route_name_prefix ~ "') }}" }}">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            Back to the list
+        </a>
+    </div>
+    <div class="col-md-10">
+
+        {# Submit buton de vista "Nuevo" #}
+        {% if (show_submit is defined and show_submit and type_submit == "new") %}
+            {{ "{{ form_widget(form.submit, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}" }}
+            {{ "{{ form_widget(form.submitback, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}" }}
+        {% endif %}
+
+        {# Submit buton de vista "Edit" #}
+        {% if (show_submit is defined and show_submit and type_submit == "edit") %}
+            {{ "{{ form_widget(edit_form.submit, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}" }}
+        {% endif %}
+
+        {# Vinculo a vista "Edit"  #}
+        {% if ('edit' in actions) and (not hide_edit) %}
+            <a class="btn btn-primary"
+               href="{{ "{{ path('" ~ route_name_prefix ~ "_edit', { '"~ identifier ~"': entity."~ identifier ~" }) }}" }}">
+                <span class="fa fa-pencil"></span>
+                Edit
+            </a>
+        {% endif %}
+
+        {# Vinculo a accion "Eliminar"  #}
+        {% if ('delete' in actions) and (not hide_delete) %}
+            <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
+                <span class="fa fa-remove"></span>
+                Delete
+            </a>
+        {% endif %}
+
+        {% if (show_submit is defined and show_submit and type_submit == "new") %}
+            {{ "{{ form(form) }}" }}
+        {% endif %}
+
+        {% if (show_submit is defined and show_submit and type_submit == "edit") %}
+            {{ "{{ form(edit_form) }}" }}
+        {% endif %}
+    </div>
+</div>
+
+{# modal of delete action  #}
+{% if ('delete' in actions) and (not hide_delete) %}
+
+    <div class="modal inmodal" id="modalDelete" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight">
+                <div id="modal-title" class="modal-header red-bg">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                                aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+                    <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
+                    <h4 class="modal-title">Atention!!!</h4>
+                </div>
+                <div id="modal-content" class="modal-body">
+                    <strong>Are you sure you want to delete this data?</strong>
+                </div>
+                <div class="modal-footer">
+                    <form action="{{ "{{ path('" ~ route_name_prefix ~ "_delete', { '"~ identifier ~"': entity."~ identifier ~" }) }}" }}"
+                          name="form-delete" method="post">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                        <button id="modal-btn" type="submit" class="btn btn-danger" name="{{ entity|lower ~"-"~ identifier }}"
+                                value="{{ "{{ entity."~ identifier ~" }}" }}">
+                            <span class="glyphicon glyphicon-ok"></span> Save changes
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endif %}

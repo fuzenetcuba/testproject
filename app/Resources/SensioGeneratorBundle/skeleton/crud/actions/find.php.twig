@@ -1,0 +1,46 @@
+
+    /**
+{% block phpdoc_method_header %}
+     * Find {{ entity }} entities that match with the criteria.
+{% endblock phpdoc_method_header %}
+     *
+{% block phpdoc_method_annotations %}
+{% if 'annotation' == format %}
+     * @Route("/", name="{{ route_name_prefix }}_create")
+     * @Method("POST")
+     * @Template()
+{% endif %}
+{% endblock phpdoc_method_annotations %}
+     */
+{% block method_definition %}
+    public function findAction(Request $request)
+{% endblock method_definition %}
+    {
+{% block method_body %}
+        $find = $request->get('find-form-text');
+        
+        if ($find) {
+            $em = $this->getDoctrine()->getManager();
+
+            $dql = "SELECT e FROM {{ bundle }}:{{ entity }} e WHERE "
+                    . "e.id LIKE '%" . $find . "%' OR "
+                    . "e.id LIKE '%" . $find . "%' "
+                    . "ORDER BY e.{{ identifier }} ASC";
+            $query = $em->createQuery($dql);
+
+            $paginator = $this->get('knp_paginator');
+            $pagination = $paginator->paginate(
+                    $query, $request->query->get('page', 1), 5
+            );
+{% endblock method_body %}
+
+{% block method_return %}
+            return $this->render('{{ entity|replace({'\\': '/'}) }}/index.html.twig', array(
+                'entities' => $pagination,
+                'textFind' => $find
+            ));
+        } else {
+            return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
+        }
+{% endblock method_return %}
+    }
