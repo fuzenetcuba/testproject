@@ -1,3 +1,19 @@
+backend_customer:
+    resource: "@BackendBundle/Resources/config/routing/customer.yml"
+    prefix:   /customer
+
+backend_reward:
+    resource: "@BackendBundle/Resources/config/routing/reward.yml"
+    prefix:   /reward
+
+backend_deal:
+    resource: "@BackendBundle/Resources/config/routing/deal.yml"
+    prefix:   /deal
+
+backend_category:
+    resource: "@BackendBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
 backend_business:
     resource: "@BackendBundle/Resources/config/routing/business.yml"
     prefix:   /business

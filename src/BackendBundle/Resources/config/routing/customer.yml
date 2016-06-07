@@ -1,0 +1,46 @@
+customer:
+    path:  /
+    defaults: { _controller: "BackendBundle:Customer:index" }
+
+customer_show:
+    path:  /{id}/show
+    defaults: { _controller: "BackendBundle:Customer:show" }
+
+customer_new:
+    path:  /new
+    defaults: { _controller: "BackendBundle:Customer:new" }
+
+customer_create:
+    path:  /create
+    defaults: { _controller: "BackendBundle:Customer:create" }
+    requirements: { methods: post }
+
+customer_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "BackendBundle:Customer:edit" }
+
+customer_update:
+    path:  /{id}/update
+    defaults: { _controller: "BackendBundle:Customer:update" }
+    requirements: { methods: post|put }
+
+customer_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "BackendBundle:Customer:delete" }
+    requirements: { methods: post|delete }
+
+customer_enable:
+    path:  /{id}/enable
+    defaults: { _controller: "BackendBundle:Customer:enable" }
+    options:
+        expose: true
+
+customer_batch:
+    path:     /customer_batch
+    defaults: { _controller: "BackendBundle:Customer:batch" }
+    requirements: { methods: post }
+
+customer_find:
+    path:  /find
+    defaults: { _controller: "BackendBundle:Customer:find" }
+    methods:  [POST, GET]

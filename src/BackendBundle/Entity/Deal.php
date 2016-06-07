@@ -97,6 +97,15 @@ class Deal
      */
     private $updatedAt;
 
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+
+        if (null === $this->updatedAt) {
+            $this->updatedAt = new \DateTime();
+        }
+    }
+
     /**
      * @return integer
      */

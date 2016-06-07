@@ -5,6 +5,7 @@ namespace BackendBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\DBAL\Exception\InvalidArgumentException;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Reward
@@ -63,6 +64,12 @@ class Reward
     {
         $this->customers = new ArrayCollection();
     }
+
+    function __toString()
+    {
+        return $this->name;
+    }
+
 
     /**
      * @return integer

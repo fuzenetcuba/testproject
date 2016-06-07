@@ -6,24 +6,24 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;//------------
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use BackendBundle\Entity\Business;
-use BackendBundle\Form\BusinessType;
+use BackendBundle\Entity\Reward;
+use BackendBundle\Form\RewardType;
 
 /**
- * Business controller.
+ * Reward controller.
  *
  */
-class BusinessController extends Controller
+class RewardController extends Controller
 {
     /**
-     * Lists all Business entities.
+     * Lists all Reward entities.
      *
      */
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $dql = "SELECT e FROM BackendBundle:Business e ORDER BY e.id ASC";
+        $dql = "SELECT e FROM BackendBundle:Reward e ORDER BY e.id ASC";
         $query = $em->createQuery($dql);
 
         $paginator = $this->get('knp_paginator');
@@ -31,13 +31,13 @@ class BusinessController extends Controller
             $query, $request->query->get('page', 1), 5
         );
 
-        return $this->render('business/index.html.twig', array(
+        return $this->render('reward/index.html.twig', array(
             'entities' => $pagination,
         ));
     }
 
     /**
-     * Find Business entities that match with the criteria.
+     * Find Reward entities that match with the criteria.
      *
      */
     public function findAction(Request $request)
@@ -47,10 +47,10 @@ class BusinessController extends Controller
         if ($find) {
             $em = $this->getDoctrine()->getManager();
 
-            $dql = "SELECT e FROM BackendBundle:Business e WHERE "
+            $dql = "SELECT e FROM BackendBundle:Reward e WHERE "
                 . "e.name LIKE '%" . $find . "%' OR "
                 . "e.description LIKE '%" . $find . "%' OR "
-                . "e.socialMedia LIKE '%" . $find . "%' "
+                . "e.cost LIKE '%" . $find . "%' "
                 . "ORDER BY e.id ASC";
             $query = $em->createQuery($dql);
 
@@ -59,22 +59,22 @@ class BusinessController extends Controller
                 $query, $request->query->get('page', 1), 5
             );
 
-            return $this->render('business/index.html.twig', array(
+            return $this->render('reward/index.html.twig', array(
                 'entities' => $pagination,
                 'textFind' => $find
             ));
         } else {
-            return $this->redirect($this->generateUrl('business'));
+            return $this->redirect($this->generateUrl('reward'));
         }
     }
 
     /**
-     * Displays a form to create a new Business entity.
+     * Displays a form to create a new Reward entity.
      *
      */
     public function newAction(Request $request)
     {
-        $entity = new Business();
+        $entity = new Reward();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -84,33 +84,33 @@ class BusinessController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The business was created succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The reward was created succesfully.');
 
             if ($form->get('submitback')->isClicked()) {
-                return $this->redirect($this->generateUrl('business_new'));
+                return $this->redirect($this->generateUrl('reward_new'));
             } else {
-                return $this->redirectToRoute('business_show', array('id' => $entity->getId()));
+                return $this->redirectToRoute('reward_show', array('id' => $entity->getId()));
             }
 
         }
 
-        return $this->render('business/new.html.twig', array(
+        return $this->render('reward/new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
         ));
     }
 
     /**
-     * Creates a form to create a Business entity.
+     * Creates a form to create a Reward entity.
      *
-     * @param Business $entity The entity
+     * @param Reward $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Business $entity)
+    private function createCreateForm(Reward $entity)
     {
-        $form = $this->createForm('BackendBundle\Form\BusinessType', $entity, array(
-            'action' => $this->generateUrl('business_new'),
+        $form = $this->createForm('BackendBundle\Form\RewardType', $entity, array(
+            'action' => $this->generateUrl('reward_new'),
             'method' => 'POST',
         ));
 
@@ -121,24 +121,24 @@ class BusinessController extends Controller
     }
 
     /**
-     * Finds and displays a Business entity.
+     * Finds and displays a Reward entity.
      *
      */
-    public function showAction(Business $entity)
+    public function showAction(Reward $entity)
     {
         $deleteForm = $this->createDeleteForm($entity);
 
-        return $this->render('business/show.html.twig', array(
+        return $this->render('reward/show.html.twig', array(
             'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing Business entity.
+     * Displays a form to edit an existing Reward entity.
      *
      */
-    public function editAction(Request $request, Business $entity)
+    public function editAction(Request $request, Reward $entity)
     {
         $deleteForm = $this->createDeleteForm($entity);
         $editForm = $this->createEditForm($entity);
@@ -150,11 +150,11 @@ class BusinessController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The business was updated succesfully.');
-            return $this->redirectToRoute('business_show', array('id' => $entity->getId()));
+            $this->get('session')->getFlashBag()->add('success', 'The reward was updated succesfully.');
+            return $this->redirectToRoute('reward_show', array('id' => $entity->getId()));
         }
 
-        return $this->render('business/edit.html.twig', array(
+        return $this->render('reward/edit.html.twig', array(
             'entity' => $entity,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -162,16 +162,16 @@ class BusinessController extends Controller
     }
 
     /**
-     * Creates a form to edit a Business entity.
+     * Creates a form to edit a Reward entity.
      *
-     * @param Business $entity The entity
+     * @param Reward $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createEditForm(Business $entity)
+    private function createEditForm(Reward $entity)
     {
-        $form = $this->createForm('BackendBundle\Form\BusinessType', $entity, array(
-            'action' => $this->generateUrl('business_edit', array('id' => $entity->getId())),
+        $form = $this->createForm('BackendBundle\Form\RewardType', $entity, array(
+            'action' => $this->generateUrl('reward_edit', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -181,10 +181,10 @@ class BusinessController extends Controller
     }
 
     /**
-     * Deletes a Business entity.
+     * Deletes a Reward entity.
      *
      */
-    public function deleteAction(Request $request, Business $entity)
+    public function deleteAction(Request $request, Reward $entity)
     {
         $form = $this->createDeleteForm($entity);
         $form->handleRequest($request);
@@ -192,36 +192,36 @@ class BusinessController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Business entity.');
+            throw $this->createNotFoundException('Unable to find Reward entity.');
         }
 
         $em->remove($entity);
         $em->flush();
 
         // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('success', 'The business was deleted succesfully.');
-        return $this->redirect($this->generateUrl('business'));
+        $this->get('session')->getFlashBag()->add('success', 'The reward was deleted succesfully.');
+        return $this->redirect($this->generateUrl('reward'));
 
 
     }
 
     /**
-     * Creates a form to delete a Business entity.
+     * Creates a form to delete a Reward entity.
      *
-     * @param Business $entity The Business entity
+     * @param Reward $entity The Reward entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Business $entity)
+    private function createDeleteForm(Reward $entity)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('business_delete', array('id' => $entity->getId())))
+            ->setAction($this->generateUrl('reward_delete', array('id' => $entity->getId())))
             ->setMethod('DELETE')
             ->getForm();
     }
 
     /**
-     * Do several batch actions over Business entities.
+     * Do several batch actions over Reward entities.
      *
      */
     public function batchAction(Request $request)
@@ -235,23 +235,23 @@ class BusinessController extends Controller
 
             if ($action == "delete") {
                 foreach ($ids as $id) {
-                    $entity = $em->getRepository('BackendBundle:Business')->find($id);
+                    $entity = $em->getRepository('BackendBundle:Reward')->find($id);
 
                     if (!$entity) {
-                        throw $this->createNotFoundException('Unable to find Business entity.');
+                        throw $this->createNotFoundException('Unable to find Reward entity.');
                     } else {
                         $em->remove($entity);
                         $recordsSelected = true;
                     }
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Businesss deleted succesfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Rewards deleted succesfully.');
                 }
             }
             $em->flush();
         }
 
 
-        return $this->redirect($this->generateUrl('business'));
+        return $this->redirect($this->generateUrl('reward'));
     }
 }
