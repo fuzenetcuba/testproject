@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@BackendBundle/Resources/config/services.yml" }
+    - { resource: "@FrontendBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -11,7 +12,7 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -60,8 +61,112 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+    host:      %mailer_host%
+    port:      %mailer_port%
+    username:  %mailer_user%
+    password:  %mailer_password%
+    auth_mode: %mailer_auth_mode%
+    transport: %mailer_transport%
+    encryption: %mailer_encryption%
+#    spool:
+#        type: file
+#        path: %kernel.root_dir%/spool
+    disable_delivery: false
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: BackendBundle\Entity\SystemUser
+    registration:
+#        form:
+#            type:               BackendBundle\Form\registrationType
+#            name:               backendbundle_user_registration
+        confirmation:
+            enabled:    false
+    profile:
+        form:
+            type:               BackendBundle\Form\ProfileFormType
+            name:               backendbundle_user_profile
+    from_email:
+        address:        fuzenetcuba@fuzenetcuba.com
+        sender_name:    FuzenetCuba
+    service:
+        mailer:                 fos_user.mailer.twig_swift
+        email_canonicalizer:    fos_user.util.canonicalizer.default
+        username_canonicalizer: fos_user.util.canonicalizer.default
+        token_generator:        fos_user.util.token_generator.default
+        user_manager:           fos_user.user_manager.default
+    resetting:
+        token_ttl: 40264
+        form:
+            type:               fos_user_resetting
+            name:               fos_user_resetting_form
+            validation_groups:  [ResetPassword, Default]
+
+
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    template:
+        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig     # sliding pagination controls template
+        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
+
+vich_uploader:
+    db_driver: orm # or mongodb or propel or phpcr
+    mappings:
+        properties_pictures:
+            uri_prefix:         /images/pictures
+            upload_destination: %kernel.root_dir%/../web/images/pictures
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+#config for HWIOAuthBundle
+hwi_oauth:
+    #this is my custom user provider, created from FOSUBUserProvider - will manage the
+    #automatic user registration on your site, with data from the provider (facebook. google, etc.)
+    #and also, the connecting part (get the token and the user_id)and
+
+    # name of the firewall in which this bundle is active, this setting MUST be set
+    firewall_name: backend
+
+    connect:
+        account_connector: app.provider.oauth
+        confirmation: true
+
+    fosub:
+        username_iterations: 30
+        properties:
+            # these properties will be used/redefined later in the custom FOSUBUserProvider service.
+            facebook: facebookId
+            google: googleId
+
+    resource_owners:
+        facebook:
+            type:                facebook
+            client_id:           %facebook_client_id%
+            client_secret:       %facebook_client_secret%
+            scope:               "email, public_profile"
+            infos_url:           "https://graph.facebook.com/me?fields=id,name,email,picture.type(large)"
+            paths:
+                email: email
+            options:
+                display: page
+
+        google:
+            type:                google
+            client_id:           %google_client_id%
+            client_secret:       %google_client_secret%
+            scope:              "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+            paths:
+                email: email
+
+    http_client:
+        verify_peer:   true
+        ignore_errors: true
+        max_redirects: 5
+       # timeout:       %client.timeout%

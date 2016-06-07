@@ -1,13 +1,45 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{% block title %}Welcome!{% endblock %}</title>
+
+    {% block metatags %}
+    {% endblock %}
+
+    {% block stylesheets %}
+    {% endblock %}
+
+    {% block custom_css %}
+    {% endblock %}
+
+    {% block inline_css %}
+    {% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+
+<body>
+
+{% block body %}
+
+    {% block fos_user_content %}{% endblock %}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+{% endblock %}
+
+{% block custom_js %}
+{% endblock %}
+
+{% block inline_js %}
+{% endblock %}
+
+</body>
 </html>
