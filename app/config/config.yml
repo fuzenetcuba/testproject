@@ -176,3 +176,12 @@ hwi_oauth:
         ignore_errors: true
         max_redirects: 5
        # timeout:       %client.timeout%
+
+stof_doctrine_extensions:
+    default_locale: en
+    translation_fallback: true
+    orm:
+        default:
+            tree: true
+            timestampable: true
+            sluggable: true

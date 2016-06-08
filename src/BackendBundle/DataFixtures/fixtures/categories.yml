@@ -1,0 +1,52 @@
+Category:
+  food:
+    name: Food & Eat
+    description: Food and eatables
+
+    subcategories:
+      grocery:
+        name: Grocery
+      restaurant:
+        name: Restaurant
+      rapid-food:
+        name: Rapid Food
+
+  service:
+    name: Service
+    description: General services
+
+    subcategories:
+      legal:
+        name: Legal & Advocacy
+      playground:
+        name: Playground
+      internet:
+        name: Internet & Marketing
+      business:
+        name: Business Office
+
+  store:
+    name: Store
+    description: Store departaments
+
+    subcategories:
+      clothing:
+        name: Clothing
+      boutique:
+        name: Boutique
+      electronics:
+        name: Electronics
+
+  entertainment:
+    name: Entertainment
+    description: Entertainment and relax
+
+    subcategories:
+      radio:
+        name: Radio
+      tv:
+        name: TV
+      events:
+        name: Events
+      shows:
+        name: Shows

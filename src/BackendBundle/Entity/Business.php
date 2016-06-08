@@ -4,6 +4,7 @@ namespace BackendBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation\Slug;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
@@ -38,6 +39,14 @@ class Business
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+
+    /**
+     * @var string
+     *
+     * @Slug(fields={"name"})
+     * @ORM\Column(type="string", unique=true, length=128)
+     */
+    private $slug;
 
     /**
      * @var string
@@ -423,5 +432,21 @@ class Business
     public function setCustomers($customers)
     {
         $this->customers = $customers;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
     }
 }

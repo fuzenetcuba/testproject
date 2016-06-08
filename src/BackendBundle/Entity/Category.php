@@ -4,6 +4,7 @@ namespace BackendBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation\Slug;
 
 /**
  * Class Category
@@ -32,14 +33,15 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @Slug(fields={"name"})
+     * @ORM\Column(type="string", unique=true, length=128)
      */
     private $slug;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
@@ -51,7 +53,7 @@ class Category
     private $businesses;
 
     /**
-     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent", cascade={"persist"})
      */
     private $children;
 
@@ -88,6 +90,21 @@ class Category
     {
         if ($this->businesses->contains($business)) {
             $this->businesses->add($business);
+        }
+    }
+
+    public function addChildren(Category $category)
+    {
+        if (!$this->children->contains($category)) {
+            $category->setParent($this);
+            $this->children->add($category);
+        }
+    }
+
+    public function removeChildren(Category $category)
+    {
+        if ($this->children->contains($category)) {
+            $this->children->removeElement($category);
         }
     }
 
@@ -201,5 +218,13 @@ class Category
     public function setParent(Category $parent)
     {
         $this->parent = $parent;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
     }
 }

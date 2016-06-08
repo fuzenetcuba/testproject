@@ -1,0 +1,9 @@
+Business:
+  brooks-brothers:
+    name: Brooks Brothers Factory Store
+    description: |
+      Brooks Brothers Factory stores uphold our reputation for exceptional quality and
+      customer service. They feature a distinct collection consistent with the spirit
+    phone: (954) 845-0404
+    logo: brooks-brothers-logo.png
+    social-media: https://www.facebook.com/BrooksBrothers/

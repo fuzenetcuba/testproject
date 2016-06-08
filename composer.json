@@ -1,4 +1,13 @@
 {
+    "repositories": [
+        {
+          "packagist": false
+        },
+        {
+            "type": "composer",
+            "url": "http://composer.prod.uci.cu"
+        }
+    ],
     "name": "symfony/framework-standard-edition",
     "license": "MIT",
     "type": "project",
@@ -47,6 +56,7 @@
     },
     "config": {
         "bin-dir": "bin",
+	"secure-http": false,
         "platform": {
             "php": "5.3.9"
         }
