@@ -68,6 +68,12 @@ class Category
         $this->children   = new ArrayCollection();
     }
 
+    function __toString()
+    {
+        return $this->name;
+    }
+
+
     /**
      * Adds a bussiness to this category, for keeping the bidirectional
      * relation

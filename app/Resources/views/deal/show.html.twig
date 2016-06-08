@@ -1,33 +1,32 @@
-{% extends 'BackendBundle::layout.html.twig' %}{% block active_business %}active{% endblock %}{% block page_heading_title %}
-    <a class="btn btn-default navbar-btn" href="{{ path('business') }}"
+{% extends 'BackendBundle::layout.html.twig' %}{% block active_deal %}active{% endblock %}{% block page_heading_title %}
+    <a class="btn btn-default navbar-btn" href="{{ path('deal') }}"
        style="margin-bottom: 7px;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a>
-    Business data
+    Deal data
 {% endblock %}{% block page_content %}
     <dl class="dl-horizontal">
         <tbody>
         <dt>Id</dt>
         <dd>{{ entity.id }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Name</dt>
-        <dd>{{ entity.name }}</dd>
-        <div class="hr-line-dashed"></div>
         <dt>Description</dt>
         <dd>{{ entity.description }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Phone</dt>
-        <dd>{{ entity.phone }}</dd>
+        <dt>Starts At</dt>
+        <dd>{{ entity.startsAt|date('d-M-Y h:i A') }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Social Media</dt>
-        <dd>{{ entity.socialMedia }}</dd>
+        <dt>Ends At</dt>
+        <dd>{{ entity.endsAt|date('d-M-Y h:i A') }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Categories</dt>
-        <dd>
-            {% for category in entity.categories %}
-                <span class="label label-primary">{{ category }}</span>
-            {% endfor %}
-        </dd>
+        <dt>Business</dt>
+        <dd><span class="label label-{{ entity.business is not empty ? "success" : "warning" }}">{{ entity.business is not empty ? entity.business : "No business related" }}</span></dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Video</dt>
+        <dd>{{ entity.video }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Points</dt>
+        <dd>{{ entity.points }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>Created At</dt>
         <dd>{{ entity.createdAt|date('d-M-Y h:i A') }}</dd>
@@ -35,15 +34,15 @@
         <dt>Updated At</dt>
         <dd>{{ entity.updatedAt|date('d-M-Y h:i A') }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Logo</dt>
-        <dd><img style="max-width: 70%; height: auto;" src="{{ vich_uploader_asset(entity, 'logoFile') }}"
-                 alt="{{ entity.logo }}"/></dd>
+        <dt>Image</dt>
+        <dd><img style="max-width: 70%; height: auto;" src="{{ vich_uploader_asset(entity, 'imageFile') }}"
+                 alt="{{ entity.image }}"/></dd>
         <div class="hr-line-dashed"></div>
         </tbody>
     </dl>
     <div class="form-group">
         <div class="col-md-2 text-right">
-            <a class="btn btn-success" href="{{ path('business') }}">
+            <a class="btn btn-success" href="{{ path('deal') }}">
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 Back to the list
             </a>
@@ -52,7 +51,7 @@
 
 
             <a class="btn btn-primary"
-               href="{{ path('business_edit', { 'id': entity.id }) }}">
+               href="{{ path('deal_edit', { 'id': entity.id }) }}">
                 <span class="fa fa-pencil"></span>
                 Edit
             </a>
@@ -81,10 +80,10 @@
                     <strong>Are you sure you want to delete this data?</strong>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{ path('business_delete', { 'id': entity.id }) }}"
+                    <form action="{{ path('deal_delete', { 'id': entity.id }) }}"
                           name="form-delete" method="post">
                         <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                        <button id="modal-btn" type="submit" class="btn btn-danger" name="business-id"
+                        <button id="modal-btn" type="submit" class="btn btn-danger" name="deal-id"
                                 value="{{ entity.id }}">
                             <span class="glyphicon glyphicon-ok"></span> Save changes
                         </button>

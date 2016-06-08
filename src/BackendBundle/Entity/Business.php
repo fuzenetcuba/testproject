@@ -128,6 +128,12 @@ class Business
         $this->customers = new ArrayCollection();
     }
 
+    function __toString()
+    {
+        return $this->name;
+    }
+
+
     /**
      * Adds, if not already defined a category to the business
      *

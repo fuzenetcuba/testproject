@@ -1,0 +1,34 @@
+reward:
+    path:     /
+    defaults: { _controller: "BackendBundle:Reward:index" }
+    methods:  GET
+
+reward_find:
+    path:     /find
+    defaults: { _controller: "BackendBundle:Reward:find" }
+    methods:  [POST, GET]
+
+reward_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:Reward:show" }
+    methods:  GET
+
+reward_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:Reward:new" }
+    methods:  [GET, POST]
+
+reward_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:Reward:edit" }
+    methods:  [GET, POST, PUT]
+
+reward_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:Reward:delete" }
+    methods:  [POST, DELETE]
+    
+reward_batch:
+    path:     /reward_batch
+    defaults: { _controller: "BackendBundle:Reward:batch" }
+    methods:  POST
