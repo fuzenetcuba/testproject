@@ -1,4 +1,4 @@
-Plaza Test Project
+Plaza Test Project (Fuzenet)
 ==================
 
 Requirements
