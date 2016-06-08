@@ -22,7 +22,32 @@ class BusinessRepository extends EntityRepository
         return $this->getEntityManager()
             ->createQuery('SELECT b FROM BackendBundle:Business b ORDER BY b.name ASC')
             ->getResult()
-        ;
+            ;
+    }
+    /**
+     * Returns all businesses ordered by the business's created date
+     *
+     * @return array
+     */
+    public function findTopBusiness()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT b FROM BackendBundle:Business b ORDER BY b.createdAt')
+            ->getResult()
+            ;
+    }
+
+    /**
+     * Returns businesses ordered by cant of deals
+     *
+     * @return array
+     */
+    public function findTopBusinessByCantDeals()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT b, COUNT(d) AS dealsCount FROM BackendBundle:Business b LEFT JOIN BackendBundle:Deal d WHERE d.business = b.id GROUP BY b ORDER BY dealsCount DESC')
+            ->getResult()
+            ;
     }
 
     /**

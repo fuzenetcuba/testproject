@@ -2,16 +2,16 @@
 
 namespace BackendBundle\Model;
 
-use BackendBundle\Entity\Deal;
+use BackendBundle\Entity\SystemUser;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Manager for the Deal entity
+ * Manager for the Business entity
  *
  * @package \BackendBundle\Model
  */
-class DealManager implements ManagerInterface
+class CustomerManager implements ManagerInterface
 {
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -33,8 +33,9 @@ class DealManager implements ManagerInterface
         return $this->em
             ->createQueryBuilder('q')
             ->select('f')
-            ->from('BackendBundle:Deal')
-            ;
+            ->from('BackendBundle:SystemUser', 'f')
+            ->where('f.roles LIKE :find')
+            ->setParameter('find', '%ROLE_CUSTOMER%');
     }
 
     /**
@@ -45,9 +46,13 @@ class DealManager implements ManagerInterface
     public function findAll()
     {
         return $this->em
-            ->getRepository('BackendBundle:Deal')
-            ->findAll()
-            ;
+            ->createQueryBuilder('q')
+            ->select('f')
+            ->from('BackendBundle:SystemUser', 'f')
+            ->where('f.roles LIKE :find')
+            ->setParameter('find', '%ROLE_CUSTOMER%')
+            ->getQuery()
+            ->getResult();
     }
 
     /**
@@ -57,7 +62,9 @@ class DealManager implements ManagerInterface
      */
     public function create()
     {
-        return new Deal();
+        $customer = new SystemUser();
+        $customer->addRole('ROLE_CUSTOMER');
+        return $customer;
     }
 
     /**
@@ -71,12 +78,11 @@ class DealManager implements ManagerInterface
     public function find($id)
     {
         $instance = $this->em
-            ->getRepository('BackendBundle:Deal')
-            ->find($id)
-        ;
+            ->getRepository('BackendBundle:SystemUser')
+            ->find($id);
 
         if (!$instance) {
-            throw new NotFoundHttpException(sprintf('The deal with id "%s" could not be found', $id));
+            throw new NotFoundHttpException(sprintf('The customer with id "%s" could not be found', $id));
         }
     }
 
