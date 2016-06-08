@@ -50,14 +50,24 @@
                                     class="nav-label">Business</span></a>
                     </li>
 
-                    <li {#class="active"#}>
-                        <a href="index.html"><i class="fa fa-shopping-cart"></i> <span
-                                    class="nav-label">Menu 3</span></a>
+                    <li class="{% block active_category %}{% endblock %}">
+                        <a href="{{ path('category') }}"><i class="fa fa-list-ul"></i> <span
+                                    class="nav-label">Category</span></a>
                     </li>
 
-                    <li {#class="active"#}>
-                        <a href="index.html"><i class="fa fa-shopping-cart"></i><span
-                                    class="nav-label">Menu 4</span></a>
+                    <li class="{% block active_deal %}{% endblock %}">
+                        <a href="{{ path('deal') }}"><i class="fa fa-comment"></i><span
+                                    class="nav-label">Deal</span></a>
+                    </li>
+
+                    <li class="{% block active_reward %}{% endblock %}">
+                        <a href="{{ path('reward') }}"><i class="fa fa-star"></i><span
+                                    class="nav-label">Reward</span></a>
+                    </li>
+
+                    <li class="{% block active_customer %}{% endblock %}">
+                        <a href="{{ path('customer') }}"><i class="fa fa-user"></i> <span
+                                    class="nav-label">Customers</span></a>
                     </li>
 
                     <li class="{% block active_users %}{% endblock %}">

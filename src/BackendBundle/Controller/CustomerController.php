@@ -2,14 +2,14 @@
 
 namespace BackendBundle\Controller;
 
+use BackendBundle\Form\customerType;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use BackendBundle\Entity\SystemUser;
-use BackendBundle\Form\userType;
 use \Symfony\Component\HttpFoundation\Response;
 
-class UserController extends Controller
+class CustomerController extends Controller
 {
 
     /**
@@ -21,7 +21,9 @@ class UserController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $dql = "SELECT e FROM BackendBundle:SystemUser e ORDER BY e.id ASC";
+        $dql = "SELECT e FROM BackendBundle:SystemUser e "
+            . " WHERE e.roles LIKE '%ROLE_CUSTOMER%' "
+            . " ORDER BY e.id ASC";
         $query = $em->createQuery($dql);
 
         $paginator = $this->get('knp_paginator');
@@ -29,7 +31,7 @@ class UserController extends Controller
             $query, $request->query->get('page', 1), 5
         );
 
-        return $this->render('user/index.html.twig', array(
+        return $this->render('customer/index.html.twig', array(
                 'entities' => $pagination)
         );
     }
@@ -45,10 +47,11 @@ class UserController extends Controller
 
         if ($find) {
             $em = $this->getDoctrine()->getManager();
-            $dql = "SELECT e FROM BackendBundle:SystemUser e WHERE "
-                . "e.username LIKE '%" . $find . "%' OR "
-                . "e.email LIKE '%" . $find . "%' "
-                . "ORDER BY e.id ASC";
+            $dql = "SELECT e FROM BackendBundle:SystemUser e "
+                . " WHERE e.roles LIKE '%ROLE_CUSTOMER%' AND "
+                . " (e.username LIKE '%" . $find . "%' OR "
+                . " e.email LIKE '%" . $find . "%') "
+                . " ORDER BY e.id ASC";
             $query = $em->createQuery($dql);
 
             $paginator = $this->get('knp_paginator');
@@ -56,12 +59,12 @@ class UserController extends Controller
                 $query, $this->get('request')->query->get('page', 1), 5
             );
 
-            return $this->render('user/index.html.twig', array(
+            return $this->render('customer/index.html.twig', array(
                 'entities' => $pagination,
                 'textFind' => $find
             ));
         } else {
-            return $this->redirect($this->generateUrl('user'));
+            return $this->redirect($this->generateUrl('customer'));
         }
     }
 
@@ -74,8 +77,8 @@ class UserController extends Controller
      */
     private function createCreateForm(SystemUser $entity)
     {
-        $form = $this->createForm(new userType(), $entity, array(
-            'action' => $this->generateUrl('user_create'),
+        $form = $this->createForm(new customerType(), $entity, array(
+            'action' => $this->generateUrl('customer_create'),
             'method' => 'POST',
         ));
 
@@ -94,9 +97,10 @@ class UserController extends Controller
     {
 
         $entity = new SystemUser();
+        $entity->addRole('ROLE_USER');
         $form = $this->createCreateForm($entity);
 
-        return $this->render('user/new.html.twig', array(
+        return $this->render('customer/new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
         ));
@@ -112,6 +116,7 @@ class UserController extends Controller
     public function createAction(Request $request)
     {
         $entity = new SystemUser();
+        $entity->addRole('ROLE_CUSTOMER');
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -138,13 +143,13 @@ class UserController extends Controller
             // Mostrando mensaje
             $this->get('session')->getFlashBag()->add('success', 'The user was created succesfully.');
             if ($form->get('submitback')->isClicked()) {
-                return $this->redirect($this->generateUrl('user_new'));
+                return $this->redirect($this->generateUrl('customer_new'));
             } else {
-                return $this->redirect($this->generateUrl('user_show', array('id' => $entity->getId())));
+                return $this->redirect($this->generateUrl('customer_show', array('id' => $entity->getId())));
             }
         }
 
-        return $this->render('user/new.html.twig', array(
+        return $this->render('customer/new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView()
         ));
@@ -172,7 +177,7 @@ class UserController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
 
-        return $this->render('user/show.html.twig', array(
+        return $this->render('customer/show.html.twig', array(
             'entity' => $entity,
             'delete_form' => $deleteForm->createView(),));
     }
@@ -199,7 +204,7 @@ class UserController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('user/edit.html.twig', array(
+        return $this->render('customer/edit.html.twig', array(
             'entity' => $entity,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -215,8 +220,8 @@ class UserController extends Controller
      */
     private function createEditForm(SystemUser $entity)
     {
-        $form = $this->createForm(new userType(), $entity, array(
-            'action' => $this->generateUrl('user_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new customerType(), $entity, array(
+            'action' => $this->generateUrl('customer_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -281,11 +286,11 @@ class UserController extends Controller
 
                 // Mostrando mensaje
                 $this->get('session')->getFlashBag()->add('success', 'The user was updated succesfully.');
-                return $this->redirect($this->generateUrl('user_show', array('id' => $id)));
+                return $this->redirect($this->generateUrl('customer_show', array('id' => $id)));
             }
         }
 
-        return $this->render('user/edit.html.twig', array(
+        return $this->render('customer/edit.html.twig', array(
             'entity' => $entity,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -323,11 +328,11 @@ class UserController extends Controller
 
             // Mostrando mensaje
             $this->get('session')->getFlashBag()->add('success', 'The user was deleted succesfully.');
-            return $this->redirect($this->generateUrl('user'));
+            return $this->redirect($this->generateUrl('customer'));
         }
 
         $this->get('session')->getFlashBag()->add('danger', 'There was an error, verify the data please.');
-        return $this->redirect($this->generateUrl('user_show', array("id" => $id)));
+        return $this->redirect($this->generateUrl('customer_show', array("id" => $id)));
     }
 
     /**
@@ -338,7 +343,7 @@ class UserController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('user_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('customer_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm();
@@ -453,7 +458,7 @@ class UserController extends Controller
             }
             $em->flush();
         }
-        return $this->redirect($this->generateUrl('user'));
+        return $this->redirect($this->generateUrl('customer'));
     }
 
 }

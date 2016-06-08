@@ -1,0 +1,34 @@
+category:
+    path:     /
+    defaults: { _controller: "BackendBundle:Category:index" }
+    methods:  GET
+
+category_find:
+    path:     /find
+    defaults: { _controller: "BackendBundle:Category:find" }
+    methods:  [POST, GET]
+
+category_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:Category:show" }
+    methods:  GET
+
+category_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:Category:new" }
+    methods:  [GET, POST]
+
+category_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:Category:edit" }
+    methods:  [GET, POST, PUT]
+
+category_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:Category:delete" }
+    methods:  [POST, DELETE]
+    
+category_batch:
+    path:     /category_batch
+    defaults: { _controller: "BackendBundle:Category:batch" }
+    methods:  POST

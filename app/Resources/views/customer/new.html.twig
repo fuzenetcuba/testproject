@@ -6,14 +6,17 @@
     <!-- iCheck Styles -->
     <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/iCheck/custom.css') }}"
           type="text/css"/>
+    <!-- select2 Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
+          type="text/css"/>
 {% endblock %}
 
-{% block active_users %}active{% endblock %}
+{% block active_customer %}active{% endblock %}
 {% block page_heading_title %}
-    <a class="btn btn-default navbar-btn" href="{{ path('user') }}" style="margin-bottom: 7px;">
+    <a class="btn btn-default navbar-btn" href="{{ path('customer') }}" style="margin-bottom: 7px;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a>
-    System User creation
+    Customer creation
 {% endblock %}
 {% block page_content %}
 
@@ -82,19 +85,35 @@
         </div>
     </div>
     <div class="hr-line-dashed"></div>
-    <div class="form-group{% if(form.roles.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-        <label for="roles" class="col-md-2 control-label">{{ form_label(form.roles) }} </label>
+
+
+
+    <div class="form-group{% if(form.business.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+        <label for="" class="col-md-2 control-label">{{ form_label(form.business) }}</label>
 
         <div class="col-md-6">
-            {% for roleField in form.roles %}
-                <div class="checkbox col-md-6">
-                    {{ form_widget(roleField, { 'attr': {'class' : 'i-checks'}}) }}
-                    {{ form_label(roleField) }}
-                </div>
-            {% endfor %}
-            {% if form.roles.vars['errors']|length > 0 %}
+            {{ form_widget(form.business, { 'attr': {'class' : 'form-control select2-field', 'style' : 'width: 100%'}}) }}
+            {% if form.business.vars['errors']|length > 0 %}
                 <ul class="message">
-                    {% for error in form.roles.vars['errors'] %}
+                    {% for error in form.business.vars['errors'] %}
+                        <li>{{ error.message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+    <div class="hr-line-dashed"></div>
+
+
+
+    <div class="form-group{% if(form.rewards.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+        <label for="" class="col-md-2 control-label">{{ form_label(form.rewards) }}</label>
+
+        <div class="col-md-6">
+            {{ form_widget(form.rewards, { 'attr': {'class' : 'form-control select2-field', 'style' : 'width: 100%'}}) }}
+            {% if form.rewards.vars['errors']|length > 0 %}
+                <ul class="message">
+                    {% for error in form.rewards.vars['errors'] %}
                         <li>{{ error.message }}</li>
                     {% endfor %}
                 </ul>
@@ -105,7 +124,7 @@
 
     <div class="form-group">
         <div class="col-md-2 text-right">
-            <a class="btn btn-success" href="{{ path('user') }}">
+            <a class="btn btn-success" href="{{ path('customer') }}">
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 Back to the list
             </a>
@@ -129,6 +148,9 @@
     <!-- iCheck Scripts -->
     <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
             type="text/javascript"></script>
+    <!-- select2 Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"
+            type="text/javascript"></script>
 {% endblock %}
 
 {% block inline_js %}
@@ -140,6 +162,11 @@
             $('.i-checks').iCheck({
                 checkboxClass: 'icheckbox_square-green',
                 radioClass: 'iradio_square-green',
+            });
+
+            //  select2 scripts for batch actions combobox
+            $(".select2-field").select2({
+                placeholder: "--- Select a value ---"
             });
 
         });
