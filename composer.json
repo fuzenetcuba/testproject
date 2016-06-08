@@ -1,13 +1,4 @@
 {
-    "repositories": [
-        {
-          "packagist": false
-        },
-        {
-            "type": "composer",
-            "url": "http://composer.prod.uci.cu"
-        }
-    ],
     "name": "symfony/framework-standard-edition",
     "license": "MIT",
     "type": "project",
@@ -30,7 +21,9 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "friendsofsymfony/jsrouting-bundle": "^1.6",
         "hwi/oauth-bundle": "^0.4.1",
-        "knplabs/knp-paginator-bundle": "^2.5"
+        "knplabs/knp-paginator-bundle": "^2.5",
+        "stof/doctrine-extensions-bundle": "^1.2",
+        "doctrine/doctrine-fixtures-bundle": "^2.3"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
@@ -56,7 +49,6 @@
     },
     "config": {
         "bin-dir": "bin",
-	"secure-http": false,
         "platform": {
             "php": "5.3.9"
         }

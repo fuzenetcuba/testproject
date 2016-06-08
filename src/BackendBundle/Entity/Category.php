@@ -225,12 +225,4 @@ class Category
     {
         $this->parent = $parent;
     }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->name;
-    }
 }
