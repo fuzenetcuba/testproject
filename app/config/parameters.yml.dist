@@ -24,3 +24,6 @@ parameters:
     facebook_client_secret: 2134213
     google_client_id: 123
     google_client_secret: 123
+
+    # Frontend
+    deals.pagination.items: 12

@@ -8,7 +8,7 @@ section.signup h2 {
 }
 
 section.inner-content {
-    margin-top: 80px;
+    margin-top: 100px;
 }
 
 div.container-image {
@@ -34,4 +34,28 @@ div.container-image {
     margin: auto;
     max-height: 300px;
     max-width: 100%;
+}
+
+section.top-deals p {
+    margin-bottom: 5px;
+}
+
+section.top-deals h1 {
+    margin-bottom: 50px;
+}
+
+div.filter-deals span.select2-container {
+    width: 100% !important;
+}
+
+div.filter-deals .col-sm-6 > .col-sm-6 {
+    padding-left: 0;
+}
+
+div.deal-list {
+    margin-top: 30px;
+}
+
+.pagination-lg > li > a, .pagination-lg > li > span {
+    font-size: 16px;
 }

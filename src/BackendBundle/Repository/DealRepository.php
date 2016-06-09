@@ -24,7 +24,7 @@ class DealRepository extends EntityRepository
     public function findTopDeals($n = 0)
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT d FROM BackendBundle:Deal d ORDER BY d.createdAt')
+            ->createQuery('SELECT d FROM BackendBundle:Deal d ORDER BY d.createdAt DESC')
             ->setMaxResults($n !== 0 ? $n : 3)
             ->getResult()
         ;

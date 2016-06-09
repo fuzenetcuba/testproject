@@ -28,12 +28,14 @@
 {% endblock %}
 
 {% block topdeals %}
-    <section id="features" class="container services">
+    <section id="features" class="container services top-deals">
         <h1>TOP DEALS OF THE DAY</h1>
 
         {% for deal in deals %}
             <div class="col-sm-4 text-center">
-                <h2>{{ deal.name | upper }}</h2>
+                <h3>{{ deal.name | upper }}</h3>
+                <p>AT {{ deal.business.name | upper }}</p>
+                <p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>
                 <div class="container-image">
                     <img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>
                 </div>
@@ -41,4 +43,7 @@
             </div>
         {% endfor%}
     </section>
+{% endblock %}
+
+{% block topbusinesses %}
 {% endblock %}

@@ -19,11 +19,16 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('bundles/backend/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('bundles/frontend/css/frontend.css') }}" rel="stylesheet">
+
+    {% block stylesheets %}
+    {% endblock %}
 </head>
 <body id="page-top" class="landing-page">
 {% block body %}
 
-    {% include '@Frontend/navbar.html.twig' with { 'active' : 'home' } %}
+    {% block navbar %}
+        {% include '@Frontend/navbar.html.twig' with { 'active' : 'home' } %}
+    {% endblock %}
 
     {% block content %}
 
@@ -143,9 +148,9 @@
     <script src="{{ asset('bundles/backend/js/inspinia.js') }}"></script>
     <script src="{{ asset('bundles/backend/js/plugins/pace/pace.min.js') }}"></script>
     <script src="{{ asset('bundles/frontend/js/wow/wow.min.js') }}"></script>
-    <script src="{{ asset('bundles/frontend/js/app.js') }}"></script>
 
     {% block javascript %}
+    <script src="{{ asset('bundles/frontend/js/app.js') }}"></script>
     {% endblock %}
 
     <script type="text/javascript">

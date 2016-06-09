@@ -5,3 +5,7 @@ frontend_homepage:
 frontend_loged_in:
     path:     /frontend_loged
     defaults: { _controller: FrontendBundle:Default:logedIn }
+
+deals:
+    path:     /deals
+    defaults: { _controller: FrontendBundle:Deal:index }

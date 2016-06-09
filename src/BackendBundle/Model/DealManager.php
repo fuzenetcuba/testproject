@@ -32,9 +32,9 @@ class DealManager implements ManagerInterface
     {
         return $this->em
             ->createQueryBuilder('q')
-            ->select('f')
-            ->from('BackendBundle:Deal')
-            ;
+            ->select('d')
+            ->from('BackendBundle:Deal', 'd')
+        ;
     }
 
     /**
