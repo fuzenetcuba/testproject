@@ -13,3 +13,11 @@ deals:
 deal_details:
     path:     /deal/{slug}
     defaults: { _controller: FrontendBundle:Deal:details }
+
+business_list:
+    path:     /businesses
+    defaults: { _controller: FrontendBundle:Business:index }
+
+business_details:
+    path:     /business/{slug}
+    defaults: { _controller: FrontendBundle:Business:details }

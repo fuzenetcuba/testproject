@@ -32,8 +32,8 @@ class BusinessManager implements ManagerInterface
     {
         return $this->em
             ->createQueryBuilder('q')
-            ->select('f')
-            ->from('BackendBundle:Business')
+            ->select('b')
+            ->from('BackendBundle:Business', 'b')
         ;
     }
 
@@ -112,5 +112,26 @@ class BusinessManager implements ManagerInterface
     {
         $this->em->remove($instance);
         $this->em->flush();
+    }
+
+    /**
+     * Find a bussiness by the slug
+     *
+     * @param $slug
+     *
+     * @return \BackendBundle\Entity\Business
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function findBySlug($slug)
+    {
+        $object = $this->em->getRepository('BackendBundle:Business')
+            ->findOneBy(['slug' => $slug])
+        ;
+
+        if (!$object) {
+            throw new NotFoundHttpException(sprintf('Business with slug "%s" could not be found', $slug));
+        }
+
+        return $object;
     }
 }

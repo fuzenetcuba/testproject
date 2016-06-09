@@ -132,11 +132,18 @@ class DealManager implements ManagerInterface
      * @param string $slug
      *
      * @return \BackendBundle\Entity\Deal
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function findBySlug($slug)
     {
-        return $this->em->getRepository('BackendBundle:Deal')->findOneBy([
+        $object = $this->em->getRepository('BackendBundle:Deal')->findOneBy([
             'slug' => $slug
         ]);
+
+        if (!$object) {
+            throw new NotFoundHttpException(sprintf('Deal with slug "%s" could not be found', $slug));
+        }
+
+        return $object;
     }
 }

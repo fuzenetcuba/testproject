@@ -27,3 +27,4 @@ parameters:
 
     # Frontend
     deals.pagination.items: 12
+    business.pagination.items: 12

@@ -16,13 +16,11 @@
         <div class="container">
             <div class="row row-eq-height">
                 <div class="col-sm-6 text-center">
-                    <img src="{{ asset('images/deals/' ~ deal.image) }}">
+                    <img src="{{ asset('images/business/' ~ business.logo) }}">
                 </div>
                 <div class="col-sm-6">
-                    <h1>{{ deal.name }}</h1>
+                    <h1>{{ business.name | upper }}</h1>
                     <hr/>
-                        <strong>VALID FROM: {{ deal.startsAt | date ('m/d/Y') }}
-                            - {{ deal.endsAt | date ('m/d/Y') }}</strong>
                     <ul class="social-share list-inline social-icon pull-right">
                         <li><a href="#" data-toggle="tooltip" title="Tweet this deal"><i class="fa fa-twitter"></i></a>
                         </li>
@@ -30,8 +28,21 @@
                                         class="fa fa-facebook"></i></a>
                         </li>
                     </ul>
+
+                    <span class="business-info">
+                        <ul class="list-unstyled">
+                            <li><i class="fa fa-phone"></i> {{ business.phone }}</li>
+                            <li>
+                                <a href="{{ business.socialMedia }}">
+                                    <i class="fa fa-facebook"></i> {{  business.socialMedia }}
+                                </a>
+                            </li>
+                            <li><i class="fa fa-tags"></i> {{ business.categories | join(', ') }}</li>
+                        </ul>
+                    </span>
+
                     </p>
-                    <p>{{ deal.description | nl2br }}</p>
+                    <p>{{ business.description | nl2br }}</p>
                 </div>
             </div>
         </div>

@@ -128,7 +128,7 @@ class Business
         $this->customers = new ArrayCollection();
     }
 
-    function __toString()
+    public function __toString()
     {
         return $this->name;
     }

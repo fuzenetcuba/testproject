@@ -36,3 +36,16 @@ Deals:
     ends: 6/12/2016
     image: W_294283.jpg
     points: 10
+
+  fourth:
+    name: Doorbuster Deals - This Weekend Only!
+    description: |
+      Save 60 - 80% Off Entire Store + Extra 30% Off Select Styles.
+
+      Shop our Doorbusters for Amazing Deals This Weekend Only!  Sandals Starting at $9.99,
+      Handbags Starting at $19.99, and Outerwear Starting at $39.99.
+
+    start: 6/9/2016
+    ends: 6/12/2016
+    image: W_294403.jpg
+    points: 10

@@ -16,6 +16,10 @@ div.container-image {
     position: relative;
 }
 
+div.container-image.business-image {
+    height: 250px;
+}
+
 .container-image > img {
     display: block;
     max-width: 100%;
@@ -61,7 +65,7 @@ div.deal-list {
 }
 
 .social-share {
-    margin-top: 50px;
+    /*margin-top: 50px;*/
     /*position: absolute;*/
     /*bottom: 0;*/
     /*right: 0;*/
@@ -85,4 +89,16 @@ div.deal-list {
     display: -webkit-flex;
     display: -ms-flexbox;
     display:         flex;
+}
+
+span.business-info {
+    font-size: 15px;
+}
+
+.business-info li  i {
+    width: 20px;
+}
+
+.landing-page section p {
+    font-size: 14px;
 }
