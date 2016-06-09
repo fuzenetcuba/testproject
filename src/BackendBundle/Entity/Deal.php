@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Slug;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Deal class
@@ -29,6 +30,7 @@ class Deal
      * @var string
      *
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="3", minMessage="The name must have 3 characters or more")
      */
     private $name;
 
@@ -44,6 +46,7 @@ class Deal
      * @var string
      *
      * @ORM\Column(type="text")
+     * @Assert\Length(min="3", minMessage="The description must have 3 characters or more")
      */
     private $description;
 
@@ -74,6 +77,18 @@ class Deal
      * @Vich\UploadableField(mapping="deal_image", fileNameProperty="image",
      *      groups={"creation"}
      * )
+     * @Assert\Image(
+     *     minWidth="16",
+     *     maxWidth="1500",
+     *     minWidthMessage="The image must have a with between 16 and 1500 pixels",
+     *     maxWidthMessage="The image must have a with between 16 and 1500 pixels",
+     *     minHeight="16",
+     *     maxHeight="1500",
+     *     minHeightMessage="The image must have a height between 16 and 1500 pixels",
+     *     maxHeightMessage="The image must have a height between 16 and 1500 pixels",
+     *     maxSize="5M",
+     *     maxSizeMessage="The image must have 5 MB (megabytes) or less"
+     * )
      * @var File
      */
     private $imageFile;
@@ -82,6 +97,7 @@ class Deal
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\Url()
      */
     private $video;
 
@@ -89,6 +105,10 @@ class Deal
      * @var integer
      *
      * @ORM\Column(type="string")
+     * @Assert\Regex(
+     *     pattern="/^\-?\d+$/",
+     *     message="The points must be a valid number"
+     * )
      */
     private $points;
 

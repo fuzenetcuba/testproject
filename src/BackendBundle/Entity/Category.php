@@ -5,6 +5,7 @@ namespace BackendBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Slug;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Category
@@ -27,6 +28,7 @@ class Category
      * @var string
      *
      * @ORM\Column(type="string")
+     * @Assert\Length(min="3", minMessage="The name must have 3 characters or more")
      */
     private $name;
 
