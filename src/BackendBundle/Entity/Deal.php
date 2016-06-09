@@ -85,11 +85,9 @@ class Deal
      *     minHeight="16",
      *     maxHeight="1500",
      *     minHeightMessage="The image must have a height between 16 and 1500 pixels",
-     *     maxHeightMessage=""The image must have a height between 16 and 1500 pixels",
+     *     maxHeightMessage="The image must have a height between 16 and 1500 pixels",
      *     maxSize="5M",
-     *     maxSizeMessage="The image must have 5 MB (megabytes) or less",
-     *     mimeTypes="{'image/jpg','image/jpeg','image/png',image/bmp}",
-     *     mimeTypesMessage="The image should be a JPG, JPEG, PNG or BMP image"
+     *     maxSizeMessage="The image must have 5 MB (megabytes) or less"
      * )
      * @var File
      */

@@ -28,12 +28,12 @@ class DealController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $query, $request->query->get('page', 1), 5
+            $query, $request->query->get('page', 1), 5
         );
 
-    return $this->render('deal/index.html.twig', array(
-        'entities' => $pagination,
-    ));
+        return $this->render('deal/index.html.twig', array(
+            'entities' => $pagination,
+        ));
     }
 
     /**
@@ -43,18 +43,19 @@ class DealController extends Controller
     public function findAction(Request $request)
     {
         $find = $request->get('find-form-text');
-        
+
         if ($find) {
             $em = $this->getDoctrine()->getManager();
 
             $dql = "SELECT e FROM BackendBundle:Deal e WHERE "
-                    . "e.description LIKE '%" . $find . "%' "
-                    . "ORDER BY e.id ASC";
+                . "e.name LIKE '%" . $find . "%' OR "
+                . "e.description LIKE '%" . $find . "%' "
+                . "ORDER BY e.id ASC";
             $query = $em->createQuery($dql);
 
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
-                    $query, $request->query->get('page', 1), 5
+                $query, $request->query->get('page', 1), 5
             );
 
             return $this->render('deal/index.html.twig', array(
@@ -87,36 +88,37 @@ class DealController extends Controller
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('deal_new'));
             } else {
-            return $this->redirectToRoute('deal_show', array('id' => $entity->getId()));            }
+                return $this->redirectToRoute('deal_show', array('id' => $entity->getId()));
+            }
 
         }
 
-    return $this->render('deal/new.html.twig', array(
-        'entity' => $entity,
-        'form' => $form->createView(),
-    ));
+        return $this->render('deal/new.html.twig', array(
+            'entity' => $entity,
+            'form' => $form->createView(),
+        ));
     }
 
-            /**
-        * Creates a form to create a Deal entity.
-        *
-        * @param Deal $entity The entity
-        *
-        * @return \Symfony\Component\Form\Form The form
-        */
-        private function createCreateForm(Deal $entity)
-        {
-            $form = $this->createForm('BackendBundle\Form\DealType', $entity, array(
-                'action' => $this->generateUrl('deal_new'),
-                'method' => 'POST',
-            ));
+    /**
+     * Creates a form to create a Deal entity.
+     *
+     * @param Deal $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCreateForm(Deal $entity)
+    {
+        $form = $this->createForm('BackendBundle\Form\DealType', $entity, array(
+            'action' => $this->generateUrl('deal_new'),
+            'method' => 'POST',
+        ));
 
-            $form->add('submit', SubmitType::class, array('label' => 'Create'));
-            $form->add('submitback', SubmitType::class, array('label' => 'Create & Back'));
+        $form->add('submit', SubmitType::class, array('label' => 'Create'));
+        $form->add('submitback', SubmitType::class, array('label' => 'Create & Back'));
 
-            return $form;
-        }
-    
+        return $form;
+    }
+
     /**
      * Finds and displays a Deal entity.
      *
@@ -140,7 +142,7 @@ class DealController extends Controller
         $deleteForm = $this->createDeleteForm($entity);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
-    
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -151,20 +153,20 @@ class DealController extends Controller
             return $this->redirectToRoute('deal_show', array('id' => $entity->getId()));
         }
 
-    return $this->render('deal/edit.html.twig', array(
-        'entity' => $entity,
-        'edit_form' => $editForm->createView(),
-        'delete_form' => $deleteForm->createView(),
-    ));
+        return $this->render('deal/edit.html.twig', array(
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 
     /**
-    * Creates a form to edit a Deal entity.
-    *
-    * @param Deal $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Deal entity.
+     *
+     * @param Deal $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Deal $entity)
     {
         $form = $this->createForm('BackendBundle\Form\DealType', $entity, array(
@@ -200,24 +202,23 @@ class DealController extends Controller
         return $this->redirect($this->generateUrl('deal'));
 
 
-
     }
 
     /**
-    * Creates a form to delete a Deal entity.
-    *
-    * @param Deal $entity The Deal entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to delete a Deal entity.
+     *
+     * @param Deal $entity The Deal entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createDeleteForm(Deal $entity)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('deal_delete', array('id' => $entity->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
+
     /**
      * Do several batch actions over Deal entities.
      *
@@ -227,7 +228,7 @@ class DealController extends Controller
         $action = $request->get('batch_action_do');
         $ids = $request->get('batch_action_checkbox');
         $recordsSelected = false;
-        
+
         if ($ids) {
             $em = $this->getDoctrine()->getManager();
 

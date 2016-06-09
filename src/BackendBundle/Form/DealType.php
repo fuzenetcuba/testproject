@@ -17,6 +17,7 @@ class DealType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('name')
             ->add('description')
             ->add('startsAt', DateType::class, array('widget' => 'single_text', 'html5' => false))
             ->add('endsAt', DateType::class, array('widget' => 'single_text', 'html5' => false))

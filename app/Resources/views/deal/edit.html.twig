@@ -31,6 +31,24 @@
 
 
 
+            <div class="form-group{% if(edit_form.name.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(edit_form.name) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(edit_form.name, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if edit_form.name.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in edit_form.name.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+
+
             <div class="form-group{% if(edit_form.description.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                 <label for="" class="col-md-2 control-label">{{ form_label(edit_form.description) }}</label>
 
