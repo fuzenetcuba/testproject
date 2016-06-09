@@ -9,3 +9,7 @@ frontend_loged_in:
 deals:
     path:     /deals
     defaults: { _controller: FrontendBundle:Deal:index }
+
+deal_details:
+    path:     /deal/{slug}
+    defaults: { _controller: FrontendBundle:Deal:details }

@@ -1,0 +1,38 @@
+{% extends '@Frontend/layout.html.twig' %}
+
+{% block navbar %}
+    {% embed '@Frontend/navbar.html.twig' %}
+        {% block navbar_class 'navbar-scroll' %}
+    {% endembed %}
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ asset('bundles/frontend/js/widgets.js') }}"></script>
+{% endblock %}
+
+
+{% block content %}
+    <section class="inner-content">
+        <div class="container">
+            <div class="row  row-eq-height">
+                <div class="col-sm-6 text-center">
+                    <img src="{{ asset('images/deals/' ~ deal.image) }}">
+                </div>
+                <div class="col-sm-6">
+                    <h1>{{ deal.name }}</h1>
+                    <hr/>
+                    <p><strong>VALID FROM: {{ deal.startsAt | date ('m/d/Y') }}
+                            - {{ deal.endsAt | date ('m/d/Y') }}</strong></p>
+                    <p>{{ deal.description | nl2br }}</p>
+
+                    <ul class="social-share list-inline social-icon pull-right">
+                        <li><a href="#" data-toggle="tooltip" title="Tweet this deal"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#" data-toggle="tooltip" title="Share this deal on your wall"><i class="fa fa-facebook"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

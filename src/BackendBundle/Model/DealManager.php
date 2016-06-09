@@ -114,8 +114,29 @@ class DealManager implements ManagerInterface
         $this->em->flush();
     }
 
+    /**
+     * Returns the top N (by creation date) deals
+     *
+     * @param int $n
+     *
+     * @return \Doctrine\ORM\Query
+     */
     public function findTopDeals($n = 3)
     {
         return $this->em->getRepository('BackendBundle:Deal')->findTopDeals($n);
+    }
+
+    /**
+     * Finds a deal by the specified slug
+     *
+     * @param string $slug
+     *
+     * @return \BackendBundle\Entity\Deal
+     */
+    public function findBySlug($slug)
+    {
+        return $this->em->getRepository('BackendBundle:Deal')->findOneBy([
+            'slug' => $slug
+        ]);
     }
 }

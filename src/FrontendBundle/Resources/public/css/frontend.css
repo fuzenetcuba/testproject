@@ -59,3 +59,30 @@ div.deal-list {
 .pagination-lg > li > a, .pagination-lg > li > span {
     font-size: 16px;
 }
+
+.social-share {
+    margin-top: 50px;
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*right: 0;*/
+}
+
+.social-share a {
+    font-size: 20px;
+    padding-top: 5px !important;
+    padding-left: 12px !important;
+    padding-right: 10px !important;
+    height: 40px !important;
+    width: 40px !important;
+}
+
+/*
+ * Row with equal height columns
+ * --------------------------------------------------
+ */
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+}

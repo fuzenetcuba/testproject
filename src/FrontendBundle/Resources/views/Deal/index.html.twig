@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block javascript %}
-    <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"></script>
     <script src="{{ asset('bundles/frontend/js/widgets.js') }}"></script>
 {% endblock %}
 
@@ -59,7 +58,7 @@
                             <div class="container-image">
                                 <img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>
                             </div>
-                            <p><a class="btn btn-info" href="landing.html#" role="button">View Deal</a></p>
+                            <p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View Deal</a></p>
                         </div>
                     {% endfor%}
                 </div>

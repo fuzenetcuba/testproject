@@ -39,7 +39,7 @@
                 <div class="container-image">
                     <img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>
                 </div>
-                <p><a class="btn btn-info" href="landing.html#" role="button">View Deal</a></p>
+                <p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View Deal</a></p>
             </div>
         {% endfor%}
     </section>
