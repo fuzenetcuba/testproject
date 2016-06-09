@@ -1,0 +1,38 @@
+Deals:
+  first:
+    name: ALL DRESSES UP TO 40% OFF!
+    description: |
+      Up to 40% off All Dresses!
+
+      Restrictions Apply. See store for details.
+    start: 6/4/2016
+    ends: 6/8/2016
+    image: W_292549.jpg
+    points: 10
+
+  second:
+    name: Cool Colors … Hot Summer
+    description: |
+      Visit a Vera Bradley Factory Outlet Store
+
+      From June 2 – June 8 for the Color Sale and enjoy 50% off the entire store, plus an extra
+      20% off select colors, including Magenta Vera Vera, Flower Shower, Shower Vines, Cheery
+      Blossoms and Ziggy Zags. Hurry in for the best selection! Exclusions and limitations apply.
+      See a store associate for details.
+    start: 6/2/2016
+    ends: 6/8/2016
+    image: W_293800.jpg
+    points: 10
+
+  third:
+    name: 50% off Entire Store!
+    description: |
+      50% off Entire store!
+
+      New Markdowns taken! Take an extra 50% off Markdowns
+      Discount taken at register and does not apply to gift cards and previous purchases.
+      May not be combined with other offers. See a Store Associate for details.
+    start: 6/7/2016
+    ends: 6/12/2016
+    image: W_294283.jpg
+    points: 10

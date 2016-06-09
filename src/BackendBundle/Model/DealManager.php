@@ -45,7 +45,7 @@ class DealManager implements ManagerInterface
     public function findAll()
     {
         return $this->em
-            ->getRepository('BackendBundle:Category')
+            ->getRepository('BackendBundle:Deal')
             ->findAll()
             ;
     }
@@ -112,5 +112,10 @@ class DealManager implements ManagerInterface
     {
         $this->em->remove($instance);
         $this->em->flush();
+    }
+
+    public function findTopDeals($n = 3)
+    {
+        return $this->em->getRepository('BackendBundle:Deal')->findTopDeals($n);
     }
 }

@@ -12,17 +12,17 @@ class DefaultController extends Controller
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
-
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
+        $topDeals = $this->get('deal.manager')->findTopDeals();
+
         return $this->render('FrontendBundle:Default:index.html.twig',
             array(
-                'name' => 'Dear Public User',
-
-                // last username entered by the user
+                'name'          => 'Dear Public User',
                 'last_username' => $lastUsername,
-                'error' => $error,
+                'error'         => $error,
+                'deals'         => $topDeals,
             )
         );
     }

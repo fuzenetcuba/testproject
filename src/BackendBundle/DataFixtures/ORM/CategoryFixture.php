@@ -12,7 +12,7 @@ use Doctrine\Common\Persistence\ObjectManager;
  *
  * @package \BackendBundle\DataFixtures\ORM
  */
-class CategoryFixture extends YamlFixture
+class CategoryFixture extends OrderedYamlFixture
 {
     /**
      * Load data fixtures with the passed EntityManager
@@ -48,5 +48,15 @@ class CategoryFixture extends YamlFixture
         }
 
         $manager->flush();
+    }
+
+    /**
+     * Get the order of this fixture
+     *
+     * @return integer
+     */
+    public function getOrder()
+    {
+        return 2;
     }
 }
