@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Slug;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Business class
@@ -30,6 +31,7 @@ class Business
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * @Assert\Length(min="3", minMessage="The name must have 3 characters or more")
      */
     private $name;
 
@@ -37,6 +39,7 @@ class Business
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\Length(min="3", minMessage="The description must have 3 characters or more")
      */
     private $description;
 
@@ -52,6 +55,16 @@ class Business
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=255)
+     * @Assert\Length(
+     *     min="6",
+     *     max="20",
+     *     minMessage="The phone must have between 6 and 20 characters",
+     *     maxMessage="The phone must have between 6 and 20 characters"
+     * )
+     * @Assert\Regex(
+     *     pattern="/^(\(\+\d{1,3}\)|\+\d{1,3})?[\040\-]?\d?([\040\-]?\d{3,4}){2,4}$/",
+     *     message="Enter a valid phone number please"
+     * )
      */
     private $phone;
 
@@ -68,6 +81,20 @@ class Business
      * @Vich\UploadableField(mapping="business_image", fileNameProperty="logo",
      *      groups={"creation"}
      * )
+     * @Assert\Image(
+     *     minWidth="16",
+     *     maxWidth="1500",
+     *     minWidthMessage="The logo must have a with between 16 and 1500 pixels",
+     *     maxWidthMessage="The logo must have a with between 16 and 1500 pixels",
+     *     minHeight="16",
+     *     maxHeight="1500",
+     *     minHeightMessage="The logo must have a height between 16 and 1500 pixels",
+     *     maxHeightMessage=""The logo must have a height between 16 and 1500 pixels",
+     *     maxSize="5M",
+     *     maxSizeMessage="The logo must have 5 MB (megabytes) or less",
+     *     mimeTypes="{'image/jpg','image/jpeg','image/png',image/bmp}",
+     *     mimeTypesMessage="The logo image should be a JPG, JPEG, PNG or BMP image"
+     * )
      * @var File
      */
     private $logoFile;
@@ -76,6 +103,7 @@ class Business
      * @var string
      *
      * @ORM\Column(name="social_media", type="string", length=255)
+     * @Assert\Url()
      */
     private $socialMedia;
 

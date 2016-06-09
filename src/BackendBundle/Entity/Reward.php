@@ -28,6 +28,7 @@ class Reward
      * @var string
      *
      * @ORM\Column(type="string")
+     * @Assert\Length(min="3", minMessage="The name must have 3 characters or more")
      */
     private $name;
 
@@ -35,6 +36,7 @@ class Reward
      * @var string
      *
      * @ORM\Column(type="text")
+     * @Assert\Length(min="3", minMessage="The description must have 3 characters or more")
      */
     private $description;
 
@@ -47,6 +49,10 @@ class Reward
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\Regex(
+     *     pattern="/^\d+$/",
+     *     message="The points must be a valid positive number"
+     * )
      */
     private $cost;
 
