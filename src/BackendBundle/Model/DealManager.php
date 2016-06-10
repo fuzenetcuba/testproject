@@ -2,8 +2,10 @@
 
 namespace BackendBundle\Model;
 
+use BackendBundle\Entity\BaseEnum;
 use BackendBundle\Entity\Deal;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -26,7 +28,7 @@ class DealManager implements ManagerInterface
     /**
      * Return the DQL to fetch all model objects
      *
-     * @return mixed
+     * @return QueryBuilder
      */
     public function findAllQuery()
     {
@@ -34,7 +36,7 @@ class DealManager implements ManagerInterface
             ->createQueryBuilder('q')
             ->select('d')
             ->from('BackendBundle:Deal', 'd')
-        ;
+            ;
     }
 
     /**
@@ -137,8 +139,9 @@ class DealManager implements ManagerInterface
     public function findBySlug($slug)
     {
         $object = $this->em->getRepository('BackendBundle:Deal')->findOneBy([
-            'slug' => $slug
-        ]);
+            'slug' => $slug,
+        ])
+        ;
 
         if (!$object) {
             throw new NotFoundHttpException(sprintf('Deal with slug "%s" could not be found', $slug));
@@ -146,4 +149,39 @@ class DealManager implements ManagerInterface
 
         return $object;
     }
+
+    /**
+     * Returns a list of Deals ordered by the desired parameters.
+     *   SortingMode::SORT_NEW_DEALS
+     *      Only deals created in the last 24h will be returned
+     *   SortingMode::SORT_ENDING_SOON
+     *      Only deals that will end in the next 24h will be returned
+     *
+     * @param int $mode
+     *
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function findAllSorted($mode = SortingMode::SORT_NONE)
+    {
+        $allQuery = $this->findAllQuery();
+
+        if (SortingMode::SORT_ENDING_SOON === $mode) {
+            $allQuery = $allQuery
+                ->andWhere('d.endsAt BETWEEN :now AND :other')
+                ->setParameter('now', new \DateTime())
+                ->setParameter('other', new \DateTime('+1 DAY'))
+                ->addOrderBy('d.endsAt')
+            ;
+        } else if (SortingMode::SORT_NEW_DEALS === $mode) {
+            $allQuery
+                ->andWhere('d.createdAt BETWEEN :other AND :now')
+                ->setParameter('other', new \DateTime('-1 DAY'))
+                ->setParameter('now', new \DateTime())
+                ->addOrderBy('d.endsAt')
+            ;
+        }
+
+        return $allQuery;
+    }
 }
+

@@ -51,4 +51,9 @@ class BaseEnum
     {
         return array_key_exists($key, self::toArray());
     }
+
+    static public function hasValue($key)
+    {
+        return array_key_exists($key, array_flip(self::toArray()));
+    }
 }

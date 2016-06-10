@@ -44,8 +44,16 @@
                 <div class="col-sm-6 text-right">
                     <h4>SORT DEALS BY:</h4>
                     <div class="btn-group">
-                        <button class="btn btn-white" type="button">ENDING SOON</button>
-                        <button class="btn btn-info" type="button">NEW DEALS</button>
+                        <a href="{{ path('deals', {
+                            'order': constant('BackendBundle\\Model\\SortingMode::SORT_ENDING_SOON')}) }}"
+                           class="btn btn-white
+                           {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_ENDING_SOON')%}active{% endif %}"
+                           type="button">ENDING SOON</a>
+                        <a href="{{ path('deals', {
+                            'order': constant('BackendBundle\\Model\\SortingMode::SORT_NEW_DEALS')}) }}"
+                           class="btn btn-white
+                           {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_NEW_DEALS')%}active{% endif %}"
+                           type="button">NEW DEALS</a>
                     </div>
                 </div>
             </div>
@@ -60,9 +68,10 @@
                             <div class="container-image">
                                 <img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>
                             </div>
-                            <p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View Deal</a></p>
+                            <p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}"
+                                  role="button">View Deal</a></p>
                         </div>
-                    {% endfor%}
+                    {% endfor %}
                 </div>
             </div>
 
