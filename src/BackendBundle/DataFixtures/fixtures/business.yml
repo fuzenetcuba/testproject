@@ -3,7 +3,16 @@ Business:
     name: Brooks Brothers Factory Store
     description: |
       Brooks Brothers Factory stores uphold our reputation for exceptional quality and
-      customer service. They feature a distinct collection consistent with the spirit
+      customer service. They feature a distinct collection consistent with the spirit.
     phone: (954) 845-0404
     logo: brooks-brothers-logo.png
     social-media: https://www.facebook.com/BrooksBrothers/
+
+  kalvin-clein:
+    name: Kalvin Clein Company Store
+    description: |
+      Calvin Klein offers modern, sophisticated styles for women and men including apparel,
+      handbags, footwear, underwear, fragrance and home furnishings.
+    phone: (952) 843-0400
+    logo: logo.jpg
+    social-media: https://www.facebook.com/KalvinClein/

@@ -44,6 +44,11 @@ class CategoryFixture extends OrderedYamlFixture
             $object->addBusiness($business);
             $business->addCategory($object);
 
+            // add one category to the other business so we can test related businesses
+            $business = $this->getReference('other-business');
+            $object->addBusiness($business);
+            $business->addCategory($object);
+
             $manager->persist($object);
         }
 

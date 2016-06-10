@@ -1,5 +1,7 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block title '- Businesses' %}
+
 {% block navbar %}
     {% embed '@Frontend/navbar.html.twig' %}
         {% block navbar_class 'navbar-scroll' %}
@@ -55,7 +57,7 @@
                             <h3>{{ business.name | upper }}</h3>
                             <p>AT {{ business.name | upper }}</p>
                             <div class="container-image business-image">
-                                <img class="center-height" src="{{ asset('images/business/' ~ business.logo) }} "/>
+                                <img class="center-height business-image" src="{{ asset('images/business/' ~ business.logo) }} "/>
                             </div>
                             <p><a class="btn btn-info" href="{{ path('business_details', {'slug' : business.slug}) }}"
                                   role="button">View Business</a></p>

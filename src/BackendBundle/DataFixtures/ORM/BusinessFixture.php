@@ -23,6 +23,7 @@ class BusinessFixture extends OrderedYamlFixture
     {
         $businesses = $this->loadData('business');
 
+        $referenced = false;
         foreach ($businesses['Business'] as $business) {
             $entity = new Business();
 
@@ -34,7 +35,12 @@ class BusinessFixture extends OrderedYamlFixture
 
             $manager->persist($entity);
 
-            $this->addReference('business', $entity);
+            if (false === $referenced) {
+                $this->addReference('business', $entity);
+                $referenced = true;
+            } else {
+                $this->addReference('other-business', $entity);
+            }
         }
 
         $manager->flush();

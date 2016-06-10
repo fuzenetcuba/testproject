@@ -30,9 +30,11 @@ class BusinessController extends Controller
     public function detailsAction($slug)
     {
         $business = $this->get('business.manager')->findBySlug($slug);
+        $relatedBusinesses = $this->get('business.manager')->findRelatedBusinesses($business);
 
         return $this->render('FrontendBundle:Business:details.html.twig', [
             'business' => $business,
+            'related' => $relatedBusinesses,
         ]);
     }
 }

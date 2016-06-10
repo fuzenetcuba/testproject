@@ -1,5 +1,7 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block title '- ' ~ business.name %}
+
 {% block navbar %}
     {% embed '@Frontend/navbar.html.twig' %}
         {% block navbar_class 'navbar-scroll' %}
@@ -34,7 +36,7 @@
                             <li><i class="fa fa-phone"></i> {{ business.phone }}</li>
                             <li>
                                 <a href="{{ business.socialMedia }}">
-                                    <i class="fa fa-facebook"></i> {{  business.socialMedia }}
+                                    <i class="fa fa-facebook"></i> {{ business.socialMedia }}
                                 </a>
                             </li>
                             <li><i class="fa fa-tags"></i> {{ business.categories | join(', ') }}</li>
@@ -45,6 +47,82 @@
                     <p>{{ business.description | nl2br }}</p>
                 </div>
             </div>
+
+            <div class="row business-deals">
+                <h2>ACTIVE DEALS</h2>
+
+                <div class="carousel slide" id="myCarousel">
+                    <div class="carousel-inner">
+                        {% for deal in business.deals %}
+                            <div class="item {% if loop.first %}active{% endif %} ">
+                                <div class="col-sm-3 text-center">
+                                    <span class="business-deal-info">
+                                        <h3>{{ deal.name | upper }}</h3>
+                                        <p>AT {{ deal.business.name | upper }}</p>
+                                        {#<p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>#}
+                                    </span>
+                                    <div class="container-image">
+                                        <img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>
+                                    </div>
+                                    <p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View Deal</a></p>
+                                </div>
+                            </div>
+                        {% endfor%}
+                    </div>
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                </div>
+            </div>
+
+            {#<div class="row">#}
+                {#<h2>ACTIVE DEALS</h2>#}
+                {#{% for deal in business.deals %}#}
+                    {#<div class="col-sm-4 text-center">#}
+                        {#<h3>{{ deal.name | upper }}</h3>#}
+                        {#<p>AT {{ deal.business.name | upper }}</p>#}
+                        {#<p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>#}
+                        {#<div class="container-image">#}
+                            {#<img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>#}
+                        {#</div>#}
+                        {#<p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View Deal</a></p>#}
+                    {#</div>#}
+                {#{% endfor%}#}
+            {#</div>#}
+
+            {% if related | length > 0 %}
+                <div class="row related-businesses">
+                    <h2>RELATED BUSINESSES</h2>
+                    {% for item in related %}
+                        <div class="col-md-3">
+                            <div class="ibox">
+                                <div class="ibox-content product-box">
+
+                                    <div class="product-imitation container-image">
+                                        <img class="center-height center-cropped" src="{{ asset('images/business/' ~ item.logo) }}">
+                                    </div>
+                                    <div class="product-desc">
+                                        {#<span class="product-price">#}
+                                        {#$10#}
+                                        {#</span>#}
+                                        {#<small class="text-muted">Category</small>#}
+                                        <a href="{{ path('business_details', {'slug':item.slug}) }}"
+                                           class="product-name">{{ item.name }}</a>
+
+                                        <div class="small m-t-xs">
+                                            {{ item.description | truncate(200, true) }}
+                                        </div>
+                                        <div class="m-t text-center">
+                                            <a href="{{ path('business_details', {'slug':item.slug}) }}"
+                                               class="btn btn-xs btn-outline btn-primary">View business
+                                                <i class="fa fa-long-arrow-right"></i> </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </section>
 {% endblock %}

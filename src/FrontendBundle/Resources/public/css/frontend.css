@@ -20,6 +20,26 @@ div.container-image.business-image {
     height: 250px;
 }
 
+.center-height.business-image {
+    max-height: 250px !important;
+}
+
+div.related-businesses div.container-image {
+    height: 300px;
+}
+
+div.related-businesses .center-height {
+    max-height: 300px;
+    overflow: hidden;
+}
+
+.center-cropped {
+    object-fit: none; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+    height: 100px;
+    width: 100px;
+}
+
 .container-image > img {
     display: block;
     max-width: 100%;
@@ -88,17 +108,53 @@ div.deal-list {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display:         flex;
+    display: flex;
 }
 
 span.business-info {
     font-size: 15px;
 }
 
-.business-info li  i {
+.business-info li i {
     width: 20px;
 }
 
 .landing-page section p {
     font-size: 14px;
+}
+
+/*Select 2 customization*/
+.select2-container--open .select2-selection--single,
+.select2-container--open .select2-dropdown,
+.select2-container--open .select2-search > input {
+    border: 1px solid #e5e6e7 !important;
+}
+
+.related-businesses .btn-primary {
+    color: #1ab394;
+    background-color: transparent;
+    padding: 1px 5px;
+    font-size: 12px;
+}
+
+.related-businesses .product-imitation {
+    background-color: transparent;
+}
+
+.carousel-inner .active.left { left: -25%; }
+.carousel-inner .next        { left:  25%; }
+.carousel-control.left,.carousel-control.right {background-image:none;}
+
+.business-deals {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.business-deals .carousel .item {
+    background-color: transparent;
+}
+
+.business-deals .carousel-control {
+    color: #1ab394;
+    opacity: 0.75;
 }

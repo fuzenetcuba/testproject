@@ -134,4 +134,20 @@ class BusinessManager implements ManagerInterface
 
         return $object;
     }
+
+    /**
+     * Returns a list of related businesses: a random selection of business in
+     * the same categories as the original
+     *
+     * @param \BackendBundle\Entity\Business $business
+     * @param int                            $max
+     *
+     * @return array|Business[]
+     */
+    public function findRelatedBusinesses(Business $business, $max = 4)
+    {
+        return $this->em->getRepository('BackendBundle:Business')
+            ->findRelatedBusinesses($business, $max)
+        ;
+    }
 }

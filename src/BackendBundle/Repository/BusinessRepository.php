@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Repository;
 
+use BackendBundle\Entity\Business;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -24,6 +25,7 @@ class BusinessRepository extends EntityRepository
             ->getResult()
             ;
     }
+
     /**
      * Returns all businesses ordered by the business's created date
      *
@@ -63,7 +65,7 @@ class BusinessRepository extends EntityRepository
                 'SELECT b FROM BackendBundle:Business b JOIN b.categories c ORDER BY c.name ASC'
             )
             ->getResult()
-        ;
+            ;
     }
 
     /**
@@ -81,5 +83,41 @@ class BusinessRepository extends EntityRepository
             )
             ->getResult()
         ;
+    }
+
+    /**
+     * Returns a list of related businesses: a random selection of business in
+     * the same categories as the original
+     *
+     * @param \BackendBundle\Entity\Business $business
+     * @param int                            $max
+     *
+     * @return array|Business[]
+     */
+    public function findRelatedBusinesses(Business $business, $max = 4)
+    {
+        $categoryIds = array_map(function($item) {
+            return $item->getId();
+        }, $business->getCategories()->toArray());
+
+        $items = $this->getEntityManager()
+            ->createQuery('
+                 SELECT b FROM BackendBundle:Business b JOIN b.categories c
+                 WHERE b.id <> :id AND c.id IN (:categories)
+            ')
+            ->setParameter('id', $business->getId())
+            ->setParameter('categories', $categoryIds)
+            ->getResult()
+        ;
+
+        // empty array if no related products could be found
+        if (0 === count($items)) {
+            return [];
+        }
+
+        // let's add return some random results
+        $keys = array_rand($items, $max < count($items) ? $max : count($items));
+
+        return array_intersect_key($items, (array)$keys);
     }
 }
