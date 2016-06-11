@@ -26,7 +26,7 @@ class BusinessManager implements ManagerInterface
     /**
      * Return the DQL to fetch all model objects
      *
-     * @return mixed
+     * @return \Doctrine\ORM\QueryBuilder
      */
     public function findAllQuery()
     {
@@ -34,26 +34,26 @@ class BusinessManager implements ManagerInterface
             ->createQueryBuilder('q')
             ->select('b')
             ->from('BackendBundle:Business', 'b')
-        ;
+            ;
     }
 
     /**
      * Return all model objects
      *
-     * @return mixed
+     * @return \BackendBundle\Entity\Business[]
      */
     public function findAll()
     {
         return $this->em
             ->getRepository('BackendBundle:Business')
             ->findAll()
-        ;
+            ;
     }
 
     /**
      * Return a new empty model object
      *
-     * @return mixed
+     * @return \BackendBundle\Entity\Business
      */
     public function create()
     {
@@ -65,7 +65,7 @@ class BusinessManager implements ManagerInterface
      *
      * @param $id
      *
-     * @return mixed
+     * @return Business
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function find($id)
@@ -104,7 +104,7 @@ class BusinessManager implements ManagerInterface
      *
      * @param $instance
      *
-     * @return mixed
+     * @return void
      * @throws \Doctrine\ORM\OptimisticLockException
      * @throws \Doctrine\ORM\ORMInvalidArgumentException
      */
@@ -148,6 +148,75 @@ class BusinessManager implements ManagerInterface
     {
         return $this->em->getRepository('BackendBundle:Business')
             ->findRelatedBusinesses($business, $max)
-        ;
+            ;
+    }
+
+    /**
+     * Returns a list of Deals ordered by the desired parameters.
+     *   SortingMode::SORT_NEW_DEALS
+     *      Only deals created in the last 24h will be returned
+     *   SortingMode::SORT_ENDING_SOON
+     *      Only deals that will end in the next 24h will be returned
+     *
+     * @param int $mode
+     *
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function findAllSorted($mode = SortingMode::SORT_NONE)
+    {
+        $allQuery = $this->findAllQuery();
+
+        if (SortingMode::SORT_ALPHABETICALLY === $mode) {
+            $allQuery = $allQuery
+                ->addOrderBy('b.name');
+        } else if (SortingMode::SORT_CATEGORY === $mode) {
+            $allQuery
+                ->join('b.categories', 'c')
+                ->addOrderBy('c.name')
+            ;
+        } else if (SortingMode::SORT_RECENT_DEALS === $mode) {
+            $allQuery
+                ->join('b.deals', 'd')
+                ->addOrderBy('d.endsAt')
+            ;
+        }
+
+        return $allQuery;
+    }
+
+    /**
+     * Returns the matching deals according to the filters/sorting
+     * arguments
+     *
+     * @param array $filters
+     * @param int   $sortingMode
+     *
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function findMatchingDeals(array $filters, $sortingMode = SortingMode::SORT_NONE)
+    {
+        $query = $this->findAllSorted($sortingMode);
+
+        if (array_key_exists('category', $filters) && isset($filters['category'])) {
+            $query
+                ->join('b.categories', 'c')
+                ->andWhere('c.id = :category')
+                ->orWhere('c.parent = :category')
+                ->setParameter('category', $filters['category']->getId())
+            ;
+        }
+
+        if (array_key_exists('search', $filters) && isset($filters['search'])) {
+            $query
+                ->andWhere('b.name LIKE :search OR b.description LIKE :search')
+                ->setParameter('search', sprintf('%%%s%%', $filters['search']))
+            ;
+        }
+
+
+        dump($query->getDQL());
+        dump($query->getParameters());
+
+        return $query;
     }
 }

@@ -2,7 +2,6 @@
 
 namespace BackendBundle\Model;
 
-use BackendBundle\Entity\BaseEnum;
 use BackendBundle\Entity\Deal;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\QueryBuilder;

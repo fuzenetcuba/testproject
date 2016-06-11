@@ -20,32 +20,40 @@
     <section class="inner-content">
         <div class="container">
             <div class="row filter-deals">
-                <div class="col-sm-6">
-                    <h4>FILTER BUSINESSES BY:</h4>
-                    <div class="col-sm-6">
-                        <select name="categories" class="select2" data-placeholder="ALL CATEGORIES">
-                            <option value=""></option>
-                            <option value="1">first</option>
-                            <option value="2">two</option>
-                            <option value="3">third</option>
-                            <option value="4">fourth</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-6">
-                        <select name="stores" class="select2" data-placeholder="ALL STORES">
-                            <option value=""></option>
-                            <option value="1">first</option>
-                            <option value="2">two</option>
-                            <option value="3">third</option>
-                            <option value="4">fourth</option>
-                        </select>
-                    </div>
+                <div class="col-sm-8">
+                    <form action="{{ path('business_list') }}" method="post">
+                        <h4>FILTER BUSINESSES BY:</h4>
+                        <div class="col-sm-4">
+                            {{ form_widget(form.search) }}
+                        </div>
+                        <div class="col-sm-4">
+                            {{ form_widget(form.category) }}
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fa fa-search"></i> &nbsp;FILTER
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <div class="col-sm-6 text-right">
+                <div class="col-sm-4 text-right">
                     <h4>SORT BUSINESSES BY:</h4>
                     <div class="btn-group">
-                        <button class="btn btn-white" type="button">ENDING SOON</button>
-                        <button class="btn btn-info" type="button">NEW DEALS</button>
+                        <a href="{{ path('business_list', {'order':
+                           constant('BackendBundle\\Model\\SortingMode::SORT_ALPHABETICALLY')}) }}"
+                           class="btn btn-white
+                           {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_ALPHABETICALLY') %}active{% endif %}"
+                           type="button">ALPHABETICALLY</a>
+                        <a href="{{ path('business_list', {'order':
+                           constant('BackendBundle\\Model\\SortingMode::SORT_CATEGORY')}) }}"
+                           class="btn btn-white
+                           {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_CATEGORY') %}active{% endif %}"
+                           type="button">CATEGORY</a>
+                        <a href="{{ path('business_list', {'order':
+                           constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS')}) }}"
+                           class="btn btn-white
+                           {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS') %}active{% endif %}"
+                           type="button">RECENT DEALS</a>
                     </div>
                 </div>
             </div>
@@ -57,12 +65,13 @@
                             <h3>{{ business.name | upper }}</h3>
                             <p>AT {{ business.name | upper }}</p>
                             <div class="container-image business-image">
-                                <img class="center-height business-image" src="{{ asset('images/business/' ~ business.logo) }} "/>
+                                <img class="center-height business-image"
+                                     src="{{ asset('images/business/' ~ business.logo) }} "/>
                             </div>
                             <p><a class="btn btn-info" href="{{ path('business_details', {'slug' : business.slug}) }}"
                                   role="button">View Business</a></p>
                         </div>
-                    {% endfor%}
+                    {% endfor %}
                 </div>
             </div>
 
