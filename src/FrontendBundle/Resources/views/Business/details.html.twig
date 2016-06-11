@@ -2,17 +2,6 @@
 
 {% block title '- ' ~ business.name %}
 
-{% block navbar %}
-    {% embed '@Frontend/navbar.html.twig' %}
-        {% block navbar_class 'navbar-scroll' %}
-    {% endembed %}
-{% endblock %}
-
-{% block javascript %}
-    <script src="{{ asset('bundles/frontend/js/widgets.js') }}"></script>
-{% endblock %}
-
-
 {% block content %}
     <section class="inner-content">
         <div class="container">

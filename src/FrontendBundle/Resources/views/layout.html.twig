@@ -98,16 +98,18 @@
 
 
     {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}">
     {% endblock %}
 </head>
 <body id="page-top" class="landing-page">
 {% block body %}
 
     {% block navbar %}
-        {% include '@Frontend/navbar.html.twig' with { 'active' : 'home' } %}
+        {% embed '@Frontend/navbar.html.twig' %}
+        {% endembed %}
     {% endblock %}
 
-    {% block content %}
+{% block content %}
 
         {% block slider %}
         {% endblock %}
@@ -116,36 +118,6 @@
         {% endblock %}
 
         {% block topbusinesses %}
-        <section class="features">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="navy-line"></div>
-                        <h1>Our best businesses</h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-5 col-lg-offset-1 features-text">
-                        <small>INSPINIA</small>
-                        <h2>Perfectly designed </h2>
-                        <i class="fa fa-bar-chart big-icon pull-right"></i>
-                        <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully
-                            responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media
-                            query.
-                            It has a huge collection of reusable UI components and integrated with.</p>
-                    </div>
-                    <div class="col-lg-5 features-text">
-                        <small>INSPINIA</small>
-                        <h2>Perfectly designed </h2>
-                        <i class="fa fa-bolt big-icon pull-right"></i>
-                        <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully
-                            responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media
-                            query.
-                            It has a huge collection of reusable UI components and integrated with.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
         {% endblock %}
 
         <section class="features signup">
@@ -228,7 +200,8 @@
     <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"></script>
 
     {% block javascript %}
-    <script src="{{ asset('bundles/frontend/js/app.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/widgets.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/widgets.js') }}"></script>
     {% endblock %}
 
     <script type="text/javascript">

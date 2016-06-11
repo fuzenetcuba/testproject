@@ -1,7 +1,7 @@
 {% set current = app.request.attributes.get('_route')|split('_')[0] %}
 
 <div class="navbar-wrapper">
-    <nav class="navbar navbar-default navbar-fixed-top {% block navbar_class '' %}" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top {% block navbar_class 'navbar-scroll' %}" role="navigation">
         <div class="container">
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -11,9 +11,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ path('frontend_homepage') }}">FUZENET PLAZA
-                    {{ current }}
-                </a>
+                <a class="navbar-brand" href="{{ path('frontend_homepage') }}">FUZENET PLAZA</a>
 
                 {#<a class="navbar-brand" href="#"><i id="logged-in-user">user</i></a>#}
                 {#<a class="navbar-brand" href="#" onclick="FB.logout(function(response) {});">#}
@@ -26,7 +24,7 @@
                                     href="{{ path('frontend_homepage') }}">Home</a></li>
                     <li class="{% if current == 'business' %}active{% endif %}"><a href="{{ path('business_list') }}">Business</a>
                     </li>
-                    <li class="{% if current == 'deals' %}active{% endif %}"><a href="{{ path('deals') }}">Deals</a></li>
+                    <li class="{% if current in ['deals', 'deal'] %}active{% endif %}"><a href="{{ path('deals') }}">Deals</a></li>
                     <li><a class="page-scroll" href="#contact">Contact Us</a></li>
                     <li><a class="btn btn-info" href="landing.html#contact">Signup</a></li>
                 </ul>

@@ -2,20 +2,6 @@
 
 {% block title '- Businesses' %}
 
-{% block navbar %}
-    {% embed '@Frontend/navbar.html.twig' %}
-        {% block navbar_class 'navbar-scroll' %}
-    {% endembed %}
-{% endblock %}
-
-{% block javascript %}
-    <script src="{{ asset('bundles/frontend/js/widgets.js') }}"></script>
-{% endblock %}
-
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}">
-{% endblock %}
-
 {% block content %}
     <section class="inner-content">
         <div class="container">
