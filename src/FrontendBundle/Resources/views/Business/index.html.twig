@@ -40,17 +40,17 @@
                     <h4>SORT BUSINESSES BY:</h4>
                     <div class="btn-group">
                         <a href="{{ path('business_list', {'order':
-                           constant('BackendBundle\\Model\\SortingMode::SORT_ALPHABETICALLY')}) }}"
+                            constant('BackendBundle\\Model\\SortingMode::SORT_ALPHABETICALLY')}) }}"
                            class="btn btn-white
                            {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_ALPHABETICALLY') %}active{% endif %}"
                            type="button">ALPHABETICALLY</a>
                         <a href="{{ path('business_list', {'order':
-                           constant('BackendBundle\\Model\\SortingMode::SORT_CATEGORY')}) }}"
+                            constant('BackendBundle\\Model\\SortingMode::SORT_CATEGORY')}) }}"
                            class="btn btn-white
                            {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_CATEGORY') %}active{% endif %}"
                            type="button">CATEGORY</a>
                         <a href="{{ path('business_list', {'order':
-                           constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS')}) }}"
+                            constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS')}) }}"
                            class="btn btn-white
                            {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS') %}active{% endif %}"
                            type="button">RECENT DEALS</a>
@@ -70,6 +70,10 @@
                             </div>
                             <p><a class="btn btn-info" href="{{ path('business_details', {'slug' : business.slug}) }}"
                                   role="button">View Business</a></p>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-danger">
+                            No businesses matching your criterias were found
                         </div>
                     {% endfor %}
                 </div>

@@ -63,6 +63,10 @@
                             <p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}"
                                   role="button">View Deal</a></p>
                         </div>
+                    {% else %}
+                        <div class="alert alert-danger">
+                            No deals matching your criterias were found
+                        </div>
                     {% endfor %}
                 </div>
             </div>
