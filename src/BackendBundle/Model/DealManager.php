@@ -183,5 +183,32 @@ class DealManager implements ManagerInterface
 
         return $allQuery;
     }
+
+    /**
+     * Returns the matching deals according to the filters/sorting
+     * arguments
+     *
+     * @param array $filters
+     * @param int   $sortingMode
+     *
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function findMatchingDeals(array $filters, $sortingMode = SortingMode::SORT_NONE)
+    {
+        $query = $this->findAllSorted($sortingMode);
+
+        if (array_key_exists('business', $filters) && isset($filters['business'])) {
+            $query
+                ->join('d.business', 'b')
+                ->andWhere('b.id = :business')
+                ->setParameter('business', $filters['business']->getId())
+            ;
+        }
+
+        dump($query->getDQL());
+        dump($query->getParameters());
+
+        return $query;
+    }
 }
 

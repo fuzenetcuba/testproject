@@ -76,6 +76,14 @@ div.filter-deals .col-sm-6 > .col-sm-6 {
     padding-left: 0;
 }
 
+div.filter-deals > form > .col-sm-6:first-of-type {
+    padding-right: 0;
+}
+
+div.filter-deals > form > .col-sm-1 {
+    padding-left: 0;
+}
+
 div.deal-list {
     margin-top: 30px;
 }
@@ -141,9 +149,17 @@ span.business-info {
     background-color: transparent;
 }
 
-.carousel-inner .active.left { left: -25%; }
-.carousel-inner .next        { left:  25%; }
-.carousel-control.left,.carousel-control.right {background-image:none;}
+.carousel-inner .active.left {
+    left: -25%;
+}
+
+.carousel-inner .next {
+    left: 25%;
+}
+
+.carousel-control.left, .carousel-control.right {
+    background-image: none;
+}
 
 .business-deals {
     margin-top: 40px;

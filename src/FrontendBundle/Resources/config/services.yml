@@ -1,4 +1,12 @@
 services:
-#    frontend.example:
-#        class: FrontendBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    kernel.request.remove.deal.filter:
+        class: FrontendBundle\Listener\RequestListener
+        arguments: [@session, 'deals', 'deal_filter']
+        tags:
+            - { name: 'kernel.event_listener', event: 'kernel.request' }
+
+    kernel.request.remove.business.filter:
+        class: FrontendBundle\Listener\RequestListener
+        arguments: [@session, 'businesses', 'business_filter']
+        tags:
+            - { name: 'kernel.event_listener', event: 'kernel.request' }
