@@ -21,80 +21,63 @@
     <link href="{{ asset('bundles/frontend/css/frontend.css') }}" rel="stylesheet">
 
 
-        {# BEGIN Facebook #}
+    {# BEGIN Facebook #}
 
-        <script>
-          // This is called with the results from from FB.getLoginStatus().
-          function statusChangeCallback(response) {
-            console.log('statusChangeCallback');
-            console.log(response);
-            // The response object is returned with a status field that lets the
-            // app know the current login status of the person.
-            // Full docs on the response object can be found in the documentation
-            // for FB.getLoginStatus().
-            if (response.status === 'connected') {
-              // Logged into your app and Facebook.
-              getFacebookNameUser();
-            }
-          }
-
-          // This function is called when someone finishes with the Login
-          // Button.  See the onlogin handler attached to it in the sample
-          // code below.
-          function checkLoginState() {
-            FB.getLoginStatus(function(response) {
-              statusChangeCallback(response);
+    <script>
+        window.fbAsyncInit = function () {
+            // init the FB JS SDK
+            FB.init({
+                appId: '1160773883953962',                        // App ID from the app dashboard
+                channelUrl: '//yourdomain.com/channel.html',      // Channel file for x-domain comms
+                cookie: true,            // enable cookies to allow the server to access the session
+                status: true,                                 // Check Facebook Login status
+                xfbml: true                                  // Look for social plugins on the page
             });
-          }
+        };
 
-          window.fbAsyncInit = function() {
-          FB.init({
-            appId      : '1160773883953962',
-            cookie     : true,  // enable cookies to allow the server to access
-                                // the session
-            xfbml      : true,  // parse social plugins on this page
-            version    : 'v2.2' // use version 2.2
-          });
-
-          // Now that we've initialized the JavaScript SDK, we call
-          // FB.getLoginStatus().  This function gets the state of the
-          // person visiting this page and can return one of three states to
-          // the callback you provide.  They can be:
-          //
-          // 1. Logged into your app ('connected')
-          // 2. Logged into Facebook, but not your app ('not_authorized')
-          // 3. Not logged into Facebook and can't tell if they are logged into
-          //    your app or not.
-          //
-          // These three cases are handled in the callback function.
-
-          FB.getLoginStatus(function(response) {
-            statusChangeCallback(response);
-          });
-
-          };
-
-          // Load the SDK asynchronously
-          (function(d, s, id) {
+        // Load the SDK asynchronously
+        (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js";
             fjs.parentNode.insertBefore(js, fjs);
-          }(document, 'script', 'facebook-jssdk'));
+        }(document, 'script', 'facebook-jssdk'));
 
-          // Here we run a very simple test of the Graph API after login is
-          // successful.  See statusChangeCallback() for when this call is made.
-          function getFacebookNameUser() {
-            console.log('Welcome!  Fetching your information.... ');
-            FB.api('/me', function(response) {
-              console.log('Successful login for: ' + response.name);
-              document.getElementById('logged-in-user').innerHTML = response.name;
+        function fb_login() {
+            FB.getLoginStatus(function (response) {
+                if (response.status === 'connected') {
+                    // connected
+                    alert('Already connected, redirect to login page to create token.');
+                    document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                } else {
+                    // not_authorized
+                    FB.login(function (response) {
+                        if (response.authResponse) {
+                            document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                        } else {
+                            alert('Cancelled.');
+                        }
+                    }, {scope: 'email'});
+                }
             });
-          }
-        </script>
+        }
 
-        {# END Facebook #}
+        // Here we run a very simple test of the Graph API after login is
+        // successful.  See statusChangeCallback() for when this call is made.
+        function getFacebookNameUser() {
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function (response) {
+                console.log('Successful login for: ' + response.name);
+                document.getElementById('logged-in-user').innerHTML = response.name;
+            });
+        }
+    </script>
+
+    {# END Facebook #}
 
 
     {% block stylesheets %}
@@ -111,81 +94,83 @@
 
 {% block content %}
 
-        {% block slider %}
-        {% endblock %}
-
-        {% block topdeals %}
-        {% endblock %}
-
-        {% block topbusinesses %}
-        {% endblock %}
-
-        <section class="features signup">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="navy-line"></div>
-                        <h2>BECOME A MEMBER TODAY AND GET DEALS FOR YOUR FAVORITE PRODUCTS AND BRANDS</h2>
-
-                        <a class="btn btn-lg btn-xl btn-primary">SIGNUP</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+    {% block slider %}
     {% endblock %}
 
-    {% block footer %}
-        <section id="contact" class="gray-section contact">
-            <div class="container">
-                <div class="row m-b-lg">
-                    <div class="col-lg-12 text-center">
-                        <div class="navy-line"></div>
-                        <h1>Contact Us</h1>
-                        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
-                    </div>
-                </div>
-                <div class="row m-b-lg">
-                    <div class="col-lg-3 col-lg-offset-3">
-                        <address>
-                            <strong><span class="navy">Company name, Inc.</span></strong><br/>
-                            795 Folsom Ave, Suite 600<br/>
-                            San Francisco, CA 94107<br/>
-                            <abbr title="Phone">P:</abbr> (123) 456-7890
-                        </address>
-                    </div>
-                    <div class="col-lg-4">
-                        <p class="text-color">
-                            Consectetur adipisicing elit. Aut eaque, totam corporis laboriosam veritatis quis ad
-                            perspiciatis,
-                            totam corporis laboriosam veritatis, consectetur adipisicing elit quos non quis ad perspiciatis,
-                            totam corporis ea,
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <a href="mailto:test@email.com" class="btn btn-primary">Send us mail</a>
-                        <p class="m-t-sm">
-                            Or follow us on social platform
-                        </p>
-                        <ul class="list-inline social-icon">
-                            <li><a href="landing.html#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="landing.html#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="landing.html#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
-                        <p><strong>&copy; 2015 Fuzenet Plaza</strong><br/></p>
-                    </div>
+    {% block topdeals %}
+    {% endblock %}
+
+    {% block topbusinesses %}
+    {% endblock %}
+
+    <section class="features signup">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="navy-line"></div>
+                    <h2>BECOME A MEMBER TODAY AND GET DEALS FOR YOUR FAVORITE PRODUCTS AND BRANDS</h2>
+
+                    <a class="btn btn-lg btn-xl btn-primary">SIGNUP</a>
                 </div>
             </div>
-        </section>
-    {% endblock %}
+        </div>
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <section id="contact" class="gray-section contact">
+        <div class="container">
+            <div class="row m-b-lg">
+                <div class="col-lg-12 text-center">
+                    <div class="navy-line"></div>
+                    <h1>Contact Us</h1>
+
+                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
+                </div>
+            </div>
+            <div class="row m-b-lg">
+                <div class="col-lg-3 col-lg-offset-3">
+                    <address>
+                        <strong><span class="navy">Company name, Inc.</span></strong><br/>
+                        795 Folsom Ave, Suite 600<br/>
+                        San Francisco, CA 94107<br/>
+                        <abbr title="Phone">P:</abbr> (123) 456-7890
+                    </address>
+                </div>
+                <div class="col-lg-4">
+                    <p class="text-color">
+                        Consectetur adipisicing elit. Aut eaque, totam corporis laboriosam veritatis quis ad
+                        perspiciatis,
+                        totam corporis laboriosam veritatis, consectetur adipisicing elit quos non quis ad perspiciatis,
+                        totam corporis ea,
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <a href="mailto:test@email.com" class="btn btn-primary">Send us mail</a>
+
+                    <p class="m-t-sm">
+                        Or follow us on social platform
+                    </p>
+                    <ul class="list-inline social-icon">
+                        <li><a href="landing.html#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="landing.html#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="landing.html#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
+                    <p><strong>&copy; 2015 Fuzenet Plaza</strong><br/></p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
 
     <!-- Mainly scripts -->
     <script src="{{ asset('bundles/backend/js/jquery-2.1.1.js') }}"></script>
@@ -199,10 +184,10 @@
     <script src="{{ asset('bundles/frontend/js/wow/wow.min.js') }}"></script>
     <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"></script>
 
-    {% block javascript %}
+{% block javascript %}
     <script src="{{ asset('bundles/frontend/js/widgets.js') }}"></script>
     <script src="{{ asset('bundles/frontend/js/widgets.js') }}"></script>
-    {% endblock %}
+{% endblock %}
 
     <script type="text/javascript">
         {% block inline_javascript %}

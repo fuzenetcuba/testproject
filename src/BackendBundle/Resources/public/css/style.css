@@ -595,6 +595,11 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
     display: block !important;
   }
 }
+.btn-text-blank{
+  color: #ffffff !important;
+  text-transform: none !important;
+  font-weight: 400 !important;
+}
 .btn {
   border-radius: 3px;
 }
@@ -4603,8 +4608,8 @@ body.mini-navbar.fixed-sidebar .logo-element {
 .middle-box h1 {
   font-size: 170px !important;
 }
-.middle-box h2.big-head {
-  font-size: 40px !important;
+.middle-box h2 {
+  font-size: 60px !important;
 }
 .wrapper .middle-box {
   margin-top: 140px;

@@ -2,8 +2,8 @@
 
 namespace BackendBundle\Controller;
 
-use BackendBundle\Model\BusinessManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -42,5 +42,10 @@ class DefaultController extends Controller
             'top_business_num_deals' => $topBNumDeals,
             'top_deals_created_date' => $topDealsByCreatedDate
         ));
+    }
+
+    public function getCsrfTokenAction(){
+        $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
+        return new Response($csrfToken);
     }
 }
