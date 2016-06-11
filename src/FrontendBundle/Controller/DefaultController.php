@@ -29,6 +29,22 @@ class DefaultController extends Controller
 
     public function logedInAction()
     {
-        return $this->render('FrontendBundle:Default:index.html.twig', array('name' => 'Loged In User'));
+        $authenticationUtils = $this->get('security.authentication_utils');
+
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        $topDeals = $this->get('deal.manager')->findTopDeals();
+
+        return $this->render('FrontendBundle:Default:index.html.twig',
+            array(
+                'name'          => 'Loged In User',
+                'last_username' => $lastUsername,
+                'error'         => $error,
+                'deals'         => $topDeals,
+            )
+        );
     }
 }

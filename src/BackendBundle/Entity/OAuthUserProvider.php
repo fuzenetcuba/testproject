@@ -2,6 +2,8 @@
 
 namespace BackendBundle\Entity;
 
+use Doctrine\ORM\EntityManager;
+use FOS\UserBundle\Model\UserManagerInterface;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -9,10 +11,27 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class OAuthUserProvider extends BaseClass
 {
     /**
+     * @var EntityManager
+     */
+    protected $entity_manager;
+
+    /**
+     * OAuthUserProvider constructor.
+     * @param EntityManager $entity_manager
+     */
+    public function __construct(EntityManager $entity_manager, UserManagerInterface $userManager, array $properties)
+    {
+        parent::__construct($userManager, $properties);
+        $this->entity_manager = $entity_manager;
+    }
+
+
+    /**
      * {@inheritdoc}
      */
      public function connect(UserInterface $user, UserResponseInterface $response)
     {
+        //echo var_dump("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"); die;
         $property = $this->getProperty($response);
         $username = $response->getUsername();
         //on connect - get the access token and the user ID
@@ -37,8 +56,10 @@ class OAuthUserProvider extends BaseClass
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
         $username = $response->getUsername();
-        $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
+        $user = $this->userManager->findUserBy(array('username' => $username));
         //when the user is registrating
+
+        //echo var_dump("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"); die;
         if (null === $user) {
             $service = $response->getResourceOwner()->getName();
             $setter = 'set'.ucfirst($service);
@@ -50,10 +71,14 @@ class OAuthUserProvider extends BaseClass
             $user->$setter_token($response->getAccessToken());
             //I have set all requested data with the user's username
             //modify here with relevant data
-            $user->setUsername($username);
-            $user->setEmail($username);
-            $user->setPassword($username);
+            $user->setUsername($response->getUsername());
+            $user->setEmail($response->getEmail());
+            $user->setPassword($response->getUsername());
+            $user->setPlainPassword($response->getUsername());
             $user->setEnabled(true);
+            $user->addRole("ROLE_CUSTOMER");
+
+            //$this->entity_manager->persist($sysUser);
             $this->userManager->updateUser($user);
             return $user;
         }
