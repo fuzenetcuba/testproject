@@ -40,12 +40,13 @@ security:
                 login_path: fos_user_security_login
                 check_path: /connect_check
                 provider: fos_userbundle
+                remember_me: true
                 resource_owners:
                     facebook: "/login/check-facebook"
                     google: "/login/check-google"
                 oauth_user_provider:
-                  service: hwi_oauth.user.provider.fosub_bridge
-                  #service: app.provider.oauth
+                  #service: hwi_oauth.user.provider.fosub_bridge
+                  service: app.provider.oauth
 
             # activate different ways to authenticate
 

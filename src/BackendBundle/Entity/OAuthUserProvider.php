@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Entity;
 
+use FOS\UserBundle\Model\UserManagerInterface;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -37,8 +38,9 @@ class OAuthUserProvider extends BaseClass
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
         $username = $response->getUsername();
-        $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
+        $user = $this->userManager->findUserBy(array('username' => $username));
         //when the user is registrating
+
         if (null === $user) {
             $service = $response->getResourceOwner()->getName();
             $setter = 'set'.ucfirst($service);
@@ -50,10 +52,13 @@ class OAuthUserProvider extends BaseClass
             $user->$setter_token($response->getAccessToken());
             //I have set all requested data with the user's username
             //modify here with relevant data
-            $user->setUsername($username);
-            $user->setEmail($username);
-            $user->setPassword($username);
+            $user->setUsername($response->getUsername());
+            $user->setEmail($response->getEmail());
+            $user->setPassword($response->getUsername());
+            $user->setPlainPassword($response->getUsername());
             $user->setEnabled(true);
+            $user->addRole("ROLE_CUSTOMER");
+
             $this->userManager->updateUser($user);
             return $user;
         }

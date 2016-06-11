@@ -20,8 +20,8 @@ parameters:
     mailer_auth_mode: login
     mailer_transport: smtp
     mailer_encryption: tls
-    facebook_client_id: 1234213
-    facebook_client_secret: 2134213
+    facebook_client_id: 1160773883953962
+    facebook_client_secret: 6643536fe1fa06c7464dc076d82afb32
     google_client_id: 123
     google_client_secret: 123
 
