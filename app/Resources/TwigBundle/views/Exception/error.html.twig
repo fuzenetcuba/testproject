@@ -1,0 +1,22 @@
+{% extends '@Frontend/layout.html.twig' %}
+
+{% block title '- Error' %}
+
+{% block content %}
+
+    <section class="inner-content">
+        <div class="container">
+            <div class="middle-box text-center animated fadeInDown">
+                <h2 class="big-head">This is embarrassing :(</h2>
+
+                <h3 class="font-bold">Request Error</h3>
+
+                <div class="error-desc">
+                    An unexpected error has occurred. We apologize.<br />
+                    You can press the Back button on your browser or go to our homepage.
+                    <h2><a href="{{ path('frontend_homepage') }}"><b>Fuzenet Plaza</b> Home Page</a></h2>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends '@Frontend/layout.html.twig' %}
+
+{% block title '- Page not found' %}
+
+{% block content %}
+
+    <section class="inner-content">
+        <div class="container">
+            <div class="middle-box text-center animated fadeInDown">
+                <h1>404</h1>
+
+                <h3 class="font-bold">Page Not Found</h3>
+
+                <div class="error-desc">
+                    Sorry, but the page you are looking for has not been found. Try checking the URL for error, then
+                    hit the
+                    refresh button on your browser or try go to our homepage.
+                    <h2><a href="{{ path('frontend_homepage') }}"><b>Fuzenet Plaza</b> Home Page</a></h2>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

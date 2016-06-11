@@ -4601,7 +4601,10 @@ body.mini-navbar.fixed-sidebar .logo-element {
   margin-bottom: 0;
 }
 .middle-box h1 {
-  font-size: 170px;
+  font-size: 170px !important;
+}
+.middle-box h2.big-head {
+  font-size: 40px !important;
 }
 .wrapper .middle-box {
   margin-top: 140px;
