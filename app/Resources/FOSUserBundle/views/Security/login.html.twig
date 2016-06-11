@@ -25,6 +25,11 @@
         {# BEGIN Facebook #}
 
         <script>
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                window.location = '{{ path('frontend_homepage') }}';
+            {% endif %}
+
             window.fbAsyncInit = function () {
                 // init the FB JS SDK
                 FB.init({
