@@ -12,4 +12,4 @@ services:
     app.provider.oauth:
         class: BackendBundle\Entity\OAuthUserProvider
 #        arguments: [@fos_user.user_manager,{ facebook: facebookId }]
-        arguments: [@doctrine.orm.entity_manager, @fos_user.user_manager.default, {facebook: facebookId, google: googleId}]
+        arguments: [@fos_user.user_manager.default, {facebook: facebookId, google: googleId}]

@@ -2,7 +2,6 @@
 
 namespace BackendBundle\Entity;
 
-use Doctrine\ORM\EntityManager;
 use FOS\UserBundle\Model\UserManagerInterface;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
@@ -10,22 +9,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class OAuthUserProvider extends BaseClass
 {
-    /**
-     * @var EntityManager
-     */
-    protected $entity_manager;
-
-    /**
-     * OAuthUserProvider constructor.
-     * @param EntityManager $entity_manager
-     */
-    public function __construct(EntityManager $entity_manager, UserManagerInterface $userManager, array $properties)
-    {
-        parent::__construct($userManager, $properties);
-        $this->entity_manager = $entity_manager;
-    }
-
-
     /**
      * {@inheritdoc}
      */
@@ -76,7 +59,6 @@ class OAuthUserProvider extends BaseClass
             $user->setEnabled(true);
             $user->addRole("ROLE_CUSTOMER");
 
-            //$this->entity_manager->persist($sysUser);
             $this->userManager->updateUser($user);
             return $user;
         }
