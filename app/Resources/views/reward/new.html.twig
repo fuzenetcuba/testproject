@@ -79,7 +79,24 @@
             </div>
             <div class="hr-line-dashed"></div>
 
+            <div class="form-group{% if(form.event.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.event) }}</label>
 
+                <div class="col-md-6">
+                    {{ form_widget(form.event, { 'attr': {'class' : 'form-control select2-field', 'style' : 'width: 100%'}}) }}
+                    <span id="helpBlock" class="help-block">
+                        <i class="fa fa-info-circle"></i> Select the event to which this <strong>reward</strong> will apply
+                    </span>
+                    {% if form.type.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.event.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
 
             <div class="form-group{% if(form.cost.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                 <label for="" class="col-md-2 control-label">{{ form_label(form.cost) }}</label>

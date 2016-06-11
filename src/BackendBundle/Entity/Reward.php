@@ -43,7 +43,7 @@ class Reward
     /**
      * @var integer
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
     private $type;
 
@@ -64,6 +64,13 @@ class Reward
     private $customers;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $event;
+
+    /**
      * Reward constructor.
      */
     public function __construct()
@@ -71,7 +78,7 @@ class Reward
         $this->customers = new ArrayCollection();
     }
 
-    function __toString()
+    public function __toString()
     {
         return $this->name;
     }
@@ -140,7 +147,7 @@ class Reward
      */
     public function setType($type)
     {
-        if (!RewardType::hasKey($type)) {
+        if (!RewardType::hasValue($type)) {
             throw new InvalidArgumentException(sprintf('Wrong type [%s] passed to class', $type));
         }
 
@@ -207,5 +214,25 @@ class Reward
         $this->customers = $customers;
     }
 
+    /**
+     * @return string
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
 
+    /**
+     * @param string $event
+     *
+     * @throws \Doctrine\DBAL\Exception\InvalidArgumentException
+     */
+    public function setEvent($event)
+    {
+        if (!RewardEvents::hasValue($event)) {
+            throw new InvalidArgumentException(sprintf('Wrong type [%s] passed to class', $event));
+        }
+
+        $this->event = $event;
+    }
 }

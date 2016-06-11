@@ -3,13 +3,15 @@
 namespace BackendBundle\Entity;
 
 /**
- * Class RewardType
+ * Class to map and typecheck different types of Rewards
+ *      EARNED_POINTS
+ *      LOST_POINTS
  *
  * @package \BackendBundle\Entity
  */
-class RewardType extends BaseEnum
+final class RewardType extends BaseEnum
 {
-    const EARNED_POINTS = 1,
-          LOST_POINTS = 2
+    const REWARD_EARNED_POINTS = 1,
+          REWARD_LOST_POINTS = 2
     ;
 }
