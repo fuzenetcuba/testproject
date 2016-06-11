@@ -10,3 +10,16 @@ services:
         arguments: [@session, 'businesses', 'business_filter']
         tags:
             - { name: 'kernel.event_listener', event: 'kernel.request' }
+
+    reward.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - 'BackendBundle:Reward'
+
+    user.registered.reward.listener:
+        class: FrontendBundle\Listener\UserRegisteredRewardListener
+        arguments: [@fos_user.user_manager, @reward.repository]
+        tags:
+            - { name: kernel.event_subscriber }

@@ -5,6 +5,7 @@ namespace BackendBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation\Timestampable;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
@@ -69,7 +70,43 @@ class SystemUser extends BaseUser
      */
     private $rewards;
 
-    function __construct()
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    private $points = 0;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $lastName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @var \DateTime
+     *
+     * @Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    public function __construct()
     {
         parent::__construct();
 
@@ -375,5 +412,117 @@ class SystemUser extends BaseUser
     public function setRewards($rewards)
     {
         $this->rewards = $rewards;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPoints()
+    {
+        return $this->points;
+    }
+
+    /**
+     * @param mixed $points
+     */
+    public function setPoints($points)
+    {
+        $this->points = $points;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param mixed $firstName
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string $lastName
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * Returns the full name of the current user
+     *
+     * @return string
+     */
+    public function fullName()
+    {
+        return sprintf('%s %s', $this->firstName, $this->lastName);
+    }
+
+    /**
+     * Increment the number of reward points to the current user
+     * by the specified amount
+     *
+     * @param int $points
+     */
+    public function incrementPoints($points)
+    {
+        $this->points += $points;
+    }
+
+    /**
+     * Decrement the number of reward points to the current user
+     * by the specified amount
+     *
+     * @param int $points
+     */
+    public function reducePoints($points)
+    {
+        $this->points -= $points;
     }
 }

@@ -21,3 +21,7 @@ business_list:
 business_details:
     path:     /business/{slug}
     defaults: { _controller: FrontendBundle:Business:details }
+
+membership:
+    path:     /membership
+    defaults: { _controller: FrontendBundle:User:index }

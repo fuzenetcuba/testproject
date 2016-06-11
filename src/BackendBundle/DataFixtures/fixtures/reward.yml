@@ -1,0 +1,8 @@
+Rewards:
+  registered:
+    name: User Registered
+    description: |
+      Reward given to users when they register on the web site
+    type: EARNED_POINTS
+    cost: 50
+    event: REWARD_ON_REGISTER

@@ -16,20 +16,22 @@ class RewardType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $choices = array_combine(array_keys(\BackendBundle\Entity\RewardType::toArray()),array_keys(\BackendBundle\Entity\RewardType::toArray()));
-
         $builder
             ->add('name')
             ->add('description')
             ->add('type', ChoiceType::class, array(
-                'choices' => $choices,
-                'choices_as_values' => true,
+                'choices' => \BackendBundle\Entity\RewardType::toChoices(),
             ))
+            ->add('event', ChoiceType::class, [
+                'choices' => \BackendBundle\Entity\RewardEvents::toChoices(),
+            ])
             ->add('cost');
     }
 
     /**
      * @param OptionsResolver $resolver
+     *
+     * @throws \Symfony\Component\OptionsResolver\Exception\AccessException
      */
     public function configureOptions(OptionsResolver $resolver)
     {
