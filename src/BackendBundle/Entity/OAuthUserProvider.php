@@ -31,7 +31,6 @@ class OAuthUserProvider extends BaseClass
      */
      public function connect(UserInterface $user, UserResponseInterface $response)
     {
-        //echo var_dump("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"); die;
         $property = $this->getProperty($response);
         $username = $response->getUsername();
         //on connect - get the access token and the user ID
@@ -59,7 +58,6 @@ class OAuthUserProvider extends BaseClass
         $user = $this->userManager->findUserBy(array('username' => $username));
         //when the user is registrating
 
-        //echo var_dump("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"); die;
         if (null === $user) {
             $service = $response->getResourceOwner()->getName();
             $setter = 'set'.ucfirst($service);

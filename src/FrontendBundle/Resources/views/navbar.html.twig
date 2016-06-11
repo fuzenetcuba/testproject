@@ -10,6 +10,9 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ path('frontend_homepage') }}">FUZENET PLAZA</a>
+
+                <a class="navbar-brand" href="#"><i id="logged-in-user">user</i></a>
+                <a class="navbar-brand" href="#" onclick="FB.logout(function(response) {});"><small> Logout</small></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
