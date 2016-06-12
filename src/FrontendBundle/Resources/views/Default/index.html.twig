@@ -47,11 +47,16 @@
                 <h3>{{ deal.name | upper }}</h3>
                 <p>AT {{ deal.business.name | upper }}</p>
                 <p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>
-                <div class="container-image">
-                    <img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>
+                <div class="hovereffect">
+                    <div class="container-image ">
+                        <img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>
+                        <div class="overlay">
+                            <a class="info" href="{{ path('deal_details', {'slug' : deal.slug}) }}">Show Deal</a>
+                        </div>
+                    </div>
                 </div>
-                <p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View
-                        Deal</a></p>
+                {#<p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View#}
+                {#Deal</a></p>#}
             </div>
         {% endfor %}
     </section>

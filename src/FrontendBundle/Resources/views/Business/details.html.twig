@@ -50,43 +50,50 @@
                 </div>
             </div>
 
-            <div class="row business-deals">
-                <h2>ACTIVE DEALS</h2>
+            {% if business.deals | length > 0 %}
+                <div class="row business-deals">
+                    <h2>ACTIVE DEALS</h2>
 
-                <div class="carousel slide" id="myCarousel">
-                    <div class="carousel-inner">
-                        {% for deal in business.deals %}
-                            <div class="item {% if loop.first %}active{% endif %} ">
-                                <div class="col-sm-3 text-center">
-                                    <h3>{{ deal.name | upper }}</h3>
-                                    <p>AT {{ deal.business.name | upper }}</p>
-                                    <p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>
-                                    <div class="container-image">
-                                        <img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>
+                    <div class="carousel slide" id="myCarousel">
+                        <div class="carousel-inner">
+                            {% for deal in business.deals %}
+                                <div class="item {% if loop.first %}active{% endif %} ">
+                                    <div class="col-sm-3 text-center">
+                                        <h3>{{ deal.name | upper }}</h3>
+                                        <p>AT {{ deal.business.name | upper }}</p>
+                                        <p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>
+                                        <div class="container-image">
+                                            <img class="center-height"
+                                                 src="{{ asset('images/deals/' ~ deal.image) }} "/>
+                                        </div>
+                                        <p><a class="btn btn-info"
+                                              href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View
+                                                Deal</a></p>
                                     </div>
-                                    <p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View Deal</a></p>
                                 </div>
-                            </div>
-                        {% endfor%}
+                            {% endfor %}
+                        </div>
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i
+                                    class="glyphicon glyphicon-chevron-left"></i></a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next"><i
+                                    class="glyphicon glyphicon-chevron-right"></i></a>
                     </div>
-                    <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                    <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
                 </div>
-            </div>
+            {% endif %}
 
             {#<div class="row">#}
-                {#<h2>ACTIVE DEALS</h2>#}
-                {#{% for deal in business.deals %}#}
-                    {#<div class="col-sm-4 text-center">#}
-                        {#<h3>{{ deal.name | upper }}</h3>#}
-                        {#<p>AT {{ deal.business.name | upper }}</p>#}
-                        {#<p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>#}
-                        {#<div class="container-image">#}
-                            {#<img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>#}
-                        {#</div>#}
-                        {#<p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View Deal</a></p>#}
-                    {#</div>#}
-                {#{% endfor%}#}
+            {#<h2>ACTIVE DEALS</h2>#}
+            {#{% for deal in business.deals %}#}
+            {#<div class="col-sm-4 text-center">#}
+            {#<h3>{{ deal.name | upper }}</h3>#}
+            {#<p>AT {{ deal.business.name | upper }}</p>#}
+            {#<p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>#}
+            {#<div class="container-image">#}
+            {#<img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>#}
+            {#</div>#}
+            {#<p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View Deal</a></p>#}
+            {#</div>#}
+            {#{% endfor%}#}
             {#</div>#}
 
             {% if related | length > 0 %}
@@ -98,7 +105,8 @@
                                 <div class="ibox-content product-box">
 
                                     <div class="product-imitation container-image">
-                                        <img class="center-height center-cropped" src="{{ asset('images/business/' ~ item.logo) }}">
+                                        <img class="center-height center-cropped"
+                                             src="{{ asset('images/business/' ~ item.logo) }}">
                                     </div>
                                     <div class="product-desc">
                                         {#<span class="product-price">#}
