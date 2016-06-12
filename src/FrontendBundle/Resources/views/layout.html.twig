@@ -186,10 +186,8 @@
     <script src="{{ asset('bundles/frontend/js/widgets.js') }}"></script>
 {% endblock %}
 
-    <script type="text/javascript">
-        {% block inline_javascript %}
-        {% endblock %}
-    </script>
+    {% block inline_javascript %}
+    {% endblock %}
 {% endblock %}
 </body>
 </html>
