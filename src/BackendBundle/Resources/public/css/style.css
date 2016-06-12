@@ -4609,7 +4609,7 @@ body.mini-navbar.fixed-sidebar .logo-element {
   font-size: 170px !important;
 }
 .middle-box h2 {
-  font-size: 60px !important;
+  /*font-size: 60px !important;*/
 }
 .wrapper .middle-box {
   margin-top: 140px;
@@ -7071,7 +7071,7 @@ body.landing-page {
   color: #1ab394 !important;
 }
 .landing-page .contact {
-  background-image: url('../img/landing/word_map.png');
+  /*background-image: url('../img/landing/word_map.png');*/
   background-position: 50% 50%;
   background-repeat: no-repeat;
   margin-top: 60px;

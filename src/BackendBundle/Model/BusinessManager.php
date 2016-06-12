@@ -213,10 +213,6 @@ class BusinessManager implements ManagerInterface
             ;
         }
 
-
-        dump($query->getDQL());
-        dump($query->getParameters());
-
         return $query;
     }
 }
