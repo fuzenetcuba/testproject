@@ -1,0 +1,71 @@
+{% extends '@Frontend/layout.html.twig' %}
+
+{% block title '- Register User' %}
+
+{% block content %}
+
+    <section class="inner-content">
+        <div class="container">
+            <div class="middle-box text-center loginscreen   animated fadeInDown">
+                <div>
+                    <div>
+
+                        <h2>Fuzenet Plaza</h2>
+
+                    </div>
+                    <h3>Register to Fuzenet Plaza</h3>
+                    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+                    <div class="form-group{% if(form.username.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        {{ form_widget(form.username, { 'attr': {'class' : 'form-control', 'placeholder' : 'Username'}}) }}
+                        {% if form.username.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.username.vars['errors'] %}
+                                    <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group{% if(form.email.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        {{ form_widget(form.email, { 'attr': {'class' : 'form-control', 'placeholder' : 'Email'}}) }}
+                        {% if form.email.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.email.vars['errors'] %}
+                                    <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                    {% for passwordField in form.plainPassword %}
+                        <div class="form-group{% if(passwordField.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+
+                            {{ form_widget(passwordField, { 'attr': {'class' : 'form-control', 'placeholder' : 'Password'}}) }}
+                            {% if passwordField.vars['errors']|length > 0 %}
+                                <ul class="message">
+                                    {% for error in passwordField.vars['errors'] %}
+                                        <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+
+                    {% endfor %}
+
+
+                    <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
+
+                    <p class="text-muted text-center">
+                        <small>Already have an account?</small>
+                    </p>
+                    <a class="btn btn-sm btn-white btn-block" href="{{ path('fos_user_security_login') }}">Login</a>
+                    {{ form_end(form) }}
+                    <p class="m-t">
+                        <small>All right reserved &copy; Fuzenet Plaza 2016</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
