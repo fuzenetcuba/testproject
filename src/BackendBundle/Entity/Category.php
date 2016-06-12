@@ -48,6 +48,13 @@ class Category
     private $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $icon;
+
+    /**
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Business", mappedBy="categories")
@@ -226,5 +233,21 @@ class Category
     public function setParent(Category $parent)
     {
         $this->parent = $parent;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+
+    /**
+     * @param string $icon
+     */
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
     }
 }

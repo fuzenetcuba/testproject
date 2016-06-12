@@ -61,6 +61,22 @@
             </div>
             <div class="hr-line-dashed"></div>
 
+            <div class="form-group{% if(form.icon.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.icon) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.icon, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.icon.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.icon.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
 
             <div class="form-group{% if(form.parent.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                 <label for=""

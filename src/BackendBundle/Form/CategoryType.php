@@ -17,6 +17,7 @@ class CategoryType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
+            ->add('icon', null, ['label' => 'Icon / Image'])
             ->add('parent');
     }
 
