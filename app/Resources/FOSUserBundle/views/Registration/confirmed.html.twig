@@ -1,0 +1,22 @@
+{% extends '@Frontend/layout.html.twig' %}
+
+{% block title '- Confirmed Registration' %}
+
+{% block content %}
+
+    <section class="inner-content">
+        <div class="container">
+
+            {% block fos_user_content %}
+                <div class="middle-box text-center animated fadeInDown">
+                    <h2>Welcome!!!</h2>
+
+                    <p>Contrats {{ user.username }}, you have been registered succesfully.</p>
+
+                    <h2><a href="{{ path('frontend_homepage') }}"><b>FuzenetPlaza</b> Homepage</a></h2>
+                </div>
+            {% endblock fos_user_content %}
+        </div>
+        </div>
+    </section>
+{% endblock %}
