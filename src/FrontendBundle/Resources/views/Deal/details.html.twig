@@ -38,6 +38,14 @@
                     <p>{{ deal.description | nl2br }}</p>
                 </div>
             </div>
+
+            {% if deal.video %}
+                <div align="center" class="embed-responsive embed-responsive-16by9">
+                    <video autoplay loop class="embed-responsive-item">
+                        <source src="{{ deal.video }}" type="video/mp4">
+                    </video>
+                </div>
+            {% endif %}
         </div>
     </section>
 {% endblock %}
