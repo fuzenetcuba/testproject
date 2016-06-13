@@ -81,6 +81,10 @@
                                     </p>
                                 </div>
                             {% else %}
+                                <a class="logout" href="{{ path('membership') }}">
+                                    <i class="fa fa-user"></i> Membership
+                                </a>
+                                <hr/>
                                 <a class="logout" href="{{ path('fos_user_security_logout') }}">
                                     <i class="fa fa-sign-out"></i> Logout
                                 </a>
