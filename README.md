@@ -34,9 +34,10 @@ Once the repository has been cloned all you need to do is:
   * Configure the database connection, copy the `app/config/parameters.yml.dis` file into `app/config/parameters.yml` and edit according to your needs, pay special attention to: `database_driver`, `database_host`, `database_name`, `database_user`, `database_password`.
 
   * Create the table structure, using the following command: `php app/console doctrine:schema:create`. This requires that the database has been created in the database.
-
-  *composer require knplabs/knp-paginator-bundle *important*
-  * Publish assets with the command: `php app/console/assets install`
+  
+  IMPORTANT
+  *composer require knplabs/knp-paginator-bundle*
+  * Publish assets with the command: `php app/console assets:install`
 
 Usage
 -----
