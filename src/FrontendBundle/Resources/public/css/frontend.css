@@ -279,3 +279,7 @@ span.business-info {
     -webkit-box-shadow: none;
     border-color: #cccccc;
 }
+
+a.logout {
+    color: #676a6c !important;
+}

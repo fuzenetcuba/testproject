@@ -33,8 +33,10 @@
                         {% if not app.user %}
                             <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">Signup</a>
                         {% else %}
-                            <a href="{{ path('fos_user_security_logout') }}">
-                                <i class="fa fa-sign-out"></i> Logout
+                            <a class="btn dropdown-toggle" data-toggle="dropdown"
+                               href="#"><i class="fa fa-trophy"></i> {{ app.user.points }}
+                                <span class="caret"></span>
+                            </a>
                             </a>
                         {% endif %}
 
@@ -78,6 +80,10 @@
                                         <small></small>
                                     </p>
                                 </div>
+                            {% else %}
+                                <a class="logout" href="{{ path('fos_user_security_logout') }}">
+                                    <i class="fa fa-sign-out"></i> Logout
+                                </a>
                             {% endif %}
                         </div>
                     </li>
