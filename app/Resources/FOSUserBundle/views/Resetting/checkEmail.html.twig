@@ -1,61 +1,32 @@
-<!DOCTYPE html>
-<html>
+{% extends '@Frontend/layout.html.twig' %}
 
-<head>
+{% block title '- Register User' %}
 
-    <meta charset="utf-8">
-    <title>Resseting Password | FuzenetCuba</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+{% block content %}
 
-    <!-- Fav and touch icons -->
-    <link rel="shortcut icon" href="{{ asset('bundles/backend/ico/favicon.ico') }}">
+    <section class="inner-content">
+        <div class="container">
+            <div class="row">
 
-    <link rel="stylesheet" href="{{ asset('bundles/backend/css/bootstrap.min.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/backend/css/animate.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/backend/css/style.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/backend/font-awesome/css/font-awesome.min.css') }}"
-          type="text/css"/>
+                <div class="col-md-12">
+                    <div class="ibox-content">
 
-</head>
+                        <h2 class="font-bold">Resetting password requested</h2>
 
-<body class="gray-bg">
+                        <p>{{ 'resetting.check_email'|trans({'%email%': email}, 'FOSUserBundle') }}</p>
 
-<div class="passwordBox animated fadeInDown">
-    <div class="row">
+                        <div class="row">
 
-        <div class="col-md-12">
-            <div class="ibox-content">
+                            <div class="col-lg-12">
 
-                <h2 class="font-bold">Resetting password requested</h2>
-
-                <p>{{ 'resetting.check_email'|trans({'%email%': email}, 'FOSUserBundle') }}</p>
-
-                <div class="row">
-
-                    <div class="col-lg-12">
-
-                        <a class="text-center" href="{{ path('fos_user_security_login') }}">
-                            <small>Back to login</small>
-                        </a>
+                                <a class="text-center" href="{{ path('frontend_homepage') }}">
+                                    <small>Back to home</small>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <hr/>
-    <div class="row">
-        <div class="col-md-6">
-            FuzenetCuba
-        </div>
-        <div class="col-md-6 text-right">
-            <small>Copyright © 2016 {#{ '-' ~ 'now'|date('Y') }#}</small>
-        </div>
-    </div>
-</div>
-
-</body>
-
-</html>
-
+    </section>
+{% endblock %}

@@ -1,165 +1,158 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Administration | FuzenetCuba</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
+{% extends '@Frontend/layout.html.twig' %}
 
-        <!-- Fav and touch icons -->
-        <link rel="shortcut icon" href="{{ asset('bundles/backend/ico/favicon.ico') }}">
+{% block title '- Register User' %}
 
-        <link rel="stylesheet" href="{{ asset('bundles/backend/css/bootstrap.min.css') }}" type="text/css"/>
-        <link rel="stylesheet" href="{{ asset('bundles/backend/css/animate.css') }}" type="text/css"/>
-        <link rel="stylesheet" href="{{ asset('bundles/backend/css/style.css') }}" type="text/css"/>
-        <link rel="stylesheet" href="{{ asset('bundles/backend/font-awesome/css/font-awesome.min.css') }}" type="text/css"/>
+{% block content %}
 
-    </head>
+    <section class="inner-content">
+        <div class="container">
+            <noscript>
+                <h1>You should ACTIVATE JavaScript in your browser</h1>
+            </noscript>
 
-    <body class="gray-bg">
-        <noscript>
-        <h1>You should ACTIVATE JavaScript in your browser</h1>
-        </noscript>
+            {# BEGIN Facebook #}
 
-        {# BEGIN Facebook #}
+            <script>
 
-        <script>
-
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 window.location = '{{ path('frontend_homepage') }}';
-            {% endif %}
+                {% endif %}
 
-            window.fbAsyncInit = function () {
-                // init the FB JS SDK
-                FB.init({
-                    appId: '1160773883953962',                        // App ID from the app dashboard
-                    channelUrl: '//yourdomain.com/channel.html',      // Channel file for x-domain comms
-                    cookie: true,            // enable cookies to allow the server to access the session
-                    status: true,                                 // Check Facebook Login status
-                    xfbml: true                                  // Look for social plugins on the page
-                });
-            };
+                window.fbAsyncInit = function () {
+                    // init the FB JS SDK
+                    FB.init({
+                        appId: '1160773883953962',                        // App ID from the app dashboard
+                        channelUrl: '//yourdomain.com/channel.html',      // Channel file for x-domain comms
+                        cookie: true,            // enable cookies to allow the server to access the session
+                        status: true,                                 // Check Facebook Login status
+                        xfbml: true                                  // Look for social plugins on the page
+                    });
+                };
 
-            // Load the SDK asynchronously
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {
-                    return;
-                }
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "//connect.facebook.net/en_US/all.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-
-            function fb_login() {
-                FB.getLoginStatus(function (response) {
-                    if (response.status === 'connected') {
-                        // connected
-                        document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
-                    } else {
-                        // not_authorized
-                        FB.login(function (response) {
-                            if (response.authResponse) {
-                                document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
-                            }
-                        });
+                // Load the SDK asynchronously
+                (function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) {
+                        return;
                     }
-                });
-            }
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//connect.facebook.net/en_US/all.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
 
-            // Here we run a very simple test of the Graph API after login is
-            // successful.  See statusChangeCallback() for when this call is made.
-            function getFacebookNameUser() {
-                console.log('Welcome!  Fetching your information.... ');
-                FB.api('/me', function (response) {
-                    console.log('Successful login for: ' + response.name);
-                    document.getElementById('logged-in-user').innerHTML = response.name;
-                });
-            }
-        </script>
+                function fb_login() {
+                    FB.getLoginStatus(function (response) {
+                        if (response.status === 'connected') {
+                            // connected
+                            document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                        } else {
+                            // not_authorized
+                            FB.login(function (response) {
+                                if (response.authResponse) {
+                                    document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                                }
+                            });
+                        }
+                    });
+                }
 
-        {# END Facebook #}
+                // Here we run a very simple test of the Graph API after login is
+                // successful.  See statusChangeCallback() for when this call is made.
+                function getFacebookNameUser() {
+                    console.log('Welcome!  Fetching your information.... ');
+                    FB.api('/me', function (response) {
+                        console.log('Successful login for: ' + response.name);
+                        document.getElementById('logged-in-user').innerHTML = response.name;
+                    });
+                }
+            </script>
 
-        {# Block for FOSUserBundle actions #}
-        {% block fos_user_content %}
-            {% if error %}
-                <div class="alert alert-danger fade in">
-                    <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                    <strong>Error! </strong>
-                    {{ error.message|trans({}, 'FOSUserBundle') }}
-                </div>
-            {% endif %}
+            {# END Facebook #}
 
-
-            <div class="loginColumns animated fadeInDown">
-                <div class="row">
-
-                    <div class="col-md-6">
-                        <h2 class="font-bold">Welcome to FuzenetCuba</h2>
-
-                        <p>
-                            Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
-                        </p>
-
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                        </p>
-
-                        <p>
-                            When an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        </p>
-
-                        <p>
-                            <small>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</small>
-                        </p>
-
+            {# Block for FOSUserBundle actions #}
+            {% block fos_user_content %}
+                {% if error %}
+                    <div class="alert alert-danger fade in">
+                        <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                        <strong>Error! </strong>
+                        {{ error.message|trans({}, 'FOSUserBundle') }}
                     </div>
-                    <div class="col-md-6">
-                        <div class="ibox-content">
-                            <form class="m-t" role="form" action="{{ path('fos_user_security_check') }}" method="post">
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Username" type="text" id="username" name="_username" value="{{ last_username }}" required="required" autofocus="true" >
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Password" type="password" id="password" name="_password" required="required" >
-                                </div>
-                                <button type="submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" class="btn btn-primary block full-width m-b" >{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+                {% endif %}
 
-                                <a class="text-center" href="{{ path('fos_user_resetting_request') }}">
-                                    <small>Forgot password?</small>
-                                </a>
 
-                                <p class="text-muted text-center">
-                                    <small>Do not have an account?</small>
-                                </p>
-                                <a class="btn btn-sm btn-info btn-block" href="{{ path('fos_user_registration_register') }}">Create an account</a>
-                                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                                <br />
-                                <a class="btn btn-text-blank btn-sm btn-success btn-block" href="#" onclick="fb_login();">
-                                    <i class="fa fa-facebook pull-left ali"></i> Facebook
-                                </a>
-                            </form>
-                            <p class="m-t">
-                                <small></small>
+                <div class="loginColumns animated fadeInDown">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <h2 class="font-bold">Welcome to FuzenetCuba</h2>
+
+                            <p>
+                                Perfectly designed and precisely prepared admin theme with over 50 pages with extra new
+                                web app views.
                             </p>
+
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s.
+                            </p>
+
+                            <p>
+                                When an unknown printer took a galley of type and scrambled it to make a type specimen
+                                book.
+                            </p>
+
+                            <p>
+                                <small>It has survived not only five centuries, but also the leap into electronic
+                                    typesetting, remaining essentially unchanged.
+                                </small>
+                            </p>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="">
+                                <form class="m-t" role="form" action="{{ path('fos_user_security_check') }}"
+                                      method="post">
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Username" type="text" id="username"
+                                               name="_username" value="{{ last_username }}" required="required"
+                                               autofocus="true">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Password" type="password" id="password"
+                                               name="_password" required="required">
+                                    </div>
+                                    <button type="submit" name="_submit"
+                                            value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}"
+                                            class="btn btn-primary block full-width m-b">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+
+                                    <a class="text-center" href="{{ path('fos_user_resetting_request') }}">
+                                        <small>Forgot password?</small>
+                                    </a>
+
+                                    <p class="text-muted text-center">
+                                        <small>Do not have an account?</small>
+                                    </p>
+                                    <a class="btn btn-sm btn-info btn-block"
+                                       href="{{ path('fos_user_registration_register') }}">Create an account</a>
+                                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                                    <br/>
+                                    <a class="btn btn-text-blank btn-sm btn-success btn-block" href="#"
+                                       onclick="fb_login();">
+                                        <i class="fa fa-facebook pull-left ali"></i> Facebook
+                                    </a>
+                                </form>
+                                <p class="m-t">
+                                    <small></small>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <hr/>
-                <div class="row">
-                    <div class="col-md-6">
-                        FuzenetCuba
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <small>Copyright © 2016 {#{ '-' ~ 'now'|date('Y') }#}</small>
-                    </div>
-                </div>
-            </div>
 
-        {% endblock %}
-        {% block javascripts %}
-        {% endblock %}
-    </body>
-</html>
+            {% endblock %}
+            {% block javascripts %}
+            {% endblock %}
+        </div>
+    </section>
+{% endblock %}

@@ -1,46 +1,18 @@
-<!DOCTYPE html>
-<html>
+{% extends '@Frontend/layout.html.twig' %}
 
-<head>
+{% block title '- Register User' %}
 
-    <meta charset="utf-8">
-    <title>Request for resseting Password | FuzenetCuba</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+{% block content %}
 
-    <!-- Fav and touch icons -->
-    <link rel="shortcut icon" href="{{ asset('bundles/backend/ico/favicon.ico') }}">
+    <section class="inner-content">
+        <div class="container">
+            <div class="row">
 
-    <link rel="stylesheet" href="{{ asset('bundles/backend/css/bootstrap.min.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/backend/css/animate.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/backend/css/style.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/backend/font-awesome/css/font-awesome.min.css') }}"
-          type="text/css"/>
+                <div class="col-md-12">
+                    {% include "FOSUserBundle:Resetting:request_content.html.twig" %}
 
-</head>
-
-<body class="gray-bg">
-
-<div class="passwordBox animated fadeInDown">
-    <div class="row">
-
-        <div class="col-md-12">
-            {% include "FOSUserBundle:Resetting:request_content.html.twig" %}
-
+                </div>
+            </div>
         </div>
-    </div>
-    <hr/>
-    <div class="row">
-        <div class="col-md-6">
-            FuzenetCuba
-        </div>
-        <div class="col-md-6 text-right">
-            <small>Copyright © 2016 {#{ '-' ~ 'now'|date('Y') }#}</small>
-        </div>
-    </div>
-</div>
-
-</body>
-
-</html>
+    </section>
+{% endblock %}
