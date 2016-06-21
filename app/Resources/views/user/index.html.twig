@@ -58,8 +58,26 @@
                     {% endif %}
                 </th>
                 <th class="text-navy">
+                    {{ knp_pagination_sortable(entities, 'First name', 'e.firstName') }}
+                    {% if entities.isSorted('e.firstName') %}
+                        <span class="fa fa-sort"></span>
+                    {% endif %}
+                </th>
+                <th class="text-navy">
+                    {{ knp_pagination_sortable(entities, 'Last name', 'e.lastName') }}
+                    {% if entities.isSorted('e.lastName') %}
+                        <span class="fa fa-sort"></span>
+                    {% endif %}
+                </th>
+                <th class="text-navy">
                     {{ knp_pagination_sortable(entities, 'Username', 'e.username') }}
                     {% if entities.isSorted('e.username') %}
+                        <span class="fa fa-sort"></span>
+                    {% endif %}
+                </th>
+                <th class="text-navy">
+                    {{ knp_pagination_sortable(entities, 'Phone', 'e.phone') }}
+                    {% if entities.isSorted('e.phone') %}
                         <span class="fa fa-sort"></span>
                     {% endif %}
                 </th>
@@ -93,7 +111,10 @@
                     </td>
                     <td class="text-navy"><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
                     </td>
+                    <td>{{ entity.firstName }}</td>
+                    <td>{{ entity.lastName }}</td>
                     <td>{{ entity.username }}</td>
+                    <td>{{ entity.phone }}</td>
                     <td id="value-user-enabled-{{ entity.id }}" class="text-center">
                         <div class="onoffswitch-ios switch-xs">
                             {% if (entity.id != app.user.id) %}

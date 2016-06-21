@@ -13,8 +13,14 @@
         <dt>Id</dt>
         <dd>{{ entity.id }}</dd>
         <div class="hr-line-dashed"></div>
+        <dt>Full name</dt>
+        <dd>{{ entity.fullName }}</dd>
+        <div class="hr-line-dashed"></div>
         <dt>Username</dt>
         <dd>{{ entity.username }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Phone</dt>
+        <dd>{{ entity.phone }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>Email</dt>
         <dd>{{ entity.email }}</dd>
@@ -37,6 +43,14 @@
             {% endfor %}
         </dd>
         <div class="hr-line-dashed"></div>
+        {% if(entity.image is not null) %}
+            <dt>Photo</dt>
+            <dd>
+                <img style="max-width: 70%; height: auto;" src="{{ vich_uploader_asset(entity, 'imageFile') }}"
+                     alt="{{ entity.image }}"/>
+            </dd>
+            <div class="hr-line-dashed"></div>
+        {% endif %}
         <dt>Businesses</dt>
         <dd>
             {% for business in entity.business %}
@@ -50,7 +64,7 @@
         <dd>
             {% for reward in entity.rewards %}
                 <span class="label label-success">{{ reward }}</span>
-                {% else %}
+            {% else %}
                 <span class="label label-warning">No rewards related</span>
             {% endfor %}
         </dd>

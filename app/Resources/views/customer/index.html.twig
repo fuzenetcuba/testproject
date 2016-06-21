@@ -58,8 +58,26 @@
                     {% endif %}
                 </th>
                 <th class="text-navy">
+                    {{ knp_pagination_sortable(entities, 'First name', 'e.firstName') }}
+                    {% if entities.isSorted('e.firstName') %}
+                        <span class="fa fa-sort"></span>
+                    {% endif %}
+                </th>
+                <th class="text-navy">
+                    {{ knp_pagination_sortable(entities, 'Last name', 'e.lastName') }}
+                    {% if entities.isSorted('e.lastName') %}
+                        <span class="fa fa-sort"></span>
+                    {% endif %}
+                </th>
+                <th class="text-navy">
                     {{ knp_pagination_sortable(entities, 'Username', 'e.username') }}
                     {% if entities.isSorted('e.username') %}
+                        <span class="fa fa-sort"></span>
+                    {% endif %}
+                </th>
+                <th class="text-navy">
+                    {{ knp_pagination_sortable(entities, 'Phone', 'e.phone') }}
+                    {% if entities.isSorted('e.phone') %}
                         <span class="fa fa-sort"></span>
                     {% endif %}
                 </th>
@@ -87,7 +105,10 @@
                     </td>
                     <td class="text-navy"><a href="{{ path('customer_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
                     </td>
+                    <td>{{ entity.firstName }}</td>
+                    <td>{{ entity.lastName }}</td>
                     <td>{{ entity.username }}</td>
+                    <td>{{ entity.phone }}</td>
                     <td id="value-user-enabled-{{ entity.id }}" class="text-center">
                         <div class="onoffswitch-ios switch-xs">
                             {% if (entity.id != app.user.id) %}
@@ -136,13 +157,13 @@
                     <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
                         <option value="null">--- Batch actions ---</option>
                         <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                            Delete Users
+                            Delete Customers
                         </option>
                         <option value="enable" data-toggle="modal" data-target="#modalBatch">
-                            Enable Users
+                            Enable Customers
                         </option>
                         <option value="disable" data-toggle="modal" data-target="#modalBatch">
-                            Disable Users
+                            Disable Customers
                         </option>
                     </select>
                 </div>

@@ -47,6 +47,9 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager();
             $dql = "SELECT e FROM BackendBundle:SystemUser e WHERE "
                 . "e.username LIKE '%" . $find . "%' OR "
+                . "e.firstName LIKE '%" . $find . "%' OR "
+                . "e.lastName LIKE '%" . $find . "%' OR "
+                . "e.phone LIKE '%" . $find . "%' OR "
                 . "e.email LIKE '%" . $find . "%' "
                 . "ORDER BY e.id ASC";
             $query = $em->createQuery($dql);

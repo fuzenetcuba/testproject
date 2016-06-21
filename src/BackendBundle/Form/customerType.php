@@ -4,6 +4,7 @@ namespace BackendBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -27,6 +28,12 @@ class customerType extends AbstractType
             ->add('enabled')
             ->add('business')
             ->add('rewards')
+            ->add('firstName')
+            ->add('lastName')
+            ->add('phone')
+            ->add('imageFile', FileType::class, array(
+                'label' => 'Photo',
+                'required' => false))
         ;
     }
 
