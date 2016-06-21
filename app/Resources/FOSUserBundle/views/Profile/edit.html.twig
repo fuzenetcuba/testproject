@@ -20,6 +20,71 @@
                 </div>
             </div>
             <div class="hr-line-dashed"></div>
+            <div class="form-group{% if(form.firstName.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="firstName" class="col-md-2 control-label">{{ form_label(form.firstName) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.firstName, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.firstName.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.firstName.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+            <div class="form-group{% if(form.lastName.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="lastName" class="col-md-2 control-label">{{ form_label(form.lastName) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.lastName, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.lastName.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.lastName.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+            <div class="form-group{% if(form.phone.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="phone" class="col-md-2 control-label">{{ form_label(form.phone) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.phone, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.phone.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.phone.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+
+            <div class="form-group{% if(form.imageFile.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.imageFile) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.imageFile, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.imageFile.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.imageFile.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
             <div class="form-group{% if(form.email.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                 <label for="email" class="col-md-2 control-label">{{ form_label(form.email) }}</label>
 
@@ -35,6 +100,7 @@
                 </div>
             </div>
             <div class="hr-line-dashed"></div>
+
             <div class="form-group{% if(form.current_password.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                 <label for="email" class="col-md-2 control-label">{{ form_label(form.current_password) }}</label>
 
@@ -50,6 +116,7 @@
                 </div>
             </div>
             <div class="hr-line-dashed"></div>
+
             <div class="form-group border-top padding-basic-top">
                 <div class="col-md-10 col-md-offset-2">
                     <input type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}"

@@ -78,9 +78,9 @@ fos_user:
     firewall_name: main
     user_class: BackendBundle\Entity\SystemUser
     registration:
-#        form:
-#            type:               BackendBundle\Form\registrationType
-#            name:               backendbundle_user_registration
+        form:
+            type:               BackendBundle\Form\registrationType
+            name:               backendbundle_user_registration
         confirmation:
             enabled:    false
     profile:

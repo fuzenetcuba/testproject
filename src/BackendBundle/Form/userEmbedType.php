@@ -4,6 +4,7 @@ namespace BackendBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,7 +25,12 @@ class userEmbedType extends AbstractType
                 'required' => false,
             ))
             ->add('email', EmailType::class, array('required' => true, 'attr' => array('autocomplete' => 'off')))
-            ->add('enabled');
+            ->add('firstName')
+            ->add('lastName')
+            ->add('phone')
+            ->add('imageFile', FileType::class, array(
+                'label' => 'Photo',
+                'required' => false));
     }
 
     public function configureOptions(OptionsResolver $resolver)

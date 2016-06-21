@@ -2,7 +2,13 @@
     <div class="dropdown profile-element">
         <span>
             <img alt="image" class="img-avatar-small img-circle"
-                 src="{{ asset('bundles/backend/images/avatar.jpg') }}"/>
+                 src="
+                 {% if((app.user.image) is not null) %}
+                    {{ vich_uploader_asset(app.user, 'imageFile') }}
+                 {% else %}
+                    {{ asset('bundles/backend/images/avatar.jpg') }}
+                 {% endif %}
+                 "/>
         </span>
         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
             <span class="clear">

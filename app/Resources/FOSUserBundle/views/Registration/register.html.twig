@@ -2,6 +2,14 @@
 
 {% block title '- Register User' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+
+    <!-- iCheck Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/iCheck/custom.css') }}"
+          type="text/css"/>
+{% endblock %}
+
 {% block content %}
 
     <section class="inner-content">
@@ -15,6 +23,28 @@
                     </div>
                     <h3>Register to Fuzenet Plaza</h3>
                     {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+                    <div class="form-group{% if(form.firstName.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        {{ form_widget(form.firstName, { 'attr': {'class' : 'form-control', 'placeholder' : 'First name'}}) }}
+                        {% if form.firstName.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.firstName.vars['errors'] %}
+                                    <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group{% if(form.lastName.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        {{ form_widget(form.lastName, { 'attr': {'class' : 'form-control', 'placeholder' : 'Last name'}}) }}
+                        {% if form.lastName.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.lastName.vars['errors'] %}
+                                    <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
 
                     <div class="form-group{% if(form.username.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                         {{ form_widget(form.username, { 'attr': {'class' : 'form-control', 'placeholder' : 'Username'}}) }}
@@ -52,6 +82,41 @@
                         </div>
 
                     {% endfor %}
+                    <div class="form-group{% if(form.phone.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        {{ form_widget(form.phone, { 'attr': {'class' : 'form-control', 'placeholder' : 'Phone'}}) }}
+                        {% if form.phone.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.phone.vars['errors'] %}
+                                    <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    {#<div class="form-group{% if(form.imageFile.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">#}
+                        {#{{ form_widget(form.imageFile, { 'attr': {'class' : 'form-control', 'placeholder' : 'Photo'}}) }}#}
+                        {#{% if form.imageFile.vars['errors']|length > 0 %}#}
+                            {#<ul class="message">#}
+                                {#{% for error in form.imageFile.vars['errors'] %}#}
+                                    {#<li>{{ error.message }}</li>#}
+                                {#{% endfor %}#}
+                            {#</ul>#}
+                        {#{% endif %}#}
+                    {#</div>#}
+
+                    <div class="form-group{% if(form.termsAccepted.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <div class=" i-checks">
+                            <label for="termsAccepted" class="">
+                                {{ form_widget(form.termsAccepted, { 'attr': {'class' : 'form-control'}}) }}
+                                {% if form.termsAccepted.vars['errors']|length > 0 %}
+                                    <ul class="message">
+                                        {% for error in form.termsAccepted.vars['errors'] %}
+                                            <li>{{ error.message }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                                Accept Terms</label>
+                        </div>
+                    </div>
 
 
                     <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
@@ -65,4 +130,26 @@
             </div>
         </div>
     </section>
+{% endblock %}
+{% block javascript %}
+    {{ parent() }}
+
+    <!-- iCheck Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
+            type="text/javascript"></script>
+{% endblock %}
+
+{% block inline_javascript %}
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //  iCheck scripts for checkboxes and radios
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+
 {% endblock %}

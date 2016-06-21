@@ -136,7 +136,7 @@
         <label for="" class="col-md-2 control-label">{{ form_label(form.imageFile) }}</label>
 
         <div class="col-md-6">
-            {{ form_widget(form.imageFile, { 'attr': {'class' : 'form-control', 'required' : 'required'}}) }}
+            {{ form_widget(form.imageFile, { 'attr': {'class' : 'form-control'}}) }}
             {% if form.imageFile.vars['errors']|length > 0 %}
                 <ul class="message">
                     {% for error in form.imageFile.vars['errors'] %}

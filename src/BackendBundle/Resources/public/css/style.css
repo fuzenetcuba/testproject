@@ -8387,3 +8387,17 @@ label.required:before {
 .help-block {
   color: RGBA(115, 115, 115, 0.7);
 }
+
+/*  styles for navbar avatar */
+.landing-page .navbar-default .nav li a.navbar-avatar {
+  padding-right: 50px;
+}
+.landing-page .navbar-default .nav li a.navbar-avatar img.img-avatar-small {
+  position: absolute;
+  top: 16px;
+  width: 35px;
+  height: 35px;
+}
+.landing-page .navbar-scroll.navbar-default .nav li a.navbar-avatar img.img-avatar-small {
+  top: 12px;
+}
