@@ -190,8 +190,9 @@ body.landing-page {
     margin-top: 15px;
     border-radius: 5px;
     font-size: 12px;
-    padding: 10px;
+    padding: 0 15px;
     height: auto;
+    background-color: #FFFFFF;
 }
 .landing-page .header-back {
     height: 470px;
@@ -626,6 +627,22 @@ body.landing-page {
     top: 12px;
 }
 
+/* custom navbar brand */
+.landing-page .navbar-default .navbar-brand {
+    background: rgba(255, 255, 255, 0.5);
+}
+.landing-page .navbar-default .navbar-brand:hover {
+    background: #FFFFFF;
+}
+.landing-page .navbar-default .navbar-brand img{
+    height: 50px;
+    width: auto;
+    transition: all 0.3s ease-in-out 0s;
+}
+.landing-page .navbar.navbar-scroll .navbar-brand img{
+    height: 40px;
+    width: auto;
+}
 /*
  * Custom CSS rules
  */
