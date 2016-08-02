@@ -911,7 +911,7 @@ fieldset[disabled] .btn-link.active {
 .btn-white {
   color: inherit;
   background: white;
-  border: 1px solid #e7eaec;
+  border: 1px solid #c0c0c0;
 }
 .btn-white:hover,
 .btn-white:focus,
@@ -923,7 +923,7 @@ fieldset[disabled] .btn-link.active {
 .btn-white.active:hover,
 .btn-white.active:focus {
   color: inherit;
-  border: 1px solid #d2d2d2;
+  border: 1px solid #bbbbbb;
 }
 .btn-white:active,
 .btn-white.active {
@@ -1290,6 +1290,13 @@ button.dim:active:before {
 }
 .onoffswitch-ios-label.checked:before {
   right: 0px;
+}
+
+.onoffswitch-ios-label.checked.disabled {
+  background-color: #A3A3A3;
+}
+.onoffswitch-ios-label.checked.disabled, .onoffswitch-ios-label.checked.disabled:before {
+  border-color: #A3A3A3;
 }
 
 
@@ -1959,7 +1966,7 @@ input[type=file].form-control{
 .single-line {
   background-color: #FFFFFF;
   background-image: none;
-  border: 1px solid #e5e6e7;
+  border: 1px solid #c0c0c0;
   border-radius: 1px;
   color: inherit;
   display: block;
@@ -2001,7 +2008,7 @@ input[type=file].form-control{
 }
 .input-group-addon {
   background-color: #fff;
-  border: 1px solid #E5E6E7;
+  border: 1px solid #c0c0c0;
   border-radius: 1px;
   color: inherit;
   font-size: 14px;
@@ -3494,7 +3501,7 @@ a:focus {
   border-right: 1px solid #e7eaec;
 }
 .hr-line-dashed {
-  border-top: 1px dashed #e7eaec;
+  border-top: 1px dashed #c0c0c0;
   color: #ffffff;
   background-color: #ffffff;
   height: 1px;
