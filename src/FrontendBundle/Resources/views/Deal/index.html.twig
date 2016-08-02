@@ -2,6 +2,11 @@
 
 {% block title '- Deals' %}
 
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/frontend/js/sticky_filter.js') }}"></script>
+{% endblock %}
+
 {% block content %}
     <section class="inner-content">
         <div class="container">
@@ -14,25 +19,28 @@
                                 {{ form_widget(form.business) }}
                             </div>
                             <div class="col-sm-4 col-md-6">
-                                <button type="submit" class="btn btn-default">
+                                <button type="submit"
+                                        class="btn btn-primary btn-sm-block">
                                     <i class="fa fa-search"></i> &nbsp;FILTER
                                 </button>
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-4 col-md-offset-2 col-sm-6 text-right">
-                        <h4>SORT DEALS BY:</h4>
-                        <div class="btn-group">
-                            <a href="{{ path('deals', {
-                                'order': constant('BackendBundle\\Model\\SortingMode::SORT_ENDING_SOON')}) }}"
-                               class="btn btn-white
-                           {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_ENDING_SOON') %}active{% endif %}"
-                               type="button">ENDING SOON</a>
-                            <a href="{{ path('deals', {
-                                'order': constant('BackendBundle\\Model\\SortingMode::SORT_NEW_DEALS')}) }}"
-                               class="btn btn-white
-                           {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_NEW_DEALS') %}active{% endif %}"
-                               type="button">NEW DEALS</a>
+                    <div class="col-md-4 col-md-offset-2 col-sm-6 text-right-md">
+                        <div class="m-l">
+                            <h4>SORT DEALS BY:</h4>
+                            <div class="btn-group">
+                                <a href="{{ path('deals', {
+                                    'order': constant('BackendBundle\\Model\\SortingMode::SORT_ENDING_SOON')}) }}"
+                                   class="btn btn-white
+                                {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_ENDING_SOON') %}active{% endif %}"
+                                   type="button">ENDING SOON</a>
+                                <a href="{{ path('deals', {
+                                    'order': constant('BackendBundle\\Model\\SortingMode::SORT_NEW_DEALS')}) }}"
+                                   class="btn btn-white
+                                {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_NEW_DEALS') %}active{% endif %}"
+                                   type="button">NEW DEALS</a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -22,30 +22,33 @@
                                 {{ form_widget(form.category) }}
                             </div>
                             <div class="col-sm-4">
-                                <button type="submit" class="btn btn-default">
+                                <button type="submit"
+                                        class="btn btn-primary btn-sm-block">
                                     <i class="fa fa-search"></i> &nbsp;FILTER
                                 </button>
                             </div>
                         </form>
                     </div>
-                    <div class="col-sm-5 text-right">
-                        <h4>SORT BUSINESSES BY:</h4>
-                        <div class="btn-group">
-                            <a href="{{ path('business_list', {'order':
-                                constant('BackendBundle\\Model\\SortingMode::SORT_ALPHABETICALLY')}) }}"
-                               class="btn btn-white
-                           {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_ALPHABETICALLY') %}active{% endif %}"
-                               type="button">ALPHABETICALLY</a>
-                            <a href="{{ path('business_list', {'order':
-                                constant('BackendBundle\\Model\\SortingMode::SORT_CATEGORY')}) }}"
-                               class="btn btn-white
-                           {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_CATEGORY') %}active{% endif %}"
-                               type="button">CATEGORY</a>
-                            <a href="{{ path('business_list', {'order':
-                                constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS')}) }}"
-                               class="btn btn-white
-                           {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS') %}active{% endif %}"
-                               type="button">RECENT DEALS</a>
+                    <div class="col-sm-5 text-right-md">
+                        <div class="m-l">
+                            <h4>SORT BUSINESSES BY:</h4>
+                            <div class="btn-group">
+                                <a href="{{ path('business_list', {'order':
+                                    constant('BackendBundle\\Model\\SortingMode::SORT_ALPHABETICALLY')}) }}"
+                                   class="btn btn-white
+                                {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_ALPHABETICALLY') %}active{% endif %}"
+                                   type="button">ALPHABETICALLY</a>
+                                <a href="{{ path('business_list', {'order':
+                                    constant('BackendBundle\\Model\\SortingMode::SORT_CATEGORY')}) }}"
+                                   class="btn btn-white
+                                {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_CATEGORY') %}active{% endif %}"
+                                   type="button">CATEGORY</a>
+                                <a href="{{ path('business_list', {'order':
+                                    constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS')}) }}"
+                                   class="btn btn-white
+                                {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS') %}active{% endif %}"
+                                   type="button">RECENT DEALS</a>
+                            </div>
                         </div>
                     </div>
                 </div>
