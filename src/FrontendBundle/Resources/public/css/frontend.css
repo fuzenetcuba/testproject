@@ -101,6 +101,7 @@ body.landing-page {
 .landing-page .navbar-default {
     background-color: transparent;
     border-color: transparent;
+    -webkit-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
 }
 .landing-page .navbar-default .nav li a {
@@ -109,7 +110,7 @@ body.landing-page {
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 11px;
 }
 .landing-page .navbar-nav > li > a {
     padding-top: 25px;
@@ -149,9 +150,10 @@ body.landing-page {
     display: block;
     font-size: 14px;
     background: #1ab394;
-    padding: 15px 20px 15px 20px;
+    padding: 13px 20px 12px 20px;
     border-radius: 0 0 5px 5px;
     font-weight: 700;
+    -webkit-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
 }
 .landing-page .navbar-scroll.navbar-default .nav li a {
@@ -171,10 +173,10 @@ body.landing-page {
     background: inherit;
 }
 .landing-page .nav > li > a {
-    padding: 25px 10px 15px 10px;
+    padding: 22px 8px 13px 8px;
 }
 .landing-page .navbar-scroll .navbar-nav > li > a {
-    padding: 20px 10px;
+    padding: 18px 8px;
 }
 .landing-page .navbar-default .navbar-nav > .active > a,
 .landing-page .navbar-default .navbar-nav > .active > a:hover {
@@ -533,12 +535,27 @@ body.landing-page {
         font-size: 50px;
     }
 }
+@media (min-width:768px){
+    .landing-page .navbar .container {
+        width: 768px;
+    }
+}
+@media (min-width:992px){
+    .landing-page .navbar .container {
+        width: 970px;
+    }
+}
+@media (min-width:1200px){
+    .landing-page .navbar .container {
+        width: 1170px;
+    }
+}
 @media (max-width: 992px) {
     .landing-page .carousel-image {
         display: none;
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .landing-page .carousel-caption,
     .landing-page .carousel-caption.blank {
         left: 5%;
@@ -601,7 +618,7 @@ body.landing-page {
         margin-top: 120px;
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .landing-page .navbar .navbar-header {
         display: block;
         float: none;
@@ -609,7 +626,56 @@ body.landing-page {
     .landing-page .navbar .navbar-header .navbar-toggle {
         background-color: #ffffff;
         padding: 9px 10px;
+        margin-top: 25px;
         border: none;
+        -webkit-transition: all 0.3s ease-in-out 0s;
+        transition: all 0.3s ease-in-out 0s;
+    }
+    .landing-page .navbar-scroll .navbar-header .navbar-toggle {
+        background-color: #ffffff;
+        padding: 9px 10px;
+        margin-top: 9px;
+        border: none;
+    }
+    .landing-page .navbar .navbar-header .navbar-brand {
+        float: none;
+        display: block;
+        text-align: center;
+    }
+    .landing-page #navbar,
+    .landing-page .navbar-collapse {
+        text-align: center !important;
+    }
+    .landing-page .navbar .navbar-nav {
+        float: none !important;
+        display: inline-block;
+    }
+    .landing-page .navbar-right {
+        float: none;
+    }
+    .landing-page .navbar .navbar-header .navbar-brand > img{
+        display: inline-block;
+    }
+}
+
+@media (min-width: 1200px) {
+    .landing-page .navbar-default .nav li a {
+        font-size: 14px;
+    }
+    .landing-page .nav > li > a {
+        padding: 22px 10px;
+    }
+    .landing-page .navbar-scroll .navbar-nav > li > a {
+        padding: 18px 10px 20px;
+    }
+}
+
+@media (min-width:760px) and (max-width: 770px) {
+    .landing-page .navbar-wrapper .navbar {
+        padding: 0;
+    }
+    .landing-page .navbar .container {
+        padding: 0 10px 0 0;
     }
 }
 
@@ -627,6 +693,11 @@ body.landing-page {
     top: 12px;
 }
 
+.navbar-nav{
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
 /* custom navbar brand */
 .landing-page .navbar-default .navbar-brand {
     background: rgba(255, 255, 255, 0.5);
@@ -637,6 +708,7 @@ body.landing-page {
 .landing-page .navbar-default .navbar-brand img{
     height: 50px;
     width: auto;
+    -webkit-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
 }
 .landing-page .navbar.navbar-scroll .navbar-brand img{
