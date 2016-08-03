@@ -64,6 +64,9 @@ body.landing-page {
     color: #aeaeae;
     font-size: 13px;
 }
+.landing-page section p.text-muted-strong {
+    color: #555555;
+}
 .landing-page address {
     font-size: 13px;
 }
@@ -941,6 +944,11 @@ div.print-deal-list div {
     display: flex;
 }
 
+.row-eq-height img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 span.business-info {
     font-size: 15px;
 }
@@ -969,6 +977,11 @@ span.business-info {
 
 .related-businesses .product-imitation {
     background-color: transparent;
+}
+
+.related-businesses .product-imitation img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .carousel-inner .active.left {

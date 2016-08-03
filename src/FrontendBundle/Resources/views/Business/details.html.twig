@@ -46,7 +46,7 @@
                     </span>
 
                     </p>
-                    <p>{{ business.description | nl2br }}</p>
+                    <p class="text-muted-strong">{{ business.description | nl2br }}</p>
                 </div>
             </div>
 
@@ -105,7 +105,7 @@
                                 <div class="ibox-content product-box">
 
                                     <div class="product-imitation container-image">
-                                        <img class="center-height center-cropped"
+                                        <img class="center-height"
                                              src="{{ asset('images/business/' ~ item.logo) }}">
                                     </div>
                                     <div class="product-desc">
