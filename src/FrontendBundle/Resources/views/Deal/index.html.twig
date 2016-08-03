@@ -10,7 +10,7 @@
 {% block content %}
     <section class="inner-content">
         <div class="container">
-            <div class="row filter-deals">
+            <div class="row filter-deals hidden-print">
                 <div class="container">
                     <div class="col-sm-6">
                         <form action="{{ path('deals') }}" method="post">
@@ -26,7 +26,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-4 col-md-offset-2 col-sm-6 text-right-md">
+                    <div class="col-md-4 col-md-offset-1 col-sm-5 text-right-md">
                         <div class="m-l">
                             <h4>SORT DEALS BY:</h4>
                             <div class="btn-group">
@@ -43,10 +43,23 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-sm-1">
+                        <div class="m-l m-t-xs m-r">
+                            <button class="btn btn-success btn-sm-block"
+                            onclick="print();">
+                                <i class="fa fa-print"></i>
+                            </button>
+                        </div>
+                        <div class="m-l m-t-xxs m-r">
+                            <button class="btn btn-default btn-sm-block">
+                                <i class="fa fa-chevron-up"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="row deal-list">
+            <div class="row deal-list hidden-print">
                 <div class="col-sm-12">
                     {% for deal in deals %}
                         <div class="col-sm-4 text-center">
@@ -66,8 +79,70 @@
                     {% endfor %}
                 </div>
             </div>
+            {# Content visible only for print view #}
+            <div class="print-view visible-print">
+                <div class="row">
+                    <img src="{{ asset('bundles/frontend/img/plaza_mariachi.png') }}"
+                         alt="Plaza Mariachi Music City"
+                         class="print-brand m-l"/>
+                </div>
+                <h1 class="print-title">Deals List of Plaza Mariachi</h1>
+                <div class="row print-deal-list">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>IMAGE</th>
+                            <th>NAME</th>
+                            <th>DESCRIPTION</th>
+                            <th>BUSINESS</th>
+                            <th>START DATE</th>
+                            <th>END DATE</th>
+                            <th>POINTS</th>
+                        </tr>
+                        </thead>
 
-            <div class="row text-center">
+                        <tbody>
+                        {% for deal in deals %}
+                            <tr>
+                                <td>
+                                    <div class="print-container-image">
+                                        <img class="center-height"
+                                             src="{{ asset('images/deals/' ~ deal.image) }} "/>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{ deal.name | upper }}
+                                </td>
+                                <td>
+                                    {{ deal.description }}
+                                </td>
+                                <td>
+                                    {{ deal.business.name }}
+                                </td>
+                                <td>
+                                    {{ deal.startsAt|date("Y, d M") }}
+                                </td>
+                                <td>
+                                    {{ deal.endsAt|date("Y, d M") }}
+                                </td>
+                                <td>
+                                    {{ deal.points ~ " points" }}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="7">
+                                    No deals matching your criterias were found...
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="row text-center hidden-print">
                 {{ knp_pagination_render(deals) }}
             </div>
         </div>

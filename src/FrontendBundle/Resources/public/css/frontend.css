@@ -782,6 +782,19 @@ div.container-image.business-image {
     max-height: 250px !important;
 }
 
+div.print-container-image {
+    height: 30px;
+    position: relative;
+}
+
+div.print-container-image.print-business-image {
+    height: 30px;
+}
+
+.center-height.print-business-image {
+    max-height: 30px !important;
+}
+
 div.related-businesses div.container-image {
     height: 300px;
 }
@@ -872,6 +885,29 @@ div.filter-deals > form > .col-sm-6:first-of-type {
 
 div.deal-list {
     margin-top: 30px;
+}
+
+div.print-view {
+    position: absolute;
+    top: 0;
+}
+
+div.print-view .print-brand {
+    height: 30px;
+    width: auto;
+}
+
+div.print-view .print-title {
+    font-size: 14px;
+}
+
+div.print-deal-list {
+    margin-top: 5px;
+    font-size: 8px;
+}
+
+div.print-deal-list div {
+    vertical-align: middle;
 }
 
 .pagination-lg > li > a, .pagination-lg > li > span {

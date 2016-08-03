@@ -757,7 +757,7 @@ fieldset[disabled] .btn-info.active {
 .btn-default {
   color: inherit;
   background: white;
-  border: 1px solid #e7eaec;
+  border: 1px solid #c0c0c0;
 }
 .btn-default:hover,
 .btn-default:focus,
