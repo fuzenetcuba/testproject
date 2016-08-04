@@ -1118,3 +1118,21 @@ span.business-info {
 a.logout {
     color: #676a6c !important;
 }
+
+.landing-page .language-selector img.language-selector-icon {
+    height: 16px;
+    position: relative;
+    top: -1px;
+    width: auto;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -moz-transition: all 0.2s ease-in-out 0s;
+    -ms-transition: all 0.2s ease-in-out 0s;
+    -o-transition: all 0.2s ease-in-out 0s;
+    transition: all 0.2s ease-in-out 0s;
+}
+.landing-page .navbar-default .language-selector:hover img.language-selector-icon {
+    box-shadow: 0 0 3px #ffffff;
+}
+.landing-page .navbar-scroll .language-selector:hover img.language-selector-icon {
+    box-shadow: 0 0 3px #555555;
+}
