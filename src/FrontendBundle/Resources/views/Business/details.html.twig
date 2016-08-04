@@ -3,7 +3,7 @@
 {% block title '- ' ~ business.name %}
 
 {% block content %}
-    <section class="inner-content">
+    <section class="inner-content section-spaces-line">
         <div class="container">
             <div class="row row-eq-height">
                 <div class="col-sm-6 text-center">
@@ -52,31 +52,40 @@
 
             {% if business.deals | length > 0 %}
                 <div class="row business-deals">
-                    <h2>ACTIVE DEALS</h2>
+                    <div class="container">
+                        <div class="row m-b-lg">
+                            <div class="col-lg-12 text-center">
+                                <div class="section-line amber-line"></div>
+                                <h1>Active Deals</h1>
 
-                    <div class="carousel slide" id="myCarousel">
-                        <div class="carousel-inner">
-                            {% for deal in business.deals %}
-                                <div class="item {% if loop.first %}active{% endif %} ">
-                                    <div class="col-sm-3 text-center">
-                                        <h3>{{ deal.name | upper }}</h3>
-                                        <p>AT {{ deal.business.name | upper }}</p>
-                                        <p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>
-                                        <div class="container-image">
-                                            <img class="center-height"
-                                                 src="{{ asset('images/deals/' ~ deal.image) }} "/>
-                                        </div>
-                                        <p><a class="btn btn-info"
-                                              href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View
-                                                Deal</a></p>
-                                    </div>
-                                </div>
-                            {% endfor %}
+                                {#<p>Find and win with our best deals of your interests</p>#}
+                            </div>
                         </div>
-                        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i
-                                    class="glyphicon glyphicon-chevron-left"></i></a>
-                        <a class="right carousel-control" href="#myCarousel" data-slide="next"><i
-                                    class="glyphicon glyphicon-chevron-right"></i></a>
+
+                        <div class="carousel slide" id="myCarousel">
+                            <div class="carousel-inner">
+                                {% for deal in business.deals %}
+                                    <div class="item {% if loop.first %}active{% endif %} ">
+                                        <div class="col-sm-3 text-center">
+                                            <h3>{{ deal.name | upper }}</h3>
+                                            <p>AT {{ deal.business.name | upper }}</p>
+                                            <p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>
+                                            <div class="container-image">
+                                                <img class="center-height"
+                                                     src="{{ asset('images/deals/' ~ deal.image) }} "/>
+                                            </div>
+                                            <p><a class="btn btn-amber"
+                                                  href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View
+                                                    Deal</a></p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i
+                                        class="glyphicon glyphicon-chevron-left"></i></a>
+                            <a class="right carousel-control" href="#myCarousel" data-slide="next"><i
+                                        class="glyphicon glyphicon-chevron-right"></i></a>
+                        </div>
                     </div>
                 </div>
             {% endif %}
@@ -98,37 +107,47 @@
 
             {% if related | length > 0 %}
                 <div class="row related-businesses">
-                    <h2>RELATED BUSINESSES</h2>
-                    {% for item in related %}
-                        <div class="col-md-3">
-                            <div class="ibox">
-                                <div class="ibox-content product-box">
+                    <div class="container">
+                        <div class="row m-b-lg">
+                            <div class="col-lg-12 text-center">
+                                <div class="section-line pink-line"></div>
+                                <h1>Related Businesses</h1>
 
-                                    <div class="product-imitation container-image">
-                                        <img class="center-height"
-                                             src="{{ asset('images/business/' ~ item.logo) }}">
-                                    </div>
-                                    <div class="product-desc">
-                                        {#<span class="product-price">#}
-                                        {#$10#}
-                                        {#</span>#}
-                                        {#<small class="text-muted">Category</small>#}
-                                        <a href="{{ path('business_details', {'slug':item.slug}) }}"
-                                           class="product-name">{{ item.name }}</a>
+                                {#<p>Find and win with our best deals of your interests</p>#}
+                            </div>
+                        </div>
+                        <h2></h2>
+                        {% for item in related %}
+                            <div class="col-sm-3">
+                                <div class="ibox">
+                                    <div class="ibox-content product-box">
 
-                                        <div class="small m-t-xs">
-                                            {{ item.description | truncate(200, true) }}
+                                        <div class="product-imitation container-image">
+                                            <img class="center-height"
+                                                 src="{{ asset('images/business/' ~ item.logo) }}">
                                         </div>
-                                        <div class="m-t text-center">
+                                        <div class="product-desc">
+                                            {#<span class="product-price">#}
+                                            {#$10#}
+                                            {#</span>#}
+                                            {#<small class="text-muted">Category</small>#}
                                             <a href="{{ path('business_details', {'slug':item.slug}) }}"
-                                               class="btn btn-xs btn-outline btn-primary">View business
-                                                <i class="fa fa-long-arrow-right"></i> </a>
+                                               class="product-name">{{ item.name }}</a>
+
+                                            <div class="small m-t-xs">
+                                                {{ item.description | truncate(200, true) }}
+                                            </div>
+                                            <div class="m-t text-center">
+                                                <a href="{{ path('business_details', {'slug':item.slug}) }}"
+                                                   class="btn btn-xs btn-outline btn-pink">View business
+                                                    <i class="fa fa-long-arrow-right"></i> </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
             {% endif %}
         </div>

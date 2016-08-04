@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-    <section class="inner-content">
+    <section class="inner-content section-spaces-line">
         <div class="container">
             <div class="row filter-deals hidden-print">
                 <div class="container">
@@ -23,7 +23,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <button type="submit"
-                                        class="btn btn-primary btn-sm-block">
+                                        class="btn btn-blue btn-sm-block">
                                     <i class="fa fa-search"></i> &nbsp;FILTER
                                 </button>
                             </div>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-sm-1">
                         <div class="m-l m-t-xs m-r">
-                            <button class="btn btn-success btn-sm-block"
+                            <button class="btn btn-blue btn-sm-block"
                                     onclick="print();">
                                 <i class="fa fa-print"></i>
                             </button>
@@ -78,7 +78,7 @@
                                      src="{{ asset('images/business/' ~ business.logo) }} "/>
                             </div>
                             <p>
-                                <a class="btn btn-info" href="{{ path('business_details', {'slug' : business.slug}) }}"
+                                <a class="btn btn-amber" href="{{ path('business_details', {'slug' : business.slug}) }}"
                                    role="button">View Business</a>
                             </p>
                         </div>
