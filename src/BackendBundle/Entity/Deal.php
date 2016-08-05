@@ -74,6 +74,8 @@ class Deal
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
+     * @var File
+     *
      * @Vich\UploadableField(mapping="deal_image", fileNameProperty="image",
      *      groups={"creation"}
      * )
@@ -89,7 +91,6 @@ class Deal
      *     maxSize="5M",
      *     maxSizeMessage="The image must have 5 MB (megabytes) or less"
      * )
-     * @var File
      */
     private $imageFile;
 
