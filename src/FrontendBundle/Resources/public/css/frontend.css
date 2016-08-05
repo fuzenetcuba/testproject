@@ -200,7 +200,8 @@ body.landing-page {
 .landing-page .navbar-wrapper .navbar.navbar-scroll {
     padding-top: 0;
     padding-bottom: 0;
-    border-bottom: 1px solid #e7eaec;
+    border-bottom: 1px solid #c0c0c0;
+    box-shadow: 0 0 5px #c0c0c0;
     border-radius: 0;
 }
 .landing-page .nav > li.active {
@@ -224,7 +225,8 @@ body.landing-page {
     border: none !important;
 }
 .landing-page .navbar-fixed-top.navbar-scroll {
-    border-bottom: 1px solid #e7eaec !important;
+    border-bottom: 1px solid #c0c0c0 !important;
+    box-shadow: 0 0 5px #c0c0c0;
 }
 .landing-page .navbar.navbar-scroll .navbar-brand {
     margin-top: 15px;
@@ -405,6 +407,9 @@ body.landing-page {
 .landing-page .dark-blue-section {
     background: #015190;
     color: #fff;
+}
+.landing-page .brown-section hr {
+    border-color: #5D3F25 -moz-use-text-color -moz-use-text-color;
 }
 .landing-page .team-member {
     text-align: center;
@@ -605,6 +610,13 @@ body.landing-page {
     div.filter-deals .container{
         padding-left: 0;
         padding-right: 0;
+    }
+    .footer-left {
+        text-align: right !important;
+    }
+    .footer-right {
+        text-align: left !important;
+        margin-top: 10px !important;
     }
 }
 @media (min-width:992px){
@@ -1473,6 +1485,39 @@ button.btn-blue.dim {
 button.btn-blue.dim:active {
     box-shadow: inset 0 0 0 #2196F3, 0 2px 0 0 #2196F3, 0 5px 3px #999999;
 }
+.btn-circle-muted {
+    width: 35px;
+    height: 35px;
+    padding: 6px 0;
+    border-radius: 35px;
+    text-align: center;
+    font-size: 14px;
+    border-color: #aeaeae;
+    color: #aeaeae;
+    line-height: 1.5;
+}
+.btn-circle-white {
+    width: 35px;
+    height: 35px;
+    padding: 6px 0;
+    border-radius: 35px;
+    text-align: center;
+    font-size: 14px;
+    border-color: #fff;
+    color: #fff;
+    line-height: 1.5;
+}
+.btn-circle-green {
+    width: 35px;
+    height: 35px;
+    padding: 6px 0;
+    border-radius: 35px;
+    text-align: center;
+    font-size: 14px;
+    border-color: #8c9110;
+    color: #8c9110;
+    line-height: 1.5;
+}
 .label-brown,
 .badge-brown {
     background-color: #5D3F25;
@@ -1502,4 +1547,16 @@ button.btn-blue.dim:active {
 .badge-blue {
     background-color: #2196F3;
     color: #FFFFFF;
+}
+.goo-map-home-location {
+    height: 180px;
+    width: auto;
+}
+
+.footer-left {
+    text-align: center;
+}
+.footer-right {
+    text-align: center;
+    margin-top: 40px;
 }
