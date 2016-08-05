@@ -32,7 +32,7 @@ class DefaultController extends Controller
         }
 
         // find top deals by created date
-        $topDealsByCreatedDate = $em->getRepository('BackendBundle:Deal')->findTopDeals(5);
+        $topDealsByCreatedDate = $em->getRepository('BackendBundle:Deal')->findRecentDeals(5);
 
         return $this->render('BackendBundle:Default:index.html.twig', array(
             'cant_business' => $cantBusiness,

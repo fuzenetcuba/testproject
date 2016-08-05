@@ -14,14 +14,14 @@ use Doctrine\ORM\EntityRepository;
 class DealRepository extends EntityRepository
 {
     /**
-     * Returns the top N deals based on the creation date, if no parameter (or zero)
+     * Returns the most recent N deals based on the creation date, if no parameter (or zero)
      * is specified the top 3 deals are returned
      *
      * @param int $n
      *
      * @return \Doctrine\ORM\Query
      */
-    public function findTopDeals($n = 0)
+    public function findRecentDeals($n = 0)
     {
         return $this->getEntityManager()
             ->createQuery('SELECT d FROM BackendBundle:Deal d ORDER BY d.createdAt DESC')
