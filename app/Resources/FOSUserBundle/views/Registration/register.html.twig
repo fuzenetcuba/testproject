@@ -12,16 +12,16 @@
 
 {% block content %}
 
-    <section class="inner-content">
+    <section class="inner-content section-spaces-line">
         <div class="container">
             <div class="middle-box text-center loginscreen   animated fadeInDown">
                 <div>
                     <div>
 
-                        <h2>Fuzenet Plaza</h2>
+                        <h2>Plaza Mariachi</h2>
 
                     </div>
-                    <h3>Register to Fuzenet Plaza</h3>
+                    <h3>Register to Plaza Mariachi</h3>
                     {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
                     <div class="form-group{% if(form.firstName.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
@@ -119,7 +119,7 @@
                     </div>
 
 
-                    <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
+                    <button type="submit" class="btn btn-green block full-width m-b">Register</button>
 
                     <p class="text-muted text-center">
                         <small>Already have an account?</small>

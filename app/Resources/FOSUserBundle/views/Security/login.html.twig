@@ -81,7 +81,7 @@
                 {% endif %}
 
 
-                <div class="loginColumns animated fadeInDown">
+                <div class="loginColumns animated fadeInDown section-spaces">
                     <div class="row">
 
                         <div class="col-md-6">
@@ -124,22 +124,22 @@
                                     </div>
                                     <button type="submit" name="_submit"
                                             value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}"
-                                            class="btn btn-primary block full-width m-b">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+                                            class="btn btn-green block full-width m-b">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
 
-                                    <a class="text-center" href="{{ path('fos_user_resetting_request') }}">
+                                    <a class="text-center text-green" href="{{ path('fos_user_resetting_request') }}">
                                         <small>Forgot password?</small>
                                     </a>
 
                                     <p class="text-muted text-center">
                                         <small>Do not have an account?</small>
                                     </p>
-                                    <a class="btn btn-sm btn-info btn-block"
+                                    <a class="btn btn-sm btn-blue btn-block"
                                        href="{{ path('fos_user_registration_register') }}">Create an account</a>
                                     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
                                     <br/>
-                                    <a class="btn btn-text-blank btn-sm btn-success btn-block" href="#"
-                                       onclick="fb_login();">
-                                        <i class="fa fa-facebook pull-left ali"></i> Facebook
+                                    <a class="btn btn-block btn-social btn-facebook" onclick="fb_login();" href="#">
+                                        <span class="fa fa-facebook pull-left ali"></span>
+                                        Facebook
                                     </a>
                                 </form>
                                 <p class="m-t">
