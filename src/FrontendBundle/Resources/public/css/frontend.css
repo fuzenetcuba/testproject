@@ -134,7 +134,7 @@ body.landing-page {
     -webkit-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
 }
-.landing-page .navbar-default .nav li a {
+.landing-page .navbar-default .nav > li > a {
     color: #fff;
     font-family: 'Open Sans', helvetica, arial, sans-serif;
     font-weight: 700;
@@ -191,10 +191,27 @@ body.landing-page {
     -webkit-transition: all 0.3s ease-in-out 0s;
     transition: all 0.3s ease-in-out 0s;
 }
-.landing-page .navbar-scroll.navbar-default .nav li a {
+.landing-page .navbar-scroll.navbar-default .nav > li > a {
     color: #676a6c;
 }
-.landing-page .navbar-scroll.navbar-default .nav li a:hover {
+.landing-page .navbar-default .nav li .dropdown-menu a,
+.landing-page .navbar-scroll.navbar-default .nav li .dropdown-menu a,
+.landing-page .navbar-scroll.navbar-default .nav li.open .dropdown-menu a:hover,
+.landing-page .navbar-default .navbar-nav > li .dropdown-menu > a:hover,
+.landing-page .navbar-default .navbar-nav > li .dropdown-menu > a:focus {
+    font-weight: normal;
+    letter-spacing: 0;
+    text-transform: none;
+    font-size: 14px;
+    border-bottom: none;
+}
+.landing-page .navbar-default .navbar-nav > .open > a,
+.landing-page .navbar-default .navbar-nav > .open > a:focus,
+.landing-page .navbar-default .navbar-nav > .open > a:hover {
+    background-color: transparent;
+    border-color: transparent;
+}
+.landing-page .navbar-scroll.navbar-default .nav > li > a:hover {
     color: #B0B42B;
 }
 .landing-page .navbar-wrapper .navbar.navbar-scroll {
@@ -655,10 +672,10 @@ body.landing-page {
         background: transparent;
         color: inherit;
     }
-    .landing-page .navbar-default .nav li a {
+    .landing-page .navbar-default .nav > li > a {
         color: #676a6c;
     }
-    .landing-page .navbar-default .nav li a:hover {
+    .landing-page .navbar-default .nav > li > a:hover {
         color: #B0B42B;
     }
     .landing-page .navbar-wrapper .navbar {
@@ -815,7 +832,7 @@ body.landing-page {
     width: 35px;
     height: 35px;
 }
-.landing-page .navbar-scroll.navbar-default .nav li a.navbar-avatar img.img-avatar-small {
+.landing-page .navbar-scroll.navbar-default .nav > li > a.navbar-avatar img.img-avatar-small {
     top: 12px;
 }
 
@@ -1223,6 +1240,22 @@ a.logout {
  * Template Landing Page Schema color
  **/
 
+.text-brown, .text-brown a {
+    color: #281608;
+}
+.text-green, .text-green a {
+    color: #7D8108;
+}
+.text-amber, .text-amber a {
+    color: #BF8601;
+}
+.text-pink, .text-pink a {
+    color: #B5013E;
+}
+.text-blue, .text-blue a {
+    color: #016BBF;
+}
+
 .btn-brown.btn-outline {
     color: #281608;
     background-color: #FFFFFF;
@@ -1559,4 +1592,35 @@ button.btn-blue.dim:active {
 .footer-right {
     text-align: center;
     margin-top: 40px;
+}
+
+/* Login dropdown */
+.navbar .ibox-heading h2 {
+  margin: 0;
+  padding: 25px 80px;
+}
+
+.navbar .dropdown-menu {
+    border-bottom: 3px solid #b0b42b;
+    border-radius: 0;
+    border-top: 3px solid #b0b42b;
+    box-shadow: none;
+}
+.landing-page .dropdown.open > a::after {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: rgba(26, 179, 148, 0) rgba(26, 179, 148, 0) #b0b42b;
+    border-image: none;
+    border-style: solid;
+    border-width: 10px;
+    bottom: -3px;
+    content: " ";
+    height: 0;
+    left: 50%;
+    margin-left: -10px;
+    pointer-events: none;
+    position: absolute;
+    width: 0;
 }
