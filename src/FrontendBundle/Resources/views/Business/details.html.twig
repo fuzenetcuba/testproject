@@ -12,6 +12,22 @@
                 <div class="col-sm-6">
                     <h1>{{ business.name | upper }}</h1>
                     <hr/>
+
+                    <span class="business-info">
+                        <ul class="list-unstyled">
+                            <li><i class="fa fa-phone"></i> {{ business.phone }}</li>
+                            <li>
+                                <a href="{{ business.socialMedia }}">
+                                    <i class="fa fa-facebook"></i> {{ business.socialMedia }}
+                                </a>
+                            </li>
+                            <li><i class="fa fa-tags"></i> {{ business.categories | join(', ') }}</li>
+                        </ul>
+                    </span>
+
+                    </p>
+                    <p class="text-muted-strong">{{ business.description | nl2br }}</p>
+
                     <ul class="social-share list-inline social-icon pull-right">
                         <li>
                             <a href="http://twitter.com/intent/tweet?status=[TITLE]+[URL]" data-toggle="tooltip"
@@ -32,21 +48,6 @@
                             </a>
                         </li>
                     </ul>
-
-                    <span class="business-info">
-                        <ul class="list-unstyled">
-                            <li><i class="fa fa-phone"></i> {{ business.phone }}</li>
-                            <li>
-                                <a href="{{ business.socialMedia }}">
-                                    <i class="fa fa-facebook"></i> {{ business.socialMedia }}
-                                </a>
-                            </li>
-                            <li><i class="fa fa-tags"></i> {{ business.categories | join(', ') }}</li>
-                        </ul>
-                    </span>
-
-                    </p>
-                    <p class="text-muted-strong">{{ business.description | nl2br }}</p>
                 </div>
             </div>
 

@@ -14,6 +14,9 @@
                     <hr/>
                     <strong>VALID FROM: {{ deal.startsAt | date ('m/d/Y') }}
                         - {{ deal.endsAt | date ('m/d/Y') }}</strong>
+                    </p>
+                    <p class="text-muted-strong">{{ deal.description | nl2br }}</p>
+
                     <ul class="social-share list-inline social-icon pull-right">
                         <li>
                             <a href="http://twitter.com/intent/tweet?status=[TITLE]+[URL]" data-toggle="tooltip"
@@ -34,8 +37,6 @@
                             </a>
                         </li>
                     </ul>
-                    </p>
-                    <p class="text-muted-strong">{{ deal.description | nl2br }}</p>
                 </div>
             </div>
 

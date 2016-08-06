@@ -124,7 +124,7 @@ class DealManager implements ManagerInterface
      */
     public function findTopDeals($n = 3)
     {
-        return $this->em->getRepository('BackendBundle:Deal')->findTopDeals($n);
+        return $this->em->getRepository('BackendBundle:Deal')->findRecentDeals($n);
     }
 
     /**

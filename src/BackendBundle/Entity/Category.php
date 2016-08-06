@@ -77,7 +77,7 @@ class Category
         $this->children   = new ArrayCollection();
     }
 
-    function __toString()
+    public function __toString()
     {
         return $this->name;
     }
