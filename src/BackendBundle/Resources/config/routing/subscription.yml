@@ -1,0 +1,34 @@
+subscription:
+    path:     /
+    defaults: { _controller: "BackendBundle:Subscription:index" }
+    methods:  GET
+
+subscription_find:
+    path:     /find
+    defaults: { _controller: "BackendBundle:Subscription:find" }
+    methods:  [POST, GET]
+
+subscription_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:Subscription:show" }
+    methods:  GET
+
+subscription_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:Subscription:new" }
+    methods:  [GET, POST]
+
+subscription_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:Subscription:edit" }
+    methods:  [GET, POST, PUT]
+
+subscription_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:Subscription:delete" }
+    methods:  [POST, DELETE]
+    
+subscription_batch:
+    path:     /subscription_batch
+    defaults: { _controller: "BackendBundle:Subscription:batch" }
+    methods:  POST

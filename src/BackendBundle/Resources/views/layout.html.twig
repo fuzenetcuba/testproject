@@ -125,6 +125,11 @@
                                     class="nav-label">Customers</span></a>
                     </li>
 
+                    <li class="{% block active_subscription %}{% endblock %}">
+                        <a href="{{ path('subscription') }}"><i class="fa fa-flag"></i> <span
+                                    class="nav-label">Subscriptions</span></a>
+                    </li>
+
                     <li class="{% block active_users %}{% endblock %}">
                         <a href="{{ path('user') }}"><i class="fa fa-users"></i> <span
                                     class="nav-label">Users</span></a>

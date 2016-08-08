@@ -71,10 +71,18 @@ class Category
      */
     private $parent;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Subscription", mappedBy="categories")
+     */
+    private $subscriptions;
+
     public function __construct()
     {
         $this->businesses = new ArrayCollection();
-        $this->children   = new ArrayCollection();
+        $this->children = new ArrayCollection();
+        $this->subscriptions = new ArrayCollection();
     }
 
     public function __toString()
@@ -249,5 +257,42 @@ class Category
     public function setIcon($icon)
     {
         $this->icon = $icon;
+    }
+
+    /**
+     * Add subscriptions
+     *
+     * @param Subscription $subscriptions
+     * @return Category
+     */
+    public function addSubscription(Subscription $subscriptions)
+    {
+        if (!$this->subscriptions->contains($subscriptions)) {
+            $this->subscriptions[] = $subscriptions;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove subscriptions
+     *
+     * @param Subscription $subscriptions
+     */
+    public function removeSubscription(Subscription $subscriptions)
+    {
+        if ($this->subscriptions->contains($subscriptions)) {
+            $this->subscriptions->removeElement($subscriptions);
+        }
+    }
+
+    /**
+     * Get subscriptions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSubscriptions()
+    {
+        return $this->subscriptions;
     }
 }
