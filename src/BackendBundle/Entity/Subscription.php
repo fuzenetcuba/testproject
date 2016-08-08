@@ -43,6 +43,7 @@ class Subscription
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="subscriptions")
+     * @Assert\NotBlank(message="You must have to choice one category at least.")
      */
     private $categories;
 

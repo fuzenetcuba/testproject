@@ -16,6 +16,15 @@
         <dt>Subscription Date</dt>
         <dd>{{ entity.date|date('d-M-Y h:i A') }}</dd>
         <div class="hr-line-dashed"></div>
+        <dt>Categories</dt>
+        <dd>
+            {% for category in entity.categories %}
+                <span class="label label-primary">{{ category }}</span>
+                {% else %}
+                    <span class="label label-default">No categories</span>
+            {% endfor %}
+        </dd>
+        <div class="hr-line-dashed"></div>
         </tbody>
     </dl>
     <div class="form-group">
