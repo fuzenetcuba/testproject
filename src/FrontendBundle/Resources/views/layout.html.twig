@@ -153,7 +153,8 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="footer-right">
-                        <p>
+                        <p data-coordinates="40.748384,-73.9854792">
+                            {#Plaza Mariachi Map Location#}
                             <img class="goo-map-home-location"
                                  src="{{ asset("bundles/frontend/img/plaza_location.jpg") }}"/>
                         </p>
@@ -222,6 +223,7 @@
     <script src="{{ asset('bundles/backend/js/plugins/pace/pace.min.js') }}"></script>
     <script src="{{ asset('bundles/frontend/js/wow/wow.min.js') }}"></script>
     <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
 
 {% block javascript %}
     <script src="{{ asset('bundles/frontend/js/widgets.js') }}"></script>
