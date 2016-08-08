@@ -21,42 +21,20 @@
                 {#<small> Logout</small>#}
                 {#</a>#}
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
+            <div class="second-navbar navbar-collapse collapse hidden-xs">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="{% if current == 'about' %}active{% endif %}">
-                        <a href="#">About</a>
-                    </li>
-                    <li class="{% if current == 'business' %}active{% endif %}">
-                        <a href="{{ path('business_list') }}">Directory</a>
-                    </li>
-                    <li class="{% if current in ['deals', 'deal'] %}active{% endif %}">
-                        <a href="{{ path('deals') }}">Deals</a>
-                    </li>
-                    <li class="{% if current == 'news' %}active{% endif %}">
-                        <a href="#">News & Events</a>
-                    </li>
-                    <li class="{% if current == 'careers' %}active{% endif %}">
-                        <a href="#">Careers</a>
-                    </li>
-                    <li class="visible-xs">
+                    <li>
                         <a href="#">Subscribe</a>
                     </li>
-                    <li class="visible-xs">
+                    <li>
                         <a href="#">Find Us</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#hours-operation">Hours</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
                     </li>
                     <li class="dropdown hidden-xs">
                         {% if not app.user %}
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login/Register</a>
                         {% else %}
                             <a class="dropdown-toggle navbar-avatar" data-toggle="dropdown" href="#">
-                                {#{{ app.user.firstName }}#}
-                                &nbsp;
+                                {{ app.user.fullName() }}
                                 &nbsp;
                                 <img alt="image" class="img-avatar-small img-circle"
                                      src="
@@ -69,8 +47,8 @@
                             </a>
                         {% endif %}
 
-                        <div class="dropdown-menu dropdown-header">
-                            {% if not app.user %}
+                        {% if not app.user %}
+                            <div class="dropdown-menu dropdown-header">
                                 <div class="ibox-heading">
                                     <h2 class="text-center">Plaza Mariachi</h2>
                                 </div>
@@ -120,31 +98,69 @@
                                         </a>
                                     </form>
                                 </div>
-                            {% else %}
-                                <div class="ibox-content">
-                                    <a class="logout" href="{{ path('membership') }}">
+                            </div>
+                        {% else %}
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ path('membership') }}">
                                         <i class="fa fa-user"></i> Membership
                                     </a>
-                                    <hr/>
-                                    <a class="logout" href="{{ path('fos_user_security_logout') }}">
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="{{ path('fos_user_security_logout') }}">
                                         <i class="fa fa-sign-out"></i> Logout
                                     </a>
-                                    {% if is_granted('ROLE_ADMIN') %}
-                                        <hr/>
+                                </li>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <li class="divider"></li>
+                                    <li>
                                         <a target="_blank" href="{{ path('backend_homepage') }}">
                                             <i class="fa fa-cog"></i> Admin
                                         </a>
-                                    {% endif %}
-                                </div>
-                            {% endif %}
-                        </div>
+                                    </li>
+                                {% endif %}
+
+                            </ul>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="{% if current == 'about' %}active{% endif %}">
+                        <a href="#">About</a>
+                    </li>
+                    <li class="{% if current == 'business' %}active{% endif %}">
+                        <a href="{{ path('business_list') }}">Directory</a>
+                    </li>
+                    <li class="{% if current in ['deals', 'deal'] %}active{% endif %}">
+                        <a href="{{ path('deals') }}">Deals</a>
+                    </li>
+                    <li class="{% if current == 'news' %}active{% endif %}">
+                        <a href="#">News & Events</a>
+                    </li>
+                    <li class="{% if current == 'careers' %}active{% endif %}">
+                        <a href="#">Careers</a>
+                    </li>
+                    <li class="visible-xs">
+                        <a href="#">Subscribe</a>
+                    </li>
+                    <li class="visible-xs">
+                        <a href="#">Find Us</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#hours-operation">Hours</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
                     </li>
 
-                    <li class="visible-xs">
+                    <li class="dropdown visible-xs">
                         {% if not app.user %}
                             <a href="{{ path('fos_user_security_login') }}">Login/Register</a>
                         {% else %}
-                            <a class="navbar-avatar" href="{{ path("membership") }}">
+                            <a class="dropdown-toggle navbar-avatar" data-toggle="dropdown" href="#">
                                 {{ app.user.fullName() }}
                                 &nbsp;
                                 <img alt="image" class="img-avatar-small img-circle"
@@ -156,16 +172,31 @@
                                      {% endif %}
                                  "/>
                             </a>
-                            <a href="{{ path('fos_user_security_logout') }}">
-                                <i class="fa fa-sign-out"></i> Logout
-                            </a>
                         {% endif %}
-                    </li>
-                    <li class="visible-xs">
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <a href="{{ path('backend_homepage') }}">
-                                <i class="fa fa-cog"></i> Admin
-                            </a>
+
+                        {% if not not app.user %}
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ path('membership') }}">
+                                    <i class="fa fa-user"></i> Membership
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="{{ path('fos_user_security_logout') }}">
+                                    <i class="fa fa-sign-out"></i> Logout
+                                </a>
+                            </li>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li class="divider"></li>
+                                <li>
+                                    <a target="_blank" href="{{ path('backend_homepage') }}">
+                                        <i class="fa fa-cog"></i> Admin
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                        </ul>
                         {% endif %}
                     </li>
 
@@ -173,22 +204,26 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <img class="language-selector-icon"
                                  src="{{ asset("bundles/frontend/img/us_flag_64.jpg") }}"/>
+                            {#<b class="caret"></b>#}
                         </a>
-                        <div class="dropdown-menu dropdown-header">
-                            <div class="ibox-content">
+                        <ul class="dropdown-menu">
+                            <li>
                                 <a href="#">
                                     <img class="language-selector-icon"
                                          src="{{ asset("bundles/frontend/img/us_flag_64.jpg") }}"/>
                                     English
                                 </a>
-                                <hr/>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
                                 <a href="#">
                                     <img class="language-selector-icon"
                                          src="{{ asset("bundles/frontend/img/es_flag_64.jpg") }}"/>
                                     Spanish
                                 </a>
-                            </div>
-                        </div>
+                            </li>
+
+                        </ul>
                     </li>
                 </ul>
             </div>

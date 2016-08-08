@@ -802,6 +802,17 @@ body.landing-page {
     input[type=submit].btn-sm-block {
         width:100%
     }
+    .navbar-nav .open .dropdown-menu {
+        border-bottom: 3px solid #b0b42b;
+        border-radius: 0;
+        border-top: 3px solid #b0b42b;
+    }
+    .landing-page .navbar-default .nav li a.navbar-avatar img.img-avatar-small {
+        top: 12px !important;
+    }
+    section.inner-content {
+        margin-top: 70px !important;
+    }
 }
 
 @media (max-width: 768px) {
@@ -812,19 +823,22 @@ body.landing-page {
 
 @media (min-width: 768px) and (max-width: 1000px) {
     div.navbar-wrapper + * {
-        margin-top: 70px;
-    }
-    div.navbar-wrapper + .inner-content {
         margin-top: 120px;
     }
+    div.navbar-wrapper + .inner-content {
+        margin-top: 170px;
+    }
     .filter-fixed-top {
-        top: 114px !important;
+        top: 160px !important;
+    }
+    .landing-page .navbar-default .nav li a.navbar-avatar img.img-avatar-small {
+        top: 12px !important;
     }
 }
 
 /*  styles for navbar avatar */
 .landing-page .navbar-default .nav li a.navbar-avatar {
-    padding-right: 50px;
+    padding-right: 35px;
 }
 .landing-page .navbar-default .nav li a.navbar-avatar img.img-avatar-small {
     position: absolute;
@@ -868,7 +882,7 @@ section.signup h2 {
 }
 
 section.inner-content {
-    margin-top: 80px;
+    margin-top: 130px;
 }
 
 div.container-image {
@@ -973,7 +987,7 @@ div.filter-deals > form > .col-sm-6:first-of-type {
 .filter-fixed-top {
     display: block;
     position: fixed;
-    top: 63px;
+    top: 110px;
     left: 0;
     right: 0;
     z-index: 100;
@@ -1623,4 +1637,74 @@ button.btn-blue.dim:active {
     pointer-events: none;
     position: absolute;
     width: 0;
+}
+
+
+/* secondary navbar styles */
+.landing-page .navbar-default .second-navbar {
+    max-height: 50px;;
+}
+.landing-page .navbar-default .second-navbar .nav {
+    border-bottom: 2px solid #ffffff;
+    /*background-color: rgba(255, 255, 255, 0.5);*/
+    /*border-bottom-left-radius: 50px;*/
+    margin-top: 3px;
+    padding: 0 0 0 15px;
+    margin-right: -6px;
+}
+.landing-page .navbar-default.navbar-scroll .second-navbar .nav {
+    border-bottom: 2px solid #676a6c;
+}
+.landing-page .navbar-default .second-navbar .nav > li > a {
+    font-size: 10px;
+    padding-top: 8px;
+    padding-bottom: 13px;
+}
+
+.landing-page .navbar-default .second-navbar .nav li a.navbar-avatar {
+    padding-right: 30px;
+}
+
+.landing-page .navbar-default .second-navbar .nav li a.navbar-avatar img.img-avatar-small {
+    top: 3px;
+    height: 30px;
+    width: auto;
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+    .landing-page .navbar-default .second-navbar .nav {
+        border-bottom: 2px solid #676a6c;
+        padding: 0 15px;
+        margin-right: 0;
+    }
+
+    .landing-page .navbar-default .second-navbar .nav li a.navbar-avatar {
+        padding-right: 30px;
+    }
+
+    .landing-page .navbar-default .second-navbar .nav li a.navbar-avatar img.img-avatar-small {
+        top: 3px!important;
+        height: 30px;
+        width: auto;
+    }
+}
+
+@media (min-width: 1000px) {
+    .landing-page .navbar-default .second-navbar .nav > li:last-child {
+        padding-right: 0;
+    }
+    .landing-page .navbar-default .navbar-brand img {
+        height: 55px !important;
+        width: auto;
+    }
+    .landing-page .navbar-default .navbar-brand {
+        padding: 18px 30px 19px;
+    }
+    .landing-page .navbar.navbar-scroll .navbar-brand img{
+        height: 40px !important;
+        width: auto;
+    }
+    .landing-page .navbar-default.navbar-scroll .navbar-brand {
+        padding: 0 15px;
+    }
 }
