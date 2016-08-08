@@ -25,3 +25,12 @@ business_details:
 membership:
     path:     /membership
     defaults: { _controller: FrontendBundle:User:index }
+
+subscription_request:
+    path:     /subscribe/request
+    defaults: { _controller: FrontendBundle:Subscription:subscribe }
+
+subscription_confirm:
+    path:     /subscribe/confirm/{id}
+    defaults: { _controller: FrontendBundle:Subscription:confirm }
+    methods:  GET
