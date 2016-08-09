@@ -16,6 +16,7 @@ class OAuthUserProvider extends BaseClass
      * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface
      */
     private $eventDispatcher;
+    private $vichMappings;
 
     /**
      * Constructor.
@@ -24,10 +25,12 @@ class OAuthUserProvider extends BaseClass
      * @param array                                                       $properties  Property mapping.
      * @param \Symfony\Component\EventDispatcher\EventDispatcherInterface $eventDispatcher
      */
-    public function __construct(UserManagerInterface $userManager, array $properties, EventDispatcherInterface $eventDispatcher)
+    public function __construct(UserManagerInterface $userManager, array $properties,
+                                EventDispatcherInterface $eventDispatcher, $vichMappings)
     {
         parent::__construct($userManager, $properties);
         $this->eventDispatcher = $eventDispatcher;
+        $this->vichMappings = $vichMappings;
     }
 
     /**
@@ -35,13 +38,16 @@ class OAuthUserProvider extends BaseClass
      */
     public function connect(UserInterface $user, UserResponseInterface $response)
     {
-        $property = $this->getProperty($response);
         $username = $response->getUsername();
+
         //on connect - get the access token and the user ID
         $service      = $response->getResourceOwner()->getName();
         $setter       = 'set' . ucfirst($service);
         $setter_id    = $setter . 'Id';
         $setter_token = $setter . 'AccessToken';
+
+        $property = $service . 'Id';
+
         //we "disconnect" previously connected users
         if (null !== $previousUser = $this->userManager->findUserBy(array($property => $username))) {
             $previousUser->$setter_id(null);
@@ -60,26 +66,48 @@ class OAuthUserProvider extends BaseClass
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
         $username = $response->getUsername();
-        $user     = $this->userManager->findUserBy(array('username' => $username));
-        //when the user is registrating
 
+        $service = $response->getResourceOwner()->getName();
+        $property = $service . 'Id';
+
+        $user = $this->userManager->findUserBy(array($property => $username));
+
+        //when the user is registrating
         if (null === $user) {
-            $service      = $response->getResourceOwner()->getName();
             $setter       = 'set' . ucfirst($service);
             $setter_id    = $setter . 'Id';
             $setter_token = $setter . 'AccessToken';
+
             // create new user here
             $user = $this->userManager->createUser();
             $user->$setter_id($username);
             $user->$setter_token($response->getAccessToken());
+
             //I have set all requested data with the user's username
             //modify here with relevant data
-            $user->setUsername($response->getUsername());
+            $emailPart = explode('@', $response->getEmail());
+            $user->setUsername($emailPart[0]);
             $user->setEmail($response->getEmail());
-            $user->setPassword($response->getUsername());
-            $user->setPlainPassword($response->getUsername());
+            $user->setPassword($username);
+            $user->setPlainPassword($username);
             $user->setEnabled(true);
             $user->addRole("ROLE_CUSTOMER");
+
+            // adding social data
+            $user->setFirstName($response->getNickname());
+            
+            if ($response->getProfilePicture() !== null) {
+                //echo var_dump($socialData);
+                //die;
+                $newImageName = $username . ".jpg";
+                $imagePath = $this->vichMappings['user_image']['upload_destination'];
+                $newImagePath = $imagePath . "/" . $newImageName;
+
+                // copy the remote image to the server images directory
+                copy($response->getProfilePicture(), $newImagePath);
+
+                $user->setImageFile($newImageName);
+            }
 
             $this->userManager->updateUser($user);
 

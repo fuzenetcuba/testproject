@@ -124,18 +124,21 @@ vich_uploader:
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
+            namer:              vich_uploader.namer_uniqid
         deal_image:
             uri_prefix:         /images/deals
             upload_destination: %kernel.root_dir%/../web/images/deals
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
+            namer:              vich_uploader.namer_uniqid
         user_image:
             uri_prefix:         /images/users
             upload_destination: %kernel.root_dir%/../web/images/users
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
+            namer:              vich_uploader.namer_uniqid
 
 #config for HWIOAuthBundle
 hwi_oauth:
@@ -165,17 +168,18 @@ hwi_oauth:
             scope:               "email, public_profile"
             infos_url:           "https://graph.facebook.com/me?fields=id,name,email,picture.type(large)"
             paths:
-                email: email
+                email:           email
+                profilepicture:  picture.data.url
             options:
-                display: page
+                display:         popup
 
         google:
             type:                google
             client_id:           %google_client_id%
             client_secret:       %google_client_secret%
-            scope:              "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+            scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
             paths:
-                email: email
+                email:           email
 
     http_client:
         verify_peer:   true
