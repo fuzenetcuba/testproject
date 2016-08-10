@@ -1,0 +1,4 @@
+mails_send:
+    path:     /send
+    defaults: { _controller: "BackendBundle:Mails:send" }
+    methods:  [GET, POST]

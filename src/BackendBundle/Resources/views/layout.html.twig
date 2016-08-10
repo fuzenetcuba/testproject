@@ -130,6 +130,11 @@
                                     class="nav-label">Subscriptions</span></a>
                     </li>
 
+                    <li class="{% block active_mails %}{% endblock %}">
+                        <a href="{{ path('mails_send') }}"><i class="fa fa-send"></i> <span
+                                    class="nav-label">Mails</span></a>
+                    </li>
+
                     <li class="{% block active_users %}{% endblock %}">
                         <a href="{{ path('user') }}"><i class="fa fa-users"></i> <span
                                     class="nav-label">Users</span></a>
@@ -200,53 +205,55 @@
             {#  Fash bag block  #}
             {% block flash_bags %}
                 <!-- bloque de mensajes FlashBag -->
-                {% for type, messages in app.session.flashBag.all %}
-                    {% for message in messages %}
-                        <div class="alert alert-{{ type|replace({'fos_user_': ""}) }} fade in">
-                            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                            {% if(type|replace({'fos_user_': ""}) == 'danger') %}
-                                <span class="fa fa-exclamation-triangle"></span>
-                            {% elseif(type|replace({'fos_user_': ""}) == 'error') %}
-                                <span class="fa fa-exclamation-triangle"></span>
-                            {% elseif(type|replace({'fos_user_': ""}) == 'warning') %}
-                                <span class="fa fa-flash"></span>
-                            {% elseif(type|replace({'fos_user_': ""}) == 'success') %}
-                                <span class="fa fa-check"></span>
-                            {% elseif(type|replace({'fos_user_': ""}) == 'notice') %}
-                                <span class="fa fa-info"></span>
-                            {% elseif(type|replace({'fos_user_': ""}) == 'info') %}
-                                <span class="fa fa-info"></span>
-                            {% elseif(type|replace({'fos_user_': ""}) == 'message') %}
-                                <span class="fa fa-info"></span>
-                            {% endif %}
-                            {{ message|trans({}, 'FOSUserBundle')|raw }}
-                        </div>
+                <div id="flashbag-block">
+                    {% for type, messages in app.session.flashBag.all %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ type|replace({'fos_user_': ""}) }} fade in">
+                                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                                {% if(type|replace({'fos_user_': ""}) == 'danger') %}
+                                    <span class="fa fa-exclamation-triangle"></span>
+                                {% elseif(type|replace({'fos_user_': ""}) == 'error') %}
+                                    <span class="fa fa-exclamation-triangle"></span>
+                                {% elseif(type|replace({'fos_user_': ""}) == 'warning') %}
+                                    <span class="fa fa-flash"></span>
+                                {% elseif(type|replace({'fos_user_': ""}) == 'success') %}
+                                    <span class="fa fa-check"></span>
+                                {% elseif(type|replace({'fos_user_': ""}) == 'notice') %}
+                                    <span class="fa fa-info"></span>
+                                {% elseif(type|replace({'fos_user_': ""}) == 'info') %}
+                                    <span class="fa fa-info"></span>
+                                {% elseif(type|replace({'fos_user_': ""}) == 'message') %}
+                                    <span class="fa fa-info"></span>
+                                {% endif %}
+                                {{ message|trans({}, 'FOSUserBundle')|raw }}
+                            </div>
+                        {% endfor %}
                     {% endfor %}
-                {% endfor %}
-                {% for type, messages in app.session.flashBag.all %}
-                    {% for message in messages %}
-                        <div class="alert alert-{{ type|replace({'fos_user_': ""}) }} fade in">
-                            <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                            <span class="glyphicon glyphicon-remove-sign"></span>
-                            {% if(type|replace({'fos_user_': ""}) == 'danger') %}
-                                <span class="fa fa-exclamation-triangle"></span>
-                            {% elseif(type|replace({'fos_user_': ""}) == 'error') %}
-                                <span class="fa fa-exclamation-triangle"></span>
-                            {% elseif(type|replace({'fos_user_': ""}) == 'warning') %}
-                                <span class="fa fa-flash"></span>
-                            {% elseif(type|replace({'fos_user_': ""}) == 'success') %}
-                                <span class="fa fa-check"></span>
-                            {% elseif(type|replace({'fos_user_': ""}) == 'notice') %}
-                                <span class="fa fa-info"></span>
-                            {% elseif(type|replace({'fos_user_': ""}) == 'info') %}
-                                <span class="fa fa-info"></span>
-                            {% elseif(type|replace({'fos_user_': ""}) == 'message') %}
-                                <span class="fa fa-info"></span>
-                            {% endif %}
-                            {{ message|trans()|raw }}
-                        </div>
+                    {% for type, messages in app.session.flashBag.all %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ type|replace({'fos_user_': ""}) }} fade in">
+                                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                                <span class="glyphicon glyphicon-remove-sign"></span>
+                                {% if(type|replace({'fos_user_': ""}) == 'danger') %}
+                                    <span class="fa fa-exclamation-triangle"></span>
+                                {% elseif(type|replace({'fos_user_': ""}) == 'error') %}
+                                    <span class="fa fa-exclamation-triangle"></span>
+                                {% elseif(type|replace({'fos_user_': ""}) == 'warning') %}
+                                    <span class="fa fa-flash"></span>
+                                {% elseif(type|replace({'fos_user_': ""}) == 'success') %}
+                                    <span class="fa fa-check"></span>
+                                {% elseif(type|replace({'fos_user_': ""}) == 'notice') %}
+                                    <span class="fa fa-info"></span>
+                                {% elseif(type|replace({'fos_user_': ""}) == 'info') %}
+                                    <span class="fa fa-info"></span>
+                                {% elseif(type|replace({'fos_user_': ""}) == 'message') %}
+                                    <span class="fa fa-info"></span>
+                                {% endif %}
+                                {{ message|trans()|raw }}
+                            </div>
+                        {% endfor %}
                     {% endfor %}
-                {% endfor %}
+                </div>
                 <!-- FIN - bloque de mensajes FlashBag -->
             {% endblock %}
             {#  END Fash bag block  #}

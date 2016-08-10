@@ -1,0 +1,258 @@
+{% extends 'BackendBundle::layout.html.twig' %}
+
+{% block custom_css %}
+    {{ parent() }}
+
+    <!-- select2 Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
+          type="text/css"/>
+
+    <!-- selectize Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/selectize/selectize.css') }}"
+          type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/selectize/selectize.default.css') }}"
+          type="text/css"/>
+
+{% endblock %}
+
+        {% block active_mails %}active{% endblock %}
+
+        {% block page_heading_title %}
+            Send Mail
+        {% endblock %}
+
+        {% block page_content %}
+
+            {{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
+
+            <div class="form-group{% if(form.registeredUsers.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for=""
+                       class="col-md-2 control-label">{{ form_label(form.registeredUsers) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.registeredUsers, { 'attr': {
+                        'class' : 'form-control select2-field-registered',
+                        'style' : 'width: 100%'}}) }}
+                    {% if form.registeredUsers.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.registeredUsers.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+            <div class="form-group{% if(form.subscribedUsers.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for=""
+                       class="col-md-2 control-label">{{ form_label(form.subscribedUsers) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.subscribedUsers, { 'attr': {
+                        'class' : 'form-control select2-field-subscribed',
+                        'style' : 'width: 100%'}}) }}
+                    {% if form.subscribedUsers.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.subscribedUsers.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+            <div class="form-group{% if(form.customAddresses.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for=""
+                       class="col-md-2 control-label">{{ form_label(form.customAddresses) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.customAddresses, { 'attr': {
+                        'class' : 'selectize-custom-address',
+                        'placeholder' : 'Write some addresses ...'}}) }}
+                    {% if form.customAddresses.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.customAddresses.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+            <div class="form-group{% if(form.groupOfUsers.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for=""
+                       class="col-md-2 control-label">{{ form_label(form.groupOfUsers) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.groupOfUsers, { 'attr': {
+                        'class' : 'form-control select2-field-group',
+                        'style' : 'width: 100%'}}) }}
+                    {% if form.groupOfUsers.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.groupOfUsers.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+            <div class="form-group{% if(form.categories.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for=""
+                       class="col-md-2 control-label">{{ form_label(form.categories) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.categories, { 'attr': {
+                        'class' : 'form-control select2-field-category',
+                        'style' : 'width: 100%'}}) }}
+                    {% if form.categories.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.categories.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+            <div class="form-group{% if(form.message.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for=""
+                       class="col-md-2 control-label">{{ form_label(form.message) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.message, { 'attr': {
+                        'class' : 'form-control large-height',
+                        'placeholder' : 'Write your message here ...'}}) }}
+                    {% if form.message.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.message.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+            <div class="form-group{% if(form.deals.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for=""
+                       class="col-md-2 control-label">{{ form_label(form.deals) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.deals, { 'attr': {
+                        'class' : 'form-control select2-field-deals',
+                        'style' : 'width: 100%'}}) }}
+                    {% if form.deals.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.deals.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+            <div class="form-group">
+                <div class="col-md-2 text-right">
+                    <a class="btn btn-success" href="{{ path('backend_homepage') }}">
+                        <span class="fa fa-th-large"></span>
+                        Dashboard
+                    </a>
+                </div>
+                <div class="col-md-10">
+
+                    <button id="btn-mails-send" class="btn btn-primary" type="submit">
+                        <span class="fa fa-send"></span> Send
+                    </button>
+
+                    {{ form(form) }}
+
+                </div>
+            </div>
+
+
+            {{ form_end(form) }}
+
+        {% endblock %}
+
+    {% block custom_js %}
+        {{ parent() }}
+
+        <!-- select2 Scripts -->
+        <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"
+                type="text/javascript"></script>
+        <!-- selectize Scripts -->
+        <script src="{{ asset('bundles/backend/js/plugins/selectize/selectize.min.js') }}"
+                type="text/javascript"></script>
+    {% endblock %}
+
+    {% block inline_js %}
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+
+                //  select2 scripts for select2 addresses field
+                $(".select2-field-registered").select2({
+                    placeholder: "-- SELECT ADDRESSES --"
+                });
+
+                //  select2 scripts for select2 addresses field
+                $(".select2-field-subscribed").select2({
+                    placeholder: "-- SELECT ADDRESSES --"
+                });
+
+                //  selectize scripts for tags
+                $(".selectize-custom-address").selectize({
+                    plugins: ['remove_button', 'restore_on_backspace'],
+                    delimiter: ';',
+                    persist: false,
+                    create: true
+                });
+
+                //  select2 scripts for select2 fields
+                $(".select2-field-group").select2();
+
+                //  select2 scripts for select2 category field
+                $(".select2-field-category").select2({
+                    placeholder: "-- SELECT CATEGORY --"
+                });
+
+                //  select2 scripts for select2 deals field
+                $(".select2-field-deals").select2({
+                    placeholder: "-- SELECT DEALS --"
+                });
+
+                $('#btn-mails-send').click(function () {
+                    var registeredValue = $(".select2-field-registered").val();
+                    var subscribedValue = $(".select2-field-subscribed").val();
+                    var customAddressValue = $(".selectize-custom-address").val();
+                    var groupValue = $(".select2-field-group").val();
+                    var categoryValue = $(".select2-field-category").val();
+                    if (registeredValue == null
+                            && subscribedValue == null
+                            && customAddressValue.length <= 0
+                            && groupValue.length <= 0
+                            && categoryValue == null
+                    ) {
+                        $('#flashbag-block').html(
+                                '<div class="alert alert-danger fade in">'
+                                + '<button class="close" type="button" data-dismiss="alert" aria-hidden="true">×</button>'
+                                + '<span class="fa fa-exclamation-triangle"></span>'
+                                + 'You must choice one recipient address at least.'
+                                + '</div>'
+                        );
+                        return false;
+                    } else {
+                        return true;
+                    }
+                })
+            });
+
+        </script>
+    {% endblock %}

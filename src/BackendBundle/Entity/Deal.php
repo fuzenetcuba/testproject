@@ -143,6 +143,17 @@ class Deal
         }
     }
 
+    function __toString()
+    {
+        return
+            strtoupper($this->name)
+            . " | " . $this->points . " Points | "
+            . $this->startsAt->format("m/d/Y")
+            . " - "
+            . $this->endsAt->format("m/d/Y");
+    }
+
+
     /**
      * @return integer
      */

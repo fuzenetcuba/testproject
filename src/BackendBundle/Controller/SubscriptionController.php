@@ -28,12 +28,12 @@ class SubscriptionController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $query, $request->query->get('page', 1), 5
+            $query, $request->query->get('page', 1), 5
         );
 
-    return $this->render('subscription/index.html.twig', array(
-        'entities' => $pagination,
-    ));
+        return $this->render('subscription/index.html.twig', array(
+            'entities' => $pagination,
+        ));
     }
 
     /**
@@ -43,18 +43,18 @@ class SubscriptionController extends Controller
     public function findAction(Request $request)
     {
         $find = $request->get('find-form-text');
-        
+
         if ($find) {
             $em = $this->getDoctrine()->getManager();
 
             $dql = "SELECT e FROM BackendBundle:Subscription e WHERE "
-                    . "e.email LIKE '%" . $find . "%' "
-                    . "ORDER BY e.id ASC";
+                . "e.email LIKE '%" . $find . "%' "
+                . "ORDER BY e.id ASC";
             $query = $em->createQuery($dql);
 
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
-                    $query, $request->query->get('page', 1), 5
+                $query, $request->query->get('page', 1), 5
             );
 
             return $this->render('subscription/index.html.twig', array(
@@ -87,36 +87,37 @@ class SubscriptionController extends Controller
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('subscription_new'));
             } else {
-            return $this->redirectToRoute('subscription_show', array('id' => $entity->getId()));            }
+                return $this->redirectToRoute('subscription_show', array('id' => $entity->getId()));
+            }
 
         }
 
-    return $this->render('subscription/new.html.twig', array(
-        'entity' => $entity,
-        'form' => $form->createView(),
-    ));
+        return $this->render('subscription/new.html.twig', array(
+            'entity' => $entity,
+            'form' => $form->createView(),
+        ));
     }
 
-            /**
-        * Creates a form to create a Subscription entity.
-        *
-        * @param Subscription $entity The entity
-        *
-        * @return \Symfony\Component\Form\Form The form
-        */
-        private function createCreateForm(Subscription $entity)
-        {
-            $form = $this->createForm('BackendBundle\Form\SubscriptionType', $entity, array(
-                'action' => $this->generateUrl('subscription_new'),
-                'method' => 'POST',
-            ));
+    /**
+     * Creates a form to create a Subscription entity.
+     *
+     * @param Subscription $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCreateForm(Subscription $entity)
+    {
+        $form = $this->createForm('BackendBundle\Form\SubscriptionType', $entity, array(
+            'action' => $this->generateUrl('subscription_new'),
+            'method' => 'POST',
+        ));
 
-            $form->add('submit', SubmitType::class, array('label' => 'Create'));
-            $form->add('submitback', SubmitType::class, array('label' => 'Create & Back'));
+        $form->add('submit', SubmitType::class, array('label' => 'Create'));
+        $form->add('submitback', SubmitType::class, array('label' => 'Create & Back'));
 
-            return $form;
-        }
-    
+        return $form;
+    }
+
     /**
      * Finds and displays a Subscription entity.
      *
@@ -140,7 +141,7 @@ class SubscriptionController extends Controller
         $deleteForm = $this->createDeleteForm($entity);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
-    
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -151,20 +152,20 @@ class SubscriptionController extends Controller
             return $this->redirectToRoute('subscription_show', array('id' => $entity->getId()));
         }
 
-    return $this->render('subscription/edit.html.twig', array(
-        'entity' => $entity,
-        'edit_form' => $editForm->createView(),
-        'delete_form' => $deleteForm->createView(),
-    ));
+        return $this->render('subscription/edit.html.twig', array(
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 
     /**
-    * Creates a form to edit a Subscription entity.
-    *
-    * @param Subscription $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Subscription entity.
+     *
+     * @param Subscription $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Subscription $entity)
     {
         $form = $this->createForm('BackendBundle\Form\SubscriptionType', $entity, array(
@@ -200,24 +201,23 @@ class SubscriptionController extends Controller
         return $this->redirect($this->generateUrl('subscription'));
 
 
-
     }
 
     /**
-    * Creates a form to delete a Subscription entity.
-    *
-    * @param Subscription $entity The Subscription entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to delete a Subscription entity.
+     *
+     * @param Subscription $entity The Subscription entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createDeleteForm(Subscription $entity)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('subscription_delete', array('id' => $entity->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
+
     /**
      * Do several batch actions over Subscription entities.
      *
@@ -227,7 +227,7 @@ class SubscriptionController extends Controller
         $action = $request->get('batch_action_do');
         $ids = $request->get('batch_action_checkbox');
         $recordsSelected = false;
-        
+
         if ($ids) {
             $em = $this->getDoctrine()->getManager();
 

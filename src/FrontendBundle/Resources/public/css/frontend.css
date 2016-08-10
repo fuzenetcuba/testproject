@@ -1667,6 +1667,7 @@ button.btn-blue.dim:active {
 
 .landing-page .navbar-default .second-navbar .nav li a.navbar-avatar img.img-avatar-small {
     top: 3px;
+    right: 0;
     height: 30px;
     width: auto;
 }
@@ -1683,7 +1684,8 @@ button.btn-blue.dim:active {
     }
 
     .landing-page .navbar-default .second-navbar .nav li a.navbar-avatar img.img-avatar-small {
-        top: 3px!important;
+        top: 3px !important;
+        right: 0 !important;
         height: 30px;
         width: auto;
     }
@@ -1707,4 +1709,8 @@ button.btn-blue.dim:active {
     .landing-page .navbar-default.navbar-scroll .navbar-brand {
         padding: 0 15px;
     }
+}
+
+textarea.form-control.large-height {
+    height: 300px !important;
 }
