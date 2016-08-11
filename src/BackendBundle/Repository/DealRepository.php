@@ -21,7 +21,7 @@ class DealRepository extends EntityRepository
      *
      * @return \Doctrine\ORM\Query
      */
-    public function findRecentDeals($n = 0)
+    public function findRecentDeals($n = 3)
     {
         return $this->getEntityManager()
             ->createQuery('SELECT d FROM BackendBundle:Deal d ORDER BY d.createdAt DESC')
