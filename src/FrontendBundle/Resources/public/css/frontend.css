@@ -1736,6 +1736,18 @@ textarea.form-control.large-height {
     transform: scaleY(0);
 }
 
+.filter-deals.collapsed {
+    height: 0 !important;
+    padding: 0;
+}
+
+.filter-deals.collapsed.filter-fixed-top {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-bottom: none !important;
+}
+
 .filter-deals > div.container > div:not(:last-child) {
     -moz-transition: -moz-transform .5s;
     -o-transition: -o-transform .5s;
