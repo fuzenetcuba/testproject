@@ -6,12 +6,9 @@
     {% endembed %}
 {% endblock %}
 
-{% block javascript %}
-    {{ parent() }}
-    {#<script src="{{ asset('bundles/frontend/js/app.js') }}"></script>#}
-{% endblock %}
+{% block page_content %}
 
-{% block slider %}
+    {# slider #}
     <div id="inSlider" class="inner-content carousel carousel-fade" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#inSlider" data-slide-to="0" class="active"></li>
@@ -45,7 +42,8 @@
                         <h1>We create meaningful <br/> interfaces that inspire.</h1>
                         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
                         <p>
-                            <a class="btn btn-lg btn-blue" href="{{ path("subscription_request") }}" role="button">SUBSCRIBE NOW</a>
+                            <a class="btn btn-lg btn-blue" href="{{ path("subscription_request") }}" role="button">SUBSCRIBE
+                                NOW</a>
                         </p>
                     </div>
                 </div>
@@ -58,7 +56,8 @@
                         <h1>We create meaningful <br/> interfaces that inspire.</h1>
                         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
                         <p>
-                            <a class="btn btn-lg btn-amber" href="{{ path("fos_user_registration_register") }}" role="button">BECOME A MEMBER</a>
+                            <a class="btn btn-lg btn-amber" href="{{ path("fos_user_registration_register") }}"
+                               role="button">BECOME A MEMBER</a>
                         </p>
                     </div>
                 </div>
@@ -76,9 +75,7 @@
         </a>
     </div>
 
-{% endblock %}
-
-{% block topdeals %}
+    {# top deals #}
     <section id="features" class="container section-spaces-line top-deals">
         <div class="row m-b">
             <div class="col-lg-12 text-center">
@@ -113,37 +110,26 @@
             </a>
         </div>
     </section>
+
+    {# become a member #}
+    <section class="section-spaces-line hidden-print">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-line blue-line"></div>
+                    <h2>BECOME A MEMBER TODAY AND GET DEALS FOR YOUR FAVORITE PRODUCTS AND BRANDS</h2>
+
+                    <a href="{{ path('fos_user_registration_register') }}"
+                       class="btn btn-lg btn-xl btn-blue">SIGNUP</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
 {% endblock %}
 
-{% block topbusinesses %}
-    {#<section class="features">#}
-    {#<div class="container">#}
-    {#<div class="row">#}
-    {#<div class="col-lg-12 text-center">#}
-    {#<div class="navy-line"></div>#}
-    {#<h1>Our best businesses</h1>#}
-    {#</div>#}
-    {#</div>#}
-    {#<div class="row">#}
-    {#<div class="col-lg-5 col-lg-offset-1 features-text">#}
-    {#<small>INSPINIA</small>#}
-    {#<h2>Perfectly designed </h2>#}
-    {#<i class="fa fa-bar-chart big-icon pull-right"></i>#}
-    {#<p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully#}
-    {#responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media#}
-    {#query.#}
-    {#It has a huge collection of reusable UI components and integrated with.</p>#}
-    {#</div>#}
-    {#<div class="col-lg-5 features-text">#}
-    {#<small>INSPINIA</small>#}
-    {#<h2>Perfectly designed </h2>#}
-    {#<i class="fa fa-bolt big-icon pull-right"></i>#}
-    {#<p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully#}
-    {#responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media#}
-    {#query.#}
-    {#It has a huge collection of reusable UI components and integrated with.</p>#}
-    {#</div>#}
-    {#</div>#}
-    {#</div>#}
-    {#</section>#}
+{% block custom_js %}
+    {{ parent() }}
+
+    {#<script src="{{ asset('bundles/frontend/js/app.js') }}"></script>#}
 {% endblock %}
