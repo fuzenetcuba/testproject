@@ -886,7 +886,7 @@ section.inner-content {
 }
 
 div.container-image {
-    height: 340px;
+    height: 240px;
     position: relative;
 }
 
@@ -1182,7 +1182,7 @@ span.business-info {
     filter: alpha(opacity=0);
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    margin: 130px 0 0;
+    margin: 105px 0 0;
     padding: 7px 14px;
 }
 
