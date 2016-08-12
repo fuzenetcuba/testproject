@@ -1,18 +1,200 @@
 Business:
-  brooks-brothers:
-    name: Brooks Brothers Factory Store
+  tres-gauchos:
+    name: Tres gauchos
     description: |
-      Brooks Brothers Factory stores uphold our reputation for exceptional quality and
-      customer service. They feature a distinct collection consistent with the spirit.
+      asd
     phone: (954) 845-0404
-    logo: brooks-brothers-logo.png
+    logo: tres-gauchos.png
     social-media: https://www.facebook.com/BrooksBrothers/
 
-  kalvin-clein:
-    name: Kalvin Clein Company Store
+  americas-insurance:
+    name: Americas Insurances
     description: |
-      Calvin Klein offers modern, sophisticated styles for women and men including apparel,
-      handbags, footwear, underwear, fragrance and home furnishings.
+      asd
     phone: (952) 843-0400
-    logo: logo.jpg
+    logo: americas-insurance.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  fuzenet:
+    name: Fuzenet Marketing
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: fuzenet-marketing.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  activa:
+    name: Activa Network
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: activa.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  agua-viva:
+    name: Agua Viva
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: agua-viva.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  am-ofertas:
+    name: AM Ofertas
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: am-ofertas.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  america-united:
+    name: America United
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: america-united.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  automasters:
+    name: Auto Masters
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: automasters.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  baila:
+    name: Baila
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: baila.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  balero-clothing:
+    name: Balero Clothing
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: balero-clothing.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  balero-group:
+    name: Balero Group
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: balero-group.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  dr-auto:
+    name: Dr Auto
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: dr-auto.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  hff:
+    name: Hispanic Family Foundation
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: hff.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  madera:
+    name: Madera Cafe
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: madera.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  maxima:
+    name: Maxima 1320
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: maxima.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  mazfresco-market:
+    name: Mazfresco Market
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: mazfresco-market.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  oda:
+    name: ODA Ofertas de Auto
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: oda.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  palazzo-themeworks:
+    name: Palazzo ThemeWorks
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: palazzo-themeworks.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  ranchera:
+    name: 880 La Ranchera
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: ranchera.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  reforma-law:
+    name: Reforma Law
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: reforma-law.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  salon-ixchel:
+    name: Salon Ixchel
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: salon-ixchel.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  tblc-media:
+    name: TBLC Media
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: tblc-media.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  titos:
+    name: Titos Playland
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: titos.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  xenote:
+    name: Xenote Mexican Cuisine
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: xenote.png
+    social-media: https://www.facebook.com/KalvinClein/
+
+  zumito:
+    name: Zumito
+    description: |
+      asd
+    phone: (952) 843-0400
+    logo: zumito.png
     social-media: https://www.facebook.com/KalvinClein/
