@@ -1783,3 +1783,9 @@ div.row.deal-list > div:first-child {
 .deal-list a.thumbnail:hover {
     border-color: #b0b42b;
 }
+
+.pagination-lg > li > a, .pagination-lg > li > span {
+    padding: 10px 15px;
+    font-size: 16px;
+    line-height: 1.3333333;
+}
