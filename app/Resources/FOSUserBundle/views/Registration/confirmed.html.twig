@@ -4,15 +4,19 @@
 
 {% block content %}
 
-    <section class="inner-content">
+    <section class="inner-content section-spaces">
         <div class="container">
 
             {% block fos_user_content %}
-                <div class="middle-box text-center animated fadeInDown">
-                    <h2>Welcome!!!</h2>
+                <div class="text-center animated fadeInDown">
+                    <h1>Welcome!!!</h1>
 
-                    <p>Congrats {{ user.username }}, you have been registered succesfully.</p>
+                    <p>Congrats <b>{{ user.fullName }}</b>, you have been registered succesfully.</p>
                 </div>
+                <div class="text-center m-t-lg">
+                    <a class="btn btn-amber" href="{{ path("frontend_homepage") }}">BACK TO HOME</a>
+                </div>
+
             {% endblock fos_user_content %}
         </div>
     </section>
