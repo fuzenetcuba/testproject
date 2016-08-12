@@ -4,6 +4,14 @@ $(document).ready(function () {
         $('.filter-deals').toggleClass('collapsed');
     });
 
+    updateDealRow = function (selector, data) {
+        var dom = $('<div/>').html(data);
+
+        $(document).find(selector).html(
+            dom.find(selector).html()
+        );
+    }
+
     $('.filter-deals form').submit(function (event) {
         event.preventDefault();
         var form = $(this);
@@ -13,11 +21,7 @@ $(document).ready(function () {
             url: form.attr('action'),
             data: form.serialize()
         }).done(function (data) {
-            var dom = $('<div/>').html(data);
-
-            $(document).find('div.row.deal-list').html(
-                dom.find('div.row.deal-list').html()
-            );
+            updateDealRow('div.row.deal-list', data);
         });
     });
 
@@ -30,11 +34,7 @@ $(document).ready(function () {
             url: /deals/.test(window.location) ? Routing.generate('deals', {'order': order}) :
                 Routing.generate('business_list', {'order': order}),
         }).done(function (data) {
-            var dom = $('<div/>').html(data);
-
-            $(document).find('div.row.deal-list').html(
-                dom.find('div.row.deal-list').html()
-            );
+            updateDealRow('div.row.deal-list', data);
         })
     })
 

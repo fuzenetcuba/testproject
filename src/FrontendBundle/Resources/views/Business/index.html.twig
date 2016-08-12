@@ -75,6 +75,10 @@
                         </div>
                     {% endfor %}
                 </div>
+
+                <div class="row text-center hidden-print">
+                    {{ knp_pagination_render(businesses) }}
+                </div>
             </div>
 
             {# Content visible only for print view #}
@@ -137,10 +141,6 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-
-            <div class="row text-center hidden-print">
-                {{ knp_pagination_render(businesses) }}
             </div>
         </div>
     </section>
