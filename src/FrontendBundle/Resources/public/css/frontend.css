@@ -891,7 +891,7 @@ div.container-image {
 }
 
 div.container-image.business-image {
-    height: 250px;
+    height: 200px;
 }
 
 .center-height.business-image {
@@ -1770,4 +1770,16 @@ textarea.form-control.large-height {
     -moz-transform:rotate(180deg);
     -webkit-transform:rotate(180deg);
     transform:rotate(180deg);
+}
+
+div.row.deal-list > div:first-child {
+    padding-left: 0 !important;
+}
+
+.deal-list a.thumbnail {
+    border-color: transparent;
+}
+
+.deal-list a.thumbnail:hover {
+    border-color: #b0b42b;
 }

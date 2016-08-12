@@ -27,7 +27,7 @@
                         <div class="m-l">
                             <h4>SORT BUSINESSES BY:</h4>
                             <div class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-white">
+                                <label class="btn btn-white active">
                                     <input type="radio" value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_ALPHABETICALLY') }}"
                                            name="order" id="option1" autocomplete="off"> ALPHABETICALLY
                                 </label>
@@ -61,17 +61,13 @@
             <div class="row deal-list hidden-print">
                 <div class="col-sm-12">
                     {% for business in businesses %}
-                        <div class="col-sm-4 text-center">
-                            <h3>{{ business.name | upper }}</h3>
-                            <p>AT {{ business.name | upper }}</p>
-                            <div class="container-image business-image">
-                                <img class="center-height business-image"
-                                     src="{{ asset('images/business/' ~ business.logo) }} "/>
-                            </div>
-                            <p>
-                                <a class="btn btn-amber" href="{{ path('business_details', {'slug' : business.slug}) }}"
-                                   role="button">View Business</a>
-                            </p>
+                        <div class="col-sm-3 text-center">
+                            <a href="{{ path('business_details', {'slug' : business.slug}) }}" class="thumbnail">
+                                <div class="container-image business-image">
+                                    <img class="center-height business-image"
+                                         src="{{ asset('images/business/' ~ business.logo) }} "/>
+                                </div>
+                            </a>
                         </div>
                     {% else %}
                         <div class="alert alert-danger">
