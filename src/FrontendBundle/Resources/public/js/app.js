@@ -2,6 +2,44 @@ $(document).ready(function () {
     $('.hide-filters').on('click', function () {
         console.log('toggle view');
         $('.filter-deals').toggleClass('collapsed');
+    });
+
+    $('.filter-deals form').submit(function (event) {
+        event.preventDefault();
+        var form = $(this);
+
+        $.ajax({
+            type: form.attr('method'),
+            url: form.attr('action'),
+            data: form.serialize()
+        }).done(function (data) {
+            var dom = $('<div/>').html(data);
+
+            $(document).find('div.row.deal-list').html(
+                dom.find('div.row.deal-list').html()
+            );
+        });
+    });
+
+    $('.filter-deals label').on('click', function (event) {
+        var self = $(this);
+        var order = self.find('input').val();
+
+        $.ajax({
+            type: 'GET',
+            url: /deals/.test(window.location) ? Routing.generate('deals', {'order': order}) :
+                Routing.generate('business_list', {'order': order}),
+        }).done(function (data) {
+            var dom = $('<div/>').html(data);
+
+            $(document).find('div.row.deal-list').html(
+                dom.find('div.row.deal-list').html()
+            );
+        })
+    })
+
+    $('.filter-deals form select').on('change', function () {
+        $(this).parent().parent().submit();
     })
 });
 

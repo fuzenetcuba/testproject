@@ -12,34 +12,26 @@
         <div class="container">
             <div class="row filter-deals hidden-print">
                 <div class="container">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4 col-md-4">
                         <form action="{{ path('deals') }}" method="post">
                             <h4>FILTER DEALS BY:</h4>
-                            <div class="col-sm-8 col-md-6">
+                            <div class="col-sm-12 col-md-12">
                                 {{ form_widget(form.business) }}
-                            </div>
-                            <div class="col-sm-4 col-md-6">
-                                <button type="submit"
-                                        class="btn btn-blue btn-sm-block">
-                                    <i class="fa fa-search"></i> &nbsp;FILTER
-                                </button>
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-5 col-sm-1 col-sm-5 text-right-md">
+                    <div class="col-md-5 col-sm-1 col-sm-5 text-right-md col-md-offset-2">
                         <div class="m-l">
                             <h4>SORT DEALS BY:</h4>
-                            <div class="btn-group">
-                                <a href="{{ path('deals', {
-                                    'order': constant('BackendBundle\\Model\\SortingMode::SORT_ENDING_SOON')}) }}"
-                                   class="btn btn-white
-                                {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_ENDING_SOON') %}active{% endif %}"
-                                   type="button">ENDING SOON</a>
-                                <a href="{{ path('deals', {
-                                    'order': constant('BackendBundle\\Model\\SortingMode::SORT_NEW_DEALS')}) }}"
-                                   class="btn btn-white
-                                {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_NEW_DEALS') %}active{% endif %}"
-                                   type="button">NEW DEALS</a>
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-white">
+                                    <input type="radio" value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_ENDING_SOON') }}"
+                                           name="order" id="option1" autocomplete="off"> ENDING SOON
+                                </label>
+                                <label class="btn btn-white">
+                                    <input type="radio" value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_NEW_DEALS') }}"
+                                           name="order" id="option2" autocomplete="off"> NEW DEALS
+                                </label>
                             </div>
                         </div>
                     </div>

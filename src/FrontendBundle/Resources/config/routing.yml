@@ -9,6 +9,8 @@ frontend_loged_in:
 deals:
     path:     /deals
     defaults: { _controller: FrontendBundle:Deal:index }
+    options:
+        expose: true
 
 deal_details:
     path:     /deal/{slug}
@@ -17,6 +19,8 @@ deal_details:
 business_list:
     path:     /businesses
     defaults: { _controller: FrontendBundle:Business:index }
+    options:
+        expose: true
 
 business_details:
     path:     /business/{slug}
