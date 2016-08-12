@@ -1,7 +1,7 @@
 {% set current = app.request.attributes.get('_route')|split('_')[0] %}
 
 <div class="navbar-wrapper">
-    <nav class="navbar navbar-default navbar-fixed-top {% block navbar_class 'navbar-scroll' %}" role="navigation">
+    <nav class="navbar navbar-default navbar-simple navbar-fixed-top {% block navbar_class 'navbar-scroll' %}" role="navigation">
         <div class="container">
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"

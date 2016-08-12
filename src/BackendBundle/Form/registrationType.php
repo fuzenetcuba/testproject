@@ -36,10 +36,10 @@ class registrationType extends BaseType
 //            ->add('userId', new userType(), array(
 //                'constraints' => new Valid()
 //            ))
-            ->add('acceptTerms', CheckboxType::class, array(
-                'mapped' => false,
-                'constraints' => new IsTrue()
-            ))
+//            ->add('acceptTerms', CheckboxType::class, array(
+//                'mapped' => false,
+//                'constraints' => new IsTrue()
+//            ))
         ;
     }
 
