@@ -30,6 +30,7 @@ class CategoryFixture extends OrderedYamlFixture
             $object->setDescription($category['description']);
 
             // subcategories
+            /*
             foreach ($category['subcategories'] as $subcategory) {
                 $subcategoryObject = new Category();
 
@@ -38,6 +39,7 @@ class CategoryFixture extends OrderedYamlFixture
 
                 $manager->persist($subcategoryObject);
             }
+            */
 
             /** @var Business $business */
             $business = $this->getReference('business');

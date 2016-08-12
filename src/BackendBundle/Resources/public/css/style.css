@@ -1349,7 +1349,7 @@ button.dim:active:before {
   border: 1px solid #DDDDDD;
   color: inherit;
   float: left;
-  line-height: 1.42857;
+  /*line-height: 1.42857;*/
   margin-left: -1px;
   padding: 4px 10px;
   position: relative;
