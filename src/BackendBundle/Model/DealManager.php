@@ -79,6 +79,8 @@ class DealManager implements ManagerInterface
         if (!$instance) {
             throw new NotFoundHttpException(sprintf('The deal with id "%s" could not be found', $id));
         }
+
+        return $instance;
     }
 
     /**
@@ -205,6 +207,49 @@ class DealManager implements ManagerInterface
         }
 
         return $query;
+    }
+
+    /**
+     * Returns all the deals that are up for disable action
+     *
+     * @param $strDate
+     *
+     * @return array
+     */
+    public function findDealsToDisable($strDate = 'NOW')
+    {
+        return $this->em->getRepository('BackendBundle:Deal')->findDealUntil($strDate);
+    }
+
+    /**
+     * Save a given deal in the configured data storage
+     *
+     * @param \BackendBundle\Entity\Deal $deal
+     *
+     * @throws \Doctrine\ORM\ORMInvalidArgumentException
+     */
+    public function save(Deal $deal)
+    {
+        $this->em->persist($deal);
+    }
+
+    /**
+     * Disable the expired deals
+     *
+     * @throws \Doctrine\ORM\ORMInvalidArgumentException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function disableExpiredDeals()
+    {
+        $deals = $this->findDealsToDisable();
+
+        foreach ($deals as $deal) {
+            /** @var $deal Deal */
+            $deal->disable();
+            $this->save($deal);
+        }
+
+        $this->em->flush();
     }
 }
 

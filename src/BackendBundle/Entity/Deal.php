@@ -65,6 +65,13 @@ class Deal
     private $endsAt;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    private $isActive;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="string")
@@ -372,5 +379,37 @@ class Deal
     public function setSlug($slug)
     {
         $this->slug = $slug;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Toggle the status of the deal
+     */
+    public function toggle()
+    {
+        $this->isActive = !$this->isActive;
+    }
+
+    /**
+     * Enable the deal
+     */
+    public function enable()
+    {
+        $this->isActive = true;
+    }
+
+    /**
+     * Disable the deal
+     */
+    public function disable()
+    {
+        $this->isActive = false;
     }
 }

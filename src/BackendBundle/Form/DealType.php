@@ -21,6 +21,7 @@ class DealType extends AbstractType
             ->add('description')
             ->add('startsAt', DateType::class, array('widget' => 'single_text', 'html5' => false))
             ->add('endsAt', DateType::class, array('widget' => 'single_text', 'html5' => false))
+            ->add('isActive')
             ->add('imageFile', FileType::class, array(
                 'label' => 'Logo',
                 'required' => false,

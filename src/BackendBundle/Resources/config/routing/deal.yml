@@ -32,3 +32,10 @@ deal_batch:
     path:     /deal_batch
     defaults: { _controller: "BackendBundle:Deal:batch" }
     methods:  POST
+
+deal_toggle:
+    path:     /{id}/toggle
+    defaults: { _controller: BackendBundle:Deal:toggle }
+    methods:  GET
+    options:
+        expose: true

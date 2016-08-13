@@ -39,7 +39,7 @@
                             <input id="find-form-text" class="form-control" autofocus="on" name="find-form-text"
                                    autocomplete="off"
                                    type="text" placeholder="Text to find..."/>
-                        <span class="input-group-btn">
+                            <span class="input-group-btn">
                             <button type="submit" name="find-form-send" value="sending" class="btn btn-primary">Find
                             </button>
                         </span>
@@ -69,6 +69,12 @@
                         <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Description', 'e.description') }}
                             {% if entities.isSorted('e.description') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
+                        <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'Enabled', 'e.isActive') }}
+                            {% if entities.isSorted('e.isActive') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
@@ -133,6 +139,15 @@
 
                             <td>{{ entity.description }}</td>
 
+                            <td id="value-user-enabled-{{ entity.id }}" class="text-center">
+                                <div class="onoffswitch-ios switch-xs">
+                                    <input type="checkbox" name="switch-ios-{{ entity.id }}"
+                                           class="onoffswitch-ios-checkbox"
+                                           id="switch-ios-{{ entity.id }}" {{ entity.isActive ? 'checked' : '' }}>
+                                    <label class="onoffswitch-ios-label" for="switch-ios-{{ entity.id }}"
+                                           onclick="toggle({{ entity.id }});"></label>
+                                </div>
+                            </td>
 
                             <td>{{ entity.startsAt|date('d-M-Y h:i A') }}</td>
 
@@ -140,7 +155,9 @@
                             <td>{{ entity.endsAt|date('d-M-Y h:i A') }}</td>
 
 
-                            <td><span class="label label-{{ entity.business is not empty ? "success" : "warning" }}">{{ entity.business is not empty ? entity.business : "No business related" }}</span></td>
+                            <td>
+                                <span class="label label-{{ entity.business is not empty ? "success" : "warning" }}">{{ entity.business is not empty ? entity.business : "No business related" }}</span>
+                            </td>
 
 
                             <td>{{ entity.video }}</td>
@@ -235,6 +252,11 @@
     {% block inline_js %}
 
         <script type="text/javascript">
+
+            function toggle(dealId) {
+                console.log('pepe');
+                $.get(Routing.generate('deal_toggle', {id:dealId}));
+            }
 
             $(document).ready(function () {
                 //  Highlight scripts to resalt the finded text
