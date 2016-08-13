@@ -39,7 +39,7 @@ class BusinessFixture extends OrderedYamlFixture
                 $this->addReference('business', $entity);
                 $referenced = true;
             } else {
-                $this->addReference('other-business', $entity);
+                $this->setReference('other-business', $entity);
             }
         }
 

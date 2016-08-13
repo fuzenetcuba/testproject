@@ -16,7 +16,7 @@ class BusinessController extends Controller
 
     public function indexAction(Request $request)
     {
-        $sortMode = $request->get('order', SortingMode::SORT_NONE);
+        $sortMode = $request->get('order', SortingMode::SORT_ALPHABETICALLY);
 
         if (false === SortingMode::hasValue($sortMode)) {
             $sortMode = SortingMode::SORT_NONE;

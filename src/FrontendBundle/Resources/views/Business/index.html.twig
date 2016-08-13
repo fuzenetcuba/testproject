@@ -14,54 +14,45 @@
         <div class="container">
             <div class="row filter-deals hidden-print">
                 <div class="container">
-                    <div class="col-sm-6">
+                    <div class="col-md-6 col-sm-6">
                         <form action="{{ path('business_list') }}" method="post">
                             <h4>FILTER BUSINESSES BY:</h4>
-                            <div class="col-sm-4">
+                            <div class="col-md-6 col-sm-6">
                                 {{ form_widget(form.search) }}
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-md-6 col-sm-6">
                                 {{ form_widget(form.category) }}
-                            </div>
-                            <div class="col-sm-4">
-                                <button type="submit"
-                                        class="btn btn-blue btn-sm-block">
-                                    <i class="fa fa-search"></i> &nbsp;FILTER
-                                </button>
                             </div>
                         </form>
                     </div>
                     <div class="col-sm-5 text-right-md">
                         <div class="m-l">
                             <h4>SORT BUSINESSES BY:</h4>
-                            <div class="btn-group">
-                                <a href="{{ path('business_list', {'order':
-                                    constant('BackendBundle\\Model\\SortingMode::SORT_ALPHABETICALLY')}) }}"
-                                   class="btn btn-white
-                                {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_ALPHABETICALLY') %}active{% endif %}"
-                                   type="button">ALPHABETICALLY</a>
-                                <a href="{{ path('business_list', {'order':
-                                    constant('BackendBundle\\Model\\SortingMode::SORT_CATEGORY')}) }}"
-                                   class="btn btn-white
-                                {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_CATEGORY') %}active{% endif %}"
-                                   type="button">CATEGORY</a>
-                                <a href="{{ path('business_list', {'order':
-                                    constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS')}) }}"
-                                   class="btn btn-white
-                                {% if app.request.get('order') ==  constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS') %}active{% endif %}"
-                                   type="button">RECENT DEALS</a>
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-white active">
+                                    <input type="radio" value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_ALPHABETICALLY') }}"
+                                           name="order" id="option1" autocomplete="off"> ALPHABETICALLY
+                                </label>
+                                <label class="btn btn-white">
+                                    <input type="radio" value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_CATEGORY') }}"
+                                           name="order" id="option1" autocomplete="off"> CATEGORY
+                                </label>
+                                <label class="btn btn-white">
+                                    <input type="radio" value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS') }}"
+                                           name="order" id="option2" autocomplete="off"> RECENT DEALS
+                                </label>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-1">
-                        <div class="m-l m-t-xs m-r">
-                            <button class="btn btn-blue btn-sm-block"
+                    <div class="col-md-1 pull-right">
+                        <div class="print-button m-l m-t-xs m-r pull-right">
+                            <button class="btn btn-link btn-sm-block"
                                     onclick="print();">
                                 <i class="fa fa-print"></i>
                             </button>
                         </div>
-                        <div class="m-l m-t-xxs m-r">
-                            <button class="btn btn-default btn-sm-block">
+                        <div class="m-l m-t-xs m-r pull-right">
+                            <button class="hide-filters btn btn-link btn-sm-block">
                                 <i class="fa fa-chevron-up"></i>
                             </button>
                         </div>
@@ -72,17 +63,13 @@
             <div class="row deal-list hidden-print">
                 <div class="col-sm-12">
                     {% for business in businesses %}
-                        <div class="col-sm-4 text-center">
-                            <h3>{{ business.name | upper }}</h3>
-                            <p>AT {{ business.name | upper }}</p>
-                            <div class="container-image business-image">
-                                <img class="center-height business-image"
-                                     src="{{ asset('images/business/' ~ business.logo) }} "/>
-                            </div>
-                            <p>
-                                <a class="btn btn-amber" href="{{ path('business_details', {'slug' : business.slug}) }}"
-                                   role="button">View Business</a>
-                            </p>
+                        <div class="col-sm-3 text-center">
+                            <a href="{{ path('business_details', {'slug' : business.slug}) }}" class="thumbnail">
+                                <div class="container-image business-image">
+                                    <img class="center-height business-image"
+                                         src="{{ asset('images/business/' ~ business.logo) }} "/>
+                                </div>
+                            </a>
                         </div>
                     {% else %}
                         <div class="alert alert-danger">
