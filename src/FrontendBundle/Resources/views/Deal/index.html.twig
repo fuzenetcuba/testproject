@@ -2,12 +2,14 @@
 
 {% block title '- Deals' %}
 
-{% block javascript %}
+{% block custom_css %}
     {{ parent() }}
-    <script src="{{ asset('bundles/frontend/js/sticky_filter.js') }}"></script>
+
+    <!-- Style for select2 plugin -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}">
 {% endblock %}
 
-{% block content %}
+{% block page_content %}
     <section class="inner-content section-spaces-line">
         <div class="container">
             <div class="row filter-deals hidden-print">
@@ -139,4 +141,24 @@
             </div>
         </div>
     </section>
+{% endblock %}
+
+{% block custom_js %}
+    {{ parent() }}
+
+    <!-- Script for sticky filter bar -->
+    <script src="{{ asset('bundles/frontend/js/sticky_filter.js') }}"></script>
+
+    <!-- Script for select2 plugin -->
+    <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"></script>
+{% endblock %}
+
+{% block inline_js %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //  select2 scripts for batch actions combobox
+            $(".select2").select2();
+        });
+    </script>
 {% endblock %}

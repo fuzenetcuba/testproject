@@ -2,8 +2,8 @@
 
 {% block title '- ' ~ business.name %}
 
-{% block content %}
-    <section class="inner-content section-spaces-line">
+{% block page_content %}
+    <section class="inner-content section-spaces">
         <div class="container">
             <div class="row row-eq-height">
                 <div class="col-sm-6 text-center">
@@ -153,4 +153,27 @@
             {% endif %}
         </div>
     </section>
+{% endblock %}
+
+{% block inline_js %}
+    <script type="text/javascript">
+
+        $('.carousel .item').each(function () {
+            var next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+
+            next.children(':first-child').clone().appendTo($(this));
+
+            for (var i = 0; i < 2; i++) {
+                next = next.next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+
+                next.children(':first-child').clone().appendTo($(this));
+            }
+        });
+    </script>
 {% endblock %}

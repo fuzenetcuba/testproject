@@ -1,52 +1,56 @@
 Category:
-  food:
-    name: Food & Eat
+  dining:
+    name: Dining
     description: Food and eatables
-
-    subcategories:
-      grocery:
-        name: Grocery
-      restaurant:
-        name: Restaurant
-      rapid-food:
-        name: Rapid Food
-
-  service:
-    name: Service
-    description: General services
-
-    subcategories:
-      legal:
-        name: Legal & Advocacy
-      playground:
-        name: Playground
-      internet:
-        name: Internet & Marketing
-      business:
-        name: Business Office
-
-  store:
-    name: Store
-    description: Store departaments
-
-    subcategories:
-      clothing:
-        name: Clothing
-      boutique:
-        name: Boutique
-      electronics:
-        name: Electronics
-
+        
+  groceries:
+    name: Groceries
+    description: Groceries and food
+        
+  professional-services:
+    name: Professional Services
+    description: Professional services to every one
+        
+  clothing:
+    name: Clothing
+    description: Clothing and shoes store 
+        
+  electronics:
+    name: Electronics
+    description: Buy any kind of appliances
+        
+  travel:
+    name: Travel
+    description: Manage your traveling
+        
+  automotive-repair:
+    name: Automotive Rrepair
+    description: Leave your car in our hands
+        
+  car-buying:
+    name: Car Buying
+    description: Find the car of your dreams
+        
+  auto-insurance:
+    name: Auto Insurance
+    description: Get insurance for your car
+        
+  events:
+    name: Events
+    description: Assist to our events
+        
+  banking-finance:
+    name: Banking / Finance
+    description: Keep your money secure
+        
+  art:
+    name: Art
+    description: Get the most beatiful pieces of art
+        
+  beauty-salon:
+    name: Beauty / Salon
+    description: Get the most beatiful face
+        
   entertainment:
     name: Entertainment
-    description: Entertainment and relax
-
-    subcategories:
-      radio:
-        name: Radio
-      tv:
-        name: TV
-      events:
-        name: Events
-      shows:
-        name: Shows
+    description: Enjoy the life

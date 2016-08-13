@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+{% extends "::base.html.twig" %}
 
-    <title>Plaza Mariachi{% block title '' %}</title>
-
+{% block custom_css %}
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('bundles/backend/css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -23,6 +15,11 @@
     <link href="{{ asset('bundles/backend/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('bundles/frontend/css/frontend.css') }}" rel="stylesheet">
 
+{% endblock %}
+
+{% block body_properties %}id="page-top" class="landing-page"{% endblock %}
+
+{% block body %}
 
     {# BEGIN Facebook #}
 
@@ -79,141 +76,116 @@
 
     {# END Facebook #}
 
-
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}">
-    {% endblock %}
-</head>
-<body id="page-top" class="landing-page">
-{% block body %}
-
     {% block navbar %}
         {% embed '@Frontend/navbar.html.twig' %}
         {% endembed %}
     {% endblock %}
 
-{% block content %}
+    {% block page_content %}
 
-    {% block slider %}
     {% endblock %}
 
-    {% block topdeals %}
-    {% endblock %}
+    {% block footer %}
+        <section id="contact" class="brown-section section-spaces-line hidden-print">
+            <div class="container">
+                <div class="row m-b-lg">
+                    <div class="col-lg-12 text-center">
+                        <div class="section-line green-line"></div>
+                        <h1>Contact Us</h1>
 
-    {% block topbusinesses %}
-    {% endblock %}
-
-    <section class="section-spaces-line hidden-print">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-line blue-line"></div>
-                    <h2>BECOME A MEMBER TODAY AND GET DEALS FOR YOUR FAVORITE PRODUCTS AND BRANDS</h2>
-
-                    <a href="{{ path('fos_user_registration_register') }}"
-                       class="btn btn-lg btn-xl btn-blue">SIGNUP</a>
+                        <p>Find us in the Mall Map and visit us to live a wonderful experience</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-{% endblock %}
-
-{% block footer %}
-    <section id="contact" class="brown-section section-spaces-line hidden-print">
-        <div class="container">
-            <div class="row m-b-lg">
-                <div class="col-lg-12 text-center">
-                    <div class="section-line green-line"></div>
-                    <h1>Contact Us</h1>
-
-                    <p>Find us in the Mall Map and visit us to live a wonderful experience</p>
-                </div>
-            </div>
-            <div class="row m-b-lg">
-                <div class="col-sm-4 col-sm-offset-2">
-                    <div class="footer-left">
-                        <address>
-                            <strong><span class="green">PLAZA MARIACHI <i><sub>Music City</sub></i></span></strong><br/>
-                            3955 Nolensville Pk, Nashville TN 37211 USA <br/>
-                            Phone.: 1-800-0000-0000<br/>
-                            Fax.: 1-800-0000-0000<br/>
-                            E-mail: <a class="green-link" href="mailto:customer@plazamariachi.com">customer@plazamariachi.com</a><br/>
-                        </address>
-                        <br/>
-                        <p id="hours-operation">
-                            <strong><span class="green">Today's Hours Of Operation: </span></strong>
+                <div class="row m-b-lg">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <div class="footer-left">
+                            <address>
+                                <strong><span class="green">PLAZA MARIACHI <i><sub>Music
+                                                City</sub></i></span></strong><br/>
+                                3955 Nolensville Pk, Nashville TN 37211 USA <br/>
+                                Phone.: 1-800-0000-0000<br/>
+                                Fax.: 1-800-0000-0000<br/>
+                                E-mail: <a class="green-link" href="mailto:customer@plazamariachi.com">customer@plazamariachi.com</a><br/>
+                            </address>
                             <br/>
-                            <small>
-                                <b>Every day</b> of the week,
+                            <p id="hours-operation">
+                                <strong><span class="green">Today's Hours Of Operation: </span></strong>
                                 <br/>
-                                from <b>10:00am</b> to <b>9:00pm</b>
-                            </small>
-                        </p>
+                                <small>
+                                    <b>Every day</b> of the week,
+                                    <br/>
+                                    from <b>10:00am</b> to <b>9:00pm</b>
+                                </small>
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="footer-right">
-                        <p data-coordinates="40.748384,-73.9854792">
-                            {#Plaza Mariachi Map Location#}
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3224.365351084404!2d-86.73197668536223!3d36.08458098010219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88646f9ceddcb1e3%3A0x685c1cee10bc93a9!2s3955+Nolensville+Pike%2C+Nashville%2C+TN+37211!5e0!3m2!1ses!2s!4v1470849578887" width="300" height="180" frameborder="0" style="border:0" allowfullscreen></iframe>
-                            
-                            {#<img class="goo-map-home-location"
-                                 src="{{ asset("bundles/frontend/img/plaza_location.jpg") }}"/>#}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <a href="#" class="btn btn-green">MALL MAP</a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2">
-                    <hr/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <a href="#"
-                       target="_blank"
-                       class="btn btn-circle-muted btn-outline btn-social-icon btn-twitter text-muted m-l m-r">
-                        <span class="fa fa-twitter"></span>
-                    </a>
-                    <a href="#"
-                       target="_blank"
-                       class="btn btn-circle-muted btn-outline btn-social-icon btn-google text-muted m-l m-r">
-                        <span class="fa fa-google"></span>
-                    </a>
-                    <a href="https://www.facebook.com/Plaza-Mariachi-Music-City-752269578141554"
-                       target="_blank"
-                       class="btn btn-circle-muted btn-outline btn-social-icon btn-facebook text-muted m-l m-r">
-                        <span class="fa fa-facebook"></span>
-                    </a>
-                    <a href="#"
-                       target="_blank"
-                       class="btn btn-circle-muted btn-outline btn-social-icon btn-flickr text-muted m-l m-r">
-                        <span class="fa fa-flickr"></span>
-                    </a>
-                    <a href="#"
-                       target="_blank"
-                       class="btn btn-circle-muted btn-outline btn-social-icon btn-instagram text-muted m-l m-r">
-                        <span class="fa fa-instagram"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <div class="col-sm-4">
+                        <div class="footer-right">
+                            <p data-coordinates="40.748384,-73.9854792">
+                                {#Plaza Mariachi Map Location#}
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3224.365351084404!2d-86.73197668536223!3d36.08458098010219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88646f9ceddcb1e3%3A0x685c1cee10bc93a9!2s3955+Nolensville+Pike%2C+Nashville%2C+TN+37211!5e0!3m2!1ses!2s!4v1470849578887"
+                                        width="300" height="180" frameborder="0" style="border:0"
+                                        allowfullscreen></iframe>
 
-    <section id="copyright" class="dark-brown-section">
-        <div class="row">
-            <div class="col-lg-12 text-center m-t m-b-xs">
-                <p>&copy; 2016 Plaza Mariachi<br/></p>
+                                {#<img class="goo-map-home-location"
+                                     src="{{ asset("bundles/frontend/img/plaza_location.jpg") }}"/>#}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <a href="#" class="btn btn-green">MALL MAP</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <hr/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <a href="#"
+                           target="_blank"
+                           class="btn btn-circle-muted btn-outline btn-social-icon btn-twitter text-muted m-l m-r">
+                            <span class="fa fa-twitter"></span>
+                        </a>
+                        <a href="#"
+                           target="_blank"
+                           class="btn btn-circle-muted btn-outline btn-social-icon btn-google text-muted m-l m-r">
+                            <span class="fa fa-google"></span>
+                        </a>
+                        <a href="https://www.facebook.com/Plaza-Mariachi-Music-City-752269578141554"
+                           target="_blank"
+                           class="btn btn-circle-muted btn-outline btn-social-icon btn-facebook text-muted m-l m-r">
+                            <span class="fa fa-facebook"></span>
+                        </a>
+                        <a href="#"
+                           target="_blank"
+                           class="btn btn-circle-muted btn-outline btn-social-icon btn-flickr text-muted m-l m-r">
+                            <span class="fa fa-flickr"></span>
+                        </a>
+                        <a href="#"
+                           target="_blank"
+                           class="btn btn-circle-muted btn-outline btn-social-icon btn-instagram text-muted m-l m-r">
+                            <span class="fa fa-instagram"></span>
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section id="copyright" class="dark-brown-section hidden-print">
+            <div class="row">
+                <div class="col-lg-12 text-center m-t m-b-xs">
+                    <p>&copy; 2016 Plaza Mariachi<br/></p>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
 {% endblock %}
 
+{% block custom_js %}
     <!-- Mainly scripts -->
     <script src="{{ asset('bundles/backend/js/jquery-2.1.1.js') }}"></script>
     <script src="{{ asset('bundles/backend/js/bootstrap.min.js') }}"></script>
@@ -228,12 +200,4 @@
     <script src="{{ asset('bundles/frontend/js/filter.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
 
-{% block javascript %}
-    <script src="{{ asset('bundles/frontend/js/widgets.js') }}"></script>
 {% endblock %}
-
-    {% block inline_javascript %}
-    {% endblock %}
-{% endblock %}
-</body>
-</html>

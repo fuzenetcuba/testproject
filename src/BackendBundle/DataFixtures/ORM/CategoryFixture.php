@@ -33,6 +33,7 @@ class CategoryFixture extends OrderedYamlFixture
             $object->setDescription($category['description']);
 
             // subcategories
+            /*
             foreach ($category['subcategories'] as $subcategory) {
                 $subcategoryObject = new Category();
 
@@ -41,6 +42,7 @@ class CategoryFixture extends OrderedYamlFixture
 
                 $manager->persist($subcategoryObject);
             }
+            */
 
             $randomKeys = array_rand($businesses, 20);
             $localBusinesses = array_intersect_key($businesses, array_flip($randomKeys));

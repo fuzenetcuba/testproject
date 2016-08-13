@@ -2,7 +2,7 @@
 
 {% block title '- Register User' %}
 
-{% block stylesheets %}
+{% block custom_css %}
     {{ parent() }}
 
     <!-- iCheck Styles -->
@@ -10,146 +10,153 @@
           type="text/css"/>
 {% endblock %}
 
-{% block content %}
+{% block page_content %}
 
-    <section class="inner-content section-spaces-line">
+    <section class="inner-content section-spaces">
         <div class="container">
-            <div class="middle-box text-center loginscreen   animated fadeInDown">
-                <div>
-                    <div>
-
-                        <h2>Plaza Mariachi</h2>
-
+            <div class="animated fadeInDown">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="m-b-lg text-center">
+                        <h1>Become a member on Plaza Mariachi</h1>
+                        <hr/>
                     </div>
-                    <h3>Register to Plaza Mariachi</h3>
-                    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                    <div class="col-md-6">
+                        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
-                    <div class="form-group{% if(form.firstName.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                        {{ form_widget(form.firstName, { 'attr': {'class' : 'form-control', 'placeholder' : 'First name'}}) }}
-                        {% if form.firstName.vars['errors']|length > 0 %}
-                            <ul class="message">
-                                {% for error in form.firstName.vars['errors'] %}
-                                    <li>{{ error.message }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                    </div>
-
-                    <div class="form-group{% if(form.lastName.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                        {{ form_widget(form.lastName, { 'attr': {'class' : 'form-control', 'placeholder' : 'Last name'}}) }}
-                        {% if form.lastName.vars['errors']|length > 0 %}
-                            <ul class="message">
-                                {% for error in form.lastName.vars['errors'] %}
-                                    <li>{{ error.message }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                    </div>
-
-                    <div class="form-group{% if(form.username.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                        {{ form_widget(form.username, { 'attr': {'class' : 'form-control', 'placeholder' : 'Username'}}) }}
-                        {% if form.username.vars['errors']|length > 0 %}
-                            <ul class="message">
-                                {% for error in form.username.vars['errors'] %}
-                                    <li>{{ error.message }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                    </div>
-
-                    <div class="form-group{% if(form.email.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                        {{ form_widget(form.email, { 'attr': {'class' : 'form-control', 'placeholder' : 'Email'}}) }}
-                        {% if form.email.vars['errors']|length > 0 %}
-                            <ul class="message">
-                                {% for error in form.email.vars['errors'] %}
-                                    <li>{{ error.message }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                    </div>
-
-                    {% for passwordField in form.plainPassword %}
-                        <div class="form-group{% if(passwordField.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-
-                            {{ form_widget(passwordField, { 'attr': {'class' : 'form-control', 'placeholder' : 'Password'}}) }}
-                            {% if passwordField.vars['errors']|length > 0 %}
+                        <div class="form-group{% if(form.firstName.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                            {{ form_widget(form.firstName, { 'attr': {'class' : 'form-control', 'placeholder' : 'First name'}}) }}
+                            {% if form.firstName.vars['errors']|length > 0 %}
                                 <ul class="message">
-                                    {% for error in passwordField.vars['errors'] %}
+                                    {% for error in form.firstName.vars['errors'] %}
                                         <li>{{ error.message }}</li>
                                     {% endfor %}
                                 </ul>
                             {% endif %}
                         </div>
 
-                    {% endfor %}
-                    <div class="form-group{% if(form.phone.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                        {{ form_widget(form.phone, { 'attr': {'class' : 'form-control', 'placeholder' : 'Phone'}}) }}
-                        {% if form.phone.vars['errors']|length > 0 %}
-                            <ul class="message">
-                                {% for error in form.phone.vars['errors'] %}
-                                    <li>{{ error.message }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                    </div>
-                    {#<div class="form-group{% if(form.imageFile.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">#}
-                        {#{{ form_widget(form.imageFile, { 'attr': {'class' : 'form-control', 'placeholder' : 'Photo'}}) }}#}
-                        {#{% if form.imageFile.vars['errors']|length > 0 %}#}
-                            {#<ul class="message">#}
-                                {#{% for error in form.imageFile.vars['errors'] %}#}
-                                    {#<li>{{ error.message }}</li>#}
-                                {#{% endfor %}#}
-                            {#</ul>#}
-                        {#{% endif %}#}
-                    {#</div>#}
+                        <div class="form-group{% if(form.lastName.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                            {{ form_widget(form.lastName, { 'attr': {'class' : 'form-control', 'placeholder' : 'Last name'}}) }}
+                            {% if form.lastName.vars['errors']|length > 0 %}
+                                <ul class="message">
+                                    {% for error in form.lastName.vars['errors'] %}
+                                        <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
 
-                    <div class="form-group{% if(form.termsAccepted.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                        <div class=" i-checks">
-                            <label for="termsAccepted" class="">
-                                {{ form_widget(form.termsAccepted, { 'attr': {'class' : 'form-control'}}) }}
-                                {% if form.termsAccepted.vars['errors']|length > 0 %}
+                        <div class="form-group{% if(form.username.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                            {{ form_widget(form.username, { 'attr': {'class' : 'form-control', 'placeholder' : 'Username'}}) }}
+                            {% if form.username.vars['errors']|length > 0 %}
+                                <ul class="message">
+                                    {% for error in form.username.vars['errors'] %}
+                                        <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group{% if(form.email.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                            {{ form_widget(form.email, { 'attr': {'class' : 'form-control', 'placeholder' : 'Email'}}) }}
+                            {% if form.email.vars['errors']|length > 0 %}
+                                <ul class="message">
+                                    {% for error in form.email.vars['errors'] %}
+                                        <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+
+                        {% for passwordField in form.plainPassword %}
+                            <div class="form-group{% if(passwordField.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+
+                                {{ form_widget(passwordField, { 'attr': {
+                                    'class' : 'form-control',
+                                    'placeholder' : loop.index0 ? 'Repeat password' : 'Password' }}) }}
+                                {% if passwordField.vars['errors']|length > 0 %}
                                     <ul class="message">
-                                        {% for error in form.termsAccepted.vars['errors'] %}
+                                        {% for error in passwordField.vars['errors'] %}
                                             <li>{{ error.message }}</li>
                                         {% endfor %}
                                     </ul>
                                 {% endif %}
-                                Accept Terms</label>
-                        </div>
+                            </div>
+
+                        {% endfor %}
+                        {#<div class="form-group{% if(form.phone.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">#}
+                        {#{{ form_widget(form.phone, { 'attr': {'class' : 'form-control', 'placeholder' : 'Phone'}}) }}#}
+                        {#{% if form.phone.vars['errors']|length > 0 %}#}
+                        {#<ul class="message">#}
+                        {#{% for error in form.phone.vars['errors'] %}#}
+                        {#<li>{{ error.message }}</li>#}
+                        {#{% endfor %}#}
+                        {#</ul>#}
+                        {#{% endif %}#}
+                        {#</div>#}
                     </div>
+                    <div class="col-md-6">
+                        {#<div class="form-group{% if(form.acceptTerms.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">#}
+                            {#<div class="checkbox i-checks">#}
+                                {#{{ form_widget(form.acceptTerms, { 'attr': {'class' : 'form-control'}}) }}#}
+                                {#<i>&nbsp;I accept all terms and conditions</i>#}
+                                {#{% if form.acceptTerms.vars['errors']|length > 0 %}#}
+                                    {#<ul class="message">#}
+                                        {#{% for error in form.acceptTerms.vars['errors'] %}#}
+                                            {#<li>{{ error.message }}</li>#}
+                                        {#{% endfor %}#}
+                                    {#</ul>#}
+                                {#{% endif %}#}
+                            {#</div>#}
+                        {#</div>#}
 
+                        {#<br/>#}
+                        <button type="submit" class="btn btn-green block full-width m-b">Register</button>
 
-                    <button type="submit" class="btn btn-green block full-width m-b">Register</button>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <p class="text-muted text-center m-t-md">
+                            <small>Already have an account?</small>
+                        </p>
+                        <a class="btn btn-primary btn-block" href="{{ path('fos_user_security_login') }}">
+                            Log in
+                        </a>
 
-                    <p class="text-muted text-center">
-                        <small>Already have an account?</small>
-                    </p>
-                    <a class="btn btn-sm btn-white btn-block" href="{{ path('fos_user_security_login') }}">Login</a>
-                    {{ form_end(form) }}
+                        <br/>
+                        <p class="text-muted text-center m-t-xs">
+                            <small>... or login with ...</small>
+                        </p>
+
+                        <a class="btn btn-block btn-social btn-facebook" href="#" onclick="fb_login();">
+                            <span class="fa fa-facebook pull-left ali"></span> Facebook
+                        </a>
+                        {{ form_end(form) }}
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 {% endblock %}
-{% block javascript %}
+
+{% block custom_js %}
     {{ parent() }}
 
     <!-- iCheck Scripts -->
-    <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
-            type="text/javascript"></script>
+    {#<script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"#}
+            {#type="text/javascript"></script>#}
 {% endblock %}
 
-{% block inline_javascript %}
+{% block inline_js %}
 
-    <script type="text/javascript">
+    {#<script type="text/javascript">#}
 
-        $(document).ready(function () {
-            //  iCheck scripts for checkboxes and radios
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-green',
-            });
-        });
-    </script>
+        {#$(document).ready(function () {#}
+            {#//  iCheck scripts for checkboxes and radios#}
+            {#$(".i-checks").iCheck({#}
+                {#checkboxClass: 'icheckbox_square-green',#}
+                {#radioClass: 'iradio_square-green',#}
+            {#});#}
+        {#});#}
+    {#</script>#}
 
 {% endblock %}

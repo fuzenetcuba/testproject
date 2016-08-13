@@ -2,7 +2,14 @@
 
 {% block title ' - ' ~ "Subscribe for deals" %}
 
-{% block content %}
+{% block custom_css %}
+    {{ parent() }}
+
+    <!-- Style for select2 plugin -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}">
+{% endblock %}
+
+{% block page_content %}
     <section class="inner-content section-spaces-line">
         <div class="container">
             <div class="row m-b">
@@ -56,12 +63,13 @@
     </section>
 {% endblock %}
 
-{% block javascript %}
+{% block custom_js %}
     {{ parent() }}
+
     <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"></script>
 {% endblock %}
 
-{% block inline_javascript %}
+{% block inline_js %}
     <script type="text/javascript">
 
         $(document).ready(function () {
