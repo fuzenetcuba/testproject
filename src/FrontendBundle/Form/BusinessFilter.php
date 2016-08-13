@@ -33,9 +33,14 @@ class BusinessFilter extends AbstractType
 
     /**
      * {@inheritDoc}
+     *
+     * @throws \Symfony\Component\OptionsResolver\Exception\AccessException
      */
     public function configureOptions(OptionsResolver $resolver)
     {
+        $resolver->setDefaults([
+            'translation_domain' => 'business'
+        ]);
     }
 
     /**

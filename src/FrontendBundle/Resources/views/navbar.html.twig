@@ -24,14 +24,15 @@
             <div class="second-navbar navbar-collapse collapse hidden-xs">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="{{ path("subscription_request") }}">Subscribe</a>
+                        <a href="{{ path("subscription_request") }}">{{ 'About' | trans({}, 'menu') }}</a>
                     </li>
                     <li>
-                        <a href="#">Find Us</a>
+                        <a href="#">{{ 'Find Us' | trans({}, 'menu') }}</a>
                     </li>
                     <li class="dropdown hidden-xs">
                         {% if not app.user %}
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login/Register</a>
+                            <a class="dropdown-toggle" data-toggle="dropdown"
+                               href="#">{{ 'Login/Register' | trans({}, 'menu') }}</a>
                         {% else %}
                             <a class="dropdown-toggle navbar-avatar" data-toggle="dropdown" href="#">
                                 {{ app.user.fullName() }}
@@ -56,14 +57,13 @@
                                     <form class="m-t" role="form" action="{{ path('fos_user_security_check') }}"
                                           method="post">
                                         <div class="form-group">
-                                            <input class="form-control" placeholder="Username" type="text" id="username"
-                                                   name="_username" value="" required="required"
+                                            <input class="form-control" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}"
+                                                   type="text" id="username" name="_username" value="" required="required"
                                                    autofocus="autofocus">
                                         </div>
                                         <div class="form-group">
-                                            <input class="form-control" placeholder="Password" type="password"
-                                                   id="password"
-                                                   name="_password" required="required">
+                                            <input class="form-control" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}"
+                                                   type="password" id="password" name="_password" required="required">
                                         </div>
                                         <button type="submit" name="_submit"
                                                 value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}"
@@ -72,17 +72,17 @@
 
                                         <p class="text-center">
                                             <a class="text-green" href="{{ path('fos_user_resetting_request') }}">
-                                                <small>Forgot password?</small>
+                                                <small>{{ 'Forgot your password?' | trans({}, 'menu') }}</small>
                                             </a>
                                         </p>
 
                                         <p class="text-muted text-center">
-                                            <small>Do not have an account?</small>
+                                            <small>{{ 'Do not have an account?' | trans({}, 'menu') }}</small>
                                         </p>
 
                                         <a class="btn btn-sm btn-blue btn-block"
                                            href="{{ path('fos_user_registration_register') }}">
-                                            Create an account
+                                            {{ 'Create an account' | trans({}, 'menu') }}
                                         </a>
 
                                         <input type="hidden" name="_csrf_token"
@@ -90,7 +90,7 @@
                                         <br/>
 
                                         <p class="text-muted text-center">
-                                            <small>... or login with ...</small>
+                                            <small>... {{ 'or login with' | trans({}, 'menu') }} ...</small>
                                         </p>
 
                                         <a class="btn btn-block btn-social btn-facebook" href="#" onclick="fb_login();">
@@ -100,6 +100,78 @@
                                 </div>
                             </div>
                         {% else %}
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ path('membership') }}">
+                                        <i class="fa fa-user"></i> {{ 'Membership' | trans({}, 'menu') }}
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="{{ path('fos_user_security_logout') }}">
+                                        <i class="fa fa-sign-out"></i> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                    </a>
+                                </li>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a target="_blank" href="{{ path('backend_homepage') }}">
+                                            <i class="fa fa-cog"></i> Admin
+                                        </a>
+                                    </li>
+                                {% endif %}
+
+                            </ul>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="{% if current == 'about' %}active{% endif %}">
+                        <a href="#">{{ 'About' | trans({}, 'menu') }}</a>
+                    </li>
+                    <li class="{% if current == 'business' %}active{% endif %}">
+                        <a href="{{ path('business_list') }}">{{ 'Directory' | trans({}, 'menu') }}</a>
+                    </li>
+                    <li class="{% if current in ['deals', 'deal'] %}active{% endif %}">
+                        <a href="{{ path('deals') }}">{{ 'Deals' | trans({}, 'menu') }}</a>
+                    </li>
+                    <li class="{% if current == 'news' %}active{% endif %}">
+                        <a href="#">{{ 'News & Events' | trans({}, 'menu') }}</a>
+                    </li>
+                    <li class="{% if current == 'careers' %}active{% endif %}">
+                        <a href="#">{{ 'Careers' | trans({}, 'menu') }}</a>
+                    </li>
+                    <li class="visible-xs">
+                        <a href="#">{{ 'Subscribe' | trans({}, 'menu') }}</a>
+                    </li>
+                    <li class="visible-xs">
+                        <a href="#">{{ 'Find Us' | trans({}, 'menu') }}</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">{{ 'Contact' | trans({}, 'menu') }}</a>
+                    </li>
+
+                    <li class="dropdown visible-xs">
+                        {% if not app.user %}
+                            <a href="{{ path('fos_user_security_login') }}">Login/Register</a>
+                        {% else %}
+                            <a class="dropdown-toggle navbar-avatar" data-toggle="dropdown" href="#">
+                                {{ app.user.fullName() }}
+                                &nbsp;
+                                <img alt="image" class="img-avatar-small img-circle"
+                                     src="
+                                     {% if((app.user.image) is not null) %}
+                                        {{ vich_uploader_asset(app.user, 'imageFile') }}
+                                     {% else %}
+                                        {{ asset('bundles/backend/images/avatar.jpg') }}
+                                     {% endif %}
+                                 "/>
+                            </a>
+                        {% endif %}
+
+                        {% if not not app.user %}
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="{{ path('membership') }}">
@@ -124,78 +196,6 @@
                             </ul>
                         {% endif %}
                     </li>
-                </ul>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="{% if current == 'about' %}active{% endif %}">
-                        <a href="#">About</a>
-                    </li>
-                    <li class="{% if current == 'business' %}active{% endif %}">
-                        <a href="{{ path('business_list') }}">Directory</a>
-                    </li>
-                    <li class="{% if current in ['deals', 'deal'] %}active{% endif %}">
-                        <a href="{{ path('deals') }}">Deals</a>
-                    </li>
-                    <li class="{% if current == 'news' %}active{% endif %}">
-                        <a href="#">News & Events</a>
-                    </li>
-                    <li class="{% if current == 'careers' %}active{% endif %}">
-                        <a href="#">Careers</a>
-                    </li>
-                    <li class="visible-xs">
-                        <a href="#">Subscribe</a>
-                    </li>
-                    <li class="visible-xs">
-                        <a href="#">Find Us</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
-
-                    <li class="dropdown visible-xs">
-                        {% if not app.user %}
-                            <a href="{{ path('fos_user_security_login') }}">Login/Register</a>
-                        {% else %}
-                            <a class="dropdown-toggle navbar-avatar" data-toggle="dropdown" href="#">
-                                {{ app.user.fullName() }}
-                                &nbsp;
-                                <img alt="image" class="img-avatar-small img-circle"
-                                     src="
-                                     {% if((app.user.image) is not null) %}
-                                        {{ vich_uploader_asset(app.user, 'imageFile') }}
-                                     {% else %}
-                                        {{ asset('bundles/backend/images/avatar.jpg') }}
-                                     {% endif %}
-                                 "/>
-                            </a>
-                        {% endif %}
-
-                        {% if not not app.user %}
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{{ path('membership') }}">
-                                    <i class="fa fa-user"></i> Membership
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="{{ path('fos_user_security_logout') }}">
-                                    <i class="fa fa-sign-out"></i> Logout
-                                </a>
-                            </li>
-                            {% if is_granted('ROLE_ADMIN') %}
-                                <li class="divider"></li>
-                                <li>
-                                    <a target="_blank" href="{{ path('backend_homepage') }}">
-                                        <i class="fa fa-cog"></i> Admin
-                                    </a>
-                                </li>
-                            {% endif %}
-
-                        </ul>
-                        {% endif %}
-                    </li>
 
                     <li class="dropdown language-selector">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -205,7 +205,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">
+                                <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'en'})) }}">
                                     <img class="language-selector-icon"
                                          src="{{ asset("bundles/frontend/img/us_flag_64.jpg") }}"/>
                                     English
@@ -213,7 +213,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#">
+                                <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'es'})) }}">
                                     <img class="language-selector-icon"
                                          src="{{ asset("bundles/frontend/img/es_flag_64.jpg") }}"/>
                                     Spanish

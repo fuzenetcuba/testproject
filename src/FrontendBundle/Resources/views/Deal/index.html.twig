@@ -16,7 +16,7 @@
                 <div class="container">
                     <div class="col-sm-4 col-md-4">
                         <form action="{{ path('deals') }}" method="post">
-                            <h4>FILTER DEALS BY:</h4>
+                            <h4>{{ 'FILTER DEALS BY' | trans({}, 'deals') }}:</h4>
                             <div class="col-sm-12 col-md-12">
                                 {{ form_widget(form.business) }}
                             </div>
@@ -24,15 +24,15 @@
                     </div>
                     <div class="col-md-5 col-sm-1 col-sm-5 text-right-md col-md-offset-2">
                         <div class="m-l">
-                            <h4>SORT DEALS BY:</h4>
+                            <h4>{{ 'SORT DEALS BY' | trans({}, 'deals') }}:</h4>
                             <div class="btn-group" data-toggle="buttons">
                                 <label class="btn btn-white">
                                     <input type="radio" value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_ENDING_SOON') }}"
-                                           name="order" id="option1" autocomplete="off"> ENDING SOON
+                                           name="order" id="option1" autocomplete="off"> {{ 'ENDING SOON' | trans({}, 'deals') }}
                                 </label>
                                 <label class="btn btn-white">
                                     <input type="radio" value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_NEW_DEALS') }}"
-                                           name="order" id="option2" autocomplete="off"> NEW DEALS
+                                           name="order" id="option2" autocomplete="off"> {{ 'NEW DEALS' | trans({}, 'deals') }}
                                 </label>
                             </div>
                         </div>
@@ -58,8 +58,8 @@
                     {% for deal in deals %}
                         <div class="col-sm-4 text-center">
                             <h3>{{ deal.name | upper }}</h3>
-                            <p>AT {{ deal.business.name | upper }}</p>
-                            <p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>
+                            <p>{{ 'AT' | trans({}, 'general') }} {{ deal.business.name | upper }}</p>
+                            <p>{{ 'ENDS' | trans({}, 'general') }}: {{ deal.endsAt | date('m/d/Y') }}</p>
                             <div class="container-image">
                                 <img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>
                             </div>

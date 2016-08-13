@@ -16,7 +16,7 @@
                 <div class="container">
                     <div class="col-md-6 col-sm-6">
                         <form action="{{ path('business_list') }}" method="post">
-                            <h4>FILTER BUSINESSES BY:</h4>
+                            <h4>{{ 'FILTER BUSINESSES BY' | trans({}, 'business') }}:</h4>
                             <div class="col-md-6 col-sm-6">
                                 {{ form_widget(form.search) }}
                             </div>
@@ -27,19 +27,19 @@
                     </div>
                     <div class="col-sm-5 text-right-md">
                         <div class="m-l">
-                            <h4>SORT BUSINESSES BY:</h4>
+                            <h4>{{ 'SORT BUSINESSES BY' | trans({}, 'business') }}:</h4>
                             <div class="btn-group" data-toggle="buttons">
                                 <label class="btn btn-white active">
                                     <input type="radio" value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_ALPHABETICALLY') }}"
-                                           name="order" id="option1" autocomplete="off"> ALPHABETICALLY
+                                           name="order" id="option1" autocomplete="off"> {{ 'ALPHABETICALLY' | trans({}, 'business') }}
                                 </label>
                                 <label class="btn btn-white">
                                     <input type="radio" value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_CATEGORY') }}"
-                                           name="order" id="option1" autocomplete="off"> CATEGORY
+                                           name="order" id="option1" autocomplete="off"> {{ 'CATEGORY' | trans({}, 'business') }}
                                 </label>
                                 <label class="btn btn-white">
                                     <input type="radio" value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS') }}"
-                                           name="order" id="option2" autocomplete="off"> RECENT DEALS
+                                           name="order" id="option2" autocomplete="off"> {{ 'RECENT DEALS' | trans({}, 'business') }}
                                 </label>
                             </div>
                         </div>
