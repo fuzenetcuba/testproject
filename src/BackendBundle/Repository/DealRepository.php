@@ -37,7 +37,7 @@ class DealRepository extends EntityRepository
      *
      * @param string $strDate
      *
-     * @return \Doctrine\ORM\AbstractQuery
+     * @return array
      */
     public function findDealUntil($strDate = 'NOW')
     {

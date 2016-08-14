@@ -8,8 +8,19 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Command to execute maintenance tasks over the deals collection, at the moment only
+ * disables the expired deals on the database
+ *
+ * {@inheritDoc}
+ */
 class AppMaintainDealsCommand extends ContainerAwareCommand
 {
+    /**
+     * {@inheritDoc}
+     *
+     * @throws \Symfony\Component\Console\Exception\InvalidArgumentException
+     */
     protected function configure()
     {
         $this
@@ -22,6 +33,16 @@ class AppMaintainDealsCommand extends ContainerAwareCommand
         ;
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @throws \Symfony\Component\Console\Exception\InvalidArgumentException
+     * @throws \LogicException
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
+     * @throws \Doctrine\ORM\ORMInvalidArgumentException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $date = $input->getArgument('date');
