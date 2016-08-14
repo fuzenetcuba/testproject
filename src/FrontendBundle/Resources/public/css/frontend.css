@@ -307,7 +307,7 @@ body.landing-page {
     opacity: 1;
 }
 .landing-page .carousel-fade .carousel-control {
-    z-index: 2;
+    z-index: 150;
 }
 .landing-page .carousel-control.left,
 .landing-page .carousel-control.right {

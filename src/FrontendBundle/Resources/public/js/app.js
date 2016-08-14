@@ -36,46 +36,46 @@ $(document).ready(function () {
                 dom.find('div.row.deal-list').html()
             );
         })
-    })
+    });
 
     $('.filter-deals form select').on('change', function () {
         $(this).parent().parent().submit();
     })
 });
 
-// var cbpAnimatedHeader = (function () {
-//     var docElem = document.documentElement,
-//         header = document.querySelector('.navbar-default'),
-//         didScroll = false,
-//         changeHeaderOn = 200;
-//
-//     function init() {
-//         window.addEventListener('scroll', function (event) {
-//             if (!didScroll) {
-//                 didScroll = true;
-//                 setTimeout(scrollPage, 250);
-//             }
-//         }, false);
-//     }
-//
-//     function scrollPage() {
-//         var sy = scrollY();
-//         if (sy >= changeHeaderOn) {
-//             $(header).addClass('navbar-scroll')
-//         }
-//         else {
-//             $(header).removeClass('navbar-scroll')
-//         }
-//         didScroll = false;
-//     }
-//
-//     function scrollY() {
-//         return window.pageYOffset || docElem.scrollTop;
-//     }
-//
-//     init();
-//
-// })();
+var cbpAnimatedHeader = (function () {
+    var docElem = document.documentElement,
+        header = document.querySelector('.navbar-default'),
+        didScroll = false,
+        changeHeaderOn = 200;
+
+    function init() {
+        window.addEventListener('scroll', function (event) {
+            if (!didScroll) {
+                didScroll = true;
+                setTimeout(scrollPage, 250);
+            }
+        }, false);
+    }
+
+    function scrollPage() {
+        var sy = scrollY();
+        if (sy >= changeHeaderOn) {
+            $(header).addClass('navbar-scroll')
+        }
+        else {
+            $(header).removeClass('navbar-scroll')
+        }
+        didScroll = false;
+    }
+
+    function scrollY() {
+        return window.pageYOffset || docElem.scrollTop;
+    }
+
+    init();
+
+})();
 
 // Activate WOW.js plugin for animation on scrol
 new WOW().init();

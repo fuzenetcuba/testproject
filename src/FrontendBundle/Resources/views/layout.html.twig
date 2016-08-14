@@ -109,7 +109,7 @@
                             </address>
                             <br/>
                             <p id="hours-operation">
-                                <strong><span class="green">Today's Hours Of Operation: </span></strong>
+                                <strong><span class="green">Hours Of Operation: </span></strong>
                                 <br/>
                                 <small>
                                     <b>Every day</b> of the week,
@@ -187,20 +187,22 @@
 
 {% block custom_js %}
 
-<!-- Mainly scripts -->
-<script src="{{ asset('bundles/backend/js/jquery-2.1.1.js') }}"></script>
-<script src="{{ asset('bundles/backend/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('bundles/backend/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
-<script src="{{ asset('bundles/backend/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <!-- Mainly scripts -->
+    <script src="{{ asset('bundles/backend/js/jquery-2.1.1.js') }}"></script>
+    <script src="{{ asset('bundles/backend/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/backend/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+    <script src="{{ asset('bundles/backend/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
 
-<!-- Custom and plugin javascript -->
-<script src="{{ asset('bundles/backend/js/inspinia.js') }}"></script>
-<script src="{{ asset('bundles/backend/js/plugins/pace/pace.min.js') }}"></script>
-<script src="{{ asset('bundles/frontend/js/wow/wow.min.js') }}"></script>
-<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
-<script src="{{ asset('bundles/frontend/js/app.js') }}"></script>
-<script src="{{ asset('bundles/frontend/js/widgets.js') }}"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="{{ asset('bundles/backend/js/inspinia.js') }}"></script>
+    <script src="{{ asset('bundles/backend/js/plugins/pace/pace.min.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/wow/wow.min.js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+    <script src="{{ asset('bundles/frontend/js/app.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/widgets.js') }}"></script>
+
+{% endblock %}
 
 {% block javascript %}
 
