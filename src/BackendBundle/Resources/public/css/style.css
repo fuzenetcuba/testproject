@@ -5387,6 +5387,11 @@ del {
 .product-box {
   padding: 0;
   border: 1px solid #e7eaec;
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  -ms-transition: all 0.3s ease-in-out 0s;
+  -o-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
 }
 .product-box:hover,
 .product-box.active {
