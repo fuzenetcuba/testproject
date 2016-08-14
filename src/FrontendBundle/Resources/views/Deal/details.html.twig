@@ -5,9 +5,9 @@
 {% block page_content %}
     <section class="inner-content section-spaces">
         <div class="container">
-            <div class="row row-eq-height">
+            <div class="row">
                 <div class="col-sm-6 text-center">
-                    <img src="{{ asset('images/deals/' ~ deal.image) }}">
+                    <img class="img-responsive" src="{{ asset('images/deals/' ~ deal.image) }}">
                 </div>
                 <div class="col-sm-6">
                     <h1>{{ deal.name }}</h1>
