@@ -2,6 +2,10 @@ frontend_homepage:
     path:     /
     defaults: { _controller: FrontendBundle:Default:index }
 
+frontend_static_page:
+    path:     /static/{name}
+    defaults: { _controller: FrontendBundle:Default:staticPage }
+
 frontend_loged_in:
     path:     /frontend_loged
     defaults: { _controller: FrontendBundle:Default:logedIn }

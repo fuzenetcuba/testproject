@@ -19,10 +19,10 @@ class DefaultController extends Controller
 
         return $this->render('FrontendBundle:Default:index.html.twig',
             array(
-                'name'          => 'Dear Public User',
+                'name' => 'Dear Public User',
                 'last_username' => $lastUsername,
-                'error'         => $error,
-                'deals'         => $topDeals,
+                'error' => $error,
+                'deals' => $topDeals,
             )
         );
     }
@@ -40,11 +40,16 @@ class DefaultController extends Controller
 
         return $this->render('FrontendBundle:Default:index.html.twig',
             array(
-                'name'          => 'Loged In User',
+                'name' => 'Loged In User',
                 'last_username' => $lastUsername,
-                'error'         => $error,
-                'deals'         => $topDeals,
+                'error' => $error,
+                'deals' => $topDeals,
             )
         );
+    }
+
+    public function staticPageAction($name)
+    {
+        return $this->render("FrontendBundle:Static:" . $name . ".html.twig");
     }
 }

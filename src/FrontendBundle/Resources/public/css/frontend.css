@@ -410,15 +410,7 @@ body.landing-page {
     bottom: auto;
     right: auto;
     text-align: left;
-}
-
-.landing-page .carousel-caption {
-    position: absolute;
-    top: 100px;
-    left: 0;
-    bottom: auto;
-    right: auto;
-    text-align: left;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
 
 .landing-page .carousel-caption.blank {
@@ -440,14 +432,14 @@ body.landing-page {
     font-weight: 700;
     font-size: 38px;
     text-transform: uppercase;
-    text-shadow: none;
+    /*text-shadow: none;*/
     letter-spacing: -1.5px;
 }
 
 .landing-page .carousel-caption p {
     font-weight: 700;
     text-transform: uppercase;
-    text-shadow: none;
+    /*text-shadow: none;*/
 }
 
 .landing-page .caption-link {
