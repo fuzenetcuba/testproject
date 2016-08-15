@@ -384,9 +384,9 @@ class Deal
     /**
      * @return boolean
      */
-    public function isActive()
+    public function setIsActive($status)
     {
-        return $this->isActive;
+        $this->isActive = $status;
     }
 
     /**

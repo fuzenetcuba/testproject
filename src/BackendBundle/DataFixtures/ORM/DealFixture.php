@@ -34,6 +34,7 @@ class DealFixture extends OrderedYamlFixture
             );
             $object->setImage($deal['image']);
             $object->setPoints($deal['points']);
+            $object->setIsActive($deal['active']);
 
             /** @var Business $business */
             $business = $this->getReference('business');
