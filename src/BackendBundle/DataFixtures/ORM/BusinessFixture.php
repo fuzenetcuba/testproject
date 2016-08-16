@@ -29,8 +29,13 @@ class BusinessFixture extends OrderedYamlFixture
 
             $entity->setName($business['name']);
             $entity->setDescription($business['description']);
+            $entity->setEmail($business['email']);
             $entity->setPhone($business['phone']);
+            $entity->setHoursBegin(date_create_from_format("H:i:s", $business['hours-begin']));
+            $entity->setHoursEnd(date_create_from_format("H:i:s", $business['hours-end']));
             $entity->setSocialMedia($business['social-media']);
+            $entity->setWebsite($business['website']);
+            $entity->setMallMapDirections($business['mall-map-directions']);
             $entity->setLogo($business['logo']);
 
             $manager->persist($entity);

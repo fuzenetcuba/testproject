@@ -15,18 +15,21 @@
 
                     <span class="business-info">
                         <ul class="list-unstyled">
-                            <li><i class="fa fa-clock-o"></i> {{ "9:00am to 6:00pm" }}</li>
                             <li>
-                                <i class="fa fa-globe"></i>
-                                <a target="_blank" href="http://{{ "www.business.com" }}">
-                                    {{ "www.business.com" }}
+                                <i class="fa fa-clock-o"></i>
+                                {{ business.hoursBegin|date("h:i A") ~ " to " ~ business.hoursEnd|date("h:i A") }}
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope"></i>
+                                <a href="mailto:{{ business.email }}">
+                                    {{ business.email }}
                                 </a>
                             </li>
                             <li><i class="fa fa-phone"></i> {{ business.phone }}</li>
                             <li>
-                                <i class="fa fa-envelope"></i>
-                                <a href="mailto:{{ "business.mail@host.com" }}">
-                                    {{ "business.mail@host.com" }}
+                                <i class="fa fa-globe"></i>
+                                <a target="_blank" href="{{ business.website }}">
+                                    {{ business.website|split("://")[1] }}
                                 </a>
                             </li>
                             <li>
@@ -41,7 +44,7 @@
                                     <a class="btn btn-xs btn-blue" href="#">
                                         View on Mall Map
                                     </a>
-                                    - The business is located in the 2nd floor, on the right side of the stairs.
+                                    - {{ business.mallMapDirections }}
                                 </p>
                             </li>
                             <li><i class="fa fa-tags"></i> {{ business.categories | join(', ') }}</li>

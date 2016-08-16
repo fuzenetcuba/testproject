@@ -73,26 +73,26 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'Email', 'e.email') }}
+                            {% if entities.isSorted('e.email') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
+                        <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Phone', 'e.phone') }}
                             {% if entities.isSorted('e.phone') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
                         <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'Website', 'e.website') }}
+                            {% if entities.isSorted('e.website') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
+                        <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Social Media', 'e.socialMedia') }}
                             {% if entities.isSorted('e.socialMedia') %}
-                                <span class="fa fa-sort"></span>
-                            {% endif %}
-                        </th>
-                        <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Created At', 'e.createdAt') }}
-                            {% if entities.isSorted('e.createdAt') %}
-                                <span class="fa fa-sort"></span>
-                            {% endif %}
-                        </th>
-                        <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Updated At', 'e.updatedAt') }}
-                            {% if entities.isSorted('e.updatedAt') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
@@ -109,29 +109,21 @@
                                        name="batch_action_checkbox[]"/>
                             </td>
 
-
                             <td class="text-navy">
                                 <a href="{{ path('business_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
                             </td>
 
-
                             <td>{{ entity.name }}</td>
-
 
                             <td>{{ entity.description }}</td>
 
+                            <td>{{ entity.email }}</td>
 
                             <td>{{ entity.phone }}</td>
 
+                            <td>{{ entity.website }}</td>
 
                             <td>{{ entity.socialMedia }}</td>
-
-
-                            <td>{{ entity.createdAt|date('d-M-Y h:i A') }}</td>
-
-
-                            <td>{{ entity.updatedAt|date('d-M-Y h:i A') }}</td>
-
 
                             <td>
                                 <div class="btn-group">

@@ -4,6 +4,8 @@ namespace BackendBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -19,7 +21,6 @@ class BusinessType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('phone')
             ->add('logoFile', FileType::class, array(
                 'label' => 'Logo',
                 'required' => false,
@@ -27,6 +28,18 @@ class BusinessType extends AbstractType
             ->add('socialMedia', null, array(
                 'label' => 'Social Media'))
             ->add('categories')
+            ->add('hoursBegin', TimeType::class, array(
+                'label' => "Hours of operation",
+                'widget' => 'single_text',
+                'html5' => false
+            ))
+            ->add('hoursEnd', TimeType::class, array('widget' => 'single_text', 'html5' => false))
+            ->add('website')
+            ->add('email')
+            ->add('phone')
+            ->add('mallMapDirections', TextareaType::class, array(
+                'required' => false
+            ))
             ->add('customers');
     }
 

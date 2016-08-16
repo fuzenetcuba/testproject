@@ -3,6 +3,10 @@
 {% block custom_css %}
     {{ parent() }}
 
+    <!-- clockpicker3 Styles -->
+    <link rel="stylesheet"
+          href="{{ asset('bundles/backend/css/plugins/clockpicker/clockpicker.css') }}"
+          type="text/css"/>
 
     <!-- datepicker3 Styles -->
     <link rel="stylesheet"
@@ -29,8 +33,6 @@
 
             {{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
 
-
-
             <div class="form-group{% if(form.name.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                 <label for="" class="col-md-2 control-label">{{ form_label(form.name) }}</label>
 
@@ -46,8 +48,6 @@
                 </div>
             </div>
             <div class="hr-line-dashed"></div>
-
-
 
             <div class="form-group{% if(form.description.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                 <label for="" class="col-md-2 control-label">{{ form_label(form.description) }}</label>
@@ -65,7 +65,21 @@
             </div>
             <div class="hr-line-dashed"></div>
 
+            <div class="form-group{% if(form.email.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.email) }}</label>
 
+                <div class="col-md-6">
+                    {{ form_widget(form.email, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.email.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.email.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
 
             <div class="form-group{% if(form.phone.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                 <label for="" class="col-md-2 control-label">{{ form_label(form.phone) }}</label>
@@ -83,15 +97,30 @@
             </div>
             <div class="hr-line-dashed"></div>
 
-            
-            <div class="form-group{% if(form.logoFile.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                <label for="" class="col-md-2 control-label">{{ form_label(form.logoFile) }}</label>
+            <div class="form-group
+            {% if(form.hoursBegin.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}
+            {% if(form.hoursEnd.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}
+            ">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.hoursBegin) }}</label>
 
                 <div class="col-md-6">
-                    {{ form_widget(form.logoFile, { 'attr': {'class' : 'form-control', 'required' : 'required'}}) }}
-                    {% if form.logoFile.vars['errors']|length > 0 %}
+                    <div class="col-md-6 clockpicker" data-autoclose="true">
+                        {{ form_widget(form.hoursBegin, { 'attr': {'class' : 'form-control', 'placeholder' : 'from'}}) }}
+                    </div>
+                    <div class="col-md-6 clockpicker" data-autoclose="true">
+                        {{ form_widget(form.hoursEnd, { 'attr': {'class' : 'form-control', 'placeholder' : 'to'}}) }}
+                    </div>
+
+                    {% if form.hoursBegin.vars['errors']|length > 0 %}
                         <ul class="message">
-                            {% for error in form.logoFile.vars['errors'] %}
+                            {% for error in form.hoursBegin.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% if form.hoursEnd.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.hoursEnd.vars['errors'] %}
                                 <li>{{ error.message }}</li>
                             {% endfor %}
                         </ul>
@@ -99,8 +128,6 @@
                 </div>
             </div>
             <div class="hr-line-dashed"></div>
-
-
 
             <div class="form-group{% if(form.socialMedia.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                 <label for="" class="col-md-2 control-label">{{ form_label(form.socialMedia) }}</label>
@@ -118,6 +145,53 @@
             </div>
             <div class="hr-line-dashed"></div>
 
+            <div class="form-group{% if(form.website.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.website) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.website, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.website.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.website.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+            <div class="form-group{% if(form.mallMapDirections.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.mallMapDirections) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.mallMapDirections, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.mallMapDirections.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.mallMapDirections.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+            <div class="form-group{% if(form.logoFile.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label required">{{ form_label(form.logoFile) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.logoFile, { 'attr': {'class' : 'form-control', 'required' : 'required'}}) }}
+                    {% if form.logoFile.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.logoFile.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
 
             <div class="form-group{% if(form.categories.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                 <label for=""
@@ -136,7 +210,6 @@
             </div>
             <div class="hr-line-dashed"></div>
 
-
             <div class="form-group{% if(form.customers.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                 <label for=""
                        class="col-md-2 control-label">{{ form_label(form.customers) }}</label>
@@ -154,8 +227,6 @@
             </div>
             <div class="hr-line-dashed"></div>
 
-
-
             <div class="form-group">
                 <div class="col-md-2 text-right">
                     <a class="btn btn-success" href="{{ path('business') }}">
@@ -168,14 +239,10 @@
                     {{ form_widget(form.submit, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
                     {{ form_widget(form.submitback, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
 
-
-
-
                     {{ form(form) }}
 
                 </div>
             </div>
-
 
             {{ form_end(form) }}
 
@@ -183,6 +250,10 @@
 
     {% block custom_js %}
         {{ parent() }}
+
+        <!-- clockicker3 Scripts -->
+        <script src="{{ asset('bundles/backend/js/plugins/clockpicker/clockpicker.js') }}"
+                type="text/javascript"></script>
 
         <!-- datepicker3 Scripts -->
         <script src="{{ asset('bundles/backend/js/plugins/datapicker/bootstrap-datepicker.js') }}"
@@ -198,6 +269,8 @@
 
             $(document).ready(function () {
 
+                //  clockpicker script for input time
+                $("form .clockpicker").clockpicker();
 
                 //  datepicker3 script for input datetime and date
                 $("form input.datepicker").datepicker({
@@ -208,12 +281,10 @@
                     format: "yyyy-mm-dd"
                 });
 
-
                 //  select2 scripts for batch actions combobox
                 $(".select2-field").select2({
                     placeholder: "--- Select a value ---"
                 });
-
 
             });
 

@@ -2,199 +2,349 @@ Business:
   tres-gauchos:
     name: Tres gauchos
     description: |
-      asd
+      Description of the business ...
     phone: (954) 845-0404
     logo: tres-gauchos.png
     social-media: https://www.facebook.com/BrooksBrothers/
+    email: customers@tresgauchos.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.tresgauchos.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   americas-insurance:
     name: Americas Insurances
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: americas-insurance.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@americasinsurance.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.americasinsurance.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   fuzenet:
     name: Fuzenet Marketing
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: fuzenet-marketing.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@fuzenet.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.fuzenet.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   activa:
     name: Activa Network
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: activa.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@activa.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.activa.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   agua-viva:
     name: Agua Viva
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: agua-viva.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@aguaviva.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.aguaviva.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   am-ofertas:
     name: AM Ofertas
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: am-ofertas.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@amofertas.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.amofertas.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   america-united:
     name: America United
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: america-united.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@americaunited.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.americaunited.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   automasters:
     name: Auto Masters
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: automasters.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@automasters.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.automasters.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   baila:
     name: Baila
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: baila.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@baila.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.baila.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   balero-clothing:
     name: Balero Clothing
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: balero-clothing.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@baleroclothing.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.balero-clothing.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   balero-group:
     name: Balero Group
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: balero-group.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@balerogroup.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.balerogroup.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   dr-auto:
     name: Dr Auto
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: dr-auto.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@drauto.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.drauto.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   hff:
     name: Hispanic Family Foundation
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: hff.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@hff.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.hff.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   madera:
     name: Madera Cafe
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: madera.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@madera.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.madera.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   maxima:
     name: Maxima 1320
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: maxima.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@maxima.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.maxima.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   mazfresco-market:
     name: Mazfresco Market
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: mazfresco-market.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@mazfrescomarket.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.mazfrescomarket.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   oda:
     name: ODA Ofertas de Auto
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: oda.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@oda.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.oda.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   palazzo-themeworks:
     name: Palazzo ThemeWorks
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: palazzo-themeworks.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@palazzothemeworks.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.palazzothemeworks.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   ranchera:
     name: 880 La Ranchera
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: ranchera.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@ranchera.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.ranchera.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   reforma-law:
     name: Reforma Law
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: reforma-law.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@reformalaw.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.reformalaw.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   salon-ixchel:
     name: Salon Ixchel
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: salon-ixchel.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@salonixchel.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.salonixchel.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   tblc-media:
     name: TBLC Media
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: tblc-media.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@tblcmedia.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.tblcmedia.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   titos:
     name: Titos Playland
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: titos.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@titos.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.titos.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   xenote:
     name: Xenote Mexican Cuisine
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: xenote.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@xenote.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.xenote.com
+    mall-map-directions: |
+      Follow the mall map directions ...
 
   zumito:
     name: Zumito
     description: |
-      asd
+      Description of the business ...
     phone: (952) 843-0400
     logo: zumito.png
     social-media: https://www.facebook.com/KalvinClein/
+    email: customers@zumito.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.zumito.com
+    mall-map-directions: |
+      Follow the mall map directions ...

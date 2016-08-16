@@ -69,6 +69,49 @@ class Business
     private $phone;
 
     /**
+     * @ORM\Column(name="hours_begin", type="time")
+     *
+     * @Assert\Time()
+     */
+    private $hoursBegin;
+
+    /**
+     * @ORM\Column(name="hours_end", type="time")
+     *
+     * @Assert\Time()
+     */
+    private $hoursEnd;
+
+    /**
+     * @ORM\Column(name="website", type="string", length=255, nullable=true)
+     *
+     * @Assert\Url()
+     */
+    private $website;
+
+    /**
+     * @ORM\Column(name="email", type="string", length=255)
+     *
+     * @Assert\Email()
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(name="mall_map_directions", type="string", nullable=true)
+     */
+    private $mallMapDirections;
+
+    /**
+     * @ORM\Column(name="mall_map_x", type="string", nullable=true)
+     */
+    private $mallMapX;
+
+    /**
+     * @ORM\Column(name="mall_map_y", type="string", nullable=true)
+     */
+    private $mallMapY;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="logo", type="string", length=255)
@@ -288,6 +331,167 @@ class Business
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * Set hoursBegin
+     *
+     * @param \DateTime $hoursBegin
+     * @return Business
+     */
+    public function setHoursBegin($hoursBegin)
+    {
+        $this->hoursBegin = $hoursBegin;
+
+        return $this;
+    }
+
+    /**
+     * Get hoursBegin
+     *
+     * @return \DateTime
+     */
+    public function getHoursBegin()
+    {
+        return $this->hoursBegin;
+    }
+
+    /**
+     * Set hoursEnd
+     *
+     * @param \DateTime $hoursEnd
+     * @return Business
+     */
+    public function setHoursEnd($hoursEnd)
+    {
+        $this->hoursEnd = $hoursEnd;
+
+        return $this;
+    }
+
+    /**
+     * Get hoursEnd
+     *
+     * @return \DateTime
+     */
+    public function getHoursEnd()
+    {
+        return $this->hoursEnd;
+    }
+
+    /**
+     * Set website
+     *
+     * @param string $website
+     * @return Business
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
+
+        return $this;
+    }
+
+    /**
+     * Get website
+     *
+     * @return string
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Business
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set mallMapDirections
+     *
+     * @param string $mallMapDirections
+     * @return Business
+     */
+    public function setMallMapDirections($mallMapDirections)
+    {
+        $this->mallMapDirections = $mallMapDirections;
+
+        return $this;
+    }
+
+    /**
+     * Get mallMapDirections
+     *
+     * @return string
+     */
+    public function getMallMapDirections()
+    {
+        return $this->mallMapDirections;
+    }
+
+    /**
+     * Set mallMapX
+     *
+     * @param string $mallMapX
+     * @return Business
+     */
+    public function setMallMapX($mallMapX)
+    {
+        $this->mallMapX = $mallMapX;
+
+        return $this;
+    }
+
+    /**
+     * Get mallMapX
+     *
+     * @return string
+     */
+    public function getMallMapX()
+    {
+        return $this->mallMapX;
+    }
+
+    /**
+     * Set mallMapY
+     *
+     * @param string $mallMapY
+     * @return Business
+     */
+    public function setMallMapY($mallMapY)
+    {
+        $this->mallMapY = $mallMapY;
+
+        return $this;
+    }
+
+    /**
+     * Get mallMapY
+     *
+     * @return string
+     */
+    public function getMallMapY()
+    {
+        return $this->mallMapY;
     }
 
     /**
