@@ -236,7 +236,7 @@ body.landing-page {
     padding: 0 6px;
 }
 .landing-page .navbar-scroll .navbar-nav > li > a {
-    padding: 18px 1px;
+    /*padding: 18px 1px;*/
 }
 .landing-page .navbar-default .navbar-nav > .active > a,
 .landing-page .navbar-default .navbar-nav > .active > a:hover {
@@ -247,11 +247,11 @@ body.landing-page {
 }
 .landing-page .navbar-fixed-top.navbar-scroll,
 .landing-page .navbar-fixed-top.navbar-simple {
-    border-bottom: 1px solid #c0c0c0 !important;
+    /*border-bottom: 1px solid #c0c0c0 !important;*/
     box-shadow: 0 0 5px #c0c0c0;
 }
 .landing-page .navbar.navbar-scroll .navbar-brand {
-    margin-top: 15px;
+    /*margin-top: 15px;*/
     border-radius: 5px;
     font-size: 12px;
     padding: 0 15px;
@@ -783,7 +783,7 @@ body.landing-page {
         padding: 0 8px;
     }
     .landing-page .navbar-scroll .navbar-nav > li > a {
-        padding: 18px 1px 20px;
+        /*padding: 18px 1px 20px;*/
     }
     .landing-page .navbar-scroll .navbar-nav > li {
         padding: 0 8px;
@@ -1724,11 +1724,11 @@ button.btn-blue.dim:active {
         padding: 26px 30px 19px;
     }
     .landing-page .navbar.navbar-scroll .navbar-brand img{
-        height: 40px !important;
-        width: auto;
+        /*height: 40px !important;*/
+        /*width: auto;*/
     }
     .landing-page .navbar-default.navbar-scroll .navbar-brand {
-        padding: 0 15px;
+        /*padding: 0 15px;*/
     }
 }
 
