@@ -49,10 +49,8 @@ class BusinessController extends Controller
 
             $dql = "SELECT e FROM BackendBundle:Business e WHERE "
                 . "e.name LIKE '%" . $find . "%' OR "
-                . "e.description LIKE '%" . $find . "%' OR "
                 . "e.website LIKE '%" . $find . "%' OR "
-                . "e.email LIKE '%" . $find . "%' OR "
-                . "e.socialMedia LIKE '%" . $find . "%' "
+                . "e.email LIKE '%" . $find . "%' "
                 . "ORDER BY e.id ASC";
             $query = $em->createQuery($dql);
 

@@ -7,7 +7,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 text-center">
-                    <img class="img-responsive" src="{{ asset('images/business/' ~ business.logo) }}">
+                    <img class="img-responsive"
+                         alt="{{ business.name }}"
+                         src="{{ asset('images/business/' ~ business.logo) }}">
                 </div>
                 <div class="col-sm-6">
                     <h1>{{ business.name | upper }}</h1>
@@ -30,6 +32,7 @@
                                 <i class="fa fa-globe"></i>
                                 <a target="_blank" href="{{ business.website }}">
                                     {{ business.website|split("://")[1] }}
+                                    <sub><span class="fa fa-external-link"></span></sub>
                                 </a>
                             </li>
                             <li>

@@ -67,6 +67,7 @@
                             <a href="{{ path('business_details', {'slug' : business.slug}) }}" class="thumbnail">
                                 <div class="container-image business-image">
                                     <img class="center-height business-image"
+                                         alt="{{ business.name }}"
                                          src="{{ asset('images/business/' ~ business.logo) }} "/>
                                 </div>
                             </a>

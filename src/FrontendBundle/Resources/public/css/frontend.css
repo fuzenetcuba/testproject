@@ -295,6 +295,7 @@ body.landing-page {
 .landing-page .navbar-fixed-top.navbar-simple {
     border-bottom: 1px solid #c0c0c0 !important;
     box-shadow: 0 0 5px #c0c0c0;
+    background-color: #FFFFFF;
 }
 
 .landing-page .navbar.navbar-scroll .navbar-brand {

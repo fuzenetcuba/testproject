@@ -1,7 +1,7 @@
 Category:
   dining:
     name: Dining
-    description: Food and eatables
+    description: Restaurants
         
   groceries:
     name: Groceries
@@ -54,3 +54,55 @@ Category:
   entertainment:
     name: Entertainment
     description: Enjoy the life
+        
+  food-eat:
+    name: Food & Eat
+    description: Food and eatables
+        
+  rapid-food:
+    name: Rapid Food
+    description: Rapid food
+        
+  radio:
+    name: Radio
+    description: Radio transmition
+        
+  legal-advocacy:
+    name: Legal & Advocacy
+    description: Legal and advocacy
+        
+  playground:
+    name: Playground
+    description: Playground
+        
+  tv:
+    name: TV
+    description: Television
+        
+  internet-marketing:
+    name: Internet & Marketing
+    description: Internet and marketing
+        
+  business-office:
+    name: Business Office
+    description: Business office
+        
+  store:
+    name: Store
+    description: Store
+        
+  boutique:
+    name: Boutique
+    description: Boutique
+        
+  show:
+    name: Show
+    description: Show
+        
+  food-court-vendor:
+    name: Food Court Vendor
+    description: Food Court Vendor
+        
+  retail:
+    name: Retail
+    description: Retail

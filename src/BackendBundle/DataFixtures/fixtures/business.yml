@@ -1,4 +1,102 @@
 Business:
+  americas-insurance:
+    name: America's Insurances
+    description: |
+      Description of the business ...
+    phone: (952) 843-0400
+    logo: americas-insurance.png
+    social-media: https://www.facebook.com/KalvinClein/
+    email: customers@americasinsurance.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.americasinsurance.com
+    mall-map-directions: |
+      Follow the mall map directions ...
+
+  maz-fresco:
+    name: Maz Fresco
+    description: |
+      Description of the business ...
+    phone: (952) 843-0400
+    logo: mazfresco-market.png
+    social-media: https://www.facebook.com/mazfresco/
+    email: customers@mazfrescomarket.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.mazfrescomarket.com
+    mall-map-directions: |
+      Follow the mall map directions ...
+
+  titos:
+    name: Tito's Playland
+    description: |
+      Description of the business ...
+    phone: (952) 843-0400
+    logo: titos.png
+    social-media: https://www.facebook.com/KalvinClein/
+    email: customers@titos.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.titos.com
+    mall-map-directions: |
+      Follow the mall map directions ...
+
+  reforma-law:
+    name: Reforma Law Group
+    description: |
+      Description of the business ...
+    phone: (952) 843-0400
+    logo: reforma-law.png
+    social-media: https://www.facebook.com/KalvinClein/
+    email: customers@reformalaw.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.reformalaw.com
+    mall-map-directions: |
+      Follow the mall map directions ...
+
+  salon-ixchel:
+    name: Salon Ixchel
+    description: |
+      Description of the business ...
+    phone: (952) 843-0400
+    logo: salon-ixchel.png
+    social-media: https://www.facebook.com/KalvinClein/
+    email: customers@salonixchel.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.salonixchel.com
+    mall-map-directions: |
+      Follow the mall map directions ...
+
+  zumito:
+    name: Zumito
+    description: |
+      Description of the business ...
+    phone: (952) 843-0400
+    logo: zumito.png
+    social-media: https://www.facebook.com/KalvinClein/
+    email: customers@zumito.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.zumito.com
+    mall-map-directions: |
+      Follow the mall map directions ...
+
+  madera:
+    name: Madera Café
+    description: |
+      Description of the business ...
+    phone: (952) 843-0400
+    logo: madera.png
+    social-media: https://www.facebook.com/KalvinClein/
+    email: customers@madera.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.madera.com
+    mall-map-directions: |
+      Follow the mall map directions ...
+
   tres-gauchos:
     name: Tres gauchos
     description: |
@@ -13,20 +111,76 @@ Business:
     mall-map-directions: |
       Follow the mall map directions ...
 
-  americas-insurance:
-    name: Americas Insurances
+  activa:
+    name: Activa 1240 Radio Station
     description: |
       Description of the business ...
     phone: (952) 843-0400
-    logo: americas-insurance.png
+    logo: activa.png
     social-media: https://www.facebook.com/KalvinClein/
-    email: customers@americasinsurance.com
+    email: customers@activa.com
     hours-begin: 10:00:00
     hours-end: 21:00:00
-    website: http://www.americasinsurance.com
+    website: http://www.activa.com
     mall-map-directions: |
       Follow the mall map directions ...
 
+  ranchera:
+    name: La Ranchera 880 Radio Station
+    description: |
+      Description of the business ...
+    phone: (952) 843-0400
+    logo: ranchera.png
+    social-media: https://www.facebook.com/KalvinClein/
+    email: customers@ranchera.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.ranchera.com
+    mall-map-directions: |
+      Follow the mall map directions ...
+
+  xenote:
+    name: Xenote Restaurant
+    description: |
+      Description of the business ...
+    phone: (952) 843-0400
+    logo: xenote.png
+    social-media: https://www.facebook.com/KalvinClein/
+    email: customers@xenote.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.xenote.com
+    mall-map-directions: |
+      Follow the mall map directions ...
+
+  baila:
+    name: Baila Dance Studios
+    description: |
+      Description of the business ...
+    phone: (952) 843-0400
+    logo: baila.png
+    social-media: https://www.facebook.com/KalvinClein/
+    email: customers@baila.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.baila.com
+    mall-map-directions: |
+      Follow the mall map directions ...
+
+  hff:
+    name: Hispanic Family Foundation
+    description: |
+      Description of the business ...
+    phone: (952) 843-0400
+    logo: hff.png
+    social-media: https://www.facebook.com/KalvinClein/
+    email: customers@hff.com
+    hours-begin: 10:00:00
+    hours-end: 21:00:00
+    website: http://www.hff.com
+    mall-map-directions: |
+      Follow the mall map directions ...
+      
   fuzenet:
     name: Fuzenet Marketing
     description: |
@@ -38,20 +192,6 @@ Business:
     hours-begin: 10:00:00
     hours-end: 21:00:00
     website: http://www.fuzenet.com
-    mall-map-directions: |
-      Follow the mall map directions ...
-
-  activa:
-    name: Activa Network
-    description: |
-      Description of the business ...
-    phone: (952) 843-0400
-    logo: activa.png
-    social-media: https://www.facebook.com/KalvinClein/
-    email: customers@activa.com
-    hours-begin: 10:00:00
-    hours-end: 21:00:00
-    website: http://www.activa.com
     mall-map-directions: |
       Follow the mall map directions ...
 
@@ -111,20 +251,6 @@ Business:
     mall-map-directions: |
       Follow the mall map directions ...
 
-  baila:
-    name: Baila
-    description: |
-      Description of the business ...
-    phone: (952) 843-0400
-    logo: baila.png
-    social-media: https://www.facebook.com/KalvinClein/
-    email: customers@baila.com
-    hours-begin: 10:00:00
-    hours-end: 21:00:00
-    website: http://www.baila.com
-    mall-map-directions: |
-      Follow the mall map directions ...
-
   balero-clothing:
     name: Balero Clothing
     description: |
@@ -167,34 +293,6 @@ Business:
     mall-map-directions: |
       Follow the mall map directions ...
 
-  hff:
-    name: Hispanic Family Foundation
-    description: |
-      Description of the business ...
-    phone: (952) 843-0400
-    logo: hff.png
-    social-media: https://www.facebook.com/KalvinClein/
-    email: customers@hff.com
-    hours-begin: 10:00:00
-    hours-end: 21:00:00
-    website: http://www.hff.com
-    mall-map-directions: |
-      Follow the mall map directions ...
-
-  madera:
-    name: Madera Cafe
-    description: |
-      Description of the business ...
-    phone: (952) 843-0400
-    logo: madera.png
-    social-media: https://www.facebook.com/KalvinClein/
-    email: customers@madera.com
-    hours-begin: 10:00:00
-    hours-end: 21:00:00
-    website: http://www.madera.com
-    mall-map-directions: |
-      Follow the mall map directions ...
-
   maxima:
     name: Maxima 1320
     description: |
@@ -206,20 +304,6 @@ Business:
     hours-begin: 10:00:00
     hours-end: 21:00:00
     website: http://www.maxima.com
-    mall-map-directions: |
-      Follow the mall map directions ...
-
-  mazfresco-market:
-    name: Mazfresco Market
-    description: |
-      Description of the business ...
-    phone: (952) 843-0400
-    logo: mazfresco-market.png
-    social-media: https://www.facebook.com/KalvinClein/
-    email: customers@mazfrescomarket.com
-    hours-begin: 10:00:00
-    hours-end: 21:00:00
-    website: http://www.mazfrescomarket.com
     mall-map-directions: |
       Follow the mall map directions ...
 
@@ -251,48 +335,6 @@ Business:
     mall-map-directions: |
       Follow the mall map directions ...
 
-  ranchera:
-    name: 880 La Ranchera
-    description: |
-      Description of the business ...
-    phone: (952) 843-0400
-    logo: ranchera.png
-    social-media: https://www.facebook.com/KalvinClein/
-    email: customers@ranchera.com
-    hours-begin: 10:00:00
-    hours-end: 21:00:00
-    website: http://www.ranchera.com
-    mall-map-directions: |
-      Follow the mall map directions ...
-
-  reforma-law:
-    name: Reforma Law
-    description: |
-      Description of the business ...
-    phone: (952) 843-0400
-    logo: reforma-law.png
-    social-media: https://www.facebook.com/KalvinClein/
-    email: customers@reformalaw.com
-    hours-begin: 10:00:00
-    hours-end: 21:00:00
-    website: http://www.reformalaw.com
-    mall-map-directions: |
-      Follow the mall map directions ...
-
-  salon-ixchel:
-    name: Salon Ixchel
-    description: |
-      Description of the business ...
-    phone: (952) 843-0400
-    logo: salon-ixchel.png
-    social-media: https://www.facebook.com/KalvinClein/
-    email: customers@salonixchel.com
-    hours-begin: 10:00:00
-    hours-end: 21:00:00
-    website: http://www.salonixchel.com
-    mall-map-directions: |
-      Follow the mall map directions ...
-
   tblc-media:
     name: TBLC Media
     description: |
@@ -304,47 +346,5 @@ Business:
     hours-begin: 10:00:00
     hours-end: 21:00:00
     website: http://www.tblcmedia.com
-    mall-map-directions: |
-      Follow the mall map directions ...
-
-  titos:
-    name: Titos Playland
-    description: |
-      Description of the business ...
-    phone: (952) 843-0400
-    logo: titos.png
-    social-media: https://www.facebook.com/KalvinClein/
-    email: customers@titos.com
-    hours-begin: 10:00:00
-    hours-end: 21:00:00
-    website: http://www.titos.com
-    mall-map-directions: |
-      Follow the mall map directions ...
-
-  xenote:
-    name: Xenote Mexican Cuisine
-    description: |
-      Description of the business ...
-    phone: (952) 843-0400
-    logo: xenote.png
-    social-media: https://www.facebook.com/KalvinClein/
-    email: customers@xenote.com
-    hours-begin: 10:00:00
-    hours-end: 21:00:00
-    website: http://www.xenote.com
-    mall-map-directions: |
-      Follow the mall map directions ...
-
-  zumito:
-    name: Zumito
-    description: |
-      Description of the business ...
-    phone: (952) 843-0400
-    logo: zumito.png
-    social-media: https://www.facebook.com/KalvinClein/
-    email: customers@zumito.com
-    hours-begin: 10:00:00
-    hours-end: 21:00:00
-    website: http://www.zumito.com
     mall-map-directions: |
       Follow the mall map directions ...

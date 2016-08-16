@@ -67,12 +67,6 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Description', 'e.description') }}
-                            {% if entities.isSorted('e.description') %}
-                                <span class="fa fa-sort"></span>
-                            {% endif %}
-                        </th>
-                        <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Email', 'e.email') }}
                             {% if entities.isSorted('e.email') %}
                                 <span class="fa fa-sort"></span>
@@ -91,8 +85,8 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Social Media', 'e.socialMedia') }}
-                            {% if entities.isSorted('e.socialMedia') %}
+                            {{ knp_pagination_sortable(entities, 'Categories', 'e.categories') }}
+                            {% if entities.isSorted('e.categories') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
@@ -115,15 +109,22 @@
 
                             <td>{{ entity.name }}</td>
 
-                            <td>{{ entity.description }}</td>
-
                             <td>{{ entity.email }}</td>
 
                             <td>{{ entity.phone }}</td>
 
-                            <td>{{ entity.website }}</td>
+                            <td class="text-navy">
+                                <a target="_blank" href="{{ entity.website }}">
+                                    {{ entity.website|split("://")[1] }}
+                                    <sub><span class="fa fa-external-link"></span></sub>
+                                </a>
+                            </td>
 
-                            <td>{{ entity.socialMedia }}</td>
+                            <td>
+                                {% for category in entity.categories %}
+                                    <span class="label label-primary">{{ category }}</span>
+                                {% endfor %}
+                            </td>
 
                             <td>
                                 <div class="btn-group">
