@@ -1092,7 +1092,8 @@ div.container-image.business-image {
 }
 
 .center-height.business-image {
-    max-height: 250px !important;
+    /*max-height: 250px !important;*/
+    max-height: 200px !important;
 }
 
 div.print-container-image {
@@ -2013,6 +2014,12 @@ textarea.form-control.large-height {
     transform: scaleY(0);
 }
 
+@media (max-width: 767px) {
+    .filter-deals.collapsed > div.container > div:not(:last-child) {
+        display: none;
+    }
+}
+
 .filter-deals.collapsed {
     height: 0 !important;
     padding: 0;
@@ -2047,6 +2054,7 @@ textarea.form-control.large-height {
     -moz-transform: rotate(180deg);
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
+    z-index: 150;
 }
 
 div.row.deal-list > div:first-child {

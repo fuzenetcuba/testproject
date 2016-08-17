@@ -30,29 +30,35 @@
                             <h4>SORT BUSINESSES BY:</h4>
                             <div class="btn-group" data-toggle="buttons">
                                 <label class="btn btn-white active">
-                                    <input type="radio" value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_ALPHABETICALLY') }}"
+                                    <input type="radio"
+                                           value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_ALPHABETICALLY') }}"
                                            name="order" id="option1" autocomplete="off"> ALPHABETICALLY
                                 </label>
                                 <label class="btn btn-white">
-                                    <input type="radio" value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_CATEGORY') }}"
+                                    <input type="radio"
+                                           value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_CATEGORY') }}"
                                            name="order" id="option1" autocomplete="off"> CATEGORY
                                 </label>
                                 <label class="btn btn-white">
-                                    <input type="radio" value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS') }}"
+                                    <input type="radio"
+                                           value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS') }}"
                                            name="order" id="option2" autocomplete="off"> RECENT DEALS
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-1 pull-right">
-                        <div class="print-button m-l m-t-xs m-r pull-right">
-                            <button class="btn btn-link btn-sm-block"
+                    <div class="col-md-1">
+                        <div class="print-button m-l-xs m-t m-r-xs pull-right">
+                            <button class="btn btn-link btn-xs pull-right m-l-xs"
                                     onclick="print();">
                                 <i class="fa fa-print"></i>
                             </button>
+                            <a class="btn btn-link btn-xs pull-right m-l-xs" href="#">
+                                <i class="fa fa-map-marker"></i>
+                            </a>
                         </div>
-                        <div class="m-l m-t-xs m-r pull-right">
-                            <button class="hide-filters btn btn-link btn-sm-block">
+                        <div class="m-l-xs m-t m-r-xs pull-right">
+                            <button class="hide-filters btn btn-link btn-xs btn-sm-block m-l-xs">
                                 <i class="fa fa-chevron-up"></i>
                             </button>
                         </div>
@@ -66,7 +72,7 @@
                         <div class="col-sm-3 text-center">
                             <a href="{{ path('business_details', {'slug' : business.slug}) }}" class="thumbnail">
                                 <div class="container-image business-image">
-                                    <img class="center-height business-image"
+                                    <img class="center-height img-responsive business-image"
                                          alt="{{ business.name }}"
                                          src="{{ asset('images/business/' ~ business.logo) }} "/>
                                 </div>
