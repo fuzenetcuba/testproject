@@ -199,27 +199,26 @@
 
                     <li class="dropdown language-selector">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <img class="language-selector-icon"
-                                 src="{{ asset("bundles/frontend/img/us_flag_64.jpg") }}"/>
-                            {#<b class="caret"></b>#}
+                            {% if app.request.get('_locale') == 'en' %}
+                                <span class="flag-icon flag-icon-us"></span>
+                            {% elseif app.request.get('_locale') == 'es' %}
+                                <span class="flag-icon flag-icon-es"></span>
+                            {% endif %}
                         </a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'en'})) }}">
-                                    <img class="language-selector-icon"
-                                         src="{{ asset("bundles/frontend/img/us_flag_64.jpg") }}"/>
+                                    <span class="flag-icon flag-icon-us"></span>
                                     English
                                 </a>
                             </li>
                             <li class="divider"></li>
                             <li>
                                 <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'es'})) }}">
-                                    <img class="language-selector-icon"
-                                         src="{{ asset("bundles/frontend/img/es_flag_64.jpg") }}"/>
+                                    <span class="flag-icon flag-icon-es"></span>
                                     Spanish
                                 </a>
                             </li>
-
                         </ul>
                     </li>
                 </ul>
