@@ -1245,6 +1245,10 @@ a.logout {
     color: #676a6c !important;
 }
 
+.language-selector > a {
+    color: #BF8601 !important;
+}
+
 .landing-page .language-selector img.language-selector-icon {
     height: 16px;
     position: relative;

@@ -30,6 +30,19 @@
                     <li>
                         <a href="#">{{ 'Find Us' | trans({}, 'menu') }}</a>
                     </li>
+                    <li class="language-selector">
+                        {% if app.request.get('_locale') == 'en' %}
+                            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'es'})) }}">
+                                {#<span class="flag-icon flag-icon-es"></span>#}
+                                {{ 'Spanish' | trans({}, 'menu', 'es') }}
+                            </a>
+                        {% elseif app.request.get('_locale') == 'es' %}
+                            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'en'})) }}">
+                                {#<span class="flag-icon flag-icon-us"></span>#}
+                                {{ 'English' | trans({}, 'menu', 'en') }}
+                            </a>
+                        {% endif %}
+                    </li>
                     <li class="dropdown hidden-xs">
                         {% if not app.user %}
                             <a class="dropdown-toggle" data-toggle="dropdown"
@@ -200,20 +213,7 @@
                             </ul>
                         {% endif %}
                     </li>
-
-                    <li class="dropdown language-selector">
-                        {% if app.request.get('_locale') == 'en' %}
-                            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'es'})) }}">
-                                {#<span class="flag-icon flag-icon-es"></span>#}
-                                {{ 'Spanish' | trans({}, 'menu') }}
-                            </a>
-                        {% elseif app.request.get('_locale') == 'es' %}
-                            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'en'})) }}">
-                                {#<span class="flag-icon flag-icon-us"></span>#}
-                                {{ 'English' | trans({}, 'menu') }}
-                            </a>
-                        {% endif %}
-                    </li>
+                    {#<li class="nav-divider"></li>#}
                 </ul>
             </div>
         </div>
