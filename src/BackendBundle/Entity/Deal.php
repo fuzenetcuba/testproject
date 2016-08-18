@@ -386,8 +386,19 @@ class Deal
         return $this->isActive;
     }
 
+    public function isExpired()
+    {
+        if (false === $this->isActive) {
+            return true;
+        }
+
+        return (null !== $this->endsAt && $this->endsAt->getTimestamp() < time());
+    }
+
     /**
-     * @return boolean
+     * @param $status
+     *
+     * @return bool
      */
     public function setIsActive($status)
     {

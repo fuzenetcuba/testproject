@@ -1815,3 +1815,7 @@ div.row.deal-list > div:first-child {
 .show-all-deals {
     margin-top: 20px;
 }
+
+.expired {
+    text-decoration: line-through;
+}

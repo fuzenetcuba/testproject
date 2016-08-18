@@ -59,7 +59,7 @@
                         <div class="col-sm-4 text-center">
                             <h3>{{ deal.name | upper }}</h3>
                             <p>{{ 'AT' | trans({}, 'general') }} {{ deal.business.name | upper }}</p>
-                            <p>{{ 'ENDS' | trans({}, 'general') }}: {{ deal.endsAt | date('m/d/Y') }}</p>
+                            <p class="{% if deal.isExpired %}expired{% endif %}">{{ 'ENDS' | trans({}, 'general') }}: {{ deal.endsAt | date('m/d/Y') }}</p>
                             <div class="container-image">
                                 <img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>
                             </div>
