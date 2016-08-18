@@ -1,7 +1,8 @@
 {% set current = app.request.attributes.get('_route')|split('_')[0] %}
 
 <div class="navbar-wrapper">
-    <nav class="navbar navbar-default navbar-simple navbar-fixed-top {% block navbar_class 'navbar-scroll' %}" role="navigation">
+    <nav class="navbar navbar-default navbar-simple navbar-fixed-top {% block navbar_class 'navbar-scroll' %}"
+         role="navigation">
         <div class="container">
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -57,12 +58,15 @@
                                     <form class="m-t" role="form" action="{{ path('fos_user_security_check') }}"
                                           method="post">
                                         <div class="form-group">
-                                            <input class="form-control" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}"
-                                                   type="text" id="username" name="_username" value="" required="required"
+                                            <input class="form-control"
+                                                   placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}"
+                                                   type="text" id="username" name="_username" value=""
+                                                   required="required"
                                                    autofocus="autofocus">
                                         </div>
                                         <div class="form-group">
-                                            <input class="form-control" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}"
+                                            <input class="form-control"
+                                                   placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}"
                                                    type="password" id="password" name="_password" required="required">
                                         </div>
                                         <button type="submit" name="_submit"
@@ -181,14 +185,14 @@
                                 <li class="divider"></li>
                                 <li>
                                     <a href="{{ path('fos_user_security_logout') }}">
-                                        <i class="fa fa-sign-out"></i> Logout
+                                        <i class="fa fa-sign-out"></i> {{ 'layout.logout' | trans({}, 'security') }}
                                     </a>
                                 </li>
                                 {% if is_granted('ROLE_ADMIN') %}
                                     <li class="divider"></li>
                                     <li>
                                         <a target="_blank" href="{{ path('backend_homepage') }}">
-                                            <i class="fa fa-cog"></i> Admin
+                                            <i class="fa fa-cog"></i> {{ 'Admin' | trans({}, 'menu') }}
                                         </a>
                                     </li>
                                 {% endif %}
@@ -198,28 +202,17 @@
                     </li>
 
                     <li class="dropdown language-selector">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            {% if app.request.get('_locale') == 'en' %}
-                                <span class="flag-icon flag-icon-us"></span>
-                            {% elseif app.request.get('_locale') == 'es' %}
-                                <span class="flag-icon flag-icon-es"></span>
-                            {% endif %}
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'en'})) }}">
-                                    <span class="flag-icon flag-icon-us"></span>
-                                    English
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'es'})) }}">
-                                    <span class="flag-icon flag-icon-es"></span>
-                                    Spanish
-                                </a>
-                            </li>
-                        </ul>
+                        {% if app.request.get('_locale') == 'en' %}
+                            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'es'})) }}">
+                                {#<span class="flag-icon flag-icon-es"></span>#}
+                                {{ 'Spanish' | trans({}, 'menu') }}
+                            </a>
+                        {% elseif app.request.get('_locale') == 'es' %}
+                            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'en'})) }}">
+                                {#<span class="flag-icon flag-icon-us"></span>#}
+                                {{ 'English' | trans({}, 'menu') }}
+                            </a>
+                        {% endif %}
                     </li>
                 </ul>
             </div>
