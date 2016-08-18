@@ -3,9 +3,20 @@ $(document).ready(function () {
         console.log('toggle view');
         $('.filter-deals').toggleClass('collapsed');
     });
+    $('.show-filters').on('click', function () {
+        console.log('toggle view');
+        $('.filter-deals').toggleClass('collapsed');
+    });
+    $('.hide-filters-action').on('click', function () {
+        console.log('toggle view');
+        $('.filter-deals').toggleClass('collapsed');
+    });
 
     $('.filter-deals form').submit(function (event) {
         event.preventDefault();
+
+        $('.filter-deals').toggleClass('collapsed');
+
         var form = $(this);
 
         $.ajax({
