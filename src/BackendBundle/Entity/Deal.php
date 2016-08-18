@@ -381,6 +381,11 @@ class Deal
         $this->slug = $slug;
     }
 
+    public function isActive()
+    {
+        return $this->isActive;
+    }
+
     /**
      * @return boolean
      */

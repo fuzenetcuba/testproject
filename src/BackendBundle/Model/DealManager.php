@@ -35,7 +35,7 @@ class DealManager implements ManagerInterface
             ->createQueryBuilder('q')
             ->select('d')
             ->from('BackendBundle:Deal', 'd')
-            ;
+            ->andWhere('d.isActive = true');
     }
 
     /**
@@ -47,8 +47,7 @@ class DealManager implements ManagerInterface
     {
         return $this->em
             ->getRepository('BackendBundle:Deal')
-            ->findAll()
-            ;
+            ->findAll();
     }
 
     /**
@@ -73,8 +72,7 @@ class DealManager implements ManagerInterface
     {
         $instance = $this->em
             ->getRepository('BackendBundle:Deal')
-            ->find($id)
-        ;
+            ->find($id);
 
         if (!$instance) {
             throw new NotFoundHttpException(sprintf('The deal with id "%s" could not be found', $id));
@@ -141,8 +139,7 @@ class DealManager implements ManagerInterface
     {
         $object = $this->em->getRepository('BackendBundle:Deal')->findOneBy([
             'slug' => $slug,
-        ])
-        ;
+        ]);
 
         if (!$object) {
             throw new NotFoundHttpException(sprintf('Deal with slug "%s" could not be found', $slug));
@@ -171,15 +168,13 @@ class DealManager implements ManagerInterface
                 ->andWhere('d.endsAt BETWEEN :now AND :other')
                 ->setParameter('now', new \DateTime())
                 ->setParameter('other', new \DateTime('+1 DAY'))
-                ->addOrderBy('d.endsAt')
-            ;
+                ->addOrderBy('d.endsAt');
         } else if (SortingMode::SORT_NEW_DEALS === $mode) {
             $allQuery
                 ->andWhere('d.createdAt BETWEEN :other AND :now')
                 ->setParameter('other', new \DateTime('-1 DAY'))
                 ->setParameter('now', new \DateTime())
-                ->addOrderBy('d.endsAt')
-            ;
+                ->addOrderBy('d.endsAt');
         }
 
         return $allQuery;
@@ -202,8 +197,7 @@ class DealManager implements ManagerInterface
             $query
                 ->join('d.business', 'b')
                 ->andWhere('b.id = :business')
-                ->setParameter('business', $filters['business']->getId())
-            ;
+                ->setParameter('business', $filters['business']->getId());
         }
 
         return $query;

@@ -942,6 +942,7 @@ div.related-businesses .center-height {
 .container-image > img {
     display: block;
     max-width: 100%;
+    max-height: 224px;
     margin-left: auto;
     margin-right: auto;
 }
