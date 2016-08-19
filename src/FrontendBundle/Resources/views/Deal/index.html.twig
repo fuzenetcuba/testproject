@@ -16,7 +16,7 @@
                 <div class="container">
                     <div class="col-sm-4 col-md-4">
                         <form action="{{ path('deals') }}" method="post">
-                            <h4>{{ 'FILTER DEALS BY' | trans({}, 'deals') }}:</h4>
+                            <h4>{{ 'FILTER DEALS FOR' | trans({}, 'deals') }}:</h4>
                             <div class="col-sm-12 col-md-12">
                                 {{ form_widget(form.business) }}
                             </div>

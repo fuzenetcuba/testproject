@@ -22,7 +22,7 @@ class DealFilter extends AbstractType
                 'required' => false,
                 'class' => 'BackendBundle\Entity\Business',
                 'attr' => ['class' => 'select2'],
-                'empty_value' => 'ALL BUSINESS',
+                'empty_value' => 'ALL THE STORES',
             ])
         ;
     }

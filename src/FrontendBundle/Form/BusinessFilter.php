@@ -19,7 +19,7 @@ class BusinessFilter extends AbstractType
         $builder
             ->add('search', 'search', [
                 'required' => false,
-                'attr' => ['class' => 'form-control', 'placeholder' => 'KEYWORDS']
+                'attr' => ['class' => 'form-control', 'placeholder' => 'SEARCH PLAZA DIRECTORY']
             ])
             ->add('category', 'entity', [
                 'required' => false,
