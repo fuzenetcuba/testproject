@@ -2,12 +2,14 @@
 
 namespace BackendBundle\Model;
 
+use BackendBundle\Entity\Category;
 use BackendBundle\Entity\SystemUser;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Manager for the Business entity
+ * Manager for the Customer entity
  *
  * @package \BackendBundle\Model
  */
@@ -18,9 +20,15 @@ class CustomerManager implements ManagerInterface
      */
     protected $em;
 
-    public function __construct(EntityManager $entityManager)
+    /**
+     * @var \Swift_Mailer
+     */
+    private $mailer;
+
+    public function __construct(EntityManager $entityManager, \Swift_Mailer $mailer)
     {
         $this->em = $entityManager;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -64,6 +72,7 @@ class CustomerManager implements ManagerInterface
     {
         $customer = new SystemUser();
         $customer->addRole('ROLE_CUSTOMER');
+
         return $customer;
     }
 
@@ -118,5 +127,44 @@ class CustomerManager implements ManagerInterface
     {
         $this->em->remove($instance);
         $this->em->flush();
+    }
+
+    /**
+     * Returns the users that are subscribed to a given category
+     *
+     * @param \BackendBundle\Entity\Category $category
+     *
+     * @return array
+     */
+    public function findSubscribedsInCategory(Category $category)
+    {
+        return $this->em->createQueryBuilder('u')
+            ->select('s.email')
+            ->from('BackendBundle:Subscription', 's')
+            ->leftJoin('s.categories', 'c')
+            ->where('c.id = :id')
+            ->setParameter('id', $category->getId())
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function sendEmail(ArrayCollection $users, ArrayCollection $customEmails, $from, $subject, $content)
+    {
+        $emailUsers = $users->map(function ($user) {
+            return $user->getEmail();
+        });
+
+        $emailUsers = new ArrayCollection(
+            array_merge($emailUsers->toArray(), $customEmails->toArray())
+        );
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject($subject)
+            ->setFrom($from)
+            ->setTo($emailUsers->toArray())
+            ->setBody($content, 'text/html')
+        ;
+
+        $this->mailer->send($message);
     }
 }

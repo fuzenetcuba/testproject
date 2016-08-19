@@ -3,6 +3,7 @@
 namespace BackendBundle\Form;
 
 use BackendBundle\Form\DataTransformer\ArrayToDelimitedStringTransformer;
+use BackendBundle\Model\EmailGroups;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -16,7 +17,9 @@ class MailsType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
+     *
+     * @throws \Symfony\Component\Form\Exception\InvalidArgumentException
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -43,9 +46,9 @@ class MailsType extends AbstractType
             ->add('groupOfUsers', ChoiceType::class, array(
                 'required' => false,
                 'choices' => array(
-                    'Subscribed users addresses' => 1,
-                    'Registered users addresses' => 2,
-                    'All addresses collected' => 3
+                    'Subscribed users addresses' => EmailGroups::SUBSCRIBED_USERS,
+                    'Registered users addresses' => EmailGroups::REGISTERED_USERS,
+                    'All addresses collected' => EmailGroups::ALL_USERS,
                 ),
                 'empty_value' => '-- SELECT GROUP OF USERS --',
                 'choices_as_values' => true
