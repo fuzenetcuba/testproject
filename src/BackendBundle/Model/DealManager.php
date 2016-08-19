@@ -35,7 +35,7 @@ class DealManager implements ManagerInterface
             ->createQueryBuilder('q')
             ->select('d')
             ->from('BackendBundle:Deal', 'd')
-            ;
+            ->andWhere('d.isActive = true');
     }
 
     /**
@@ -47,8 +47,7 @@ class DealManager implements ManagerInterface
     {
         return $this->em
             ->getRepository('BackendBundle:Deal')
-            ->findAll()
-            ;
+            ->findAll();
     }
 
     /**
@@ -73,12 +72,13 @@ class DealManager implements ManagerInterface
     {
         $instance = $this->em
             ->getRepository('BackendBundle:Deal')
-            ->find($id)
-        ;
+            ->find($id);
 
         if (!$instance) {
             throw new NotFoundHttpException(sprintf('The deal with id "%s" could not be found', $id));
         }
+
+        return $instance;
     }
 
     /**
@@ -139,8 +139,7 @@ class DealManager implements ManagerInterface
     {
         $object = $this->em->getRepository('BackendBundle:Deal')->findOneBy([
             'slug' => $slug,
-        ])
-        ;
+        ]);
 
         if (!$object) {
             throw new NotFoundHttpException(sprintf('Deal with slug "%s" could not be found', $slug));
@@ -169,15 +168,13 @@ class DealManager implements ManagerInterface
                 ->andWhere('d.endsAt BETWEEN :now AND :other')
                 ->setParameter('now', new \DateTime())
                 ->setParameter('other', new \DateTime('+1 DAY'))
-                ->addOrderBy('d.endsAt')
-            ;
+                ->addOrderBy('d.endsAt');
         } else if (SortingMode::SORT_NEW_DEALS === $mode) {
             $allQuery
                 ->andWhere('d.createdAt BETWEEN :other AND :now')
                 ->setParameter('other', new \DateTime('-1 DAY'))
                 ->setParameter('now', new \DateTime())
-                ->addOrderBy('d.endsAt')
-            ;
+                ->addOrderBy('d.endsAt');
         }
 
         return $allQuery;
@@ -200,11 +197,53 @@ class DealManager implements ManagerInterface
             $query
                 ->join('d.business', 'b')
                 ->andWhere('b.id = :business')
-                ->setParameter('business', $filters['business']->getId())
-            ;
+                ->setParameter('business', $filters['business']->getId());
         }
 
         return $query;
+    }
+
+    /**
+     * Returns all the deals that are up for disable action
+     *
+     * @param $strDate
+     *
+     * @return array
+     */
+    public function findDealsToDisable($strDate = 'NOW')
+    {
+        return $this->em->getRepository('BackendBundle:Deal')->findDealUntil($strDate);
+    }
+
+    /**
+     * Save a given deal in the configured data storage
+     *
+     * @param \BackendBundle\Entity\Deal $deal
+     *
+     * @throws \Doctrine\ORM\ORMInvalidArgumentException
+     */
+    public function save(Deal $deal)
+    {
+        $this->em->persist($deal);
+    }
+
+    /**
+     * Disable the expired deals
+     *
+     * @throws \Doctrine\ORM\ORMInvalidArgumentException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function disableExpiredDeals()
+    {
+        $deals = $this->findDealsToDisable();
+
+        foreach ($deals as $deal) {
+            /** @var $deal Deal */
+            $deal->disable();
+            $this->save($deal);
+        }
+
+        $this->em->flush();
     }
 }
 

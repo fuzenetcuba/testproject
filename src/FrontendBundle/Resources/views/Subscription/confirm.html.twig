@@ -8,13 +8,13 @@
             <div class="row m-b">
                 <div class="col-lg-12 text-center">
                     <div class="section-line amber-line"></div>
-                    <h1>Subscribe for new deals</h1>
+                    <h1>{{ 'Subscribe for new deals' | trans({}, 'subscription') }}</h1>
                 </div>
             </div>
             <div class="col-sm-8 col-sm-offset-2 text-center">
-                <h3>CONGRATULATIONS!</h3>
+                <h3>{{ 'CONGRATULATIONS!' | trans({}, 'subscription') }}</h3>
                 <p>
-                    You have been subscribed for the following categories:
+                    {{ 'You have been subscribed for the following categories' | trans({}, 'subscription') }}:
                 </p>
 
                 <p class="text-center">
@@ -23,18 +23,18 @@
                                 {{ category }}
                         </span>
                     {% else %}
-                        <span class="label label-default">No category</span>
+                        <span class="label label-default">{{ 'No category' | trans({}, 'subscription') }}</span>
                     {% endfor %}
                 </p>
 
                 <hr class="hr-line-solid" />
                 <h2 class="text-center ">
-                    BECOME A MEMBER TODAY AND GET DEALS FOR YOUR FAVORITE PRODUCTS AND BRANDS
+                    {{ 'BECOME A MEMBER TODAY AND GET DEALS FOR YOUR FAVORITE PRODUCTS AND BRANDS' | trans({}, 'homepage') }}
                 </h2>
                 <p class="m-t-lg m-b-lg">
-                    <a class="btn btn-blue" href="{{ path('fos_user_registration_register') }}">BECOME A MEMBER</a>
-                    <span class="m-l-lg m-r-lg">or</span>
-                    <a class="btn btn-green" href="{{ path('frontend_homepage') }}">GO TO PLAZA HOME</a>
+                    <a class="btn btn-blue" href="{{ path('fos_user_registration_register') }}">{{ 'BECOME A MEMBER' | trans({}, 'subscription') }}</a>
+                    <span class="m-l-lg m-r-lg">{{ 'or' | trans({}, 'subscription') }}</span>
+                    <a class="btn btn-green" href="{{ path('frontend_homepage') }}">{{ 'GO TO PLAZA HOME' | trans({}, 'subscription') }}</a>
                 </p>
             </div>
         </div>

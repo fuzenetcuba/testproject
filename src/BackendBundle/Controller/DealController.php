@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Controller;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;//------------
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -252,5 +253,26 @@ class DealController extends Controller
 
 
         return $this->redirect($this->generateUrl('deal'));
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @param         $id
+     *
+     * @return JsonResponse
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function toggleAction(Request $request, $id)
+    {
+        /** @var Deal $deal */
+        $deal = $this->get('deal.manager')->find($id);
+
+        $deal->toggle();
+        $this->get('deal.manager')->save($deal);
+
+        $this->get('doctrine.orm.entity_manager')->flush();
+
+        return new JsonResponse('ok');
     }
 }

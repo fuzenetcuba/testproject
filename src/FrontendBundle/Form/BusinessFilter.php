@@ -19,7 +19,7 @@ class BusinessFilter extends AbstractType
         $builder
             ->add('search', 'search', [
                 'required' => false,
-                'attr' => ['class' => 'form-control', 'placeholder' => 'KEYWORDS']
+                'attr' => ['class' => 'form-control', 'placeholder' => 'SEARCH PLAZA DIRECTORY']
             ])
             ->add('category', 'entity', [
                 'required' => false,
@@ -33,9 +33,14 @@ class BusinessFilter extends AbstractType
 
     /**
      * {@inheritDoc}
+     *
+     * @throws \Symfony\Component\OptionsResolver\Exception\AccessException
      */
     public function configureOptions(OptionsResolver $resolver)
     {
+        $resolver->setDefaults([
+            'translation_domain' => 'business'
+        ]);
     }
 
     /**

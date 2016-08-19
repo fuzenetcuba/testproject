@@ -53,7 +53,7 @@ class SubscriptionController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', SubmitType::class, array('label' => 'Subscribe'));
+        $form->add('submit', SubmitType::class, array('label' => 'SUBSCRIBE'));
 
         return $form;
     }

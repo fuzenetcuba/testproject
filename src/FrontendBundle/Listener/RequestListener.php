@@ -43,7 +43,6 @@ class RequestListener
             return ;
         } else {
             if ($this->session->has($this->sessionKey)) {
-                dump('voy a eliminar ' . $this->sessionKey);
                 $this->session->remove($this->sessionKey);
             }
         }

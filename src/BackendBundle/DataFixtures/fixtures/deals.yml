@@ -6,9 +6,10 @@ Deals:
 
       Restrictions Apply. See store for details.
     start: 6/4/2016
-    ends: 6/8/2016
+    ends: 8/28/2016
     image: W_292549.jpg
     points: 10
+    active: true
 
   second:
     name: Cool Colors … Hot Summer
@@ -20,9 +21,10 @@ Deals:
       Blossoms and Ziggy Zags. Hurry in for the best selection! Exclusions and limitations apply.
       See a store associate for details.
     start: 6/2/2016
-    ends: 6/8/2016
+    ends: 8/28/2016
     image: W_293800.jpg
     points: 10
+    active: true
 
   third:
     name: 50% off Entire Store!
@@ -36,6 +38,7 @@ Deals:
     ends: 6/12/2016
     image: W_294283.jpg
     points: 10
+    active: true
 
   fourth:
     name: Doorbuster Deals - This Weekend Only!
@@ -49,3 +52,4 @@ Deals:
     ends: 6/12/2016
     image: W_294403.jpg
     points: 10
+    active: true

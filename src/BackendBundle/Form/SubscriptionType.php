@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,17 +18,24 @@ class SubscriptionType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('categories');
+            ->add('categories', EntityType::class, [
+                'class' => 'BackendBundle\Entity\Category',
+                'multiple' => true,
+                'empty_value' => 'SELECT A CATEGORY'
+            ]);
     }
 
     /**
      * @param OptionsResolver $resolver
+     *
+     * @throws \Symfony\Component\OptionsResolver\Exception\AccessException
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
+            'translation_domain' => 'subscription',
             'data_class' => 'BackendBundle\Entity\Subscription'
-        ));
+        ]);
     }
 
     /**

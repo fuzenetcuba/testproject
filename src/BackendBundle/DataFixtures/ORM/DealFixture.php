@@ -27,13 +27,14 @@ class DealFixture extends OrderedYamlFixture
             $object->setName($deal['name']);
             $object->setDescription($deal['description']);
             $object->setStartsAt(
-                new \DateTime($deal['start'] ? $deal['start'] : 'NOW')
+                new \DateTime($deal['start'] ?: 'NOW')
             );
             $object->setEndsAt(
-                new \DateTime($deal['ends'] ? $deal['ends'] : '+10 DAYS')
+                new \DateTime($deal['ends'] ?: '+10 DAYS')
             );
             $object->setImage($deal['image']);
             $object->setPoints($deal['points']);
+            $object->setIsActive($deal['active']);
 
             /** @var Business $business */
             $business = $this->getReference('business');

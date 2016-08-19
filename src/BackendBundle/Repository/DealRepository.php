@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Repository;
 use Doctrine\ORM\EntityRepository;
+use Psr\Log\InvalidArgumentException;
 
 /**
  * DealRepository
@@ -26,6 +27,23 @@ class DealRepository extends EntityRepository
         return $this->getEntityManager()
             ->createQuery('SELECT d FROM BackendBundle:Deal d ORDER BY d.createdAt DESC')
             ->setMaxResults($n !== 0 ? $n : 3)
+            ->getResult()
+        ;
+    }
+
+    /**
+     * Returns all deals until a given date, the given date should be expressed in a
+     * string with a valid format to parse by DateTime
+     *
+     * @param string $strDate
+     *
+     * @return array
+     */
+    public function findDealUntil($strDate = 'NOW')
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT d FROM BackendBundle:Deal d WHERE d.endsAt <= :param')
+            ->setParameter('param', new \DateTime($strDate))
             ->getResult()
         ;
     }

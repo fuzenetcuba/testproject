@@ -279,7 +279,7 @@ body.landing-page {
 }
 
 .landing-page .navbar-scroll .navbar-nav > li > a {
-    padding: 18px 1px;
+    /*padding: 18px 1px;*/
 }
 
 .landing-page .navbar-default .navbar-nav > .active > a,
@@ -293,13 +293,13 @@ body.landing-page {
 
 .landing-page .navbar-fixed-top.navbar-scroll,
 .landing-page .navbar-fixed-top.navbar-simple {
-    border-bottom: 1px solid #c0c0c0 !important;
+    /*border-bottom: 1px solid #c0c0c0 !important;*/
     box-shadow: 0 0 5px #c0c0c0;
     background-color: #FFFFFF;
 }
 
 .landing-page .navbar.navbar-scroll .navbar-brand {
-    margin-top: 15px;
+    /*margin-top: 15px;*/
     border-radius: 5px;
     font-size: 12px;
     padding: 0 15px;
@@ -317,11 +317,11 @@ body.landing-page {
 }
 
 .landing-page .header-back.two {
-    background: url('../img/header_two.jpg') 50% 0 no-repeat;
+    /*background: url('../img/header_two.jpg') 50% 0 no-repeat;*/
 }
 
 .landing-page .header-back.three {
-    background: url('../img/header_three.jpg') 50% 0 no-repeat;
+    /*background: url('../img/header_three.jpg') 50% 0 no-repeat;*/
 }
 
 .landing-page .carousel,
@@ -954,7 +954,7 @@ body.landing-page {
     }
 
     .landing-page .navbar-scroll .navbar-nav > li > a {
-        padding: 18px 1px 20px;
+        /*padding: 18px 1px 20px;*/
     }
 
     .landing-page .navbar-scroll .navbar-nav > li {
@@ -1083,7 +1083,7 @@ section.signup h2 {
 }
 
 div.container-image {
-    height: 340px;
+    height: 240px;
     position: relative;
 }
 
@@ -1128,6 +1128,7 @@ div.related-businesses .center-height {
 .container-image > img {
     display: block;
     max-width: 100%;
+    max-height: 224px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1380,7 +1381,7 @@ span.business-info {
     filter: alpha(opacity=0);
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    margin: 130px 0 0;
+    margin: 105px 0 0;
     padding: 7px 14px;
 }
 
@@ -1428,6 +1429,10 @@ span.business-info {
 
 a.logout {
     color: #676a6c !important;
+}
+
+.language-selector > a {
+    color: #BF8601 !important;
 }
 
 .landing-page .language-selector img.language-selector-icon {
@@ -1978,14 +1983,13 @@ button.btn-blue.dim:active {
     .landing-page .navbar-default.navbar-simple .navbar-brand {
         padding: 26px 30px 19px;
     }
-
-    .landing-page .navbar.navbar-scroll .navbar-brand img {
-        height: 40px !important;
-        width: auto;
+    .landing-page .navbar.navbar-scroll .navbar-brand img{
+        /*height: 40px !important;*/
+        /*width: auto;*/
     }
 
     .landing-page .navbar-default.navbar-scroll .navbar-brand {
-        padding: 0 15px;
+        /*padding: 0 15px;*/
     }
 }
 
@@ -2067,4 +2071,18 @@ div.row.deal-list > div:first-child {
 
 .deal-list a.thumbnail:hover {
     border-color: #b0b42b;
+}
+
+.pagination-lg > li > a, .pagination-lg > li > span {
+    padding: 10px 15px;
+    font-size: 16px;
+    line-height: 1.3333333;
+}
+
+.show-all-deals {
+    margin-top: 20px;
+}
+
+.expired {
+    text-decoration: line-through;
 }

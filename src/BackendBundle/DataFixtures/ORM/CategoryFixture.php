@@ -23,6 +23,9 @@ class CategoryFixture extends OrderedYamlFixture
     {
         $categories = $this->loadData('categories');
 
+        $repository = $manager->getRepository('BackendBundle:Business');
+        $businesses = $repository->findAll();
+
         foreach ($categories['Category'] as $category) {
             $object = new Category();
 
@@ -41,15 +44,14 @@ class CategoryFixture extends OrderedYamlFixture
             }
             */
 
-            /** @var Business $business */
-            $business = $this->getReference('business');
-            $object->addBusiness($business);
-            $business->addCategory($object);
+            $randomKeys = array_rand($businesses, 20);
+            $localBusinesses = array_intersect_key($businesses, array_flip($randomKeys));
 
-            // add one category to the other business so we can test related businesses
-            $business = $this->getReference('other-business');
-            $object->addBusiness($business);
-            $business->addCategory($object);
+            foreach ($localBusinesses as $business) {
+                /** @var Business $business */
+                $business->addCategory($object);
+                $object->addBusiness($business);
+            }
 
             $manager->persist($object);
         }
