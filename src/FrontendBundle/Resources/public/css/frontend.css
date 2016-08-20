@@ -1088,12 +1088,12 @@ div.container-image {
 }
 
 div.container-image.business-image {
-    height: 200px;
+    height: 150px;
 }
 
 .center-height.business-image {
     /*max-height: 250px !important;*/
-    max-height: 200px !important;
+    max-height: 140px !important;
 }
 
 div.print-container-image {
@@ -2085,4 +2085,15 @@ div.row.deal-list > div:first-child {
 
 .expired {
     text-decoration: line-through;
+}
+
+.deal-list .thumbnail {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 2px solid #d4d4d5 !important;
+    margin-bottom: 10px;
+}
+
+.deal-list .thumbnail:hover {
+    border-bottom: 2px solid #b0b42b !important;
 }
