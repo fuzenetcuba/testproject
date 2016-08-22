@@ -28,7 +28,7 @@
                         <a href="{{ path("subscription_request") }}">{{ 'Subscribe' | trans({}, 'menu') }}</a>
                     </li>
                     <li>
-                        <a href="#">{{ 'Find Us' | trans({}, 'menu') }}</a>
+                        <a href="{{ path('map', { 'slug' : 'all' }) }}">{{ 'Find Us' | trans({}, 'menu') }}</a>
                     </li>
                     <li class="language-selector">
                         {% if app.request.get('_locale') == 'en' %}

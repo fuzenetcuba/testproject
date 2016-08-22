@@ -1945,7 +1945,7 @@ button.btn-blue.dim:active {
 @media (min-width: 768px) and (max-width: 1000px) {
     .landing-page .navbar-default .second-navbar .nav {
         border-bottom: 2px solid #676a6c;
-        padding: 0 15px;
+        /*padding: 0 15px;*/
         margin-right: 0;
     }
 
@@ -1963,7 +1963,8 @@ button.btn-blue.dim:active {
 
 @media (min-width: 1000px) {
     .landing-page .navbar-default .second-navbar .nav > li:last-child {
-        padding-right: 0;
+        padding-right: 0 !important;
+        margin-right: -16px !important;
     }
 
     .landing-page .navbar-default .navbar-brand img {

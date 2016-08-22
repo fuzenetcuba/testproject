@@ -50,7 +50,7 @@ class BusinessController extends Controller
 
         return $this->render('FrontendBundle:Business:index.html.twig', [
             'businesses' => $pagination,
-            'form'       => $form->createView(),
+            'form' => $form->createView(),
         ]);
     }
 
@@ -63,5 +63,23 @@ class BusinessController extends Controller
             'business' => $business,
             'related' => $relatedBusinesses,
         ]);
+    }
+
+    /**
+     * Lists all Business entities for Map Positions.
+     *
+     */
+    public function mapAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        if ($slug === "all") {
+            $entities = $em->getRepository("BackendBundle:Business")->findAll();
+        } else {
+            $entities = $em->getRepository("BackendBundle:Business")->findBySlug($slug);
+        }
+        return $this->render('@Frontend/Business/map.html.twig', array(
+            'entities' => $entities,
+        ));
     }
 }

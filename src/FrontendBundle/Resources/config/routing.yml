@@ -30,6 +30,10 @@ business_details:
     path:     /business/{slug}
     defaults: { _controller: FrontendBundle:Business:details }
 
+map:
+    path:     /map/{slug}
+    defaults: { _controller: FrontendBundle:Business:map }
+
 membership:
     path:     /membership
     defaults: { _controller: FrontendBundle:User:index }

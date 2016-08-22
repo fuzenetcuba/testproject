@@ -44,8 +44,9 @@
                             <li>
                                 <p class="text-muted-strong">
                                     <i class="fa fa-map-marker"></i>
-                                    <a class="btn btn-xs btn-blue" href="#">
-                                        View on Mall Map
+                                    <a class="btn btn-xs btn-blue"
+                                       href="{{ path('map', { 'slug' : business.slug }) }}">
+                                        {{ 'View on Mall Map' | trans({}, 'business') }}
                                     </a>
                                     - {{ business.mallMapDirections }}
                                 </p>
