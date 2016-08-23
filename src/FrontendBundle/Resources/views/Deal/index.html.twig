@@ -11,48 +11,44 @@
 
 {% block page_content %}
     <section class="inner-content section-spaces-line">
-        <div class="container">
-            <div class="row filter-deals hidden-print">
-                <div class="container">
-                    <div class="col-sm-4 col-md-4">
-                        <form action="{{ path('deals') }}" method="post">
-                            <h4>{{ 'FILTER DEALS FOR' | trans({}, 'deals') }}:</h4>
-                            <div class="col-sm-12 col-md-12">
-                                {{ form_widget(form.business) }}
-                            </div>
-                        </form>
+        <div class="filter-deals hidden-print collapsed">
+            <div class="m-b-lg animated fadeInLeft">
+                <form action="{{ path('deals') }}" method="post">
+                    <h4>FILTER DEALS BY:</h4>
+                    <div class="m-t-xs m-b-lg">
+                        {{ form_widget(form.business) }}
                     </div>
-                    <div class="col-md-5 col-sm-1 col-sm-5 text-right-md col-md-offset-2">
-                        <div class="m-l">
-                            <h4>{{ 'SORT DEALS BY' | trans({}, 'deals') }}:</h4>
-                            <div class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-white">
-                                    <input type="radio" value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_ENDING_SOON') }}"
-                                           name="order" id="option1" autocomplete="off"> {{ 'ENDING SOON' | trans({}, 'deals') }}
-                                </label>
-                                <label class="btn btn-white">
-                                    <input type="radio" value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_NEW_DEALS') }}"
-                                           name="order" id="option2" autocomplete="off"> {{ 'NEW DEALS' | trans({}, 'deals') }}
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 pull-right">
-                        <div class="print-button m-l m-t-xs m-r pull-right">
-                            <button class="btn btn-link btn-sm-block"
-                            onclick="print();">
-                                <i class="fa fa-print"></i>
-                            </button>
-                        </div>
-                        <div class="m-l m-t-xs m-r pull-right">
-                            <button class="hide-filters btn btn-link btn-sm-block">
-                                <i class="fa fa-chevron-up"></i>
-                            </button>
-                        </div>
-                    </div>
+                </form>
+                <h4>SORT DEALS BY:</h4>
+                <div class="btn-group-vertical btn-block" data-toggle="buttons">
+                    <label class="btn btn-white hide-filters-action ">
+                        <input type="radio"
+                               value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_ENDING_SOON') }}"
+                               name="order" id="option1" autocomplete="off"> ENDING SOON
+                    </label>
+                    <label class="btn btn-white hide-filters-action ">
+                        <input type="radio" value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_NEW_DEALS') }}"
+                               name="order" id="option2" autocomplete="off"> NEW DEALS
+                    </label>
                 </div>
             </div>
+            <div class="btn-group btn-group-justified">
+                <a class="btn btn-green btn-outline hide-filters-action" role="button"
+                   onclick="print();">
+                    <i class="fa fa-print"></i>
+                </a>
+                <a class="btn btn-green btn-outline hide-filters" role="button">
+                    <i class="fa fa-chevron-left"></i>
+                </a>
+            </div>
+            <div>
+                <button class="m-t m-l show-filters btn btn-green btn-outline">
+                    <i class="fa fa-filter"></i>
+                </button>
+            </div>
+        </div>
 
+        <div class="container">
             <div class="row deal-list hidden-print">
                 <div class="col-sm-12">
                     {% for deal in deals %}

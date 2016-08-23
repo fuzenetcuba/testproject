@@ -1,12 +1,22 @@
-// <<<<<<< HEAD
 $(document).ready(function () {
     $('.hide-filters').on('click', function () {
+        console.log('toggle view');
+        $('.filter-deals').toggleClass('collapsed');
+    });
+    $('.show-filters').on('click', function () {
+        console.log('toggle view');
+        $('.filter-deals').toggleClass('collapsed');
+    });
+    $('.hide-filters-action').on('click', function () {
         console.log('toggle view');
         $('.filter-deals').toggleClass('collapsed');
     });
 
     $('.filter-deals form').submit(function (event) {
         event.preventDefault();
+
+        $('.filter-deals').toggleClass('collapsed');
+
         var form = $(this);
 
         $.ajax({
@@ -77,41 +87,6 @@ $(document).ready(function () {
 //     init();
 //
 // })();
-// =======
-// var cbpAnimatedHeader = (function () {
-//     var docElem = document.documentElement,
-//         header = document.querySelector('.navbar-default'),
-//         didScroll = false,
-//         changeHeaderOn = 200;
-//
-//     function init() {
-//         window.addEventListener('scroll', function (event) {
-//             if (!didScroll) {
-//                 didScroll = true;
-//                 setTimeout(scrollPage, 250);
-//             }
-//         }, false);
-//     }
-//
-//     function scrollPage() {
-//         var sy = scrollY();
-//         if (sy >= changeHeaderOn) {
-//             $(header).addClass('navbar-scroll')
-//         }
-//         else {
-//             $(header).removeClass('navbar-scroll')
-//         }
-//         didScroll = false;
-//     }
-//
-//     function scrollY() {
-//         return window.pageYOffset || docElem.scrollTop;
-//     }
-//
-//     init();
-//
-// })();
-// >>>>>>> b19f9bf7ccd08e5de0c8accd189ea92ed2be902a
 
 // Activate WOW.js plugin for animation on scrol
 new WOW().init();
