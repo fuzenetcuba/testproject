@@ -2,28 +2,25 @@
 
 {% block active_users %}active{% endblock %}
 {% block page_heading_title %}
-    Profile of <b>{{ user.username }}</b>
+    {{ 'Profile of' | trans({}, 'fosuser') }} <b>{{ user.username }}</b>
 {% endblock %}
 
 {% block page_content %}
     <dl class="dl-horizontal">
-        <dt>Full name</dt>
+        <dt>{{ 'Full name' | trans({}, 'fosuser') }}</dt>
         <dd>{{ user.fullName }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Username</dt>
-        <dd>{{ user.username }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Phone</dt>
-        <dd>{{ user.phone }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}</dt>
         <dd>{{ user.username }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Phone' | trans({}, 'fosuser') }}</dt>
+        <dd>{{ user.phone }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}</dt>
         <dd>{{ user.email }}</dd>
         <div class="hr-line-dashed"></div>
         {% if(user.image is not null) %}
-            <dt>Photo</dt>
+            <dt>{{ 'Photo' | trans({}, 'fosuser') }}</dt>
             <dd>
                 <img style="max-width: 70%; height: auto;" src="{{ vich_uploader_asset(user, 'imageFile') }}"
                      alt="{{ user.image }}"/>
@@ -34,10 +31,10 @@
     <div class="form-group border-top padding-basic-top">
         <div class="col-md-12">
             <a class="btn btn-success" role="button" href="{{ path('fos_user_profile_edit') }}">
-                <span class="fa fa-pencil"></span> Edit info
+                <span class="fa fa-pencil"></span> {{ 'Edit info' | trans({}, 'fosuser') }}
             </a>
             <a class="btn btn-primary" role="button" href="{{ path('fos_user_change_password') }}">
-                <span class="fa fa-key"></span> Change password
+                <span class="fa fa-key"></span> {{ 'change_password.submit' | trans({}, 'FOSUserBundle') }}
             </a>
         </div>
     </div>

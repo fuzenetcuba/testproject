@@ -1,6 +1,6 @@
 {% extends '@Frontend/layout.html.twig' %}
 
-{% block title '- Register User' %}
+{% block title '- ' ~ 'Register User' | trans({}, 'fosuser') %}
 
 {% block custom_css %}
     {{ parent() }}
@@ -17,14 +17,14 @@
             <div class="animated fadeInDown">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="m-b-lg text-center">
-                        <h1>Become a member on Plaza Mariachi</h1>
+                        <h1>{{ 'Become a member on' | trans({}, 'fosuser') }} Plaza Mariachi</h1>
                         <hr/>
                     </div>
                     <div class="col-md-6">
                         {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
                         <div class="form-group{% if(form.firstName.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                            {{ form_widget(form.firstName, { 'attr': {'class' : 'form-control', 'placeholder' : 'First name'}}) }}
+                            {{ form_widget(form.firstName, { 'attr': {'class' : 'form-control', 'placeholder' : 'First name' | trans({}, 'fosuser')}}) }}
                             {% if form.firstName.vars['errors']|length > 0 %}
                                 <ul class="message">
                                     {% for error in form.firstName.vars['errors'] %}
@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="form-group{% if(form.lastName.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                            {{ form_widget(form.lastName, { 'attr': {'class' : 'form-control', 'placeholder' : 'Last name'}}) }}
+                            {{ form_widget(form.lastName, { 'attr': {'class' : 'form-control', 'placeholder' : 'Last name' | trans({}, 'fosuser')}}) }}
                             {% if form.lastName.vars['errors']|length > 0 %}
                                 <ul class="message">
                                     {% for error in form.lastName.vars['errors'] %}
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="form-group{% if(form.username.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                            {{ form_widget(form.username, { 'attr': {'class' : 'form-control', 'placeholder' : 'Username'}}) }}
+                            {{ form_widget(form.username, { 'attr': {'class' : 'form-control', 'placeholder' : 'Username' | trans({}, 'fosuser')}}) }}
                             {% if form.username.vars['errors']|length > 0 %}
                                 <ul class="message">
                                     {% for error in form.username.vars['errors'] %}
@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="form-group{% if(form.email.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                            {{ form_widget(form.email, { 'attr': {'class' : 'form-control', 'placeholder' : 'Email'}}) }}
+                            {{ form_widget(form.email, { 'attr': {'class' : 'form-control', 'placeholder' : 'Email' | trans({}, 'fosuser')}}) }}
                             {% if form.email.vars['errors']|length > 0 %}
                                 <ul class="message">
                                     {% for error in form.email.vars['errors'] %}
@@ -72,7 +72,7 @@
 
                                 {{ form_widget(passwordField, { 'attr': {
                                     'class' : 'form-control',
-                                    'placeholder' : loop.index0 ? 'Repeat password' : 'Password' }}) }}
+                                    'placeholder' : loop.index0 ? 'Repeat password' | trans({}, 'fosuser') : 'Password' | trans({}, 'fosuser') }}) }}
                                 {% if passwordField.vars['errors']|length > 0 %}
                                     <ul class="message">
                                         {% for error in passwordField.vars['errors'] %}
@@ -110,13 +110,15 @@
                         {#</div>#}
 
                         {#<br/>#}
-                        <button type="submit" class="btn btn-green block full-width m-b">Register</button>
+                        <button type="submit" class="btn btn-green block full-width m-b">
+                            {{ 'Register' | trans({}, 'menu') }}
+                        </button>
 
                         <br/>
                         <br/>
                         <br/>
                         <p class="text-muted text-center m-t-md">
-                            <small>Already have an account?</small>
+                            <small>{{ 'Already have an account?' | trans({}, 'menu') }}</small>
                         </p>
                         <a class="btn btn-primary btn-block" href="{{ path('fos_user_security_login') }}">
                             Log in
@@ -124,7 +126,7 @@
 
                         <br/>
                         <p class="text-muted text-center m-t-xs">
-                            <small>... or login with ...</small>
+                            <small>... {{ 'or login with' | trans({},'menu') }} ...</small>
                         </p>
 
                         <a class="btn btn-block btn-social btn-facebook" href="#" onclick="fb_login();">

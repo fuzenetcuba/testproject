@@ -54,11 +54,21 @@ class ProfileFormType extends BaseType
                 'label' => 'form.email',
                 'translation_domain' => 'FOSUserBundle'
             ))
-            ->add('firstName')
-            ->add('lastName')
-            ->add('phone')
+            ->add('firstName', null, array(
+                'label' => 'First name',
+                'translation_domain' => 'fosuser'
+            ))
+            ->add('lastName', null, array(
+                'label' => 'Last name',
+                'translation_domain' => 'fosuser'
+            ))
+            ->add('phone', null, array(
+                'label' => 'Phone',
+                'translation_domain' => 'fosuser'
+            ))
             ->add('imageFile', FileType::class, array(
                 'label' => 'Photo',
+                'translation_domain' => 'fosuser',
                 'required' => false));
     }
 

@@ -110,12 +110,15 @@
                             </address>
                             <br/>
                             <p id="hours-operation">
-                                <strong><span class="green">{{ 'Today\'s Hours Of Operation' | trans({}, 'homepage') }}: </span></strong>
+                                <strong><span class="green">{{ "Today's Hours Of Operation" | trans({}, 'homepage') }}
+                                        : </span></strong>
                                 <br/>
                                 <small>
-                                    <b>{{ 'Every day' | trans({}, 'homepage') }}</b> {{ 'of the week' | trans({}, 'homepage') }},
+                                    <b>{{ 'Every week day' | trans({}, 'homepage') }}</b>
+                                    ,
                                     <br/>
-                                    {{ 'from' | trans({}, 'homepage') }} <b>10:00am</b> {{ 'to' | trans({}, 'homepage') }} <b>9:00pm</b>
+                                    {{ 'from' | trans({}, 'homepage') }}
+                                    <b>10:00am</b> {{ 'to' | trans({}, 'homepage') }} <b>9:00pm</b>
                                 </small>
                             </p>
                         </div>
@@ -136,7 +139,8 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <a href="{{ path('map', { 'slug' : 'all' }) }}" class="btn btn-green">{{ 'MALL MAP' | trans({}, 'homepage') }}</a>
+                        <a href="{{ path('map', { 'slug' : 'all' }) }}"
+                           class="btn btn-green">{{ 'MALL MAP' | trans({}, 'homepage') }}</a>
                     </div>
                 </div>
                 <div class="row">

@@ -18,7 +18,11 @@ class registrationType extends BaseType
 //        parent::buildForm($builder, $options);
 
         $builder
-            ->add('username', TextType::class, array('label' => 'Username', 'attr' => array('autocomplete' => 'off')))
+            ->add('username', TextType::class, array(
+                'label' => 'profile.show.username',
+                'translation_domain' => 'FOSUserBundle',
+                'attr' => array('autocomplete' => 'off')
+            ))
             ->add('plainPassword', RepeatedType::class, array(
                 'invalid_message' => 'Passwords have to be equal.',
                 'first_name' => 'Password',

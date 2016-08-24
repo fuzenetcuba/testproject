@@ -2,7 +2,7 @@
 
 {% block active_users %}active{% endblock %}
 {% block page_heading_title %}
-    Edit profile of <b>{{ app.user.username }}</b>
+    {{ 'Edit profile of' | trans({}, 'fosuser') }} <b>{{ app.user.username }}</b>
 {% endblock %}
 
 {% block page_content %}
@@ -10,7 +10,7 @@
         <form class="form-horizontal" action="{{ path('fos_user_profile_edit') }}"
               method="post" {{ form_enctype(form) }}>
             <div class="form-group">
-                <label class="col-md-2 control-label">Username</label>
+                <label class="col-md-2 control-label">{{ 'profile.show.username' | trans({},'FOSUserBundle') }}</label>
 
                 <div class="col-md-6">
                     <p class="form-control-static">{{ app.user.username }}</p>
@@ -123,7 +123,7 @@
                            class="btn btn-success btn-small"/>
                     <a class="btn btn-primary" href="{{ path('fos_user_profile_show') }}">
                         <span class="fa fa-clipboard"></span>
-                        System User Profile
+                        {{ 'System User Profile' | trans({}, 'fosuser') }}
                     </a>
                     {{ form(form) }}
                 </div>
