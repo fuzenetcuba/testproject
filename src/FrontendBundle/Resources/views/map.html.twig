@@ -1,0 +1,63 @@
+{% extends '@Frontend/layout.html.twig' %}
+
+{% block title ' - Mall Map' %}
+
+{% block page_content %}
+    <section class="inner-content section-spaces-line">
+        <div class="container">
+            <div class="col-md-12 map" id="map"></div>
+
+            <a id="map-download" class="btn btn-outline btn-amber" download="map.png">
+                <i class="fa fa-download"></i> Download Map
+            </a>
+        </div>
+    </section>
+{% endblock %}
+
+{% block custom_css %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/map/ol.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/map/ol3-popup.css') }}">
+{% endblock %}
+
+{% block custom_js %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/backend/js/ol.js') }}"></script>
+    <script src="{{ asset('bundles/backend/js/ol3-popup.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/map.js') }}"></script>
+{% endblock %}
+
+{% block inline_js %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var businesses = {{ businesses | raw }};
+
+            setTimeout(function () {
+                businesses.forEach(function (item) {
+                    var x = item.mallMapX;
+                    var y = item.mallMapY;
+
+                    console.log([y, x]);
+
+                    if (null !== x && null !== y) {
+                        addMarker([y, x], item.name);
+                    }
+                })
+            }, 10);
+
+            $('a#map-download').on('click', function (e) {
+                // download visible part of the map
+                var self = this;
+                map.getView().fit(extent, map.getSize());
+
+                map.once('postcompose', function(event) {
+                    var canvas = event.context.canvas;
+                    self.href = canvas.toDataURL('image/png');
+                });
+
+                map.renderSync();
+            })
+        });
+    </script>
+{% endblock %}

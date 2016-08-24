@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Slug;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -32,6 +33,7 @@ class Business
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      * @Assert\Length(min="3", minMessage="The name must have 3 characters or more")
+     * @Groups({"group1", "map"})
      */
     private $name;
 

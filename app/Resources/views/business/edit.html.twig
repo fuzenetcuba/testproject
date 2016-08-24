@@ -346,7 +346,7 @@
                 $('a#map-download').on('click', function (e) {
                     // download visible part of the map
                     var self = this;
-                    map.getView().fit(extent, map.getSize());
+//                    map.getView().fit(extent, map.getSize());
 
                     map.once('postcompose', function(event) {
                         var canvas = event.context.canvas;

@@ -2097,3 +2097,23 @@ div.row.deal-list > div:first-child {
 .deal-list .thumbnail:hover {
     border-bottom: 2px solid #b0b42b !important;
 }
+
+div.map {
+    margin-top: 20px !important;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+div.ol-attribution img {
+    display: none;
+}
+
+div.ol-attribution li > strong {
+    margin-right: 20px;
+}
+
+#map-download {
+    margin-top: 10px;
+}

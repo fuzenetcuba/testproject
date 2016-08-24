@@ -42,3 +42,7 @@ subscription_confirm:
     path:     /subscribe/confirm/{id}
     defaults: { _controller: FrontendBundle:Subscription:confirm }
     methods:  GET
+
+mall_map:
+    path:     /mall-map
+    defaults: { _controller: FrontendBundle:Default:map }

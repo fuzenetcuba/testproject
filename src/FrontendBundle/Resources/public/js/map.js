@@ -35,10 +35,6 @@ markers = [];
 var popup = new ol.Overlay.Popup();
 map.addOverlay(popup);
 
-map.on('singleclick', function (event) {
-    addMarker(event.coordinate, document.querySelector('#backendbundle_business_name').value);
-});
-
 map.on('click', function (e) {
     map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
         popup.show(e.coordinate,
@@ -46,11 +42,6 @@ map.on('click', function (e) {
         );
     })
 });
-
-function updateInputs(x, y) {
-    document.querySelector('#backendbundle_business_mallMapX').value = x;
-    document.querySelector('#backendbundle_business_mallMapY').value = y;
-}
 
 function addMarker(coordinate, name) {
     var self = this;
@@ -73,12 +64,6 @@ function addMarker(coordinate, name) {
             rainfall: 500
         });
 
-        // update inputs
-        updateInputs(coordinate[1], coordinate[0]);
-
-        var modifyInteraction = makeMovable(iconFeature);
-        map.addInteraction(modifyInteraction);  // make the marker movable, update the coordenate fields
-
         var iconStyle = [
             new ol.style.Style({
                 image: new ol.style.Icon(({
@@ -92,7 +77,7 @@ function addMarker(coordinate, name) {
             }),
             new ol.style.Style({
                 text: new ol.style.Text({
-                    text: 'Wow such label',
+                    text: name,
                     offsetY: -55,
                     fill: new ol.style.Fill({
                         color: '#333333'
@@ -113,29 +98,7 @@ function addMarker(coordinate, name) {
 
         map.addLayer(self.dynamicPinLayer);
 
-        // self.dynamicPinLayer = undefined;
-    }
-}
-
-function makeMovable(feature) {
-    var modify = new ol.interaction.Modify({
-        features: new ol.Collection([feature])
-    });
-
-    feature.on('change', function () {
-        console.log('Feature Moved To: ' + this.getGeometry().getCoordinates());
-
-        updateInputs(this.getGeometry().getCoordinates()[1], this.getGeometry().getCoordinates()[0]);
-    }, feature);
-
-    return modify;
-}
-
-function placeMarker() {
-    var x = document.querySelector('#backendbundle_business_mallMapX').value;
-    var y = document.querySelector('#backendbundle_business_mallMapY').value;
-
-    if ('' !== x && '' !== y) {
-        addMarker([y, x], document.querySelector('#backendbundle_business_name').value);
+        markers.push(self.dynamicPinLayer);
+        self.dynamicPinLayer = undefined;
     }
 }
