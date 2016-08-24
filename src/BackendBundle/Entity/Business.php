@@ -61,9 +61,6 @@ class Business
      *     minMessage="The phone must have between 6 and 20 characters",
      *     maxMessage="The phone must have between 6 and 20 characters"
      * )
-     * @Assert\Regex(
-     *     pattern="/^(\(\+\d{1,3}\)|\+\d{1,3})?[\040\-]?\d?([\040\-]?\d{3,4}){2,4}$/",
-     *     message="Enter a valid phone number please"
      * )
      */
     private $phone;

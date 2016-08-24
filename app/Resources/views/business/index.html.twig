@@ -115,8 +115,10 @@
 
                             <td class="text-navy">
                                 <a target="_blank" href="{{ entity.website }}">
-                                    {{ entity.website|split("://")[1] }}
-                                    <sub><span class="fa fa-external-link"></span></sub>
+                                    {% if entity.website %}
+                                        {{ entity.website|split("://")[1] }}
+                                        <sub><span class="fa fa-external-link"></span></sub>
+                                    {% endif %}
                                 </a>
                             </td>
 

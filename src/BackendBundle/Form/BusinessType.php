@@ -4,6 +4,7 @@ namespace BackendBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -40,6 +41,8 @@ class BusinessType extends AbstractType
             ->add('mallMapDirections', TextareaType::class, array(
                 'required' => false
             ))
+            ->add('mallMapX', HiddenType::class)
+            ->add('mallMapY', HiddenType::class)
             ->add('customers');
     }
 
