@@ -5,7 +5,7 @@
 
 {% block active_dashboard %}active{% endblock %}
 {% block page_heading_title %}
-    Dashboard
+    {{ 'Dashboard' | trans({}, 'generalbackend') }}
 {% endblock %}
 {% block page_content %}
 
@@ -15,15 +15,16 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <span class="label label-success pull-right"><i class="fa fa-briefcase"></i></span>
-                    <h5>Businesses</h5>
+                    <h5>{{ 'Businesses' | trans({}, 'generalbackend') }}</h5>
                 </div>
                 <div class="ibox-content">
                     <h1 class="no-margins">{{ cant_business }}</h1>
 
                     <div class="stat-percent font-bold text-success">
-                        <a href="{{ path('business') }}">Manage <i class="fa fa-cog"></i></a>
+                        <a href="{{ path('business') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
+                                    class="fa fa-cog"></i></a>
                     </div>
-                    <small>Total businesses</small>
+                    <small>{{ 'Total businesses' | trans({}, 'generalbackend') }}</small>
                 </div>
             </div>
         </div>
@@ -31,15 +32,16 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <span class="label label-info pull-right"><i class="fa fa-tag"></i></span>
-                    <h5>Deals</h5>
+                    <h5>{{ 'Deals' | trans({}, 'generalbackend') }}</h5>
                 </div>
                 <div class="ibox-content">
                     <h1 class="no-margins">{{ cant_deal }}</h1>
 
                     <div class="stat-percent font-bold text-info">
-                        <a href="{{ path('deal') }}">Manage <i class="fa fa-cog"></i></a>
+                        <a href="{{ path('deal') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
+                                    class="fa fa-cog"></i></a>
                     </div>
-                    <small>Total deals</small>
+                    <small>{{ 'Total deals' | trans({}, 'generalbackend') }}</small>
                 </div>
             </div>
         </div>
@@ -47,15 +49,16 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <span class="label label-primary pull-right"><i class="fa fa-user"></i></span>
-                    <h5>Customers</h5>
+                    <h5>{{ 'Customers' | trans({}, 'generalbackend') }}</h5>
                 </div>
                 <div class="ibox-content">
                     <h1 class="no-margins">{{ cant_customer }}</h1>
 
                     <div class="stat-percent font-bold text-navy">
-                        <a href="{{ path('customer') }}">Manage <i class="fa fa-cog"></i></a>
+                        <a href="{{ path('customer') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
+                                    class="fa fa-cog"></i></a>
                     </div>
-                    <small>Total customers</small>
+                    <small>{{ 'Total customers' | trans({}, 'generalbackend') }}</small>
                 </div>
             </div>
         </div>
@@ -63,15 +66,16 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <span class="label label-danger pull-right"><i class="fa fa-reorder"></i></span>
-                    <h5>Categories</h5>
+                    <h5>{{ 'Categories' | trans({},'generalbackend') }}</h5>
                 </div>
                 <div class="ibox-content">
                     <h1 class="no-margins">{{ cant_category }}</h1>
 
                     <div class="stat-percent font-bold text-danger">
-                        <a href="{{ path('category') }}">Manage <i class="fa fa-cog"></i></a>
+                        <a href="{{ path('category') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
+                                    class="fa fa-cog"></i></a>
                     </div>
-                    <small>Total categories</small>
+                    <small>{{ 'Total categories' | trans({}, 'generalbackend') }}</small>
                 </div>
             </div>
         </div>
@@ -80,7 +84,9 @@
         <div class="col-lg-4">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Top Businesses <span class="label label-primary pull-right">by number of Deals</span></h5>
+                    <h5>{{ 'Top Businesses' | trans({}, 'generalbackend') }} <span
+                                class="label label-primary pull-right">{{ 'by number of Deals' | trans({}, 'generalbackend') }}</span>
+                    </h5>
 
                     <div class="ibox-tools">
                         <a class="collapse-link">
@@ -96,8 +102,8 @@
                                 <thead>
                                 <tr>
                                     <th style="width: 1%" class="text-center">No.</th>
-                                    <th>Business</th>
-                                    <th class="text-center">Deals</th>
+                                    <th>{{ 'Business' | trans({}, 'generalbackend') }}</th>
+                                    <th class="text-center">{{ 'Deals' | trans({}, 'generalbackend') }}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -114,7 +120,7 @@
                                         </td>
                                     </tr>
                                 {% else %}
-                                    <small>There are no business</small>
+                                    <small>{{ 'There are no business' | trans({}, 'generalbackend') }}</small>
                                 {% endfor %}
                                 </tbody>
                             </table>
@@ -127,7 +133,9 @@
         <div class="col-lg-8">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Top Deals <span class="label label-primary pull-right">by created date</span></h5>
+                    <h5>{{ 'Top Deals' | trans({}, 'generalbackend') }} <span
+                                class="label label-primary pull-right">{{ 'by created date' | trans({}, 'generalbackend') }}</span>
+                    </h5>
 
                     <div class="ibox-tools">
                         <a class="collapse-link">
@@ -139,10 +147,10 @@
                     <table class="table table-hover no-margins">
                         <thead>
                         <tr>
-                            <th>Description</th>
-                            <th>Start At</th>
-                            <th>End At</th>
-                            <th>Points</th>
+                            <th>{{ 'Description' | trans({}, 'generalbackend') }}</th>
+                            <th>{{ 'Start At' | trans({}, 'generalbackend') }}</th>
+                            <th>{{ 'End At' | trans({}, 'generalbackend') }}</th>
+                            <th>{{ 'Points' | trans({}, 'generalbackend') }}</th>
                         </tr>
                         </thead>
                         <tbody>

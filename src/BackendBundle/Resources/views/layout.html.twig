@@ -92,7 +92,7 @@
 
                     <li class="{% block active_dashboard %}{% endblock %}">
                         <a href="{{ path('backend_homepage') }}"><i class="fa fa-th-large"></i> <span
-                                    class="nav-label">Dashboard</span></a>
+                                    class="nav-label">{{ 'Dashboard' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_helpers %}{% endblock %}">
@@ -102,47 +102,47 @@
 
                     <li class="{% block active_business %}{% endblock %}">
                         <a href="{{ path('business') }}"><i class="fa fa-briefcase"></i> <span
-                                    class="nav-label">Business</span></a>
+                                    class="nav-label">{{ 'Businesses' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_category %}{% endblock %}">
                         <a href="{{ path('category') }}"><i class="fa fa-reorder"></i> <span
-                                    class="nav-label">Category</span></a>
+                                    class="nav-label">{{ 'Categories' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_deal %}{% endblock %}">
                         <a href="{{ path('deal') }}"><i class="fa fa-tag"></i><span
-                                    class="nav-label">Deal</span></a>
+                                    class="nav-label">{{ 'Deals' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_reward %}{% endblock %}">
                         <a href="{{ path('reward') }}"><i class="fa fa-star"></i><span
-                                    class="nav-label">Reward</span></a>
+                                    class="nav-label">{{ 'Rewards' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_customer %}{% endblock %}">
                         <a href="{{ path('customer') }}"><i class="fa fa-user"></i> <span
-                                    class="nav-label">Customers</span></a>
+                                    class="nav-label">{{ 'Customers' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_subscription %}{% endblock %}">
                         <a href="{{ path('subscription') }}"><i class="fa fa-flag"></i> <span
-                                    class="nav-label">Subscriptions</span></a>
+                                    class="nav-label">{{ 'Subscriptions' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_mails %}{% endblock %}">
                         <a href="{{ path('mails_send') }}"><i class="fa fa-send"></i> <span
-                                    class="nav-label">Mails</span></a>
+                                    class="nav-label">{{ 'Mails' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_users %}{% endblock %}">
                         <a href="{{ path('user') }}"><i class="fa fa-users"></i> <span
-                                    class="nav-label">Users</span></a>
+                                    class="nav-label">{{ 'Users' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="special_link">
                         <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> <span
-                                    class="nav-label">Log out</span></a>
+                                    class="nav-label">{{ 'Logout' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                 </ul>
@@ -162,7 +162,7 @@
                                     class="fa fa-bars"></i> </a>
 
                         <div class="navbar-title navbar-text text-muted">
-                            <h2><a class="text-muted" href="{{ path('backend_homepage') }}">INSPINIA+ Template</a>
+                            <h2><a class="text-muted" href="{{ path('backend_homepage') }}">Plaza Mariachi</a>
                             </h2>
                         </div>
                     </div>

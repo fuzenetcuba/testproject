@@ -53,7 +53,8 @@ class BusinessType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'BackendBundle\Entity\Business',
-            'validation_groups' => array('Default', 'creation')
+            'validation_groups' => array('Default', 'creation'),
+            'translation_domain' => 'businessbackend'
         ));
     }
 
