@@ -1,0 +1,9 @@
+deals: /ofertas
+deal_details: /oferta/{slug}
+business_list: /directorio
+business_details: /directorio/{slug}
+frontend_static_page: /contenido/{name}
+membership: /miembros
+subscription_request: /suscribirse
+subscription_confirm: /suscribirse/confirmar/{id}
+mall_map: /mapa

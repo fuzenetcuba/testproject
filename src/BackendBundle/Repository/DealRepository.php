@@ -2,7 +2,6 @@
 
 namespace BackendBundle\Repository;
 use Doctrine\ORM\EntityRepository;
-use Psr\Log\InvalidArgumentException;
 
 /**
  * DealRepository

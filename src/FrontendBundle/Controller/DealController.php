@@ -54,9 +54,12 @@ class DealController extends Controller
         ]);
     }
 
-    public function detailsAction($slug)
+    public function detailsAction(Request $request, $slug)
     {
+        // TODO Detect when switching languages and translate the slug
         $deal = $this->get('deal.manager')->findBySlug($slug);
+
+        $this->get('doctrine.orm.entity_manager')->flush();
 
         return $this->render('@Frontend/Deal/details.html.twig', [
             'deal' => $deal,

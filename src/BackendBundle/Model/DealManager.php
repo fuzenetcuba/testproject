@@ -4,6 +4,7 @@ namespace BackendBundle\Model;
 
 use BackendBundle\Entity\Deal;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -130,16 +131,24 @@ class DealManager implements ManagerInterface
     /**
      * Finds a deal by the specified slug
      *
-     * @param string $slug
+     * @param string $slug Slug that identifies the deal
      *
      * @return \BackendBundle\Entity\Deal
+     *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function findBySlug($slug)
     {
-        $object = $this->em->getRepository('BackendBundle:Deal')->findOneBy([
-            'slug' => $slug,
-        ]);
+        $object = $this->em
+            ->createQuery('SELECT d FROM BackendBundle:Deal d WHERE d.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->setHint(
+                Query::HINT_CUSTOM_OUTPUT_WALKER,
+                'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+            )
+            ->getOneOrNullResult()
+        ;
 
         if (!$object) {
             throw new NotFoundHttpException(sprintf('Deal with slug "%s" could not be found', $slug));

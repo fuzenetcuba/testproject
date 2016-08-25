@@ -2117,3 +2117,7 @@ div.ol-attribution li > strong {
 #map-download {
     margin-top: 10px;
 }
+
+.business-info ul>li:not(:first-of-type) {
+    margin-top: 10px;
+}
