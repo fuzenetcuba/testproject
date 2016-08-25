@@ -1,6 +1,6 @@
 {% extends '@Frontend/layout.html.twig' %}
 
-{% block title '- Page not found' %}
+{% block title '- ' ~ 'Page not found' | trans({}, 'twigbundle') %}
 
 {% block content %}
 
@@ -9,13 +9,11 @@
             <div class="middle-box text-center animated fadeInDown">
                 <h1>404</h1>
 
-                <h3 class="font-bold">Page Not Found</h3>
+                <h3 class="font-bold">{{ 'Page not found' | trans({}, 'twigbundle') }}</h3>
 
                 <div class="error-desc">
-                    Sorry, but the page you are looking for has not been found. Try checking the URL for error, then
-                    hit the
-                    refresh button on your browser or try go to our homepage.
-                    <h2><a href="{{ path('frontend_homepage') }}"><b>Fuzenet Plaza</b> Home Page</a></h2>
+                    {{ 'Sorry, but the page you are looking for has not been found. Try checking the URL for error, then hit the refresh button on your browser or try go to our homepage.' | trans({}, 'twigbundle') }}
+                    <h2><a href="{{ path('frontend_homepage') }}">{{ 'Home Page of' | trans({}, 'twigbundle') }} <b>Plaza Mariachi</b></a></h2>
                 </div>
             </div>
         </div>
