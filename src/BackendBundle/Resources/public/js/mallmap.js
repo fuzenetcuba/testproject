@@ -89,9 +89,9 @@ function locateBusinesses(canvas, $coords) {
         var mk = new Image();   // Create new img element
         mk.src = $("#map_marker").prop("value"); // Set source path
         ctx.drawImage(mk, coords[i][0] - 15, coords[i][1] - 27);
-
-        // export map to Base64
-        var mapB64 = canvas.toDataURL("image/jpg");
-        $("#mallMapImage").prop("src", mapB64);
     }
+
+    // export map to Base64
+    var mapB64 = canvas.toDataURL("image/jpg");
+    $("#mallMapImage").prop("src", mapB64);
 }
