@@ -43,7 +43,7 @@
             </div>
             <div class="btn-group btn-group-justified">
                 <a class="btn btn-green btn-outline hide-filters-action" role="button"
-                        onclick="print();">
+                   onclick="print();">
                     <i class="fa fa-print"></i>
                 </a>
                 <a class="btn btn-green btn-outline hide-filters-action" role="button"
@@ -63,91 +63,94 @@
 
         <div class="container">
             <div class="row deal-list hidden-print">
-                <div class="col-sm-12">
-                    {% for business in businesses %}
-                        <div class="col-sm-3 text-center">
-                            <a href="{{ path('business_details', {'slug' : business.slug}) }}" class="thumbnail" >
-                                <div class="container-image business-image">
-                                    <img class="center-height img-responsive business-image"
-                                         alt="{{ business.name }}"
-                                         src="{{ asset('images/business/' ~ business.logo) }} "/>
-                                </div>
-                            </a>
-                            <h3>{{ business.name | upper }}</h3>
-                        </div>
-                    {% else %}
-                        <div class="alert alert-danger">
-                            No businesses matching your criterias were found
-                        </div>
-                    {% endfor %}
-                </div>
-
-                <div class="row text-center hidden-print">
-                    {{ knp_pagination_render(businesses) }}
-                </div>
-            </div>
-
-            {# Content visible only for print view #}
-            <div class="print-view visible-print">
-                <div class="row">
-                    <img src="{{ asset('bundles/frontend/img/plaza_mariachi.png') }}"
-                         alt="Plaza Mariachi Music City"
-                         class="print-brand m-l"/>
-                </div>
-                <h1 class="print-title">Business List of Plaza Mariachi</h1>
-                <div class="row print-deal-list">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th>BRAND</th>
-                            <th>NAME</th>
-                            <th>DESCRIPTION</th>
-                            <th>PHONE</th>
-                            <th>CATEGORIES</th>
-                            <th>DEALS</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        {% for business in businesses %}
-                            <tr>
-                                <td>
-                                    <div class="print-container-image print-business-image">
-                                        <img class="center-height print-business-image"
+                {% for col in businesses | batch(4) %}
+                    <div class="col-sm-12">
+                        {% for business in col %}
+                            <div class="col-sm-3 text-center">
+                                <a href="{{ path('business_details', {'slug' : business.slug}) }}" class="thumbnail">
+                                    <div class="container-image business-image">
+                                        <img class="center-height img-responsive business-image"
+                                             alt="{{ business.name }}"
                                              src="{{ asset('images/business/' ~ business.logo) }} "/>
                                     </div>
-                                </td>
-                                <td>
-                                    {{ business.name | upper }}
-                                </td>
-                                <td>
-                                    {{ business.description }}
-                                </td>
-                                <td>
-                                    {{ business.phone }}
-                                </td>
-                                <td>
-                                    {% for category in business.categories %}
-                                        {{ category.name ~ ", " }}
-                                    {% else %}
-                                        <i>without categories</i>
-                                    {% endfor %}
-                                </td>
-                                <td>
-                                    {{ business.deals|length ~ " Deals" }}
-                                </td>
-                            </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="6">
-                                    No businesses matching your criterias were found...
-                                </td>
-                            </tr>
+                                </a>
+                                <h3>{{ business.name | upper }}</h3>
+                            </div>
                         {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-danger">
+                        No businesses matching your criterias were found
+                    </div>
+                {% endfor %}
             </div>
+
+            <div class="row text-center hidden-print">
+                {{ knp_pagination_render(businesses) }}
+            </div>
+        </div>
+
+        {# Content visible only for print view #}
+        <div class="print-view visible-print">
+            <div class="row">
+                <img src="{{ asset('bundles/frontend/img/plaza_mariachi.png') }}"
+                     alt="Plaza Mariachi Music City"
+                     class="print-brand m-l"/>
+            </div>
+            <h1 class="print-title">Business List of Plaza Mariachi</h1>
+            <div class="row print-deal-list">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>BRAND</th>
+                        <th>NAME</th>
+                        <th>DESCRIPTION</th>
+                        <th>PHONE</th>
+                        <th>CATEGORIES</th>
+                        <th>DEALS</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for business in businesses %}
+                        <tr>
+                            <td>
+                                <div class="print-container-image print-business-image">
+                                    <img class="center-height print-business-image"
+                                         src="{{ asset('images/business/' ~ business.logo) }} "/>
+                                </div>
+                            </td>
+                            <td>
+                                {{ business.name | upper }}
+                            </td>
+                            <td>
+                                {{ business.description }}
+                            </td>
+                            <td>
+                                {{ business.phone }}
+                            </td>
+                            <td>
+                                {% for category in business.categories %}
+                                    {{ category.name ~ ", " }}
+                                {% else %}
+                                    <i>without categories</i>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {{ business.deals|length ~ " Deals" }}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6">
+                                No businesses matching your criterias were found...
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
         </div>
     </section>
 {% endblock %}
