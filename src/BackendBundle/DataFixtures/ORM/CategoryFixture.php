@@ -44,7 +44,7 @@ class CategoryFixture extends OrderedYamlFixture
             }
             */
 
-            $randomKeys = array_rand($businesses, 20);
+            $randomKeys = array_rand($businesses, 15);
             $localBusinesses = array_intersect_key($businesses, array_flip($randomKeys));
 
             foreach ($localBusinesses as $business) {
