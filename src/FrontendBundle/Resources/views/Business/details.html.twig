@@ -19,7 +19,7 @@
                         <ul class="list-unstyled">
                             <li>
                                 <i class="fa fa-clock-o"></i>
-                                {{ business.hoursBegin|date("h:i A") ~ " to " ~ business.hoursEnd|date("h:i A") }}
+                                {{ business.hoursBegin|date("h:i A") ~ " - " ~ business.hoursEnd|date("h:i A") }}
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
@@ -45,7 +45,7 @@
                                 <p class="text-muted-strong">
                                     <i class="fa fa-map-marker"></i>
                                     <a class="btn btn-xs btn-amber" href="#">
-                                        View on Mall Map
+                                        {{ 'View on Mall Map' | trans({}, 'business') }}
                                     </a>
                                     - {{ business.mallMapDirections }}
                                 </p>
@@ -59,7 +59,7 @@
                     <ul class="list-inline pull-right">
                         <li>
                             <a href="http://twitter.com/intent/tweet?status=[TITLE]+[URL]" data-toggle="tooltip"
-                               title="Tweet this business" class="btn btn-circle-regular btn-social-icon btn-twitter"
+                               title="{{ 'Tweet this business' | trans({}, 'business') }}" class="btn btn-circle-muted btn-outline btn-social-icon btn-twitter"
                                onclick="javascript:this.href=this.href.replace(/\[TITLE\]/, document.title).replace(/\[URL\]/,
                                 window.location);window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,' +
                                 'scrollbars=yes,height=600,width=600');return false;">
@@ -68,7 +68,7 @@
                         </li>
                         <li>
                             <a href="http://www.facebook.com/share.php?u=[URL]&title=[TITLE]" data-toggle="tooltip"
-                               title="Share this business" class="btn btn-circle-regular btn-social-icon btn-facebook"
+                               title="{{ 'Share this business' | trans({}, 'business') }}" class="btn btn-circle-muted btn-outline btn-social-icon btn-facebook"
                                onclick="javascript:this.href=this.href.replace(/\[TITLE\]/, document.title).replace(/\[URL\]/,
                                 window.location);window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,' +
                                 'scrollbars=yes,height=600,width=600');return false;">

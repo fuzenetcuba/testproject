@@ -64,7 +64,7 @@
                                 <img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>
                             </div>
                             <p><a class="btn btn-amber" href="{{ path('deal_details', {'slug' : deal.slug}) }}"
-                                  role="button">View Deal</a></p>
+                                  role="button">{{ 'View Deal' | trans({}, 'deals') }}</a></p>
                         </div>
                     {% else %}
                         <div class="alert alert-danger">
