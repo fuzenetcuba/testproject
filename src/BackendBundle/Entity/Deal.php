@@ -3,10 +3,11 @@
 namespace BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Mapping\Annotation\Slug;
 use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Deal class
@@ -30,6 +31,7 @@ class Deal
      * @var string
      *
      * @ORM\Column(type="string", length=255)
+     * @Gedmo\Translatable
      * @Assert\Length(min="3", minMessage="The name must have 3 characters or more")
      */
     private $name;
@@ -37,6 +39,7 @@ class Deal
     /**
      * @var string
      *
+     * @Gedmo\Translatable
      * @Slug(fields={"name"})
      * @ORM\Column(type="string", unique=true, length=128)
      */
@@ -45,6 +48,7 @@ class Deal
     /**
      * @var string
      *
+     * @Gedmo\Translatable
      * @ORM\Column(type="text")
      * @Assert\Length(min="3", minMessage="The description must have 3 characters or more")
      */
@@ -128,6 +132,13 @@ class Deal
     private $business;
 
     /**
+     * @var string
+     *
+     * @Gedmo\Locale
+     */
+    private $locale;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -150,7 +161,7 @@ class Deal
         }
     }
 
-    function __toString()
+    public function __toString()
     {
         return
             strtoupper($this->name)
@@ -427,5 +438,10 @@ class Deal
     public function disable()
     {
         $this->isActive = false;
+    }
+
+    public function setTranslatableLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }
