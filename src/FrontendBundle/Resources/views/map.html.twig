@@ -37,16 +37,26 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var businesses = {{ businesses | raw }};
+            var highlight = "{{ highlight }}";
+            var onlyOne = ('' !== highlight);
+
 
             setTimeout(function () {
                 businesses.forEach(function (item) {
                     var x = item.mallMapX;
                     var y = item.mallMapY;
 
-                    console.log([y, x]);
+//                    console.log([y, x]);
 
                     if (null !== x && null !== y) {
-                        addMarker([y, x], item.name);
+
+                        if (onlyOne && item.slug == highlight) {
+                            addMarker([y, x], item.name, true);
+                        } else if (!onlyOne) {
+                            addMarker([y, x], item.name, true);
+                        } else {
+                            addMarker([y, x], item.name, false);
+                        }
                     }
                 })
             }, 10);

@@ -37,6 +37,20 @@ markers = [];
 var popup = new ol.Overlay.Popup();
 map.addOverlay(popup);
 
+var source = new ol.source.Vector({
+    wrapX: false
+});
+
+var vector = new ol.layer.Vector({
+    source: source
+});
+
+map.addLayer(vector);
+
+source.on('addfeature', function (e) {
+    flash(e.feature);
+});
+
 map.on('click', function (e) {
     map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
         popup.show(e.coordinate,
@@ -45,7 +59,58 @@ map.on('click', function (e) {
     })
 });
 
-function addMarker(coordinate, name) {
+const ANIMATION_DURATION = 500;
+function flash(feature) {
+
+    if (!feature.get('animate')) {
+        return ;
+    }
+
+    var start = new Date().getTime();
+    var listenerKey;
+    var flashGeom = feature.getGeometry().clone();
+
+    var coordinates = flashGeom.getCoordinates();
+    // x-1, y-0
+    coordinates[0] = coordinates[0] - 40;
+    flashGeom.setCoordinates(coordinates);
+
+    function animate(event) {
+        var vectorContext = event.vectorContext;
+        var frameState = event.frameState;
+        var elapsed = frameState.time - start;
+        var elapsedRatio = elapsed / ANIMATION_DURATION;
+        // radius will be 5 at start and 40 at end.
+        var radius = ol.easing.easeOut(elapsedRatio) * 40 + 5;
+        var opacity = ol.easing.easeOut(1 - elapsedRatio);
+
+        var style = new ol.style.Style({
+            image: new ol.style.Circle({
+                radius: radius,
+                snapToPixel: false,
+                stroke: new ol.style.Stroke({
+                    color: 'rgba(253, 178, 0, ' + opacity + ')',
+                    width: 3 + opacity
+                })
+            })
+        });
+
+        vectorContext.setStyle(style);
+        vectorContext.drawGeometry(flashGeom);
+
+        if (elapsed > ANIMATION_DURATION) {
+            ol.Observable.unByKey(listenerKey);
+            return;
+        }
+
+        // tell OL3 to continue postcompose animation
+        map.render();
+    }
+
+    listenerKey = map.on('postcompose', animate);
+}
+
+function addMarker(coordinate, name, animate) {
     var self = this;
 
     var latLong = ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
@@ -63,7 +128,8 @@ function addMarker(coordinate, name) {
             geometry: self.iconGeometry,
             name: name,
             population: 4000,
-            rainfall: 500
+            rainfall: 500,
+            animate: animate
         });
 
         var iconStyle = [
@@ -90,15 +156,9 @@ function addMarker(coordinate, name) {
 
         iconFeature.setStyle(iconStyle);
 
-        var vectorSource = new ol.source.Vector({
-            features: [iconFeature]
-        });
+        source.addFeature(iconFeature);
 
-        self.dynamicPinLayer = new ol.layer.Vector({
-            source: vectorSource
-        });
-
-        map.addLayer(self.dynamicPinLayer);
+        self.dynamicPinLayer = vector;
 
         markers.push(self.dynamicPinLayer);
         self.dynamicPinLayer = undefined;

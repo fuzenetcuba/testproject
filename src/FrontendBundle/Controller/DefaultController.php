@@ -63,9 +63,10 @@ class DefaultController extends Controller
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      * @throws \Symfony\Component\Serializer\Exception\InvalidArgumentException
      */
-    public function mapAction(Request $request)
+    public function mapAction(Request $request, $hl = null)
     {
         $businesses = $this->get('business.manager')->findAll();
 
@@ -81,6 +82,7 @@ class DefaultController extends Controller
 
         return $this->render('@Frontend/map.html.twig', [
             'businesses' => $serializer->serialize($businesses, 'json'),
+            'highlight' => $hl
         ]);
     }
 }

@@ -24,7 +24,7 @@ var map = new ol.Map({
     view: new ol.View({
         projection: projection,
         center: ol.extent.getCenter(extent),
-        zoom: 3,
+        zoom: 1,
         minZoom: 1,
         maxZoom: 3,
     })
@@ -125,7 +125,7 @@ function addMarker(coordinate, name) {
     }
 }
 
-var duration = 500;
+const ANIMATION_DURATION = 500;
 function flash(feature) {
     console.log('flashing!!!!');
     var start = new Date().getTime();
@@ -141,7 +141,7 @@ function flash(feature) {
         var vectorContext = event.vectorContext;
         var frameState = event.frameState;
         var elapsed = frameState.time - start;
-        var elapsedRatio = elapsed / duration;
+        var elapsedRatio = elapsed / ANIMATION_DURATION;
         // radius will be 5 at start and 40 at end.
         var radius = ol.easing.easeOut(elapsedRatio) * 40 + 5;
         var opacity = ol.easing.easeOut(1 - elapsedRatio);
@@ -160,7 +160,7 @@ function flash(feature) {
         vectorContext.setStyle(style);
         vectorContext.drawGeometry(flashGeom);
 
-        if (elapsed > duration) {
+        if (elapsed > ANIMATION_DURATION) {
             ol.Observable.unByKey(listenerKey);
             return;
         }
