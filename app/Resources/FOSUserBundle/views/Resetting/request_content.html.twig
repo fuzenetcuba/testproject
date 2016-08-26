@@ -1,9 +1,9 @@
 <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 text-center">
 
-    <h2 class="font-bold">Forgot password</h2>
+    <h2 class="font-bold">{{ 'Forgot password' | trans({},'fosuser') }}</h2>
 
     <p>
-        Enter your username or email address and we will email you with a link for resetting your password.
+        {{ 'Enter your username or email address and we will email you with a link for resetting your password.' | trans({}, 'fosuser') }}
     </p>
     {% if invalid_username is defined %}
         <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}, 'FOSUserBundle') }}</p>
@@ -18,13 +18,14 @@
                            name="username" required="required"/>
                 </div>
 
-                <button type="submit" class="btn btn-green block full-width m-b">Reset password
+                <button type="submit" class="btn btn-green block full-width m-b">
+                    {{ 'resetting.request.submit' | trans({}, 'FOSUserBundle') }}
                 </button>
 
             </form>
 
             <a class="text-center" href="{{ path('frontend_homepage') }}">
-                <small>Back to home</small>
+                <small>{{ 'GO TO HOME' | trans({}, 'fosuser') }}</small>
             </a>
         </div>
     </div>

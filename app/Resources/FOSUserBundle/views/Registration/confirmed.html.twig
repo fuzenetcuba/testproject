@@ -1,6 +1,6 @@
 {% extends '@Frontend/layout.html.twig' %}
 
-{% block title '- Confirmed Registration' %}
+{% block title '- ' ~ 'Confirmed Registration' | trans({}, 'fosuser') %}
 
 {% block page_content %}
 
@@ -9,12 +9,13 @@
 
             {% block fos_user_content %}
                 <div class="text-center animated fadeInDown">
-                    <h1>Welcome!!!</h1>
+                    <h1>{{ 'Welcome' | trans({}, 'general') }}!!!</h1>
 
-                    <p>Congrats <b>{{ user.fullName }}</b>, you have been registered succesfully.</p>
+                    <p>{{ 'Congrats' | trans({}, 'fosuser') }} <b>{{ user.fullName }}</b>
+                    {{ ', ' ~ 'you have been registered succesfully' | trans({}, 'fosuser') }}</p>
                 </div>
                 <div class="text-center m-t-lg">
-                    <a class="btn btn-amber" href="{{ path("frontend_homepage") }}">BACK TO HOME</a>
+                    <a class="btn btn-amber" href="{{ path("frontend_homepage") }}">{{ 'GO TO PLAZA HOME' | trans({},'subscription') }}</a>
                 </div>
 
             {% endblock fos_user_content %}

@@ -19,7 +19,7 @@
                         <p>Lorem Ipsum is simply dummy text of the printing.</p>
                         <p>
                             <a class="btn btn-lg btn-amber" href="{{ path("fos_user_registration_register") }}"
-                               role="button">BECOME A MEMBER</a>
+                               role="button">{{ 'BECOME A MEMBER' | trans({}, 'homepage') }}</a>
                         </p>
                     </div>
                     <div class="carousel-image wow zoomIn">
@@ -35,14 +35,14 @@
     <section id="features" class="container section-spaces-line top-deals">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <div class="section-line amber-line"></div>
-                <h1>{{ 'Top Deals of the Day' | trans({}, 'homepage') }}</h1>
+                <div class="section-line pink-line"></div>
+                <h1>{{ "Today's Hours Of Operation" | trans({}, 'homepage') }}</h1>
             </div>
         </div>
 
         <div class="col-sm-12 text-center m-b">
             <h2 class="m-t-n">
-                <span class="font-bold">Every day</span> of the week,
+                <span class="font-bold">{{ 'Every week day' | trans({}, 'homepage') }}</span>,
                 from <span class="font-bold">10:00am</span> to <span class="font-bold">9:00pm</span>
             </h2>
         </div>
@@ -54,7 +54,7 @@
             <div class="row m-b">
                 <div class="col-lg-12 text-center">
                     <div class="section-line amber-line"></div>
-                    <h1>Top Deals of the Day</h1>
+                    <h1>{{ 'Top Deals of the Day' |trans({}, 'homepage') }}</h1>
 
                     {#<p>Find and win with our best deals of your interests</p>#}
                 </div>
@@ -69,7 +69,9 @@
                         <div class="container-image ">
                             <img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>
                             <div class="overlay">
-                                <a class="info" href="{{ path('deal_details', {'slug' : deal.slug}) }}">Show Deal</a>
+                                <a class="info" href="{{ path('deal_details', {'slug' : deal.slug}) }}">
+                                    {{ 'Show Deal' | trans({}, 'homepage') }}
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -106,7 +108,7 @@
 {% block custom_js %}
     {{ parent() }}
 
-    <script src="{{ asset('bundles/frontend/js/app.js') }}"></script>
+    {#<script src="{{ asset('bundles/frontend/js/app.js') }}"></script>#}
 {% endblock %}
 
 {% block inline_js %}

@@ -48,6 +48,14 @@ $(document).ready(function () {
         console.log('toggle view');
         $('.filter-deals').toggleClass('collapsed');
     });
+    $('.show-filters').on('click', function () {
+        console.log('toggle view');
+        $('.filter-deals').toggleClass('collapsed');
+    });
+    $('.hide-filters-action').on('click', function () {
+        console.log('toggle view');
+        $('.filter-deals').toggleClass('collapsed');
+    });
 
     updateDealRow = function (selector, data) {
         var dom = $('<div/>').html(data);
@@ -55,10 +63,13 @@ $(document).ready(function () {
         $(document).find(selector).html(
             dom.find(selector).html()
         );
-    }
+    };
 
     $('.filter-deals form').submit(function (event) {
         event.preventDefault();
+
+        $('.filter-deals').toggleClass('collapsed');
+
         var form = $(this);
 
         $.ajax({

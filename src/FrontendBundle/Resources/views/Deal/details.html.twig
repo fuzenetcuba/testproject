@@ -12,7 +12,7 @@
                 <div class="col-sm-6">
                     <h1>{{ deal.name }}</h1>
                     <hr/>
-                    <strong>VALID FROM: {{ deal.startsAt | date ('m/d/Y') }}
+                    <strong>{{ 'VALID FROM' | trans({}, 'deals') }}: {{ deal.startsAt | date ('m/d/Y') }}
                         - {{ deal.endsAt | date ('m/d/Y') }}</strong>
                     </p>
                     <p class="text-muted-strong">{{ deal.description | nl2br }}</p>

@@ -23,7 +23,7 @@
 
                 <div class="form-group{% if(form.email.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
 
-                    {{ form_widget(form.email, { 'attr': {'class' : 'form-control', 'placeholder' : 'EMAIL'}}) }}
+                    {{ form_widget(form.email, { 'attr': {'class' : 'form-control', 'placeholder' : 'EMAIL' | trans({}, 'subscription') }}) }}
                     {% if form.email.vars['errors']|length > 0 %}
                         <ul class="message">
                             {% for error in form.email.vars['errors'] %}
@@ -79,7 +79,7 @@
 
             //  select2 scripts for batch actions combobox
             $(".select2-field").select2({
-                placeholder: "--- SELECT A CATEGORY ---"
+                placeholder: "--- {{ 'SELECT A CATEGORY' | trans({}, 'subscription') }} ---"
             });
         });
 

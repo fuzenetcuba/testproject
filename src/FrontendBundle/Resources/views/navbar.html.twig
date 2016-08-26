@@ -133,7 +133,7 @@
                                     <li class="divider"></li>
                                     <li>
                                         <a target="_blank" href="{{ path('backend_homepage') }}">
-                                            <i class="fa fa-cog"></i> Admin
+                                            <i class="fa fa-cog"></i> {{ 'Admin' | trans({}, 'menu') }}
                                         </a>
                                     </li>
                                 {% endif %}
@@ -192,13 +192,13 @@
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="{{ path('membership') }}">
-                                        <i class="fa fa-user"></i> Membership
+                                        <i class="fa fa-user"></i> {{ 'Membership' | trans({}, 'menu') }}
                                     </a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
                                     <a href="{{ path('fos_user_security_logout') }}">
-                                        <i class="fa fa-sign-out"></i> {{ 'layout.logout' | trans({}, 'security') }}
+                                        <i class="fa fa-sign-out"></i> {{ 'layout.logout' | trans({}, 'FOSUserBundle') }}
                                     </a>
                                 </li>
                                 {% if is_granted('ROLE_ADMIN') %}

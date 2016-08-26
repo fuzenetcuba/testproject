@@ -14,7 +14,7 @@
         <div class="filter-deals hidden-print collapsed">
             <div class="m-b-lg animated fadeInLeft">
                 <form action="{{ path('business_list') }}" method="post">
-                    <h4>FILTER BUSINESSES BY:</h4>
+                    <h4>{{ 'FILTER BUSINESSES BY' | trans({}, 'business') }}:</h4>
                     <div class="">
                         {{ form_widget(form.search) }}
                     </div>
@@ -22,22 +22,22 @@
                         {{ form_widget(form.category) }}
                     </div>
                 </form>
-                <h4 class="">SORT BUSINESSES BY:</h4>
+                <h4 class="">{{ 'SORT BUSINESSES BY' | trans({}, 'business') }}:</h4>
                 <div class="btn-group-vertical btn-block" data-toggle="buttons">
                     <label class="btn btn-white hide-filters-action active">
                         <input type="radio"
                                value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_ALPHABETICALLY') }}"
-                               name="order" id="option1" autocomplete="off"> ALPHABETICALLY
+                               name="order" id="option1" autocomplete="off"> {{ 'ALPHABETICALLY' | trans({}, 'business') }}
                     </label>
                     <label class="btn btn-white hide-filters-action">
                         <input type="radio"
                                value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_CATEGORY') }}"
-                               name="order" id="option1" autocomplete="off"> CATEGORY
+                               name="order" id="option1" autocomplete="off"> {{ 'CATEGORY' | trans({}, 'business') }}
                     </label>
                     <label class="btn btn-white hide-filters-action">
                         <input type="radio"
                                value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS') }}"
-                               name="order" id="option2" autocomplete="off"> RECENT DEALS
+                               name="order" id="option2" autocomplete="off"> {{ 'RECENT DEALS' | trans({}, 'business') }}
                     </label>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                     <i class="fa fa-print"></i>
                 </a>
                 <a class="btn btn-green btn-outline hide-filters-action" role="button"
-                   href="#">
+                   href="{{ path('map', { 'slug' : 'all' }) }}">
                     <i class="fa fa-map-marker"></i>
                 </a>
                 <a class="btn btn-green btn-outline hide-filters" role="button">
@@ -141,14 +141,77 @@
                             </td>
                         </tr>
                     {% else %}
-                        <tr>
-                            <td colspan="6">
-                                No businesses matching your criterias were found...
-                            </td>
-                        </tr>
+                        <div class="alert alert-danger">
+                            {{ 'No businesses matching your criteria were found' | trans({}, 'business') }}
+                        </div>
                     {% endfor %}
-                    </tbody>
-                </table>
+                </div>
+
+                <div class="row text-center hidden-print">
+                    {{ knp_pagination_render(businesses) }}
+                </div>
+            </div>
+
+            {# Content visible only for print view #}
+            <div class="print-view visible-print">
+                <div class="row">
+                    <img src="{{ asset('bundles/frontend/img/plaza_mariachi.png') }}"
+                         alt="Plaza Mariachi Music City"
+                         class="print-brand m-l"/>
+                </div>
+                <h1 class="print-title">{{ 'Business List of' | trans({}, 'business') }} Plaza Mariachi</h1>
+                <div class="row print-deal-list">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>{{ 'BRAND' | trans({}, 'business') }}</th>
+                            <th>{{ 'NAME' | trans({}, 'business') }}</th>
+                            <th>{{ 'DESCRIPTION' | trans({}, 'business') }}</th>
+                            <th>{{ 'PHONE' | trans({}, 'business') }}</th>
+                            <th>{{ 'CATEGORIES' | trans({}, 'business') }}</th>
+                            <th>{{ 'DEALS' | trans({}, 'business') }}</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for business in businesses %}
+                            <tr>
+                                <td>
+                                    <div class="print-container-image print-business-image">
+                                        <img class="center-height print-business-image"
+                                             src="{{ asset('images/business/' ~ business.logo) }} "/>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{ business.name | upper }}
+                                </td>
+                                <td>
+                                    {{ business.description }}
+                                </td>
+                                <td>
+                                    {{ business.phone }}
+                                </td>
+                                <td>
+                                    {% for category in business.categories %}
+                                        {{ category.name ~ ", " }}
+                                    {% else %}
+                                        <i>without categories</i>
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {{ business.deals|length ~ " " ~ "Deals" | trans({}, 'business') }}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">
+                                    {{ 'No businesses matching your criteria were found' | trans({}, 'business') }}...
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         </div>

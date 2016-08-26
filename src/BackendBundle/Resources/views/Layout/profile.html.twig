@@ -25,14 +25,14 @@
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-fw fa-clipboard"></i> Profile</a></li>
-                <li><a href="{{ path('fos_user_change_password') }}"><i class="fa fa-fw fa-key"></i> Change password</a></li>
+                <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-fw fa-clipboard"></i> {{ 'Profile' | trans({}, 'generalbackend') }}</a></li>
+                <li><a href="{{ path('fos_user_change_password') }}"><i class="fa fa-fw fa-key"></i> {{ 'Change password' | trans({}, 'generalbackend') }}</a></li>
                 <li class="divider"></li>
-                <li><a href="{{ path('fos_user_security_logout') }}" onclick="FB.logout(function(response) {});"><i class="fa fa-fw fa-sign-out"></i> Logout</a></li>
+                <li><a href="{{ path('fos_user_security_logout') }}" onclick="FB.logout(function(response) {});"><i class="fa fa-fw fa-sign-out"></i> {{ 'Logout' | trans({}, 'generalbackend') }}</a></li>
             </ul>
         {% endif %}
     </div>
     <div class="logo-element">
-        IN+
+        <img src="{{ asset('bundles/backend/images/logo.png') }}" class="img-responsive center-block" />
     </div>
 </li>
