@@ -7,8 +7,11 @@
         <div class="container">
             <div class="col-md-12 map" id="map"></div>
 
-            <a id="map-download" class="btn btn-outline btn-amber" download="map.png">
-                <i class="fa fa-download"></i> Download Map
+            <a id="map-download" class="btn btn-outline btn-amber btn-map" download="map.png">
+                <i class="fa fa-download"></i> Download the Map
+            </a>
+            <a id="map-print" class="btn btn-outline btn-amber btn-map pull-right" download="map.pdf">
+                <i class="fa fa-print"></i> Print
             </a>
         </div>
     </section>
@@ -25,6 +28,8 @@
     {{ parent() }}
     <script src="{{ asset('bundles/backend/js/ol.js') }}"></script>
     <script src="{{ asset('bundles/backend/js/ol3-popup.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/tween.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/jspdf.min.js') }}"></script>
     <script src="{{ asset('bundles/frontend/js/map.js') }}"></script>
 {% endblock %}
 
@@ -32,16 +37,26 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var businesses = {{ businesses | raw }};
+            var highlight = "{{ highlight }}";
+            var onlyOne = ('' !== highlight);
+
 
             setTimeout(function () {
                 businesses.forEach(function (item) {
                     var x = item.mallMapX;
                     var y = item.mallMapY;
 
-                    console.log([y, x]);
+//                    console.log([y, x]);
 
                     if (null !== x && null !== y) {
-                        addMarker([y, x], item.name);
+
+                        if (onlyOne && item.slug == highlight) {
+                            addMarker([y, x], item.name, true);
+                        } else if (!onlyOne) {
+                            addMarker([y, x], item.name, true);
+                        } else {
+                            addMarker([y, x], item.name, false);
+                        }
                     }
                 })
             }, 10);
@@ -51,11 +66,40 @@
                 var self = this;
                 map.getView().fit(extent, map.getSize());
 
-                map.once('postcompose', function(event) {
+                map.once('postcompose', function (event) {
                     var canvas = event.context.canvas;
                     self.href = canvas.toDataURL('image/png');
                 });
 
+                map.renderSync();
+            });
+
+            $('#map-print').on('click', function (e) {
+                var self = this;
+                var format = 'a4';
+                var resolution = 72;
+                var dim = [297, 210];
+                var width = Math.round(dim[0] * resolution / 25.4);
+                var height = Math.round(dim[1] * resolution / 25.4);
+                var size = /** @type {ol.Size} */ (map.getSize());
+                var extent = map.getView().calculateExtent(size);
+
+                map.once('postcompose', function (event) {
+                    var canvas = event.context.canvas;
+                    var data = canvas.toDataURL('image/png');
+                    var pdf = new jsPDF('landscape', undefined, format);
+
+                    pdf.addImage(data, 'JPEG', 0, 0, dim[0], dim[1]);
+//                    pdf.save('map.pdf');
+                    pdf.autoPrint();
+                    window.open(pdf.output('bloburl'));
+                    map.setSize(size);
+                    map.getView().fit(extent, size);
+                    map.renderSync();
+                });
+
+                map.setSize([width, height]);
+                map.getView().fit(extent, /** @type {ol.Size} */ (map.getSize()));
                 map.renderSync();
             })
         });

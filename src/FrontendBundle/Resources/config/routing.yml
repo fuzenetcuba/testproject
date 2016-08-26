@@ -48,5 +48,5 @@ subscription_confirm:
     methods:  GET
 
 mall_map:
-    path:     /mall-map
-    defaults: { _controller: FrontendBundle:Default:map }
+    path:     /mall-map/{hl}
+    defaults: { _controller: FrontendBundle:Default:map, hl:~ }
