@@ -5,20 +5,22 @@ var projection = new ol.proj.Projection({
     extent: extent
 });
 
+var raster = new ol.layer.Image({
+    source: new ol.source.ImageStatic({
+        attributions: [
+            new ol.Attribution({
+                html: '<strong style="font-size: 11px;">&copy; Fuzenet Marketing, 2016</strong>'
+            })
+        ],
+        url: '/bundles/backend/images/map.png',
+        projection: projection,
+        imageExtent: extent
+    })
+});
+
 var map = new ol.Map({
     layers: [
-        new ol.layer.Image({
-            source: new ol.source.ImageStatic({
-                attributions: [
-                    new ol.Attribution({
-                        html: '<strong style="font-size: 11px;">&copy; Fuzenet Marketing, 2016</strong>'
-                    })
-                ],
-                url: '/bundles/backend/images/map.png',
-                projection: projection,
-                imageExtent: extent
-            })
-        })
+        raster
     ],
     target: 'map',
     view: new ol.View({
