@@ -137,9 +137,20 @@ class RewardController extends Controller
     /**
      * Displays a form to edit an existing Reward entity.
      *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \BackendBundle\Entity\Reward              $entity
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \LogicException
+     * @throws \Doctrine\ORM\ORMInvalidArgumentException
      */
     public function editAction(Request $request, Reward $entity)
     {
+        $locale = $request->get('_locale');
+
+        $entity->setTranslatableLocale($locale);
+        $this->get('doctrine.orm.entity_manager')->refresh($entity);
+
         $deleteForm = $this->createDeleteForm($entity);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);

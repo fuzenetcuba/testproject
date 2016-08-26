@@ -5,6 +5,7 @@ namespace BackendBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\DBAL\Exception\InvalidArgumentException;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -29,6 +30,7 @@ class Reward
      *
      * @ORM\Column(type="string")
      * @Assert\Length(min="3", minMessage="The name must have 3 characters or more")
+     * @Gedmo\Translatable
      */
     private $name;
 
@@ -37,6 +39,7 @@ class Reward
      *
      * @ORM\Column(type="text")
      * @Assert\Length(min="3", minMessage="The description must have 3 characters or more")
+     * @Gedmo\Translatable
      */
     private $description;
 
@@ -69,6 +72,13 @@ class Reward
      * @ORM\Column(type="string")
      */
     private $event;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Locale
+     */
+    private $locale;
 
     /**
      * Reward constructor.
@@ -234,5 +244,13 @@ class Reward
         }
 
         $this->event = $event;
+    }
+
+    /**
+     * @param $locale   string
+     */
+    public function setTranslatableLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }

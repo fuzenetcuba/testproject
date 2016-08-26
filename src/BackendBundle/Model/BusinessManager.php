@@ -221,6 +221,12 @@ class BusinessManager implements ManagerInterface
             ;
         }
 
+        // multilanguage search criterias done introspecting the default locale
+        $query = $query->getQuery()->setHint(
+            Query::HINT_CUSTOM_OUTPUT_WALKER,
+            'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+        );
+
         return $query;
     }
 }
