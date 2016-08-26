@@ -4,6 +4,7 @@ namespace BackendBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Mapping\Annotation\Slug;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -28,6 +29,7 @@ class Category
      * @var string
      *
      * @ORM\Column(type="string")
+     * @Gedmo\Translatable
      * @Assert\Length(min="3", minMessage="The name must have 3 characters or more")
      */
     private $name;
@@ -36,6 +38,7 @@ class Category
      * @var string
      *
      * @Slug(fields={"name"})
+     * @Gedmo\Translatable
      * @ORM\Column(type="string", unique=true, length=128)
      */
     private $slug;
@@ -44,6 +47,7 @@ class Category
      * @var string
      *
      * @ORM\Column(type="text", nullable=true)
+     * @Gedmo\Translatable
      */
     private $description;
 
@@ -51,6 +55,7 @@ class Category
      * @var string
      *
      * @ORM\Column(type="string", nullable=true)
+     * @Gedmo\Translatable
      */
     private $icon;
 
@@ -70,6 +75,13 @@ class Category
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
      */
     private $parent;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Locale
+     */
+    private $locale;
 
     /**
      * @var ArrayCollection
@@ -294,5 +306,13 @@ class Category
     public function getSubscriptions()
     {
         return $this->subscriptions;
+    }
+
+    /**
+     * @param $locale   string
+     */
+    public function setTranslatableLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }

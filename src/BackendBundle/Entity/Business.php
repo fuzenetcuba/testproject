@@ -4,8 +4,10 @@ namespace BackendBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Mapping\Annotation\Slug;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -32,6 +34,8 @@ class Business
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      * @Assert\Length(min="3", minMessage="The name must have 3 characters or more")
+     * @Groups({"group1", "map"})
+     * @Gedmo\Translatable
      */
     private $name;
 
@@ -40,6 +44,7 @@ class Business
      *
      * @ORM\Column(name="description", type="text")
      * @Assert\Length(min="3", minMessage="The description must have 3 characters or more")
+     * @Gedmo\Translatable
      */
     private $description;
 
@@ -48,6 +53,7 @@ class Business
      *
      * @Slug(fields={"name"})
      * @ORM\Column(type="string", unique=true, length=128)
+     * @Gedmo\Translatable
      */
     private $slug;
 
@@ -61,9 +67,6 @@ class Business
      *     minMessage="The phone must have between 6 and 20 characters",
      *     maxMessage="The phone must have between 6 and 20 characters"
      * )
-     * @Assert\Regex(
-     *     pattern="/^(\(\+\d{1,3}\)|\+\d{1,3})?[\040\-]?\d?([\040\-]?\d{3,4}){2,4}$/",
-     *     message="Enter a valid phone number please"
      * )
      */
     private $phone;
@@ -98,6 +101,7 @@ class Business
 
     /**
      * @ORM\Column(name="mall_map_directions", type="string", nullable=true)
+     * @Gedmo\Translatable
      */
     private $mallMapDirections;
 
@@ -115,11 +119,14 @@ class Business
      * @var string
      *
      * @ORM\Column(name="logo", type="string", length=255)
+     * @Gedmo\Translatable
      */
     private $logo;
 
     /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * @var File
+     *
+     * This is not a mapped field of entity metadata, just a simple property.
      *
      * @Vich\UploadableField(mapping="business_image", fileNameProperty="logo",
      *      groups={"creation"}
@@ -136,7 +143,6 @@ class Business
      *     maxSize="5M",
      *     maxSizeMessage="The logo must have 5 MB (megabytes) or less"
      * )
-     * @var File
      */
     private $logoFile;
 
@@ -168,6 +174,13 @@ class Business
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="businesses")
      */
     private $categories;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Locale
+     */
+    private $locale;
 
     /**
      * @var ArrayCollection
@@ -684,5 +697,15 @@ class Business
     public function setSlug($slug)
     {
         $this->slug = $slug;
+    }
+
+    /**
+     * Set the translatable locale to refresh the entity
+     *
+     * @param $locale   string  Locale code
+     */
+    public function setTranslatableLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }

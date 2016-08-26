@@ -137,9 +137,19 @@ class CategoryController extends Controller
     /**
      * Displays a form to edit an existing Category entity.
      *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \BackendBundle\Entity\Category            $entity
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Doctrine\ORM\ORMInvalidArgumentException
      */
     public function editAction(Request $request, Category $entity)
     {
+        $locale = $request->get('_locale');
+
+        $entity->setTranslatableLocale($locale);
+        $this->get('doctrine.orm.entity_manager')->refresh($entity);
+
         $deleteForm = $this->createDeleteForm($entity);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);

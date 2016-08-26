@@ -4,7 +4,7 @@ namespace BackendBundle\Controller;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;//------------
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use BackendBundle\Entity\Deal;
@@ -137,9 +137,19 @@ class DealController extends Controller
     /**
      * Displays a form to edit an existing Deal entity.
      *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \BackendBundle\Entity\Deal                $entity
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Doctrine\ORM\ORMInvalidArgumentException
      */
     public function editAction(Request $request, Deal $entity)
     {
+        $locale = $request->get('_locale');
+
+        $entity->setTranslatableLocale($locale);
+        $this->get('doctrine.orm.entity_manager')->refresh($entity);
+
         $deleteForm = $this->createDeleteForm($entity);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);

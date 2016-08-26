@@ -7788,3 +7788,7 @@ label.required:before {
 .help-block {
   color: RGBA(115, 115, 115, 0.7);
 }
+
+.form-actions {
+  margin-top: 20px;
+}

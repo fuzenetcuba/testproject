@@ -17,10 +17,10 @@
                     </p>
                     <p class="text-muted-strong">{{ deal.description | nl2br }}</p>
 
-                    <ul class="social-share list-inline social-icon pull-right">
+                    <ul class="list-inline pull-right">
                         <li>
                             <a href="http://twitter.com/intent/tweet?status=[TITLE]+[URL]" data-toggle="tooltip"
-                               title="Tweet this deal" class="twitter-share-button"
+                               title="{{ 'Tweet this deal' | trans({}, 'deals') }}" class="btn btn-circle-muted btn-outline btn-social-icon btn-twitter"
                                onclick="javascript:this.href=this.href.replace(/\[TITLE\]/, document.title).replace(/\[URL\]/,
                                 window.location);window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,' +
                                 'scrollbars=yes,height=600,width=600');return false;">
@@ -29,7 +29,7 @@
                         </li>
                         <li>
                             <a href="http://www.facebook.com/share.php?u=[URL]&title=[TITLE]" data-toggle="tooltip"
-                               title="Share this deal" class="twitter-share-button"
+                               title="{{ 'Share this deal' | trans({}, 'deals') }}" class="btn btn-circle-muted btn-outline btn-social-icon btn-facebook"
                                onclick="javascript:this.href=this.href.replace(/\[TITLE\]/, document.title).replace(/\[URL\]/,
                                 window.location);window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,' +
                                 'scrollbars=yes,height=600,width=600');return false;">

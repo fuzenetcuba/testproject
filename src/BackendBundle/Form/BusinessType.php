@@ -41,9 +41,10 @@ class BusinessType extends AbstractType
             ->add('mallMapDirections', TextareaType::class, array(
                 'required' => false
             ))
-            ->add('customers')
             ->add('mallMapX', HiddenType::class)
-            ->add('mallMapY', HiddenType::class);
+            ->add('mallMapY', HiddenType::class)
+            ->add('customers')
+        ;
     }
 
     /**

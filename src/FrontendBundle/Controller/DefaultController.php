@@ -3,6 +3,10 @@
 namespace FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 class DefaultController extends Controller
 {
@@ -51,5 +55,32 @@ class DefaultController extends Controller
     public function staticPageAction($name)
     {
         return $this->render("FrontendBundle:Static:" . $name . ".html.twig");
+    }
+
+    /**
+     * Handles the logic of the mall map page
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\Serializer\Exception\InvalidArgumentException
+     */
+    public function mapAction(Request $request)
+    {
+        $businesses = $this->get('business.manager')->findAll();
+
+        $encoder = new JsonEncoder();
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setIgnoredAttributes([
+            'categories',
+            'deals',
+            'customers',
+        ]);
+
+        $serializer = new Serializer([$normalizer], [$encoder]);
+
+        return $this->render('@Frontend/map.html.twig', [
+            'businesses' => $serializer->serialize($businesses, 'json'),
+        ]);
     }
 }

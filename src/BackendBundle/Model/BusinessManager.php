@@ -4,6 +4,7 @@ namespace BackendBundle\Model;
 
 use BackendBundle\Entity\Business;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Query;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -120,12 +121,19 @@ class BusinessManager implements ManagerInterface
      * @param $slug
      *
      * @return \BackendBundle\Entity\Business
+     * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function findBySlug($slug)
     {
-        $object = $this->em->getRepository('BackendBundle:Business')
-            ->findOneBy(['slug' => $slug])
+        $object = $this->em
+            ->createQuery('SELECT d FROM BackendBundle:Business d WHERE d.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->setHint(
+                Query::HINT_CUSTOM_OUTPUT_WALKER,
+                'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+            )
+            ->getOneOrNullResult()
         ;
 
         if (!$object) {
@@ -212,6 +220,12 @@ class BusinessManager implements ManagerInterface
                 ->setParameter('search', sprintf('%%%s%%', $filters['search']))
             ;
         }
+
+        // multilanguage search criterias done introspecting the default locale
+        $query = $query->getQuery()->setHint(
+            Query::HINT_CUSTOM_OUTPUT_WALKER,
+            'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+        );
 
         return $query;
     }
