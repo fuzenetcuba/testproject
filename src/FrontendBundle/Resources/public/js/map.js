@@ -5,6 +5,8 @@ var projection = new ol.proj.Projection({
     extent: extent
 });
 
+var url = Routing.getBaseUrl().replace('app_dev.php', '');
+
 var raster = new ol.layer.Image({
     source: new ol.source.ImageStatic({
         attributions: [
@@ -12,7 +14,7 @@ var raster = new ol.layer.Image({
                 html: '<strong style="font-size: 11px;">&copy; Fuzenet Marketing, 2016</strong>'
             })
         ],
-        url: '/bundles/backend/images/map.png',
+        url: url + (url.endsWith('/') ? '' : '/') + 'bundles/backend/images/map.png',
         projection: projection,
         imageExtent: extent
     })
@@ -60,6 +62,7 @@ map.on('click', function (e) {
 });
 
 const ANIMATION_DURATION = 500;
+
 function flash(feature) {
 
     if (!feature.get('animate')) {
@@ -145,11 +148,18 @@ function addMarker(coordinate, name, animate) {
             }),
             new ol.style.Style({
                 text: new ol.style.Text({
+                    font: '12px Open Sans Condensed,sans-serif',
+                    textAlign: 'center',
+                    fill: new ol.style.Fill({
+                        color: [0, 0, 0, 1]
+                    }),
+                    stroke: new ol.style.Stroke({
+                        color: [255, 255, 255, 0.5],
+                        width: 4
+                    }),
                     text: name,
                     offsetY: -55,
-                    fill: new ol.style.Fill({
-                        color: '#333333'
-                    })
+                    offsetX: -10,
                 })
             })
         ];

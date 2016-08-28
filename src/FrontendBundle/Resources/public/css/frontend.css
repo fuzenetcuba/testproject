@@ -2162,3 +2162,23 @@ div.ol-attribution li > strong {
 .business-info ul>li:not(:first-of-type) {
     margin-top: 10px;
 }
+
+.ol-control button {
+    font-size: 20pt !important;
+    border-radius: 100% !important;
+    background-color: #FDB125 !important;
+    margin-bottom: 4px !important;
+    font-weight: 300 !important;
+}
+
+.ol-zoom {
+    right: 8px !important;
+}
+
+.ol-attribution button {
+    font-size: 14pt !important;
+}
+
+.ol-control {
+    background-color: transparent !important;
+}
