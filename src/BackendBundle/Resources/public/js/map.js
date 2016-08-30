@@ -35,17 +35,17 @@ markers = [];
 var popup = new ol.Overlay.Popup();
 map.addOverlay(popup);
 
-map.on('singleclick', function (event) {
+map.on('click', function (event) {
     addMarker(event.coordinate, document.querySelector('#backendbundle_business_name').value);
 });
 
-map.on('click', function (e) {
-    map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
-        popup.show(e.coordinate,
-            '<strong>' + feature.get('name') + '</strong>'
-        );
-    })
-});
+// map.on('click', function (e) {
+//     map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
+//         popup.show(e.coordinate,
+//             '<strong>' + feature.get('name') + '</strong>'
+//         );
+//     })
+// });
 
 function updateInputs(x, y) {
     document.querySelector('#backendbundle_business_mallMapX').value = x;
@@ -107,7 +107,7 @@ function addMarker(coordinate, name) {
             }),
             new ol.style.Style({
                 text: new ol.style.Text({
-                    text: 'Wow such label',
+                    text: name,
                     offsetY: -55,
                     fill: new ol.style.Fill({
                         color: '#333333'

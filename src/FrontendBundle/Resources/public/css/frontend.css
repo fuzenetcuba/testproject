@@ -767,6 +767,9 @@ body.landing-page {
     .text-right-md {
         text-align: right;
     }
+    .container.filter-item-list-collapsed {
+        width: 500px;
+    }
 }
 
 @media (min-width: 768px) {
@@ -793,11 +796,17 @@ body.landing-page {
     .landing-page .navbar .container {
         width: 970px;
     }
+    .container.filter-item-list-collapsed {
+        width: 720px;
+    }
 }
 
 @media (min-width: 1200px) {
     .landing-page .navbar .container {
         width: 1170px;
+    }
+    .container.filter-item-list-collapsed {
+        width: 1020px;
     }
 }
 
@@ -1211,6 +1220,10 @@ div.filter-deals > form > .col-sm-6:first-of-type {
     -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.container.filter-item-list-collapsed {
+    margin-left: 250px;
 }
 
 div.deal-list {
@@ -1960,7 +1973,7 @@ button.btn-blue.dim:active {
 @media (min-width: 768px) and (max-width: 1000px) {
     .landing-page .navbar-default .second-navbar .nav {
         border-bottom: 2px solid #676a6c;
-        /*padding: 0 15px;*/
+        padding: 0 15px;
         margin-right: 0;
     }
 
@@ -1979,7 +1992,6 @@ button.btn-blue.dim:active {
 @media (min-width: 1000px) {
     .landing-page .navbar-default .second-navbar .nav > li:last-child {
         padding-right: 0 !important;
-        margin-right: -16px !important;
     }
 
     .landing-page .navbar-default .navbar-brand img {

@@ -52,10 +52,40 @@ $(document).ready(function () {
         console.log('toggle view');
         $('.filter-deals').toggleClass('collapsed');
     });
-    $('.hide-filters-action').on('click', function () {
-        console.log('toggle view');
-        $('.filter-deals').toggleClass('collapsed');
+
+    $(window).resize(function () {
+        if ($(this).width() >= 1200) {
+            filterWideScreen();
+        } else {
+            filterNormalScreen();
+        }
     });
+
+    if ($(window).width() >= 1200) {
+        filterWideScreen();
+    } else {
+        filterNormalScreen();
+    }
+
+    function filterWideScreen() {
+        $('.filter-deals').removeClass('collapsed');
+        $('#filter-item-list').addClass('filter-item-list-collapsed');
+
+        $('.hide-filters-action').on('click', function () {
+            console.log('toggle view');
+            $('.filter-deals').removeClass('collapsed');
+        });
+    }
+
+    function filterNormalScreen() {
+        $('.filter-deals').addClass('collapsed');
+        $('#filter-item-list').removeClass('filter-item-list-collapsed');
+
+        $('.hide-filters-action').on('click', function () {
+            console.log('toggle view');
+            $('.filter-deals').addClass('collapsed');
+        });
+    }
 
     updateDealRow = function (selector, data) {
         var dom = $('<div/>').html(data);
@@ -68,7 +98,11 @@ $(document).ready(function () {
     $('.filter-deals form').submit(function (event) {
         event.preventDefault();
 
-        $('.filter-deals').toggleClass('collapsed');
+        if ($(window).width() >= 1200) {
+            $('.filter-deals').removeClass('collapsed');
+        } else {
+            $('.filter-deals').addClass('collapsed');
+        }
 
         var form = $(this);
 
@@ -92,7 +126,7 @@ $(document).ready(function () {
         }).done(function (data) {
             updateDealRow('div.row.deal-list', data);
         })
-    })
+    });
 
     $('.filter-deals form select').on('change', function () {
         $(this).parent().parent().submit();
