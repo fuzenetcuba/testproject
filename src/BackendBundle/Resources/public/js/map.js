@@ -1,3 +1,5 @@
+var map_blank = $('#map_blank').prop('value');
+var map_pin = $('#map_pin').prop('value');
 var extent = [0, 0, 1506, 2037];
 var projection = new ol.proj.Projection({
     code: 'xkcd',
@@ -14,7 +16,7 @@ var map = new ol.Map({
                         html: '<strong style="font-size: 11px;">&copy; Fuzenet Marketing, 2016</strong>'
                     })
                 ],
-                url: '/bundles/backend/images/map.png',
+                url: map_blank,
                 projection: projection,
                 imageExtent: extent
             })
@@ -102,7 +104,7 @@ function addMarker(coordinate, name) {
                     anchorYUnits: 'pixels',
                     size: [48, 48],
                     opacity: 1,
-                    src: '/bundles/backend/images/pin.png'
+                    src: map_pin
                 }))
             }),
             new ol.style.Style({

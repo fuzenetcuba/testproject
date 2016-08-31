@@ -288,11 +288,8 @@
                 <div class="hidden">
 
                     {{ form(edit_form) }}
-                    {#<input type="hidden" name="map_image" id="map_image"#}
-                    {#value="{{ asset("bundles/backend/images/mall_map_blank.jpg") }}"/>#}
-                    {#<input type="hidden" name="map_marker" id="map_marker"#}
-                    {#value="{{ asset("bundles/backend/images/map-marker.png") }}"/>#}
-                    {#<input type="hidden" id="map_coords" name="map_coords" value="0" />#}
+                    <input type="hidden" name="map_blank" id="map_blank" value="{{ asset('bundles/backend/images/map.png') }}" />
+                    <input type="hidden" name="map_pin" id="map_pin" value="{{ asset('bundles/backend/images/pin.png') }}" />
                 </div>
             </div>
 
