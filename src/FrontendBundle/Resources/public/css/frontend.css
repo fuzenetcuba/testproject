@@ -265,6 +265,13 @@ body.landing-page {
     border-radius: 0;
 }
 
+@media (max-width: 767px) {
+    .navbar-fixed-bottom .navbar-collapse,
+    .navbar-fixed-top .navbar-collapse {
+        max-height: 340px !important;
+    }
+}
+
 .landing-page .nav > li.active {
     border: none;
     background: inherit;
@@ -767,6 +774,7 @@ body.landing-page {
     .text-right-md {
         text-align: right;
     }
+
     .container.filter-item-list-collapsed {
         width: 500px;
     }
@@ -796,6 +804,7 @@ body.landing-page {
     .landing-page .navbar .container {
         width: 970px;
     }
+
     .container.filter-item-list-collapsed {
         width: 720px;
     }
@@ -805,6 +814,7 @@ body.landing-page {
     .landing-page .navbar .container {
         width: 1170px;
     }
+
     .container.filter-item-list-collapsed {
         width: 1020px;
     }
@@ -863,10 +873,6 @@ body.landing-page {
 
     .landing-page .nav > li {
         padding: 0 6px;
-    }
-
-    .landing-page .navbar-nav > li > a {
-        padding: 20px 1px;
     }
 
     .landing-page .navbar-nav > li {
@@ -1013,6 +1019,14 @@ body.landing-page {
 
     div.filter-deals {
         top: 50px !important;
+    }
+
+    .landing-page .navbar-nav > li > a {
+        padding: 3px 1px;
+    }
+
+    .landing-page .navbar-default .nav > li > a {
+        font-size: 10px!important;
     }
 }
 
@@ -2011,7 +2025,8 @@ button.btn-blue.dim:active {
     .landing-page .navbar-default.navbar-simple .navbar-brand {
         padding: 26px 30px 19px;
     }
-    .landing-page .navbar.navbar-scroll .navbar-brand img{
+
+    .landing-page .navbar.navbar-scroll .navbar-brand img {
         /*height: 40px !important;*/
         /*width: auto;*/
     }
@@ -2026,7 +2041,7 @@ textarea.form-control.large-height {
 }
 
 .hide-filters,
-.show-filters{
+.show-filters {
     /*padding-bottom: 0 !important;*/
     /*bottom: 0;*/
 }
@@ -2097,20 +2112,21 @@ textarea.form-control.large-height {
 .filter-deals .hide-filters {
     /*display: inline;*/
 }
+
 .filter-deals .show-filters {
     display: none;
 }
 
 .filter-deals.collapsed .hide-filters,
-.filter-deals.collapsed .show-filters{
+.filter-deals.collapsed .show-filters {
     z-index: 150;
 }
 
-.filter-deals.collapsed .hide-filters{
+.filter-deals.collapsed .hide-filters {
     display: none;
 }
 
-.filter-deals.collapsed .show-filters{
+.filter-deals.collapsed .show-filters {
     display: inline;
 }
 
@@ -2171,6 +2187,6 @@ div.ol-attribution li > strong {
     margin-top: 10px;
 }
 
-.business-info ul>li:not(:first-of-type) {
+.business-info ul > li:not(:first-of-type) {
     margin-top: 10px;
 }
