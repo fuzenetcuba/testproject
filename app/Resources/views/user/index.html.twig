@@ -16,29 +16,30 @@
 
 {% block active_users %}active{% endblock %}
 {% block page_heading_title %}
-    System User list
+    {{ 'System User list' | trans({}, 'userbackend') }}
 {% endblock %}
 
 {% block page_heading_action_button %}
     <a class="btn btn-success navbar-btn pull-right" href="{{ path('user_new') }}">
         <span class="fa fa-plus"></span>
-        New user
+        {{ 'New user' | trans({}, 'userbackend') }}
     </a>
 {% endblock %}
 
 {% block page_content %}
 
     <div>
-        <span class="col-sm-2"><b>Total items:</b> {{ entities.getTotalItemCount }}</span>
+        <span class="col-sm-2"><b>{{ 'Total items' | trans({}, 'generalbackend') }}:</b> {{ entities.getTotalItemCount }}</span>
 
         <div class="col-sm-10 form-group form-inline text-right">
             <form name="find-form" action="{{ path('user_find') }}" method="post">
                 <div class="input-group">
                     <input id="find-form-text" class="form-control" autofocus="on" name="find-form-text"
                            autocomplete="off"
-                           type="text" placeholder="Text to find..."/>
+                           type="text" placeholder="{{ 'Text to find' | trans({}, 'generalbackend') }}..."/>
                         <span class="input-group-btn">
-                            <button type="submit" name="find-form-send" value="sending" class="btn btn-primary">Find
+                            <button type="submit" name="find-form-send" value="sending" class="btn btn-primary">
+                                {{ 'Find' | trans({}, 'generalbackend') }}
                             </button>
                         </span>
                 </div>
@@ -58,48 +59,48 @@
                     {% endif %}
                 </th>
                 <th class="text-navy">
-                    {{ knp_pagination_sortable(entities, 'First name', 'e.firstName') }}
+                    {{ knp_pagination_sortable(entities, 'First name' | trans({}, 'userbackend'), 'e.firstName') }}
                     {% if entities.isSorted('e.firstName') %}
                         <span class="fa fa-sort"></span>
                     {% endif %}
                 </th>
                 <th class="text-navy">
-                    {{ knp_pagination_sortable(entities, 'Last name', 'e.lastName') }}
+                    {{ knp_pagination_sortable(entities, 'Last name' | trans({}, 'userbackend'), 'e.lastName') }}
                     {% if entities.isSorted('e.lastName') %}
                         <span class="fa fa-sort"></span>
                     {% endif %}
                 </th>
                 <th class="text-navy">
-                    {{ knp_pagination_sortable(entities, 'Username', 'e.username') }}
+                    {{ knp_pagination_sortable(entities, 'Username' | trans({}, 'userbackend'), 'e.username') }}
                     {% if entities.isSorted('e.username') %}
                         <span class="fa fa-sort"></span>
                     {% endif %}
                 </th>
                 <th class="text-navy">
-                    {{ knp_pagination_sortable(entities, 'Phone', 'e.phone') }}
+                    {{ knp_pagination_sortable(entities, 'Phone' | trans({}, 'userbackend'), 'e.phone') }}
                     {% if entities.isSorted('e.phone') %}
                         <span class="fa fa-sort"></span>
                     {% endif %}
                 </th>
                 <th class="text-navy">
-                    {{ knp_pagination_sortable(entities, 'Enabled', 'e.enabled') }}
+                    {{ knp_pagination_sortable(entities, 'Enabled' | trans({}, 'userbackend'), 'e.enabled') }}
                     {% if entities.isSorted('e.enabled') %}
                         <span class="fa fa-sort"></span>
                     {% endif %}
                 </th>
                 <th class="text-navy">
-                    {{ knp_pagination_sortable(entities, 'Roles', 'e.roles') }}
+                    {{ knp_pagination_sortable(entities, 'Roles' | trans({}, 'userbackend'), 'e.roles') }}
                     {% if entities.isSorted('e.roles') %}
                         <span class="fa fa-sort"></span>
                     {% endif %}
                 </th>
                 <th class="text-navy">
-                    {{ knp_pagination_sortable(entities, 'Email', 'e.email') }}
+                    {{ knp_pagination_sortable(entities, 'Email' | trans({}, 'userbackend'), 'e.email') }}
                     {% if entities.isSorted('e.email') %}
                         <span class="fa fa-sort"></span>
                     {% endif %}
                 </th>
-                <th class="text-navy">Actions</th>
+                <th class="text-navy">{{ 'Actions' | trans({}, 'generalbackend') }}</th>
             </tr>
             </thead>
 
@@ -151,7 +152,7 @@
             {% else %}
                 <tr>
                     <td colspan="7">
-                        There are not entries...
+                        {{ 'There are not entries' | trans({}, 'generalbackend') }}...
                     </td>
                 </tr>
             {% endfor %}
@@ -166,15 +167,14 @@
             <div class="col-md-4">
                 <div class="form-group pagination pull-right">
                     <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
-                        <option value="null">--- Batch actions ---</option>
                         <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                            Delete Users
+                            {{ 'Delete Users' | trans({}, 'userbackend') }}
                         </option>
                         <option value="enable" data-toggle="modal" data-target="#modalBatch">
-                            Enable Users
+                            {{ 'Enable Users' | trans({}, 'userbackend') }}
                         </option>
                         <option value="disable" data-toggle="modal" data-target="#modalBatch">
-                            Disable Users
+                            {{ 'Disable Users' | trans({}, 'userbackend') }}
                         </option>
                     </select>
                 </div>
@@ -187,19 +187,19 @@
             <div class="modal-content animated bounceInRight">
                 <div id="modal-title" class="modal-header {# blue-bg #}">
                     <button type="button" class="close" data-dismiss="modal"><span
-                                aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                aria-hidden="true">&times;</span><span class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
                     </button>
                     <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
-                    <h4 class="modal-title">Atention!!!</h4>
+                    <h4 class="modal-title">{{ 'Atention' | trans({}, 'generalbackend') }}!!!</h4>
                 </div>
                 <div id="modal-content" class="modal-body">
                     {# Text to show #}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
                     <button id="modal-btn" type="submit" class="btn {# btn-danger #}"
                             onclick="$('#batch_action_form').submit();">
-                        <span class="glyphicon glyphicon-ok"></span> Save changes
+                        <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}
                     </button>
                 </div>
             </div>
@@ -245,6 +245,7 @@
             //  select2 scripts for batch actions combobox
             $("#batch_action_do").select2({
                 minimumResultsForSearch: Infinity,
+                placeholder: "--- {{ 'Select an action' | trans({}, 'generalbackend') }} ---"
             }).on("select2:select", function (e) {
                 var batchValue = $("#batch_action_do").val();
 
@@ -296,20 +297,20 @@
             switch (action) {
                 case "delete":
                     panelTitle.setAttribute("class", "modal-header red-bg");
-                    panelContent.innerHTML = "<strong>Are you sure you want to delete items?</strong> After this action, data will not be restorable.";
-                    panelBtn.setAttribute("class", "btn btn-danger")
+                    panelContent.innerHTML = "<strong>{{ 'Are you sure you want to delete items?' | trans({}, 'generalbackend') }}</strong> {{ 'After this action, data will not be restorable.' | trans({}, 'generalbackend') }}";
+                    panelBtn.setAttribute("class", "btn btn-danger");
                     break;
 
                 case "disable":
                     panelTitle.setAttribute("class", "modal-header yellow-bg");
-                    panelContent.innerHTML = "<strong>Are you sure you want to disable items?</strong>";
-                    panelBtn.setAttribute("class", "btn btn-warning")
+                    panelContent.innerHTML = "<strong>{{ 'Are you sure you want to disable items?' | trans({}, 'generalbackend') }}</strong>";
+                    panelBtn.setAttribute("class", "btn btn-warning");
                     break;
 
                 case "enable":
                     panelTitle.setAttribute("class", "modal-header navy-bg");
-                    panelContent.innerHTML = "<strong>Are you sure you want to enable items?</strong>";
-                    panelBtn.setAttribute("class", "btn btn-primary")
+                    panelContent.innerHTML = "<strong>{{ 'Are you sure you want to enable items?' | trans({}, 'generalbackend') }}</strong>";
+                    panelBtn.setAttribute("class", "btn btn-primary");
                     break;
 
             }

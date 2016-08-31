@@ -25,7 +25,7 @@
                style="margin-bottom: 7px;">
                 <span class="glyphicon glyphicon-chevron-up"></span>
             </a>
-            Deal creation
+            {{ 'Deal creation' | trans({}, 'dealbackend') }}
         {% endblock %}
 
         {% block page_content %}
@@ -211,7 +211,7 @@
                 <div class="col-md-2 text-right">
                     <a class="btn btn-success" href="{{ path('deal') }}">
                         <span class="glyphicon glyphicon-chevron-left"></span>
-                        Back to the list
+                        {{ 'Back to the list' | trans({}, 'generalbackend') }}
                     </a>
                 </div>
                 <div class="col-md-10">
@@ -269,7 +269,7 @@
 
                 //  select2 scripts for batch actions combobox
                 $(".select2-field").select2({
-                    placeholder: "--- Select a value ---"
+                    placeholder: "--- {{ 'Select a value' | trans({}, 'generalbackend') }} ---"
                 });
 
 

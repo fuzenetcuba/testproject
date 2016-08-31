@@ -38,7 +38,8 @@ class DealType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'BackendBundle\Entity\Deal',
-            'validation_groups' => array('Default', 'creation')
+            'validation_groups' => array('Default', 'creation'),
+            'translation_domain' => 'dealbackend'
         ));
     }
 

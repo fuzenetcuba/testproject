@@ -36,7 +36,8 @@ class RewardType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'BackendBundle\Entity\Reward'
+            'data_class' => 'BackendBundle\Entity\Reward',
+            'translation_domain' => 'rewardbackend'
         ));
     }
 

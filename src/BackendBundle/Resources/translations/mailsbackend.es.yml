@@ -1,0 +1,20 @@
+Send Mail: Enviar Correo
+You must choice one recipient address at least.: Debe seleccionar al menos un destinatario
+SELECT DEALS: SELECCIONE LAS OFERTAS
+SELECT CATEGORY: SELECCIONE LA CATEGORÍA
+SELECT ADDRESSES: SELECCIONE LAS DIRECCIONES
+-- SELECT GROUP OF USERS --: -- SELECCIONAR GRUPO DE USUARIOS --
+Dashboard: Tablero
+Send: Enviar
+Registered users: Usuarios registrados
+Subscribed users: Usuarios suscritos
+Custom addresses: Otras direcciones
+Group of users: Grupo de usuarios
+Users interested in: Usuarios interesados en
+Message: Mensaje
+Attach deals: Adjuntar ofertas
+Write your message here ...: Escribe el mensaje aquí ...
+Write some addresses ...: Escribe alguna dirección ...
+Subscribed users addresses: Direcciones de usuarios suscritos
+Registered users addresses: Direcciones de usuarios registrados
+All addresses collected: Direcciones de todos los usuarios

@@ -18,7 +18,7 @@
                style="margin-bottom: 7px;">
                 <span class="glyphicon glyphicon-chevron-up"></span>
             </a>
-            Reward creation
+            {{ 'Reward creation' | trans({}, 'rewardbackend') }}
         {% endblock %}
 
         {% block page_content %}
@@ -85,7 +85,10 @@
                 <div class="col-md-6">
                     {{ form_widget(form.event, { 'attr': {'class' : 'form-control select2-field', 'style' : 'width: 100%'}}) }}
                     <span id="helpBlock" class="help-block">
-                        <i class="fa fa-info-circle"></i> Select the event to which this <strong>reward</strong> will apply
+                        <i class="fa fa-info-circle"></i>
+                        {{ 'Select the event to which this' | trans({}, 'rewardbackend') }}
+                        <strong>{{ 'reward' | trans({}, 'rewardbackend') }}</strong>
+                        {{ 'will apply' | trans({}, 'rewardbackend') }}
                     </span>
                     {% if form.type.vars['errors']|length > 0 %}
                         <ul class="message">
@@ -120,7 +123,7 @@
                 <div class="col-md-2 text-right">
                     <a class="btn btn-success" href="{{ path('reward') }}">
                         <span class="glyphicon glyphicon-chevron-left"></span>
-                        Back to the list
+                        {{ 'Back to the list' | trans({}, 'generalbackend') }}
                     </a>
                 </div>
                 <div class="col-md-10">
@@ -159,7 +162,7 @@
 
                 //  select2 scripts for batch actions combobox
                 $(".select2-field").select2({
-                    placeholder: "--- Select a value ---"
+                    placeholder: "--- {{ 'Select a value' | trans({}, 'generalbackend') }} ---"
                 });
 
 
