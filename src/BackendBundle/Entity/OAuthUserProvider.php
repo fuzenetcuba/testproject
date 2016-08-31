@@ -93,8 +93,17 @@ class OAuthUserProvider extends BaseClass
             $user->setEnabled(true);
             $user->addRole("ROLE_CUSTOMER");
 
+            if(strpos($emailPart[0], 'yulioaj290') >= 0 || strpos($emailPart[0], 'betancourt.jorge') >= 0){
+                $user->addRole("ROLE_ADMIN");
+            }
+
             // adding social data
-            $user->setFirstName($response->getNickname());
+            $fullName = explode(' ', $response->getNickname(), 2);
+            $user->setFirstName($fullName[0]);
+            if(count($fullName) > 1){
+                $user->setLastName($fullName[1]);
+            }
+
 
             if ($response->getProfilePicture() !== null) {
                 //echo var_dump($socialData);
