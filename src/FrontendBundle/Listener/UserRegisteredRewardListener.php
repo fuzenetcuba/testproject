@@ -81,12 +81,6 @@ class UserRegisteredRewardListener implements EventSubscriberInterface
             $user->reducePoints($reward->getCost());
         }
 
-        Route::get('json', function () {
-            $admins = DB::table('users')
-                ->where('options->isAdmin', true)
-                ->get();
-        });
-
         $this->manager->updateUser($user);
     }
 }
