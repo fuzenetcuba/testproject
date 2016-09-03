@@ -2190,3 +2190,8 @@ div.ol-attribution li > strong {
 .business-info ul > li:not(:first-of-type) {
     margin-top: 10px;
 }
+
+#contact {
+    position: relative;
+    z-index: 150;
+}
