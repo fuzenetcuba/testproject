@@ -212,6 +212,40 @@
             </div>
             <div class="hr-line-dashed"></div>
 
+            <div class="form-group{% if(form.androidApp.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for=""
+                       class="col-md-2 control-label">{{ form_label(form.androidApp) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.androidApp, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.androidApp.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.androidApp.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+            <div class="form-group{% if(form.iosApp.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for=""
+                       class="col-md-2 control-label">{{ form_label(form.iosApp) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.iosApp, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.iosApp.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.iosApp.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
             <div class="form-group{% if(form.categories.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                 <label for=""
                        class="col-md-2 control-label">{{ form_label(form.categories) }}</label>

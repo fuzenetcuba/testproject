@@ -28,6 +28,10 @@ class BusinessType extends AbstractType
                 'validation_groups' => array('creation')))
             ->add('socialMedia', null, array(
                 'label' => 'Social Media'))
+            ->add('androidApp', null, array(
+                'label' => 'Android App'))
+            ->add('iosApp', null, array(
+                'label' => 'iOS App'))
             ->add('categories')
             ->add('hoursBegin', TimeType::class, array(
                 'label' => "Hours of operation",

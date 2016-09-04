@@ -51,6 +51,26 @@
         <dd><img style="max-width: 70%; height: auto;" src="{{ vich_uploader_asset(entity, 'logoFile') }}"
                  alt="{{ entity.logo }}"/></dd>
         <div class="hr-line-dashed"></div>
+        {% if entity.androidApp is not null %}
+            <dt>{{ 'Android App' | trans({}, 'businessbackend') }}</dt>
+            <dd>
+                <div class="col-xs-6 col-md-4 col-lg-2">
+                    <a href="{{ entity.androidApp }}"><img class="img-responsive" alt="Get it on Google Play"
+                                                           src="{{ asset('bundles/frontend/img/google_play_badge.png') }}"/></a>
+                </div>
+            </dd>
+            <div class="hr-line-dashed"></div>
+        {% endif %}
+        {% if entity.iosApp is not null %}
+            <dt>{{ 'iOS App' | trans({}, 'businessbackend') }}</dt>
+            <dd>
+                <div class="col-xs-6 col-md-4 col-lg-2">
+                    <a href="{{ entity.iosApp }}"><img style="width: 100%;" alt="Download on the App Store"
+                                                       src="{{ asset('bundles/frontend/img/apple_store_badge.svg') }}"/></a>
+                </div>
+            </dd>
+            <div class="hr-line-dashed"></div>
+        {% endif %}
         </tbody>
     </dl>
     <div class="form-group">
@@ -84,7 +104,8 @@
             <div class="modal-content animated bounceInRight">
                 <div id="modal-title" class="modal-header red-bg">
                     <button type="button" class="close" data-dismiss="modal"><span
-                                aria-hidden="true">&times;</span><span class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
+                                aria-hidden="true">&times;</span><span
+                                class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
                     </button>
                     <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
                     <h4 class="modal-title">{{ 'Atention' | trans({}, 'generalbackend') }}!!!</h4>
@@ -95,7 +116,8 @@
                 <div class="modal-footer">
                     <form action="{{ path('business_delete', { 'id': entity.id }) }}"
                           name="form-delete" method="post">
-                        <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
+                        <button type="button" class="btn btn-white"
+                                data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
                         <button id="modal-btn" type="submit" class="btn btn-danger" name="business-id"
                                 value="{{ entity.id }}">
                             <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}

@@ -155,6 +155,22 @@ class Business
     private $socialMedia;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="ios_app", type="string", length=255, nullable=true)
+     * @Assert\Url()
+     */
+    private $iosApp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="android_app", type="string", length=255, nullable=true)
+     * @Assert\Url()
+     */
+    private $androidApp;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
@@ -707,5 +723,51 @@ class Business
     public function setTranslatableLocale($locale)
     {
         $this->locale = $locale;
+    }
+
+    /**
+     * Set iosApp
+     *
+     * @param string $iosApp
+     * @return Business
+     */
+    public function setIosApp($iosApp)
+    {
+        $this->iosApp = $iosApp;
+
+        return $this;
+    }
+
+    /**
+     * Get iosApp
+     *
+     * @return string 
+     */
+    public function getIosApp()
+    {
+        return $this->iosApp;
+    }
+
+    /**
+     * Set androidApp
+     *
+     * @param string $androidApp
+     * @return Business
+     */
+    public function setAndroidApp($androidApp)
+    {
+        $this->androidApp = $androidApp;
+
+        return $this;
+    }
+
+    /**
+     * Get androidApp
+     *
+     * @return string 
+     */
+    public function getAndroidApp()
+    {
+        return $this->androidApp;
     }
 }
