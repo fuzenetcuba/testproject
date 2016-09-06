@@ -1,5 +1,17 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block metatags %}
+    <meta name="keywords" content="Plaza Mariachi Music City,
+    {{- 'Deals' | trans({}, 'homepage') -}},
+    {{- 'Mall' | trans({}, 'homepage') -}},
+    {{- 'Businesses' | trans({}, 'homepage') -}},
+    {{- 'Buying' | trans({}, 'homepage') -}}
+    " />
+    <meta name="description" content="
+    {{- 'Go search the best deals in Plaza Mariachi to get a great winning experience' | trans({}, 'deals') -}}
+    " />
+{% endblock %}
+
 {% block title '- Deals' %}
 
 {% block custom_css %}
@@ -11,7 +23,7 @@
 
 {% block page_content %}
     <section class="inner-content section-spaces-line">
-        <div class="filter-deals hidden-print collapsed">
+        <div class="filter-deals hidden-print">
             <div class="m-b-lg animated fadeInLeft">
                 <form action="{{ path('deals') }}" method="post">
                     <h4>{{ 'FILTER DEALS BY' | trans({}, 'deals') }}:</h4>
@@ -39,7 +51,7 @@
                    onclick="print();">
                     <i class="fa fa-print"></i>
                 </a>
-                <a class="btn btn-green btn-outline hide-filters" role="button">
+                <a class="btn btn-green btn-outline hide-filters hidden-lg" role="button">
                     <i class="fa fa-chevron-left"></i>
                 </a>
             </div>
@@ -50,7 +62,7 @@
             </div>
         </div>
 
-        <div class="container">
+        <div id="filter-item-list" class="container filter-item-list-collapsed">
             <div class="row deal-list hidden-print">
                 <div class="col-sm-12">
                     {% for deal in deals %}

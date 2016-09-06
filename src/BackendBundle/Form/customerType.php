@@ -40,7 +40,8 @@ class customerType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'BackendBundle\Entity\SystemUser'
+            'data_class' => 'BackendBundle\Entity\SystemUser',
+            'translation_domain' => 'customerbackend'
         ));
     }
 

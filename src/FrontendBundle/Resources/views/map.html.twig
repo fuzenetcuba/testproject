@@ -1,17 +1,32 @@
 {% extends '@Frontend/layout.html.twig' %}
 
-{% block title ' - Mall Map' %}
+{% block metatags %}
+    <meta name="keywords" content="Plaza Mariachi Music City,
+    {{- 'Mall Map' | trans({}, 'business') -}},
+    {{- 'Mall' | trans({}, 'homepage') -}},
+    {{- 'Businesses' | trans({}, 'homepage') -}},
+    {{- 'Deals' | trans({}, 'homepage') -}},
+    {{- 'Buying' | trans({}, 'homepage') -}}
+    " />
+    <meta name="description" content="
+    {{- 'Go search the location of businesses for a better orientation in Plaza Mariachi' | trans({}, 'business') -}}
+    " />
+{% endblock %}
+
+{% block title ' - ' ~ 'Mall Map' | trans({}, 'general') %}
 
 {% block page_content %}
     <section class="inner-content section-spaces-line">
+        <input type="hidden" name="map_blank" id="map_blank" value="{{ asset('bundles/backend/images/map.png') }}" />
+        <input type="hidden" name="map_pin" id="map_pin" value="{{ asset('bundles/backend/images/pin.png') }}" />
         <div class="container">
             <div class="col-md-12 map" id="map"></div>
 
             <a id="map-download" class="btn btn-outline btn-amber btn-map" download="map.png">
-                <i class="fa fa-download"></i> Download the Map
+                <i class="fa fa-download"></i> {{ 'Download the Map' | trans({}, 'general') }}
             </a>
             <a id="map-print" class="btn btn-outline btn-amber btn-map pull-right" download="map.pdf">
-                <i class="fa fa-print"></i> Print
+                <i class="fa fa-print"></i> {{ 'Print' | trans({}, 'general') }}
             </a>
         </div>
     </section>

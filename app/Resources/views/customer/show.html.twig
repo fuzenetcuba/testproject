@@ -5,7 +5,7 @@
     <a class="btn btn-default navbar-btn" href="{{ path('customer') }}" style="margin-bottom: 7px;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a>
-    Customer data
+    {{ 'Customer data' | trans({}, 'customerbackend') }}
 {% endblock %}
 {% block page_content %}
 
@@ -13,19 +13,19 @@
         <dt>Id</dt>
         <dd>{{ entity.id }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Full name</dt>
+        <dt>{{ 'Full name' | trans({}, 'customerbackend') }}</dt>
         <dd>{{ entity.fullName }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Username</dt>
+        <dt>{{ 'Username' | trans({}, 'customerbackend') }}</dt>
         <dd>{{ entity.username }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Phone</dt>
+        <dt>{{ 'Phone' | trans({}, 'customerbackend') }}</dt>
         <dd>{{ entity.phone }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Email</dt>
+        <dt>{{ 'Email' | trans({}, 'customerbackend') }}</dt>
         <dd>{{ entity.email }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Enabled</dt>
+        <dt>{{ 'Enabled' | trans({}, 'customerbackend') }}</dt>
         <dd>
             <div class="onoffswitch-ios switch-xs">
                 {% if (entity.enabled) %}
@@ -37,28 +37,28 @@
         </dd>
         <div class="hr-line-dashed"></div>
         {% if(entity.image is not null) %}
-            <dt>Photo</dt>
+            <dt>{{ 'Photo' | trans({}, 'customerbackend') }}</dt>
             <dd>
                 <img style="max-width: 70%; height: auto;" src="{{ vich_uploader_asset(entity, 'imageFile') }}"
                      alt="{{ entity.image }}"/>
             </dd>
             <div class="hr-line-dashed"></div>
         {% endif %}
-        <dt>Businesses</dt>
+        <dt>{{ 'Businesses' | trans({}, 'customerbackend') }}</dt>
         <dd>
             {% for business in entity.business %}
                 <span class="label label-success">{{ business }}</span>
             {% else %}
-                <span class="label label-warning">No businesses related</span>
+                <span class="label label-warning">{{ 'No businesses related' | trans({}, 'customerbackend') }}</span>
             {% endfor %}
         </dd>
         <div class="hr-line-dashed"></div>
-        <dt>Rewards</dt>
+        <dt>{{ 'Rewards' | trans({}, 'customerbackend') }}</dt>
         <dd>
             {% for reward in entity.rewards %}
                 <span class="label label-success">{{ reward }}</span>
                 {% else %}
-                <span class="label label-warning">No rewards related</span>
+                <span class="label label-warning">{{ 'No rewards related' | trans({}, 'customerbackend') }}</span>
             {% endfor %}
         </dd>
         <div class="hr-line-dashed"></div>
@@ -68,18 +68,18 @@
         <div class="col-md-2 text-right">
             <a class="btn btn-success" href="{{ path('customer') }}">
                 <span class="glyphicon glyphicon-chevron-left"></span>
-                Back to the list
+                {{ 'Back to the list' | trans({}, 'generalbackend') }}
             </a>
         </div>
         <div class="col-md-10">
 
             <a class="btn btn-primary" href="{{ path('customer_edit', { 'id': entity.id }) }}">
                 <span class="fa fa-pencil"></span>
-                Edit
+                {{ 'Edit' | trans({}, 'generalbackend') }}
             </a>
             <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
                 <span class="fa fa-remove"></span>
-                Delete
+                {{ 'Delete' | trans({}, 'generalbackend') }}
             </a>
 
         </div>
@@ -90,20 +90,20 @@
             <div class="modal-content animated bounceInRight">
                 <div id="modal-title" class="modal-header red-bg">
                     <button type="button" class="close" data-dismiss="modal"><span
-                                aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                aria-hidden="true">&times;</span><span class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
                     </button>
                     <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
-                    <h4 class="modal-title">Atention!!!</h4>
+                    <h4 class="modal-title">{{ 'Atention' | trans({}, 'generalbackend') }}!!!</h4>
                 </div>
                 <div id="modal-content" class="modal-body">
-                    <strong>Are you sure you want to delete this data?</strong>
+                    <strong>{{ 'Are you sure you want to delete this data?' | trans({}, 'generalbackend') }}</strong>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ path('customer_delete', { 'id': entity.id }) }}" name="form-delete" method="post">
-                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
                         <button id="modal-btn" type="submit" class="btn btn-danger" name="user-id"
                                 value="{{ entity.id }}">
-                            <span class="glyphicon glyphicon-ok"></span> Save changes
+                            <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}
                         </button>
                     </form>
                 </div>

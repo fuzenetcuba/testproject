@@ -1,15 +1,17 @@
-Category list: Lista de negocios
-New category: Nuevo negocio
+Category list: Lista de categorías
+New category: Nueva categoría
 Name: Nombre
 Slug: Nombre clave
 Parent: Categoría Padre
 Icon / Image: Ícono / Imagen
-Delete Category: Eliminar Negocios
-Category data: Datos del Negocio
+Delete Category: Eliminar Categoría
+Category data: Datos de la categoría
 Description: Descripción
 Created At: Creado el
 Updated At: Actualizado el
-Category edition: Editar negocio
-Category creation: Crear negocio
+Category edition: Editar categoría
+Category creation: Crear categoría
 Update: Actualizar
 Businesses: Negocios
+Create: Crear
+Create & Back: Crear y volver

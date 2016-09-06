@@ -1,3 +1,5 @@
+var map_blank = $('#map_blank').prop('value');
+var map_pin = $('#map_pin').prop('value');
 var extent = [0, 0, 1506, 2037];
 var projection = new ol.proj.Projection({
     code: 'xkcd',
@@ -143,7 +145,7 @@ function addMarker(coordinate, name, animate) {
                     anchorYUnits: 'pixels',
                     size: [48, 48],
                     opacity: 1,
-                    src: '/bundles/backend/images/pin.png'
+                    src: map_pin
                 }))
             }),
             new ol.style.Style({

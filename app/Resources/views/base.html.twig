@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="
+        {%- if app.request.get('_locale') == 'en' -%}
+        {{- 'en' -}}
+        {%- elseif app.request.get('_locale') == 'es' -%}
+        {{- 'es' -}}
+        {%- endif -%}
+        ">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

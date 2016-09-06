@@ -18,7 +18,7 @@
         {% block active_mails %}active{% endblock %}
 
         {% block page_heading_title %}
-            Send Mail
+            {{ 'Send Mail' | trans({}, 'mailsbackend') }}
         {% endblock %}
 
         {% block page_content %}
@@ -70,7 +70,7 @@
                 <div class="col-md-6">
                     {{ form_widget(form.customAddresses, { 'attr': {
                         'class' : 'selectize-custom-address',
-                        'placeholder' : 'Write some addresses ...'}}) }}
+                        'placeholder' : 'Write some addresses ...' | trans({}, 'mailsbackend') }}) }}
                     {% if form.customAddresses.vars['errors']|length > 0 %}
                         <ul class="message">
                             {% for error in form.customAddresses.vars['errors'] %}
@@ -127,7 +127,7 @@
                 <div class="col-md-6">
                     {{ form_widget(form.message, { 'attr': {
                         'class' : 'form-control large-height',
-                        'placeholder' : 'Write your message here ...'}}) }}
+                        'placeholder' : 'Write your message here ...' | trans({}, 'mailsbackend') }}) }}
                     {% if form.message.vars['errors']|length > 0 %}
                         <ul class="message">
                             {% for error in form.message.vars['errors'] %}
@@ -162,13 +162,13 @@
                 <div class="col-md-2 text-right">
                     <a class="btn btn-success" href="{{ path('backend_homepage') }}">
                         <span class="fa fa-th-large"></span>
-                        Dashboard
+                        {{ 'Dashboard' | trans({}, 'mailsbackend') }}
                     </a>
                 </div>
                 <div class="col-md-10">
 
                     <button id="btn-mails-send" class="btn btn-primary" type="submit">
-                        <span class="fa fa-send"></span> Send
+                        <span class="fa fa-send"></span> {{ 'Send' | trans({}, 'mailsbackend') }}
                     </button>
 
                     {{ form(form) }}
@@ -199,12 +199,12 @@
 
                 //  select2 scripts for select2 addresses field
                 $(".select2-field-registered").select2({
-                    placeholder: "-- SELECT ADDRESSES --"
+                    placeholder: "-- {{ 'SELECT ADDRESSES' | trans({}, 'mailsbackend') }} --"
                 });
 
                 //  select2 scripts for select2 addresses field
                 $(".select2-field-subscribed").select2({
-                    placeholder: "-- SELECT ADDRESSES --"
+                    placeholder: "-- {{ 'SELECT ADDRESSES' | trans({}, 'mailsbackend') }} --"
                 });
 
                 //  selectize scripts for tags
@@ -220,12 +220,12 @@
 
                 //  select2 scripts for select2 category field
                 $(".select2-field-category").select2({
-                    placeholder: "-- SELECT CATEGORY --"
+                    placeholder: "-- {{ 'SELECT CATEGORY' | trans({}, 'mailsbackend') }} --"
                 });
 
                 //  select2 scripts for select2 deals field
                 $(".select2-field-deals").select2({
-                    placeholder: "-- SELECT DEALS --"
+                    placeholder: "-- {{ 'SELECT DEALS' | trans({}, 'mailsbackend') }} --"
                 });
 
                 $('#btn-mails-send').click(function () {
@@ -244,7 +244,7 @@
                                 '<div class="alert alert-danger fade in">'
                                 + '<button class="close" type="button" data-dismiss="alert" aria-hidden="true">×</button>'
                                 + '<span class="fa fa-exclamation-triangle"></span>'
-                                + 'You must choice one recipient address at least.'
+                                + '{{ 'You must choice one recipient address at least.' | trans({}, 'mailsbackend') }}'
                                 + '</div>'
                         );
                         return false;

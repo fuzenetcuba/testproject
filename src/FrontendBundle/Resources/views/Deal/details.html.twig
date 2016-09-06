@@ -1,5 +1,18 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block metatags %}
+    <meta name="keywords" content="Plaza Mariachi Music City,
+    {{- deal.name -}},
+    {{- 'Deal details' | trans({}, 'deals') -}},
+    {{- 'Mall' | trans({}, 'homepage') -}},
+    {{- 'Deals' | trans({}, 'homepage') -}},
+    {{- 'Buying' | trans({}, 'homepage') -}}
+    " />
+    <meta name="description" content="
+    {{- deal.description -}}
+    " />
+{% endblock %}
+
 {% block title '- ' ~ deal.name %}
 
 {% block page_content %}
@@ -72,4 +85,14 @@
             }
         });
     </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org/",
+            "@type": "Product",
+            "name": "{{ deal.name }}",
+            "image": "{{ asset('images/deals/' ~ deal.image, null, true) }}",
+            "description": "{{ deal.description }}"
+        }
+        </script>
 {% endblock %}

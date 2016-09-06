@@ -16,7 +16,7 @@
     <a class="btn btn-default navbar-btn" href="{{ path('user') }}" style="margin-bottom: 7px;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a>
-    System User edition
+    {{ 'System User edition' | trans({}, 'userbackend') }}
 {% endblock %}
 {% block page_content %}
 
@@ -207,14 +207,14 @@
             <div class="col-md-2 text-right">
                 <a class="btn btn-success" href="{{ path('user') }}">
                     <span class="glyphicon glyphicon-chevron-left"></span>
-                    Back to the list
+                    {{ 'Back to the list' | trans({}, 'generalbackend') }}
                 </a>
             </div>
             <div class="col-md-10">
                 {{ form_widget(edit_form.submit, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
                 <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
                     <span class="glyphicon glyphicon-remove"></span>
-                    Delete
+                    {{ 'Delete' | trans({}, 'generalbackend') }}
                 </a>
                 {{ form(edit_form) }}
             </div>
@@ -227,19 +227,19 @@
             <div class="modal-content animated bounceInRight">
                 <div id="modal-title" class="modal-header red-bg">
                     <button type="button" class="close" data-dismiss="modal"><span
-                                aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                aria-hidden="true">&times;</span><span class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
                     </button>
                     <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
-                    <h4 class="modal-title">Atention!!!</h4>
+                    <h4 class="modal-title">{{ 'Atention' | trans({}, 'generalbackend') }}!!!</h4>
                 </div>
                 <div id="modal-content" class="modal-body">
-                    <strong>Are you sure you want to delete this data?</strong>
+                    <strong>{{ 'Are you sure you want to delete this data?' | trans({}, 'generalbackend') }}</strong>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ path('user_delete', { 'id': entity.id }) }}" name="form-delete" method="post">
-                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
                         <button id="modal-btn" type="submit" class="btn btn-danger" name="user-id" value="{{ entity.id }}">
-                            <span class="glyphicon glyphicon-ok"></span> Save changes
+                            <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}
                         </button>
                     </form>
                 </div>
@@ -273,7 +273,7 @@
 
             //  select2 scripts for batch actions combobox
             $(".select2-field").select2({
-                placeholder: "--- Select a value ---"
+                placeholder: "--- {{ 'Select a value' | trans({}, 'generalbackend') }} ---"
             });
 
         });

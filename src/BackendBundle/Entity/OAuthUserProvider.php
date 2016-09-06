@@ -5,7 +5,7 @@ namespace BackendBundle\Entity;
 use FOS\UserBundle\Model\UserManagerInterface;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
-use Symfony\Component\EventDispatcher\Event;
+use FrontendBundle\Event\Event;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -94,8 +94,13 @@ class OAuthUserProvider extends BaseClass
             $user->addRole("ROLE_CUSTOMER");
 
             // adding social data
-            $user->setFirstName($response->getNickname());
-            
+            $fullName = explode(' ', $response->getNickname(), 2);
+            $user->setFirstName($fullName[0]);
+            if(count($fullName) > 1){
+                $user->setLastName($fullName[1]);
+            }
+
+
             if ($response->getProfilePicture() !== null) {
                 //echo var_dump($socialData);
                 //die;
@@ -106,15 +111,15 @@ class OAuthUserProvider extends BaseClass
                 // copy the remote image to the server images directory
                 copy($response->getProfilePicture(), $newImagePath);
 
-                $user->setImageFile($newImageName);
+                $user->setImage($newImageName);
             }
 
             $this->userManager->updateUser($user);
 
             // this is a new user, let's launch the corresponding event
-            $this->eventDispatcher->dispatch(RewardEvents::REWARD_ON_REGISTER,
+            /*$this->eventDispatcher->dispatch(RewardEvents::REWARD_ON_REGISTER,
                 new Event($user, RewardEvents::REWARD_ON_REGISTER))
-            ;
+            ;*/
 
             return $user;
         }
