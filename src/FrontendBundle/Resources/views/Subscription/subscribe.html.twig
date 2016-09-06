@@ -1,5 +1,18 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block metatags %}
+    <meta name="keywords" content="Plaza Mariachi Music City,
+    {{- 'Subscribe for new deals' | trans({}, 'subscription') -}},
+    {{- 'Mall' | trans({}, 'homepage') -}},
+    {{- 'Businesses' | trans({}, 'homepage') -}},
+    {{- 'Deals' | trans({}, 'homepage') -}},
+    {{- 'Buying' | trans({}, 'homepage') -}}
+    " />
+    <meta name="description" content="
+    {{- 'Please select what categories you are interested in and we will send you deals, coupon and more' | trans({}, 'subscription') -}}
+    " />
+{% endblock %}
+
 {% block title ' - ' ~ "Subscribe for deals" %}
 
 {% block custom_css %}

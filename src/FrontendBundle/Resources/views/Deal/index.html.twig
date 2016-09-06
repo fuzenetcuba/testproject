@@ -1,5 +1,17 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block metatags %}
+    <meta name="keywords" content="Plaza Mariachi Music City,
+    {{- 'Deals' | trans({}, 'homepage') -}},
+    {{- 'Mall' | trans({}, 'homepage') -}},
+    {{- 'Businesses' | trans({}, 'homepage') -}},
+    {{- 'Buying' | trans({}, 'homepage') -}}
+    " />
+    <meta name="description" content="
+    {{- 'Go search the best deals in Plaza Mariachi to get a great winning experience' | trans({}, 'deals') -}}
+    " />
+{% endblock %}
+
 {% block title '- Deals' %}
 
 {% block custom_css %}

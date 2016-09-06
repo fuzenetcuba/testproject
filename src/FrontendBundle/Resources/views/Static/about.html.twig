@@ -1,5 +1,17 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block metatags %}
+    <meta name="keywords" content="Plaza Mariachi Music City,
+    {{ 'Mall' | trans({}, 'homepage') }},
+    {{ 'Businesses' | trans({}, 'homepage') }},
+    {{ 'Deals' | trans({}, 'homepage') }},
+    {{ 'Buying' | trans({}, 'homepage') }},
+    " />
+    <meta name="description" content="
+    {{ 'Plaza Mariachi is located only 10 minutes from downtown Nashville, TN with easy access to 3 major interstates. It is the largest shopping venue focused on the Hispanic culture and centered around a shopping experience that the whole family can enjoy' | trans({}, 'homepage') }}
+    " />
+{% endblock %}
+
 {% block title ' - ' ~ "About Us" %}
 
 {% set current_static = "about" %}

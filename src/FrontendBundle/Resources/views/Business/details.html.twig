@@ -1,5 +1,18 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block metatags %}
+    <meta name="keywords" content="Plaza Mariachi Music City,
+    {{- business.name -}},
+    {{- 'Business details' | trans({}, 'business') -}},
+    {{- 'Mall' | trans({}, 'homepage') -}},
+    {{- 'Deals' | trans({}, 'homepage') -}},
+    {{- 'Buying' | trans({}, 'homepage') -}}
+    " />
+    <meta name="description" content="
+    {{- business.description -}}
+    " />
+{% endblock %}
+
 {% block title '- ' ~ business.name %}
 
 {% block page_content %}
@@ -246,4 +259,17 @@
             }
         });
     </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "LocalBusiness",
+            "@id": "http://www.example.com",
+            "name": "{{ business.name }}",
+            "url": "{{ business.website }}",
+            "logo": "{{ asset('images/business/' ~ business.logo, null, true) }}",
+            "telephone": "{{ business.phone }}",
+            "sameAs" : "{{ business.socialMedia }}"
+        }
+        </script>
 {% endblock %}
