@@ -38,18 +38,12 @@ class BusinessController extends Controller
 
         $paginator = $this->get('knp_paginator');
 
-        $pagination = $paginator->paginate(
-            $this->get('business.manager')->findMatchingDeals(
-                null !== $data ? $data : [], (int)$sortMode
-            ),
-            $request->query->get('page', 1),
-            $this->getParameter('business.pagination.items')
+        $businesses = $this->get('business.manager')->findMatchingDeals(
+            null !== $data ? $data : [], (int)$sortMode
         );
 
-        $pagination->setTemplate('FrontendBundle::paginator.html.twig');
-
         return $this->render('FrontendBundle:Business:index.html.twig', [
-            'businesses' => $pagination,
+            'businesses' => $businesses,
             'form' => $form->createView(),
         ]);
     }

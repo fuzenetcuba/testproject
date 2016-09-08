@@ -227,6 +227,6 @@ class BusinessManager implements ManagerInterface
             'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
         );
 
-        return $query;
+        return $query->getResult();
     }
 }

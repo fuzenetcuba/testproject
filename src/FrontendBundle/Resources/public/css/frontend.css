@@ -320,7 +320,7 @@ body.landing-page {
 }
 
 .landing-page .header-back.one {
-    background: url('../img/header_one.jpg') 50% 0 no-repeat;
+    background: url('../img/header_one.jpg') 50% 100% no-repeat;
 }
 
 .landing-page .header-back.two {
@@ -418,11 +418,15 @@ body.landing-page {
     bottom: auto;
     right: auto;
     text-align: left;
-    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 15px #000000;
+}
+
+.landing-page .carousel-caption .btn {
+    box-shadow: 0 1px 15px #000000;
 }
 
 .landing-page .carousel-caption.blank {
-    top: 140px;
+    top: 240px;
 }
 
 .landing-page .carousel-image {
@@ -775,12 +779,10 @@ body.landing-page {
         text-align: right;
     }
 
-    .container.filter-item-list-collapsed {
+    .filter-item-list.filter-item-list-collapsed {
         width: 500px;
     }
-}
 
-@media (min-width: 768px) {
     .landing-page .navbar .container {
         width: 768px;
     }
@@ -805,18 +807,21 @@ body.landing-page {
         width: 970px;
     }
 
-    .container.filter-item-list-collapsed {
+    .filter-item-list.filter-item-list-collapsed {
         width: 720px;
     }
 }
 
 @media (min-width: 1200px) {
     .landing-page .navbar .container {
-        width: 1170px;
+        width: auto;
+        padding-right: 30px;
+        padding-left: 30px;
     }
 
-    .container.filter-item-list-collapsed {
-        width: 1020px;
+    .filter-item-list.filter-item-list-collapsed {
+        min-width: 1020px;
+        width: auto;
     }
 }
 
@@ -827,12 +832,6 @@ body.landing-page {
 }
 
 @media (max-width: 1000px) {
-    .landing-page .carousel-caption,
-    .landing-page .carousel-caption.blank {
-        left: 5%;
-        top: 80px;
-    }
-
     .landing-page .carousel-caption h1 {
         font-size: 28px;
     }
@@ -988,6 +987,12 @@ body.landing-page {
 }
 
 @media (max-width: 767px) {
+    .landing-page .carousel-caption,
+    .landing-page .carousel-caption.blank {
+        left: 5%;
+        top: 80px;
+    }
+
     .btn-sm-block {
         display: block;
         width: 100%
@@ -1236,8 +1241,13 @@ div.filter-deals > form > .col-sm-6:first-of-type {
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
-.container.filter-item-list-collapsed {
+.filter-item-list.filter-item-list-collapsed {
     margin-left: 250px;
+    padding: 10px 20px;
+}
+
+.filter-item-list {
+    padding: 10px 20px;
 }
 
 div.deal-list {

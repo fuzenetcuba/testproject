@@ -69,16 +69,16 @@
                 </a>
             </div>
             <div>
-                <button class="m-t m-l show-filters btn btn-green btn-outline">
+                <button class="m-t-lg m-l show-filters btn btn-green btn-outline">
                     <i class="fa fa-filter"></i>
                 </button>
             </div>
         </div>
 
-        <div id="filter-item-list" class="container filter-item-list-collapsed">
+        <div id="filter-item-list" class="filter-item-list filter-item-list-collapsed">
             <div class="row deal-list hidden-print">
                 {% for col in businesses | batch(4) %}
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 text-center">
                         {% for business in col %}
                             <div class="col-sm-3 text-center">
                                 <a href="{{ path('business_details', {'slug' : business.slug}) }}" class="thumbnail">
@@ -89,6 +89,7 @@
                                     </div>
                                 </a>
                                 <h3>{{ business.name | upper }}</h3>
+                                <p>{{ business.description | slice(0, 150) }} ...</p>
                             </div>
                         {% endfor %}
                     </div>
@@ -97,10 +98,6 @@
                         {{ 'No businesses matching your criteria were found' | trans({}, 'business') }}
                     </div>
                 {% endfor %}
-            </div>
-
-            <div class="row text-center hidden-print">
-                {{ knp_pagination_render(businesses) }}
             </div>
         </div>
 
@@ -161,10 +158,6 @@
                     {% endfor %}
                     </tbody>
                 </table>
-            </div>
-
-            <div class="row text-center hidden-print">
-                {{ knp_pagination_render(businesses) }}
             </div>
         </div>
     </section>
