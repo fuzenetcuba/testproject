@@ -151,15 +151,15 @@
                     <li class="{% if current == 'business' %}active{% endif %}">
                         <a href="{{ path('business_list') }}">{{ 'Directory' | trans({}, 'menu') }}</a>
                     </li>
-                    <li class="{% if current in ['deals', 'deal'] %}active{% endif %}">
-                        <a href="{{ path('deals') }}">{{ 'Deals' | trans({}, 'menu') }}</a>
-                    </li>
-                    <li class="{% if current == 'news' %}active{% endif %}">
-                        <a href="#">{{ 'News & Events' | trans({}, 'menu') }}</a>
-                    </li>
-                    <li class="{% if current == 'careers' %}active{% endif %}">
-                        <a href="#">{{ 'Careers' | trans({}, 'menu') }}</a>
-                    </li>
+                    {#<li class="{% if current in ['deals', 'deal'] %}active{% endif %}">#}
+                        {#<a href="{{ path('deals') }}">{{ 'Deals' | trans({}, 'menu') }}</a>#}
+                    {#</li>#}
+                    {#<li class="{% if current == 'news' %}active{% endif %}">#}
+                        {#<a href="#">{{ 'News & Events' | trans({}, 'menu') }}</a>#}
+                    {#</li>#}
+                    {#<li class="{% if current == 'careers' %}active{% endif %}">#}
+                        {#<a href="#">{{ 'Careers' | trans({}, 'menu') }}</a>#}
+                    {#</li>#}
                     <li class="visible-xs">
                         <a href="{{ path("subscription_request") }}">{{ 'Subscribe' | trans({}, 'menu') }}</a>
                     </li>
