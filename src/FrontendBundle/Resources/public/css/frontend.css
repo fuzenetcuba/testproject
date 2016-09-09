@@ -815,8 +815,8 @@ body.landing-page {
 @media (min-width: 1200px) {
     .landing-page .navbar .container {
         width: auto;
-        padding-right: 30px;
-        padding-left: 30px;
+        padding-right: 100px;
+        padding-left: 100px;
     }
 
     .filter-item-list.filter-item-list-collapsed {
