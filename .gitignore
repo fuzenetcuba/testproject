@@ -85,3 +85,7 @@ Icon
 ._*
 .Spotlight-V100
 .Trashes
+
+.htaccess
+current/*
+*.zip
