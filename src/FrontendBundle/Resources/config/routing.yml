@@ -3,7 +3,7 @@ frontend_homepage:
     defaults: { _controller: FrontendBundle:Default:index }
 
 frontend_static_page:
-    path:     /static/{name}
+    path:     /base/{name}
     defaults: { _controller: FrontendBundle:Default:staticPage }
 
 frontend_loged_in:
