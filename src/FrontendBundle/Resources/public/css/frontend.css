@@ -418,15 +418,16 @@ body.landing-page {
     bottom: auto;
     right: auto;
     text-align: left;
-    text-shadow: 0 1px 15px #000000;
+    text-shadow: 0 0 0 transparent;
+    color: #643b22 !important;
 }
 
 .landing-page .carousel-caption .btn {
-    box-shadow: 0 1px 15px #000000;
+    /*box-shadow: 0 1px 15px #000000;*/
 }
 
 .landing-page .carousel-caption.blank {
-    top: 240px;
+    top: 40px;
 }
 
 .landing-page .carousel-image {
