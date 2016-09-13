@@ -1249,6 +1249,7 @@ div.filter-deals > form > .col-sm-6:first-of-type {
 
 .filter-item-list {
     padding: 10px 20px;
+    min-height: 320px;
 }
 
 div.deal-list {

@@ -113,7 +113,7 @@
             <div class="col-sm-12 text-center">
                 {% for business in featured_brands %}
                     <div class="col-sm-4 text-center">
-                        <a href="#{#{ path('business_details', {'slug' : business.slug}) }#}" class="thumbnail">
+                        <a style="cursor: default;" href="{#{ path('business_details', {'slug' : business.slug}) }#}" class="thumbnail">
                             <div class="container-image business-image">
                                 <img class="center-height img-responsive business-image"
                                      alt="{{ business.name }}"
