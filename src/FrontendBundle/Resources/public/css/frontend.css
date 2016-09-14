@@ -2143,14 +2143,14 @@ textarea.form-control.large-height {
 }
 
 div.row.deal-list > div:first-child {
-    padding-left: 0 !important;
+    /*padding-left: 0 !important;*/
 }
 
-.deal-list a.thumbnail {
+.deal-list a.thumbnail, .deal-list div.thumbnail {
     border-color: transparent;
 }
 
-.deal-list a.thumbnail:hover {
+.deal-list a.thumbnail:hover, .deal-list div.thumbnail:hover {
     border-color: #b0b42b;
 }
 

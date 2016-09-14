@@ -6,10 +6,10 @@
     {{- 'Mall' | trans({}, 'homepage') -}},
     {{- 'Deals' | trans({}, 'homepage') -}},
     {{- 'Buying' | trans({}, 'homepage') -}}
-    " />
+    "/>
     <meta name="description" content="
     {{- 'Go search the businesses located in Plaza Mariachi for a better shopping planning' | trans({}, 'business') -}}
-    " />
+    "/>
 {% endblock %}
 
 {% block title '- Businesses' %}
@@ -48,10 +48,10 @@
                                name="order" id="option1" autocomplete="off"> {{ 'CATEGORY' | trans({}, 'business') }}
                     </label>
                     {#<label class="btn btn-white hide-filters-action">#}
-                        {#<input type="radio"#}
-                               {#value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS') }}"#}
-                               {#name="order" id="option2"#}
-                               {#autocomplete="off"> {{ 'RECENT DEALS' | trans({}, 'business') }}#}
+                    {#<input type="radio"#}
+                    {#value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS') }}"#}
+                    {#name="order" id="option2"#}
+                    {#autocomplete="off"> {{ 'RECENT DEALS' | trans({}, 'business') }}#}
                     {#</label>#}
                 </div>
             </div>
@@ -81,13 +81,17 @@
                     <div class="col-sm-12 text-center">
                         {% for business in col %}
                             <div class="col-sm-3 text-center">
-                                <a style="cursor: default;" href="{#{ path('business_details', {'slug' : business.slug}) }#}" class="thumbnail">
-                                    <div class="container-image business-image">
-                                        <img class="center-height img-responsive business-image"
-                                             alt="{{ business.name }}"
-                                             src="{{ asset('images/business/' ~ business.logo) }} "/>
-                                    </div>
-                                </a>
+                                <div class="thumbnail">
+                                    {#<a style="cursor: default;"#}
+                                       {#href="#}{#{ path('business_details', {'slug' : business.slug}) }#}{#"#}
+                                       {#class="thumbnail">#}
+                                        <div class="container-image business-image">
+                                            <img class="center-height img-responsive business-image"
+                                                 alt="{{ business.name }}"
+                                                 src="{{ asset('images/business/' ~ business.logo) }} "/>
+                                        </div>
+                                    {#</a>#}
+                                </div>
                                 <h3>{{ business.name | upper }}</h3>
                                 <p>{{ business.description | slice(0, 150) }}</p>
                             </div>
