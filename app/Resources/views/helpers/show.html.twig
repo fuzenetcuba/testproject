@@ -43,7 +43,7 @@
         <dd>{{ entity.updatedAt|date('d-M-Y h:i A') }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>Image Preview</dt>
-        <dd><img style="max-width: 70%; height: auto;" src="{{ vich_uploader_asset(entity, 'imageFile') }}"/></dd>
+        <dd><img style="max-width: 70%; height: auto;" src="{{ asset('images/users/' ~ entity.imageName) }}"/></dd>
         <div class="hr-line-dashed"></div>
         </tbody>
     </dl>

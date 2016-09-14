@@ -4,7 +4,7 @@
             <img alt="image" class="img-avatar-small img-circle"
                  src="
                  {% if((app.user.image) is not null) %}
-                    {{ vich_uploader_asset(app.user, 'imageFile') }}
+                    {{ asset('images/users/' ~ app.user.image) }}
                  {% else %}
                     {{ asset('bundles/backend/images/avatar.jpg') }}
                  {% endif %}

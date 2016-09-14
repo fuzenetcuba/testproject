@@ -48,7 +48,7 @@
         <dd>{{ entity.updatedAt|date('d-M-Y h:i A') }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>Logo</dt>
-        <dd><img style="max-width: 70%; height: auto;" src="{{ vich_uploader_asset(entity, 'logoFile') }}"
+        <dd><img style="max-width: 70%; height: auto;" src="{{ asset('images/business//' ~ entity.logo) }}"
                  alt="{{ entity.logo }}"/></dd>
         <div class="hr-line-dashed"></div>
         {% if entity.androidApp is not null %}
