@@ -41,7 +41,7 @@
                                 <img alt="image" class="img-avatar-small img-circle"
                                      src="
                                      {% if((app.user.image) is not null) %}
-                                        {{ vich_uploader_asset(app.user, 'imageFile') }}
+                                        {{ asset('images/users/' ~ app.user.image) }}
                                      {% else %}
                                         {{ asset('bundles/backend/images/avatar.jpg') }}
                                      {% endif %}
@@ -105,12 +105,12 @@
                             </div>
                         {% else %}
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a href="{{ path('membership') }}">
-                                        <i class="fa fa-user"></i> {{ 'Membership' | trans({}, 'menu') }}
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
+                                {#<li>#}
+                                    {#<a href="{{ path('membership') }}">#}
+                                        {#<i class="fa fa-user"></i> {{ 'Membership' | trans({}, 'menu') }}#}
+                                    {#</a>#}
+                                {#</li>#}
+                                {#<li class="divider"></li>#}
                                 <li>
                                     <a href="{{ path('fos_user_security_logout') }}">
                                         <i class="fa fa-sign-out"></i> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
@@ -180,7 +180,7 @@
                                 <img alt="image" class="img-avatar-small img-circle"
                                      src="
                                      {% if((app.user.image) is not null) %}
-                                        {{ vich_uploader_asset(app.user, 'imageFile') }}
+                                        {{ asset('images/users/' ~ app.user.image) }}
                                      {% else %}
                                         {{ asset('bundles/backend/images/avatar.jpg') }}
                                      {% endif %}
@@ -190,12 +190,12 @@
 
                         {% if not not app.user %}
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a href="{{ path('membership') }}">
-                                        <i class="fa fa-user"></i> {{ 'Membership' | trans({}, 'menu') }}
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
+                                {#<li>#}
+                                    {#<a href="{{ path('membership') }}">#}
+                                        {#<i class="fa fa-user"></i> {{ 'Membership' | trans({}, 'menu') }}#}
+                                    {#</a>#}
+                                {#</li>#}
+                                {#<li class="divider"></li>#}
                                 <li>
                                     <a href="{{ path('fos_user_security_logout') }}">
                                         <i class="fa fa-sign-out"></i> {{ 'layout.logout' | trans({}, 'FOSUserBundle') }}

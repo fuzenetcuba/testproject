@@ -30,9 +30,9 @@ var map = new ol.Map({
     view: new ol.View({
         projection: projection,
         center: ol.extent.getCenter(extent),
-        zoom: 1,
+        zoom: 2,
         minZoom: 1,
-        maxZoom: 3,
+        maxZoom: 4,
     })
 });
 

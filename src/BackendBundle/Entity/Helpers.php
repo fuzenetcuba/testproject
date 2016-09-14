@@ -73,7 +73,7 @@ class Helpers {
      *      maxWidth=2500,
      *      maxHeight=2500,
      * )
-     * @Vich\UploadableField(mapping="properties_pictures", fileNameProperty="imageName",
+     * @Vich\UploadableField(mapping="user_image", fileNameProperty="imageName",
      *      groups={"creation"}
      * )
      *

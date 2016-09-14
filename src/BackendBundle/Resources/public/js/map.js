@@ -1,6 +1,6 @@
 var map_blank = $('#map_blank').prop('value');
 var map_pin = $('#map_pin').prop('value');
-var extent = [0, 0, 1506, 2037];
+var extent = [0, 0, 1506, 1100];
 var projection = new ol.proj.Projection({
     code: 'xkcd',
     units: 'pixels',

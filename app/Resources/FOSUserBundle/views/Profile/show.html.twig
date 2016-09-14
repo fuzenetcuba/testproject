@@ -22,7 +22,7 @@
         {% if(user.image is not null) %}
             <dt>{{ 'Photo' | trans({}, 'fosuser') }}</dt>
             <dd>
-                <img style="max-width: 70%; height: auto;" src="{{ vich_uploader_asset(user, 'imageFile') }}"
+                <img style="max-width: 70%; height: auto;" src="{{ asset('images/users/' ~ user.image) }}"
                      alt="{{ user.image }}"/>
             </dd>
             <div class="hr-line-dashed"></div>
