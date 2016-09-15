@@ -22,6 +22,7 @@ var raster = new ol.layer.Image({
     })
 });
 
+var center = ol.extent.getCenter(extent);
 var map = new ol.Map({
     layers: [
         raster
@@ -29,10 +30,10 @@ var map = new ol.Map({
     target: 'map',
     view: new ol.View({
         projection: projection,
-        center: ol.extent.getCenter(extent),
-        zoom: 2,
+        center: [center[0], center[1] + 200],
+        zoom: 3,
         minZoom: 1,
-        maxZoom: 4,
+        maxZoom: 4
     })
 });
 
