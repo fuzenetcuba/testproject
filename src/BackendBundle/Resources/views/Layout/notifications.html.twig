@@ -108,8 +108,17 @@
         </a>
     </li>
     <li>
-        <a class="right-sidebar-toggle">
-            <i class="fa fa-tasks"></i>
-        </a>
+        {% if app.request.get('_locale') == 'en' %}
+            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'es'})) }}">
+                <span class="flag-icon flag-icon-es"></span>
+            </a>
+        {% elseif app.request.get('_locale') == 'es' %}
+            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'en'})) }}">
+                <span class="flag-icon flag-icon-us"></span>
+            </a>
+        {% endif %}
+        {#<a class="right-sidebar-toggle">#}
+            {#<i class="fa fa-tasks"></i>#}
+        {#</a>#}
     </li>
 </ul>

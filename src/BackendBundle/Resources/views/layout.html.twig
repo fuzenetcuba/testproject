@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{ asset('bundles/backend/css/animate.css') }}" type="text/css"/>
     <!-- Template Styles -->
     <link rel="stylesheet" href="{{ asset('bundles/backend/css/style.css') }}" type="text/css"/>
+    <!-- Flag Icon Styles -->
+    <link href="{{ asset('bundles/frontend/css/flag-icon.min.css') }}" rel="stylesheet">
     <!-- Toastr Styles -->
     <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/toastr/toastr.min.css') }}" type="text/css"/>
 
@@ -95,10 +97,10 @@
                                     class="nav-label">{{ 'Dashboard' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
-                    <li class="{% block active_helpers %}{% endblock %}">
-                        <a href="{{ path('helpers') }}"><i class="fa fa-android"></i><span
-                                    class="nav-label">Helpers</span></a>
-                    </li>
+                    {#<li class="{% block active_helpers %}{% endblock %}">#}
+                        {#<a href="{{ path('helpers') }}"><i class="fa fa-android"></i><span#}
+                                    {#class="nav-label">Helpers</span></a>#}
+                    {#</li>#}
 
                     <li class="{% block active_business %}{% endblock %}">
                         <a href="{{ path('business') }}"><i class="fa fa-briefcase"></i> <span
