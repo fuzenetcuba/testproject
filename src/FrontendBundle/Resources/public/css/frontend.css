@@ -2223,7 +2223,7 @@ div.ol-attribution li > strong {
     background-color: transparent !important;
 }
 
-#contact {
+#contact, #copyright {
     position: relative;
     z-index: 150;
 }
