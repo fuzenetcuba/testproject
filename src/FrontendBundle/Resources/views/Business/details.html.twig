@@ -7,10 +7,10 @@
     {{- 'Mall' | trans({}, 'homepage') -}},
     {{- 'Deals' | trans({}, 'homepage') -}},
     {{- 'Buying' | trans({}, 'homepage') -}}
-    " />
+    "/>
     <meta name="description" content="
     {{- business.description -}}
-    " />
+    "/>
 {% endblock %}
 
 {% block title '- ' ~ business.name %}
@@ -30,10 +30,10 @@
 
                     <span class="business-info">
                         <ul class="list-unstyled">
-                            <li>
-                                <i class="fa fa-clock-o"></i>
-                                {{ business.hoursBegin|date("h:i A") ~ " - " ~ business.hoursEnd|date("h:i A") }}
-                            </li>
+                            {#<li>#}
+                                {#<i class="fa fa-clock-o"></i>#}
+                                {#{{ business.hoursBegin|date("h:i A") ~ " - " ~ business.hoursEnd|date("h:i A") }}#}
+                            {#</li>#}
                             <li>
                                 <i class="fa fa-envelope"></i>
                                 <a href="mailto:{{ business.email }}">
@@ -41,13 +41,13 @@
                                 </a>
                             </li>
                             <li><i class="fa fa-phone"></i> {{ business.phone }}</li>
-                            <li>
-                                <i class="fa fa-globe"></i>
-                                <a target="_blank" href="{{ business.website }}">
-                                    {{ business.website|split("://")[1] }}
-                                    <sub><span class="fa fa-external-link"></span></sub>
-                                </a>
-                            </li>
+                            {#<li>#}
+                                {#<i class="fa fa-globe"></i>#}
+                                {#<a target="_blank" href="{{ business.website }}">#}
+                                    {#{{ business.website|split("://")[1] }}#}
+                                    {#<sub><span class="fa fa-external-link"></span></sub>#}
+                                {#</a>#}
+                            {#</li>#}
                             <li>
                                 <i class="fa fa-facebook-official"></i>
                                 <a href="{{ business.socialMedia }}">
@@ -208,34 +208,36 @@
 
 
 
-    <section class="section-spaces-line">
-        <div class="container">
-            <div class="row m-b-lg">
-                <div class="col-lg-12 text-center">
-                    <div class="section-line pink-line"></div>
-                    <h1>{{ 'Stay close' | trans({}, 'business') }}</h1>
+    {% if business.androidApp is not null or business.iosApp is not null %}
+        <section class="section-spaces-line">
+            <div class="container">
+                <div class="row m-b-lg">
+                    <div class="col-lg-12 text-center">
+                        <div class="section-line pink-line"></div>
+                        <h1>{{ 'Stay close' | trans({}, 'business') }}</h1>
 
-                    <p>{{ 'Keep up to date with our mobile apps' | trans({}, 'business') }}</p>
+                        <p>{{ 'Keep up to date with our mobile apps' | trans({}, 'business') }}</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
+                    <div class="col-xs-6">
+                        {% if business.androidApp is not null %}
+                            <a href="{{ business.androidApp }}"><img class="img-responsive" alt="Get it on Google Play"
+                                                                     src="{{ asset('bundles/frontend/img/google_play_badge.png') }}"/></a>
+                        {% endif %}
+                    </div>
+
+                    <div class="col-xs-6">
+                        {% if business.iosApp is not null %}
+                            <a href="{{ business.iosApp }}"><img style="width: 100%;" alt="Download on the App Store"
+                                                                 src="{{ asset('bundles/frontend/img/apple_store_badge.svg') }}"/></a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-
-            <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
-                <div class="col-xs-6">
-                    {% if business.androidApp is not null %}
-                        <a href="{{ business.androidApp }}"><img class="img-responsive" alt="Get it on Google Play"
-                                        src="{{ asset('bundles/frontend/img/google_play_badge.png') }}"/></a>
-                    {% endif %}
-                </div>
-
-                <div class="col-xs-6">
-                    {% if business.iosApp is not null %}
-                        <a href="{{ business.iosApp }}"><img style="width: 100%;" alt="Download on the App Store"
-                                        src="{{ asset('bundles/frontend/img/apple_store_badge.svg') }}"/></a>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    {% endif %}
 {% endblock %}
 
 {% block inline_js %}
@@ -271,5 +273,6 @@
             "telephone": "{{ business.phone }}",
             "sameAs" : "{{ business.socialMedia }}"
         }
-        </script>
+
+    </script>
 {% endblock %}
