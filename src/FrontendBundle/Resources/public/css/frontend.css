@@ -961,7 +961,7 @@ body.landing-page {
     }
 
     .landing-page .nav > li > a {
-        padding: 22px 1px;
+        padding: 20px 1px;
     }
 
     .landing-page .nav > li {
@@ -1962,7 +1962,8 @@ button.btn-blue.dim:active {
 
 /* secondary navbar styles */
 .landing-page .navbar-default .second-navbar {
-    max-height: 50px;;
+    max-height: 50px;
+    margin-bottom: 3px;
 }
 
 .landing-page .navbar-default .second-navbar .nav {
@@ -2223,7 +2224,7 @@ div.ol-attribution li > strong {
     background-color: transparent !important;
 }
 
-#contact {
+#contact, #copyright {
     position: relative;
     z-index: 150;
 }
