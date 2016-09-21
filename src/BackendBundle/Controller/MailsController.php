@@ -31,23 +31,34 @@ class MailsController extends Controller
                 $data = $form->getData();
 
                 if (EmailGroups::REGISTERED_USERS === $data['groupOfUsers']) {
+
                     // ignore the registered users email, they will be duplicated
                     $users = $data['subscribedUsers']->toArray();
+                    $users = array_merge($users, $this->get('customer.manager')->findAll());
+
                 } elseif (EmailGroups::SUBSCRIBED_USERS === $data['groupOfUsers']) {
+
                     // ignore the subscribed users
                     $users = $data['registeredUsers']->toArray();
+                    $users = array_merge($users, $this->get('customer.manager')->findAllSubscribedUsers());
+
                 } elseif (EmailGroups::ALL_USERS === $data['groupOfUsers']) {
+
                     // ignore both
-                    $users = [];
+                    $users = $this->get('customer.manager')->findAll();
+                    $users = array_merge($users, $this->get('customer.manager')->findAllSubscribedUsers());
                 } else {
+
                     // left blank, collect both fields and deduplicate
                     $users = $data['registeredUsers']->toArray();
-                    array_merge($users, $data['subscribedUsers']->toArray());
+                    $users = array_merge($users, $data['subscribedUsers']->toArray());
+
                 }
 
                 $users = new ArrayCollection(array_unique($users));
 
                 $customEmails = new ArrayCollection($data['customAddresses']);
+
                 $users->map(function ($user) use ($customEmails) {
                     if ($customEmails->contains($user->getEmail())) {
                         $customEmails->removeElement($user->getEmail());
@@ -59,11 +70,16 @@ class MailsController extends Controller
                 $data['categories']->map(function ($category) use ($categoryUsers) {
                     array_map(function ($email) use ($categoryUsers) {
                         $categoryUsers->add($email);
-                    }, array_column($this->get('customer.manager')->findSubscribedsInCategory($category), 'email'));
+                    }, array_column($this->get('subscription.manager')->findSubscribedsInCategory($category), 'email'));
                 });
 
                 $customEmails = new ArrayCollection(
-                    array_unique(array_merge($customEmails->toArray(), $categoryUsers->toArray()))
+                    array_unique(
+                        array_merge(
+                            $customEmails->toArray(),
+                            $categoryUsers->toArray()
+                        )
+                    )
                 );
 
                 $content = $this->renderView('@Backend/Emails/customer.html.twig', [
