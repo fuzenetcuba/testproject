@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\File\File;
 /**
  * @ORM\Entity
  * @DoctrineAssert\UniqueEntity("username")
- * @DoctrineAssert\UniqueEntity("email")
+ * @DoctrineAssert\UniqueEntity("email", message="Please use another email address, or log in with facebook.")
  * @Vich\Uploadable
  * @ORM\Table(name="system_user")
  */
