@@ -12,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @DoctrineAssert\UniqueEntity(fields={"email"}, message="This email is already used.")
  * @ORM\Table(name="subscription")
  */
-class Subscription
+class Subscription implements Mailable
 {
     /**
      * @var integer

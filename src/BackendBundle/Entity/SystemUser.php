@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\File\File;
  * @Vich\Uploadable
  * @ORM\Table(name="system_user")
  */
-class SystemUser extends BaseUser
+class SystemUser extends BaseUser implements Mailable
 {
 
     /**

@@ -33,21 +33,27 @@ class MailsController extends Controller
                 if (EmailGroups::REGISTERED_USERS === $data['groupOfUsers']) {
                     // ignore the registered users email, they will be duplicated
                     $users = $data['subscribedUsers']->toArray();
+                    $users = array_merge($users, $this->get('customer.manager')->findAll());
                 } elseif (EmailGroups::SUBSCRIBED_USERS === $data['groupOfUsers']) {
                     // ignore the subscribed users
                     $users = $data['registeredUsers']->toArray();
+                    $users = array_merge($users, $this->get('customer.manager')->findAllSubscribedUsers());
                 } elseif (EmailGroups::ALL_USERS === $data['groupOfUsers']) {
                     // ignore both
-                    $users = [];
+                    $users = array_merge(
+                        $this->get('customer.manager')->findAll(),
+                        $this->get('customer.manager')->findAllSubscribedUsers()
+                    );
                 } else {
                     // left blank, collect both fields and deduplicate
                     $users = $data['registeredUsers']->toArray();
-                    array_merge($users, $data['subscribedUsers']->toArray());
+                    $users = array_merge($users, $data['subscribedUsers']->toArray());
                 }
 
                 $users = new ArrayCollection(array_unique($users));
 
                 $customEmails = new ArrayCollection($data['customAddresses']);
+
                 $users->map(function ($user) use ($customEmails) {
                     if ($customEmails->contains($user->getEmail())) {
                         $customEmails->removeElement($user->getEmail());
@@ -70,7 +76,7 @@ class MailsController extends Controller
                     'content' => $data['message'],
                     'deals' => $data['deals']
                 ]);
-
+                
 //                echo $content; die ;
 
                 $this->get('customer.manager')->sendEmail(
