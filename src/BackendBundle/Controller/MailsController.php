@@ -35,12 +35,14 @@ class MailsController extends Controller
                     // ignore the registered users email, they will be duplicated
                     $groupUsers = array_column($this->get('customer.manager')->findEmailCustomers(), 'email');
                     $users = $data['subscribedUsers']->toArray();
+                    $users = array_merge($users, $this->get('customer.manager')->findAll());
 
                 } elseif (EmailGroups::SUBSCRIBED_USERS === $data['groupOfUsers']) {
 
                     // ignore the subscribed users
                     $groupUsers = array_column($this->get('subscription.manager')->findEmailSubscriptions(), 'email');
                     $users = $data['registeredUsers']->toArray();
+                    $users = array_merge($users, $this->get('customer.manager')->findAllSubscribedUsers());
 
                 } elseif (EmailGroups::ALL_USERS === $data['groupOfUsers']) {
 
@@ -48,7 +50,6 @@ class MailsController extends Controller
                     $groupUsers = array_column($this->get('customer.manager')->findEmailCustomers(), 'email');
                     $groupUsers = array_merge($groupUsers, array_column($this->get('subscription.manager')->findEmailSubscriptions(), 'email'));
                     $users = [];
-
                 } else {
 
                     // left blank, collect both fields and deduplicate
@@ -61,6 +62,7 @@ class MailsController extends Controller
                 $users = new ArrayCollection(array_unique($users));
 
                 $customEmails = new ArrayCollection($data['customAddresses']);
+
                 $users->map(function ($user) use ($customEmails) {
                     if ($customEmails->contains($user->getEmail())) {
                         $customEmails->removeElement($user->getEmail());
@@ -95,7 +97,7 @@ class MailsController extends Controller
                     'content' => $data['message'],
                     'deals' => $data['deals']
                 ]);
-
+                
 //                echo $content; die ;
 
                 $this->get('customer.manager')->sendEmail(

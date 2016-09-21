@@ -63,6 +63,16 @@ class CustomerManager implements ManagerInterface
             ->getResult();
     }
 
+    public function findAllSubscribedUsers()
+    {
+        return $this->em->createQueryBuilder('q')
+            ->select('s')
+            ->from('BackendBundle:Subscription', 's')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     /**
      * Return a new empty model object
      *
