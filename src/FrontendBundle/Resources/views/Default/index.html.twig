@@ -6,10 +6,10 @@
     {{- 'Businesses' | trans({}, 'homepage') -}},
     {{- 'Deals' | trans({}, 'homepage') -}},
     {{- 'Buying' | trans({}, 'homepage') -}}
-    " />
+    "/>
     <meta name="description" content="
     {{- 'Plaza Mariachi is located only 10 minutes from downtown Nashville, TN with easy access to 3 major interstates. It is the largest shopping venue focused on the Hispanic culture and centered around a shopping experience that the whole family can enjoy' | trans({}, 'homepage') -}}
-    " />
+    "/>
 {% endblock %}
 
 {% block navbar %}
@@ -26,7 +26,7 @@
             <div class="item active animated fadeIn">
                 <div class="container">
                     <div class="carousel-caption blank">
-                        <h1>A CULTURAL SHOPPING EXPERIENCE</h1>
+                        <h1>{{ 'A CULTURAL EXPERIENCE' | trans({}, 'homepage') }}</h1>
                         <p>
                             <a class="btn btn-lg btn-amber" href="{{ path("fos_user_registration_register") }}"
                                role="button">{{ 'BECOME A MEMBER' | trans({}, 'homepage') }}</a>
@@ -59,40 +59,77 @@
     {#</section>#}
 
     {# top deals #}
+    {#<section id="features" class="gray-bg section-spaces-line top-deals">#}
+    {#<div class="container">#}
+    {#<div class="row m-b">#}
+    {#<div class="col-lg-12 text-center">#}
+    {#<div class="section-line amber-line"></div>#}
+    {#<h1>{{ 'Top Deals of the Day' |trans({}, 'homepage') }}</h1>#}
+
+    {#<p>Find and win with our best deals of your interests</p>#}
+    {#</div>#}
+    {#</div>#}
+
+    {#{% for deal in deals %}#}
+    {#<div class="col-sm-4 text-center">#}
+    {#<h3>{{ deal.name | upper }}</h3>#}
+    {#<p>{{ 'AT' | trans({}, 'general') }}: {{ deal.business.name | upper }}</p>#}
+    {#<p>{{ 'ENDS' | trans({}, 'general') }}: {{ deal.endsAt | date('m/d/Y') }}</p>#}
+    {#<div class="hovereffect">#}
+    {#<div class="container-image ">#}
+    {#<img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>#}
+    {#<div class="overlay">#}
+    {#<a class="info" href="{{ path('deal_details', {'slug' : deal.slug}) }}">#}
+    {#{{ 'Show Deal' | trans({}, 'homepage') }}#}
+    {#</a>#}
+    {#</div>#}
+    {#</div>#}
+    {#</div>#}
+    {#<p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View#}
+    {#Deal</a></p>#}
+    {#</div>#}
+    {#{% endfor %}#}
+
+    {#<div class="col-sm-12 text-center show-all-deals">#}
+    {#<a href="{{ path('deals') }}" class="btn btn-lg btn-xl btn-amber">#}
+    {#{{ 'VIEW ALL DEALS' | trans({}, 'homepage') }}#}
+    {#</a>#}
+    {#</div>#}
+    {#</div>#}
+    {#</section>#}
+
+
     <section id="features" class="gray-bg section-spaces-line top-deals">
         <div class="container">
             <div class="row m-b">
                 <div class="col-lg-12 text-center">
                     <div class="section-line amber-line"></div>
-                    <h1>{{ 'Top Deals of the Day' |trans({}, 'homepage') }}</h1>
+                    <h1>{{ 'Featured Brands' |trans({}, 'homepage') }}</h1>
 
                     {#<p>Find and win with our best deals of your interests</p>#}
                 </div>
             </div>
 
-            {% for deal in deals %}
-                <div class="col-sm-4 text-center">
-                    <h3>{{ deal.name | upper }}</h3>
-                    <p>{{ 'AT' | trans({}, 'general') }}: {{ deal.business.name | upper }}</p>
-                    <p>{{ 'ENDS' | trans({}, 'general') }}: {{ deal.endsAt | date('m/d/Y') }}</p>
-                    <div class="hovereffect">
-                        <div class="container-image ">
-                            <img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>
-                            <div class="overlay">
-                                <a class="info" href="{{ path('deal_details', {'slug' : deal.slug}) }}">
-                                    {{ 'Show Deal' | trans({}, 'homepage') }}
-                                </a>
+            <div class="col-sm-12 text-center">
+                {% for business in featured_brands %}
+                    <div class="col-sm-4 text-center">
+                        <a href="{{ path('business_details', {'slug' : business.slug}) }}"
+                           class="thumbnail">
+                            <div class="container-image business-image">
+                                <img class="center-height img-responsive business-image"
+                                     alt="{{ business.name }}"
+                                     src="{{ asset('images/business/' ~ business.logo) }} "/>
                             </div>
-                        </div>
+                        </a>
+                        <h3>{{ business.name | upper }}</h3>
+                        {#<p>{{ business.description | slice(0, 150) }} ...</p>#}
                     </div>
-                    {#<p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View#}
-                    {#Deal</a></p>#}
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
 
             <div class="col-sm-12 text-center show-all-deals">
-                <a href="{{ path('deals') }}" class="btn btn-lg btn-xl btn-amber">
-                    {{ 'VIEW ALL DEALS' | trans({}, 'homepage') }}
+                <a href="{{ path('business_list') }}" class="btn btn-lg btn-xl btn-amber">
+                    {{ 'SEE ALL THE BRANDS' | trans({}, 'homepage') }}
                 </a>
             </div>
         </div>

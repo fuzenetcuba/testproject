@@ -28,7 +28,7 @@
                         <a href="{{ path("subscription_request") }}">{{ 'Subscribe' | trans({}, 'menu') }}</a>
                     </li>
                     <li>
-                        <a href="{{ path('mall_map', { 'slug' : 'all' }) }}">{{ 'Find Us' | trans({}, 'menu') }}</a>
+                        <a href="{{ path('mall_map', { 'slug' : 'all' }) }}">{{ 'Plaza Map' | trans({}, 'menu') }}</a>
                     </li>
                     <li class="dropdown hidden-xs">
                         {% if not app.user %}
@@ -41,7 +41,7 @@
                                 <img alt="image" class="img-avatar-small img-circle"
                                      src="
                                      {% if((app.user.image) is not null) %}
-                                        {{ vich_uploader_asset(app.user, 'imageFile') }}
+                                        {{ asset('images/users/' ~ app.user.image) }}
                                      {% else %}
                                         {{ asset('bundles/backend/images/avatar.jpg') }}
                                      {% endif %}
@@ -105,12 +105,12 @@
                             </div>
                         {% else %}
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a href="{{ path('membership') }}">
-                                        <i class="fa fa-user"></i> {{ 'Membership' | trans({}, 'menu') }}
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
+                                {#<li>#}
+                                    {#<a href="{{ path('membership') }}">#}
+                                        {#<i class="fa fa-user"></i> {{ 'Membership' | trans({}, 'menu') }}#}
+                                    {#</a>#}
+                                {#</li>#}
+                                {#<li class="divider"></li>#}
                                 <li>
                                     <a href="{{ path('fos_user_security_logout') }}">
                                         <i class="fa fa-sign-out"></i> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
@@ -151,20 +151,20 @@
                     <li class="{% if current == 'business' %}active{% endif %}">
                         <a href="{{ path('business_list') }}">{{ 'Directory' | trans({}, 'menu') }}</a>
                     </li>
-                    <li class="{% if current in ['deals', 'deal'] %}active{% endif %}">
-                        <a href="{{ path('deals') }}">{{ 'Deals' | trans({}, 'menu') }}</a>
-                    </li>
-                    <li class="{% if current == 'news' %}active{% endif %}">
-                        <a href="#">{{ 'News & Events' | trans({}, 'menu') }}</a>
-                    </li>
-                    <li class="{% if current == 'careers' %}active{% endif %}">
-                        <a href="#">{{ 'Careers' | trans({}, 'menu') }}</a>
-                    </li>
+                    {#<li class="{% if current in ['deals', 'deal'] %}active{% endif %}">#}
+                        {#<a href="{{ path('deals') }}">{{ 'Deals' | trans({}, 'menu') }}</a>#}
+                    {#</li>#}
+                    {#<li class="{% if current == 'news' %}active{% endif %}">#}
+                        {#<a href="#">{{ 'News & Events' | trans({}, 'menu') }}</a>#}
+                    {#</li>#}
+                    {#<li class="{% if current == 'careers' %}active{% endif %}">#}
+                        {#<a href="#">{{ 'Careers' | trans({}, 'menu') }}</a>#}
+                    {#</li>#}
                     <li class="visible-xs">
                         <a href="{{ path("subscription_request") }}">{{ 'Subscribe' | trans({}, 'menu') }}</a>
                     </li>
                     <li class="visible-xs">
-                        <a href="{{ path('mall_map', { 'slug' : 'all' }) }}">{{ 'Find Us' | trans({}, 'menu') }}</a>
+                        <a href="{{ path('mall_map', { 'slug' : 'all' }) }}">{{ 'Plaza Map' | trans({}, 'menu') }}</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">{{ 'Contact' | trans({}, 'menu') }}</a>
@@ -180,7 +180,7 @@
                                 <img alt="image" class="img-avatar-small img-circle"
                                      src="
                                      {% if((app.user.image) is not null) %}
-                                        {{ vich_uploader_asset(app.user, 'imageFile') }}
+                                        {{ asset('images/users/' ~ app.user.image) }}
                                      {% else %}
                                         {{ asset('bundles/backend/images/avatar.jpg') }}
                                      {% endif %}
@@ -190,12 +190,12 @@
 
                         {% if not not app.user %}
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a href="{{ path('membership') }}">
-                                        <i class="fa fa-user"></i> {{ 'Membership' | trans({}, 'menu') }}
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
+                                {#<li>#}
+                                    {#<a href="{{ path('membership') }}">#}
+                                        {#<i class="fa fa-user"></i> {{ 'Membership' | trans({}, 'menu') }}#}
+                                    {#</a>#}
+                                {#</li>#}
+                                {#<li class="divider"></li>#}
                                 <li>
                                     <a href="{{ path('fos_user_security_logout') }}">
                                         <i class="fa fa-sign-out"></i> {{ 'layout.logout' | trans({}, 'FOSUserBundle') }}

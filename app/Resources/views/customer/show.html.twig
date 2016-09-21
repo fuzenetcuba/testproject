@@ -39,7 +39,7 @@
         {% if(entity.image is not null) %}
             <dt>{{ 'Photo' | trans({}, 'customerbackend') }}</dt>
             <dd>
-                <img style="max-width: 70%; height: auto;" src="{{ vich_uploader_asset(entity, 'imageFile') }}"
+                <img style="max-width: 70%; height: auto;" src="{{ asset('images/users/' ~ entity.image) }}"
                      alt="{{ entity.image }}"/>
             </dd>
             <div class="hr-line-dashed"></div>

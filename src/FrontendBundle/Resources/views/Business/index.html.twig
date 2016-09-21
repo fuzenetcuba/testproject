@@ -6,10 +6,10 @@
     {{- 'Mall' | trans({}, 'homepage') -}},
     {{- 'Deals' | trans({}, 'homepage') -}},
     {{- 'Buying' | trans({}, 'homepage') -}}
-    " />
+    "/>
     <meta name="description" content="
     {{- 'Go search the businesses located in Plaza Mariachi for a better shopping planning' | trans({}, 'business') -}}
-    " />
+    "/>
 {% endblock %}
 
 {% block title '- Businesses' %}
@@ -47,12 +47,12 @@
                                value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_CATEGORY') }}"
                                name="order" id="option1" autocomplete="off"> {{ 'CATEGORY' | trans({}, 'business') }}
                     </label>
-                    <label class="btn btn-white hide-filters-action">
-                        <input type="radio"
-                               value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS') }}"
-                               name="order" id="option2"
-                               autocomplete="off"> {{ 'RECENT DEALS' | trans({}, 'business') }}
-                    </label>
+                    {#<label class="btn btn-white hide-filters-action">#}
+                    {#<input type="radio"#}
+                    {#value="{{ constant('BackendBundle\\Model\\SortingMode::SORT_RECENT_DEALS') }}"#}
+                    {#name="order" id="option2"#}
+                    {#autocomplete="off"> {{ 'RECENT DEALS' | trans({}, 'business') }}#}
+                    {#</label>#}
                 </div>
             </div>
             <div class="btn-group btn-group-justified">
@@ -81,7 +81,8 @@
                     <div class="col-sm-12 text-center">
                         {% for business in col %}
                             <div class="col-sm-3 text-center">
-                                <a href="{{ path('business_details', {'slug' : business.slug}) }}" class="thumbnail">
+                                <a href="{{ path('business_details', {'slug' : business.slug}) }}"
+                                   class="thumbnail">
                                     <div class="container-image business-image">
                                         <img class="center-height img-responsive business-image"
                                              alt="{{ business.name }}"
@@ -89,7 +90,7 @@
                                     </div>
                                 </a>
                                 <h3>{{ business.name | upper }}</h3>
-                                <p>{{ business.description | slice(0, 150) }} ...</p>
+                                <p>{{ business.description | length > 60 ? business.description | slice(0, 60) ~ '...' : business.description }}</p>
                             </div>
                         {% endfor %}
                     </div>

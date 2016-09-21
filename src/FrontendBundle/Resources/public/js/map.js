@@ -1,6 +1,6 @@
 var map_blank = $('#map_blank').prop('value');
 var map_pin = $('#map_pin').prop('value');
-var extent = [0, 0, 1506, 2037];
+var extent = [0, 0, 1506, 1100];
 var projection = new ol.proj.Projection({
     code: 'xkcd',
     units: 'pixels',
@@ -22,6 +22,7 @@ var raster = new ol.layer.Image({
     })
 });
 
+var center = ol.extent.getCenter(extent);
 var map = new ol.Map({
     layers: [
         raster
@@ -29,10 +30,10 @@ var map = new ol.Map({
     target: 'map',
     view: new ol.View({
         projection: projection,
-        center: ol.extent.getCenter(extent),
-        zoom: 1,
+        center: [center[0], center[1] + 200],
+        zoom: 3,
         minZoom: 1,
-        maxZoom: 3,
+        maxZoom: 4
     })
 });
 
