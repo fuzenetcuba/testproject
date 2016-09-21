@@ -33,27 +33,23 @@ class MailsController extends Controller
                 if (EmailGroups::REGISTERED_USERS === $data['groupOfUsers']) {
 
                     // ignore the registered users email, they will be duplicated
-                    $groupUsers = array_column($this->get('customer.manager')->findEmailCustomers(), 'email');
                     $users = $data['subscribedUsers']->toArray();
                     $users = array_merge($users, $this->get('customer.manager')->findAll());
 
                 } elseif (EmailGroups::SUBSCRIBED_USERS === $data['groupOfUsers']) {
 
                     // ignore the subscribed users
-                    $groupUsers = array_column($this->get('subscription.manager')->findEmailSubscriptions(), 'email');
                     $users = $data['registeredUsers']->toArray();
                     $users = array_merge($users, $this->get('customer.manager')->findAllSubscribedUsers());
 
                 } elseif (EmailGroups::ALL_USERS === $data['groupOfUsers']) {
 
                     // ignore both
-                    $groupUsers = array_column($this->get('customer.manager')->findEmailCustomers(), 'email');
-                    $groupUsers = array_merge($groupUsers, array_column($this->get('subscription.manager')->findEmailSubscriptions(), 'email'));
-                    $users = [];
+                    $users = $this->get('customer.manager')->findAll();
+                    $users = array_merge($users, $this->get('customer.manager')->findAllSubscribedUsers());
                 } else {
 
                     // left blank, collect both fields and deduplicate
-                    $groupUsers = [];
                     $users = $data['registeredUsers']->toArray();
                     $users = array_merge($users, $data['subscribedUsers']->toArray());
 
@@ -77,18 +73,11 @@ class MailsController extends Controller
                     }, array_column($this->get('subscription.manager')->findSubscribedsInCategory($category), 'email'));
                 });
 
-                $selectGroupUsers = new ArrayCollection();
-
-                array_map(function ($email) use ($selectGroupUsers) {
-                    $selectGroupUsers->add($email);
-                }, $groupUsers);
-
                 $customEmails = new ArrayCollection(
                     array_unique(
                         array_merge(
                             $customEmails->toArray(),
-                            $categoryUsers->toArray(),
-                            $selectGroupUsers->toArray()
+                            $categoryUsers->toArray()
                         )
                     )
                 );
@@ -97,7 +86,7 @@ class MailsController extends Controller
                     'content' => $data['message'],
                     'deals' => $data['deals']
                 ]);
-                
+
 //                echo $content; die ;
 
                 $this->get('customer.manager')->sendEmail(

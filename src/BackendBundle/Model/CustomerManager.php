@@ -178,7 +178,7 @@ class CustomerManager implements ManagerInterface
         });
 
         $emailUsers = new ArrayCollection(
-            array_merge($emailUsers->toArray(), $customEmails->toArray())
+            array_unique(array_merge($emailUsers->toArray(), $customEmails->toArray()))
         );
 
 //        echo var_dump($emailUsers->toArray()); die;
