@@ -13,8 +13,8 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ path('frontend_homepage') }}">
-                    <img src="{{ asset('bundles/frontend/img/plaza_mariachi.png') }}"
-                         alt="Plaza Mariachi Music City"/>
+                    <img src="{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteLogo' }))) }}"
+                         alt="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) }}"/>
                 </a>
 
                 {#<a class="navbar-brand" href="#"><i id="logged-in-user">user</i></a>#}
@@ -52,7 +52,9 @@
                         {% if not app.user %}
                             <div class="dropdown-menu dropdown-header">
                                 <div class="ibox-heading">
-                                    <h2 class="text-center">Plaza Mariachi</h2>
+                                    <h2 class="text-center">
+                                        {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteName' })) }}
+                                    </h2>
                                 </div>
                                 <div class="ibox-content">
                                     <form class="m-t" role="form" action="{{ path('fos_user_security_check') }}"

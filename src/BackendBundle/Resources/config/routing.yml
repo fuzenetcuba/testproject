@@ -1,3 +1,7 @@
+backend_settings:
+    resource: "@BackendBundle/Resources/config/routing/settings.yml"
+    prefix:   /settings
+
 backend_mails:
     resource: "@BackendBundle/Resources/config/routing/mails.yml"
     prefix:   /mails

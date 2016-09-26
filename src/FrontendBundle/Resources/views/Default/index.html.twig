@@ -8,8 +8,17 @@
     {{- 'Buying' | trans({}, 'homepage') -}}
     "/>
     <meta name="description" content="
-    {{- 'Plaza Mariachi is located only 10 minutes from downtown Nashville, TN with easy access to 3 major interstates. It is the largest shopping venue focused on the Hispanic culture and centered around a shopping experience that the whole family can enjoy' | trans({}, 'homepage') -}}
+    {# retrieving settings values #}
+    {{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'textAbout' })) -}}
     "/>
+{% endblock %}
+
+{% block inline_css %}
+    <style type="text/css" rel="stylesheet">
+        .landing-page .header-back.one {
+            background: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBanner' }))) }}') 50% 100% no-repeat;
+        }
+    </style>
 {% endblock %}
 
 {% block navbar %}
@@ -26,7 +35,7 @@
             <div class="item active animated fadeIn">
                 <div class="container">
                     <div class="carousel-caption blank">
-                        <h1>{{ 'A CULTURAL EXPERIENCE' | trans({}, 'homepage') }}</h1>
+                        <h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteSlogan' })) | upper }}</h1>
                         <p>
                             <a class="btn btn-lg btn-amber" href="{{ path("fos_user_registration_register") }}"
                                role="button">{{ 'BECOME A MEMBER' | trans({}, 'homepage') }}</a>
@@ -46,7 +55,8 @@
     {#<div class="row">#}
     {#<div class="col-lg-12 text-center">#}
     {#<div class="section-line pink-line"></div>#}
-    {#<h1>{{ "Today's Hours Of Operation" | trans({}, 'homepage') }}</h1>#}
+    {#<h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerTodaysHoursOperation' })) }}</h1>#}
+    {#<p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderTodaysHoursOperation' })) }}</p>#}
     {#</div>#}
     {#</div>#}
 
@@ -64,9 +74,9 @@
     {#<div class="row m-b">#}
     {#<div class="col-lg-12 text-center">#}
     {#<div class="section-line amber-line"></div>#}
-    {#<h1>{{ 'Top Deals of the Day' |trans({}, 'homepage') }}</h1>#}
+    {#<h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerTopDealsOfDay' })) }}</h1>#}
 
-    {#<p>Find and win with our best deals of your interests</p>#}
+    {#<p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderTopDealsOfDay' })) }}</p>#}
     {#</div>#}
     {#</div>#}
 
@@ -99,14 +109,14 @@
     {#</section>#}
 
 
-    <section id="features" class="gray-bg section-spaces-line top-deals">
+    <section id="features" class="gray-bg section-spaces-line">
         <div class="container">
             <div class="row m-b">
                 <div class="col-lg-12 text-center">
                     <div class="section-line amber-line"></div>
-                    <h1>{{ 'Featured Brands' |trans({}, 'homepage') }}</h1>
+                    <h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerFeatureBrands' })) }}</h1>
 
-                    {#<p>Find and win with our best deals of your interests</p>#}
+                    <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderFeatureBrands' })) }}</p>
                 </div>
             </div>
 
@@ -141,7 +151,8 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="section-line blue-line"></div>
-                    <h2>{{ 'BECOME A MEMBER TODAY AND GET DEALS FOR YOUR FAVORITE PRODUCTS AND BRANDS' | trans({}, 'homepage') }}</h2>
+                    <h2>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerBecomeMemberToday' })) }}</h2>
+                    <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderBecomeMemberToday' })) }}</p>
 
                     <a href="{{ path('fos_user_registration_register') }}"
                        class="btn btn-lg btn-xl btn-blue">{{ 'SIGNUP' | trans({}, 'homepage') }}</a>

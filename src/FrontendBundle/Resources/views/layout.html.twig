@@ -18,10 +18,17 @@
 
     <!-- Script for Google Analitics -->
     <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
         ga('create', 'UA-84022340-1', 'auto');
         ga('send', 'pageview');
@@ -104,25 +111,37 @@
                 <div class="row m-b-lg">
                     <div class="col-lg-12 text-center">
                         <div class="section-line green-line"></div>
-                        <h1>{{ 'Contact Us' | trans({}, 'homepage') }}</h1>
+                        <h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerContactUs' })) }}</h1>
 
-                        <p>{{ 'Visit us for a cultural experience like none other' | trans({}, 'homepage') }}</p>
+                        <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderContactUs' })) }}</p>
                     </div>
                 </div>
                 <div class="row m-b-lg">
                     <div class="col-sm-4 col-sm-offset-2">
                         <div class="footer-left">
                             <address>
-                                <strong><span class="green">PLAZA MARIACHI <i><sub>Music
-                                                City</sub></i></span></strong><br/>
-                                3955 Nolensville Pk, Nashville TN 37211 USA <br/>
-                                {{ 'Phone' | trans({}, 'homepage') }}.: 615-319-6949<br/>
-                                {#{{ 'Fax' | trans({}, 'homepage') }}.: 1-800-0000-0000<br/>#}
-                                E-mail: <a class="green-link" href="mailto:cristina@plazamariachi.com">cristina@plazamariachi.com</a><br/>
+                                <strong>
+                                    <span class="green">
+                                        {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteName' })) | upper }}
+                                        <i><sub>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteLastname' })) }}</sub></i>
+                                    </span>
+                                </strong>
+                                <br/>
+                                {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteAddress' })) }}
+                                <br/>
+                                {{ 'Phone' | trans({}, 'homepage') }}
+                                .: {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websitePhone' })) }}
+                                <br/>
+                                {#{{ 'Fax' | trans({}, 'homepage') }}.: {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteFax' })) }}<br/>#}
+                                E-mail:
+                                <a class="green-link"
+                                   href="mailto:{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteEmail' })) }}">
+                                    {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteEmail' })) }}
+                                </a><br/>
                             </address>
                             <br/>
                             {#<p id="hours-operation">
-                                <strong><span class="green">{{ "Today's Hours Of Operation" | trans({}, 'homepage') }}
+                                <strong><span class="green">{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerTodaysHoursOperation' })) }}
                                         : </span></strong>
                                 <br/>
                                 <small>
@@ -151,7 +170,8 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <a href="{{ path('mall_map', { 'slug' : 'all' }) }}" class="btn btn-green">{{ 'MALL MAP' | trans({}, 'homepage') }}</a>
+                        <a href="{{ path('mall_map', { 'slug' : 'all' }) }}"
+                           class="btn btn-green">{{ 'MALL MAP' | trans({}, 'homepage') }}</a>
                     </div>
                 </div>
                 <div class="row">
@@ -161,31 +181,41 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <a href="#"
-                           target="_blank"
-                           class="btn btn-circle-muted btn-outline btn-social-icon btn-twitter text-muted m-l m-r">
-                            <span class="fa fa-twitter"></span>
-                        </a>
-                        <a href="#"
-                           target="_blank"
-                           class="btn btn-circle-muted btn-outline btn-social-icon btn-google text-muted m-l m-r">
-                            <span class="fa fa-google"></span>
-                        </a>
-                        <a href="https://www.facebook.com/Plaza-Mariachi-Music-City-752269578141554"
-                           target="_blank"
-                           class="btn btn-circle-muted btn-outline btn-social-icon btn-facebook text-muted m-l m-r">
-                            <span class="fa fa-facebook"></span>
-                        </a>
-                        <a href="#"
-                           target="_blank"
-                           class="btn btn-circle-muted btn-outline btn-social-icon btn-flickr text-muted m-l m-r">
-                            <span class="fa fa-flickr"></span>
-                        </a>
-                        <a href="#"
-                           target="_blank"
-                           class="btn btn-circle-muted btn-outline btn-social-icon btn-instagram text-muted m-l m-r">
-                            <span class="fa fa-instagram"></span>
-                        </a>
+                        {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlTwitter' })) is not empty %}
+                            <a href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlTwitter' })) }}"
+                               target="_blank"
+                               class="btn btn-circle-muted btn-outline btn-social-icon btn-twitter text-muted m-l m-r">
+                                <span class="fa fa-twitter"></span>
+                            </a>
+                        {% endif %}
+                        {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlGoogle' })) is not empty %}
+                            <a href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlGoogle' })) }}"
+                               target="_blank"
+                               class="btn btn-circle-muted btn-outline btn-social-icon btn-google text-muted m-l m-r">
+                                <span class="fa fa-google"></span>
+                            </a>
+                        {% endif %}
+                        {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlFacebook' })) is not empty %}
+                            <a href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlFacebook' })) }}"
+                               target="_blank"
+                               class="btn btn-circle-muted btn-outline btn-social-icon btn-facebook text-muted m-l m-r">
+                                <span class="fa fa-facebook"></span>
+                            </a>
+                        {% endif %}
+                        {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlFlickr' })) is not empty %}
+                            <a href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlFlickr' })) }}"
+                               target="_blank"
+                               class="btn btn-circle-muted btn-outline btn-social-icon btn-flickr text-muted m-l m-r">
+                                <span class="fa fa-flickr"></span>
+                            </a>
+                        {% endif %}
+                        {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlInstagram' })) is not empty %}
+                            <a href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlInstagram' })) }}"
+                               target="_blank"
+                               class="btn btn-circle-muted btn-outline btn-social-icon btn-instagram text-muted m-l m-r">
+                                <span class="fa fa-instagram"></span>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -194,7 +224,8 @@
         <section id="copyright" class="dark-brown-section hidden-print">
             <div class="row">
                 <div class="col-lg-12 text-center m-t m-b-xs">
-                    <p>&copy; 2016 Fuzenet Marketing LLC<br/></p>
+                    <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteCopyright' })) | raw }}
+                        <br/></p>
                 </div>
             </div>
         </section>

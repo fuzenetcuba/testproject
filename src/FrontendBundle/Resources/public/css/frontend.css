@@ -320,7 +320,7 @@ body.landing-page {
 }
 
 .landing-page .header-back.one {
-    background: url('../img/header_one.jpg') 50% 100% no-repeat;
+    /*background: url('../img/header_one.jpg') 50% 100% no-repeat;*/
 }
 
 .landing-page .header-back.two {

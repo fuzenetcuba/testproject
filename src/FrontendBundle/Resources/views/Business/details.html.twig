@@ -98,52 +98,52 @@
         </div>
     </section>
 
-    {% if business.deals | length > 0 %}
-        <section class="section-spaces-line gray-bg">
-            <div class="row business-deals">
-                <div class="container">
-                    <div class="row m-b-lg">
-                        <div class="col-lg-12 text-center">
-                            <div class="section-line amber-line"></div>
-                            <h1>{{ 'Active Deals' | trans({}, 'business') }}</h1>
+    {#{% if business.deals | length > 0 %}#}
+        {#<section class="section-spaces-line gray-bg">#}
+            {#<div class="row business-deals">#}
+                {#<div class="container">#}
+                    {#<div class="row m-b-lg">#}
+                        {#<div class="col-lg-12 text-center">#}
+                            {#<div class="section-line amber-line"></div>#}
+                            {#<h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerBusinessActiveDeals' })) }}</h1>#}
 
-                            {#<p>Find and win with our best deals of your interests</p>#}
-                        </div>
-                    </div>
+                            {#<p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderBusinessActiveDeals' })) }}</p>#}
+                        {#</div>#}
+                    {#</div>#}
 
-                    <div class="carousel carousel-adjusted slide" id="myCarousel">
-                        <div class="carousel-inner">
-                            {% for deal in business.deals %}
-                                {% if not deal.isExpired %}
-                                    <div class="item {% if loop.first %}active{% endif %} ">
-                                        <div class="col-sm-3 text-center">
-                                            <h3>{{ deal.name | upper }}</h3>
-                                            <p>AT {{ deal.business.name | upper }}</p>
-                                            <p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>
-                                            <div class="container-image">
-                                                <img class="center-height"
-                                                     src="{{ asset('images/deals/' ~ deal.image) }} "/>
-                                            </div>
-                                            <p>
-                                                <a class="btn btn-amber"
-                                                   href="{{ path('deal_details', {'slug' : deal.slug}) }}"
-                                                   role="button">
-                                                    {{ 'View Deal' | trans({}, 'business') }}
-                                                </a>
-                                            </p>
-                                            {{ loop.last ? '' : '<p class="visible-xs m-b-xl"></p>' }}
-                                        </div>
-                                    </div>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i
-                                    class="glyphicon glyphicon-chevron-left"></i></a>
-                        <a class="right carousel-control" href="#myCarousel" data-slide="next"><i
-                                    class="glyphicon glyphicon-chevron-right"></i></a>
-                    </div>
-                </div>
-            </div>
+                    {#<div class="carousel carousel-adjusted slide" id="myCarousel">#}
+                        {#<div class="carousel-inner">#}
+                            {#{% for deal in business.deals %}#}
+                                {#{% if not deal.isExpired %}#}
+                                    {#<div class="item {% if loop.first %}active{% endif %} ">#}
+                                        {#<div class="col-sm-3 text-center">#}
+                                            {#<h3>{{ deal.name | upper }}</h3>#}
+                                            {#<p>AT {{ deal.business.name | upper }}</p>#}
+                                            {#<p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>#}
+                                            {#<div class="container-image">#}
+                                                {#<img class="center-height"#}
+                                                     {#src="{{ asset('images/deals/' ~ deal.image) }} "/>#}
+                                            {#</div>#}
+                                            {#<p>#}
+                                                {#<a class="btn btn-amber"#}
+                                                   {#href="{{ path('deal_details', {'slug' : deal.slug}) }}"#}
+                                                   {#role="button">#}
+                                                    {#{{ 'View Deal' | trans({}, 'business') }}#}
+                                                {#</a>#}
+                                            {#</p>#}
+                                            {#{{ loop.last ? '' : '<p class="visible-xs m-b-xl"></p>' }}#}
+                                        {#</div>#}
+                                    {#</div>#}
+                                {#{% endif %}#}
+                            {#{% endfor %}#}
+                        {#</div>#}
+                        {#<a class="left carousel-control" href="#myCarousel" data-slide="prev"><i#}
+                                    {#class="glyphicon glyphicon-chevron-left"></i></a>#}
+                        {#<a class="right carousel-control" href="#myCarousel" data-slide="next"><i#}
+                                    {#class="glyphicon glyphicon-chevron-right"></i></a>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
 
             {#<div class="row">#}
             {#<h2>ACTIVE DEALS</h2>#}
@@ -159,8 +159,8 @@
             {#</div>#}
             {#{% endfor%}#}
             {#</div>#}
-        </section>
-    {% endif %}
+        {#</section>#}
+    {#{% endif %}#}
 
     {% if related | length > 0 %}
         <section class="section-spaces-line">
@@ -169,9 +169,9 @@
                     <div class="row m-b-lg">
                         <div class="col-lg-12 text-center">
                             <div class="section-line pink-line"></div>
-                            <h1>{{ 'Related Businesses' | trans({}, 'business') }}</h1>
+                            <h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerBusinessRelatedBusinesses' })) }}</h1>
 
-                            {#<p>Find and win with our best deals of your interests</p>#}
+                            <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderBusinessRelatedBusinesses' })) }}</p>
                         </div>
                     </div>
                     <h2></h2>
@@ -218,9 +218,9 @@
                 <div class="row m-b-lg">
                     <div class="col-lg-12 text-center">
                         <div class="section-line pink-line"></div>
-                        <h1>{{ 'Stay close' | trans({}, 'business') }}</h1>
+                        <h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerStayClose' })) }}</h1>
 
-                        <p>{{ 'Keep up to date with our mobile apps' | trans({}, 'business') }}</p>
+                        <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderStayClose' })) }}</p>
                     </div>
                 </div>
 
