@@ -2,12 +2,12 @@
 
 namespace FrontendBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;//------------
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use BackendBundle\Entity\Subscription;
 use BackendBundle\Form\SubscriptionType;
+use FOS\UserBundle\Event\FormEvent;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Subscription controller.
@@ -15,6 +15,7 @@ use BackendBundle\Form\SubscriptionType;
  */
 class SubscriptionController extends Controller
 {
+    const USER_SUBSCRIBED = 'user.subscribed';
     /**
      * Displays a form to create a new Subscription entity.
      *
@@ -26,6 +27,9 @@ class SubscriptionController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // notify a custom event to handle a new subscribed user
+            $this->get('event_dispatcher')->dispatch(self::USER_SUBSCRIBED, new FormEvent($form, $request));
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
