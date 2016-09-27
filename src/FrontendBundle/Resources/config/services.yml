@@ -23,3 +23,15 @@ services:
         arguments: [@fos_user.user_manager, @reward.repository]
         tags:
             - { name: kernel.event_subscriber }
+
+    user.registered.listener:
+        class: FrontendBundle\Listener\UserRegisteredListener
+        arguments: [@mailer, @templating, %customer.email.from%, %customer.email.register.subject%, %customer.email.register.message%]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    user.subscribed.listener:
+        class: FrontendBundle\Listener\UserSubscribedListener
+        arguments: [@mailer, @templating, %customer.email.from%, %customer.email.subscribe.subject%, %cutomer.email.subscribe.message%]
+        tags:
+            - { name: kernel.event_subscriber }

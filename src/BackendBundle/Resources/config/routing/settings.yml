@@ -1,0 +1,23 @@
+settings:
+    path:     /
+    defaults: { _controller: "BackendBundle:Settings:index" }
+    methods:  GET
+
+settings_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:Settings:show" }
+    methods:  GET
+
+settings_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:Settings:new" }
+    methods:  [GET, POST]
+
+settings_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:Settings:edit" }
+    methods:  [GET, POST, PUT]
+
+settings_get:
+    path:     /setting/{property}
+    defaults: { _controller: "BackendBundle:Settings:getSettings" }

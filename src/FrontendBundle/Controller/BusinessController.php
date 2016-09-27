@@ -59,21 +59,4 @@ class BusinessController extends Controller
         ]);
     }
 
-    /**
-     * Lists all Business entities for Map Positions.
-     *
-     */
-    public function mapAction($slug)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        if ($slug === "all") {
-            $entities = $em->getRepository("BackendBundle:Business")->findAll();
-        } else {
-            $entities = $em->getRepository("BackendBundle:Business")->findBySlug($slug);
-        }
-        return $this->render('@Frontend/Business/map.html.twig', array(
-            'entities' => $entities,
-        ));
-    }
 }

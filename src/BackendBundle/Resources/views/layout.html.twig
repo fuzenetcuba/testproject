@@ -142,6 +142,11 @@
                                     class="nav-label">{{ 'Users' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
+                    <li class="{% block active_settings %}{% endblock %}">
+                        <a href="{{ path('settings') }}"><i class="fa fa-cog"></i> <span
+                                    class="nav-label">{{ 'Settings' | trans({}, 'generalbackend') }}</span></a>
+                    </li>
+
                     <li class="special_link">
                         <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> <span
                                     class="nav-label">{{ 'Logout' | trans({}, 'generalbackend') }}</span></a>

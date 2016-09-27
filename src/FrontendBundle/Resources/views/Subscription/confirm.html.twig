@@ -8,7 +8,7 @@
             <div class="row m-b">
                 <div class="col-lg-12 text-center">
                     <div class="section-line amber-line"></div>
-                    <h1>{{ 'Subscribe for new deals' | trans({}, 'subscription') }}</h1>
+                    <h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerSubscribeForDeals' })) }}</h1>
                 </div>
             </div>
             <div class="col-sm-8 col-sm-offset-2 text-center">
@@ -29,7 +29,7 @@
 
                 <hr class="hr-line-solid" />
                 <h2 class="text-center ">
-                    {{ 'BECOME A MEMBER TODAY AND GET DEALS FOR YOUR FAVORITE PRODUCTS AND BRANDS' | trans({}, 'homepage') }}
+                    {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerBecomeMemberToday' })) }}
                 </h2>
                 <p class="m-t-lg m-b-lg">
                     <a class="btn btn-blue" href="{{ path('fos_user_registration_register') }}">{{ 'BECOME A MEMBER' | trans({}, 'subscription') }}</a>
