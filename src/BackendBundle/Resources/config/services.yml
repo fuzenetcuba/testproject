@@ -18,6 +18,10 @@ services:
     customer.manager:
         class: BackendBundle\Model\CustomerManager
         arguments: ["@doctrine.orm.entity_manager", "@mailer"]
+
+    subscription.manager:
+        class: BackendBundle\Model\SubscriptionManager
+        arguments: ["@doctrine.orm.entity_manager"]
         
     backendbundle_user.registration.form.type:
         class: BackendBundle\Form\registrationType

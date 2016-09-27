@@ -3,32 +3,25 @@
 namespace BackendBundle\Model;
 
 use BackendBundle\Entity\Category;
-use BackendBundle\Entity\SystemUser;
-use Doctrine\Common\Collections\ArrayCollection;
+use BackendBundle\Entity\Subscription;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Manager for the Customer entity
+ * Manager for the Subscription entity
  *
  * @package \BackendBundle\Model
  */
-class CustomerManager implements ManagerInterface
+class SubscriptionManager implements ManagerInterface
 {
     /**
      * @var \Doctrine\ORM\EntityManager
      */
     protected $em;
 
-    /**
-     * @var \Swift_Mailer
-     */
-    private $mailer;
-
-    public function __construct(EntityManager $entityManager, \Swift_Mailer $mailer)
+    public function __construct(EntityManager $entityManager)
     {
         $this->em = $entityManager;
-        $this->mailer = $mailer;
     }
 
     /**
@@ -40,10 +33,8 @@ class CustomerManager implements ManagerInterface
     {
         return $this->em
             ->createQueryBuilder('q')
-            ->select('f')
-            ->from('BackendBundle:SystemUser', 'f')
-            ->where('f.roles LIKE :find')
-            ->setParameter('find', '%ROLE_CUSTOMER%');
+            ->select('s')
+            ->from('BackendBundle:Subscription', 's');
     }
 
     /**
@@ -55,22 +46,10 @@ class CustomerManager implements ManagerInterface
     {
         return $this->em
             ->createQueryBuilder('q')
-            ->select('f')
-            ->from('BackendBundle:SystemUser', 'f')
-            ->where('f.roles LIKE :find')
-            ->setParameter('find', '%ROLE_CUSTOMER%')
-            ->getQuery()
-            ->getResult();
-    }
-
-    public function findAllSubscribedUsers()
-    {
-        return $this->em->createQueryBuilder('q')
             ->select('s')
             ->from('BackendBundle:Subscription', 's')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
     /**
@@ -80,10 +59,9 @@ class CustomerManager implements ManagerInterface
      */
     public function create()
     {
-        $customer = new SystemUser();
-        $customer->addRole('ROLE_CUSTOMER');
+        $subscription = new Subscription();
 
-        return $customer;
+        return $subscription;
     }
 
     /**
@@ -97,11 +75,11 @@ class CustomerManager implements ManagerInterface
     public function find($id)
     {
         $instance = $this->em
-            ->getRepository('BackendBundle:SystemUser')
+            ->getRepository('BackendBundle:Subscription')
             ->find($id);
 
         if (!$instance) {
-            throw new NotFoundHttpException(sprintf('The customer with id "%s" could not be found', $id));
+            throw new NotFoundHttpException(sprintf('The subscription with id "%s" could not be found', $id));
         }
     }
 
@@ -144,52 +122,33 @@ class CustomerManager implements ManagerInterface
      *
      * @return mixed
      */
-    public function findEmailCustomers()
+    public function findEmailSubscriptions()
     {
         return $this->em
             ->createQueryBuilder('q')
-            ->select('f.email')
-            ->from('BackendBundle:SystemUser', 'f')
-            ->where('f.roles LIKE :find')
-            ->setParameter('find', '%ROLE_CUSTOMER%')
+            ->select('s.email')
+            ->from('BackendBundle:Subscription', 's')
             ->getQuery()
             ->getResult();
     }
 
     /**
-     * Return all model objects
+     * Returns the users that are subscribed to a given category
      *
-     * @return mixed
+     * @param \BackendBundle\Entity\Category $category
+     *
+     * @return array
      */
-    public function findEmailRegistered()
+    public function findSubscribedsInCategory(Category $category)
     {
-        return $this->em
-            ->createQueryBuilder('q')
-            ->select('f.email')
-            ->from('BackendBundle:SystemUser', 'f')
+        return $this->em->createQueryBuilder('u')
+            ->select('s.email')
+            ->from('BackendBundle:Subscription', 's')
+            ->leftJoin('s.categories', 'c')
+            ->where('c.id = :id')
+            ->setParameter('id', $category->getId())
             ->getQuery()
             ->getResult();
     }
 
-    public function sendEmail(ArrayCollection $users, ArrayCollection $customEmails, $from, $subject, $content)
-    {
-        $emailUsers = $users->map(function ($user) {
-            return $user->getEmail();
-        });
-
-        $emailUsers = new ArrayCollection(
-            array_unique(array_merge($emailUsers->toArray(), $customEmails->toArray()))
-        );
-
-//        echo var_dump($emailUsers->toArray()); die;
-
-        $message = \Swift_Message::newInstance()
-            ->setSubject($subject)
-            ->setFrom($from)
-            ->setTo($emailUsers->toArray())
-            ->setBody($content, 'text/html')
-        ;
-
-        $this->mailer->send($message);
-    }
 }

@@ -70,28 +70,42 @@ class OAuthUserProvider extends BaseClass
         $service = $response->getResourceOwner()->getName();
         $property = $service . 'Id';
 
+        // asking if the user is registered as facebook user
         $user = $this->userManager->findUserBy(array($property => $username));
 
         //when the user is registrating
         if (null === $user) {
+
             $setter       = 'set' . ucfirst($service);
             $setter_id    = $setter . 'Id';
             $setter_token = $setter . 'AccessToken';
 
-            // create new user here
-            $user = $this->userManager->createUser();
-            $user->$setter_id($username);
-            $user->$setter_token($response->getAccessToken());
+            // asking if the user is registered as system user
+            $user = $this->userManager->findUserBy(array('email' => $response->getEmail()));
 
-            //I have set all requested data with the user's username
-            //modify here with relevant data
-            $emailPart = explode('@', $response->getEmail());
-            $user->setUsername($emailPart[0]);
-            $user->setEmail($response->getEmail());
-            $user->setPassword($username);
-            $user->setPlainPassword($username);
-            $user->setEnabled(true);
-            $user->addRole("ROLE_CUSTOMER");
+            if (null !== $user) {
+
+                // update system user with facebook data
+                $user->$setter_id($username);
+                $user->$setter_token($response->getAccessToken());
+
+            } else {
+
+                // create new user here
+                $user = $this->userManager->createUser();
+                $user->$setter_id($username);
+                $user->$setter_token($response->getAccessToken());
+
+                //I have set all requested data with the user's username
+                //modify here with relevant data
+                $emailPart = explode('@', $response->getEmail());
+                $user->setUsername($emailPart[0]);
+                $user->setEmail($response->getEmail());
+                $user->setPassword($username);
+                $user->setPlainPassword($username);
+                $user->setEnabled(true);
+                $user->addRole("ROLE_CUSTOMER");
+            }
 
             // adding social data
             $fullName = explode(' ', $response->getNickname(), 2);

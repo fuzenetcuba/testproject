@@ -4,6 +4,7 @@ namespace BackendBundle\Form;
 
 use BackendBundle\Form\DataTransformer\ArrayToDelimitedStringTransformer;
 use BackendBundle\Model\EmailGroups;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -28,6 +29,14 @@ class MailsType extends AbstractType
                 'label' => 'Registered users',
                 'required' => false,
                 'class' => 'BackendBundle\Entity\SystemUser',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er
+                        ->createQueryBuilder('q')
+                        ->select('f')
+                        ->from('BackendBundle:SystemUser', 'f')
+                        ->where('f.roles LIKE :find')
+                        ->setParameter('find', '%ROLE_CUSTOMER%');
+                },
                 'choice_label' => 'email',
                 'multiple' => true,
                 'choices_as_values' => true

@@ -1,0 +1,752 @@
+{% extends 'BackendBundle::layout.html.twig' %}
+
+{% block custom_css %}
+    {{ parent() }}
+
+{% endblock %}
+
+        {% block active_settings %}active{% endblock %}
+
+        {% block page_heading_title %}
+            <a class="btn btn-default navbar-btn" href="{{ path('settings') }}"
+               style="margin-bottom: 7px;">
+                <span class="glyphicon glyphicon-chevron-up"></span>
+            </a>
+            {{ 'Settings edition' | trans({}, 'settingsbackend') }}
+        {% endblock %}
+
+        {% block page_content %}
+
+            {{ form_start(edit_form, {'attr': {'class':'form-horizontal'}}) }}
+
+            <div class="tabs-container">
+                <ul class="nav nav-tabs">
+                    <li class="{% if app.request.get('_locale') == 'en' %}active{% endif %}"><a
+                                href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'en'})) }}"><i
+                                    class="flag flag-icon flag-icon-us"></i> ENGLISH</a></li>
+                    <li class="{% if app.request.get('_locale') == 'es' %}active{% endif %}"><a
+                                href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'es'})) }}"><i
+                                    class="flag flag-icon flag-icon-es"></i> SPANISH</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane active">
+                        <div class="panel-body">
+
+                            <div class="form-group{% if(edit_form.websiteBrand.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteBrand) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteBrand, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteBrand.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteBrand.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websiteName.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteName) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteName, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteName.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteName.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websiteLastname.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteLastname) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteLastname, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteLastname.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteLastname.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websiteSlogan.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteSlogan) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteSlogan, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteSlogan.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteSlogan.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websiteCopyright.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteCopyright) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteCopyright, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteCopyright.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteCopyright.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websiteAddress.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteAddress) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteAddress, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteAddress.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteAddress.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websitePhone.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websitePhone) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websitePhone, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websitePhone.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websitePhone.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websiteFax.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteFax) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteFax, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteFax.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteFax.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websiteEmail.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteEmail) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteEmail, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteEmail.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteEmail.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websiteUrlTwitter.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteUrlTwitter) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteUrlTwitter, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteUrlTwitter.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteUrlTwitter.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websiteUrlGoogle.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteUrlGoogle) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteUrlGoogle, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteUrlGoogle.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteUrlGoogle.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websiteUrlFacebook.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteUrlFacebook) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteUrlFacebook, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteUrlFacebook.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteUrlFacebook.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websiteUrlFlickr.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteUrlFlickr) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteUrlFlickr, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteUrlFlickr.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteUrlFlickr.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websiteUrlInstagram.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteUrlInstagram) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteUrlInstagram, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteUrlInstagram.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteUrlInstagram.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websiteLogoImage.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteLogoImage) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteLogoImage, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteLogoImage.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteLogoImage.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websiteBannerImage.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteBannerImage) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteBannerImage, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteBannerImage.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteBannerImage.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.headerFeatureBrands.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.headerFeatureBrands) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.headerFeatureBrands, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.headerFeatureBrands.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.headerFeatureBrands.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.subheaderFeatureBrands.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.subheaderFeatureBrands) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.subheaderFeatureBrands, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.subheaderFeatureBrands.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.subheaderFeatureBrands.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.headerBecomeMemberToday.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.headerBecomeMemberToday) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.headerBecomeMemberToday, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.headerBecomeMemberToday.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.headerBecomeMemberToday.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.subheaderBecomeMemberToday.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.subheaderBecomeMemberToday) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.subheaderBecomeMemberToday, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.subheaderBecomeMemberToday.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.subheaderBecomeMemberToday.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.headerTodaysHoursOperation.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.headerTodaysHoursOperation) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.headerTodaysHoursOperation, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.headerTodaysHoursOperation.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.headerTodaysHoursOperation.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.subheaderTodaysHoursOperation.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.subheaderTodaysHoursOperation) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.subheaderTodaysHoursOperation, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.subheaderTodaysHoursOperation.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.subheaderTodaysHoursOperation.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.headerTopDealsOfDay.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.headerTopDealsOfDay) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.headerTopDealsOfDay, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.headerTopDealsOfDay.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.headerTopDealsOfDay.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.subheaderTopDealsOfDay.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.subheaderTopDealsOfDay) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.subheaderTopDealsOfDay, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.subheaderTopDealsOfDay.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.subheaderTopDealsOfDay.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.headerContactUs.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.headerContactUs) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.headerContactUs, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.headerContactUs.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.headerContactUs.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.subheaderContactUs.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.subheaderContactUs) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.subheaderContactUs, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.subheaderContactUs.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.subheaderContactUs.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.headerBusinessActiveDeals.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.headerBusinessActiveDeals) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.headerBusinessActiveDeals, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.headerBusinessActiveDeals.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.headerBusinessActiveDeals.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.subheaderBusinessActiveDeals.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.subheaderBusinessActiveDeals) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.subheaderBusinessActiveDeals, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.subheaderBusinessActiveDeals.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.subheaderBusinessActiveDeals.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.headerBusinessRelatedBusinesses.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.headerBusinessRelatedBusinesses) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.headerBusinessRelatedBusinesses, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.headerBusinessRelatedBusinesses.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.headerBusinessRelatedBusinesses.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.subheaderBusinessRelatedBusinesses.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.subheaderBusinessRelatedBusinesses) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.subheaderBusinessRelatedBusinesses, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.subheaderBusinessRelatedBusinesses.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.subheaderBusinessRelatedBusinesses.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.headerStayClose.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.headerStayClose) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.headerStayClose, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.headerStayClose.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.headerStayClose.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.subheaderStayClose.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.subheaderStayClose) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.subheaderStayClose, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.subheaderStayClose.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.subheaderStayClose.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.headerLogin.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.headerLogin) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.headerLogin, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.headerLogin.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.headerLogin.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.textLogin.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.textLogin) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.textLogin, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.textLogin.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.textLogin.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.headerAbout.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.headerAbout) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.headerAbout, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.headerAbout.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.headerAbout.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.subheaderAbout.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.subheaderAbout) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.subheaderAbout, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.subheaderAbout.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.subheaderAbout.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.textAbout.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.textAbout) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.textAbout, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.textAbout.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.textAbout.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.headerSubscribeForDeals.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.headerSubscribeForDeals) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.headerSubscribeForDeals, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.headerSubscribeForDeals.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.headerSubscribeForDeals.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.subheaderSubscribeForDeals.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.subheaderSubscribeForDeals) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.subheaderSubscribeForDeals, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.subheaderSubscribeForDeals.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.subheaderSubscribeForDeals.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.textSubscribeForDeals.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.textSubscribeForDeals) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.textSubscribeForDeals, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.textSubscribeForDeals.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.textSubscribeForDeals.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2 text-right">
+                    <a class="btn btn-success" href="{{ path('settings') }}">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        {{ 'Back to the list' | trans({}, 'generalbackend') }}
+                    </a>
+                </div>
+                <div class="col-md-10">
+
+                    {{ form_widget(edit_form.submit, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
+
+                    {{ form(edit_form) }}
+                </div>
+            </div>
+
+            {{ form_end(edit_form) }}
+
+        {% endblock %}
+
+    {% block custom_js %}
+        {{ parent() }}
+
+    {% endblock %}
+
+    {% block inline_js %}
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+
+
+            });
+
+        </script>
+    {% endblock %}

@@ -1,0 +1,228 @@
+{% extends 'BackendBundle::layout.html.twig' %}{% block active_settings %}active{% endblock %}{% block page_heading_title %}
+    <a class="btn btn-default navbar-btn" href="{{ path('settings') }}"
+       style="margin-bottom: 7px;">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+    {{ 'Settings data' | trans({}, 'settingsbackend') }}
+{% endblock %}{% block page_content %}
+    <div class="form-group">
+        <div class="col-md-2 text-right">
+            <a class="btn btn-success" href="{{ path('settings') }}">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                {{ 'Back to the list' | trans({}, 'generalbackend') }}
+            </a>
+        </div>
+        <div class="col-md-10">
+
+            <a class="btn btn-primary"
+               href="{{ path('settings_edit', { 'id': entity.id }) }}">
+                <span class="fa fa-pencil"></span>
+                {{ 'Edit' | trans({}, 'generalbackend') }}
+            </a>
+
+        </div>
+    </div>
+    <br />
+    <br />
+    <dl class="dl-horizontal">
+        <tbody>
+        <dt>Id</dt>
+        <dd>{{ entity.id }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Brand' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.websiteBrand }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Website Name' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.websiteName }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Website Lastname' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.websiteLastname }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Website Slogan' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.websiteSlogan }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Website Copyright' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.websiteCopyright|raw }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Address' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.websiteAddress }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Phone' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.websitePhone }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Fax' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.websiteFax }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Email' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.websiteEmail }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'URL Twitter' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.websiteUrlTwitter }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'URL Google' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.websiteUrlGoogle }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'URL Facebook' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.websiteUrlFacebook }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'URL Flickr' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.websiteUrlFlickr }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'URL Instagram' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.websiteUrlInstagram }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br/>
+            {{ 'Featured Brands' | trans({}, 'homepage') }}</dt>
+        <dd>{{ entity.headerFeatureBrands }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br/>
+            {{ 'Featured Brands' | trans({}, 'homepage') }}</dt>
+        <dd>{{ entity.subheaderFeatureBrands }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br/>
+            {{ 'Become Member Today' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.headerBecomeMemberToday }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br/>
+            {{ 'Become Member Today' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.subheaderBecomeMemberToday }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br/>
+            {{ "Today's Hours Operation" | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.headerTodaysHoursOperation }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br/>
+            {{ "Today's Hours Operation" | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.subheaderTodaysHoursOperation }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Top Deals Of Day' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.headerTopDealsOfDay }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Top Deals Of Day' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.subheaderTopDealsOfDay }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Contact Us' | trans({}, 'homepage') }}</dt>
+        <dd>{{ entity.headerContactUs }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Contact Us' | trans({}, 'homepage') }}</dt>
+        <dd>{{ entity.subheaderContactUs }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Business Active Deals' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.headerBusinessActiveDeals }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Business Active Deals' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.subheaderBusinessActiveDeals }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Related Businesses' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.headerBusinessRelatedBusinesses }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Related Businesses' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.subheaderBusinessRelatedBusinesses }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Stay Close' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.headerStayClose }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Stay Close' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.subheaderStayClose }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Login' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.headerLogin }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Text' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Login' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.textLogin|raw|nl2br }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br />
+            {{ 'About' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.headerAbout }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br />
+            {{ 'About' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.subheaderAbout }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Text' | trans({}, 'settingsbackend') }} <br />
+            {{ 'About' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.textAbout|raw|nl2br }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Subscribe For Deals' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.headerSubscribeForDeals }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Subscribe For Deals' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.subheaderSubscribeForDeals }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>
+            {{ 'Text' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Subscribe For Deals' | trans({}, 'settingsbackend') }}
+        </dt>
+        <dd>{{ entity.textSubscribeForDeals|raw|nl2br }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Created At' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.createdAt|date('d-M-Y h:i A') }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Updated At' | trans({}, 'settingsbackend') }}</dt>
+        <dd>{{ entity.updatedAt|date('d-M-Y h:i A') }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Website Logo' | trans({}, 'settingsbackend') }}</dt>
+        <dd><img style="max-width: 70%; height: auto;" src="{{ asset('images/settings/' ~ entity.websiteLogo) }}"/></dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Website Banner' | trans({}, 'settingsbackend') }}</dt>
+        <dd><img style="max-width: 70%; height: auto;" src="{{ asset('images/settings/' ~ entity.websiteBanner) }}"/>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        </tbody>
+    </dl>
+    <div class="form-group">
+        <div class="col-md-2 text-right">
+            <a class="btn btn-success" href="{{ path('settings') }}">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                {{ 'Back to the list' | trans({}, 'generalbackend') }}
+            </a>
+        </div>
+        <div class="col-md-10">
+
+            <a class="btn btn-primary"
+               href="{{ path('settings_edit', { 'id': entity.id }) }}">
+                <span class="fa fa-pencil"></span>
+                {{ 'Edit' | trans({}, 'generalbackend') }}
+            </a>
+
+        </div>
+    </div>
+
+{% endblock %}
