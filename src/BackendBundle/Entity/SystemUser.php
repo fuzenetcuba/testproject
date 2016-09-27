@@ -52,8 +52,8 @@ class SystemUser extends BaseUser
      * @Assert\NotBlank(message="fos_user.password.blank", groups={"Registration", "ResetPassword", "ChangePassword"})
      * @Assert\Length(min="5", max="4096", minMessage="fos_user.password.short", groups={"Registration", "Profile", "ResetPassword", "ChangePassword"})
      * @Assert\Regex(
-     *      pattern="/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/",
-     *      message="The password must contain at least 8 characters, one upper letter, one lower letter and one number or special character.",
+     *      pattern="/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[a-z]).*$/",
+     *      message="The password must contain at least 8 characters, one lower letter and one number or special character.",
      *      groups={"Registration", "ResetPassword", "ChangePassword"}
      * )
      */
