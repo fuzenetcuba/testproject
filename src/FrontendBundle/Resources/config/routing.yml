@@ -46,3 +46,15 @@ subscription_confirm:
 mall_map:
     path:     /mall-map/{hl}
     defaults: { _controller: FrontendBundle:Default:map, hl:~ }
+
+careers_index:
+    path:     /careers
+    defaults: { _controller: FrontendBundle:Careers:index }
+
+careers_find:
+    path:     /careers/find
+    defaults: { _controller: FrontendBundle:Careers:find }
+
+careers_apply:
+    path:     /careers/apply
+    defaults: { _controller: FrontendBundle:Careers:apply }

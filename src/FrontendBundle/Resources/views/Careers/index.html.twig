@@ -1,0 +1,171 @@
+{% extends '@Frontend/layout.html.twig' %}
+
+{% block metatags %}
+    <meta name="keywords" content="Plaza Mariachi Music City,
+    {{- 'Careers' | trans({}, 'homepage') -}},
+    {{- 'Mall' | trans({}, 'homepage') -}},
+    {{- 'Businesses' | trans({}, 'homepage') -}},
+    {{- 'Deals' | trans({}, 'homepage') -}},
+    {{- 'Buying' | trans({}, 'homepage') -}}
+    "/>
+    <meta name="description" content="
+    {# retrieving settings values #}
+    {{- 'Get a change to work with the Plaza Mariachi team' | trans({}, 'careers') -}}
+    "/>
+{% endblock %}
+
+{% block custom_css %}
+    {{ parent() }}
+
+    <!-- iCheck Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/iCheck/custom.css') }}"
+          type="text/css"/>
+    <!-- select2 Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
+          type="text/css"/>
+{% endblock %}
+
+{% block inline_css %}
+    <style type="text/css" rel="stylesheet">
+        .landing-page .header-careers {
+            background: url('{{ asset('bundles/frontend/img/careers.jpg') }}') 50% 0 no-repeat;
+            padding: 50px 0;
+        }
+    </style>
+{% endblock %}
+
+{% block title '- ' ~ 'Careers' | trans({}, 'homepage') %}
+
+{% block page_content %}
+
+    <section class="inner-content section-spaces-line">
+        <div class="header-careers row">
+            <div class="col-lg-12 text-center">
+                <h1 class="m-b-lg">Slogan here!</h1>
+                <p>
+                    <a class="btn btn-lg btn-amber" href="#"
+                       role="button">See all the openings</a>
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-spaces-line">
+        <div class="container">
+            <div class="row m-b-lg">
+                <div class="col-lg-12 text-center">
+                    <div class="section-line blue-line"></div>
+                    <h1>Why to join Us</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 animated fadeInLeft">
+                    <div class="team-member">
+                        <span class="fa fa-book fa-5x text-success m-b-lg"></span>
+                        <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam
+                            an soluta sensibus. </p>
+                    </div>
+                </div>
+                <div class="col-sm-4 border-left-right">
+                    <div class="team-member animated zoomIn">
+                        <span class="fa fa-users fa-5x text-success m-b-lg"></span>
+                        <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam
+                            an soluta sensibus.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4 animated fadeInRight">
+                    <div class="team-member">
+                        <span class="fa fa-star fa-5x text-success m-b-lg"></span>
+                        <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam
+                            an soluta sensibus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-spaces-line gray-bg">
+        <div class="container">
+            <div class="row m-b-lg">
+                <div class="col-lg-12 text-center">
+                    <div class="section-line amber-line"></div>
+                    <h1>Find the position that fits better to you ...</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 animated fadeInLeft">
+                    <div class="team-member">
+                        <div class="form-group">
+                            <select name="sel1" class="form-control select2-field">
+                                <option value="0">-- Select business --</option>
+                                <option value="1">Zumito</option>
+                                <option value="2">MazFresco</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="sel2" class="form-control select2-field">
+                                <option value="0">-- Select position --</option>
+                                <option value="1">Seller</option>
+                                <option value="2">Counter</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 border-left-right">
+                    <div class="team-member animated zoomIn">
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <input type="checkbox" name="ch1" id="ch1" class="i-checks"/>
+                                <label for="ch1">Checkbox 1</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <input type="checkbox" name="ch2" id="ch2" class="i-checks"/>
+                                <label for="ch2">Checkbox 2</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 animated fadeInRight">
+                    <div class="team-member">
+                        <a class="btn btn-lg btn-amber" href="#"
+                           role="button">Search</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+
+{% block custom_js %}
+    {{ parent() }}
+
+    <!-- iCheck Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
+            type="text/javascript"></script>
+    <!-- select2 Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"
+            type="text/javascript"></script>
+{% endblock %}
+
+{% block inline_js %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //  iCheck scripts for checkboxes and radios
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+
+            //  select2 scripts for batch actions combobox
+            $(".select2-field").select2({
+                placeholder: "--- {{ 'Select a value' | trans({}, 'generalbackend') }} ---"
+            });
+
+        });
+    </script>
+{% endblock %}
