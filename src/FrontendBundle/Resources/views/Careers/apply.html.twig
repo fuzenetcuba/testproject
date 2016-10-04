@@ -10,54 +10,91 @@
     "/>
     <meta name="description" content="
     {# retrieving settings values #}
-    {{- 'Get a change to work with the Plaza Mariachi team' | trans({}, 'careers') -}}
+    {{- 'Get a chance to work with the Plaza Mariachi team' | trans({}, 'careers') -}}
     "/>
 {% endblock %}
+
+{% block custom_css %}
+    {{ parent() }}
+
+    <!-- iCheck Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/iCheck/custom.css') }}"
+          type="text/css"/>
+    <!-- select2 Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
+          type="text/css"/>
+{% endblock %}
+
 
 {% block title '- ' ~ 'Apply for a job' | trans({}, 'careers') %}
 
 {% block page_content %}
 
-    <section class="gray-bg section-spaces-line">
-        <div class="container">
-            <div class="row m-b">
-                <div class="col-lg-12 text-center">
-                    <div class="section-line amber-line"></div>
-                    <h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerFeatureBrands' })) }}</h1>
+    <section class="inner-content section-spaces-line amber-bg">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-line"></div>
+                <h1 class="m-b-lg">Different Slogan here!</h1>
+                <h4>
+                    ---- Small text here ----
+                </h4>
 
-                    <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderFeatureBrands' })) }}</p>
-                </div>
             </div>
         </div>
     </section>
 
-    {# become a member #}
-    <section class="section-spaces-line hidden-print">
+    <section class="section-spaces-line">
         <div class="container">
-            <div class="row">
+            <div class="row m-b-lg">
                 <div class="col-lg-12 text-center">
                     <div class="section-line blue-line"></div>
-                    <h2>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerBecomeMemberToday' })) }}</h2>
-                    <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderBecomeMemberToday' })) }}</p>
-
-                    <a href="{{ path('fos_user_registration_register') }}"
-                       class="btn btn-lg btn-xl btn-blue">{{ 'SIGNUP' | trans({}, 'homepage') }}</a>
+                    <h2>
+                        Please fill out the job application form bellow or
+                        <a href="#" class="btn btn-success">
+                            Upload your Resume
+                        </a>
+                        <a href="{{ path('careers_find') }}" class="btn btn-primary">
+                            See all the Openings
+                        </a>
+                    </h2>
+                </div>
+            </div>
+            <div class="row table-bordered">
+                <div class="container text-right">
+                    Page 1 of 5
                 </div>
             </div>
         </div>
     </section>
+
 
 {% endblock %}
 
 {% block custom_js %}
     {{ parent() }}
 
-    {#<script src="{{ asset('bundles/frontend/js/app.js') }}"></script>#}
+    <!-- iCheck Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
+            type="text/javascript"></script>
+    <!-- select2 Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"
+            type="text/javascript"></script>
 {% endblock %}
 
 {% block inline_js %}
     <script type="text/javascript">
         $(document).ready(function () {
+
+            //  iCheck scripts for checkboxes and radios
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+
+            //  select2 scripts for batch actions combobox
+            $(".select2-field").select2({
+                placeholder: "--- {{ 'Select a value' | trans({}, 'generalbackend') }} ---"
+            });
 
         });
     </script>

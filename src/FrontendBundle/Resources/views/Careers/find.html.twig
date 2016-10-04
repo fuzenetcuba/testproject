@@ -10,54 +10,186 @@
     "/>
     <meta name="description" content="
     {# retrieving settings values #}
-    {{- 'Get a change to work with the Plaza Mariachi team' | trans({}, 'careers') -}}
+    {{- 'Get a chance to work with the Plaza Mariachi team' | trans({}, 'careers') -}}
     "/>
 {% endblock %}
+
+{% block custom_css %}
+    {{ parent() }}
+
+    <!-- iCheck Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/iCheck/custom.css') }}"
+          type="text/css"/>
+    <!-- select2 Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
+          type="text/css"/>
+{% endblock %}
+
 
 {% block title '- ' ~ 'Find careers' | trans({}, 'careers') %}
 
 {% block page_content %}
 
-    <section class="gray-bg section-spaces-line">
-        <div class="container">
-            <div class="row m-b">
-                <div class="col-lg-12 text-center">
-                    <div class="section-line amber-line"></div>
-                    <h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerFeatureBrands' })) }}</h1>
+    <section class="inner-content section-spaces-line amber-bg">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-line"></div>
+                <h1 class="m-b-lg">Different Slogan here!</h1>
+                <h4>
+                    ---- Small text here ----
+                </h4>
 
-                    <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderFeatureBrands' })) }}</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-spaces">
+        <div class="container">
+            <div id="search-form" class="row collapse">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="team-member">
+                            <div class="form-group">
+                                <select name="sel1" class="form-control select2-field" style="width: 100%">
+                                    <option value="0">-- Select business --</option>
+                                    <option value="1">Zumito</option>
+                                    <option value="2">MazFresco</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select name="sel2" class="form-control select2-field" style="width: 100%">
+                                    <option value="0">-- Select position --</option>
+                                    <option value="1">Seller</option>
+                                    <option value="2">Counter</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 border-left-right">
+                        <div class="team-member">
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <input type="checkbox" name="ch1" id="ch1" class="i-checks"/>
+                                    <label for="ch1">Checkbox 1</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <input type="checkbox" name="ch2" id="ch2" class="i-checks"/>
+                                    <label for="ch2">Checkbox 2</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="team-member">
+                            <a class="btn btn-lg btn-amber" href="#"
+                               role="button">Search</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-6">
+                        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#search-form">
+                            Change my search
+                        </button>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <div class="col-lg-6">
+                                <select name="sel2" class="form-control select2-field">
+                                    <option value="0">-- Select criteria --</option>
+                                    <option value="1">Business</option>
+                                    <option value="2">Position</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6">
+                                <select name="sel1" class="form-control select2-field">
+                                    <option value="0">-- Select criteria --</option>
+                                    <option value="1">Ascending</option>
+                                    <option value="2">Descending</option>
+                                    <option value="3">With more opening first</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    {# become a member #}
-    <section class="section-spaces-line hidden-print">
+    <section class="section-spaces gray-bg">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-line blue-line"></div>
-                    <h2>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerBecomeMemberToday' })) }}</h2>
-                    <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderBecomeMemberToday' })) }}</p>
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="text-center">{{ 'Business' | trans({}, 'careers') }}</th>
+                        <th>{{ 'Position' | trans({}, 'careers') }}</th>
+                        <th>{{ 'Description' | trans({}, 'careers') }}</th>
+                        <th class="text-center">{{ 'Apply' | trans({}, 'careers') }}</th>
+                    </tr>
+                    </thead>
 
-                    <a href="{{ path('fos_user_registration_register') }}"
-                       class="btn btn-lg btn-xl btn-blue">{{ 'SIGNUP' | trans({}, 'homepage') }}</a>
-                </div>
+                    <tbody>
+                    {% for i in 0..5 %}
+                        <tr>
+                            <td class="text-center">
+                                <div class="print-container-image print-business-image">
+                                    <img class="center-height print-business-image"
+                                         src="{{ asset('images/business/americas-insurance.png') }} "/>
+                                </div>
+                            </td>
+                            <td>Business Manager</td>
+                            <td>It is responsible for doing business with customers</td>
+                            <td class="text-center">
+                                <a href="{{ path('careers_apply') }}" class="btn btn-xs btn-primary">
+                                    <span class="fa fa-check"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container text-right">
+                Page 1 of 5
             </div>
         </div>
     </section>
+
 
 {% endblock %}
 
 {% block custom_js %}
     {{ parent() }}
 
-    {#<script src="{{ asset('bundles/frontend/js/app.js') }}"></script>#}
+    <!-- iCheck Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
+            type="text/javascript"></script>
+    <!-- select2 Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"
+            type="text/javascript"></script>
 {% endblock %}
 
 {% block inline_js %}
     <script type="text/javascript">
         $(document).ready(function () {
+
+            //  iCheck scripts for checkboxes and radios
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+
+            //  select2 scripts for batch actions combobox
+            $(".select2-field").select2({
+                placeholder: "--- {{ 'Select a value' | trans({}, 'generalbackend') }} ---"
+            });
 
         });
     </script>
