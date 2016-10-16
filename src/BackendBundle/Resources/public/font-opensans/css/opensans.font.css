@@ -21,4 +21,11 @@
   font-style: normal;
   font-weight: 700;
   src: local('Open Sans Bold'), local('OpenSans-Bold'), url(../fonts/opensans-bold.woff2) format('woff2');
-} 
+}
+
+@font-face {
+  font-family: 'Open Sans Condensed Light';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Open Sans Cond Light'), local('Open Sans Cond Light'), url(../fonts/open-sans-condensed-light.woff) format('woff2');
+}

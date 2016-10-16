@@ -214,6 +214,15 @@ class Business
      */
     private $customers;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\Opening", mappedBy="business",
+     *     cascade={"persist", "remove", "merge"}
+     * )
+     */
+    private $openings;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -224,6 +233,7 @@ class Business
 
         $this->categories = new ArrayCollection();
         $this->customers = new ArrayCollection();
+        $this->openings = new ArrayCollection();
     }
 
     public function __toString()
@@ -279,6 +289,31 @@ class Business
             $this->deals->removeElement($deal);
         }
     }
+
+    /**
+     * Add an opening to this business
+     *
+     * @param \BackendBundle\Entity\Opening $opening
+     */
+    public function addOpening(Opening $opening)
+    {
+        if (!$this->openings->contains($opening)) {
+            $this->openings->add($opening);
+        }
+    }
+
+    /**
+     * Remove, if exists, an opening from this business
+     *
+     * @param \BackendBundle\Entity\Opening $opening
+     */
+    public function removeOpening(Opening $opening)
+    {
+        if ($this->openings->contains($opening)) {
+            $this->openings->removeElement($opening);
+        }
+    }
+
 
     /**
      * Get id

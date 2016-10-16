@@ -56,5 +56,11 @@ careers_find:
     defaults: { _controller: FrontendBundle:Careers:find }
 
 careers_apply:
-    path:     /careers/apply
+    path:     /careers/{slug}/apply
     defaults: { _controller: FrontendBundle:Careers:apply }
+
+careers_store:
+    path:     /careers/store
+    defaults: { _controller: FrontendBundle:Careers:store }
+    options:
+        expose: true
