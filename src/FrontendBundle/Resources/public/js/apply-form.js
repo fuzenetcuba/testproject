@@ -150,6 +150,22 @@ var vm = new Vue({
         formApplication: true
     },
 
+    validators: {
+        pdf: function (val) {
+            return /pdf/.test(val.substr(val.lastIndexOf('.')+1).toLowerCase());
+        }
+    },
+
+    computed: {
+        coverFileName: function () {
+            return this.cover.replace('C:\\fakepath\\', '');
+        },
+
+        cvFileName: function () {
+            return this.cv.replace('C:\\fakepath\\', '');
+        }
+    },
+
     methods: {
         addEmployer: function () {
             this.employers.push({

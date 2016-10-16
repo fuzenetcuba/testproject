@@ -56,7 +56,8 @@
         </div>
 
         <validator name="validation1">
-            <form v-if="displayForm" action="{{ path('careers_store') }}" method="post" enctype="multipart/form-data" role="form"
+            <form v-if="displayForm" action="{{ path('careers_store') }}" method="post" enctype="multipart/form-data"
+                  role="form"
                   @submit.prevent="submitForm()"
                   class="col-lg-offset-1" novalidate>
                 <fieldset>
@@ -832,10 +833,15 @@
                                 <label for="">Upload your curriculum in PDF format</label>
                                 <label class="error animated fadeInLeft"
                                        v-if="!$validation1.cv.valid">This field is required</label>
+                                <label class="error animated fadeInLeft"
+                                       v-if="$validation1.cv.pdf && !$validation1.cv.pristine">This file is not in PDF format</label>
                                 <label class="btn btn-block btn-default btn-file right">
-                                    <i class="fa fa-upload"></i> Choose file ...
+                                    <i class="fa fa-upload"></i>
+                                    <span>Choose file ...</span>
+                                    <span class="label label-default" v-if="cvFileName">${ cvFileName }</span>
                                     <input v-model="cv"
-                                           v-validate:cv="{required:true}"
+                                           v-validate:cv="{ required:true, pdf:true }"
+                                           id="cv"
                                            name="cv"
                                            type="file" style="display: none;">
                                 </label>
@@ -843,9 +849,15 @@
 
                             <div v-if="formApplication" class="form-group">
                                 <label for="">Upload your curriculum in PDF format</label>
+                                <label class="error animated fadeInLeft"
+                                       v-if="$validation1.cv.pdf && !$validation1.cv.pristine">This file is not in PDF format</label>
                                 <label class="btn btn-block btn-default btn-file right">
-                                    <i class="fa fa-upload"></i> Choose file ...
+                                    <i class="fa fa-upload"></i>
+                                    <span>Choose file ...</span>
+                                    <span class="label label-default" v-if="cvFileName">${ cvFileName }</span>
                                     <input v-model="cv"
+                                           v-validate:cv="{ pdf:true }"
+                                           id="cv"
                                            name="cv"
                                            type="file" style="display: none;">
                                 </label>
@@ -857,10 +869,15 @@
                                 <label for="">Upload your cover letter in PDF format</label>
                                 <label class="error animated fadeInLeft"
                                        v-if="!$validation1.cover.valid">This field is required</label>
+                                <label class="error animated fadeInLeft"
+                                       v-if="$validation1.cover.pdf && !$validation1.cover.pristine">This file is not in PDF format</label>
                                 <label class="btn btn-block btn-default btn-file right">
-                                    <i class="fa fa-upload"></i> Choose file ...
+                                    <i class="fa fa-upload"></i>
+                                    <span>Choose file ...</span>
+                                    <span class="label label-default" v-if="coverFileName">${ coverFileName }</span>
                                     <input v-model="cover"
-                                           v-validate:cover="{required:true}"
+                                           v-validate:cover="{ required:true, pdf:true }"
+                                           id="cover"
                                            name="cover"
                                            type="file" style="display: none;">
                                 </label>
@@ -868,9 +885,15 @@
 
                             <div v-if="formApplication" class="form-group">
                                 <label for="">Upload your cover letter in PDF format</label>
+                                <label class="error animated fadeInLeft"
+                                       v-if="$validation1.cover.pdf && !$validation1.cover.pristine">This file is not in PDF format</label>
                                 <label class="btn btn-block btn-default btn-file right">
-                                    <i class="fa fa-upload"></i> Choose file ...
+                                    <i class="fa fa-upload"></i>
+                                    <span>Choose file ...</span>
+                                    <span class="label label-default" v-if="coverFileName">${ coverFileName }</span>
                                     <input v-model="cover"
+                                           v-validate:cover="{ pdf:true }"
+                                           id="cover"
                                            name="cover"
                                            type="file" style="display: none;">
                                 </label>
