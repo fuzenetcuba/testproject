@@ -53,7 +53,20 @@ class CareersController extends Controller
         $candidate = $this->get('opening.manager')->fromRequest($request);
 
         $this->get('opening.manager')->saveCandidate($candidate);
-//        dump($candidate); die ;
+        $content = $this->renderView('@Backend/Emails/customer.html.twig', [
+            'content' => sprintf('%s Has applied to the %s position (%s)',
+                $candidate->fullName(), $candidate->opening->getPosition(),
+                (new \DateTime())->format('Y-m-d H:i:s'))
+            ,
+            'deals' => []
+        ]);
+
+        $this->get('opening.manager')->notifyManager(
+            $candidate,
+            $this->getParameter('careers.notification.subject'),
+            $this->getParameter('customer.email.from'),
+            $content
+        );
 
         return new JsonResponse(['status' => 'ok']);
     }

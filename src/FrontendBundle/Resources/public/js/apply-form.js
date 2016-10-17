@@ -201,8 +201,6 @@ var vm = new Vue({
         },
 
         submitForm: function () {
-            console.log('and now we submit!!');
-
             var formData = new FormData(document.forms[1]);
 
             formData.append('lastName', this.lastName);
@@ -245,6 +243,7 @@ var vm = new Vue({
             formData.append('skills', this.skills);
             formData.append('bestFit', this.bestFit);
             formData.append('references', JSON.stringify(this.references));
+            formData.append('slug', document.querySelector('meta[name="slug"]').content);
 
             this.$http.post(
                 Routing.generate('careers_store'),

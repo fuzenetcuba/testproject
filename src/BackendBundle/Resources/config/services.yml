@@ -25,7 +25,7 @@ services:
 
     opening.manager:
         class: BackendBundle\Model\OpeningManager
-        arguments: ["@doctrine.orm.entity_manager", "@mailer", %careers.pdf.store%]
+        arguments: ["@doctrine.orm.entity_manager", "@mailer", "%careers.pdf.store%", "%careers.contact.email%"]
         
     backendbundle_user.registration.form.type:
         class: BackendBundle\Form\registrationType

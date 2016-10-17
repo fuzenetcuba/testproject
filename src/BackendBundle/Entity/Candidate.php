@@ -235,6 +235,13 @@ class Candidate
     public $coverLetter;
 
     /**
+     * @var Opening
+     *
+     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\Opening")
+     */
+    public $opening;
+
+    /**
      * @return mixed
      */
     public function getCv()
@@ -274,5 +281,8 @@ class Candidate
         return $this;
     }
 
-
+    public function fullName()
+    {
+        return sprintf('%s %s %s', $this->firstName, $this->middleName, $this->lastName);
+    }
 }

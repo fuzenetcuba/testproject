@@ -32,11 +32,18 @@ class OpeningManager implements ManagerInterface
      */
     private $storePath;
 
-    public function __construct(EntityManager $entityManager, \Swift_Mailer $mailer, $path)
+    /**
+     * @var string
+     */
+    private $careersEmail;
+
+
+    public function __construct(EntityManager $entityManager, \Swift_Mailer $mailer, $path, $email)
     {
         $this->em = $entityManager;
         $this->mailer = $mailer;
         $this->storePath = $path;
+        $this->careersEmail = $email;
     }
 
     /**
@@ -167,6 +174,10 @@ class OpeningManager implements ManagerInterface
             $candidate->setCoverLetter($coverName);
         }
 
+        $slug = $request->request->get('slug');
+        $opening = $this->findBySlug($slug);
+
+        $candidate->opening = $opening;
         $candidate->firstName = $request->request->get('firstName');
         $candidate->lastName = $request->request->get('lastName');
         $candidate->middleName = $request->request->get('middleName');
@@ -215,5 +226,17 @@ class OpeningManager implements ManagerInterface
     {
         $this->em->persist($candidate);
         $this->em->flush();
+    }
+
+    public function notifyManager(Candidate $candidate, $subject, $from, $content)
+    {
+        $message = \Swift_Message::newInstance()
+            ->setSubject($subject)
+            ->setFrom($from)
+            ->setTo($this->careersEmail)
+            ->setBody($content, 'text/html')
+        ;
+
+        $this->mailer->send($message);
     }
 }

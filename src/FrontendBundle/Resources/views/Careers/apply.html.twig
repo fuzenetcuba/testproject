@@ -13,6 +13,7 @@
     {# retrieving settings values #}
     {{- 'Get a chance to work with the Plaza Mariachi team' | trans({}, 'careers') -}}
     "/>
+    <meta name="slug" content="{{ app.request.get('slug') }}">
 {% endblock %}
 
 {% block custom_css %}
@@ -840,7 +841,8 @@
                                 <label class="error animated fadeInLeft"
                                        v-if="!$validation1.cv.valid">This field is required</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.cv.pdf && !$validation1.cv.pristine">This file is not in PDF format</label>
+                                       v-if="$validation1.cv.pdf && !$validation1.cv.pristine">This file is not in PDF
+                                    format</label>
                                 <label class="btn btn-block btn-default btn-file right">
                                     <i class="fa fa-upload"></i>
                                     <span>Choose file ...</span>
@@ -856,7 +858,8 @@
                             <div v-if="formApplication" class="form-group">
                                 <label for="">Upload your curriculum in PDF format</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.cv.pdf && !$validation1.cv.pristine">This file is not in PDF format</label>
+                                       v-if="$validation1.cv.pdf && !$validation1.cv.pristine">This file is not in PDF
+                                    format</label>
                                 <label class="btn btn-block btn-default btn-file right">
                                     <i class="fa fa-upload"></i>
                                     <span>Choose file ...</span>
@@ -876,7 +879,8 @@
                                 <label class="error animated fadeInLeft"
                                        v-if="!$validation1.cover.valid">This field is required</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.cover.pdf && !$validation1.cover.pristine">This file is not in PDF format</label>
+                                       v-if="$validation1.cover.pdf && !$validation1.cover.pristine">This file is not in
+                                    PDF format</label>
                                 <label class="btn btn-block btn-default btn-file right">
                                     <i class="fa fa-upload"></i>
                                     <span>Choose file ...</span>
@@ -892,7 +896,8 @@
                             <div v-if="formApplication" class="form-group">
                                 <label for="">Upload your cover letter in PDF format</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.cover.pdf && !$validation1.cover.pristine">This file is not in PDF format</label>
+                                       v-if="$validation1.cover.pdf && !$validation1.cover.pristine">This file is not in
+                                    PDF format</label>
                                 <label class="btn btn-block btn-default btn-file right">
                                     <i class="fa fa-upload"></i>
                                     <span>Choose file ...</span>
@@ -955,7 +960,6 @@
 {% block inline_js %}
     <script type="text/javascript">
         $(document).ready(function () {
-
             //  iCheck scripts for checkboxes and radios
             $('.i-checks').iCheck({
                 checkboxClass: 'icheckbox_square-green',
