@@ -146,7 +146,6 @@ var vm = new Vue({
 
         // application state
         done: false,
-        displayForm: true,
         formApplication: true
     },
 
@@ -251,7 +250,6 @@ var vm = new Vue({
                 Routing.generate('careers_store'),
                 formData
             ).then(function (response) {
-                this.displayForm = false;
                 this.done = true;
             })
         }

@@ -1559,6 +1559,31 @@ a.logout {
     background-color: #FFFFFF;
 }
 
+.browm-bg {
+    background-color: #281608;
+    color: #FFFFFF;
+}
+
+.green-bg {
+    background-color: #7D8108;
+    color: #FFFFFF;
+}
+
+.amber-bg {
+    background-color: #BF8601;
+    color: #FFFFFF;
+}
+
+.pink-bg {
+    background-color: #B5013E;
+    color: #FFFFFF;
+}
+
+.blue-bg {
+    background-color: #016BBF;
+    color: #FFFFFF;
+}
+
 .btn-brown.btn-outline:hover,
 .btn-green.btn-outline:hover,
 .btn-amber.btn-outline:hover,
@@ -2449,6 +2474,14 @@ div.application-selector {
 section.apply-form h1 {
     font-weight: 400;
     font-size: 30pt;
+}
+
+section.apply-form {
+    padding-bottom: 30px;
+}
+
+div.row.submit-row {
+    padding-top: 20px;
 }
 
 section.apply-form .finished {
