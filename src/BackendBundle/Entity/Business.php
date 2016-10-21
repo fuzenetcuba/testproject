@@ -223,6 +223,12 @@ class Business
      */
     private $openings;
 
+    /**
+     * @var boolean
+     * @ORM\Column(type="boolean")
+     */
+    private $isPublic;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();

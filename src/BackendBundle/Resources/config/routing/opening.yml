@@ -1,0 +1,34 @@
+opening:
+    path:     /
+    defaults: { _controller: "BackendBundle:Opening:index" }
+    methods:  GET
+
+opening_find:
+    path:     /find
+    defaults: { _controller: "BackendBundle:Opening:find" }
+    methods:  [POST, GET]
+
+opening_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:Opening:show" }
+    methods:  GET
+
+opening_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:Opening:new" }
+    methods:  [GET, POST]
+
+opening_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:Opening:edit" }
+    methods:  [GET, POST, PUT]
+
+opening_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:Opening:delete" }
+    methods:  [POST, DELETE]
+    
+opening_batch:
+    path:     /opening_batch
+    defaults: { _controller: "BackendBundle:Opening:batch" }
+    methods:  POST

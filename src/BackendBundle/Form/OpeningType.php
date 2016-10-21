@@ -25,7 +25,10 @@ class OpeningType extends AbstractType
                 'choice_label' => 'position',
                 'empty_value' => '',
             ])
-            ->add('description')
+            ->add('department')
+            ->add('description', 'textarea', [
+                'attr' => ['rows' => '10']
+            ])
             ->add('business', null, [
                 'required' => false,
                 'attr' => ['class' => 'form-control select2-field']
