@@ -34,6 +34,8 @@ class CareersController extends Controller
             $this->getParameter('deals.pagination.items')
         );
 
+        $pagination->setTemplate('FrontendBundle::paginator.html.twig');
+
         return $this->render('@Frontend/Careers/find.html.twig', [
             'openings' => $pagination
         ]);
