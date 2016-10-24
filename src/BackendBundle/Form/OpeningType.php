@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,7 +30,14 @@ class OpeningType extends AbstractType
             ->add('description', 'textarea', [
                 'attr' => ['rows' => '10']
             ])
-            ->add('business', null, [
+            ->add('business', EntityType::class, [
+                'class' => 'BackendBundle\Entity\Business',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('b')
+                        ->join('b.openings', 'o')
+                        // ->orderBy('b.name', 'ASC');
+                },
+                'choice_label' => 'name',
                 'required' => false,
                 'attr' => ['class' => 'form-control select2-field']
             ])

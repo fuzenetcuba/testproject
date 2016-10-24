@@ -16,7 +16,6 @@ class CareersController extends Controller
     public function indexAction(Request $request)
     {
         $form = $this->createForm(new OpeningType());
-
         $form->handleRequest($request);
 
         return $this->render('@Frontend/Careers/index.html.twig', [
