@@ -18,7 +18,11 @@
         .landing-page .header-back.one {
             background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBanner' }))) }}');
             background-repeat: no-repeat;
-            background-size: 100% 100%;
+            -webkit-background-size:cover;
+            -moz-background-size:cover;
+            -o-background-size:cover;
+            background-size:cover;
+            background-position:center;
         }
     </style>
 {% endblock %}

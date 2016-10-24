@@ -2310,6 +2310,11 @@ div.ol-attribution li > strong {
     padding: 100px 0;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    background-position:center;
 }
 
 .careers-result, .careers-apply {
