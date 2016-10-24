@@ -4,6 +4,7 @@ namespace BackendBundle\Form;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,35 +14,67 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class OpeningType extends AbstractType
 {
+    private $select = false;
+
+    public function __construct($select = false)
+    {
+        $this->select = $select;
+    }
+
     /**
      * {@inheritDoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('position', EntityType::class, [
-                'required' => false,
-                'attr' => ['class' => 'form-control select2-field'],
-                'class' => 'BackendBundle\Entity\Opening',
-                'choice_label' => 'position',
-                'empty_value' => '',
-            ])
+        if ($this->select) {
+            $builder
+                ->add('position', EntityType::class, [
+                    'required' => false,
+                    'attr' => ['class' => 'form-control select2-field'],
+                    'class' => 'BackendBundle\Entity\Opening',
+                    'choice_label' => 'position',
+                    'empty_value' => '',
+                ]);
+        } else {
+            $builder
+                ->add('position', TextType::class, [
+                    'required' => true,
+                    'attr' => ['class' => 'form-control select2-field'],
+                ]);
+        }
+        $builder    
             ->add('department')
             ->add('description', 'textarea', [
                 'attr' => ['rows' => '10']
-            ])
-            ->add('business', EntityType::class, [
-                'class' => 'BackendBundle\Entity\Business',
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('b')
-                        ->join('b.openings', 'o')
-                        // ->orderBy('b.name', 'ASC');
-                },
-                'choice_label' => 'name',
-                'required' => false,
-                'attr' => ['class' => 'form-control select2-field']
-            ])
-        ;
+            ]);
+
+        if ($this->select) {
+            $builder
+                ->add('business', EntityType::class, [
+                    'class' => 'BackendBundle\Entity\Business',
+                    'query_builder' => function (EntityRepository $er) {
+                        return $er->createQueryBuilder('b')
+                            ->join('b.openings', 'o')
+                            ->orderBy('b.name', 'ASC');
+                    },
+                    'choice_label' => 'name',
+                    'required' => false,
+                    'attr' => ['class' => 'form-control select2-field']
+                ]);
+        } else {
+            $builder
+                ->add('business', EntityType::class, [
+                    'class' => 'BackendBundle\Entity\Business',
+                    'query_builder' => function (EntityRepository $er) {
+                        return $er->createQueryBuilder('b')
+                            // ->join('b.openings', 'o')
+                            ->orderBy('b.name', 'ASC');
+                    },
+                    'choice_label' => 'name',
+                    'required' => false,
+                    'attr' => ['class' => 'form-control select2-field']
+                ]);
+        }
     }
 
     /**
