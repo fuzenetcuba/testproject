@@ -142,6 +142,11 @@
                                     class="nav-label">{{ 'Users' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
+                    <li class="{% block active_opening %}{% endblock %}">
+                        <a href="{{ path('opening') }}"><i class="fa fa-cog"></i> <span
+                                    class="nav-label">{{ 'Openings' | trans({}, 'generalbackend') }}</span></a>
+                    </li>
+
                     <li class="{% block active_settings %}{% endblock %}">
                         <a href="{{ path('settings') }}"><i class="fa fa-cog"></i> <span
                                     class="nav-label">{{ 'Settings' | trans({}, 'generalbackend') }}</span></a>

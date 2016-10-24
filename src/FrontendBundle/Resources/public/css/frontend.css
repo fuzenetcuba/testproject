@@ -2306,8 +2306,10 @@ div.ol-attribution li > strong {
 }
 
 .landing-page .header-careers {
-    background: url('/bundles/frontend/img/careers.jpg') 50% 0 no-repeat;
-    padding: 50px 0;
+    background: url('/bundles/frontend/img/careers.jpg');
+    padding: 100px 0;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .careers-result, .careers-apply {
@@ -3122,3 +3124,10 @@ section.apply-form .finished {
     }
 }
 
+form.filter-openings span.select2-selection__rendered {
+    line-height: 45px !important;
+}
+
+form.filter-openings span.select2-selection__arrow {
+    height: 46px !important;
+}
