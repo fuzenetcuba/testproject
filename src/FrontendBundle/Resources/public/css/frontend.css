@@ -2285,6 +2285,11 @@ div.ol-attribution li > strong {
 .slogan {
     color: white;
     text-transform: uppercase;
+    font-size: 36px !important;
+    font-weight: 700 !important;
+    color: #643b22;
+    background-color: rgba(255,255,255,.3);
+    padding: 10px 0;
 }
 
 .no-padding {
