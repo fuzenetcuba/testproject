@@ -41,7 +41,7 @@ class Opening
      *
      * @ORM\Column(type="string")
      */
-    private $department;
+    // private $department;
 
     /**
      * @var Business

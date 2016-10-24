@@ -37,7 +37,7 @@
                     <thead>
                     <tr>
                         <th>Position</th>
-                        <th class="hidden-xs">Department</th>
+                        {# <th class="hidden-xs">Department</th> #}
                         <th>Description</th>
                         <th>Apply Now!</th>
                     </tr>
@@ -46,7 +46,7 @@
                     {% for opening in openings %}
                         <tr>
                             <td>{{ opening.position }}</td>
-                            <td class="hidden-xs">{{ opening.department }}</td>
+                            {# <td class="hidden-xs">{{ opening.department }}</td> #}
                             <td>{{ opening.description }}</td>
                             <td>
                                 <a class="btn btn-amber btn-block" href="{{ path('careers_apply', {'slug':opening.slug}) }}">APPLY</a>

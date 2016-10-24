@@ -72,13 +72,13 @@
                         <span class="fa fa-sort"></span>
                         {% endif %}
                     </th>
-                                    <th class="text-navy">
+{#                                     <th class="text-navy">
                         {{ knp_pagination_sortable(entities, 'Department', 'e.department') }}
                         {% if entities.isSorted('e.department') %}
                         <span class="fa fa-sort"></span>
                         {% endif %}
                     </th>
-                                    <th class="text-navy">
+ #}                                    <th class="text-navy">
                         {{ knp_pagination_sortable(entities, 'Description', 'e.description') }}
                         {% if entities.isSorted('e.description') %}
                         <span class="fa fa-sort"></span>
@@ -112,7 +112,7 @@
 
                     
                                                         
-                        <td>{{ entity.department }}</td>
+                        {# <td>{{ entity.department }}</td> #}
 
                     
                                                         
