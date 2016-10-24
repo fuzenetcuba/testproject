@@ -36,6 +36,7 @@
                 <table class="table table-hover table-responsive">
                     <thead>
                     <tr>
+                        <th>Business</th>
                         <th>Position</th>
                         {# <th class="hidden-xs">Department</th> #}
                         <th>Description</th>
@@ -45,6 +46,11 @@
                     <tbody>
                     {% for opening in openings %}
                         <tr>
+                            <td>
+                                <img style="width: 100%;" 
+                                             alt="{{ opening.business.name }}"
+                                             src="{{ asset('images/business/' ~ opening.business.logo) }} "/>
+                            </td>
                             <td>{{ opening.position }}</td>
                             {# <td class="hidden-xs">{{ opening.department }}</td> #}
                             <td>{{ opening.description }}</td>
