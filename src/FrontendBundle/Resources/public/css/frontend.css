@@ -2306,7 +2306,7 @@ div.ol-attribution li > strong {
 }
 
 .landing-page .header-careers {
-    background: url('/bundles/frontend/img/careers.jpg');
+    background: url('../../../bundles/frontend/img/careers.jpg');
     padding: 100px 0;
     background-repeat: no-repeat;
     background-size: 100% 100%;
