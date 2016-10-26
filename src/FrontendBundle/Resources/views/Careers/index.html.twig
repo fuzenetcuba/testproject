@@ -163,10 +163,21 @@
             });
 
             //  select2 scripts for batch actions combobox
-            $(".select2-field").select2({
-                placeholder: "--- {{ 'Select a value' | trans({}, 'generalbackend') }} ---"
+            $("#backend_bundle_opening_type_position").select2({
+                minimumResultsForSearch: -1,
+                placeholder: {
+                    id: "12123",
+                    placeholder: "Select an option"
+                }
             });
 
+            $("#backend_bundle_opening_type_business").select2({
+                minimumResultsForSearch: -1,
+                placeholder: {
+                    id: "12123",
+                    placeholder: "Select an option"
+                }
+            });
         });
     </script>
 {% endblock %}

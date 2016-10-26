@@ -56,7 +56,8 @@ class OpeningManager implements ManagerInterface
         return $this->em->createQueryBuilder()
             ->select('o')
             ->from('BackendBundle:Opening', 'o')
-            ->getQuery();
+            // ->getQuery()
+        ;
     }
 
     /**
@@ -226,6 +227,14 @@ class OpeningManager implements ManagerInterface
     {
         $this->em->persist($candidate);
         $this->em->flush();
+    }
+
+    public function findMatchingOpenings(array $data)
+    {
+        $query = $this->findAllQuery();
+        $query->addOrderBy('o.position', 'ASC');
+
+        return $query;
     }
 
     public function notifyManager(Candidate $candidate, $subject, $from, $content)

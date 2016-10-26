@@ -2288,7 +2288,7 @@ div.ol-attribution li > strong {
     font-size: 36px !important;
     font-weight: 700 !important;
     color: #643b22;
-    background-color: rgba(255,255,255,.3);
+    background-color: rgba(255, 255, 255, .3);
     padding: 30px 0;
 }
 
@@ -2315,11 +2315,11 @@ div.ol-attribution li > strong {
     padding: 100px 0;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    -webkit-background-size:cover;
-    -moz-background-size:cover;
-    -o-background-size:cover;
-    background-size:cover;
-    background-position:center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
 }
 
 .careers-result, .careers-apply {
@@ -2381,10 +2381,10 @@ div.application-done {
 .onoffswitch-ios-label.checked {
     background-color: #FDB125;
 }
+
 .onoffswitch-ios-label.checked, .onoffswitch-ios-label.checked:before {
     border-color: #FDB125;
 }
-
 
 /* big switch */
 .apply-form .onoffswitch-ios.switch {
@@ -2476,7 +2476,9 @@ div.application-done {
 }
 
 section.apply-form h1, section.apply-form h2 {
-    font-family: 'American Typewriter';
+    /*font-family: 'Open Sans Condensed Light', helvetica, arial, sans-serif;;*/
+    font-weight: 100;
+    text-transform: uppercase;
 }
 
 div.application-selector {
@@ -3140,4 +3142,26 @@ form.filter-openings span.select2-selection__rendered {
 
 form.filter-openings span.select2-selection__arrow {
     height: 46px !important;
+}
+
+form.filter-openings .select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-width: 7px 7px 0 7px !important;
+}
+
+form.filter-openings .select2-container--default .select2-selection--single .select2-selection__arrow {
+    width: 35px !important;
+}
+
+.apply-info {
+    padding-top: 20px;
+}
+
+.apply-info h2 {
+    font-size: 16pt !important;
+}
+
+.apply-form hr {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -33,7 +33,7 @@ class OpeningType extends AbstractType
                     'attr' => ['class' => 'form-control select2-field'],
                     'class' => 'BackendBundle\Entity\Opening',
                     'choice_label' => 'position',
-                    'empty_value' => '',
+                    'empty_value' => 'All the openings',
                 ]);
         } else {
             $builder
@@ -58,6 +58,7 @@ class OpeningType extends AbstractType
                             ->orderBy('b.name', 'ASC');
                     },
                     'choice_label' => 'name',
+                    'empty_value' => 'All the businesses',
                     'required' => false,
                     'attr' => ['class' => 'form-control select2-field']
                 ]);
