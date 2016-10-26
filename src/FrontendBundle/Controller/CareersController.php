@@ -2,6 +2,7 @@
 
 namespace FrontendBundle\Controller;
 
+use BackendBundle\Entity\Opening;
 use BackendBundle\Form\OpeningType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -23,12 +24,31 @@ class CareersController extends Controller
         ]);
     }
 
-    public function findAction(Request $request)
+    public function findAction(Request $request, $business)
     {
         $paginator = $this->get('knp_paginator');
 
+        $form = $this->createForm(new OpeningType(true));
+        $form->handleRequest($request);
+
+        $conditions = [];
+
+        if (null !== $business && null === $form->getData()) {
+            $conditions = [
+                'business' => $business
+            ];
+        } else if (null !== $form->getData()) {
+            /** @var Opening $opening */
+            $opening = $form->getData();
+
+            $conditions = array_merge([
+                'business' => null !== $opening->getBusiness() ? $opening->getBusiness()->getSlug() : null,
+                'opening' => null !== $opening->getPosition() ? $opening->getPosition()->getId() : null,
+            ], $conditions);
+        }
+
         $pagination = $paginator->paginate(
-            $this->get('opening.manager')->findMatchingOpenings([]),
+            $this->get('opening.manager')->findMatchingOpenings($conditions),
             $request->query->get('page', 1),
             $this->getParameter('deals.pagination.items')
         );

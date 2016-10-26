@@ -6,6 +6,7 @@ use BackendBundle\Entity\Candidate;
 use BackendBundle\Entity\Opening;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -49,7 +50,7 @@ class OpeningManager implements ManagerInterface
     /**
      * Return the DQL to fetch all model objects
      *
-     * @return Query
+     * @return QueryBuilder
      */
     public function findAllQuery()
     {
@@ -229,9 +230,23 @@ class OpeningManager implements ManagerInterface
         $this->em->flush();
     }
 
-    public function findMatchingOpenings(array $data)
+    public function findMatchingOpenings(array $conditions)
     {
         $query = $this->findAllQuery();
+
+        if (isset($conditions['business'])) {
+            $query->join('o.business', 'b')
+                ->andWhere('b.slug = :slug')
+                ->setParameter('slug', $conditions['business'])
+            ;
+        }
+
+        if (isset($conditions['opening'])) {
+            $query->andWhere('o.id = :id')
+                ->setParameter('id', $conditions['opening'])
+            ;
+        }
+
         $query->addOrderBy('o.position', 'ASC');
 
         return $query;

@@ -811,4 +811,12 @@ class Business
     {
         return $this->androidApp;
     }
+
+    /**
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getOpenings()
+    {
+        return $this->openings;
+    }
 }

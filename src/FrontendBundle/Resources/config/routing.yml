@@ -52,8 +52,8 @@ careers_index:
     defaults: { _controller: FrontendBundle:Careers:index }
 
 careers_find:
-    path:     /careers/find
-    defaults: { _controller: FrontendBundle:Careers:find }
+    path:     /careers/find/{business}
+    defaults: { _controller: FrontendBundle:Careers:find, business: null }
 
 careers_apply:
     path:     /careers/{slug}/apply
