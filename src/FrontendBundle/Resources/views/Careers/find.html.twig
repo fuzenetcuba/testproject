@@ -1,0 +1,114 @@
+{% extends '@Frontend/layout.html.twig' %}
+
+{% block metatags %}
+    <meta name="keywords" content="Plaza Mariachi Music City,
+    {{- 'Careers' | trans({}, 'homepage') -}},
+    {{- 'Mall' | trans({}, 'homepage') -}},
+    {{- 'Businesses' | trans({}, 'homepage') -}},
+    {{- 'Deals' | trans({}, 'homepage') -}},
+    {{- 'Buying' | trans({}, 'homepage') -}}
+    "/>
+    <meta name="description" content="
+    {# retrieving settings values #}
+    {{- 'Get a chance to work with the Plaza Mariachi team' | trans({}, 'careers') -}}
+    "/>
+{% endblock %}
+
+{% block custom_css %}
+    {{ parent() }}
+
+    <!-- iCheck Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/iCheck/custom.css') }}"
+          type="text/css"/>
+    <!-- select2 Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
+          type="text/css"/>
+{% endblock %}
+
+
+{% block title '- ' ~ 'Find careers' | trans({}, 'careers') %}
+
+{% block page_content %}
+
+    <section class="inner-content section-spaces-line">
+        <div class="row">
+            <div class="careers-result col-lg-10 col-lg-offset-1">
+                <table class="table table-hover table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Business</th>
+                        <th>Position</th>
+                        {# <th class="hidden-xs">Department</th> #}
+                        <th>Description</th>
+                        <th>Apply Now!</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for opening in openings %}
+                        <tr>
+                            <td>
+                                <img style="width: 100%;" 
+                                             alt="{{ opening.business.name }}"
+                                             src="{{ asset('images/business/' ~ opening.business.logo) }} "/>
+                            </td>
+                            <td>{{ opening.position }}</td>
+                            {# <td class="hidden-xs">{{ opening.department }}</td> #}
+                            <td>{{ opening.description }}</td>
+                            <td>
+                                <a class="btn btn-amber btn-block" href="{{ path('careers_apply', {'slug':opening.slug}) }}">APPLY</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <div class="alert alert-danger">
+                            {{ 'No openings have been published yet' | trans({}, 'careers') }}
+                        </div>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row text-center hidden-print">
+            {# <div class="container text-right">
+                <nav>
+                    <ul class="pager">
+                        <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+                        <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+                    </ul>
+                </nav>
+            </div> #}
+            {{ knp_pagination_render(openings) }}
+        </div>
+    </section>
+
+
+{% endblock %}
+
+{% block custom_js %}
+    {{ parent() }}
+
+    <!-- iCheck Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
+            type="text/javascript"></script>
+    <!-- select2 Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"
+            type="text/javascript"></script>
+{% endblock %}
+
+{% block inline_js %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //  iCheck scripts for checkboxes and radios
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+
+            //  select2 scripts for batch actions combobox
+            $(".select2-field").select2({
+                placeholder: "--- {{ 'Select a value' | trans({}, 'generalbackend') }} ---"
+            });
+
+        });
+    </script>
+{% endblock %}

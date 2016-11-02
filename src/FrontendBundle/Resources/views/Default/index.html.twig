@@ -16,7 +16,13 @@
 {% block inline_css %}
     <style type="text/css" rel="stylesheet">
         .landing-page .header-back.one {
-            background: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBanner' }))) }}') 50% 100% no-repeat;
+            background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBanner' }))) }}');
+            background-repeat: no-repeat;
+            -webkit-background-size:cover;
+            -moz-background-size:cover;
+            -o-background-size:cover;
+            background-size:cover;
+            background-position: bottom center;
         }
     </style>
 {% endblock %}

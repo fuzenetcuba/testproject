@@ -42,6 +42,10 @@ config_routing_user:
     resource: "@BackendBundle/Resources/config/routing/user.yml"
     prefix:   /user
 
+backend_opening:
+    resource: "@BackendBundle/Resources/config/routing/opening.yml"
+    prefix:   /opening
+
 fos_user_logout_ajax:
     path: /logout-ajax
     defaults:

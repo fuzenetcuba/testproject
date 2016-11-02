@@ -1,0 +1,183 @@
+{% extends '@Frontend/layout.html.twig' %}
+
+{% block metatags %}
+    <meta name="keywords" content="Plaza Mariachi Music City,
+    {{- 'Careers' | trans({}, 'homepage') -}},
+    {{- 'Mall' | trans({}, 'homepage') -}},
+    {{- 'Businesses' | trans({}, 'homepage') -}},
+    {{- 'Deals' | trans({}, 'homepage') -}},
+    {{- 'Buying' | trans({}, 'homepage') -}}
+    "/>
+    <meta name="description" content="
+    {# retrieving settings values #}
+    {{- 'Get a chance to work with the Plaza Mariachi team' | trans({}, 'careers') -}}
+    "/>
+{% endblock %}
+
+{% block body_properties %}id="page-top" class="landing-page careers"{% endblock %}
+
+{% block custom_css %}
+    {{ parent() }}
+
+    <!-- iCheck Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/iCheck/flat/orange.css') }}"
+          type="text/css"/>
+    <!-- select2 Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
+          type="text/css"/>
+
+    <link rel="stylesheet" href="{{ asset('bundles/frontend/css/steps.css') }}">
+{% endblock %}
+
+{% block title '- ' ~ 'Careers' | trans({}, 'homepage') %}
+
+{% block page_content %}
+
+    <section class="inner-content section-spaces-line">
+        <div class="header-careers row">
+            <div class="col-lg-12 text-center">
+                <h1 class="m-b-lg slogan">Is not just a job, is an adventure</h1>
+                <p>
+                    <a class="btn btn-lg btn-amber" href="{{ path('careers_find') }}"
+                       role="button">See all the openings</a>
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="careers section-spaces-line gray-bg">
+        <form class="filter-openings" action="{{ path('careers_find') }}" method="POST">
+            <div class="container">
+                <div class="row m-b-lg">
+                    <div class="col-lg-12 text-center">
+                        <div class="section-line amber-line"></div>
+                        <h1>Find the position that fits better to you ...</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 animated fadeInLeft">
+                        {{ form_widget(form.position) }}
+                    </div>
+                    <div class="col-sm-4 border-left-right">
+                        {{ form_widget(form.business) }}
+                    </div>
+                    <div class="col-sm-4 animated fadeInRight">
+                        <div class="team-member">
+                            <button class="btn btn-lg btn-amber btn-block" type="submit"
+                                    role="button"><i class="fa fa-search"></i> Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <section class="section-spaces-line">
+        <div class="container">
+            <div class="row m-b-lg">
+                <div class="col-lg-12 text-center">
+                    <div class="section-line blue-line"></div>
+                    <h1>Why to join Us</h1>
+                </div>
+            </div>
+            <div class="row why-join">
+                <div class="col-sm-4 animated fadeInLeft">
+                    <div class="text-center">
+                        <span class="fa fa-book icon-md icon-round orange"></span>
+                    </div>
+                    <h2 class="text-center mg-md">
+                        Beautiful
+                    </h2>
+                    <p class="text-center">
+                        A little feature description could go here.A little feature description could go here.
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <div class="text-center">
+                        <span class="fa fa-rocket icon-round icon-md blue"></span>
+                    </div>
+                    <h2 class="text-center mg-md">
+                        Responsive
+                    </h2>
+                    <p class="text-center">
+                        A little feature description could go here. A little feature description could go here.
+                    </p>
+                </div>
+                <div class="col-sm-4 animated fadeInRight">
+                    <div class="text-center">
+                        <span class="fa fa-users icon-round icon-md green"></span>
+                    </div>
+                    <h2 class="text-center mg-md">
+                        Clean
+                    </h2>
+                    <p class="text-center">
+                        A little feature description could go here.A little feature description could go here.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {#<div class="mt-element-step">#}
+        {#<div class="row step-line">#}
+            {#<div class="col-md-4 mt-step-col first done">#}
+                {#<div class="mt-step-number bg-white">1</div>#}
+                {#<div class="mt-step-title uppercase font-grey-cascade">Purchase</div>#}
+                {#<div class="mt-step-content font-grey-cascade">Purchasing the item</div>#}
+            {#</div>#}
+            {#<div class="col-md-4 mt-step-col error">#}
+                {#<div class="mt-step-number bg-white">2</div>#}
+                {#<div class="mt-step-title uppercase font-grey-cascade">Payment</div>#}
+                {#<div class="mt-step-content font-grey-cascade">Complete your payment</div>#}
+            {#</div>#}
+            {#<div class="col-md-4 mt-step-col last">#}
+                {#<div class="mt-step-number bg-white">3</div>#}
+                {#<div class="mt-step-title uppercase font-grey-cascade">Deploy</div>#}
+                {#<div class="mt-step-content font-grey-cascade">Receive item integration</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+
+{% endblock %}
+
+{% block custom_js %}
+    {{ parent() }}
+
+    <!-- iCheck Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
+            type="text/javascript"></script>
+    <!-- select2 Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"
+            type="text/javascript"></script>
+{% endblock %}
+
+{% block inline_js %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //  iCheck scripts for checkboxes and radios
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_flat-orange',
+                radioClass: 'iradio_flat-orange'
+            });
+
+            //  select2 scripts for batch actions combobox
+            $("#backend_bundle_opening_type_position").select2({
+                minimumResultsForSearch: -1,
+                placeholder: {
+                    id: "12123",
+                    placeholder: "Select an option"
+                }
+            });
+
+            $("#backend_bundle_opening_type_business").select2({
+                minimumResultsForSearch: -1,
+                placeholder: {
+                    id: "12123",
+                    placeholder: "Select an option"
+                }
+            });
+        });
+    </script>
+{% endblock %}
