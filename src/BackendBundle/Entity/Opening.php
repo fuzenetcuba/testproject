@@ -31,9 +31,9 @@ class Opening
     /**
      * @var string
      *
-     * @Gedmo\Translatable)
      * @Gedmo\Slug(fields={"position"})
      * @ORM\Column(type="string", unique=true, length=128)
+     * @Gedmo\Translatable
      */
     private $slug;
 

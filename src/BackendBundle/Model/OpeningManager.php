@@ -56,9 +56,8 @@ class OpeningManager implements ManagerInterface
     {
         return $this->em->createQueryBuilder()
             ->select('o')
-            ->from('BackendBundle:Opening', 'o')
-            // ->getQuery()
-        ;
+            ->from('BackendBundle:Opening', 'o')// ->getQuery()
+            ;
     }
 
     /**
@@ -139,10 +138,20 @@ class OpeningManager implements ManagerInterface
 
     public function findBySlug($slug)
     {
-        return $this->em->getRepository('BackendBundle:Opening')
-            ->findOneBy([
-                'slug' => $slug
-            ]);
+        $object = $this->em
+            ->createQuery('SELECT d FROM BackendBundle:Opening d WHERE d.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->setHint(
+                Query::HINT_CUSTOM_OUTPUT_WALKER,
+                'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+            )
+            ->getOneOrNullResult();
+
+        if (!$object) {
+            throw new NotFoundHttpException(sprintf('Opening with slug "%s" could not be found', $slug));
+        }
+
+        return $object;
     }
 
     public function fromRequest(Request $request)
@@ -237,14 +246,12 @@ class OpeningManager implements ManagerInterface
         if (isset($conditions['business'])) {
             $query->join('o.business', 'b')
                 ->andWhere('b.slug = :slug')
-                ->setParameter('slug', $conditions['business'])
-            ;
+                ->setParameter('slug', $conditions['business']);
         }
 
         if (isset($conditions['opening'])) {
             $query->andWhere('o.id = :id')
-                ->setParameter('id', $conditions['opening'])
-            ;
+                ->setParameter('id', $conditions['opening']);
         }
 
         $query->addOrderBy('o.position', 'ASC');
@@ -258,8 +265,7 @@ class OpeningManager implements ManagerInterface
             ->setSubject($subject)
             ->setFrom($from)
             ->setTo($this->careersEmail)
-            ->setBody($content, 'text/html')
-        ;
+            ->setBody($content, 'text/html');
 
         $this->mailer->send($message);
     }
