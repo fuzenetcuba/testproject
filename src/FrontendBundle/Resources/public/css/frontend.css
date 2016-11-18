@@ -2490,6 +2490,12 @@ section.apply-form h1 {
     font-size: 30pt;
 }
 
+section.apply-form h1.apply-header {
+    font-weight: 300;
+    margin-top: 7px;
+    font-size: 32px;
+}
+
 section.apply-form {
     padding-bottom: 30px;
 }
