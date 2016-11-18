@@ -24,6 +24,7 @@ class Opening
      * @var string
      *
      * @ORM\Column(type="string")
+     * @Gedmo\Translatable
      */
     private $position;
 
@@ -40,6 +41,7 @@ class Opening
      * @var string
      *
      * @ORM\Column(type="string")
+     * @Gedmo\Translatable
      */
     // private $department;
 
@@ -54,6 +56,7 @@ class Opening
      * @var string
      *
      * @ORM\Column(type="text", nullable=false)
+     * @Gedmo\Translatable
      */
     private $description;
 
