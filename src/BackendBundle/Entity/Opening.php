@@ -24,15 +24,16 @@ class Opening
      * @var string
      *
      * @ORM\Column(type="string")
+     * @Gedmo\Translatable
      */
     private $position;
 
     /**
      * @var string
      *
-     * @Gedmo\Translatable)
      * @Gedmo\Slug(fields={"position"})
      * @ORM\Column(type="string", unique=true, length=128)
+     * @Gedmo\Translatable
      */
     private $slug;
 
@@ -40,6 +41,7 @@ class Opening
      * @var string
      *
      * @ORM\Column(type="string")
+     * @Gedmo\Translatable
      */
     // private $department;
 
@@ -54,6 +56,7 @@ class Opening
      * @var string
      *
      * @ORM\Column(type="text", nullable=false)
+     * @Gedmo\Translatable
      */
     private $description;
 

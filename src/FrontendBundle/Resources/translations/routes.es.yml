@@ -7,3 +7,7 @@ membership: /miembros
 subscription_request: /suscribirse
 subscription_confirm: /suscribirse/confirmar/{id}
 mall_map: /mapa
+careers_index: /empleos
+careers_find: /empleos/buscar/{business}
+careers_apply: /empleos/{slug}/aplicar
+careers_store: /empleos/tienda

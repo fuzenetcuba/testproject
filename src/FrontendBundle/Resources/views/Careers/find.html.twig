@@ -36,11 +36,11 @@
                 <table class="table table-hover table-responsive">
                     <thead>
                     <tr>
-                        <th>Business</th>
-                        <th>Position</th>
+                        <th>{{ 'Business' | trans({}, 'careers') }}</th>
+                        <th>{{ 'Position' | trans({}, 'careers') }}</th>
                         {# <th class="hidden-xs">Department</th> #}
-                        <th>Description</th>
-                        <th>Apply Now!</th>
+                        <th>{{ 'Description' | trans({}, 'careers') }}</th>
+                        <th>{{ 'Apply Now!' | trans({}, 'careers') }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -55,7 +55,9 @@
                             {# <td class="hidden-xs">{{ opening.department }}</td> #}
                             <td>{{ opening.description }}</td>
                             <td>
-                                <a class="btn btn-amber btn-block" href="{{ path('careers_apply', {'slug':opening.slug}) }}">APPLY</a>
+                                <a class="btn btn-amber btn-block" href="{{ path('careers_apply', {'slug':opening.slug}) }}">
+                                    {{ 'APPLY' | trans({}, 'careers') }}
+                                </a>
                             </td>
                         </tr>
                     {% else %}

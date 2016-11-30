@@ -87,6 +87,7 @@ class OpeningType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'BackendBundle\Entity\Opening',
+            'translation_domain' => 'careers'
         ));
     }
 
