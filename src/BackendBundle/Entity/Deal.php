@@ -99,8 +99,8 @@ class Deal
      *     maxHeight="1500",
      *     minHeightMessage="The image must have a height between 16 and 1500 pixels",
      *     maxHeightMessage="The image must have a height between 16 and 1500 pixels",
-     *     maxSize="5M",
-     *     maxSizeMessage="The image must have 5 MB (megabytes) or less"
+     *     maxSize="2M",
+     *     maxSizeMessage="The image must have 2 MB (megabytes) or less"
      * )
      */
     private $imageFile;

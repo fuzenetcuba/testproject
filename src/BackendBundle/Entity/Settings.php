@@ -186,8 +186,8 @@ class Settings
      *     maxHeight="3000",
      *     minHeightMessage="The image must have a height between 16 and 3000 pixels",
      *     maxHeightMessage="The image must have a height between 16 and 3000 pixels",
-     *     maxSize="5M",
-     *     maxSizeMessage="The image must have 5 MB (megabytes) or less"
+     *     maxSize="2M",
+     *     maxSizeMessage="The image must have 2 MB (megabytes) or less"
      * )
      */
     private $websiteLogoImage;
@@ -216,8 +216,8 @@ class Settings
      *     maxHeight="3000",
      *     minHeightMessage="The image must have a height between 16 and 3000 pixels",
      *     maxHeightMessage="The image must have a height between 16 and 3000 pixels",
-     *     maxSize="5M",
-     *     maxSizeMessage="The image must have 5 MB (megabytes) or less"
+     *     maxSize="2M",
+     *     maxSizeMessage="The image must have 2 MB (megabytes) or less"
      * )
      */
     private $websiteBannerImage;

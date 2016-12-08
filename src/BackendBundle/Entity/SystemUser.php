@@ -148,8 +148,8 @@ class SystemUser extends BaseUser
      *     maxHeight="1500",
      *     minHeightMessage="The image must have a height between 16 and 1500 pixels",
      *     maxHeightMessage="The image must have a height between 16 and 1500 pixels",
-     *     maxSize="10M",
-     *     maxSizeMessage="The image must have 10 MB (megabytes) or less"
+     *     maxSize="1M",
+     *     maxSizeMessage="The image must have 1 MB (megabytes) or less"
      * )
      * @var File
      */

@@ -140,8 +140,8 @@ class Business
      *     maxHeight="1500",
      *     minHeightMessage="The logo must have a height between 16 and 1500 pixels",
      *     maxHeightMessage="The logo must have a height between 16 and 1500 pixels",
-     *     maxSize="5M",
-     *     maxSizeMessage="The logo must have 5 MB (megabytes) or less"
+     *     maxSize="1M",
+     *     maxSizeMessage="The logo must have 1 MB (megabytes) or less"
      * )
      */
     private $logoFile;
@@ -227,7 +227,7 @@ class Business
      * @var boolean
      * @ORM\Column(type="boolean")
      */
-    private $isPublic;
+    private $isPublic = true;
 
     public function __construct()
     {
