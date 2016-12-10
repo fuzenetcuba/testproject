@@ -1,7 +1,9 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block title %} {{- "Deals" | trans({}, 'general') -}} {% endblock %}
+
 {% block metatags %}
-    <meta name="keywords" content="Plaza Mariachi Music City,
+    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
     {{- 'Deals' | trans({}, 'homepage') -}},
     {{- 'Mall' | trans({}, 'homepage') -}},
     {{- 'Businesses' | trans({}, 'homepage') -}},
@@ -11,8 +13,6 @@
     {{- 'Go search the best deals in Plaza Mariachi to get a great winning experience' | trans({}, 'deals') -}}
     " />
 {% endblock %}
-
-{% block title '- Deals' %}
 
 {% block custom_css %}
     {{ parent() }}

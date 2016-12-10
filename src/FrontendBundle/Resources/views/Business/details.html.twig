@@ -1,7 +1,9 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block title %} {{- business.name -}} {% endblock %}
+
 {% block metatags %}
-    <meta name="keywords" content="Plaza Mariachi Music City,
+    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
     {{- business.name -}},
     {{- 'Business details' | trans({}, 'business') -}},
     {{- 'Mall' | trans({}, 'homepage') -}},
@@ -12,8 +14,6 @@
     {{- business.description -}}
     "/>
 {% endblock %}
-
-{% block title '- ' ~ business.name %}
 
 {% block page_content %}
     <section class="inner-content section-spaces">

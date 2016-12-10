@@ -1,18 +1,20 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block title %} {{ "About Us | Nashville Shopping Center" |trans({}, 'general') }} {% endblock %}
+
 {% block metatags %}
-    <meta name="keywords" content="Plaza Mariachi Music City,
+    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
     {{ 'Mall' | trans({}, 'homepage') }},
     {{ 'Businesses' | trans({}, 'homepage') }},
     {{ 'Deals' | trans({}, 'homepage') }},
     {{ 'Buying' | trans({}, 'homepage') }},
     "/>
     <meta name="description" content="
-    {{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'textAbout' })) -}}
+    {#- retrieving settings values -#}
+    {#-{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'textAbout' })) -}}-#}
+    {{- "At Plaza Mariachi you'll hear Hispanic music, see Latin relics, discover old and new Mexico in food, fashion and much more. Come explore Plaza Mariachi today!" | trans({}, 'general') -}}
     "/>
 {% endblock %}
-
-{% block title ' - ' ~ "About Us" %}
 
 {% set current_static = "about" %}
 

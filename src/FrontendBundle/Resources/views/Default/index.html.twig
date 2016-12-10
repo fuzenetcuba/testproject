@@ -1,15 +1,18 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block title %} {{- "Nashville's Cultural Shopping Experience" | trans({}, 'general') -}} {% endblock %}
+
 {% block metatags %}
-    <meta name="keywords" content="Plaza Mariachi Music City,
+    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
     {{- 'Mall' | trans({}, 'homepage') -}},
     {{- 'Businesses' | trans({}, 'homepage') -}},
     {{- 'Deals' | trans({}, 'homepage') -}},
     {{- 'Buying' | trans({}, 'homepage') -}}
     "/>
     <meta name="description" content="
-    {# retrieving settings values #}
-    {{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'textAbout' })) -}}
+    {#- retrieving settings values -#}
+    {#-{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'textAbout' })) -}}-#}
+    {{- "The Plaza Mariachi CULTURAL EXPERIENCE offers a blend of culture, art, music, food, and retail in one location in the heart of the Nashville Hispanic Community" | trans({}, 'general') -}}
     "/>
 {% endblock %}
 

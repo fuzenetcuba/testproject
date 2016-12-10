@@ -1,17 +1,18 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block title %} {{- "Apply for a job" | trans({}, 'careers') -}} {% endblock %}
 
 {% block metatags %}
-    <meta name="keywords" content="Plaza Mariachi Music City,
-    {{- 'Careers' | trans({}, 'homepage') -}},
+    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+    {{- 'Careers application' | trans({}, 'homepage') -}},
     {{- 'Mall' | trans({}, 'homepage') -}},
     {{- 'Businesses' | trans({}, 'homepage') -}},
     {{- 'Deals' | trans({}, 'homepage') -}},
     {{- 'Buying' | trans({}, 'homepage') -}}
     " xmlns:v-validate="http://www.w3.org/1999/xhtml"/>
+
     <meta name="description" content="
-    {# retrieving settings values #}
-    {{- 'Get a chance to work with the Plaza Mariachi team' | trans({}, 'careers') -}}
+    {{- 'Apply for' | trans({}, 'careers') ~ ' ' ~ opening.position ~ ' ' ~ "in" ~ ' ' | trans({}, 'careers') ~ opening.business.name -}}
     "/>
     <meta name="slug" content="{{ app.request.get('slug') }}">
 {% endblock %}
@@ -26,9 +27,6 @@
     <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
           type="text/css"/>
 {% endblock %}
-
-
-{% block title '- ' ~ 'Apply for a job' | trans({}, 'careers') %}
 
 {% block page_content %}
     <section v-cloak class="inner-content apply-form" id="apply-form">
