@@ -72,7 +72,9 @@
                             <p class="{% if deal.isExpired %}expired{% endif %}">{{ 'ENDS' | trans({}, 'general') }}
                                 : {{ deal.endsAt | date('m/d/Y') }}</p>
                             <div class="container-image">
-                                <img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>
+                                <img class="center-height"
+                                     alt="{{ deal.name }}"
+                                     src="{{ asset('images/deals/' ~ deal.image) }} "/>
                             </div>
                             <p><a class="btn btn-amber" href="{{ path('deal_details', {'slug' : deal.slug}) }}"
                                   role="button">{{ 'View Deal' | trans({}, 'deals') }}</a></p>
@@ -112,6 +114,7 @@
                                 <td>
                                     <div class="print-container-image">
                                         <img class="center-height"
+                                             alt="{{ deal.name }}"
                                              src="{{ asset('images/deals/' ~ deal.image) }} "/>
                                     </div>
                                 </td>

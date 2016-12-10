@@ -93,7 +93,7 @@
     {#<p>{{ 'ENDS' | trans({}, 'general') }}: {{ deal.endsAt | date('m/d/Y') }}</p>#}
     {#<div class="hovereffect">#}
     {#<div class="container-image ">#}
-    {#<img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>#}
+    {#<img class="center-height" alt="{{ deal.name }}" src="{{ asset('images/deals/' ~ deal.image) }} "/>#}
     {#<div class="overlay">#}
     {#<a class="info" href="{{ path('deal_details', {'slug' : deal.slug}) }}">#}
     {#{{ 'Show Deal' | trans({}, 'homepage') }}#}

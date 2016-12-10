@@ -38,7 +38,7 @@
                             <a class="dropdown-toggle navbar-avatar" data-toggle="dropdown" href="#">
                                 {{ app.user.fullName() }}
                                 &nbsp;
-                                <img alt="image" class="img-avatar-small img-circle"
+                                <img alt="{{ app.user.fullName() }}" class="img-avatar-small img-circle"
                                      src="
                                      {% if((app.user.image) is not null) %}
                                         {{ asset('images/users/' ~ app.user.image) }}
@@ -179,7 +179,7 @@
                             <a class="dropdown-toggle navbar-avatar" data-toggle="dropdown" href="#">
                                 {{ app.user.fullName() }}
                                 &nbsp;
-                                <img alt="image" class="img-avatar-small img-circle"
+                                <img alt="{{ app.user.fullName() }}" class="img-avatar-small img-circle"
                                      src="
                                      {% if((app.user.image) is not null) %}
                                         {{ asset('images/users/' ~ app.user.image) }}
