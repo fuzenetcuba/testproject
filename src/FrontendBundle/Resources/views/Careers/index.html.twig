@@ -1,7 +1,9 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block title %} {{- "Careers" | trans({}, 'homepage') -}} {% endblock %}
+
 {% block metatags %}
-    <meta name="keywords" content="Plaza Mariachi Music City,
+    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
     {{- 'Careers' | trans({}, 'homepage') -}},
     {{- 'Mall' | trans({}, 'homepage') -}},
     {{- 'Businesses' | trans({}, 'homepage') -}},
@@ -9,7 +11,6 @@
     {{- 'Buying' | trans({}, 'homepage') -}}
     "/>
     <meta name="description" content="
-    {# retrieving settings values #}
     {{- 'Get a chance to work with the Plaza Mariachi team' | trans({}, 'careers') -}}
     "/>
 {% endblock %}
@@ -28,8 +29,6 @@
 
     <link rel="stylesheet" href="{{ asset('bundles/frontend/css/steps.css') }}">
 {% endblock %}
-
-{% block title '- ' ~ 'Careers' | trans({}, 'homepage') %}
 
 {% block page_content %}
 

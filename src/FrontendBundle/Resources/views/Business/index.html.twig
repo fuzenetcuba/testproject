@@ -1,7 +1,9 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block title %} {{- "Businesses" | trans({}, 'general') -}} {% endblock %}
+
 {% block metatags %}
-    <meta name="keywords" content="Plaza Mariachi Music City,
+    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
     {{- 'Businesses' | trans({}, 'homepage') -}},
     {{- 'Mall' | trans({}, 'homepage') -}},
     {{- 'Deals' | trans({}, 'homepage') -}},
@@ -11,8 +13,6 @@
     {{- 'Go search the businesses located in Plaza Mariachi for a better shopping planning' | trans({}, 'business') -}}
     "/>
 {% endblock %}
-
-{% block title '- Businesses' %}
 
 {% block custom_css %}
     {{ parent() }}
@@ -129,6 +129,7 @@
                             <td>
                                 <div class="print-container-image print-business-image">
                                     <img class="center-height print-business-image"
+                                         alt="{{ business.name }}"
                                          src="{{ asset('images/business/' ~ business.logo) }} "/>
                                 </div>
                             </td>

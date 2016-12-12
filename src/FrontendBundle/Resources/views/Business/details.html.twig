@@ -1,7 +1,9 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block title %} {{- business.name -}} {% endblock %}
+
 {% block metatags %}
-    <meta name="keywords" content="Plaza Mariachi Music City,
+    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
     {{- business.name -}},
     {{- 'Business details' | trans({}, 'business') -}},
     {{- 'Mall' | trans({}, 'homepage') -}},
@@ -12,8 +14,6 @@
     {{- business.description -}}
     "/>
 {% endblock %}
-
-{% block title '- ' ~ business.name %}
 
 {% block page_content %}
     <section class="inner-content section-spaces">
@@ -130,6 +130,7 @@
                                             {#<p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>#}
                                             {#<div class="container-image">#}
                                                 {#<img class="center-height"#}
+                                                     {#alt="{{ deal.name }}"#}
                                                      {#src="{{ asset('images/deals/' ~ deal.image) }} "/>#}
                                             {#</div>#}
                                             {#<p>#}
@@ -161,7 +162,7 @@
             {#<p>AT {{ deal.business.name | upper }}</p>#}
             {#<p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>#}
             {#<div class="container-image">#}
-            {#<img class="center-height" src="{{ asset('images/deals/' ~ deal.image) }} "/>#}
+            {#<img class="center-height" alt="{{ deal.name }}" src="{{ asset('images/deals/' ~ deal.image) }} "/>#}
             {#</div>#}
             {#<p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View Deal</a></p>#}
             {#</div>#}
@@ -190,6 +191,7 @@
 
                                     <div class="product-imitation container-image">
                                         <img class="center-height"
+                                             alt="{{ item.name }}"
                                              src="{{ asset('images/business/' ~ item.logo) }}">
                                     </div>
                                     <div class="product-desc">

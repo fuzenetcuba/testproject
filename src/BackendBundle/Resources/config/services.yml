@@ -49,3 +49,8 @@ services:
         class: BackendBundle\Listener\RegistrationListener
         tags:
             - { name: kernel.event_subscriber }
+
+    app.vichuploader.namer:
+        class: BackendBundle\Namer\VichUploaderNamer
+        tags:
+            - { name: namer }

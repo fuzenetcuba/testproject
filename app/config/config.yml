@@ -133,28 +133,28 @@ vich_uploader:
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
-            namer:              vich_uploader.namer_uniqid
+            namer:              app.vichuploader.namer #vich_uploader.namer_uniqid
         deal_image:
             uri_prefix:         /images/deals
             upload_destination: %kernel.root_dir%/../web/images/deals
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
-            namer:              vich_uploader.namer_uniqid
+            namer:              app.vichuploader.namer #vich_uploader.namer_uniqid
         user_image:
             uri_prefix:         /images/users
             upload_destination: %kernel.root_dir%/../web/images/users
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
-            namer:              vich_uploader.namer_uniqid
+            namer:              app.vichuploader.namer #vich_uploader.namer_uniqid
         setting_image:
             uri_prefix:         /images/settings
             upload_destination: %kernel.root_dir%/../web/images/settings
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
-            namer:              vich_uploader.namer_uniqid
+            namer:              app.vichuploader.namer #vich_uploader.namer_uniqid
 
 #config for HWIOAuthBundle
 hwi_oauth:

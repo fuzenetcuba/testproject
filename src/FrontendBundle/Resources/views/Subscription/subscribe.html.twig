@@ -1,19 +1,19 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block title %} {{- "Subscribe for Deals" | trans({}, 'general') -}} {% endblock %}
+
 {% block metatags %}
-    <meta name="keywords" content="Plaza Mariachi Music City,
-    {{- 'Subscribe for new deals' | trans({}, 'subscription') -}},
+    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+    {{- 'Subscription request' | trans({}, 'general') -}},
     {{- 'Mall' | trans({}, 'homepage') -}},
     {{- 'Businesses' | trans({}, 'homepage') -}},
     {{- 'Deals' | trans({}, 'homepage') -}},
     {{- 'Buying' | trans({}, 'homepage') -}}
-    " />
+    "/>
     <meta name="description" content="
-    {{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'textAbout' })) -}}
-    " />
+    {{- "Subscription request at Plaza Mariachi to receive news & events dates" | trans({}, 'general') -}}
+    "/>
 {% endblock %}
-
-{% block title ' - ' ~ "Subscribe for deals" %}
 
 {% block custom_css %}
     {{ parent() }}

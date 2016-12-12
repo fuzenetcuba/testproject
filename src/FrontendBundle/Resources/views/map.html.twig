@@ -1,7 +1,9 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block title %} {{- "Mall Map" | trans({}, 'general') -}} {% endblock %}
+
 {% block metatags %}
-    <meta name="keywords" content="Plaza Mariachi Music City,
+    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
     {{- 'Mall Map' | trans({}, 'business') -}},
     {{- 'Mall' | trans({}, 'homepage') -}},
     {{- 'Businesses' | trans({}, 'homepage') -}},
@@ -12,8 +14,6 @@
     {{- 'Go search the location of businesses for a better orientation in Plaza Mariachi' | trans({}, 'business') -}}
     " />
 {% endblock %}
-
-{% block title ' - ' ~ 'Mall Map' | trans({}, 'general') %}
 
 {% block page_content %}
     <section class="inner-content section-spaces-line">

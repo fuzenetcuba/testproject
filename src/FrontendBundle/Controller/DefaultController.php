@@ -4,6 +4,7 @@ namespace FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
@@ -61,6 +62,21 @@ class DefaultController extends Controller
     public function staticPageAction($name)
     {
         return $this->render("FrontendBundle:Static:" . $name . ".html.twig");
+    }
+
+
+    /**
+     * Displays robots.txt.
+     */
+    public function robotsAction($template = null)
+    {
+        $response = new Response();
+        $response->headers->set('Content-Type', 'text/plain');
+
+        return $this->render($template ?: sprintf(
+            "FrontendBundle:Static:robots_%s.txt.twig",
+            $this->container->getParameter('kernel.environment')
+        ), array(), $response);
     }
 
     /**

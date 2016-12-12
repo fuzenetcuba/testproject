@@ -1,6 +1,19 @@
 {% extends '@Frontend/layout.html.twig' %}
 
-{% block title ' - ' ~ "Confirmation of subscription" %}
+{% block title %} {{- "Confirmation of subscription" | trans({}, 'general') -}} {% endblock %}
+
+{% block metatags %}
+    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+    {{- 'Confirmation of subscription' | trans({}, 'general') -}},
+    {{- 'Mall' | trans({}, 'homepage') -}},
+    {{- 'Businesses' | trans({}, 'homepage') -}},
+    {{- 'Deals' | trans({}, 'homepage') -}},
+    {{- 'Buying' | trans({}, 'homepage') -}}
+    "/>
+    <meta name="description" content="
+    {{- "Confirmation of subscription at Plaza Mariachi to receive news & events dates" | trans({}, 'general') -}}
+    "/>
+{% endblock %}
 
 {% block page_content %}
     <section class="inner-content section-spaces-line">
