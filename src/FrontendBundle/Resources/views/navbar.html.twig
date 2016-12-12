@@ -13,8 +13,10 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ path('frontend_homepage') }}">
-                    <img src="{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteLogo' }))) }}"
-                         alt="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) }}"/>
+                    <img src="{{ 'http://plazamariachi.com' ~ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteLogo' }))) }}"
+                         alt="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) }}"
+                         title="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) }}"
+                    />
                 </a>
 
                 {#<a class="navbar-brand" href="#"><i id="logged-in-user">user</i></a>#}
@@ -38,7 +40,7 @@
                             <a class="dropdown-toggle navbar-avatar" data-toggle="dropdown" href="#">
                                 {{ app.user.fullName() }}
                                 &nbsp;
-                                <img alt="{{ app.user.fullName() }}" class="img-avatar-small img-circle"
+                                <img alt="{{ app.user.fullName() }}" title="{{ app.user.fullName() }}" class="img-avatar-small img-circle"
                                      src="
                                      {% if((app.user.image) is not null) %}
                                         {{ asset('images/users/' ~ app.user.image) }}
@@ -108,9 +110,9 @@
                         {% else %}
                             <ul class="dropdown-menu">
                                 {#<li>#}
-                                    {#<a href="{{ path('membership') }}">#}
-                                        {#<i class="fa fa-user"></i> {{ 'Membership' | trans({}, 'menu') }}#}
-                                    {#</a>#}
+                                {#<a href="{{ path('membership') }}">#}
+                                {#<i class="fa fa-user"></i> {{ 'Membership' | trans({}, 'menu') }}#}
+                                {#</a>#}
                                 {#</li>#}
                                 {#<li class="divider"></li>#}
                                 <li>
@@ -154,14 +156,14 @@
                         <a href="{{ path('business_list') }}">{{ 'Directory' | trans({}, 'menu') }}</a>
                     </li>
                     {#<li class="{% if current in ['deals', 'deal'] %}active{% endif %}">#}
-                        {#<a href="{{ path('deals') }}">{{ 'Deals' | trans({}, 'menu') }}</a>#}
+                    {#<a href="{{ path('deals') }}">{{ 'Deals' | trans({}, 'menu') }}</a>#}
                     {#</li>#}
                     {#<li class="{% if current == 'news' %}active{% endif %}">#}
-                        {#<a href="#">{{ 'News & Events' | trans({}, 'menu') }}</a>#}
+                    {#<a href="#">{{ 'News & Events' | trans({}, 'menu') }}</a>#}
                     {#</li>#}
-                    <li class="{% if current == 'careers' %}active{% endif %}">
+                    {#<li class="{% if current == 'careers' %}active{% endif %}">
                         <a href="{{ path("careers_index") }}">{{ 'Careers' | trans({}, 'menu') }}</a>
-                    </li>
+                    </li>#}
                     <li class="visible-xs">
                         <a href="{{ path("subscription_request") }}">{{ 'Subscribe' | trans({}, 'menu') }}</a>
                     </li>
@@ -179,7 +181,7 @@
                             <a class="dropdown-toggle navbar-avatar" data-toggle="dropdown" href="#">
                                 {{ app.user.fullName() }}
                                 &nbsp;
-                                <img alt="{{ app.user.fullName() }}" class="img-avatar-small img-circle"
+                                <img alt="{{ app.user.fullName() }}" title="{{ app.user.fullName() }}" class="img-avatar-small img-circle"
                                      src="
                                      {% if((app.user.image) is not null) %}
                                         {{ asset('images/users/' ~ app.user.image) }}
@@ -193,9 +195,9 @@
                         {% if not not app.user %}
                             <ul class="dropdown-menu">
                                 {#<li>#}
-                                    {#<a href="{{ path('membership') }}">#}
-                                        {#<i class="fa fa-user"></i> {{ 'Membership' | trans({}, 'menu') }}#}
-                                    {#</a>#}
+                                {#<a href="{{ path('membership') }}">#}
+                                {#<i class="fa fa-user"></i> {{ 'Membership' | trans({}, 'menu') }}#}
+                                {#</a>#}
                                 {#</li>#}
                                 {#<li class="divider"></li>#}
                                 <li>
@@ -230,6 +232,13 @@
                     </li>
                     {#<li class="nav-divider"></li>#}
                 </ul>
+            </div>
+        </div>
+        <!-- Your share button code -->
+        <div class="container-fb-share-button">
+            <div class="fb-share-button"
+                 data-href="http://plazamariachi.com"
+                 data-layout="box_count">
             </div>
         </div>
     </nav>

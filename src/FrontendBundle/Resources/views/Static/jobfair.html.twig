@@ -1,0 +1,43 @@
+{% extends '@Frontend/layout.html.twig' %}
+
+{% block title %} {{ "Job Fair" |trans({}, 'homepage') }} {% endblock %}
+
+{% block metatags %}
+    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+    {{ 'Job Fair' | trans({}, 'homepage') }},
+    {{ 'Mall' | trans({}, 'homepage') }},
+    {{ 'Businesses' | trans({}, 'homepage') }},
+    {{ 'Deals' | trans({}, 'homepage') }},
+    {{ 'Buying' | trans({}, 'homepage') }},
+    "/>
+    <meta name="description" content="
+    {{- "At Plaza Mariachi you'll hear Hispanic music, see Latin relics, discover old and new Mexico in food, fashion and much more. Come explore Plaza Mariachi today!" | trans({}, 'general') -}}
+    "/>
+{% endblock %}
+
+{% block page_content %}
+
+    {# slider #}
+    <section class="inner-content section-spaces-line">
+        <div class="container">
+            <div class="row m-b">
+                <div class="col-lg-12 text-center">
+                    <div class="section-line amber-line"></div>
+                    <h1>{{ 'Job Fair at' ~ " " ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) }}</h1>
+                </div>
+            </div>
+
+            <p class="text-muted-strong text-justify">
+                {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'textAbout' })) | raw | nl2br }}
+            </p>
+            <p class="text-center">
+                <a class="btn btn-primary" href="#">
+                    <i class="fa fa-arrow-down"></i>
+                    {{ 'Download the form' | trans({}, 'general') }}
+                </a>
+            </p>
+        </div>
+    </section>
+
+
+{% endblock %}

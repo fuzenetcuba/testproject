@@ -3,7 +3,8 @@
 {% block title %} {{- business.name -}} {% endblock %}
 
 {% block metatags %}
-    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+    <meta name="keywords"
+          content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
     {{- business.name -}},
     {{- 'Business details' | trans({}, 'business') -}},
     {{- 'Mall' | trans({}, 'homepage') -}},
@@ -22,6 +23,7 @@
                 <div class="col-sm-6 text-center">
                     <img class="img-responsive"
                          alt="{{ business.name }}"
+                         title="{{ business.name }}"
                          src="{{ asset('images/business/' ~ business.logo) }}">
                 </div>
                 <div class="col-sm-6">
@@ -72,11 +74,12 @@
                     <p class="text-muted-strong">{{ business.description | nl2br }}</p>
 
                     {% if business.openings | length > 0 %}
-                    <div class="openings col-lg-8">
-                        <a href="{{ path('careers_find', {'business':business.slug}) }}" class="btn btn-blue btn-block">
-                            CHECK OPEN POSITIONS FOR THIS BUSINESS
-                        </a>
-                    </div>
+                        <div class="openings col-lg-8">
+                            <a href="{{ path('careers_find', {'business':business.slug}) }}"
+                               class="btn btn-blue btn-block">
+                                CHECK OPEN POSITIONS FOR THIS BUSINESS
+                            </a>
+                        </div>
                     {% endif %}
 
                     <ul class="list-inline pull-right">
@@ -107,68 +110,68 @@
     </section>
 
     {#{% if business.deals | length > 0 %}#}
-        {#<section class="section-spaces-line gray-bg">#}
-            {#<div class="row business-deals">#}
-                {#<div class="container">#}
-                    {#<div class="row m-b-lg">#}
-                        {#<div class="col-lg-12 text-center">#}
-                            {#<div class="section-line amber-line"></div>#}
-                            {#<h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerBusinessActiveDeals' })) }}</h1>#}
+    {#<section class="section-spaces-line gray-bg">#}
+    {#<div class="row business-deals">#}
+    {#<div class="container">#}
+    {#<div class="row m-b-lg">#}
+    {#<div class="col-lg-12 text-center">#}
+    {#<div class="section-line amber-line"></div>#}
+    {#<h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerBusinessActiveDeals' })) }}</h1>#}
 
-                            {#<p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderBusinessActiveDeals' })) }}</p>#}
-                        {#</div>#}
-                    {#</div>#}
+    {#<p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderBusinessActiveDeals' })) }}</p>#}
+    {#</div>#}
+    {#</div>#}
 
-                    {#<div class="carousel carousel-adjusted slide" id="myCarousel">#}
-                        {#<div class="carousel-inner">#}
-                            {#{% for deal in business.deals %}#}
-                                {#{% if not deal.isExpired %}#}
-                                    {#<div class="item {% if loop.first %}active{% endif %} ">#}
-                                        {#<div class="col-sm-3 text-center">#}
-                                            {#<h3>{{ deal.name | upper }}</h3>#}
-                                            {#<p>AT {{ deal.business.name | upper }}</p>#}
-                                            {#<p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>#}
-                                            {#<div class="container-image">#}
-                                                {#<img class="center-height"#}
-                                                     {#alt="{{ deal.name }}"#}
-                                                     {#src="{{ asset('images/deals/' ~ deal.image) }} "/>#}
-                                            {#</div>#}
-                                            {#<p>#}
-                                                {#<a class="btn btn-amber"#}
-                                                   {#href="{{ path('deal_details', {'slug' : deal.slug}) }}"#}
-                                                   {#role="button">#}
-                                                    {#{{ 'View Deal' | trans({}, 'business') }}#}
-                                                {#</a>#}
-                                            {#</p>#}
-                                            {#{{ loop.last ? '' : '<p class="visible-xs m-b-xl"></p>' }}#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                {#{% endif %}#}
-                            {#{% endfor %}#}
-                        {#</div>#}
-                        {#<a class="left carousel-control" href="#myCarousel" data-slide="prev"><i#}
-                                    {#class="glyphicon glyphicon-chevron-left"></i></a>#}
-                        {#<a class="right carousel-control" href="#myCarousel" data-slide="next"><i#}
-                                    {#class="glyphicon glyphicon-chevron-right"></i></a>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
+    {#<div class="carousel carousel-adjusted slide" id="myCarousel">#}
+    {#<div class="carousel-inner">#}
+    {#{% for deal in business.deals %}#}
+    {#{% if not deal.isExpired %}#}
+    {#<div class="item {% if loop.first %}active{% endif %} ">#}
+    {#<div class="col-sm-3 text-center">#}
+    {#<h3>{{ deal.name | upper }}</h3>#}
+    {#<p>AT {{ deal.business.name | upper }}</p>#}
+    {#<p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>#}
+    {#<div class="container-image">#}
+    {#<img class="center-height"#}
+    {#alt="{{ deal.name }}"#}
+    {#src="{{ asset('images/deals/' ~ deal.image) }} "/>#}
+    {#</div>#}
+    {#<p>#}
+    {#<a class="btn btn-amber"#}
+    {#href="{{ path('deal_details', {'slug' : deal.slug}) }}"#}
+    {#role="button">#}
+    {#{{ 'View Deal' | trans({}, 'business') }}#}
+    {#</a>#}
+    {#</p>#}
+    {#{{ loop.last ? '' : '<p class="visible-xs m-b-xl"></p>' }}#}
+    {#</div>#}
+    {#</div>#}
+    {#{% endif %}#}
+    {#{% endfor %}#}
+    {#</div>#}
+    {#<a class="left carousel-control" href="#myCarousel" data-slide="prev"><i#}
+    {#class="glyphicon glyphicon-chevron-left"></i></a>#}
+    {#<a class="right carousel-control" href="#myCarousel" data-slide="next"><i#}
+    {#class="glyphicon glyphicon-chevron-right"></i></a>#}
+    {#</div>#}
+    {#</div>#}
+    {#</div>#}
 
-            {#<div class="row">#}
-            {#<h2>ACTIVE DEALS</h2>#}
-            {#{% for deal in business.deals %}#}
-            {#<div class="col-sm-4 text-center">#}
-            {#<h3>{{ deal.name | upper }}</h3>#}
-            {#<p>AT {{ deal.business.name | upper }}</p>#}
-            {#<p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>#}
-            {#<div class="container-image">#}
-            {#<img class="center-height" alt="{{ deal.name }}" src="{{ asset('images/deals/' ~ deal.image) }} "/>#}
-            {#</div>#}
-            {#<p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View Deal</a></p>#}
-            {#</div>#}
-            {#{% endfor%}#}
-            {#</div>#}
-        {#</section>#}
+    {#<div class="row">#}
+    {#<h2>ACTIVE DEALS</h2>#}
+    {#{% for deal in business.deals %}#}
+    {#<div class="col-sm-4 text-center">#}
+    {#<h3>{{ deal.name | upper }}</h3>#}
+    {#<p>AT {{ deal.business.name | upper }}</p>#}
+    {#<p>ENDS: {{ deal.endsAt | date('m/d/Y') }}</p>#}
+    {#<div class="container-image">#}
+    {#<img class="center-height" alt="{{ deal.name }}" src="{{ asset('images/deals/' ~ deal.image) }} "/>#}
+    {#</div>#}
+    {#<p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View Deal</a></p>#}
+    {#</div>#}
+    {#{% endfor%}#}
+    {#</div>#}
+    {#</section>#}
     {#{% endif %}#}
 
     {% if related | length > 0 %}
@@ -192,6 +195,7 @@
                                     <div class="product-imitation container-image">
                                         <img class="center-height"
                                              alt="{{ item.name }}"
+                                             title="{{ item.name }}"
                                              src="{{ asset('images/business/' ~ item.logo) }}">
                                     </div>
                                     <div class="product-desc">
@@ -237,15 +241,19 @@
                 <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
                     <div class="col-xs-6">
                         {% if business.androidApp is not null %}
-                            <a href="{{ business.androidApp }}"><img class="img-responsive" alt="Get it on Google Play"
-                                                                     src="{{ asset('bundles/frontend/img/google_play_badge.png') }}"/></a>
+                            <a href="{{ business.androidApp }}">
+                                <img class="img-responsive" alt="Get it on Google Play"
+                                     title="Get it on Google Play"
+                                     src="{{ asset('bundles/frontend/img/google_play_badge.png') }}"/></a>
                         {% endif %}
                     </div>
 
                     <div class="col-xs-6">
                         {% if business.iosApp is not null %}
-                            <a href="{{ business.iosApp }}"><img style="width: 100%;" alt="Download on the App Store"
-                                                                 src="{{ asset('bundles/frontend/img/apple_store_badge.svg') }}"/></a>
+                            <a href="{{ business.iosApp }}">
+                                <img style="width: 100%;" alt="Download on the App Store"
+                                     title="Download on the App Store"
+                                     src="{{ asset('bundles/frontend/img/apple_store_badge.svg') }}"/></a>
                         {% endif %}
                     </div>
                 </div>
@@ -287,6 +295,7 @@
             "telephone": "{{ business.phone }}",
             "sameAs" : "{{ business.socialMedia }}"
         }
+
 
 
 

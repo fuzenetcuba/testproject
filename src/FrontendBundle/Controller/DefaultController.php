@@ -100,11 +100,28 @@ class DefaultController extends Controller
             'customers',
         ]);
 
+        if($hl !== null){
+            $businessData = $this->get('business.manager')->findBySlug($hl);
+        } else {
+            $businessData = null;
+        }
+
         $serializer = new Serializer([$normalizer], [$encoder]);
 
         return $this->render('@Frontend/map.html.twig', [
             'businesses' => $serializer->serialize($businesses, 'json'),
-            'highlight' => $hl
+            'highlight' => $hl,
+            'businessData' => $businessData
         ]);
+    }
+
+
+
+    /**
+     * Displays Job Fair Page
+     */
+    public function jobfairAction()
+    {
+        return $this->render("FrontendBundle:Static:jobfair.html.twig");
     }
 }

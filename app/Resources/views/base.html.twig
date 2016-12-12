@@ -20,6 +20,19 @@
 
     <title>Plaza Mariachi | {% block title %} {{ 'Welcome' | trans({}, 'general') }}!{% endblock %}</title>
 
+    <!-- Meta tags for geo locations -->
+    <meta name="geo.position" content=”36.084905;-86.729550" />
+    <meta name="geo.placename" content="3955 Nolensville Pike, Nashville, TN 37211" />
+    <meta name="geo.region" content=”US-TN" />
+
+    <!-- Open Graph tags for Facebook Share button -->
+    <meta property="og:url"           content="http://plazamariachi.com" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}}" />
+    <meta property="og:description"   content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'textAbout' })) -}}" />
+    <meta property="og:image"         content="{{ 'http://plazamariachi.com' ~ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteLogo' }))) }}" />
+
+
     {% block metatags %}
     {% endblock %}
 
