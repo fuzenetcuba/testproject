@@ -74,6 +74,7 @@
                             <div class="container-image">
                                 <img class="center-height"
                                      alt="{{ deal.name }}"
+                                     title="{{ deal.name }}"
                                      src="{{ asset('images/deals/' ~ deal.image) }} "/>
                             </div>
                             <p><a class="btn btn-amber" href="{{ path('deal_details', {'slug' : deal.slug}) }}"
@@ -91,6 +92,7 @@
                 <div class="row">
                     <img src="{{ asset('bundles/frontend/img/plaza_mariachi.png') }}"
                          alt="Plaza Mariachi Music City"
+                         title="Plaza Mariachi Music City"
                          class="print-brand m-l"/>
                 </div>
                 <h1 class="print-title">{{ 'Deals List of' | trans({}, 'deals') }} Plaza Mariachi</h1>
@@ -115,6 +117,7 @@
                                     <div class="print-container-image">
                                         <img class="center-height"
                                              alt="{{ deal.name }}"
+                                             title="{{ deal.name }}"
                                              src="{{ asset('images/deals/' ~ deal.image) }} "/>
                                     </div>
                                 </td>

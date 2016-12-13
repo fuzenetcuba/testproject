@@ -3175,3 +3175,33 @@ form.filter-openings .select2-container--default .select2-selection--single .sel
 div.openings {
     padding-left: 0 !important;
 }
+
+/* facebook button on home*/
+div.container-fb-share-button{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background-color: #FFFFFF;
+    border-radius: 6px 0 0 6px;
+    padding: 10px;
+}
+
+@media (max-width: 1150px){
+    div.container-fb-share-button{
+        top: 140px;
+    }
+}
+
+@media (max-width: 767px){
+    div.container-fb-share-button{
+        top: 90px;
+    }
+}
+
+/* END - facebook button on home*/
+
+/*coming soon text*/
+#coming-soon-text {
+    color: #E75F25;
+    text-shadow: #FFFFFF 0 0 10px;
+}

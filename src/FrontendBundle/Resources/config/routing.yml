@@ -68,3 +68,7 @@ careers_store:
 app_robots:
     path:     /robots.txt
     defaults: { _controller: FrontendBundle:Default:robots }
+
+job_fair:
+    path:     /job-fair
+    defaults: { _controller: FrontendBundle:Default:jobfair }

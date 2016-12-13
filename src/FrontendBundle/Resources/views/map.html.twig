@@ -3,22 +3,35 @@
 {% block title %} {{- "Mall Map" | trans({}, 'general') -}} {% endblock %}
 
 {% block metatags %}
-    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+    <meta name="keywords"
+          content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+
+    {% if(businessData is not null) %}
+        {{- businessData.name -}}
+    {% endif %}
+
     {{- 'Mall Map' | trans({}, 'business') -}},
     {{- 'Mall' | trans({}, 'homepage') -}},
     {{- 'Businesses' | trans({}, 'homepage') -}},
     {{- 'Deals' | trans({}, 'homepage') -}},
     {{- 'Buying' | trans({}, 'homepage') -}}
-    " />
-    <meta name="description" content="
-    {{- 'Go search the location of businesses for a better orientation in Plaza Mariachi' | trans({}, 'business') -}}
-    " />
+    "/>
+
+    {% if(businessData is not null) %}
+        <meta name="description" content="
+        {{- businessData.name ~ ". " ~ businessData.mallMapDirections -}}
+    "/>
+    {% else %}
+        <meta name="description" content="
+        {{- 'Go search the location of businesses for a better orientation in Plaza Mariachi' | trans({}, 'business') -}}
+    "/>
+    {% endif %}
 {% endblock %}
 
 {% block page_content %}
     <section class="inner-content section-spaces-line">
-        <input type="hidden" name="map_blank" id="map_blank" value="{{ asset('bundles/backend/images/map.png') }}" />
-        <input type="hidden" name="map_pin" id="map_pin" value="{{ asset('bundles/backend/images/pin.png') }}" />
+        <input type="hidden" name="map_blank" id="map_blank" value="{{ asset('bundles/backend/images/map.png') }}"/>
+        <input type="hidden" name="map_pin" id="map_pin" value="{{ asset('bundles/backend/images/pin.png') }}"/>
         <div class="container">
             <div class="col-md-12 map" id="map"></div>
 

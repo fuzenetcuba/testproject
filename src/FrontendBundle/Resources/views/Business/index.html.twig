@@ -86,6 +86,7 @@
                                     <div class="container-image business-image">
                                         <img class="center-height img-responsive business-image"
                                              alt="{{ business.name }}"
+                                             title="{{ business.name }}"
                                              src="{{ asset('images/business/' ~ business.logo) }} "/>
                                     </div>
                                 </a>
@@ -107,6 +108,7 @@
             <div class="row">
                 <img src="{{ asset('bundles/frontend/img/plaza_mariachi.png') }}"
                      alt="Plaza Mariachi Music City"
+                     title="Plaza Mariachi Music City"
                      class="print-brand m-l"/>
             </div>
             <h1 class="print-title">{{ 'Business List of' | trans({}, 'business') }} Plaza Mariachi</h1>
@@ -130,6 +132,7 @@
                                 <div class="print-container-image print-business-image">
                                     <img class="center-height print-business-image"
                                          alt="{{ business.name }}"
+                                         title="{{ business.name }}"
                                          src="{{ asset('images/business/' ~ business.logo) }} "/>
                                 </div>
                             </td>
