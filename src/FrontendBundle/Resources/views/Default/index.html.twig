@@ -46,7 +46,7 @@
                 <div class="container">
                     <div class="carousel-caption blank">
                         <h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteSlogan' })) | upper }}</h1>
-                        <h1 id="coming-soon-text">{{ 'is opening soon' | trans({}, 'homepage') }}</h1>
+                        <h1 id="coming-soon-text">{{ 'opening soon' | trans({}, 'homepage') }}</h1>
                         <p>
                             <a class="btn btn-lg btn-amber" href="{{ path('job_fair') }}{#{ path("fos_user_registration_register") }#}"
                                role="button">{{ 'GET HIRED' | trans({}, 'homepage') }}</a>
