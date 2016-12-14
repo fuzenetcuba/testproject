@@ -3,7 +3,8 @@
 {% block title %} {{- "Nashville's Cultural Shopping Experience" | trans({}, 'general') -}} {% endblock %}
 
 {% block metatags %}
-    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+    <meta name="keywords"
+          content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
     {{- 'Mall' | trans({}, 'homepage') -}},
     {{- 'Businesses' | trans({}, 'homepage') -}},
     {{- 'Deals' | trans({}, 'homepage') -}},
@@ -21,10 +22,10 @@
         .landing-page .header-back.one {
             background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBanner' }))) }}');
             background-repeat: no-repeat;
-            -webkit-background-size:cover;
-            -moz-background-size:cover;
-            -o-background-size:cover;
-            background-size:cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
             background-position: bottom center;
         }
     </style>
@@ -120,17 +121,38 @@
 
 
     {# job fair #}
-    <section class="section-spaces hidden-print amber-bg">
+    <section class="section-spaces-line hidden-print">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
+                    <div class="section-line green-line"></div>
                     <h1>
-                        {{ 'JOB FAIR TEXT HERE' | trans({}, 'homepage') }}
-                        &nbsp;&nbsp;&nbsp;
-                        <a href="{{ path('job_fair') }}"
-                           class="btn btn-lg btn-pink">{{ 'Keep reading' | trans({}, 'homepage') }}</a>
+                        {{ 'DO YOU WANT TO BE PART OF SOMETHING BIG?' | trans({}, 'homepage') }}
                     </h1>
+                </div>
 
+                <div class="col-sm-12 text-center">
+                    <br />
+                    <p class="text-gray">
+                        {{ "Plaza Mariachi is set to become Nashville's hot new destination with food, music and entertainment in a beautiful setting that is evocative of Old Mexico. Come to the Plaza Mariachi job fair where we will be hiring on the spot for more than 200 positions in food and beverage, retail, sales, management, cosmetology, entertainment and more." | trans({}, 'homepage') }}
+                        {{ " " }}
+                        <span style="text-decoration: underline">
+                            {{ "Bilingual is a plus!" | trans({}, 'homepage') }}
+                        </span>
+                    </p>
+                    <p class="text-gray">
+                        {{ "Come to the Plaza Mariachi Job fair" | trans({}, 'homepage') }}
+                        {{ " " }}
+                        <b style="color: #FF0000;">
+                            {{ "January 6 from noon to 6 and January 7 from 9 am to 1 pm" | trans({}, 'homepage') }}
+                        </b>
+                        {{ " " }}
+                        {{ "at Plaza Mariachi, 3955 Nolensville Pk in Nashville." | trans({}, 'homepage') }}
+                    </p>
+                    <br />
+
+                    <a href="{{ path('job_fair') }}"
+                       class="btn btn-lg btn-green">{{ 'Job Fair Details' | trans({}, 'homepage') }}</a>
 
                 </div>
             </div>

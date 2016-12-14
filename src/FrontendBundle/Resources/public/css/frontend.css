@@ -109,6 +109,10 @@ body.landing-page {
     border-bottom: 2px solid #1ab394;
 }
 
+.landing-page .white-line {
+    border-bottom: 2px solid #FFFFFF;
+}
+
 .landing-page .brown-line {
     border-bottom: 2px solid #281608;
 }
@@ -1513,6 +1517,18 @@ a.logout {
 /*
  * Template Landing Page Schema color
  **/
+
+.text-white, .text-white a {
+    color: #FFFFFF !important;
+}
+
+.text-black, .text-black a {
+    color: #000000 !important;
+}
+
+.text-gray, .text-gray a {
+    color: #333333 !important;
+}
 
 .text-brown, .text-brown a {
     color: #281608;
