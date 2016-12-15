@@ -44,10 +44,70 @@
     <!-- End Facebook Pixel Code -->
 {% endblock %}
 
+{% block inline_css %}
+    <style type="text/css" rel="stylesheet">
+        section.inner-content {
+            margin-top: 0;
+        }
+
+        div.inner-content {
+            height: auto;
+        }
+
+        .landing-page .header-back.one {
+            background-image: url('/bundles/frontend/img/job-fair-{{ app.request.locale }}.jpg');
+            background-repeat: no-repeat;
+            -webkit-background-size: 100%;
+            -moz-background-size: 100%;
+            -o-background-size: 100%;
+            background-size: 100%;
+            background-position: top center;
+            height: 100% !important;
+        }
+
+        .landing-page .carousel .item {
+            height: 400px !important;
+        }
+
+        @media (max-width: 360px) {
+            .landing-page .carousel {
+                height: 0;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .landing-page .carousel {
+                height: 200px;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .landing-page .carousel {
+                height: 300px;
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .landing-page .carousel {
+                height: 400px;
+            }
+        }
+    </style>
+{% endblock %}
+
 {% block page_content %}
 
+    <div class="inner-content carousel carousel-fade" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            <div class="item active animated fadeIn">
+                <!-- Set background for slide in css -->
+                <div class="header-back one"></div>
+            </div>
+        </div>
+    </div>
+
     {# slider #}
-    <section class="inner-content section-spaces-line">
+    <section class="inner-content section-spaces-line job-fair">
         <div class="container">
             <div class="row m-b">
                 <div class="col-lg-12 text-center">
