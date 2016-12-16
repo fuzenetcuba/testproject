@@ -356,7 +356,7 @@ body.landing-page {
 
 .landing-page .carousel .item {
     height: 470px;
-    background-color: #777;
+    /*background-color: #777;*/
 }
 
 .landing-page .carousel.carousel-adjusted .item {
