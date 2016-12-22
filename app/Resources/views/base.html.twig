@@ -30,7 +30,7 @@
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}}" />
     <meta property="og:description"   content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'textAbout' })) -}}" />
-    <meta property="og:image"         content="{{ 'http://plazamariachi.com' ~ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteLogo' }))) }}" />
+    <meta property="og:image"         content="{{ 'http://plazamariachi.com' ~ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBanner' }))) }}" />
 
 
     {% block metatags %}
