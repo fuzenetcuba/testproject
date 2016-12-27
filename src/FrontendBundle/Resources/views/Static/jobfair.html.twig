@@ -134,7 +134,40 @@
 
                 <a target="_blank" href="{{ asset('bundles/frontend/files/job-application-form.pdf') }}"
                    class="btn btn-lg btn-amber">{{ 'Download Application Form' | trans({}, 'general') }}</a>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="jobafair-careers-list careers-result col-lg-10 col-lg-offset-1">
+                <table class="table table-hover table-responsive">
+                    <thead>
+                    <tr>
+                        <th width="10%">{{ 'Business' | trans({}, 'careers') }}</th>
+                        <th>{{ 'Position' | trans({}, 'careers') }}</th>
+                        {# <th class="hidden-xs">Department</th> #}
+                        <th>{{ 'Description' | trans({}, 'careers') }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for opening in openings %}
+                        <tr>
+                            <td>
+                                <img style="width: 100%;" 
+                                             alt="{{ opening.business.name }}"
+                                             title="{{ opening.business.name }}"
+                                             src="{{ asset('images/business/' ~ opening.business.logo) }} "/>
+                            </td>
+                            <td>{{ opening.position }}</td>
+                            {# <td class="hidden-xs">{{ opening.department }}</td> #}
+                            <td>{{ opening.description }}</td>
+                        </tr>
+                    {% else %}
+                        <div class="alert alert-danger">
+                            {{ 'No openings have been published yet' | trans({}, 'careers') }}
+                        </div>
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
