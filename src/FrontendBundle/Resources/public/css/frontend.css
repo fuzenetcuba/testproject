@@ -3221,3 +3221,15 @@ div.container-fb-share-button{
     color: #E75F25;
     text-shadow: #FFFFFF 0 0 10px;
 }
+
+.jobafair-careers-list {
+    margin-top: 30px;
+}
+
+.jobafair-careers-list.careers-result > table tbody tr td:last-of-type {
+    vertical-align: top !important;
+}
+
+.jobafair-careers-list.careers-result > table tbody tr td:first-of-type {
+    width: 20%;
+}

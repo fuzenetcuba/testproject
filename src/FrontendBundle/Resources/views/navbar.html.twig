@@ -13,7 +13,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ path('frontend_homepage') }}">
-                    <img src="{{ 'http://plazamariachi.com' ~ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteLogo' }))) }}"
+                    <img src="{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteLogo' }))) }}"
                          alt="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) }}"
                          title="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) }}"
                     />
