@@ -43,13 +43,15 @@
                                 </a>
                             </li>
                             <li><i class="fa fa-phone"></i> {{ business.phone }}</li>
-                            {#<li>#}
-                            {#<i class="fa fa-globe"></i>#}
-                            {#<a target="_blank" href="{{ business.website }}">#}
-                            {#{{ business.website|split("://")[1] }}#}
-                            {#<sub><span class="fa fa-external-link"></span></sub>#}
-                            {#</a>#}
-                            {#</li>#}
+                            {% if business.website is not null %}
+                            <li>
+                            <i class="fa fa-globe"></i>
+                            <a target="_blank" href="{{ business.website }}">
+                            {{ business.website|split("://")[1] }}
+                            <sub><span class="fa fa-external-link"></span></sub>
+                            </a>
+                            </li>
+                            {% endif %}
                             <li>
                                 <i class="fa fa-facebook-official"></i>
                                 <a target="_blank" href="{{ business.socialMedia }}">

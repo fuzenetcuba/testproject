@@ -124,7 +124,7 @@ class DefaultController extends Controller
     {
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $this->get('opening.manager')->findAllQuery([]),
+            $this->get('opening.manager')->findMatchingOpenings(),
             $request->query->get('page', 1),
             $this->getParameter('deals.pagination.items')
         );

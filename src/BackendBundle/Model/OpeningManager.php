@@ -239,7 +239,7 @@ class OpeningManager implements ManagerInterface
         $this->em->flush();
     }
 
-    public function findMatchingOpenings(array $conditions)
+    public function findMatchingOpenings(array $conditions = [])
     {
         $query = $this->findAllQuery();
 
