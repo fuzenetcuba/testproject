@@ -51,7 +51,7 @@ $(document).ready(function () {
 
     $('.filter-deals form select').on('change', function () {
         $(this).parent().parent().submit();
-    })
+    });
 });
 
 // var cbpAnimatedHeader = (function () {
