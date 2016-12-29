@@ -3226,6 +3226,10 @@ div.container-fb-share-button{
     margin-top: 30px;
 }
 
+.job-fair h1 {
+    line-height: 1.5;
+}
+
 .jobafair-careers-list.careers-result > table tbody tr td:last-of-type {
     vertical-align: top !important;
 }
