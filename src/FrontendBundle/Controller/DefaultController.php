@@ -122,15 +122,10 @@ class DefaultController extends Controller
      */
     public function jobfairAction(Request $request)
     {
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $this->get('opening.manager')->findMatchingOpenings(),
-            $request->query->get('page', 1),
-            $this->getParameter('deals.pagination.items')
-        );
+        $openings = $this->get('opening.manager')->findMatchingOpenings()->getQuery()->execute();
 
         return $this->render("FrontendBundle:Static:jobfair.html.twig", [
-            'openings' => $pagination
+            'openings' => $openings
         ]);
     }
 }
