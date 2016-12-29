@@ -3234,6 +3234,15 @@ div.container-fb-share-button{
     width: 20%;
 }
 
+.jobafair-careers-list.careers-result > table tbody tr td:first-of-type {
+    text-align: center;
+}
+
+.jobafair-careers-list td > img {
+    width: auto;
+    max-height: 130px;
+    max-width: 100%;
+}
 #return-to-top {
     position: fixed;
     bottom: 20px;
