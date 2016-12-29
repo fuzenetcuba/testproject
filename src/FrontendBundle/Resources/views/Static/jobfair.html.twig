@@ -130,7 +130,7 @@
             <div class="row m-b">
                 <div class="col-lg-12 text-center">
                     <div class="section-line amber-line"></div>
-                    <h1>{{ "WANT TO GROW CAREER WITH NASHVILLE'S NEXT HOT TOURIST DESTINATION?" | trans({}, 'homepage') }}</h1>
+                    <h1>{{ "WANT TO GROW YOUR CAREER WITH NASHVILLE'S NEXT HOT TOURIST DESTINATION?" | trans({}, 'homepage') }}</h1>
                 </div>
             </div>
             <div class="col-sm-12 text-center">
@@ -170,8 +170,7 @@
                     {% for opening in openings %}
                         <tr>
                             <td>
-                                <img style="width: 100%;" 
-                                             alt="{{ opening.business.name }}"
+                                <img alt="{{ opening.business.name }}"
                                              title="{{ opening.business.name }}"
                                              src="{{ asset('images/business/' ~ opening.business.logo) }} "/>
                             </td>
