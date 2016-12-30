@@ -819,4 +819,14 @@ class Business
     {
         return $this->openings;
     }
+
+    public function isPublic()
+    {
+        return $this->isPublic;
+    }
+
+    public function setIsPublic($value)
+    {
+        $this->isPublic = $value;
+    }
 }

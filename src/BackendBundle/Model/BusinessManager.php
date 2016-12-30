@@ -221,11 +221,15 @@ class BusinessManager implements ManagerInterface
             ;
         }
 
+        // get only public businesses
+        $query->andWhere('b.isPublic = true');
+
         // multilanguage search criterias done introspecting the default locale
         $query = $query->getQuery()->setHint(
             Query::HINT_CUSTOM_OUTPUT_WALKER,
             'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
         );
+
 
         return $query->getResult();
     }

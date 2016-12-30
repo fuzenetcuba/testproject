@@ -42,6 +42,7 @@ class BusinessType extends AbstractType
             ->add('website')
             ->add('email')
             ->add('phone')
+            ->add('isPublic', null, ['label' => 'Public'])
             ->add('mallMapDirections', TextareaType::class, array(
                 'required' => false
             ))
