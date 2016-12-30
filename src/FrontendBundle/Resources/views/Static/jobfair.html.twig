@@ -157,18 +157,35 @@
 
         <div class="row">
             <div class="jobafair-careers-list careers-result col-lg-10 col-lg-offset-1">
-                <table class="table table-hover table-responsive">
+                <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th width="10%">{{ 'Business' | trans({}, 'careers') }}</th>
-                        <th>{{ 'Position' | trans({}, 'careers') }}</th>
-                        {# <th class="hidden-xs">Department</th> #}
-                        <th>{{ 'Description' | trans({}, 'careers') }}</th>
+                        <th class="hidden-xs" width="10%">{{ 'Business' | trans({}, 'careers') }}</th>
+                        <th class="hidden-xs">{{ 'Position' | trans({}, 'careers') }}</th>
+                        <th class="hidden-xs">{{ 'Description' | trans({}, 'careers') }}</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for opening in openings %}
-                        <tr>
+                        <tr class="hidden-sm hidden-md hidden-lg marker">
+                            <td>{{ 'Position' | trans({}, 'careers') }}</td>
+                            <td colspan="2">
+                                {{ opening.position }}
+                            </td>
+                        </tr>
+                        <tr class="hidden-sm hidden-md hidden-lg">
+                            <td>{{ 'Business' | trans({}, 'careers') }}</td>
+                            <td colspan="2">
+                                <img alt="{{ opening.business.name }}"
+                                             title="{{ opening.business.name }}"
+                                             src="{{ asset('images/business/' ~ opening.business.logo) }} "/>
+                            </td>
+                        </tr>
+                        <tr class="hidden-sm hidden-md hidden-lg">
+                            <td>{{ 'Description' | trans({}, 'careers') }}</td>
+                            <td colspan="2">{{ opening.description }}</td>
+                        </tr>
+                        <tr class="hidden-xs">
                             <td>
                                 <img alt="{{ opening.business.name }}"
                                              title="{{ opening.business.name }}"
