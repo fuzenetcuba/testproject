@@ -69,7 +69,7 @@
         }
 
         div.inner-content {
-            height: auto;
+            height: auto !important;
         }
 
         .landing-page .header-back.one {
@@ -87,27 +87,31 @@
             height: 400px !important;
         }
 
-        @media (max-width: 360px) {
+        @media (max-width: 500px) {
             .landing-page .carousel {
                 height: 0;
             }
+
+            .landing-page .carousel .item {
+                height: 120px !important;
+            }
         }
 
-        @media (min-width: 768px) {
-            .landing-page .carousel {
-                height: 200px;
+        @media (min-width: 500px) and (max-width: 768px) {
+            .landing-page .carousel .item {
+                height: 200px !important;
             }
         }
 
         @media (min-width: 900px) {
             .landing-page .carousel {
-                height: 300px;
+                height: 300px !important;
             }
         }
 
-        @media (min-width: 1000px) {
+        @media (min-width: 1200px) {
             .landing-page .carousel {
-                height: 400px;
+                height: 400px !important;
             }
         }
     </style>

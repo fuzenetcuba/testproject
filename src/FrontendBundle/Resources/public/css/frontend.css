@@ -3256,6 +3256,8 @@ div.container-fb-share-button{
 
 .jobafair-careers-list tr.marker {
     border-top: 2px solid #d3d3d3;
+    background-color: #d3d3d3;
+    vertical-align: middle;
 }
 
 .jobafair-careers-list tr.hidden-sm > td:first-child {
@@ -3308,4 +3310,10 @@ div.container-fb-share-button{
 #return-to-top:hover i {
     color: #fff;
     top: 5px;
+}
+
+@media (max-width: 767px) {
+    .job-fair {
+        margin-top: 0 !important;
+    }
 }
