@@ -98,6 +98,7 @@ class DefaultController extends Controller
             'categories',
             'deals',
             'customers',
+            'openings',
         ]);
 
         if($hl !== null){
