@@ -19,6 +19,9 @@ DirectoryIndex app.php
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    
+    # Added by Dayren to remove the trailing slashes on all the petitions 
+    RewriteRule ^job-fair/$ /job-fair [L,R=302]
 
     # Determine the RewriteBase automatically and set it as environment variable.
     # If you are using Apache aliases to do mass virtual hosting or installed the
