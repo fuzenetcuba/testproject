@@ -64,7 +64,7 @@
                                     <i class="fa fa-map-marker"></i>
                                     <a class="btn btn-xs btn-blue"
                                        href="{{ path('mall_map', {'hl' : business.slug}) }}">
-                                        View on Mall Map
+                                        {{ 'View on Mall Map' | trans({}, 'business') }}
                                     </a>
                                     - {{ business.mallMapDirections }}
                                 </p>
@@ -79,7 +79,7 @@
                         <div class="openings col-lg-8">
                             <a href="{{ path('careers_find', {'business':business.slug}) }}"
                                class="btn btn-blue btn-block">
-                                CHECK OPEN POSITIONS FOR THIS BUSINESS
+                                {{ 'CHECK OPEN POSITIONS FOR THIS BUSINESS' | trans({}, 'business') }}
                             </a>
                         </div>
                     {% endif %}
