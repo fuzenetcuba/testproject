@@ -3210,7 +3210,9 @@ div.container-fb-share-button{
 
 @media (max-width: 767px){
     div.container-fb-share-button{
-        top: 90px;
+        position: fixed;
+        bottom: 60px;
+        top: auto !important;
     }
 }
 
