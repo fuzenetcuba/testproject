@@ -28,6 +28,7 @@ parameters:
     # Frontend
     deals.pagination.items: 12
     business.pagination.items: 12
+    careers.apply.online: false
 
     # Emails
     customer.email.subject: Hello there!! from Plaza Mariachi

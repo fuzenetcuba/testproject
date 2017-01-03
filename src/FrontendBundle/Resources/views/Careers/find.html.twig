@@ -38,7 +38,7 @@
                         <th>{{ 'Position' | trans({}, 'careers') }}</th>
                         {# <th class="hidden-xs">Department</th> #}
                         <th>{{ 'Description' | trans({}, 'careers') }}</th>
-                        <th>{{ 'Apply Now!' | trans({}, 'careers') }}</th>
+                        {% if careers_apply %}<th>{{ 'Apply Now!' | trans({}, 'careers') }}</th>{% endif %}
                     </tr>
                     </thead>
                     <tbody>
@@ -53,11 +53,13 @@
                             <td>{{ opening.position }}</td>
                             {# <td class="hidden-xs">{{ opening.department }}</td> #}
                             <td>{{ opening.description }}</td>
+                            {% if careers_apply %}
                             <td>
                                 <a class="btn btn-amber btn-block" href="{{ path('careers_apply', {'slug':opening.slug}) }}">
                                     {{ 'APPLY' | trans({}, 'careers') }}
                                 </a>
                             </td>
+                            {% endif %}
                         </tr>
                     {% else %}
                         <div class="alert alert-danger">
