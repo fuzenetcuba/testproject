@@ -16,6 +16,10 @@ class CareersController extends Controller
 {
     public function indexAction(Request $request)
     {
+        if (!$this->getParameter('careers.apply.online')) {
+            throw $this->createNotFoundException('Page not found!');
+        }
+        
         $form = $this->createForm(new OpeningType(true));
         $form->handleRequest($request);
 

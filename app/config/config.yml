@@ -36,6 +36,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        careers_apply:         %careers.apply.online%
 
 # Doctrine Configuration
 doctrine:
