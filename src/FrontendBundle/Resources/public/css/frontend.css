@@ -3211,8 +3211,13 @@ div.container-fb-share-button{
 @media (max-width: 767px){
     div.container-fb-share-button{
         position: fixed;
-        bottom: 60px;
+        bottom: 15px;
+        left: 0 !important;
+        right: auto !important;
         top: auto !important;
+        border-radius: 0;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
     }
 }
 
