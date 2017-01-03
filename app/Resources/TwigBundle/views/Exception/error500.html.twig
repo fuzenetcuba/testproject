@@ -2,19 +2,19 @@
 
 {% block title '- ' ~ 'Internal server error' | trans({}, 'twigbundle') %}
 
-{% block content %}
+{% block page_content %}
 
     <section class="inner-content">
         <div class="container">
             <div class="middle-box text-center animated fadeInDown">
                 <h1>500</h1>
 
-                <h3 class="font-bold">{{ 'Internal server error' | trans({}, 'twigbundle') }}</h3>
+                <h3 class="font-bold">{{ 'Internal server error' | trans({}, 'twigbundle') | upper }}</h3>
 
                 <div class="error-desc">
                     {{ "The server encountered something unexpected that didn't allow it to complete the request. We apologize." | trans({}, 'twigbundle') }}<br/>
                     {{ 'You can go back to our homepage.' | trans({}, 'twigbundle') }}
-                    <h2><a href="{{ path('frontend_homepage') }}">{{ 'Home Page of' | trans({}, 'twigbundle') }} <b>Plaza Mariachi</b></a></h2>
+                    <h2><a class="btn btn-amber btn-lg" href="{{ path('frontend_homepage') }}">{{ 'Home Page of' | trans({}, 'twigbundle') }} <b>Plaza Mariachi</b></a></h2>
                 </div>
             </div>
         </div>
