@@ -42,3 +42,4 @@ parameters:
     careers.pdf.store: '%kernel.root_dir%/../web/uploads'
     careers.contact.email: 'careers@test.com'
     careers.notification.subject: 'A new candidate has applied to an opening'
+    careers.apply.online: true

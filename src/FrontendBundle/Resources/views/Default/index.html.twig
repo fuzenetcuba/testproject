@@ -132,6 +132,7 @@
                 </div>
 
                 <div class="col-sm-12 text-center">
+                    {#
                     <br />
                     <p class="text-gray">
                         {{ "Plaza Mariachi is set to become Nashville's hot new destination with food, music and entertainment in a beautiful setting that reminiscent of Old Mexico. Come to the Plaza Mariachi job fair where we will be hiring on the spot for more than 200 positions in food and beverage, retail, sales, management, cosmetology, entertainment and more." | trans({}, 'homepage') }}
@@ -150,9 +151,11 @@
                         {{ "at Plaza Mariachi, 3955 Nolensville Pk in Nashville." | trans({}, 'homepage') }}
                     </p>
                     <br />
-
-                    <a href="{{ path('job_fair') }}"
-                       class="btn btn-lg btn-green">{{ 'See More' | trans({}, 'homepage') }}</a>
+                    #}
+                    <br />
+                    <br />
+                    <a href="{{ path('careers_find') }}"
+                       class="btn btn-lg btn-green">{{ 'JOIN US' | trans({}, 'homepage') }}</a>
 
                 </div>
             </div>
