@@ -48,7 +48,7 @@
                         <h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteSlogan' })) | upper }}</h1>
                         <h1 id="coming-soon-text">{{ 'opening soon' | trans({}, 'homepage') }}</h1>
                         <p>
-                            <a class="btn btn-lg btn-amber" href="{{ path('job_fair') }}{#{ path("fos_user_registration_register") }#}"
+                            <a class="btn btn-lg btn-amber" href="{{ path('careers_find') }}{#{ path("fos_user_registration_register") }#}"
                                role="button">{{ 'GET HIRED' | trans({}, 'homepage') }}</a>
                         </p>
                     </div>
@@ -154,7 +154,7 @@
                     #}
                     <br />
                     <br />
-                    <a href="{{ path('careers_find') }}"
+                    <a href="{{ path('careers_index') }}"
                        class="btn btn-lg btn-green">{{ 'JOIN US' | trans({}, 'homepage') }}</a>
 
                 </div>
