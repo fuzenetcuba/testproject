@@ -42,7 +42,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for i in 1..100 %}
                     {% for opening in openings %}
                         <tr class="hidden-sm hidden-md hidden-lg marker">
                             <td>{{ 'Position' | trans({}, 'careers') }}</td>
@@ -93,7 +92,6 @@
                         <div class="alert alert-danger">
                             {{ 'No openings have been published yet' | trans({}, 'careers') }}
                         </div>
-                    {% endfor %}
                     {% endfor %}
                     </tbody>
                 </table>
