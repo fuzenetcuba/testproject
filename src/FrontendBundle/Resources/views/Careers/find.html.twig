@@ -38,7 +38,7 @@
                         <th class="hidden-xs">{{ 'Position' | trans({}, 'careers') }}</th>
                         {# <th class="hidden-xs">Department</th> #}
                         <th class="hidden-xs">{{ 'Description' | trans({}, 'careers') }}</th>
-                        {% if careers_apply %}<th>{{ 'Apply Now!' | trans({}, 'careers') }}</th>{% endif %}
+                        {% if careers_apply %}<th class="hidden-xs">{{ 'Apply Now!' | trans({}, 'careers') }}</th>{% endif %}
                     </tr>
                     </thead>
                     <tbody>
@@ -108,6 +108,7 @@
             </div> #}
             {{ knp_pagination_render(openings) }}
         </div>
+        <a id="return-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
     </section>
 
 
@@ -137,6 +138,21 @@
             //  select2 scripts for batch actions combobox
             $(".select2-field").select2({
                 placeholder: "--- {{ 'Select a value' | trans({}, 'generalbackend') }} ---"
+            });
+
+
+            // ===== Scroll to Top ====
+            $(window).scroll(function() {
+                if ($(this).scrollTop() >= 100) {        // If page is scrolled more than 50px
+                    $('#return-to-top').fadeIn(200);    // Fade in the arrow
+                } else {
+                    $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+                }
+            });
+            $('#return-to-top').click(function() {      // When arrow is clicked
+                $('body,html').animate({
+                    scrollTop : 0                       // Scroll to top of body
+                }, 500);
             });
 
         });
