@@ -31,54 +31,43 @@
 {% block page_content %}
     <section v-cloak class="inner-content apply-form" id="apply-form">
         <div class="container apply-info">
-            <div class="col-lg-2 col-lg-offset-3">
-                <img style="width: 100%;"
-                     alt="{{ opening.business }}"
-                     title="{{ opening.business }}"
-                     src="{{ asset('images/business/' ~ opening.business.logo) }} "/>
-            </div>
-
-            <div class="col-lg-6">
-                <h1 class="apply-header">
-                    {{ opening.position }}
-                </h1>
-            </div>
+            <img alt="{{ opening.business }}"
+                 title="{{ opening.business }}"
+                 src="{{ asset('images/business/' ~ opening.business.logo) }} "/>
+            <h1 class="apply-header">
+              {{ opening.position }}
+            </h1>
         </div>
 
         <hr>
 
-        <div v-if="!done" class="row application-selector">
-            <div class="col-lg-3 col-lg-offset-1 text-right">
-                <h2>{{ 'apply using our online form' | trans({},'careers') }}</h2>
+        <div v-if="!done" class="container application-selector">
+            <h2>{{ 'apply using our online form' | trans({},'careers') }}</h2>
+            <div class="onoffswitch-ios switch">
+                <label @click="formApplication = !formApplication"
+                       :class="{'checked': !formApplication}"
+                       class="onoffswitch-ios-label">
+                       <i class="fa" :class="{'fa-arrow-up' : formApplication, 'fa-arrow-down' : !formApplication}"></i>
+                </label>
             </div>
-            <div class="col-lg-2 center-block">
-                <div class="onoffswitch-ios switch">
-                    <label @click="formApplication = !formApplication"
-                           :class="{'checked': !formApplication}"
-                           class="onoffswitch-ios-label">
-                    </label>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <h2>{{ 'upload only a resume & optionally a cover letter' | trans({},'careers') }}</h2>
-            </div>
+            <h2>{{ 'upload only a resume & optionally a cover letter' | trans({},'careers') }}</h2>
         </div>
 
         <validator name="validation1">
             <form v-if="!done" action="{{ path('careers_store') }}" method="post" enctype="multipart/form-data"
                   role="form"
                   @submit.prevent="submitForm()"
-                  class="col-lg-offset-1" novalidate>
+                  class="container application-form" novalidate>
                 <fieldset>
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="name">{{ 'Last Name' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.lastName.required && !$validation1.lastName.pristine">This
+                                       v-if="$validation1.lastName.required">This
                                     field is required</label>
                                 <input type="text"
-                                       v-validate:last-name="{ required: prueba }"
+                                       v-validate:last-name="{ required: true }"
                                        v-model="lastName"
                                        class="form-control" placeholder="{{ 'Last Name' | trans({},'careers') }}">
                             </div>
@@ -87,7 +76,7 @@
                             <div class="form-group">
                                 <label for="name">{{ 'First Name' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.firstName.required && !$validation1.firstName.pristine">This
+                                       v-if="$validation1.firstName.required">This
                                     field is required</label>
                                 <input type="text"
                                        v-validate:first-name="{ required: true }"
@@ -95,11 +84,11 @@
                                        placeholder="{{ 'First Name' | trans({},'careers') }}">
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="name">{{ 'Middle Name' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.middleName.required && !$validation1.middleName.pristine">This
+                                       v-if="$validation1.middleName.required">This
                                     field is required</label>
                                 <input type="text"
                                        v-validate:middle-name="{ required: true }"
@@ -113,7 +102,7 @@
                             <div class="form-group">
                                 <label for="name">{{ 'Number & Street Name' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.address.required && !$validation1.address.pristine">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="$validation1.address.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:address="{ required:true }"
                                        v-model="address" class="form-control"
@@ -124,29 +113,29 @@
                             <div class="form-group">
                                 <label for="name">{{ 'City' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.city.required && !$validation1.city.pristine">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="$validation1.city.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:city="{ required: true}"
                                        v-model="city" class="form-control"
                                        placeholder="{{ 'City' | trans({},'careers') }}">
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="name">{{ 'State' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.state.required && !$validation1.state.pristine">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="$validation1.state.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:state="{ required: true}"
                                        v-model="state" class="form-control"
                                        placeholder="{{ 'State' | trans({},'careers') }}">
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="name">{{ 'Zip Code' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.zipCode.required && !$validation1.zipCode.pristine">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="$validation1.zipCode.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:zip-code="{ required: true}"
                                        v-model="zipCode" v-mask="99999" class="form-control"
@@ -155,11 +144,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="name">{{ 'Social Security Number' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.securityNumber.required && !$validation1.securityNumber.pristine">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="$validation1.securityNumber.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:security-number="{ required: true}"
                                        v-mask="999-99-9999" v-model="securityNumber"
@@ -167,7 +156,7 @@
                                        placeholder="{{ 'Social Security Number' | trans({},'careers') }}">
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="name">{{ 'Are you over 18 years old?' | trans({},'careers') }}</label>
                                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -188,7 +177,7 @@
                             <div class="form-group">
                                 <label for="name">{{ 'Phone Number' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.phone.required && !$validation1.phone.pristine">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="$validation1.phone.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:phone="{ required: true}"
                                        v-mask="(999) 999-9999" v-model="phone"
@@ -199,7 +188,7 @@
                 </fieldset>
                 <fieldset v-if="formApplication" transition="expand">
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-5">
                             <div class="form-group">
                                 <label for="name">{{ 'Hours of availability' | trans({},'careers') }}</label>
                                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -238,7 +227,7 @@
                         </div>
                         <div class="col-lg-1">
                             <div class="form-group">
-                                <label for="name">{{ 'Wednesday' | trans({},'careers') }}</label>
+                                <label class="special-padding" for="name">{{ 'Wednesday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
                                        v-model="weekHours.wednesday" class="form-control"
@@ -283,11 +272,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="name">{{ 'Available Since' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.startDate.required && !$validation1.startDate.pristine">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="$validation1.startDate.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:start-date="{required:true}"
                                        v-mask="99/99/9999" v-model="startDate" class="form-control"
@@ -298,14 +287,14 @@
                             <div class="form-group">
                                 <label for="name">{{ 'Salary Desired' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.salary.required && !$validation1.salary.pristine">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="$validation1.salary.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:salary="{required:true}"
                                        v-mask="$ 999,999,999.99" v-model="salary"
                                        class="form-control" placeholder="{{ 'Salary Desired' | trans({},'careers') }}">
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-5">
                             <div class="form-group">
                                 <label for="name">{{ 'Are you available for...' | trans({},'careers') }}</label>
                                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -332,7 +321,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="name">{{ "Do you have a valid Driver's License?" | trans({},'careers') }}</label>
                                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -350,7 +339,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="name">{{ 'Drivers License Number' | trans({},'careers') }}</label>
                                 <input type="text"
@@ -381,7 +370,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-5">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="">{{ 'Are you legally eligible for employment in the United States' | trans({},'careers') }}</label>
                                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -398,7 +387,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="help-block">
                                 <i class="fa fa-exclamation-circle fa-2x"></i>
                                 {{ 'If offered employment, you will be required to provide documentation to verify eligibility.' | trans({},'careers') }}
@@ -406,7 +395,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="name">{{ 'Have you been convicted of a crime?' | trans({},'careers') }}</label>
                                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -423,7 +412,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-7">
+                        <div class="col-lg-8">
                             <div class="form-group">
                                 <label for="name">{{ 'Explain' | trans({},'careers') }}</label>
                                 <input type="text"
@@ -434,7 +423,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="name">{{ 'May we do a background check?' | trans({},'careers') }}</label>
                                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -451,7 +440,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-7">
+                        <div class="col-lg-8">
                             <div class="form-group">
                                 <label for="name">{{ 'Explain' | trans({},'careers') }}</label>
                                 <input type="text"
@@ -475,7 +464,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-1">
+                        <div class="col-lg-2">
                             <div class="form-group">
                                 <label for="name">{{ 'Diploma' | trans({},'careers') }}</label>
                                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -492,7 +481,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-1">
+                        <div class="col-lg-2">
                             <div class="form-group">
                                 <label for="name">G.E.D</label>
                                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -566,13 +555,13 @@
                                 <input type="text" v-model="collegeCity" class="form-control" placeholder="...">
                             </div>
                         </div>
-                        <div class="col-lg-1">
+                        <div class="col-lg-2">
                             <div class="form-group">
                                 <label for="name">{{ 'Major' | trans({},'careers') }}</label>
                                 <input type="text" v-model="major" class="form-control" placeholder="...">
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="name">{{ 'Degrees Earned' | trans({},'careers') }}</label>
                                 <input type="text" v-model="degree" class="form-control" placeholder="...">
@@ -605,7 +594,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-8">
                             <div class="form-group">
                                 <label for="">{{ 'If any employment was under a different name, indicate name' |
                                     trans({},'careers') }}</label>
@@ -615,7 +604,7 @@
                     </div>
                     <fieldset v-for="employer in employers" transition="expand">
                         <div class="row">
-                            <div class="col-lg-3">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="">{{ 'Employer' | trans({},'careers') }}</label>
                                     <input type="text"
@@ -623,7 +612,7 @@
                                            class="form-control" placeholder="...">
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-5">
                                 <div class="form-group">
                                     <label for="">{{ 'Address' | trans({},'careers') }}</label>
                                     <input type="text"
@@ -642,7 +631,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-3">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="">{{ 'Position' | trans({},'careers') }}</label>
                                     <input type="text"
@@ -689,7 +678,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-1">
+                            <div class="col-lg-2">
                                 <div class="form-group">
                                     <label for="">{{ 'Hours' | trans({},'careers') }}</label>
                                     <input type="text"
@@ -699,7 +688,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-1">
+                            <div class="col-lg-2">
                                 <div class="form-group">
                                     <label for="">{{ 'Salary' | trans({},'careers') }}</label>
                                     <input type="text"
@@ -716,7 +705,7 @@
                                            class="form-control" placeholder="...">
                                 </div>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="">{{ 'Department' | trans({},'careers') }}</label>
                                     <input type="text"
@@ -734,7 +723,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-10">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="">{{ 'Duties' | trans({},'careers') }}</label>
                                     <textarea rows="4"
@@ -745,7 +734,7 @@
                         </div>
                     </fieldset>
                     <div class="row button">
-                        <div class="col-lg-5">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <button type="button" @click.stop="addEmployer()"
                                         class="btn btn-default btn-block btn-lg">
@@ -753,7 +742,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="col-lg-5">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <button type="button"
                                         @click.stop="removeEmployer()" :disabled="this.employers.length == 1"
@@ -766,14 +755,14 @@
                 </fieldset>
                 <fieldset v-if="formApplication" transition="expand">
                     <div class="row">
-                        <div class="col-lg-5">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="">{{ 'List any additional languages, skills, certifications, or additional information that would best suit you to this position' | trans({},'careers') }}
                                     :</label>
                                 <textarea v-model="skills" rows="4" class="form-control"></textarea>
                             </div>
                         </div>
-                        <div class="col-lg-5">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="">{{ 'Please write in your own words why you are the best candidate for this position' | trans({},'careers') }}</label>
                                 <textarea v-model="bestFit" rows="4" class="form-control"></textarea>
@@ -781,7 +770,7 @@
                         </div>
                     </div>
                     <div v-for="reference in references" class="row" transition="expand">
-                        <div class="col-lg-4">
+                        <div class="col-lg-5">
                             <div class="form-group">
                                 <label for="">{{ 'Name' | trans({},'careers') }}</label>
                                 <input type="text"
@@ -798,7 +787,7 @@
                                        class="form-control" placeholder="">
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="name">{{ 'Profesional' | trans({},'careers') }}</label>
                                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -819,7 +808,7 @@
                         </div>
                     </div>
                     <div class="row button">
-                        <div class="col-lg-5">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <button type="button" @click.stop="addReference()"
                                         class="btn btn-default btn-block btn-lg">
@@ -827,7 +816,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="col-lg-5">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <button type="button"
                                         @click.stop="removeReference()"
@@ -841,7 +830,7 @@
                 </fieldset>
                 <fieldset>
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-5">
                             <div v-if="!formApplication" class="form-group">
                                 <label for="">{{ 'Upload your resume in PDF format' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
@@ -877,7 +866,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-lg-offset-2">
+                        <div class="col-lg-5 col-lg-offset-2">
                             <div v-if="!formApplication" class="form-group">
                                 <label for="">{{ 'Upload your cover letter in PDF format' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
@@ -914,13 +903,12 @@
                         </div>
                     </div>
                 </fieldset>
-                <div class="row submit-row">
-                    <div class="col-lg-4 col-lg-offset-3">
-                        <button type="submit"
-                                :disabled="!$validation1.valid"
-                                class="btn btn-blue btn-block btn-lg">{{ 'SUBMIT APPLICATION' | trans({},'careers') }}
-                        </button>
-                    </div>
+                <div class="row submit-row text-center">
+                    <button type="submit"
+                            :disabled="!$validation1.valid"
+                            class="btn btn-blue btn-lg">
+                            <i class="fa fa-paper-plane"></i> &nbsp;&nbsp;{{ 'SUBMIT APPLICATION' | trans({},'careers') }}
+                    </button>
                 </div>
             </form>
         </validator>
@@ -938,8 +926,6 @@
             <h1>{{ 'Your application has been submitted!' | trans({},'careers') }}</h1>
         </div>
     </section>
-
-
 {% endblock %}
 
 {% block custom_js %}

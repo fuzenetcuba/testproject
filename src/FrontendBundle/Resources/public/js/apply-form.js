@@ -151,7 +151,11 @@ var vm = new Vue({
 
     validators: {
         pdf: function (val) {
-            return /pdf/.test(val.substr(val.lastIndexOf('.')+1).toLowerCase());
+            if ("" !== val.trim()) {
+                return /pdf/.test(val.substr(val.lastIndexOf('.')+1).toLowerCase());
+            }
+            
+            return true;
         }
     },
 
