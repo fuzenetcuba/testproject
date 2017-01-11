@@ -2497,8 +2497,36 @@ section.apply-form h1, section.apply-form h2 {
     text-transform: uppercase;
 }
 
-div.application-selector {
+.application-selector {
     margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.application-selector h2 {
+    flex-basis: 400px;
+}
+
+.special-padding {
+    padding-left: 4px !important;
+}
+
+.onoffswitch-ios label {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.onoffswitch-ios label.checked i {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.onoffswitch-ios label > i {
+    font-size: 30pt;
+    font-weight: 100;
+    margin-left: 10px;
 }
 
 section.apply-form h1 {
@@ -2531,7 +2559,7 @@ section.apply-form .finished {
     /*height: 30px;*/
     /*padding: 10px;*/
     /*background-color: #eee;*/
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 /* .expand-enter defines the starting state for entering */
@@ -3176,10 +3204,13 @@ form.filter-openings .select2-container--default .select2-selection--single .sel
 
 .apply-info {
     padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.apply-info h2 {
-    font-size: 16pt !important;
+.apply-info img {
+    max-width: 300px;
 }
 
 .apply-form hr {
@@ -3322,5 +3353,20 @@ div.container-fb-share-button{
 @media (max-width: 767px) {
     .job-fair {
         margin-top: 0 !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .apply-info {
+        flex-direction: column-reverse;
+    }
+
+    .application-selector {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .application-selector h2 {
+        flex-basis: auto;
     }
 }
