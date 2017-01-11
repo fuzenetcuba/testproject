@@ -2426,7 +2426,7 @@ div.application-done {
 
 .apply-form form label, .apply-form form a.btn {
     margin: 0;
-    padding-left: 12px;
+    padding-left: 10px;
     font-size: 9pt;
     text-transform: uppercase;
     text-align: left !important;
@@ -3369,4 +3369,13 @@ div.container-fb-share-button{
     .application-selector h2 {
         flex-basis: auto;
     }
+
+    .application-form .row {
+        margin-right: auto;
+    }
+}
+
+.application-form label.error {
+    padding-left: 5px !important;
+    font-size: 8pt !important;
 }

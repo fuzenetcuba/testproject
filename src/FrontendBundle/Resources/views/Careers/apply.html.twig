@@ -57,17 +57,17 @@
             <form v-if="!done" action="{{ path('careers_store') }}" method="post" enctype="multipart/form-data"
                   role="form"
                   @submit.prevent="submitForm()"
-                  class="container" novalidate>
+                  class="container application-form" novalidate>
                 <fieldset>
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="name">{{ 'Last Name' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.lastName.required && !$validation1.lastName.pristine">This
+                                       v-if="$validation1.lastName.required">This
                                     field is required</label>
                                 <input type="text"
-                                       v-validate:last-name="{ required: prueba }"
+                                       v-validate:last-name="{ required: true }"
                                        v-model="lastName"
                                        class="form-control" placeholder="{{ 'Last Name' | trans({},'careers') }}">
                             </div>
@@ -76,7 +76,7 @@
                             <div class="form-group">
                                 <label for="name">{{ 'First Name' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.firstName.required && !$validation1.firstName.pristine">This
+                                       v-if="$validation1.firstName.required">This
                                     field is required</label>
                                 <input type="text"
                                        v-validate:first-name="{ required: true }"
@@ -88,7 +88,7 @@
                             <div class="form-group">
                                 <label for="name">{{ 'Middle Name' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.middleName.required && !$validation1.middleName.pristine">This
+                                       v-if="$validation1.middleName.required">This
                                     field is required</label>
                                 <input type="text"
                                        v-validate:middle-name="{ required: true }"
@@ -102,7 +102,7 @@
                             <div class="form-group">
                                 <label for="name">{{ 'Number & Street Name' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.address.required && !$validation1.address.pristine">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="$validation1.address.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:address="{ required:true }"
                                        v-model="address" class="form-control"
@@ -113,29 +113,29 @@
                             <div class="form-group">
                                 <label for="name">{{ 'City' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.city.required && !$validation1.city.pristine">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="$validation1.city.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:city="{ required: true}"
                                        v-model="city" class="form-control"
                                        placeholder="{{ 'City' | trans({},'careers') }}">
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="name">{{ 'State' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.state.required && !$validation1.state.pristine">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="$validation1.state.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:state="{ required: true}"
                                        v-model="state" class="form-control"
                                        placeholder="{{ 'State' | trans({},'careers') }}">
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="name">{{ 'Zip Code' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.zipCode.required && !$validation1.zipCode.pristine">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="$validation1.zipCode.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:zip-code="{ required: true}"
                                        v-model="zipCode" v-mask="99999" class="form-control"
@@ -148,7 +148,7 @@
                             <div class="form-group">
                                 <label for="name">{{ 'Social Security Number' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.securityNumber.required && !$validation1.securityNumber.pristine">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="$validation1.securityNumber.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:security-number="{ required: true}"
                                        v-mask="999-99-9999" v-model="securityNumber"
@@ -177,7 +177,7 @@
                             <div class="form-group">
                                 <label for="name">{{ 'Phone Number' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.phone.required && !$validation1.phone.pristine">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="$validation1.phone.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:phone="{ required: true}"
                                        v-mask="(999) 999-9999" v-model="phone"
@@ -276,7 +276,7 @@
                             <div class="form-group">
                                 <label for="name">{{ 'Available Since' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.startDate.required && !$validation1.startDate.pristine">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="$validation1.startDate.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:start-date="{required:true}"
                                        v-mask="99/99/9999" v-model="startDate" class="form-control"
@@ -287,7 +287,7 @@
                             <div class="form-group">
                                 <label for="name">{{ 'Salary Desired' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.salary.required && !$validation1.salary.pristine">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="$validation1.salary.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:salary="{required:true}"
                                        v-mask="$ 999,999,999.99" v-model="salary"
