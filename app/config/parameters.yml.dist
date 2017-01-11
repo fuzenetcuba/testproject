@@ -40,6 +40,8 @@ parameters:
     cutomer.email.subscribe.message: |
         You're now subscribed to the Plaza Mariachi website, we which you well!
     careers.pdf.store: '%kernel.root_dir%/../web/uploads'
-    careers.contact.email: 'careers@test.com'
+    careers.contact.email:
+        - careers@test.com
+        - careers1@test.com
     careers.notification.subject: 'A new candidate has applied to an opening'
     careers.apply.online: true

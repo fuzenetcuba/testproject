@@ -221,14 +221,14 @@ class Candidate
     public $bestFit;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @Assert\File(mimeTypes={ "application/pdf" })
      */
     public $cv;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @Assert\File(mimeTypes={ "application/pdf" })
      */
