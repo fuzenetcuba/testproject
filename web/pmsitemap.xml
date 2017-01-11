@@ -2,123 +2,73 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>http://plazamariachi.com/</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
       <image:image>
         <image:loc>http://plazamariachi.com/images/business/xenote-mexican-cuisine_584ee2239d894.jpeg</image:loc>
         <image:title>Xenote Mexican Cuisine</image:title>
       </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/5849902cb7d7c.png</image:loc>
-        <image:title>Mazfresco Market</image:title>
-      </image:image>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/subscribe/request</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/suscribirse</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?slug=all</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/business/xenote-restaurant</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
       <image:image>
         <image:loc>http://plazamariachi.com/images/business/xenote-mexican-cuisine_584ee2239d894.jpeg</image:loc>
         <image:title>Xenote Mexican Cuisine</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/madera.png</image:loc>
-        <image:title>Cafe Madera</image:title>
       </image:image>
   </url>
   <url>
     <loc>http://plazamariachi.com/business/tito-s-playland</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/es/directorio/xenote-restaurant</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/xenote-mexican-cuisine_584ee2239d894.jpeg</image:loc>
-        <image:title>Xenote Mexican Cuisine</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/madera.png</image:loc>
-        <image:title>Cafe Madera</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/login</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map?slug=all</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map/xenote-restaurant</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/subscribe/request</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/mapa?slug=all</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/suscribirse</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/business/cafe-madera</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/madera.png</image:loc>
-        <image:title>Cafe Madera</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/xenote-mexican-cuisine_584ee2239d894.jpeg</image:loc>
-        <image:title>Xenote Mexican Cuisine</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/business/baila-dance-studios</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/business/activa-1240</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/directorio/baila-dance-studios</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/mall-map</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>http://plazamariachi.com/login</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/cafe-madera</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+      <image:image>
+        <image:loc>http://plazamariachi.com/images/business/xenote-mexican-cuisine_584ee2239d894.jpeg</image:loc>
+        <image:title>Xenote Mexican Cuisine</image:title>
+      </image:image>
+  </url>
+  <url>
     <loc>http://plazamariachi.com/es/directorio</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
       <image:image>
@@ -126,32 +76,16 @@
         <image:title>Americas Insurance</image:title>
       </image:image>
       <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dc1bdcb038d.png</image:loc>
-        <image:title>Botanas Lokas</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/madera.png</image:loc>
-        <image:title>Cafe Madera</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dab78ac7aad.png</image:loc>
-        <image:title>Día &amp; Luna</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dade44d35d1.png</image:loc>
-        <image:title>Direct Auto Insurance</image:title>
-      </image:image>
-      <image:image>
         <image:loc>http://plazamariachi.com/images/business/57d9aec504ec4.png</image:loc>
         <image:title>El Ceviche Loco</image:title>
       </image:image>
       <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57d8759f0a5aa.png</image:loc>
-        <image:title>H&amp;R Block</image:title>
+        <image:loc>http://plazamariachi.com/images/business/hff-la-ceiba-gallery_58668cf2f1c8b.png</image:loc>
+        <image:title>HFF Ceiba Art Gallery</image:title>
       </image:image>
       <image:image>
-        <image:loc>http://plazamariachi.com/images/business/hff.png</image:loc>
-        <image:title>HFF La Ceiba Gallery</image:title>
+        <image:loc>http://plazamariachi.com/images/business/hff-gift-shop_58669004ccbac.png</image:loc>
+        <image:title>HFF Gift Shop</image:title>
       </image:image>
       <image:image>
         <image:loc>http://plazamariachi.com/images/business/57dab365e8848.png</image:loc>
@@ -162,619 +96,599 @@
         <image:title>Little Caesars</image:title>
       </image:image>
       <image:image>
-        <image:loc>http://plazamariachi.com/images/business/5849902cb7d7c.png</image:loc>
-        <image:title>Mazfresco Market</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/58499117db567.png</image:loc>
-        <image:title>Reforma Law</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/salon-ixchel.png</image:loc>
-        <image:title>Salon Ixchel</image:title>
-      </image:image>
-      <image:image>
         <image:loc>http://plazamariachi.com/images/business/xenote-mexican-cuisine_584ee2239d894.jpeg</image:loc>
         <image:title>Xenote Mexican Cuisine</image:title>
       </image:image>
       <image:image>
         <image:loc>http://plazamariachi.com/bundles/frontend/img/plaza_mariachi.png</image:loc>
         <image:title>Plaza Mariachi Music City</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/business/deportes-panamex</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/job-fair</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=baila-dance-studios</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/directorio/americas-insurance</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/americas-insurance.png</image:loc>
-        <image:title>Americas Insurance</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/directorio/maz-fresco</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/5849902cb7d7c.png</image:loc>
-        <image:title>Mazfresco Market</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/directorio/botanas-lokas</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dc1bdcb038d.png</image:loc>
-        <image:title>Botanas Lokas</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/business/americas-insurance</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/americas-insurance.png</image:loc>
-        <image:title>Americas Insurance</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=americas-insurance</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/directorio/radio-shack</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=botanas-lokas</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/directorio/direct-auto-insurance</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dade44d35d1.png</image:loc>
-        <image:title>Direct Auto Insurance</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/58499117db567.png</image:loc>
-        <image:title>Reforma Law</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57d8759f0a5aa.png</image:loc>
-        <image:title>H&amp;R Block</image:title>
       </image:image>
   </url>
   <url>
     <loc>http://plazamariachi.com/es/directorio/salon-ixchel</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/salon-ixchel.png</image:loc>
-        <image:title>Salon Ixchel</image:title>
-      </image:image>
   </url>
   <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=radio-shack</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/directorio/el-ceviche-loco</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57d9aec504ec4.png</image:loc>
-        <image:title>El Ceviche Loco</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/business/salon-ixchel</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/es/directorio/maz-fresco</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/salon-ixchel.png</image:loc>
-        <image:title>Salon Ixchel</image:title>
-      </image:image>
   </url>
   <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=el-ceviche-loco</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/es/register/</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/directorio/botanas-lokas</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/es/mapa?hl=maz-fresco</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/mall-map/salon-ixchel</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/es/directorio/direct-auto-insurance</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/es/directorio/tres-gauchos</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/es/empleos/buscar/maz-fresco</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/es/directorio/h-r-block</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/es/directorio/el-ceviche-loco</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
       <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57d8759f0a5aa.png</image:loc>
-        <image:title>H&amp;R Block</image:title>
+        <image:loc>http://plazamariachi.com/images/business/57d9aec504ec4.png</image:loc>
+        <image:title>El Ceviche Loco</image:title>
       </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/58499117db567.png</image:loc>
-        <image:title>Reforma Law</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dade44d35d1.png</image:loc>
-        <image:title>Direct Auto Insurance</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/business/tres-gauchos</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/es/directorio/reforma-law</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=el-ceviche-loco</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/directorio/tres-gauchos</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/directorio/baila-dance-studios</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/directorio/hff-gift-shop</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
       <image:image>
-        <image:loc>http://plazamariachi.com/images/business/58499117db567.png</image:loc>
-        <image:title>Reforma Law</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57d8759f0a5aa.png</image:loc>
-        <image:title>H&amp;R Block</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dade44d35d1.png</image:loc>
-        <image:title>Direct Auto Insurance</image:title>
+        <image:loc>http://plazamariachi.com/images/business/hff-gift-shop_58669004ccbac.png</image:loc>
+        <image:title>HFF Gift Shop</image:title>
       </image:image>
   </url>
   <url>
-    <loc>http://plazamariachi.com/businesses</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/es/directorio/h-r-block</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/job-fair</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
       <image:image>
-        <image:loc>http://plazamariachi.com/images/business/americas-insurance.png</image:loc>
-        <image:title>Americas Insurance</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dc1bdcb038d.png</image:loc>
-        <image:title>Botanas Lokas</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/madera.png</image:loc>
-        <image:title>Cafe Madera</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dab78ac7aad.png</image:loc>
-        <image:title>Día &amp; Luna</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dade44d35d1.png</image:loc>
-        <image:title>Direct Auto Insurance</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57d9aec504ec4.png</image:loc>
-        <image:title>El Ceviche Loco</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57d8759f0a5aa.png</image:loc>
-        <image:title>H&amp;R Block</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/hff.png</image:loc>
-        <image:title>HFF La Ceiba Gallery</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dab365e8848.png</image:loc>
-        <image:title>Kuozina Cafe</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dae4f276a2f.png</image:loc>
-        <image:title>Little Caesars</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/5849902cb7d7c.png</image:loc>
-        <image:title>Mazfresco Market</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/58499117db567.png</image:loc>
-        <image:title>Reforma Law</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/salon-ixchel.png</image:loc>
-        <image:title>Salon Ixchel</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/xenote-mexican-cuisine_584ee2239d894.jpeg</image:loc>
-        <image:title>Xenote Mexican Cuisine</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/bundles/frontend/img/plaza_mariachi.png</image:loc>
-        <image:title>Plaza Mariachi Music City</image:title>
+        <image:loc>http://plazamariachi.com/images/business/plaza-mariachi_5866830143c42.png</image:loc>
+        <image:title>Plaza Mariachi</image:title>
       </image:image>
   </url>
   <url>
-    <loc>http://plazamariachi.com/es/directorio/little-caesars</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dae4f276a2f.png</image:loc>
-        <image:title>Little Caesars</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=reforma-law</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/business/el-ceviche-loco</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57d9aec504ec4.png</image:loc>
-        <image:title>El Ceviche Loco</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/business/hff-la-ceiba-gallery</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/hff.png</image:loc>
-        <image:title>HFF La Ceiba Gallery</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/directorio/nina-s-nieves-de-garrafa</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/directorio/tito-s-playland</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/careers/find/maz-fresco</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/mall-map/hff-la-ceiba-gallery</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/business/deportes-panamex</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/es/directorio/la-ranchera-880</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/business/metro-pcs</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/business/el-ceviche-loco</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=hff-la-ceiba-gallery</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/directorio/dia-luna</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
       <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dab78ac7aad.png</image:loc>
-        <image:title>Día &amp; Luna</image:title>
+        <image:loc>http://plazamariachi.com/images/business/57d9aec504ec4.png</image:loc>
+        <image:title>El Ceviche Loco</image:title>
       </image:image>
   </url>
   <url>
     <loc>http://plazamariachi.com/es/mapa?hl=la-ranchera-880</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/business/little-caesars</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/es/directorio/tito-s-playland</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dae4f276a2f.png</image:loc>
-        <image:title>Little Caesars</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/business/dia-luna</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dab78ac7aad.png</image:loc>
-        <image:title>Día &amp; Luna</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map/metro-pcs</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map/dia-luna</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/business/boost-mobile</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=metro-pcs</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map/baila-dance-studios</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/business/nina-s-nieves-de-garrafa</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/directorio/hff-la-ceiba-gallery</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/hff.png</image:loc>
-        <image:title>HFF La Ceiba Gallery</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map/nina-s-nieves-de-garrafa</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/directorio/boost-mobile</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/mall-map/el-ceviche-loco</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=boost-mobile</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/mall-map/nina-s-nieves-de-garrafa</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/business/h-r-block</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57d8759f0a5aa.png</image:loc>
-        <image:title>H&amp;R Block</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/58499117db567.png</image:loc>
-        <image:title>Reforma Law</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dade44d35d1.png</image:loc>
-        <image:title>Direct Auto Insurance</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/business/sprint</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map/h-r-block</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map/sprint</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=sprint</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/es/directorio/zumito</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=nina-s-nieves-de-garrafa</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/business/paletas-tocumbo</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=zumito</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map/paletas-tocumbo</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/mall-map/h-r-block</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/business/reforma-law</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/58499117db567.png</image:loc>
-        <image:title>Reforma Law</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57d8759f0a5aa.png</image:loc>
-        <image:title>H&amp;R Block</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dade44d35d1.png</image:loc>
-        <image:title>Direct Auto Insurance</image:title>
-      </image:image>
   </url>
   <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=paletas-tocumbo</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/es/mapa?hl=zumito</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/mall-map/reforma-law</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/es/directorio/activa-1240</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/business/direct-auto-insurance</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/es/directorio/hff-ceiba-art-gallery</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+      <image:image>
+        <image:loc>http://plazamariachi.com/images/business/hff-la-ceiba-gallery_58668cf2f1c8b.png</image:loc>
+        <image:title>HFF Ceiba Art Gallery</image:title>
+      </image:image>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/directorio/sprint</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/hff-ceiba-art-gallery</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
       <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dade44d35d1.png</image:loc>
-        <image:title>Direct Auto Insurance</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/58499117db567.png</image:loc>
-        <image:title>Reforma Law</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57d8759f0a5aa.png</image:loc>
-        <image:title>H&amp;R Block</image:title>
+        <image:loc>http://plazamariachi.com/images/business/hff-la-ceiba-gallery_58668cf2f1c8b.png</image:loc>
+        <image:title>HFF Ceiba Art Gallery</image:title>
       </image:image>
   </url>
   <url>
-    <loc>http://plazamariachi.com/es/register/</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/mall-map/hff-ceiba-art-gallery</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/directorio/deportes-panamex</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/cafe-madera</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/botanas-lokas</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/mall-map/direct-auto-insurance</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/base/about</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/es/directorio/metro-pcs</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=tres-gauchos</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/es/mapa?hl=cafe-madera</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/careers/find/botanas-lokas</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=salon-ixchel</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=h-r-block</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/empleos/buscar/salon-ixchel</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/contenido/about</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/empleos/buscar/zumito</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/careers/find/salon-ixchel</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/baskin-robbins</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/botanas-lokas</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=tito-s-playland</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/baskin-robbins</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/directorio/americas-insurance</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+      <image:image>
+        <image:loc>http://plazamariachi.com/images/business/americas-insurance.png</image:loc>
+        <image:title>Americas Insurance</image:title>
+      </image:image>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/empleos/buscar/baila-dance-studios</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/salon-ixchel</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/americas-insurance</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+      <image:image>
+        <image:loc>http://plazamariachi.com/images/business/americas-insurance.png</image:loc>
+        <image:title>Americas Insurance</image:title>
+      </image:image>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=baskin-robbins</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/careers/find/baila-dance-studios</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/americas-insurance</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=sprint</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=baila-dance-studios</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/empleos/buscar/tres-gauchos</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=americas-insurance</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/careers/find/tres-gauchos</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=reforma-law</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/tres-gauchos</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=botanas-lokas</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=hff-ceiba-art-gallery</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/tres-gauchos</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/directorio/little-caesars</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+      <image:image>
+        <image:loc>http://plazamariachi.com/images/business/57dae4f276a2f.png</image:loc>
+        <image:title>Little Caesars</image:title>
+      </image:image>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/directorio/radio-shack</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/empleos/buscar/botanas-lokas</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=radio-shack</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/radio-shack</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/salon-ixchel</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/metro-pcs</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/radio-shack</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/boost-mobile</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/metro-pcs</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/boost-mobile</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/baila-dance-studios</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=metro-pcs</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/activa-1240</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=boost-mobile</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/businesses</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+      <image:image>
+        <image:loc>http://plazamariachi.com/images/business/americas-insurance.png</image:loc>
+        <image:title>Americas Insurance</image:title>
+      </image:image>
+      <image:image>
+        <image:loc>http://plazamariachi.com/images/business/57d9aec504ec4.png</image:loc>
+        <image:title>El Ceviche Loco</image:title>
+      </image:image>
+      <image:image>
+        <image:loc>http://plazamariachi.com/images/business/hff-la-ceiba-gallery_58668cf2f1c8b.png</image:loc>
+        <image:title>HFF Ceiba Art Gallery</image:title>
+      </image:image>
+      <image:image>
+        <image:loc>http://plazamariachi.com/images/business/hff-gift-shop_58669004ccbac.png</image:loc>
+        <image:title>HFF Gift Shop</image:title>
+      </image:image>
+      <image:image>
+        <image:loc>http://plazamariachi.com/images/business/57dab365e8848.png</image:loc>
+        <image:title>Kuozina Cafe</image:title>
+      </image:image>
+      <image:image>
+        <image:loc>http://plazamariachi.com/images/business/57dae4f276a2f.png</image:loc>
+        <image:title>Little Caesars</image:title>
+      </image:image>
+      <image:image>
+        <image:loc>http://plazamariachi.com/images/business/xenote-mexican-cuisine_584ee2239d894.jpeg</image:loc>
+        <image:title>Xenote Mexican Cuisine</image:title>
+      </image:image>
+      <image:image>
+        <image:loc>http://plazamariachi.com/bundles/frontend/img/plaza_mariachi.png</image:loc>
+        <image:title>Plaza Mariachi Music City</image:title>
+      </image:image>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/directorio/nina-s-nieves-de-garrafa</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/little-caesars</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+      <image:image>
+        <image:loc>http://plazamariachi.com/images/business/57dae4f276a2f.png</image:loc>
+        <image:title>Little Caesars</image:title>
+      </image:image>
   </url>
   <url>
     <loc>http://plazamariachi.com/business/kuozina-cafe</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
       <image:image>
@@ -783,208 +697,308 @@
       </image:image>
   </url>
   <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=direct-auto-insurance</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/es/empleos/buscar/nina-s-nieves-de-garrafa</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=xenote-restaurant</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/es/directorio/dia-luna</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/mall-map/kuozina-cafe</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/business/zumito</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/business/la-ranchera-880</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/business/dia-luna</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/es/mapa?hl=kuozina-cafe</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=activa-1240</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/careers/find/dia-luna</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/dia-luna</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/baila-dance-studios</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/empleos/buscar/dia-luna</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/directorio/xenote-restaurant</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+      <image:image>
+        <image:loc>http://plazamariachi.com/images/business/xenote-mexican-cuisine_584ee2239d894.jpeg</image:loc>
+        <image:title>Xenote Mexican Cuisine</image:title>
+      </image:image>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/reforma-law</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/directorio/boost-mobile</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/sprint</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=deportes-panamex</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=nina-s-nieves-de-garrafa</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/sprint</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/xenote-restaurant</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/paletas-tocumbo</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/direct-auto-insurance</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/directorio/metro-pcs</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=tres-gauchos</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/direct-auto-insurance</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/paletas-tocumbo</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=direct-auto-insurance</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=paletas-tocumbo</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/careers/find/nina-s-nieves-de-garrafa</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/hff-gift-shop</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+      <image:image>
+        <image:loc>http://plazamariachi.com/images/business/hff-gift-shop_58669004ccbac.png</image:loc>
+        <image:title>HFF Gift Shop</image:title>
+      </image:image>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=xenote-restaurant</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/hff-gift-shop</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/zumito</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/la-ranchera-880</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/directorio/auf-professional-services</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/mall-map/zumito</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/directorio/sprint</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/directorio/game-stop</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/directorio/activa-1240</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=activa-1240</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/directorio/deportes-panamex</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=deportes-panamex</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/business/maz-fresco</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/5849902cb7d7c.png</image:loc>
-        <image:title>Mazfresco Market</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map/cafe-madera</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/business/botanas-lokas</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/57dc1bdcb038d.png</image:loc>
-        <image:title>Botanas Lokas</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map/maz-fresco</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=cafe-madera</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/base/about</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map/boost-mobile</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=h-r-block</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map/little-caesars</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map/americas-insurance</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=salon-ixchel</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map/tito-s-playland</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/job-fair</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/business/radio-shack</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/directorio/paletas-tocumbo</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/admin/resetting/request</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map/radio-shack</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/mall-map/la-ranchera-880</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=auf-professional-services</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map?slug=all</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/directorio/game-stop</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/business/maz-fresco</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/mapa?hl=hff-gift-shop</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/maz-fresco</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/little-caesars</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/es/mapa?hl=dia-luna</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>http://plazamariachi.com/mall-map/tito-s-playland</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/careers/find/zumito</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/job-fair</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+      <image:image>
+        <image:loc>http://plazamariachi.com/images/business/plaza-mariachi_5866830143c42.png</image:loc>
+        <image:title>Plaza Mariachi</image:title>
+      </image:image>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/directorio/paletas-tocumbo</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/admin/resetting/request</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://plazamariachi.com/es/directorio/kuozina-cafe</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
       <image:image>
@@ -994,125 +1008,111 @@
   </url>
   <url>
     <loc>http://plazamariachi.com/mall-map/activa-1240</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/es/contenido/about</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/business/auf-professional-services</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/es/mapa?hl=game-stop</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/business/baskin-robbins</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/careers/find/cafe-madera</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/es/mapa</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>http://plazamariachi.com/careers/find/auf-professional-services</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/mall-map/auf-professional-services</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://plazamariachi.com/es/empleos/buscar/cafe-madera</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>http://plazamariachi.com/es/directorio/baskin-robbins</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/es/directorio/cafe-madera</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/madera.png</image:loc>
-        <image:title>Cafe Madera</image:title>
-      </image:image>
       <image:image>
         <image:loc>http://plazamariachi.com/images/business/xenote-mexican-cuisine_584ee2239d894.jpeg</image:loc>
         <image:title>Xenote Mexican Cuisine</image:title>
       </image:image>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=baskin-robbins</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/es/mapa?hl=little-caesars</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/es/mapa?hl=tito-s-playland</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map/botanas-lokas</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>http://plazamariachi.com/es/</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
       <image:image>
         <image:loc>http://plazamariachi.com/images/business/xenote-mexican-cuisine_584ee2239d894.jpeg</image:loc>
         <image:title>Xenote Mexican Cuisine</image:title>
       </image:image>
-      <image:image>
-        <image:loc>http://plazamariachi.com/images/business/5849902cb7d7c.png</image:loc>
-        <image:title>Mazfresco Market</image:title>
-      </image:image>
   </url>
   <url>
-    <loc>http://plazamariachi.com/mall-map/baskin-robbins</loc>
-    <lastmod>2016-12-19</lastmod>
+    <loc>http://plazamariachi.com/es/empleos/buscar/auf-professional-services</loc>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>http://plazamariachi.com/register/</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://plazamariachi.com/mall-map/deportes-panamex</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://plazamariachi.com/mall-map/tres-gauchos</loc>
-    <lastmod>2016-12-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>http://plazamariachi.com/business/game-stop</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>http://plazamariachi.com/mall-map/deportes-panamex</loc>
+    <lastmod>2017-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>http://plazamariachi.com/mall-map/game-stop</loc>
-    <lastmod>2016-12-19</lastmod>
+    <lastmod>2017-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
