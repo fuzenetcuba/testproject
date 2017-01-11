@@ -1,3 +1,7 @@
+backend_candidate:
+    resource: "@BackendBundle/Resources/config/routing/candidate.yml"
+    prefix:   /candidate
+
 backend_settings:
     resource: "@BackendBundle/Resources/config/routing/settings.yml"
     prefix:   /settings

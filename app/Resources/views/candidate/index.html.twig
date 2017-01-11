@@ -15,32 +15,32 @@
 
 {% endblock %}
 
-        {% block active_opening %}active{% endblock %}
+        {% block active_candidate %}active{% endblock %}
 
         {% block page_heading_title %}
-            {{ 'Openings list' | trans({}, 'openingbackend') }}
+            Candidate list
         {% endblock %}
 
     {% block page_heading_action_button %}
-        <a class="btn btn-success navbar-btn pull-right" href="{{ path('opening_new') }}">
+        <a class="btn btn-success navbar-btn pull-right" href="{{ path('candidate_new') }}">
             <span class="fa fa-plus"></span>
-            {{ 'New opening' | trans({}, 'openingbackend') }}
+            New candidate
         </a>
     {% endblock %}
 
         {% block page_content %}
 
             <div>
-                <span class="col-sm-2"><b>{{ 'Total items' | trans({}, 'generalbackend') }}: </b> {{ entities.getTotalItemCount }}</span>
+                <span class="col-sm-2"><b>Total items: </b> {{ entities.getTotalItemCount }}</span>
 
                 <div class="col-sm-10 form-group form-inline text-right">
-                    <form name="find-form" action="{{ path('opening_find') }}" method="post">
+                    <form name="find-form" action="{{ path('candidate_find') }}" method="post">
                         <div class="input-group">
                             <input id="find-form-text" class="form-control" autofocus="on" name="find-form-text"
                                    autocomplete="off"
-                                   type="text" placeholder="{{ 'Text to find' | trans({}, 'generalbackend') }}..."/>
+                                   type="text" placeholder="Text to find..."/>
                         <span class="input-group-btn">
-                            <button type="submit" name="find-form-send" value="sending" class="btn btn-primary">{{ 'Find' | trans({}, 'generalbackend') }}
+                            <button type="submit" name="find-form-send" value="sending" class="btn btn-primary">Find
                             </button>
                         </span>
                         </div>
@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            <form id="batch_action_form" action="{{ path('opening_batch') }}" method="post">
+            <form id="batch_action_form" action="{{ path('candidate_batch') }}" method="post">
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
@@ -61,27 +61,67 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Position'| trans({}, 'openingbackend'), 'e.position') }}
-                            {% if entities.isSorted('e.position') %}
+                            {{ knp_pagination_sortable(entities, 'Fullname', 'e.firstName') }}
+                            {% if entities.isSorted('e.firstName') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
-                        <th class="text-navy">{{ 'Business' | trans({}, 'openingbackend') }}</th>
-                        {#                                     <th class="text-navy">
-                                                {{ knp_pagination_sortable(entities, 'Department', 'e.department') }}
-                                                {% if entities.isSorted('e.department') %}
-                                                <span class="fa fa-sort"></span>
-                                                {% endif %}
-                                            </th>
-                         #}
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Description'| trans({}, 'openingbackend'), 'e.description') }}
-                            {% if entities.isSorted('e.description') %}
+                            {{ knp_pagination_sortable(entities, 'City', 'e.city') }}
+                            {% if entities.isSorted('e.city') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
+                        <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'State', 'e.state') }}
+                            {% if entities.isSorted('e.state') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
+                        <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'Social Number', 'e.socialNumber') }}
+                            {% if entities.isSorted('e.socialNumber') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
+                        <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'Adult', 'e.adult') }}
+                            {% if entities.isSorted('e.adult') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
+                        <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'Phone', 'e.phone') }}
+                            {% if entities.isSorted('e.phone') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
+                        <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'Start Date', 'e.startDate') }}
+                            {% if entities.isSorted('e.startDate') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
+                        <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'Availability', 'e.availability') }}
+                            {% if entities.isSorted('e.availability') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
+                        <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'Legal Worker', 'e.legalWorker') }}
+                            {% if entities.isSorted('e.legalWorker') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
+                        <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'Convicted', 'e.crime') }}
+                            {% if entities.isSorted('e.crime') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
 
-                        <th class="text-navy">{{ 'Actions' | trans({}, 'generalbackend') }}</th>
+                        <th class="text-navy">Actions</th>
                     </tr>
                     </thead>
 
@@ -94,34 +134,63 @@
                             </td>
 
                             <td class="text-navy">
-                                <a href="{{ path('opening_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
+                                <a href="{{ path('candidate_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
                             </td>
 
-                            <td>{{ entity.position }}</td>
+                            <td>{{ entity.fullName }}</td>
+
+                            <td>{{ entity.city }}</td>
+
+                            <td>{{ entity.state }}</td>
+
+                            <td>{{ entity.socialNumber }}</td>
 
                             <td>
-                                <span class="label label-{{ entity.business is not empty ? "success" : "warning" }}">{{ entity.business is not empty ? entity.business : "No business related" | trans({}, 'dealbackend') }}</span>
+                                <div class="onoffswitch-ios switch-xs">
+                                    {% if (entity.adult) %}
+                                        <label class="onoffswitch-ios-label checked"></label>
+                                    {% else %}
+                                        <label class="onoffswitch-ios-label"></label>
+                                    {% endif %}
+                                </div>
                             </td>
 
-                            {# <td>{{ entity.department }}</td> #}
+                            <td>{{ entity.phone }}</td>
 
-                            <td>{{ entity.description }}</td>
+                            <td>{{ entity.startDate|date('d-M-Y') }}</td>
+
+                            <td>{{ entity.availability }}</td>
+
+                            <td>{{ entity.legalWorker }}</td>
+
+                            <td>
+                                <div class="onoffswitch-ios switch-xs">
+                                    {% if (entity.crime is not null) %}
+                                        <span class="badge-danger">{{ entity.crime }}</span>
+                                    {% else %}
+                                        <span class="badge-disable">{{ "No convicted" }}</span>
+                                    {% endif %}
+                                </div>
+                            </td>
 
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-xs btn-outline btn-primary"
-                                       href="{{ path('opening_show', { 'id': entity.id }) }}"> <span
-                                                class="fa fa-search"></span> </a> <a
-                                            class="btn btn-xs btn-outline btn-primary"
-                                            href="{{ path('opening_edit', { 'id': entity.id }) }}"> <span
-                                                class="fa fa-pencil"></span> </a></div>
+                                       href="{{ path('candidate_show', { 'id': entity.id }) }}"> <span
+                                                class="fa fa-search"></span>
+                                    </a>
+                                    <a class="btn btn-xs btn-outline btn-primary"
+                                       href="{{ path('candidate_edit', { 'id': entity.id }) }}"> <span
+                                                class="fa fa-pencil"></span>
+                                    </a>
+                                </div>
                             </td>
 
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="7">
-                                {{ 'There are not entries' | trans({}, 'generalbackend') }}...
+                            <td colspan="12">
+                                There are not entries...
                             </td>
                         </tr>
                     {% endfor %}
@@ -137,7 +206,7 @@
                         <div class="form-group pagination pull-right">
                             <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
                                 <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                                    {{ 'Delete Openings'| trans({}, 'openingbackend') }}
+                                    Delete Candidates
                                 </option>
                             </select>
                         </div>
@@ -151,19 +220,19 @@
                         <div id="modal-title" class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">
                                 <span aria-hidden="true">&times;</span>
-                                <span class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
+                                <span class="sr-only">Close</span>
                             </button>
                             <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
-                            <h4 class="modal-title">{{ 'Atention' | trans({}, 'generalbackend') }}!!!</h4>
+                            <h4 class="modal-title">Antention!!!</h4>
                         </div>
                         <div id="modal-content" class="modal-body">
                             Modal message
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
+                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                             <button id="modal-btn" type="submit" class="btn btn-success"
                                     onclick="$('#batch_action_form').submit();">
-                                <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}
+                                <span class="glyphicon glyphicon-ok"></span> Save changes
                             </button>
                         </div>
                     </div>
@@ -209,7 +278,7 @@
                 //  select2 scripts for batch actions combobox
                 $("#batch_action_do").select2({
                     minimumResultsForSearch: Infinity,
-                    placeholder: "--- {{ 'Select an action' | trans({}, 'generalbackend') }} ---"
+                    placeholder: "--- Select an action ---"
                 }).on("select2:select", function (e) {
                     var batchValue = $("#batch_action_do").val();
 
@@ -228,8 +297,8 @@
                 switch (action) {
                     case "delete":
                         panelTitle.setAttribute("class", "modal-header red-bg");
-                        panelContent.innerHTML = "<strong>{{ 'Are you sure you want to delete items?' | trans({}, 'generalbackend') }}</strong> {{ 'After this action, data will not be restorable.' | trans({}, 'generalbackend') }}";
-                        panelBtn.setAttribute("class", "btn btn-danger");
+                        panelContent.innerHTML = "<strong>Are you sure you want to delete items?</strong> After this action, data will not be restorable.";
+                        panelBtn.setAttribute("class", "btn btn-danger")
                         break;
                 }
             }

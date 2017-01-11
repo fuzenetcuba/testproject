@@ -70,7 +70,7 @@ var vm = new Vue({
         state: '',
         zipCode: '',
         securityNumber: '',
-        adult: false,
+        adult: 0,
         availability: 'full',
         availabilityHours: 'all',
         weekHours: {
@@ -215,7 +215,7 @@ var vm = new Vue({
             formData.append('state', this.state);
             formData.append('zipCode', this.zipCode);
             formData.append('securityNumber', this.securityNumber);
-            formData.append('adult', this.adult);
+            formData.append('adult', (this.adult ? 1 : 0));
             formData.append('phone', this.phone);
             formData.append('availability', this.availability);
             formData.append('availabilityHours', this.availabilityHours);

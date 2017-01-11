@@ -3356,7 +3356,15 @@ div.container-fb-share-button{
     }
 }
 
+.onoffswitch-ios-label i {
+    display: none;
+}
+
 @media (max-width: 1024px) {
+    .onoffswitch-ios-label i {
+        display: inline-block;
+    }
+
     .apply-info {
         flex-direction: column-reverse;
     }
