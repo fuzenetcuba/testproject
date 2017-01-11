@@ -71,4 +71,8 @@ app_robots:
 
 job_fair:
     path:     /job-fair
-    defaults: { _controller: FrontendBundle:Default:jobfair }
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /
+        permanent: true
+
