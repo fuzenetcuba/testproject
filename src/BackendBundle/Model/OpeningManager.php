@@ -148,7 +148,15 @@ class OpeningManager implements ManagerInterface
             ->getOneOrNullResult();
 
         if (!$object) {
-            throw new NotFoundHttpException(sprintf('Opening with slug "%s" could not be found', $slug));
+
+            $object = $this->em
+                ->createQuery('SELECT d FROM BackendBundle:Opening d WHERE d.slug = :slug')
+                ->setParameter('slug', $slug)
+                ->getOneOrNullResult();
+
+            if (!$object) {
+                throw new NotFoundHttpException(sprintf('Opening with slug "%s" could not be found', $slug));
+            }
         }
 
         return $object;
