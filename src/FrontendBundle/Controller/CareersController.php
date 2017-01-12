@@ -102,12 +102,12 @@ class CareersController extends Controller
                 'deals' => []
             ]);
 
-//            $this->get('opening.manager')->notifyManager(
-//                $candidate,
-//                $this->getParameter('careers.notification.subject'),
-//                $this->getParameter('customer.email.from'),
-//                $content
-//            );
+            $this->get('opening.manager')->notifyManager(
+                $candidate,
+                $this->getParameter('careers.notification.subject'),
+                $this->getParameter('customer.email.from'),
+                $content
+            );
 
             return new JsonResponse(['status' => 'ok']);
         }
