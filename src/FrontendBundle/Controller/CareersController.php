@@ -82,28 +82,32 @@ class CareersController extends Controller
 
         // validating the candidate data
         $validator = $this->get('validator');
-        $errors = $validator->validate($candidate);
+        $errors = $validator->validate($candidate, null, array('application'));
 
+        $errorsString = "";
         if (count($errors) > 0) {
-            $errorsString = (string) $errors;
+            for ($i = 0; $i < count($errors); $i++) {
+                $errorsString .= $errors->get($i)->getMessage();
+            }
             return new JsonResponse(array('error' => $errorsString));
         } else {
 
+            $this->get('opening.manager')->storeFilesFromRequest($request, $candidate);
             $this->get('opening.manager')->saveCandidate($candidate);
             $content = $this->renderView('@Backend/Emails/customer.html.twig', [
                 'content' => sprintf('%s Has applied to the %s position (%s)',
-                    $candidate->fullName(), $candidate->opening->getPosition(),
+                    $candidate->fullName(), $candidate->getOpening()->getPosition(),
                     (new \DateTime())->format('Y-m-d H:i:s'))
                 ,
                 'deals' => []
             ]);
 
-            $this->get('opening.manager')->notifyManager(
-                $candidate,
-                $this->getParameter('careers.notification.subject'),
-                $this->getParameter('customer.email.from'),
-                $content
-            );
+//            $this->get('opening.manager')->notifyManager(
+//                $candidate,
+//                $this->getParameter('careers.notification.subject'),
+//                $this->getParameter('customer.email.from'),
+//                $content
+//            );
 
             return new JsonResponse(['status' => 'ok']);
         }

@@ -3,7 +3,8 @@
 {% block title %} {{- "Apply for a job" | trans({}, 'careers') -}} {% endblock %}
 
 {% block metatags %}
-    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+    <meta name="keywords"
+          content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
     {{- 'Careers application' | trans({}, 'homepage') -}},
     {{- 'Mall' | trans({}, 'homepage') -}},
     {{- 'Businesses' | trans({}, 'homepage') -}},
@@ -44,7 +45,7 @@
                  title="{{ opening.business }}"
                  src="{{ asset('images/business/' ~ opening.business.logo) }} "/>
             <h1 class="apply-header">
-              {{ opening.position }}
+                {{ opening.position }}
             </h1>
         </div>
 
@@ -56,7 +57,7 @@
                 <label @click="formApplication = !formApplication"
                        :class="{'checked': !formApplication}"
                        class="onoffswitch-ios-label">
-                       <i class="fa" :class="{'fa-arrow-up' : formApplication, 'fa-arrow-down' : !formApplication}"></i>
+                    <i class="fa" :class="{'fa-arrow-up' : formApplication, 'fa-arrow-down' : !formApplication}"></i>
                 </label>
             </div>
             <h2>{{ 'upload only a resume & optionally a cover letter' | trans({},'careers') }}</h2>
@@ -68,10 +69,11 @@
                   @submit.prevent="submitForm()"
                   class="container application-form" novalidate>
 
-              <div v-if="error" class="alert alert-danger">
-              <button type="button" @click="error = false" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                ${ errorMessage }
-              </div>
+                <div v-if="error" class="alert alert-danger">
+                    <button type="button" @click="error = false" class="close" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <b>ERROR: </b>${ errorMessage }
+                </div>
 
                 <fieldset>
                     <div class="row">
@@ -246,7 +248,8 @@
                         </div>
                         <div class="col-lg-1">
                             <div class="form-group">
-                                <label class="special-padding" for="name">{{ 'Wednesday' | trans({},'careers') }}</label>
+                                <label class="special-padding"
+                                       for="name">{{ 'Wednesday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
                                        v-model="weekHours.wednesday.from" class="form-control clockpicker"
@@ -943,7 +946,7 @@
                     <button type="submit"
                             {# :disabled="!$validation1.valid" #}
                             class="btn btn-blue btn-lg">
-                            <i class="fa fa-paper-plane"></i> &nbsp;&nbsp;{{ 'SUBMIT APPLICATION' | trans({},'careers') }}
+                        <i class="fa fa-paper-plane"></i> &nbsp;&nbsp;{{ 'SUBMIT APPLICATION' | trans({},'careers') }}
                     </button>
                 </div>
             </form>
@@ -959,7 +962,25 @@
                     <div class="sa-fix"></div>
                 </div>
             </div>
-            <h1>{{ 'Your application has been submitted!' | trans({},'careers') }}</h1>
+            <h1>{{ 'Application submitted!' | trans({},'careers') }}</h1>
+            <br/>
+            <p class="text-gray">{{ 'Thank you for applying to be a part of our team. We will carefully review your information and contact you if we have any questions or would like to schedule an interview.' | trans({}, 'careers') }}</p>
+            <br/>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
+                    <div class="col-sm-6">
+                        <a class="btn btn-green btn-lg"
+                           HREF="{{ path("frontend_homepage") }}">{{ "DONE" | trans({}, 'careers') }}</a>
+                    </div>
+                    <div class="visible-xs">
+                        <br/>
+                    </div>
+                    <div class="col-sm-6">
+                        <a class="btn btn-success btn-lg"
+                           HREF="{{ path("careers_index") }}">{{ "KEEP APPLYING" | trans({}, 'careers') }}</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1018,16 +1039,16 @@
             });
 
             // ===== Scroll to Top ====
-            $(window).scroll(function() {
+            $(window).scroll(function () {
                 if ($(this).scrollTop() >= 100) {        // If page is scrolled more than 50px
                     $('#return-to-top').fadeIn(200);    // Fade in the arrow
                 } else {
                     $('#return-to-top').fadeOut(200);   // Else fade out the arrow
                 }
             });
-            $('#return-to-top').click(function() {      // When arrow is clicked
+            $('#return-to-top').click(function () {      // When arrow is clicked
                 $('body,html').animate({
-                    scrollTop : 0                       // Scroll to top of body
+                    scrollTop: 0                       // Scroll to top of body
                 }, 500);
             });
 

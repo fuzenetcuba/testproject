@@ -14,7 +14,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  * @DoctrineAssert\UniqueEntity(
  *     fields={"socialNumber", "opening"},
  *     errorPath="socialNumber",
- *     message="Already exist an application for this Position with this Social Security or Tax Id Number"
+ *     message="Already exist an application for this Position with this Social Security or Tax Id Number",
+ *     groups={"application"}
  * )
  */
 class Candidate
@@ -24,228 +25,228 @@ class Candidate
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      */
-    public $id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $lastName;
+    private $lastName;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $firstName;
+    private $firstName;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $middleName;
+    private $middleName;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $address;
+    private $address;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $city;
+    private $city;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $state;
+    private $state;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $zipCode;
+    private $zipCode;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $socialNumber;
+    private $socialNumber;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    public $adult;
+    private $adult;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $phone;
+    private $phone;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $availableHours;
+    private $availableHours;
 
     /**
      * @ORM\Column(type="json_array", nullable=true)
      */
-    public $weekAvailable;
+    private $weekAvailable;
 
     /**
      * @ORM\Column(type="date", nullable=true)
      */
-    public $startDate;
+    private $startDate;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $salary;
+    private $salary;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $availability;
+    private $availability;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $hasLicense;
+    private $hasLicense;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $licenseNumber;
+    private $licenseNumber;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $licenseState;
+    private $licenseState;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $licenseExpiration;
+    private $licenseExpiration;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $legalWorker;
+    private $legalWorker;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $crime;
+    private $crime;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $crimeExplain;
+    private $crimeExplain;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $background;
+    private $background;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $backExplain;
+    private $backExplain;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $yearsHighschool;
+    private $yearsHighschool;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $hasDiploma;
+    private $hasDiploma;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $hasGED;
+    private $hasGED;
 
     /**
      * @ORM\Column(type="json_array", nullable=true)
      */
-    public $schools;
+    private $schools;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $yearsCollege;
+    private $yearsCollege;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $collegeSchool;
+    private $collegeSchool;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $collegeState;
+    private $collegeState;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $major;
+    private $major;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $degree;
+    private $degree;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $gpa;
+    private $gpa;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $contactEmployers;
+    private $contactEmployers;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $employmentName;
+    private $employmentName;
 
     /**
      * @ORM\Column(type="json_array", nullable=true)
      */
-    public $employers;
+    private $employers;
 
     /**
      * @ORM\Column(name="refs", type="json_array", nullable=true)
      */
-    public $references;
+    private $references;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $skills;
+    private $skills;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    public $bestFit;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     *
-     * @Assert\File(mimeTypes={ "application/pdf" })
-     */
-    public $cv;
+    private $bestFit;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      *
      * @Assert\File(mimeTypes={ "application/pdf" })
      */
-    public $coverLetter;
+    private $cv;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @Assert\File(mimeTypes={ "application/pdf" })
+     */
+    private $coverLetter;
 
     /**
      * @var Opening
      *
      * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\Opening")
      */
-    public $opening;
+    private $opening;
 
     /**
      * @return mixed
