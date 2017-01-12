@@ -31,6 +31,7 @@
     <section class="inner-content section-spaces-line">
         <div class="row">
             <div class="jobafair-careers-list careers-result col-lg-10 col-lg-offset-1">
+            {% if openings | length > 0 %}
                 <table class="table table-hover table-responsive">
                     <thead>
                     <tr>
@@ -88,13 +89,14 @@
                             </td>
                             {% endif %}
                         </tr>
-                    {% else %}
-                        <div class="alert alert-danger">
-                            {{ 'No openings have been published yet' | trans({}, 'careers') }}
-                        </div>
                     {% endfor %}
                     </tbody>
                 </table>
+            {% else %}
+                <div class="alert alert-danger">
+                    {{ 'No openings have been published yet' | trans({}, 'careers') }}
+                </div>
+            {% endif %}
             </div>
         </div>
         <div class="row text-center hidden-print">

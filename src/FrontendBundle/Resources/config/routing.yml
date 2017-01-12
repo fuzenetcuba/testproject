@@ -65,6 +65,12 @@ careers_store:
     options:
         expose: true
 
+careers_autocomplete:
+    path:   /careers/autocomplete
+    defaults: { _controller: FrontendBundle:Careers:autocomplete }
+    options:
+        expose: true
+
 app_robots:
     path:     /robots.txt
     defaults: { _controller: FrontendBundle:Default:robots }

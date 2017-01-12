@@ -52,15 +52,15 @@ class OpeningType extends AbstractType
             $builder
                 ->add('business', EntityType::class, [
                     'class' => 'BackendBundle\Entity\Business',
-                    'query_builder' => function (EntityRepository $er) {
-                        return $er->createQueryBuilder('b')
-                            ->join('b.openings', 'o')
-                            ->orderBy('b.name', 'ASC');
-                    },
+                    // 'query_builder' => function (EntityRepository $er) {
+                    //     return $er->createQueryBuilder('b')
+                    //         ->join('b.openings', 'o')
+                    //         ->orderBy('b.name', 'ASC');
+                    // },
                     'choice_label' => 'name',
                     'empty_value' => 'All the businesses',
                     'required' => false,
-                    'attr' => ['class' => 'form-control select2-field']
+                    'attr' => ['class' => 'form-control select2-field', 'v-model' => 'currentPosition']
                 ]);
         } else {
             $builder
@@ -96,6 +96,6 @@ class OpeningType extends AbstractType
      */
     public function getName()
     {
-        return 'backend_bundle_opening_type';
+        return 'opening';
     }
 }

@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Model;
 
+use BackendBundle\Entity\Business;
 use BackendBundle\Entity\Candidate;
 use BackendBundle\Entity\Opening;
 use Doctrine\ORM\EntityManager;
@@ -268,5 +269,30 @@ class OpeningManager implements ManagerInterface
             ->setBody($content, 'text/html');
 
         $this->mailer->send($message);
+    }
+
+    /**
+     * Fetchs a list of openings that have some position available
+     * 
+     * @param  Opening $business Opening
+     * @return array             List of businesses
+     */
+    public function findOpeningsWithBusiness(Business $business)
+    {
+        $query = $this->findAllQuery();
+
+        $query
+            ->join('o.business', 'b')
+            ->andWhere('b.id = :id')
+            ->setParameter('id', $business->getId())
+        ;
+
+        // multilanguage search criterias done introspecting the default locale
+        $query = $query->getQuery()->setHint(
+            Query::HINT_CUSTOM_OUTPUT_WALKER,
+            'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+        );
+
+        return $query->getResult();
     }
 }
