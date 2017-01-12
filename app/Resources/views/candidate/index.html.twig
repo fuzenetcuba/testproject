@@ -165,10 +165,10 @@
 
                             <td>
                                 <div class="onoffswitch-ios switch-xs">
-                                    {% if (entity.crime is not null) %}
-                                        <span class="badge-danger">{{ entity.crime }}</span>
+                                    {% if (not entity.crime) %}
+                                        <span class="badge badge-danger">{{ entity.crime }}</span>
                                     {% else %}
-                                        <span class="badge-disable">{{ "No convicted" }}</span>
+                                        <span class="badge badge-success">{{ "No" }}</span>
                                     {% endif %}
                                 </div>
                             </td>

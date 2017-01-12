@@ -26,6 +26,15 @@
     <!-- select2 Styles -->
     <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
           type="text/css"/>
+    <!-- datepicker3 Styles -->
+    <link rel="stylesheet"
+          href="{{ asset('bundles/backend/css/plugins/datapicker/datepicker3.css') }}"
+          type="text/css"/>
+    <!-- clockpicker Styles -->
+    <link rel="stylesheet"
+          href="{{ asset('bundles/backend/css/plugins/clockpicker/clockpicker.css') }}"
+          type="text/css"/>
+
 {% endblock %}
 
 {% block page_content %}
@@ -87,11 +96,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="name">{{ 'Middle Name' | trans({},'careers') }}</label>
-                                <label class="error animated fadeInLeft"
-                                       v-if="$validation1.middleName.required">This
-                                    field is required</label>
                                 <input type="text"
-                                       v-validate:middle-name="{ required: true }"
                                        v-model="middleName" class="form-control"
                                        placeholder="{{ 'Middle Name' | trans({},'careers') }}">
                             </div>
@@ -146,14 +151,14 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="name">{{ 'Social Security Number' | trans({},'careers') }}</label>
+                                <label for="name">{{ 'Social Security or Tax ID Number' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
                                        v-if="$validation1.securityNumber.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:security-number="{ required: true}"
                                        v-mask="999-99-9999" v-model="securityNumber"
                                        class="form-control"
-                                       placeholder="{{ 'Social Security Number' | trans({},'careers') }}">
+                                       placeholder="{{ 'Social Security or Tax ID Number' | trans({},'careers') }}">
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -212,8 +217,12 @@
                                 <label for="name">{{ 'Monday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
-                                       v-model="weekHours.monday" class="form-control"
-                                       placeholder="{{ 'Monday' | trans({},'careers') }}">
+                                       v-model="weekHours.monday.from" class="form-control clockpicker"
+                                       placeholder="{{ 'From' | trans({},'careers') }}">
+                                <input type="text" :disabled="availabilityHours == 'all'"
+                                       v-mask="99"
+                                       v-model="weekHours.monday.to" class="form-control clockpicker"
+                                       placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
                         </div>
                         <div class="col-lg-1">
@@ -221,8 +230,12 @@
                                 <label for="name">{{ 'Tuesday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
-                                       v-model="weekHours.tuesday" class="form-control"
-                                       placeholder="{{ 'Tuesday' | trans({},'careers') }}">
+                                       v-model="weekHours.tuesday.from" class="form-control clockpicker"
+                                       placeholder="{{ 'From' | trans({},'careers') }}">
+                                <input type="text" :disabled="availabilityHours == 'all'"
+                                       v-mask="99"
+                                       v-model="weekHours.tuesday.to" class="form-control clockpicker"
+                                       placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
                         </div>
                         <div class="col-lg-1">
@@ -230,8 +243,12 @@
                                 <label class="special-padding" for="name">{{ 'Wednesday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
-                                       v-model="weekHours.wednesday" class="form-control"
-                                       placeholder="{{ 'Wednesday' | trans({},'careers') }}">
+                                       v-model="weekHours.wednesday.from" class="form-control clockpicker"
+                                       placeholder="{{ 'From' | trans({},'careers') }}">
+                                <input type="text" :disabled="availabilityHours == 'all'"
+                                       v-mask="99"
+                                       v-model="weekHours.wednesday.to" class="form-control clockpicker"
+                                       placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
                         </div>
                         <div class="col-lg-1">
@@ -239,8 +256,12 @@
                                 <label for="name">{{ 'Thursday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
-                                       v-model="weekHours.thursday" class="form-control"
-                                       placeholder="{{ 'Thursday' | trans({},'careers') }}">
+                                       v-model="weekHours.thursday.from" class="form-control clockpicker"
+                                       placeholder="{{ 'From' | trans({},'careers') }}">
+                                <input type="text" :disabled="availabilityHours == 'all'"
+                                       v-mask="99"
+                                       v-model="weekHours.thursday.to" class="form-control clockpicker"
+                                       placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
                         </div>
                         <div class="col-lg-1">
@@ -248,8 +269,12 @@
                                 <label for="name">{{ 'Friday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
-                                       v-model="weekHours.friday" class="form-control"
-                                       placeholder="{{ 'Friday' | trans({},'careers') }}">
+                                       v-model="weekHours.friday.from" class="form-control clockpicker"
+                                       placeholder="{{ 'From' | trans({},'careers') }}">
+                                <input type="text" :disabled="availabilityHours == 'all'"
+                                       v-mask="99"
+                                       v-model="weekHours.friday.to" class="form-control clockpicker"
+                                       placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
                         </div>
                         <div class="col-lg-1">
@@ -257,8 +282,12 @@
                                 <label for="name">{{ 'Saturday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
-                                       v-model="weekHours.saturday" class="form-control"
-                                       placeholder="{{ 'Saturday' | trans({},'careers') }}">
+                                       v-model="weekHours.saturday.from" class="form-control clockpicker"
+                                       placeholder="{{ 'From' | trans({},'careers') }}">
+                                <input type="text" :disabled="availabilityHours == 'all'"
+                                       v-mask="99"
+                                       v-model="weekHours.saturday.to" class="form-control clockpicker"
+                                       placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
                         </div>
                         <div class="col-lg-1">
@@ -266,8 +295,12 @@
                                 <label for="name">{{ 'Sunday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
-                                       v-model="weekHours.sunday" class="form-control"
-                                       placeholder="{{ 'Sunday' | trans({},'careers') }}">
+                                       v-model="weekHours.sunday.from" class="form-control clockpicker"
+                                       placeholder="{{ 'From' | trans({},'careers') }}">
+                                <input type="text" :disabled="availabilityHours == 'all'"
+                                       v-mask="99"
+                                       v-model="weekHours.sunday.to" class="form-control clockpicker"
+                                       placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
                         </div>
                     </div>
@@ -279,17 +312,14 @@
                                        v-if="$validation1.startDate.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-validate:start-date="{required:true}"
-                                       v-mask="99/99/9999" v-model="startDate" class="form-control"
+                                       v-mask="99/99/9999" v-model="startDate" class="form-control datepicker"
                                        placeholder="DD/MM/YYYY">
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="name">{{ 'Salary Desired' | trans({},'careers') }}</label>
-                                <label class="error animated fadeInLeft"
-                                       v-if="$validation1.salary.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <input type="text"
-                                       v-validate:salary="{required:true}"
                                        v-mask="$ 999,999,999.99" v-model="salary"
                                        class="form-control" placeholder="{{ 'Salary Desired' | trans({},'careers') }}">
                             </div>
@@ -362,10 +392,10 @@
                             <div class="form-group">
                                 <label for="name">{{ 'Expiration Date' | trans({},'careers') }}</label>
                                 <input type="text"
-                                       v-mask="DD/MM/YYYY"
+                                       v-mask="99/99/9999"
                                        v-model="licenseExpiration"
                                        :disabled="hasDriverLicense == false"
-                                       class="form-control" placeholder="DD/MM/YYYY">
+                                       class="form-control datepicker" placeholder="DD/MM/YYYY">
                             </div>
                         </div>
                     </div>
@@ -644,8 +674,8 @@
                                     <label for="">{{ 'From' | trans({},'careers') }}</label>
                                     <input type="text"
                                            v-model="employer.from"
-                                           v-mask="99/99/99999"
-                                           class="form-control" placeholder="DD/MM/YYYY">
+                                           v-mask="99/99/9999"
+                                           class="form-control datepicker" placeholder="DD/MM/YYYY">
                                 </div>
                             </div>
                             <div class="col-lg-2">
@@ -653,8 +683,8 @@
                                     <label for="">{{ 'To' | trans({},'careers') }}</label>
                                     <input type="text"
                                            v-model="employer.to"
-                                           v-mask="99/99/99999"
-                                           class="form-control" placeholder="DD/MM/YYYY">
+                                           v-mask="99/99/9999"
+                                           class="form-control datepicker" placeholder="DD/MM/YYYY">
                                 </div>
                             </div>
                             <div class="col-lg-2">
@@ -944,6 +974,13 @@
     <!-- select2 Scripts -->
     <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"
             type="text/javascript"></script>
+    <!-- datepicker3 Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/datapicker/bootstrap-datepicker.js') }}"
+            type="text/javascript"></script>
+    <!-- clockpicker Scripts -->
+    <script src="{{ asset('bundles/backend/js/plugins/clockpicker/clockpicker.js') }}"
+            type="text/javascript"></script>
+
 {% endblock %}
 
 {% block inline_js %}
@@ -958,6 +995,20 @@
             //  select2 scripts for batch actions combobox
             $(".select2-field").select2({
                 placeholder: "--- {{ 'Select a value' | trans({}, 'generalbackend') }} ---"
+            });
+
+            //  datepicker3 script for input datetime and date
+            $("input.datepicker").datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true,
+                format: "dd/mm/yyyy"
+            });
+
+            // clockpicker scripts for input time
+            $(".clockpicker").clockpicker({
+                autoclose: true
             });
 
             // ===== Scroll to Top ====
