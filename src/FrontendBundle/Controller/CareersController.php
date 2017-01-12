@@ -8,6 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * {@inheritDoc}
@@ -95,4 +98,49 @@ class CareersController extends Controller
 
         return new JsonResponse(['status' => 'ok']);
     }
+
+    public function autocompleteAction(Request $request)
+    {
+        $position = $request->request->get('position');
+        $business = $request->request->get('business');
+        
+        $businesses = [];
+        $positions = [];
+
+        if (0 === count($positions)) {
+            if (null === $position || '-1' == $position) {
+                $positions = $this->get('opening.manager')->findAllQuery()->getQuery()->getResult();
+            } else {
+                $positions = [$this->get('opening.manager')->find($position)];
+                // fetch the matching businesses
+                $businesses = $this->get('business.manager')->findBusinessWithOpening($positions[0]);
+            }
+        }
+
+        if (0 === count($businesses)) {
+            if ((null === $business || '-1' == $business)) {
+                $businesses = $this->get('business.manager')->findAll();
+            } else {
+                $businesses = [$this->get('business.manager')->find($business)];
+                // fetch the matching openings
+                $positions = $this->get('opening.manager')->findOpeningsWithBusiness($businesses[0]);
+            }
+        }
+
+        $encoder = new JsonEncoder();
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setIgnoredAttributes([
+            'categories',
+            'deals',
+            'customers',
+            'openings',
+        ]);
+
+        $serializer = new Serializer([$normalizer], [$encoder]);
+
+        return new JsonResponse([
+            'business' => $serializer->serialize($businesses, 'json'),
+            'position' => $serializer->serialize($positions, 'json')
+        ]);
+    }  
 }
