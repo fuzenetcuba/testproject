@@ -1,0 +1,263 @@
+{% extends 'BackendBundle::layout.html.twig' %}{% block active_candidate %}active{% endblock %}{% block page_heading_title %}
+    <a class="btn btn-default navbar-btn" href="{{ path('candidate') }}"
+       style="margin-bottom: 7px;">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+    Candidate data
+{% endblock %}{% block page_content %}
+    <dl class="dl-horizontal">
+        <tbody>
+        <dt>Id</dt>
+        <dd>{{ entity.id }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Fullname</dt>
+        <dd>{{ entity.fullName }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Address</dt>
+        <dd>{{ entity.address }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>City</dt>
+        <dd>{{ entity.city }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>State</dt>
+        <dd>{{ entity.state }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Zipcode</dt>
+        <dd>{{ entity.zipCode }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Social Security or <br />Tax Id Number</dt>
+        <dd>{{ entity.socialNumber }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Adult (over 18 years old)</dt>
+        <dd>
+            <div class="onoffswitch-ios switch-xs">
+                {% if (entity.adult) %}
+                    <label class="onoffswitch-ios-label checked"></label>
+                {% else %}
+                    <label class="onoffswitch-ios-label"></label>
+                {% endif %}
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Phone</dt>
+        <dd>{{ entity.phone }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Available Hours</dt>
+        <dd>{{ entity.availableHours }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Week Availability</dt>
+        <dd>{{ entity.weekAvailable }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Start Date</dt>
+        <dd>{{ entity.startDate|date('d-M-Y') }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Salary Desired</dt>
+        <dd>{{ entity.salary }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Availability</dt>
+        <dd>{{ entity.availability }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Has Driver's License</dt>
+        <dd>
+            <div class="onoffswitch-ios switch-xs">
+                {% if (entity.hasLicense) %}
+                    <label class="onoffswitch-ios-label checked"></label>
+                {% else %}
+                    <label class="onoffswitch-ios-label"></label>
+                {% endif %}
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Driver's License Number</dt>
+        <dd>{{ entity.licenseNumber }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Driver's License State</dt>
+        <dd>{{ entity.licenseState }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>License Expiration</dt>
+        <dd>{{ entity.licenseExpiration }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Legal Worker in USA</dt>
+        <dd>
+            <div class="onoffswitch-ios switch-xs">
+                {% if (entity.legalWorker) %}
+                    <label class="onoffswitch-ios-label checked"></label>
+                {% else %}
+                    <label class="onoffswitch-ios-label"></label>
+                {% endif %}
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Convicted of a Crime</dt>
+        <dd>
+            <div class="onoffswitch-ios switch-xs">
+                {% if (entity.crime) %}
+                    <label class="onoffswitch-ios-label checked"></label>
+                {% else %}
+                    <label class="onoffswitch-ios-label"></label>
+                {% endif %}
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Crime Explain</dt>
+        <dd>{{ entity.crimeExplain }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Background check?</dt>
+        <dd>
+            <div class="onoffswitch-ios switch-xs">
+                {% if (entity.background) %}
+                    <label class="onoffswitch-ios-label checked"></label>
+                {% else %}
+                    <label class="onoffswitch-ios-label"></label>
+                {% endif %}
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Background Explain</dt>
+        <dd>{{ entity.backExplain }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Years High School</dt>
+        <dd>{{ entity.yearsHighschool }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Has Diploma</dt>
+        <dd>
+            <div class="onoffswitch-ios switch-xs">
+                {% if (entity.hasDiploma) %}
+                    <label class="onoffswitch-ios-label checked"></label>
+                {% else %}
+                    <label class="onoffswitch-ios-label"></label>
+                {% endif %}
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Has GED</dt>
+        <dd>
+            <div class="onoffswitch-ios switch-xs">
+                {% if (entity.hasGED) %}
+                    <label class="onoffswitch-ios-label checked"></label>
+                {% else %}
+                    <label class="onoffswitch-ios-label"></label>
+                {% endif %}
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Schools</dt>
+        <dd>{{ entity.schools }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Years College</dt>
+        <dd>{{ entity.yearsCollege }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>College School</dt>
+        <dd>{{ entity.collegeSchool }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>College State</dt>
+        <dd>{{ entity.collegeState }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Major</dt>
+        <dd>{{ entity.major }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Degree</dt>
+        <dd>{{ entity.degree }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>GPA</dt>
+        <dd>{{ entity.gpa }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Contact Employers</dt>
+        <dd>
+            <div class="onoffswitch-ios switch-xs">
+                {% if (entity.contactEmployers) %}
+                    <label class="onoffswitch-ios-label checked"></label>
+                {% else %}
+                    <label class="onoffswitch-ios-label"></label>
+                {% endif %}
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Employment Name</dt>
+        <dd>{{ entity.employmentName }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Employers</dt>
+        <dd>{{ entity.employers }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>References</dt>
+        <dd>{{ entity.references }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Skills</dt>
+        <dd>{{ entity.skills }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Best Fit</dt>
+        <dd>{{ entity.bestFit }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>CV</dt>
+        <dd>
+            <a target="_blank" href="{{ asset('uploads/') ~ entity.cv }}">
+                <span class="fa fa-2x fa-file-pdf-o text-danger"></span>
+                <span class="label label-default">{{ entity.cv }}</span>
+            </a>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Cover Letter</dt>
+        <dd>
+            <a target="_blank" href="{{ asset('uploads/') ~ entity.coverLetter }}">
+                <span class="fa fa-2x fa-file-pdf-o text-danger"></span>
+                <span class="label label-default text">{{ entity.coverLetter }}</span>
+            </a>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        </tbody>
+    </dl>
+    <div class="form-group">
+        <div class="col-md-2 text-right">
+            <a class="btn btn-success" href="{{ path('candidate') }}">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Back to the list
+            </a>
+        </div>
+        <div class="col-md-10">
+
+
+            <a class="btn btn-primary"
+               href="{{ path('candidate_edit', { 'id': entity.id }) }}">
+                <span class="fa fa-pencil"></span>
+                Edit
+            </a>
+
+            <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
+                <span class="fa fa-remove"></span>
+                Delete
+            </a>
+
+
+        </div>
+    </div>
+
+
+    <div class="modal inmodal" id="modalDelete" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight">
+                <div id="modal-title" class="modal-header red-bg">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                                aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+                    <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
+                    <h4 class="modal-title">Atention!!!</h4>
+                </div>
+                <div id="modal-content" class="modal-body">
+                    <strong>Are you sure you want to delete this data?</strong>
+                </div>
+                <div class="modal-footer">
+                    <form action="{{ path('candidate_delete', { 'id': entity.id }) }}"
+                          name="form-delete" method="post">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                        <button id="modal-btn" type="submit" class="btn btn-danger" name="candidate-id"
+                                value="{{ entity.id }}">
+                            <span class="glyphicon glyphicon-ok"></span> Save changes
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

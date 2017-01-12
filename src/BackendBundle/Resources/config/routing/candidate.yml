@@ -1,0 +1,34 @@
+candidate:
+    path:     /
+    defaults: { _controller: "BackendBundle:Candidate:index" }
+    methods:  GET
+
+candidate_find:
+    path:     /find
+    defaults: { _controller: "BackendBundle:Candidate:find" }
+    methods:  [POST, GET]
+
+candidate_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:Candidate:show" }
+    methods:  GET
+
+candidate_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:Candidate:new" }
+    methods:  [GET, POST]
+
+candidate_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:Candidate:edit" }
+    methods:  [GET, POST, PUT]
+
+candidate_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:Candidate:delete" }
+    methods:  [POST, DELETE]
+    
+candidate_batch:
+    path:     /candidate_batch
+    defaults: { _controller: "BackendBundle:Candidate:batch" }
+    methods:  POST
