@@ -67,6 +67,12 @@
                   role="form"
                   @submit.prevent="submitForm()"
                   class="container application-form" novalidate>
+
+              <div v-if="error" class="alert alert-danger">
+              <button type="button" @click="error = false" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                ${ errorMessage }
+              </div>
+
                 <fieldset>
                     <div class="row">
                         <div class="col-lg-4">
@@ -935,7 +941,7 @@
                 </fieldset>
                 <div class="row submit-row text-center">
                     <button type="submit"
-                            :disabled="!$validation1.valid"
+                            {# :disabled="!$validation1.valid" #}
                             class="btn btn-blue btn-lg">
                             <i class="fa fa-paper-plane"></i> &nbsp;&nbsp;{{ 'SUBMIT APPLICATION' | trans({},'careers') }}
                     </button>

@@ -40,10 +40,10 @@ class Opening
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      * @Gedmo\Translatable
      */
-    // private $department;
+    private $department;
 
     /**
      * @var Business

@@ -48,8 +48,15 @@
     </section>
 
     <section class="careers section-spaces-line gray-bg">
-        <form class="filter-openings" action="{{ path('careers_find') }}" method="POST">
-            <div class="container">
+        <div v-cloak class="overlay" v-if="loading">
+            <div class="sk-spinner sk-spinner-three-bounce">
+                <div class="sk-bounce1"></div>
+                <div class="sk-bounce2"></div>
+                <div class="sk-bounce3"></div>
+            </div>
+        </div>
+        <div class="container">
+            <form class="filter-openings" action="{{ path('careers_find') }}" method="POST">
                 <div class="row m-b-lg">
                     <div class="col-lg-12 text-center">
                         <div class="section-line amber-line"></div>
@@ -58,10 +65,20 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4 animated fadeInLeft">
-                        {{ form_widget(form.position) }}
+                        <select v-model="currentPosition" name="opening[position]" class="form-control select2-field"
+                            @input="fetchData($event.target)"
+                        >
+                            <option value="-1">{{ 'All the openings' | trans({}, 'careers') }}</option>
+                            <option v-for="position in positions" :value="position.id">${ position.position }</option>
+                        </select>
                     </div>
                     <div class="col-sm-4 border-left-right">
-                        {{ form_widget(form.business) }}
+                        <select v-model="currentBusiness" name="opening[business]" class="form-control select2-field"
+                            @input="fetchData($event.target)"
+                        >
+                            <option value="-1">{{ 'All the businesses' | trans({}, 'careers') }}</option>
+                            <option v-for="business in businesses" :value="business.id">${ business.name }</option>
+                        </select>
                     </div>
                     <div class="col-sm-4 animated fadeInRight">
                         <div class="team-member">
@@ -72,8 +89,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </form>
+        </div>
     </section>
 
     {#
@@ -149,6 +166,9 @@
 {% block custom_js %}
     {{ parent() }}
 
+    <script src="{{ asset('bundles/frontend/js/vue-resource.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/careers-autocomplete.js') }}"></script>
+
     <!-- iCheck Scripts -->
     <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
             type="text/javascript"></script>
@@ -167,21 +187,21 @@
             });
 
             //  select2 scripts for batch actions combobox
-            $("#backend_bundle_opening_type_position").select2({
-                minimumResultsForSearch: -1,
-                placeholder: {
-                    id: "12123",
-                    placeholder: "Select an option"
-                }
-            });
+            // $("#opening_position").select2({
+            //     minimumResultsForSearch: -1,
+            //     placeholder: {
+            //         id: "12123",
+            //         placeholder: "Select an option"
+            //     }
+            // });
 
-            $("#backend_bundle_opening_type_business").select2({
-                minimumResultsForSearch: -1,
-                placeholder: {
-                    id: "12123",
-                    placeholder: "Select an option"
-                }
-            });
+            // $("#opening_business").select2({
+            //     minimumResultsForSearch: -1,
+            //     placeholder: {
+            //         id: "12123",
+            //         placeholder: "Select an option"
+            //     }
+            // });
         });
     </script>
 {% endblock %}

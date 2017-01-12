@@ -3,6 +3,7 @@
 namespace BackendBundle\Model;
 
 use BackendBundle\Entity\Business;
+use BackendBundle\Entity\Opening;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -79,6 +80,8 @@ class BusinessManager implements ManagerInterface
         if (!$instance) {
             throw new NotFoundHttpException(sprintf('The business with id "%s" could not be found', $id));
         }
+
+        return $instance;
     }
 
     /**
@@ -230,6 +233,31 @@ class BusinessManager implements ManagerInterface
             'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
         );
 
+
+        return $query->getResult();
+    }
+
+    /**
+     * Fetchs a list of businesses that have some position available
+     * 
+     * @param  Opening $opening Opening
+     * @return array            List of businesses
+     */
+    public function findBusinessWithOpening(Opening $opening)
+    {
+        $query = $this->findAllQuery();
+
+        $query
+            ->join('b.openings', 'o')
+            ->andWhere('o.id = :id')
+            ->setParameter('id', $opening->getId())
+        ;
+
+        // multilanguage search criterias done introspecting the default locale
+        $query = $query->getQuery()->setHint(
+            Query::HINT_CUSTOM_OUTPUT_WALKER,
+            'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+        );
 
         return $query->getResult();
     }

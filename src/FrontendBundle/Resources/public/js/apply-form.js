@@ -167,7 +167,9 @@ var vm = new Vue({
 
         // application state
         done: false,
-        formApplication: true
+        formApplication: true,
+        error: false,
+        errorMessage: ''
     },
 
     validators: {
@@ -274,8 +276,13 @@ var vm = new Vue({
                 Routing.generate('careers_store'),
                 formData
             ).then(function (response) {
-                this.done = true;
-            })
+                if (response.body.error) {
+                    this.error = true;
+                    this.errorMessage = response.body.error;
+                } else {
+                    this.done = true;
+                }
+            });
         }
     }
 });
