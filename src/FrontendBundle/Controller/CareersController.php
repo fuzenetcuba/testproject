@@ -111,9 +111,10 @@ class CareersController extends Controller
             if (null === $position || '-1' == $position) {
                 $positions = $this->get('opening.manager')->findAllQuery()->getQuery()->getResult();
             } else {
-                $positions = [$this->get('opening.manager')->find($position)];
+                $position = $this->get('opening.manager')->find($position);
+                $positions = $this->get('opening.manager')->findAllQuery()->getQuery()->getResult();
                 // fetch the matching businesses
-                $businesses = $this->get('business.manager')->findBusinessWithOpening($positions[0]);
+                $businesses = $this->get('business.manager')->findBusinessWithOpening($position);
             }
         }
 
@@ -121,9 +122,10 @@ class CareersController extends Controller
             if ((null === $business || '-1' == $business)) {
                 $businesses = $this->get('business.manager')->findAll();
             } else {
-                $businesses = [$this->get('business.manager')->find($business)];
+                $business = $this->get('business.manager')->find($business);
+                $businesses = $this->get('business.manager')->findAll();
                 // fetch the matching openings
-                $positions = $this->get('opening.manager')->findOpeningsWithBusiness($businesses[0]);
+                $positions = $this->get('opening.manager')->findOpeningsWithBusiness($business);
             }
         }
 
