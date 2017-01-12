@@ -166,6 +166,62 @@ class OpeningManager implements ManagerInterface
     public function fromRequest(Request $request)
     {
         $candidate = new Candidate();
+
+        // Assign tmp names for Cover letter and CV
+        $candidate->setCv("tmp-cv");
+        $candidate->setCoverLetter("tmp-cover");
+
+        $slug = $request->request->get('slug');
+        $opening = $this->findBySlug($slug);
+
+        $candidate->setOpening($opening);
+        $candidate->setFirstName($request->request->get('firstName'));
+        $candidate->setLastName($request->request->get('lastName'));
+        $candidate->setMiddleName($request->request->get('middleName'));
+        $candidate->setAddress($request->request->get('address'));
+        $candidate->setCity($request->request->get('city'));
+        $candidate->setState($request->request->get('state'));
+        $candidate->setZipCode($request->request->get('zipCode'));
+        $candidate->setSocialNumber($request->request->get('securityNumber'));
+        $candidate->setAdult($request->request->get('adult'));
+        $candidate->setPhone($request->request->get('phone'));
+        $candidate->setAvailability($request->request->get('availability'));
+        $candidate->setAvailableHours($request->request->get('availabilityHours'));
+        $candidate->setWeekAvailable($request->request->get('weekHours'));
+        $candidate->setStartDate(new \DateTime($request->request->get('startDate')));
+        $candidate->setSalary($request->request->get('salary'));
+        $candidate->setHasLicense($request->request->get('hasDriverLicense'));
+        $candidate->setLicenseNumber($request->request->get('licenseNumber'));
+        $candidate->setLicenseState($request->request->get('licenseState'));
+        $candidate->setLicenseExpiration($request->request->get('liceneExpiration'));
+        $candidate->setLegalWorker($request->request->get('legal'));
+        $candidate->setCrime($request->request->get('crime'));
+        $candidate->setCrimeExplain($request->request->get('crimeExplain'));
+        $candidate->setBackground($request->request->get('background'));
+        $candidate->setBackExplain($request->request->get('backExplain'));
+        $candidate->setYearsHighschool($request->request->get('highschoolYears'));
+        $candidate->setHasDiploma($request->request->get('diploma'));
+        $candidate->setHasGED($request->request->get('ged'));
+        $candidate->setSchools($request->request->get('schools'));
+        $candidate->setYearsCollege($request->request->get('collegeYears'));
+        $candidate->setCollegeSchool($request->request->get('collegeSchool'));
+        $candidate->setCollegeState($request->request->get('collegeCity'));
+        $candidate->setMajor($request->request->get('major'));
+        $candidate->setDegree($request->request->get('degree'));
+        $candidate->setGpa($request->request->get('gpa'));
+        $candidate->setContactEmployers($request->request->get('contactEmployer'));
+        $candidate->setEmploymentName($request->request->get('nameForEmployer'));
+        $candidate->setEmployers($request->request->get('employers'));
+        $candidate->setSkills($request->request->get('skills'));
+        $candidate->setBestFit($request->request->get('bestFit'));
+        $candidate->setReferences($request->request->get('references'));
+
+        return $candidate;
+    }
+
+    public function storeFilesFromRequest(Request $request, Candidate $candidate)
+    {
+
         /** @var UploadedFile $cv */
         $cv = $request->files->get('cv');
 
@@ -193,53 +249,6 @@ class OpeningManager implements ManagerInterface
 
             $candidate->setCoverLetter($coverName);
         }
-
-        $slug = $request->request->get('slug');
-        $opening = $this->findBySlug($slug);
-
-        $candidate->opening = $opening;
-        $candidate->firstName = $request->request->get('firstName');
-        $candidate->lastName = $request->request->get('lastName');
-        $candidate->middleName = $request->request->get('middleName');
-        $candidate->address = $request->request->get('address');
-        $candidate->city = $request->request->get('city');
-        $candidate->state = $request->request->get('state');
-        $candidate->zipCode = $request->request->get('zipCode');
-        $candidate->socialNumber = $request->request->get('securityNumber');
-        $candidate->adult = $request->request->get('adult');
-        $candidate->phone = $request->request->get('phone');
-        $candidate->availability = $request->request->get('availability');
-        $candidate->availableHours = $request->request->get('availabilityHours');
-        $candidate->weekAvailable = $request->request->get('weekHours');
-        $candidate->startDate = new \DateTime($request->request->get('startDate'));
-        $candidate->salary = $request->request->get('salary');
-        $candidate->hasLicense = $request->request->get('hasDriverLicense');
-        $candidate->licenseNumber = $request->request->get('licenseNumber');
-        $candidate->licenseState = $request->request->get('licenseState');
-        $candidate->licenseExpiration = $request->request->get('liceneExpiration');
-        $candidate->legalWorker = $request->request->get('legal');
-        $candidate->crime = $request->request->get('crime');
-        $candidate->crimeExplain = $request->request->get('crimeExplain');
-        $candidate->background = $request->request->get('background');
-        $candidate->backExplain = $request->request->get('backExplain');
-        $candidate->yearsHighschool = $request->request->get('highschoolYears');
-        $candidate->hasDiploma = $request->request->get('diploma');
-        $candidate->hasGED = $request->request->get('ged');
-        $candidate->schools = $request->request->get('schools');
-        $candidate->yearsCollege = $request->request->get('collegeYears');
-        $candidate->collegeSchool = $request->request->get('collegeSchool');
-        $candidate->collegeState = $request->request->get('collegeCity');
-        $candidate->major = $request->request->get('major');
-        $candidate->degree = $request->request->get('degree');
-        $candidate->gpa = $request->request->get('gpa');
-        $candidate->contactEmployers = $request->request->get('contactEmployer');
-        $candidate->employmentName = $request->request->get('nameForEmployer');
-        $candidate->employers = $request->request->get('employers');
-        $candidate->skills = $request->request->get('skills');
-        $candidate->bestFit = $request->request->get('bestFit');
-        $candidate->references = $request->request->get('references');
-
-        return $candidate;
     }
 
     public function saveCandidate(Candidate $candidate)

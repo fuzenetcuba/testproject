@@ -13,15 +13,15 @@ candidate_show:
     defaults: { _controller: "BackendBundle:Candidate:show" }
     methods:  GET
 
-candidate_new:
-    path:     /new
-    defaults: { _controller: "BackendBundle:Candidate:new" }
-    methods:  [GET, POST]
-
-candidate_edit:
-    path:     /{id}/edit
-    defaults: { _controller: "BackendBundle:Candidate:edit" }
-    methods:  [GET, POST, PUT]
+#candidate_new:
+#    path:     /new
+#    defaults: { _controller: "BackendBundle:Candidate:new" }
+#    methods:  [GET, POST]
+#
+#candidate_edit:
+#    path:     /{id}/edit
+#    defaults: { _controller: "BackendBundle:Candidate:edit" }
+#    methods:  [GET, POST, PUT]
 
 candidate_delete:
     path:     /{id}/delete

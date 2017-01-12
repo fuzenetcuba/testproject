@@ -22,7 +22,7 @@ class CareersController extends Controller
         if (!$this->getParameter('careers.apply.online')) {
             throw $this->createNotFoundException('Page not found!');
         }
-        
+
         $form = $this->createForm(new OpeningType(true));
         $form->handleRequest($request);
 
@@ -80,30 +80,44 @@ class CareersController extends Controller
     {
         $candidate = $this->get('opening.manager')->fromRequest($request);
 
-        $this->get('opening.manager')->saveCandidate($candidate);
-        $content = $this->renderView('@Backend/Emails/customer.html.twig', [
-            'content' => sprintf('%s Has applied to the %s position (%s)',
-                $candidate->fullName(), $candidate->opening->getPosition(),
-                (new \DateTime())->format('Y-m-d H:i:s'))
-            ,
-            'deals' => []
-        ]);
+        // validating the candidate data
+        $validator = $this->get('validator');
+        $errors = $validator->validate($candidate, null, array('application'));
 
-        $this->get('opening.manager')->notifyManager(
-            $candidate,
-            $this->getParameter('careers.notification.subject'),
-            $this->getParameter('customer.email.from'),
-            $content
-        );
+        $errorsString = "";
+        if (count($errors) > 0) {
+            for ($i = 0; $i < count($errors); $i++) {
+                $errorsString .= $errors->get($i)->getMessage();
+            }
+            return new JsonResponse(array('error' => $errorsString));
+        } else {
 
-        return new JsonResponse(['status' => 'ok']);
+            $this->get('opening.manager')->storeFilesFromRequest($request, $candidate);
+            $this->get('opening.manager')->saveCandidate($candidate);
+            $content = $this->renderView('@Backend/Emails/customer.html.twig', [
+                'content' => sprintf('%s Has applied to the %s position (%s)',
+                    $candidate->fullName(), $candidate->getOpening()->getPosition(),
+                    (new \DateTime())->format('Y-m-d H:i:s'))
+                ,
+                'deals' => []
+            ]);
+
+//            $this->get('opening.manager')->notifyManager(
+//                $candidate,
+//                $this->getParameter('careers.notification.subject'),
+//                $this->getParameter('customer.email.from'),
+//                $content
+//            );
+
+            return new JsonResponse(['status' => 'ok']);
+        }
     }
 
     public function autocompleteAction(Request $request)
     {
         $position = $request->request->get('position');
         $business = $request->request->get('business');
-        
+
         $businesses = [];
         $positions = [];
 
@@ -111,9 +125,10 @@ class CareersController extends Controller
             if (null === $position || '-1' == $position) {
                 $positions = $this->get('opening.manager')->findAllQuery()->getQuery()->getResult();
             } else {
-                $positions = [$this->get('opening.manager')->find($position)];
+                $position = $this->get('opening.manager')->find($position);
+                $positions = $this->get('opening.manager')->findAllQuery()->getQuery()->getResult();
                 // fetch the matching businesses
-                $businesses = $this->get('business.manager')->findBusinessWithOpening($positions[0]);
+                $businesses = $this->get('business.manager')->findBusinessWithOpening($position);
             }
         }
 
@@ -121,9 +136,10 @@ class CareersController extends Controller
             if ((null === $business || '-1' == $business)) {
                 $businesses = $this->get('business.manager')->findAll();
             } else {
-                $businesses = [$this->get('business.manager')->find($business)];
+                $business = $this->get('business.manager')->find($business);
+                $businesses = $this->get('business.manager')->findAll();
                 // fetch the matching openings
-                $positions = $this->get('opening.manager')->findOpeningsWithBusiness($businesses[0]);
+                $positions = $this->get('opening.manager')->findOpeningsWithBusiness($business);
             }
         }
 
@@ -142,5 +158,5 @@ class CareersController extends Controller
             'business' => $serializer->serialize($businesses, 'json'),
             'position' => $serializer->serialize($positions, 'json')
         ]);
-    }  
+    }
 }
