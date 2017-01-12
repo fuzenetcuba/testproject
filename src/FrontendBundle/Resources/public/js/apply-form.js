@@ -1,7 +1,7 @@
 'use strict';
 
 // ES6 template string style
-Vue.config.delimiters = ['${', '}']
+Vue.config.delimiters = ['${', '}'];
 
 Vue.http.options.emulateJSON = true;
 
@@ -74,13 +74,34 @@ var vm = new Vue({
         availability: 'full',
         availabilityHours: 'all',
         weekHours: {
-            'monday': null,
-            'tuesday': null,
-            'wednesday': null,
-            'thursday': null,
-            'friday': null,
-            'saturday': null,
-            'sunday': null,
+            'monday': {
+                from: null,
+                to: null
+            },
+            'tuesday': {
+                from: null,
+                to: null
+            },
+            'wednesday': {
+                from: null,
+                to: null
+            },
+            'thursday': {
+                from: null,
+                to: null
+            },
+            'friday': {
+                from: null,
+                to: null
+            },
+            'saturday': {
+                from: null,
+                to: null
+            },
+            'sunday': {
+                from: null,
+                to: null
+            }
         },
         startDate: '',
         salary: '',
@@ -88,7 +109,7 @@ var vm = new Vue({
         hasDriverLicense: false,
         licenseNumber: '',
         licenseState: '',
-        liceneExpiration: '',
+        licenseExpiration: '',
         legal: true,
         crime: false,
         crimeExplain: '',
@@ -225,7 +246,7 @@ var vm = new Vue({
             formData.append('hasDriverLicense', this.hasDriverLicense);
             formData.append('licenseNumber', this.licenseNumber);
             formData.append('licenseState', this.licenseState);
-            formData.append('liceneExpiration', this.liceneExpiration);
+            formData.append('licenseExpiration', this.licenseExpiration);
             formData.append('legal', this.legal);
             formData.append('crime', this.crime);
             formData.append('crimeExplain', this.crimeExplain);
@@ -256,5 +277,5 @@ var vm = new Vue({
                 this.done = true;
             })
         }
-    },
-})
+    }
+});
