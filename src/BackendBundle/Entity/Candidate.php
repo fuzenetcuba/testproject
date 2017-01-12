@@ -4,12 +4,18 @@ namespace BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
  * Class Candidate
  *
  * @package \BackendBundle\Entity
- * @ORM\Entity
+ * @ORM\Entity()
+ * @DoctrineAssert\UniqueEntity(
+ *     fields={"socialNumber", "opening"},
+ *     errorPath="socialNumber",
+ *     message="Already exist an application for this Position with this Social Security or Tax Id Number"
+ * )
  */
 class Candidate
 {
