@@ -115,7 +115,7 @@ var vm = new Vue({
         crimeExplain: '',
         background: true,
         backExplain: '',
-        highschoolYears: 1,
+        highschoolYears: 0,
         diploma: false,
         ged: false,
         schools: [
@@ -128,7 +128,7 @@ var vm = new Vue({
                 state: '',
             }
         ],
-        collegeYears: 1,
+        collegeYears: 0,
         collegeSchool: '',
         collegeCity: '',
         major: '',
@@ -151,7 +151,7 @@ var vm = new Vue({
                 department: '',
                 leavingReason: '',
                 duties: ''
-            },
+            }
         ],
         skills: '',
         bestFit: '',

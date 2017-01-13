@@ -495,7 +495,8 @@
                         <div class="col-lg-2">
                             <div class="form-group">
                                 <label for="name">{{ 'Years on Highschool' | trans({},'careers') }}</label>
-                                <select v-model="highschoolYears" class="form-control">
+                                <select v-model="highschoolYears" class="form-control select2-field">
+                                    <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -574,7 +575,8 @@
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="name">{{ 'Years on College/Vocational School' | trans({},'careers') }}</label>
-                                <select v-model="collegeYears" class="form-control">
+                                <select v-model="collegeYears" class="form-control select2-field">
+                                    <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
