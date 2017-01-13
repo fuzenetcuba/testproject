@@ -2,6 +2,8 @@
 
 namespace BackendBundle\Controller;
 
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;//------------
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -28,12 +30,12 @@ class CandidateController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $query, $request->query->get('page', 1), 5
+            $query, $request->query->get('page', 1), 5
         );
 
-    return $this->render('candidate/index.html.twig', array(
-        'entities' => $pagination,
-    ));
+        return $this->render('candidate/index.html.twig', array(
+            'entities' => $pagination,
+        ));
     }
 
     /**
@@ -43,19 +45,19 @@ class CandidateController extends Controller
     public function findAction(Request $request)
     {
         $find = $request->get('find-form-text');
-        
+
         if ($find) {
             $em = $this->getDoctrine()->getManager();
 
             $dql = "SELECT e FROM BackendBundle:Candidate e WHERE "
-                    . "e.id LIKE '%" . $find . "%' OR "
-                    . "e.id LIKE '%" . $find . "%' "
-                    . "ORDER BY e.id ASC";
+                . "e.id LIKE '%" . $find . "%' OR "
+                . "e.id LIKE '%" . $find . "%' "
+                . "ORDER BY e.id ASC";
             $query = $em->createQuery($dql);
 
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
-                    $query, $request->query->get('page', 1), 5
+                $query, $request->query->get('page', 1), 5
             );
 
             return $this->render('candidate/index.html.twig', array(
@@ -88,36 +90,37 @@ class CandidateController extends Controller
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('candidate_new'));
             } else {
-            return $this->redirectToRoute('candidate_show', array('id' => $entity->getId()));            }
+                return $this->redirectToRoute('candidate_show', array('id' => $entity->getId()));
+            }
 
         }
 
-    return $this->render('candidate/new.html.twig', array(
-        'entity' => $entity,
-        'form' => $form->createView(),
-    ));
+        return $this->render('candidate/new.html.twig', array(
+            'entity' => $entity,
+            'form' => $form->createView(),
+        ));
     }
 
-            /**
-        * Creates a form to create a Candidate entity.
-        *
-        * @param Candidate $entity The entity
-        *
-        * @return \Symfony\Component\Form\Form The form
-        */
-        private function createCreateForm(Candidate $entity)
-        {
-            $form = $this->createForm('BackendBundle\Form\CandidateType', $entity, array(
-                'action' => $this->generateUrl('candidate_new'),
-                'method' => 'POST',
-            ));
+    /**
+     * Creates a form to create a Candidate entity.
+     *
+     * @param Candidate $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCreateForm(Candidate $entity)
+    {
+        $form = $this->createForm('BackendBundle\Form\CandidateType', $entity, array(
+            'action' => $this->generateUrl('candidate_new'),
+            'method' => 'POST',
+        ));
 
-            $form->add('submit', SubmitType::class, array('label' => 'Create'));
-            $form->add('submitback', SubmitType::class, array('label' => 'Create & Back'));
+        $form->add('submit', SubmitType::class, array('label' => 'Create'));
+        $form->add('submitback', SubmitType::class, array('label' => 'Create & Back'));
 
-            return $form;
-        }
-    
+        return $form;
+    }
+
     /**
      * Finds and displays a Candidate entity.
      *
@@ -141,7 +144,7 @@ class CandidateController extends Controller
         $deleteForm = $this->createDeleteForm($entity);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
-    
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -152,20 +155,20 @@ class CandidateController extends Controller
             return $this->redirectToRoute('candidate_show', array('id' => $entity->getId()));
         }
 
-    return $this->render('candidate/edit.html.twig', array(
-        'entity' => $entity,
-        'edit_form' => $editForm->createView(),
-        'delete_form' => $deleteForm->createView(),
-    ));
+        return $this->render('candidate/edit.html.twig', array(
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 
     /**
-    * Creates a form to edit a Candidate entity.
-    *
-    * @param Candidate $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Candidate entity.
+     *
+     * @param Candidate $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Candidate $entity)
     {
         $form = $this->createForm('BackendBundle\Form\CandidateType', $entity, array(
@@ -193,32 +196,72 @@ class CandidateController extends Controller
             throw $this->createNotFoundException('Unable to find Candidate entity.');
         }
 
+        // removing files
+        if (!$this->removeFilesOfCandidate($entity)) {
+            // Mostrando mensaje
+            $this->get('session')->getFlashBag()->add('warning', 'The CV and/or Cover Letter files of the candidate do not exist or was not removed because an error.');
+        }
+
         $em->remove($entity);
         $em->flush();
 
         // Mostrando mensaje
         $this->get('session')->getFlashBag()->add('success', 'The candidate was deleted succesfully.');
-        return $this->redirect($this->generateUrl('candidate'));
 
+        return $this->redirect($this->generateUrl('candidate'));
 
 
     }
 
+    private function removeFilesOfCandidate(Candidate $entity)
+    {
+        // deleting files in filesystem
+        $fs = new Filesystem();
+
+        $removed = false;
+
+        try {
+            $absolutePath = realpath($this->container->getParameter('kernel.root_dir') . '/../web');
+            $CVFile = $absolutePath . '/uploads/' . $entity->getCv();
+            $coverFile = $absolutePath . '/uploads/' . $entity->getCoverLetter();
+
+            if ($fs->exists($CVFile)) {
+                $fs->remove($CVFile);
+                $removed = true;
+            } else {
+                $removed = false;
+            }
+
+            if ($fs->exists($coverFile)) {
+                $fs->remove($coverFile);
+                $removed = true;
+            } else {
+                $removed = false;
+            }
+//            var_export("CV: " . $fl1 . "<br />" . "Cover: " . $fl2);
+//            die;
+        } catch (IOExceptionInterface $e) {
+            echo "An error occurred while removing files at " . $e->getPath();
+        }
+
+        return $removed;
+    }
+
     /**
-    * Creates a form to delete a Candidate entity.
-    *
-    * @param Candidate $entity The Candidate entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to delete a Candidate entity.
+     *
+     * @param Candidate $entity The Candidate entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createDeleteForm(Candidate $entity)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('candidate_delete', array('id' => $entity->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
+
     /**
      * Do several batch actions over Candidate entities.
      *
@@ -228,7 +271,8 @@ class CandidateController extends Controller
         $action = $request->get('batch_action_do');
         $ids = $request->get('batch_action_checkbox');
         $recordsSelected = false;
-        
+        $errorRemoving = false;
+
         if ($ids) {
             $em = $this->getDoctrine()->getManager();
 
@@ -239,12 +283,21 @@ class CandidateController extends Controller
                     if (!$entity) {
                         throw $this->createNotFoundException('Unable to find Candidate entity.');
                     } else {
+
+                        // removing files
+                        if (!$this->removeFilesOfCandidate($entity)) {
+                            $errorRemoving = true;
+                        }
+
                         $em->remove($entity);
                         $recordsSelected = true;
                     }
                 }
                 if ($recordsSelected) {
                     $this->get('session')->getFlashBag()->add('success', 'Candidates deleted succesfully.');
+                }
+                if ($errorRemoving) {
+                    $this->get('session')->getFlashBag()->add('warning', 'One or more files of candidates do not exist or was not removed because an error.');
                 }
             }
             $em->flush();

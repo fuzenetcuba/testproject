@@ -54,3 +54,8 @@ services:
         class: BackendBundle\Namer\VichUploaderNamer
         tags:
             - { name: namer }
+
+    app.twig.json_decode_extension:
+        class: BackendBundle\Twig\JsonDecodeExtension
+        tags:
+            - { name: twig.extension }
