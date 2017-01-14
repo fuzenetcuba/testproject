@@ -150,22 +150,22 @@ class CandidateController extends Controller
     {
         $deleteForm = $this->createDeleteForm($entity);
 
-        $html = $this->render('candidate/pdf.html.twig', array(
+        $html = $this->renderView('candidate/pdf.html.twig', array(
             'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         ));
 
-        return $html;
+//        return $html;
 
-//        $pdfGenerator = $this->get('spraed.pdf.generator');
-//
-//        return new Response($pdfGenerator->generatePDF($html),
-//            200,
-//            array(
-//                'Content-Type' => 'application/pdf',
-//                'Content-Disposition' => 'inline; filename="out.pdf"'
-//            )
-//        );
+        $pdfGenerator = $this->get('spraed.pdf.generator');
+
+        return new Response($pdfGenerator->generatePDF($html),
+            200,
+            array(
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'inline; filename="out.pdf"'
+            )
+        );
     }
 
     /**
@@ -176,7 +176,7 @@ class CandidateController extends Controller
     {
         $deleteForm = $this->createDeleteForm($entity);
 
-        $html = $this->render('candidate/pdf.html.twig', array(
+        $html = $this->renderView('candidate/pdf.html.twig', array(
             'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         ));

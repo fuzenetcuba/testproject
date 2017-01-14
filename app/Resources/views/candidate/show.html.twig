@@ -501,7 +501,15 @@
                                 <div class="row">
                                     <div class="col-sm-1">{{ reference.name is empty ? "-" : reference.name }}</div>
                                     <div class="col-sm-1">{{ reference.phone is empty ? "-" : reference.phone }}</div>
-                                    <div class="col-sm-1">{{ reference.profesional is empty ? "-" : reference.profesional }}</div>
+                                    <div class="col-sm-1">
+                                        <div class="onoffswitch-ios switch-xs">
+                                            {% if (reference.profesional) %}
+                                                <label class="onoffswitch-ios-label checked"></label>
+                                            {% else %}
+                                                <label class="onoffswitch-ios-label"></label>
+                                            {% endif %}
+                                        </div>
+                                    </div>
                                 </div>
                                 {% if(not loop.last) %}
                                     <hr class="hr-line-dashed">
