@@ -45,3 +45,6 @@ parameters:
         - careers1@test.com
     careers.notification.subject: 'A new candidate has applied to an opening'
     careers.apply.online: true
+
+    # Path to store PDF reports
+    system.pdf.store.report: '%kernel.root_dir%/../web/reports'

@@ -1,11 +1,28 @@
-{% extends 'BackendBundle::layout.html.twig' %}{% block active_candidate %}active{% endblock %}{% block page_heading_title %}
-    <a class="btn btn-default navbar-btn" href="{{ path('candidate') }}"
-       style="margin-bottom: 7px;">
-        <span class="glyphicon glyphicon-chevron-up"></span>
-    </a>
-    Candidate data
-{% endblock %}{% block page_content %}
+<!DOCTYPE html>
+<html lang="
+        {%- if app.request.get('_locale') == 'en' -%}
+        {{- 'en' -}}
+        {%- elseif app.request.get('_locale') == 'es' -%}
+        {{- 'es' -}}
+        {%- endif -%}
+        ">
 
+<head>
+    <title>Plaza Mariachi | PDF Application Data</title>
+
+    <!-- Bootstrap Styles -->
+    <link rel="stylesheet" href="{{ absolute_url(asset('bundles/backend/css/bootstrap.min.css')) }}" type="text/css"/>
+    <!-- Font Awesome Styles -s->
+    {#<link rel="stylesheet" href="{{ absolute_url(asset('bundles/backend/font-awesome/css/font-awesome.min.css')) }}"#}
+          {#type="text/css"/>#}
+    <!-- Template Styles -->
+    <link rel="stylesheet" href="{{ absolute_url(asset('bundles/backend/css/style.css')) }}" type="text/css"/>
+
+</head>
+
+<body>
+
+<div class="white-bg p-lg">
     <div class="row">
         <div class="col-xs-5 text-center">
             <b>Business</b>
@@ -22,7 +39,7 @@
         </div>
         <div class="col-xs-2 text-center">
             <img style="max-width: 150px; height: auto;"
-                 src="{{ asset('images/business//' ~ entity.opening.business.logo) }}"
+                 src="{{ absolute_url(asset('images/business//' ~ entity.opening.business.logo)) }}"
                  alt="{{ entity.opening.business.logo }}"/>
         </div>
         <div class="col-xs-5 text-center">
@@ -255,7 +272,8 @@
                     {% if(entity.schools|json_decode[0].name is not empty) %}
                         {% for school in entity.schools|json_decode %}
                             {% if(school.name is not empty) %}
-                                <div>{{ school.name }} <span class="label label-default">{{ school.state }}</span></div>
+                                <div>{{ school.name }} <span
+                                            class="label label-default">{{ school.state }}</span></div>
                             {% endif %}
                         {% endfor %}
                     {% else %}
@@ -519,93 +537,11 @@
                 <dt>Best Fit</dt>
                 <dd>{{ entity.bestFit is empty ? "-" : entity.bestFit }}</dd>
                 <div class="hr-line-dashed"></div>
-                <dt>CV</dt>
-                <dd>
-                    {% if(entity.cv is not empty and entity.cv != "tmp-cv") %}
-                        <a target="_blank" href="{{ asset('uploads/') ~ entity.cv }}">
-                            <span class="fa fa-2x fa-file-pdf-o text-danger"></span>
-                            <span class="label label-default">{{ entity.cv }}</span>
-                        </a>
-                    {% else %}
-                        <span class="label label-default">No CV related</span>
-                    {% endif %}
-                </dd>
-                <div class="hr-line-dashed"></div>
-                <dt>Cover Letter</dt>
-                <dd>
-                    {% if(entity.coverLetter is not empty and entity.coverLetter != "tmp-cover") %}
-                        <a target="_blank" href="{{ asset('uploads/') ~ entity.coverLetter }}">
-                            <span class="fa fa-2x fa-file-pdf-o text-danger"></span>
-                            <span class="label label-default text">{{ entity.coverLetter }}</span>
-                        </a>
-                    {% else %}
-                        <span class="label label-default">No Cover Letter related</span>
-                    {% endif %}
-                </dd>
-                <div class="hr-line-dashed"></div>
                 </tbody>
             </dl>
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-2 text-right">
-            <a class="btn btn-success" href="{{ path('candidate') }}">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                Back to the list
-            </a>
-        </div>
-        <div class="col-md-10">
+</div>
 
-
-            {#<a class="btn btn-primary"#}
-            {#href="{{ path('candidate_edit', { 'id': entity.id }) }}">#}
-            {#<span class="fa fa-pencil"></span>#}
-            {#Edit#}
-            {#</a>#}
-
-            <a class="btn btn-primary"
-               target="_blank"
-               href="{{ path('candidate_export_pdf', { 'id': entity.id }) }}">
-                <span class="fa fa-file-pdf-o"></span>
-                Export to PDF
-            </a>
-
-            <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
-                <span class="fa fa-remove"></span>
-                Delete
-            </a>
-
-
-        </div>
-    </div>
-
-
-    <div class="modal inmodal" id="modalDelete" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content animated bounceInRight">
-                <div id="modal-title" class="modal-header red-bg">
-                    <button type="button" class="close" data-dismiss="modal"><span
-                                aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                    </button>
-                    <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
-                    <h4 class="modal-title">Atention!!!</h4>
-                </div>
-                <div id="modal-content" class="modal-body">
-                    <strong>Are you sure you want to delete this data?</strong>
-                </div>
-                <div class="modal-footer">
-                    <form action="{{ path('candidate_delete', { 'id': entity.id }) }}"
-                          name="form-delete" method="post">
-                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                        <button id="modal-btn" type="submit" class="btn btn-danger" name="candidate-id"
-                                value="{{ entity.id }}">
-                            <span class="glyphicon glyphicon-ok"></span> Save changes
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-{% endblock %}
+</body>
+</html>

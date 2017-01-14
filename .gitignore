@@ -10,6 +10,7 @@ web/bundles/*
 web/css/*
 web/js/*
 web/uploads/*
+web/reports/*
  
 # -- Composer -----------------------------------------
 composer.phar

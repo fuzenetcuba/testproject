@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use BackendBundle\Entity\Candidate;
 use BackendBundle\Form\CandidateType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Candidate controller.
@@ -129,10 +130,62 @@ class CandidateController extends Controller
     {
         $deleteForm = $this->createDeleteForm($entity);
 
-        return $this->render('candidate/show.html.twig', array(
+        $html = $this->render('candidate/show.html.twig', array(
             'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         ));
+
+
+        $pdfGenerator = $this->get('spraed.pdf.generator');
+        $this->createCandidatePDFReport($entity, $pdfGenerator->generatePDF($html));
+
+        return $html;
+    }
+
+    /**
+     * Generate a PDF report for a Candidate entity.
+     *
+     */
+    public function exportToPDFAction(Candidate $entity)
+    {
+        $deleteForm = $this->createDeleteForm($entity);
+
+        $html = $this->render('candidate/pdf.html.twig', array(
+            'entity' => $entity,
+            'delete_form' => $deleteForm->createView(),
+        ));
+
+        return $html;
+
+//        $pdfGenerator = $this->get('spraed.pdf.generator');
+//
+//        return new Response($pdfGenerator->generatePDF($html),
+//            200,
+//            array(
+//                'Content-Type' => 'application/pdf',
+//                'Content-Disposition' => 'inline; filename="out.pdf"'
+//            )
+//        );
+    }
+
+    /**
+     * Generate a PDF report for a Candidate entity.
+     *
+     */
+    public function pdfReportAction(Candidate $entity)
+    {
+        $deleteForm = $this->createDeleteForm($entity);
+
+        $html = $this->render('candidate/pdf.html.twig', array(
+            'entity' => $entity,
+            'delete_form' => $deleteForm->createView(),
+        ));
+
+
+        $pdfGenerator = $this->get('spraed.pdf.generator');
+        $this->createCandidatePDFReport($entity, $pdfGenerator->generatePDF($html));
+
+        return $this->redirectToRoute('candidate_show', array('id' => $entity->getId()));
     }
 
     /**
@@ -221,9 +274,9 @@ class CandidateController extends Controller
         $removed = false;
 
         try {
-            $absolutePath = realpath($this->container->getParameter('kernel.root_dir') . '/../web');
-            $CVFile = $absolutePath . '/uploads/' . $entity->getCv();
-            $coverFile = $absolutePath . '/uploads/' . $entity->getCoverLetter();
+            $absolutePath = realpath($this->getParameter('careers.pdf.store'));
+            $CVFile = $absolutePath . '/' . $entity->getCv();
+            $coverFile = $absolutePath . '/' . $entity->getCoverLetter();
 
             if ($fs->exists($CVFile)) {
                 $fs->remove($CVFile);
@@ -238,13 +291,29 @@ class CandidateController extends Controller
             } else {
                 $removed = false;
             }
-//            var_export("CV: " . $fl1 . "<br />" . "Cover: " . $fl2);
-//            die;
         } catch (IOExceptionInterface $e) {
             echo "An error occurred while removing files at " . $e->getPath();
         }
 
+//        var_export("CV: " . $CVFile . "<br />" . "Cover: " . $coverFile);
+//        die;
+
         return $removed;
+    }
+
+    private function createCandidatePDFReport(Candidate $entity, $fileContent)
+    {
+        // deleting files in filesystem
+        $fs = new Filesystem();
+
+        try {
+            $absolutePath = realpath($this->getParameter('system.pdf.store.report'));
+            $pdfFile = $absolutePath . '/' . trim($entity->getSocialNumber() . "_" . $entity->getOpening()->getId()) . ".pdf";
+
+            $fs->dumpFile($pdfFile, $fileContent);
+        } catch (IOExceptionInterface $e) {
+            echo "An error occurred while creating files at " . $e->getPath();
+        }
     }
 
     /**

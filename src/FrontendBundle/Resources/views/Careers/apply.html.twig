@@ -947,6 +947,7 @@
                 <div class="row submit-row text-center">
                     <button type="submit"
                             {# :disabled="!$validation1.valid" #}
+                            id="submit-application"
                             class="btn btn-blue btn-lg">
                         <i class="fa fa-paper-plane"></i> &nbsp;&nbsp;{{ 'SUBMIT APPLICATION' | trans({},'careers') }}
                     </button>
@@ -1052,6 +1053,13 @@
                 $('body,html').animate({
                     scrollTop: 0                       // Scroll to top of body
                 }, 500);
+            });
+
+            // Go up for Submit button
+            $('#submit-application').click(function () {      // When submit is clicked
+                $('body,html').animate({
+                    scrollTop: 0                       // Scroll to top of body
+                }, 100);
             });
 
         });
