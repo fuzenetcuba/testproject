@@ -5,307 +5,556 @@
     </a>
     Candidate data
 {% endblock %}{% block page_content %}
-    <dl class="dl-horizontal">
-        <tbody>
-        <dt>Id</dt>
-        <dd>{{ entity.id }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Fullname</dt>
-        <dd>{{ entity.fullName }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Address</dt>
-        <dd>{{ entity.address }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>City</dt>
-        <dd>{{ entity.city }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>State</dt>
-        <dd>{{ entity.state }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Zipcode</dt>
-        <dd>{{ entity.zipCode }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Social Security or <br/>Tax Id Number</dt>
-        <dd>{{ entity.socialNumber }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Adult (over 18 years old)</dt>
-        <dd>
-            <div class="onoffswitch-ios switch-xs">
-                {% if (entity.adult) %}
-                    <label class="onoffswitch-ios-label checked"></label>
-                {% else %}
-                    <label class="onoffswitch-ios-label"></label>
-                {% endif %}
-            </div>
-        </dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Phone</dt>
-        <dd>{{ entity.phone }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Available Hours</dt>
-        <dd>{{ entity.availableHours }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Week Availability</dt>
-        <dd>
-            {% if(entity.availableHours == 'all') %}
-                {{ "-" }}
-            {% else %}
-                <div>
-                    <div class="row">
-                        <div class="col-sm-1">Monday</div>
-                        <div class="col-sm-1">Tuesday</div>
-                        <div class="col-sm-1">Wednesday</div>
-                        <div class="col-sm-1">Thursday</div>
-                        <div class="col-sm-1">Friday</div>
-                        <div class="col-sm-1">Saturday</div>
-                        <div class="col-sm-1">Sunday</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-1">{{ entity.weekAvailable|json_decode.monday.from ~ " - " ~ entity.weekAvailable|json_decode.monday.to }}</div>
-                        <div class="col-sm-1">{{ entity.weekAvailable|json_decode.tuesday.from ~ " - " ~ entity.weekAvailable|json_decode.tuesday.to }}</div>
-                        <div class="col-sm-1">{{ entity.weekAvailable|json_decode.wednesday.from ~ " - " ~ entity.weekAvailable|json_decode.wednesday.to }}</div>
-                        <div class="col-sm-1">{{ entity.weekAvailable|json_decode.thursday.from ~ " - " ~ entity.weekAvailable|json_decode.thursday.to }}</div>
-                        <div class="col-sm-1">{{ entity.weekAvailable|json_decode.friday.from ~ " - " ~ entity.weekAvailable|json_decode.friday.to }}</div>
-                        <div class="col-sm-1">{{ entity.weekAvailable|json_decode.saturday.from ~ " - " ~ entity.weekAvailable|json_decode.saturday.to }}</div>
-                        <div class="col-sm-1">{{ entity.weekAvailable|json_decode.sunday.from ~ " - " ~ entity.weekAvailable|json_decode.sunday.to }}</div>
-                    </div>
-                </div>
 
-            {% endif %}
-        </dd>
+    <div class="row">
+        <div class="col-xs-5 text-center">
+            <b>Business</b>
+        </div>
+        <div class="col-xs-5 col-xs-offset-2 text-center">
+            <b>Position</b>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-5 text-center">
+            <h2>
+                {{ entity.opening.business.name }}
+            </h2>
+        </div>
+        <div class="col-xs-2 text-center">
+            <img style="max-width: 150px; height: auto;"
+                 src="{{ asset('images/business//' ~ entity.opening.business.logo) }}"
+                 alt="{{ entity.opening.business.logo }}"/>
+        </div>
+        <div class="col-xs-5 text-center">
+            <h2>{{ entity.opening.position }}</h2>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="hr-line-dashed"></div>
-        <dt>Start Date</dt>
-        <dd>{{ entity.startDate|date('d-M-Y') }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Salary Desired</dt>
-        <dd>{{ entity.salary is empty ? "-" : entity.salary }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Availability</dt>
-        <dd>{{ entity.availability }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Has Driver's License</dt>
-        <dd>
-            <div class="onoffswitch-ios switch-xs">
-                {% if (entity.hasLicense == "true") %}
-                    <label class="onoffswitch-ios-label checked"></label>
-                {% elseif(entity.hasLicense == "false") %}
-                    <label class="onoffswitch-ios-label"></label>
-                {% endif %}
-            </div>
-        </dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Driver's License Number</dt>
-        <dd>{{ entity.licenseNumber is empty ? "-" : entity.licenseNumber }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Driver's License State</dt>
-        <dd>{{ entity.licenseState is empty ? "-" : entity.licenseState }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>License Expiration</dt>
-        <dd>{{ entity.licenseExpiration is empty ? "-" : entity.licenseExpiration }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Legal Worker in USA</dt>
-        <dd>
-            <div class="onoffswitch-ios switch-xs">
-                {% if (entity.legalWorker == "true") %}
-                    <label class="onoffswitch-ios-label checked"></label>
-                {% elseif (entity.legalWorker == "false") %}
-                    <label class="onoffswitch-ios-label"></label>
-                {% endif %}
-            </div>
-        </dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Convicted of a Crime</dt>
-        <dd>
-            <div class="onoffswitch-ios switch-xs">
-                {% if (entity.crime == "true") %}
-                    <label class="onoffswitch-ios-label checked"></label>
-                {% elseif (entity.crime == "false") %}
-                    <label class="onoffswitch-ios-label"></label>
-                {% endif %}
-            </div>
-        </dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Crime Explain</dt>
-        <dd>{{ entity.crimeExplain }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Background check?</dt>
-        <dd>
-            <div class="onoffswitch-ios switch-xs">
-                {% if (entity.background == "true") %}
-                    <label class="onoffswitch-ios-label checked"></label>
-                {% elseif (entity.background == "false") %}
-                    <label class="onoffswitch-ios-label"></label>
-                {% endif %}
-            </div>
-        </dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Background Explain</dt>
-        <dd>{{ entity.backExplain is empty ? "-" : entity.backExplain }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Years High School</dt>
-        <dd>{{ entity.yearsHighschool }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Has Diploma</dt>
-        <dd>
-            <div class="onoffswitch-ios switch-xs">
-                {% if (entity.hasDiploma == "true") %}
-                    <label class="onoffswitch-ios-label checked"></label>
-                {% elseif (entity.hasDiploma == "false") %}
-                    <label class="onoffswitch-ios-label"></label>
-                {% endif %}
-            </div>
-        </dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Has GED</dt>
-        <dd>
-            <div class="onoffswitch-ios switch-xs">
-                {% if (entity.hasGED == "true") %}
-                    <label class="onoffswitch-ios-label checked"></label>
-                {% elseif (entity.hasGED == "false") %}
-                    <label class="onoffswitch-ios-label"></label>
-                {% endif %}
-            </div>
-        </dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Schools</dt>
-        <dd>
-            {% if(entity.schools|json_decode[0].name is not empty and entity.schools|json_decode[1].name is not empty) %}
-                {% for school in entity.schools|json_decode %}
-                    {% if(school.name is not null) %}
-                        <div>{{ school.name ~ "(" ~ school.state ~ ")" }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Id</dt>
+                <dd>{{ entity.id }}</dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Zipcode</dt>
+                <dd>{{ entity.zipCode }}</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Fullname</dt>
+                <dd>{{ entity.fullName }}</dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Social Security or <br/>Tax Id Number</dt>
+                <dd>{{ entity.socialNumber }}</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Address</dt>
+                <dd>{{ entity.address }}</dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Adult (over 18 years old)</dt>
+                <dd>
+                    <div class="onoffswitch-ios switch-xs">
+                        {% if (entity.adult) %}
+                            <label class="onoffswitch-ios-label checked"></label>
+                        {% else %}
+                            <label class="onoffswitch-ios-label"></label>
+                        {% endif %}
+                    </div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>City</dt>
+                <dd>{{ entity.city }}</dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Phone</dt>
+                <dd>{{ entity.phone }}</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>State</dt>
+                <dd>{{ entity.state }}</dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Available Hours</dt>
+                <dd>{{ entity.availableHours }}</dd>
+            </dl>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <dl class="dl-horizontal">
+                <div class="hr-line-dashed"></div>
+                <div class="hr-line-dashed"></div>
+                <dt>Week Availability</dt>
+                <dd>
+                    {% if(entity.availableHours == 'all') %}
+                        {{ "-" }}
+                    {% else %}
+                        <div>
+                            <div class="row">
+                                <div class="col-sm-1"><b>Monday</b></div>
+                                <div class="col-sm-1"><b>Tuesday</b></div>
+                                <div class="col-sm-1"><b>Wednesday</b></div>
+                                <div class="col-sm-1"><b>Thursday</b></div>
+                                <div class="col-sm-1"><b>Friday</b></div>
+                                <div class="col-sm-1"><b>Saturday</b></div>
+                                <div class="col-sm-1"><b>Sunday</b></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-1">{{ entity.weekAvailable|json_decode.monday.from ~ " - " ~ entity.weekAvailable|json_decode.monday.to }}</div>
+                                <div class="col-sm-1">{{ entity.weekAvailable|json_decode.tuesday.from ~ " - " ~ entity.weekAvailable|json_decode.tuesday.to }}</div>
+                                <div class="col-sm-1">{{ entity.weekAvailable|json_decode.wednesday.from ~ " - " ~ entity.weekAvailable|json_decode.wednesday.to }}</div>
+                                <div class="col-sm-1">{{ entity.weekAvailable|json_decode.thursday.from ~ " - " ~ entity.weekAvailable|json_decode.thursday.to }}</div>
+                                <div class="col-sm-1">{{ entity.weekAvailable|json_decode.friday.from ~ " - " ~ entity.weekAvailable|json_decode.friday.to }}</div>
+                                <div class="col-sm-1">{{ entity.weekAvailable|json_decode.saturday.from ~ " - " ~ entity.weekAvailable|json_decode.saturday.to }}</div>
+                                <div class="col-sm-1">{{ entity.weekAvailable|json_decode.sunday.from ~ " - " ~ entity.weekAvailable|json_decode.sunday.to }}</div>
+                            </div>
+                        </div>
+
                     {% endif %}
-                {% endfor %}
-            {% else %}
-                {{ "There are no school related" }}
-            {% endif %}
-        </dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Years College</dt>
-        <dd>{{ entity.yearsCollege is empty ? "-" : entity.yearsCollege }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>College School</dt>
-        <dd>{{ entity.collegeSchool is empty ? "-" : entity.collegeSchool }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>College State</dt>
-        <dd>{{ entity.collegeState is empty ? "-" : entity.collegeState }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Major</dt>
-        <dd>{{ entity.major is empty ? "-" : entity.major }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Degree</dt>
-        <dd>{{ entity.degree is empty ? "-" : entity.degree }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>GPA</dt>
-        <dd>{{ entity.gpa is empty ? "-" : entity.gpa }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Contact Employers</dt>
-        <dd>
-            <div class="onoffswitch-ios switch-xs">
-                {% if (entity.contactEmployers == "true") %}
-                    <label class="onoffswitch-ios-label checked"></label>
-                {% elseif (entity.contactEmployers == "false") %}
-                    <label class="onoffswitch-ios-label"></label>
-                {% endif %}
-            </div>
-        </dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Employment Name</dt>
-        <dd>{{ entity.employmentName is empty ? "-" : entity.employmentName }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Employers</dt>
-        <dd>
-            {% if(entity.employers|json_decode[0].name is not empty) %}
-                <div>
-                    <div class="row">
-                        <div class="col-sm-1">Name</div>
-                        <div class="col-sm-1">Address</div>
-                        <div class="col-sm-1">Phone</div>
-                        <div class="col-sm-1">Position</div>
-                        <div class="col-sm-1">From - To</div>
-                        <div class="col-sm-1">Mode</div>
-                        <div class="col-sm-1">Hours</div>
-                        <div class="col-sm-1">Salary</div>
-                        <div class="col-sm-1">Supervisor</div>
-                        <div class="col-sm-1">Department</div>
-                        <div class="col-sm-1">Leaving Reason</div>
-                        <div class="col-sm-1">Duties</div>
+                </dd>
+                <div class="hr-line-dashed"></div>
+                <div class="hr-line-dashed"></div>
+            </dl>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Start Date</dt>
+                <dd>{{ entity.startDate|date('d-M-Y') }}</dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Years High School</dt>
+                <dd>{{ entity.yearsHighschool }}</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Salary Desired</dt>
+                <dd>{{ entity.salary is empty ? "-" : entity.salary }}</dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Has Diploma</dt>
+                <dd>
+                    <div class="onoffswitch-ios switch-xs">
+                        {% if (entity.hasDiploma == "true") %}
+                            <label class="onoffswitch-ios-label checked"></label>
+                        {% elseif (entity.hasDiploma == "false") %}
+                            <label class="onoffswitch-ios-label"></label>
+                        {% endif %}
                     </div>
-                    {% for employer in entity.employers %}
-                        <div class="row">
-                            <div class="col-sm-1">{{ employer.name is null ? "-" : employer.name }}</div>
-                            <div class="col-sm-1">{{ employer.address is null ? "-" : employer.address }}</div>
-                            <div class="col-sm-1">{{ employer.phone is null ? "-" : employer.phone }}</div>
-                            <div class="col-sm-1">{{ employer.position is null ? "-" : employer.position }}</div>
-                            <div class="col-sm-1">{{ employer.from ~ "-" ~ employer.to }}</div>
-                            <div class="col-sm-1">{{ employer.mode is null ? "-" : employer.mode }}</div>
-                            <div class="col-sm-1">{{ employer.hours is null ? "-" : employer.hours }}</div>
-                            <div class="col-sm-1">{{ employer.salary is null ? "-" : employer.salary }}</div>
-                            <div class="col-sm-1">{{ employer.supervisor is null ? "-" : employer.supervisor }}</div>
-                            <div class="col-sm-1">{{ employer.department is null ? "-" : employer.department }}</div>
-                            <div class="col-sm-1">{{ employer.leavingReason is null ? "-" : employer.leavingReason }}</div>
-                            <div class="col-sm-1">{{ employer.duties is null ? "-" : employer.duties }}</div>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% else %}
-                {{ "There are no employers history related" }}
-            {% endif %}
-        </dd>
-        <div class="hr-line-dashed"></div>
-        <dt>References</dt>
-        <dd>
-            {% if(entity.references|json_decode[0].name is not empty) %}
-                <div>
-                    <div class="row">
-                        <div class="col-sm-1">Name</div>
-                        <div class="col-sm-1">Phone</div>
-                        <div class="col-sm-1">Professional</div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Availability</dt>
+                <dd>{{ entity.availability == "full" ? "Full Time" : (entity.availability == "part" ? "Part Time" : "Either") }}</dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Has GED</dt>
+                <dd>
+                    <div class="onoffswitch-ios switch-xs">
+                        {% if (entity.hasGED == "true") %}
+                            <label class="onoffswitch-ios-label checked"></label>
+                        {% elseif (entity.hasGED == "false") %}
+                            <label class="onoffswitch-ios-label"></label>
+                        {% endif %}
                     </div>
-                    {% for reference in entity.references %}
-                        <div class="row">
-                            <div class="col-sm-1">{{ reference.name is null ? "-" : reference.name }}</div>
-                            <div class="col-sm-1">{{ reference.phone is null ? "-" : reference.phone }}</div>
-                            <div class="col-sm-1">{{ reference.profesional is null ? "-" : reference.profesional }}</div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Has Driver's License</dt>
+                <dd>
+                    <div class="onoffswitch-ios switch-xs">
+                        {% if (entity.hasLicense == "true") %}
+                            <label class="onoffswitch-ios-label checked"></label>
+                        {% elseif(entity.hasLicense == "false") %}
+                            <label class="onoffswitch-ios-label"></label>
+                        {% endif %}
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Schools</dt>
+                <dd>
+                    {% if(entity.schools|json_decode[0].name is not empty) %}
+                        {% for school in entity.schools|json_decode %}
+                            {% if(school.name is not empty) %}
+                                <div>{{ school.name }} <span class="label label-default">{{ school.state }}</span></div>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        {{ "There are no school related" }}
+                    {% endif %}
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Driver's License Number</dt>
+                <dd>{{ entity.licenseNumber is empty ? "-" : entity.licenseNumber }}</dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Years College</dt>
+                <dd>{{ entity.yearsCollege is empty ? "-" : entity.yearsCollege }}</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Driver's License State</dt>
+                <dd>{{ entity.licenseState is empty ? "-" : entity.licenseState }}</dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>College School</dt>
+                <dd>{{ entity.collegeSchool is empty ? "-" : entity.collegeSchool }}</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>License Expiration</dt>
+                <dd>{{ entity.licenseExpiration is empty ? "-" : entity.licenseExpiration }}</dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>College State</dt>
+                <dd>{{ entity.collegeState is empty ? "-" : entity.collegeState }}</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Legal Worker in USA</dt>
+                <dd>
+                    <div class="onoffswitch-ios switch-xs">
+                        {% if (entity.legalWorker == "true") %}
+                            <label class="onoffswitch-ios-label checked"></label>
+                        {% elseif (entity.legalWorker == "false") %}
+                            <label class="onoffswitch-ios-label"></label>
+                        {% endif %}
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Major</dt>
+                <dd>{{ entity.major is empty ? "-" : entity.major }}</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Convicted of a Crime</dt>
+                <dd>
+                    <div class="onoffswitch-ios switch-xs">
+                        {% if (entity.crime == "true") %}
+                            <label class="onoffswitch-ios-label checked"></label>
+                        {% elseif (entity.crime == "false") %}
+                            <label class="onoffswitch-ios-label"></label>
+                        {% endif %}
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Degree</dt>
+                <dd>{{ entity.degree is empty ? "-" : entity.degree }}</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Crime Explain</dt>
+                <dd>{{ entity.crimeExplain is empty ? "-" : entity.crimeExplain }}</dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>GPA</dt>
+                <dd>{{ entity.gpa is empty ? "-" : entity.gpa }}</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Background check?</dt>
+                <dd>
+                    <div class="onoffswitch-ios switch-xs">
+                        {% if (entity.background == "true") %}
+                            <label class="onoffswitch-ios-label checked"></label>
+                        {% elseif (entity.background == "false") %}
+                            <label class="onoffswitch-ios-label"></label>
+                        {% endif %}
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Contact Employers</dt>
+                <dd>
+                    <div class="onoffswitch-ios switch-xs">
+                        {% if (entity.contactEmployers == "true") %}
+                            <label class="onoffswitch-ios-label checked"></label>
+                        {% elseif (entity.contactEmployers == "false") %}
+                            <label class="onoffswitch-ios-label"></label>
+                        {% endif %}
+                    </div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Background Explain</dt>
+                <dd>{{ entity.backExplain is empty ? "-" : entity.backExplain }}</dd>
+            </dl>
+        </div>
+        <div class="col-xs-6">
+            <dl class="dl-horizontal m-b-none">
+                <dt>Employment Name</dt>
+                <dd>{{ entity.employmentName is empty ? "-" : entity.employmentName }}</dd>
+            </dl>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <dl class="dl-horizontal">
+                <div class="hr-line-dashed"></div>
+                <div class="hr-line-dashed"></div>
+                <dt>Employers</dt>
+                <dd>
+                    {% if(entity.employers|json_decode[0].name is not empty) %}
+                        <div>
+                            {% for employer in entity.employers|json_decode %}
+                                <div class="row">
+                                    <div class="col-sm-1"><b>Name</b></div>
+                                    <div class="col-sm-1"><b>Address</b></div>
+                                    <div class="col-sm-1"><b>Phone</b></div>
+                                    <div class="col-sm-1"><b>Position</b></div>
+                                    <div class="col-sm-1"><b>From</b></div>
+                                    <div class="col-sm-1"><b>To</b></div>
+                                    <div class="col-sm-1"><b>Mode</b></div>
+                                    <div class="col-sm-1"><b>Hours</b></div>
+                                    <div class="col-sm-1"><b>Salary</b></div>
+                                    <div class="col-sm-1"><b>Supervisor</b></div>
+                                    <div class="col-sm-1"><b>Department</b></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-1">{{ employer.name is empty ? "-" : employer.name }}</div>
+                                    <div class="col-sm-1">{{ employer.address is empty ? "-" : employer.address }}</div>
+                                    <div class="col-sm-1">{{ employer.phone is empty ? "-" : employer.phone }}</div>
+                                    <div class="col-sm-1">{{ employer.position is empty ? "-" : employer.position }}</div>
+                                    <div class="col-sm-1">{{ employer.from }}</div>
+                                    <div class="col-sm-1">{{ employer.to }}</div>
+                                    <div class="col-sm-1">{{ employer.mode is empty ? "-" : employer.mode == "full" ? "Full Time" : (employer.mode == "part" ? "Part Time" : "-") }}</div>
+                                    <div class="col-sm-1">{{ employer.hours is empty ? "-" : employer.hours }}</div>
+                                    <div class="col-sm-1">{{ employer.salary is empty ? "-" : "$ " ~ employer.salary }}</div>
+                                    <div class="col-sm-1">{{ employer.supervisor is empty ? "-" : employer.supervisor }}</div>
+                                    <div class="col-sm-1">{{ employer.department is empty ? "-" : employer.department }}</div>
+                                </div>
+                                <hr class="hr-line-solid">
+                                <div class="row">
+                                    <div class="col-sm-6"><b>Leaving Reason</b></div>
+                                    <div class="col-sm-6"><b>Duties</b></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">{{ employer.leavingReason is empty ? "-" : employer.leavingReason }}</div>
+                                    <div class="col-sm-6">{{ employer.duties is empty ? "-" : employer.duties }}</div>
+                                </div>
+                                {% if(not loop.last) %}
+                                    <hr class="hr-line-dashed">
+                                {% endif %}
+                            {% endfor %}
                         </div>
-                    {% endfor %}
-                </div>
-            {% else %}
-                {{ "There are no references related" }}
-            {% endif %}
-        </dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Skills</dt>
-        <dd>{{ entity.skills is empty ? "-" : entity.skills }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Best Fit</dt>
-        <dd>{{ entity.bestFit is empty ? "-" : entity.bestFit }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>CV</dt>
-        <dd>
-            {% if(entity.cv is not empty) %}
-                <a target="_blank" href="{{ asset('uploads/') ~ entity.cv }}">
-                    <span class="fa fa-2x fa-file-pdf-o text-danger"></span>
-                    <span class="label label-default">{{ entity.cv }}</span>
-                </a>
-            {% else %}
-                <span class="label label-default">No CV related</span>
-            {% endif %}
-        </dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Cover Letter</dt>
-        <dd>
-            {% if(entity.coverLetter is not empty) %}
-                <a target="_blank" href="{{ asset('uploads/') ~ entity.coverLetter }}">
-                    <span class="fa fa-2x fa-file-pdf-o text-danger"></span>
-                    <span class="label label-default text">{{ entity.coverLetter }}</span>
-                </a>
-            {% else %}
-                <span class="label label-default">No Cover Letter related</span>
-            {% endif %}
-        </dd>
-        <div class="hr-line-dashed"></div>
-        </tbody>
-    </dl>
+                    {% else %}
+                        {{ "There are no employers history related" }}
+                    {% endif %}
+                </dd>
+                <div class="hr-line-dashed"></div>
+                <dt>References</dt>
+                <dd>
+                    {% if(entity.references|json_decode[0].name is not empty) %}
+                        <div>
+                            <div class="row">
+                                <div class="col-sm-1"><b>Name</b></div>
+                                <div class="col-sm-1"><b>Phone</b></div>
+                                <div class="col-sm-1"><b>Professional</b></div>
+                            </div>
+                            {% for reference in entity.references|json_decode %}
+                                <div class="row">
+                                    <div class="col-sm-1">{{ reference.name is empty ? "-" : reference.name }}</div>
+                                    <div class="col-sm-1">{{ reference.phone is empty ? "-" : reference.phone }}</div>
+                                    <div class="col-sm-1">
+                                        <div class="onoffswitch-ios switch-xs">
+                                            {% if (reference.profesional) %}
+                                                <label class="onoffswitch-ios-label checked"></label>
+                                            {% else %}
+                                                <label class="onoffswitch-ios-label"></label>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% if(not loop.last) %}
+                                    <hr class="hr-line-dashed">
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ "There are no references related" }}
+                    {% endif %}
+                </dd>
+                <div class="hr-line-dashed"></div>
+                <dt>Skills</dt>
+                <dd>{{ entity.skills is empty ? "-" : entity.skills }}</dd>
+                <div class="hr-line-dashed"></div>
+                <dt>Best Fit</dt>
+                <dd>{{ entity.bestFit is empty ? "-" : entity.bestFit }}</dd>
+                <div class="hr-line-dashed"></div>
+                <dt>CV</dt>
+                <dd>
+                    {% if(entity.cv is not empty and entity.cv != "tmp-cv") %}
+                        <a target="_blank" href="{{ asset('uploads/') ~ entity.cv }}">
+                            <span class="fa fa-2x fa-file-pdf-o text-danger"></span>
+                            <span class="label label-default">{{ entity.cv }}</span>
+                        </a>
+                    {% else %}
+                        <span class="label label-default">No CV related</span>
+                    {% endif %}
+                </dd>
+                <div class="hr-line-dashed"></div>
+                <dt>Cover Letter</dt>
+                <dd>
+                    {% if(entity.coverLetter is not empty and entity.coverLetter != "tmp-cover") %}
+                        <a target="_blank" href="{{ asset('uploads/') ~ entity.coverLetter }}">
+                            <span class="fa fa-2x fa-file-pdf-o text-danger"></span>
+                            <span class="label label-default text">{{ entity.coverLetter }}</span>
+                        </a>
+                    {% else %}
+                        <span class="label label-default">No Cover Letter related</span>
+                    {% endif %}
+                </dd>
+                <div class="hr-line-dashed"></div>
+                </tbody>
+            </dl>
+        </div>
+    </div>
     <div class="form-group">
         <div class="col-md-2 text-right">
             <a class="btn btn-success" href="{{ path('candidate') }}">
@@ -321,6 +570,13 @@
             {#<span class="fa fa-pencil"></span>#}
             {#Edit#}
             {#</a>#}
+
+            <a class="btn btn-primary"
+               target="_blank"
+               href="{{ path('candidate_export_pdf', { 'id': entity.id }) }}">
+                <span class="fa fa-file-pdf-o"></span>
+                Export to PDF
+            </a>
 
             <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
                 <span class="fa fa-remove"></span>

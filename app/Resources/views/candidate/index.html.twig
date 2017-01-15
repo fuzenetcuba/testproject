@@ -61,6 +61,12 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
+                            Business
+                        </th>
+                        <th class="text-navy">
+                            Position
+                        </th>
+                        <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Fullname', 'e.firstName') }}
                             {% if entities.isSorted('e.firstName') %}
                                 <span class="fa fa-sort"></span>
@@ -137,6 +143,14 @@
                                 <a href="{{ path('candidate_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
                             </td>
 
+                            <td>
+                                <img style="max-width: 100px; height: auto;" src="{{ asset('images/business//' ~ entity.opening.business.logo) }}"
+                                     alt="{{ entity.opening.business.logo }}"/>
+                                {{ entity.opening.business.name }}
+                            </td>
+
+                            <td>{{ entity.opening.position }}</td>
+
                             <td>{{ entity.fullName }}</td>
 
                             <td>{{ entity.city }}</td>
@@ -178,6 +192,11 @@
                                     <a class="btn btn-xs btn-outline btn-primary"
                                        href="{{ path('candidate_show', { 'id': entity.id }) }}"> <span
                                                 class="fa fa-search"></span>
+                                    </a>
+                                    <a class="btn btn-xs btn-outline btn-primary"
+                                       target="_blank"
+                                       href="{{ path('candidate_export_pdf', { 'id': entity.id }) }}"> <span
+                                                class="fa fa-file-pdf-o"></span>
                                     </a>
                                     {#<a class="btn btn-xs btn-outline btn-primary"#}
                                        {#href="{{ path('candidate_edit', { 'id': entity.id }) }}"> <span#}

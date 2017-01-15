@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new \Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
+            new Spraed\PDFGeneratorBundle\SpraedPDFGeneratorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

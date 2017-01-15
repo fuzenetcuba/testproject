@@ -24,6 +24,13 @@ You're good to go!
 
 If unsure about meeting these requirements, install the application and browse the `http://localhost:8000/check.php` script to get more detailed information.
 
+
+Also you need to install the "wkhtmltopdf" utility for Linux to allow generation of PDF reports. You can execute this command in a linux terminal (Debian packages) to install it:
+
+```bash
+sudo apt-get install wkhtmltopdf
+```
+
 Installation
 ------------
 
