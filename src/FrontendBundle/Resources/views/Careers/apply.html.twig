@@ -340,11 +340,12 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label for="name">{{ 'Salary Desired' | trans({},'careers') }}</label>
+                                <label for="name">{{ 'Salary per hour' | trans({},'careers') }}</label>
                                 <div class="input-group">
                                   <span class="input-group-addon">$</span>
                                   <input type="text"
-                                         v-mask="9999.99" v-model="salary"
+                                         v-mask="99.99" v-model="salary"
+                                         placeholder="99.99" 
                                          class="form-control" placeholder="{{ 'Salary Desired' | trans({},'careers') }}">
                                   </div>
                             </div>
