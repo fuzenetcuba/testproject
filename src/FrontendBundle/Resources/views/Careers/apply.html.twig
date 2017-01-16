@@ -328,9 +328,12 @@
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="name">{{ 'Salary Desired' | trans({},'careers') }}</label>
-                                <input type="text"
-                                       v-mask="$ 999,999,999.99" v-model="salary"
-                                       class="form-control" placeholder="{{ 'Salary Desired' | trans({},'careers') }}">
+                                <div class="input-group">
+                                  <span class="input-group-addon">$</span>
+                                  <input type="text"
+                                         v-mask="9999.99" v-model="salary"
+                                         class="form-control" placeholder="{{ 'Salary Desired' | trans({},'careers') }}">
+                                  </div>
                             </div>
                         </div>
                         <div class="col-lg-5">
@@ -946,7 +949,7 @@
                 </fieldset>
                 <div class="row submit-row text-center">
                     <button type="submit"
-                            {# :disabled="!$validation1.valid" #}
+                            :disabled="!$validation1.valid"
                             id="submit-application"
                             class="btn btn-blue btn-lg">
                         <i class="fa fa-paper-plane"></i> &nbsp;&nbsp;{{ 'SUBMIT APPLICATION' | trans({},'careers') }}
@@ -997,6 +1000,7 @@
     <script src="{{ asset('bundles/frontend/js/vue-resource.js') }}"></script>
     <script src="{{ asset('bundles/frontend/js/vue.file-upload.js') }}"></script>
     <script src="{{ asset('bundles/frontend/js/vue.pretty-bytes.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/moment.min.js') }}"></script>
     <script src="{{ asset('bundles/frontend/js/apply-form.js') }}"></script>
     <!-- iCheck Scripts -->
     <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
