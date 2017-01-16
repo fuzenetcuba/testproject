@@ -2385,6 +2385,10 @@ div.application-done {
     /*height: 55px;*/
 }
 
+form .form-group.error {
+    border: 1px solid #cc5965 !important;
+}
+
 .apply-form form .form-group:hover {
     border-color: #FDB125;
 }

@@ -8,6 +8,10 @@ use BackendBundle\Entity\Opening;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
+use Spraed\PDFGeneratorBundle\PDFGenerator\PDFGenerator;
+use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -30,6 +34,16 @@ class OpeningManager implements ManagerInterface
     private $mailer;
 
     /**
+     * @var Filesystem
+     */
+    private $filesystem;
+
+    /**
+     * @var PDFGenerator
+     */
+    private $pdfGenerator;
+
+    /**
      * @var string
      */
     private $storePath;
@@ -37,14 +51,22 @@ class OpeningManager implements ManagerInterface
     /**
      * @var string
      */
+    private $reportsPath;
+
+    /**
+     * @var string
+     */
     private $careersEmail;
 
 
-    public function __construct(EntityManager $entityManager, \Swift_Mailer $mailer, $path, $email)
+    public function __construct(EntityManager $entityManager, \Swift_Mailer $mailer, Filesystem $filesystem, PDFGenerator $PDFGenerator, $path, $reportsPath, $email)
     {
         $this->em = $entityManager;
         $this->mailer = $mailer;
+        $this->filesystem = $filesystem;
+        $this->pdfGenerator = $PDFGenerator;
         $this->storePath = $path;
+        $this->reportsPath = $reportsPath;
         $this->careersEmail = $email;
     }
 
@@ -277,20 +299,100 @@ class OpeningManager implements ManagerInterface
         return $query;
     }
 
-    public function notifyManager(Candidate $candidate, $subject, $from, $content)
+    public function notifyManager(Candidate $candidate, $subject, $from, $content, $fileContent = null)
     {
+        $pdfFile = $this->createCandidatePDFReport($candidate, $fileContent);
+
         $message = \Swift_Message::newInstance()
             ->setSubject($subject)
             ->setFrom($from)
             ->setTo($this->careersEmail)
-            ->setBody($content, 'text/html');
+            ->setBody($content, 'text/html')
+            ->attach(\Swift_Attachment::fromPath($pdfFile));
+
+        if($candidate->getCv() != "tmp-cv"){
+            $message->attach(\Swift_Attachment::fromPath($this->storePath . DIRECTORY_SEPARATOR . $candidate->getCv()));
+        }
+        if($candidate->getCoverLetter() != "tmp-cover"){
+            $message->attach(\Swift_Attachment::fromPath($this->storePath . DIRECTORY_SEPARATOR . $candidate->getCoverLetter()));
+        }
 
         $this->mailer->send($message);
     }
 
+    public function notifyManagerWithoutSSL(Candidate $candidate, $subject, $from, $content, $host, $port, $encrytion, $authMode, $user, $pass)
+    {
+        //Estas lineas son para cuando el servidor tiene un certificado no valido
+        $https['ssl']['verify_peer'] = FALSE;
+        $https['ssl']['verify_peer_name'] = FALSE;
+
+        $transport = \Swift_SmtpTransport::newInstance(
+            $host,
+            $port,
+            $encrytion)
+            ->setAuthMode($authMode)
+            ->setUsername($user)
+            ->setPassword($pass)
+            ->setStreamOptions($https);
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject($subject)
+            ->setFrom($from)
+            ->setTo('yulioaj@uci.cu'/*$this->careersEmail*/)
+            ->setBody($content, 'text/html')
+            ->attach(\Swift_Attachment::fromPath(realpath($this->reportsPath) . DIRECTORY_SEPARATOR . 'google-operators.pdf'));
+
+        $this->mailer->newInstance($transport)->send($message);
+    }
+
+    /**
+     * Create a PDF file for Candidate entity
+     *
+     * @param Candidate $candidate
+     * @param $fileContent
+     *
+     * @return string The absolute path to the PDF file
+     *
+     * $fileContent must be defined before calling this method like this:
+     * $fileContent = $this->renderView('candidate/pdf.html.twig', array(
+     *      'entity' => $entity,    // $entity is the Candidate entity
+     * ));
+     */
+    private function createCandidatePDFReport(Candidate $candidate, $fileContent)
+    {
+        try {
+            $absolutePath = realpath($this->reportsPath);
+            $pdfFile = $absolutePath . DIRECTORY_SEPARATOR . trim($candidate->getSocialNumber() . "_" . $candidate->getOpening()->getId()) . ".pdf";
+
+            $this->filesystem->dumpFile($pdfFile, $this->pdfGenerator->generatePDF($fileContent));
+
+            return $pdfFile;
+
+        } catch (IOExceptionInterface $e) {
+            echo "An error occurred while creating files at " . $e->getPath();
+        }
+    }
+
+    /**
+     * Delete a PDF file of a Candidate entity
+     * @param Candidate $candidate
+     */
+    private function deleteCandidatePDFReport(Candidate $candidate)
+    {
+        try {
+            $absolutePath = realpath($this->reportsPath);
+            $pdfFile = $absolutePath . DIRECTORY_SEPARATOR . trim($candidate->getSocialNumber() . "_" . $candidate->getOpening()->getId()) . ".pdf";
+            if($this->filesystem->exists($pdfFile)) {
+                $this->filesystem->remove($pdfFile);
+            }
+        } catch (IOExceptionInterface $e) {
+            echo "An error occurred while creating files at " . $e->getPath();
+        }
+    }
+
     /**
      * Fetchs a list of openings that have some position available
-     * 
+     *
      * @param  Opening $business Opening
      * @return array             List of businesses
      */
@@ -301,8 +403,7 @@ class OpeningManager implements ManagerInterface
         $query
             ->join('o.business', 'b')
             ->andWhere('b.id = :id')
-            ->setParameter('id', $business->getId())
-        ;
+            ->setParameter('id', $business->getId());
 
         // multilanguage search criterias done introspecting the default locale
         $query = $query->getQuery()->setHint(
