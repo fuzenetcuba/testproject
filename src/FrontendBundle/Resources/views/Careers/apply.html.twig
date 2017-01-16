@@ -219,9 +219,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <label v-if="$validation1.monday.lower || $validation1.tuesday.lower || $validation1.wednesday.lower || 
+                                         $validation1.thursday.lower || $validation1.friday.lower || $validation1.saturday.lower || 
+                                         $validation1.sunday.lower" class="error">
+                                         {{ 'The end time should be greater than the start time' | trans({}, 'careers') }}
+                            </label>
                         </div>
                         <div class="col-lg-1">
-                            <div class="form-group">
+                            <div class="form-group" :class="{'error' : $validation1.monday.lower }">
                                 <label for="name">{{ 'Monday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
@@ -229,12 +234,14 @@
                                        placeholder="{{ 'From' | trans({},'careers') }}">
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
+                                       :groups="['hours']"
+                                       v-validate:monday="{ required: true, lower: mondayValid }" :class="{'error' : $validation1.monday.lower }"
                                        v-model="weekHours.monday.to" class="form-control clockpicker"
                                        placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
                         </div>
                         <div class="col-lg-1">
-                            <div class="form-group">
+                            <div class="form-group" :class="{'error' : $validation1.tuesday.lower }">
                                 <label for="name">{{ 'Tuesday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
@@ -242,12 +249,13 @@
                                        placeholder="{{ 'From' | trans({},'careers') }}">
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
+                                       v-validate:tuesday="{ required: true, lower: tuesdayValid }" :class="{'error' : $validation1.tuesday.lower }"
                                        v-model="weekHours.tuesday.to" class="form-control clockpicker"
                                        placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
                         </div>
                         <div class="col-lg-1">
-                            <div class="form-group">
+                            <div class="form-group" :class="{'error' : $validation1.wednesday.lower }">
                                 <label class="special-padding"
                                        for="name">{{ 'Wednesday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
@@ -256,12 +264,13 @@
                                        placeholder="{{ 'From' | trans({},'careers') }}">
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
+                                       v-validate:wednesday="{ required: true, lower: wednesdayValid }" :class="{'error' : $validation1.wednesday.lower }"
                                        v-model="weekHours.wednesday.to" class="form-control clockpicker"
                                        placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
                         </div>
                         <div class="col-lg-1">
-                            <div class="form-group">
+                            <div class="form-group" :class="{'error' : $validation1.thursday.lower }">
                                 <label for="name">{{ 'Thursday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
@@ -269,12 +278,13 @@
                                        placeholder="{{ 'From' | trans({},'careers') }}">
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
+                                       v-validate:thursday="{ required: true, lower: thursdayValid }" :class="{'error' : $validation1.thursday.lower }"
                                        v-model="weekHours.thursday.to" class="form-control clockpicker"
                                        placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
                         </div>
                         <div class="col-lg-1">
-                            <div class="form-group">
+                            <div class="form-group" :class="{'error' : $validation1.friday.lower }">
                                 <label for="name">{{ 'Friday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
@@ -282,12 +292,13 @@
                                        placeholder="{{ 'From' | trans({},'careers') }}">
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
+                                       v-validate:friday="{ required: true, lower: fridayValid }" :class="{'error' : $validation1.friday.lower }"
                                        v-model="weekHours.friday.to" class="form-control clockpicker"
                                        placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
                         </div>
                         <div class="col-lg-1">
-                            <div class="form-group">
+                            <div class="form-group" :class="{'error' : $validation1.saturday.lower }">
                                 <label for="name">{{ 'Saturday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
@@ -295,12 +306,13 @@
                                        placeholder="{{ 'From' | trans({},'careers') }}">
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
+                                       v-validate:saturday="{ required: true, lower: saturdayValid }" :class="{'error' : $validation1.saturday.lower }"
                                        v-model="weekHours.saturday.to" class="form-control clockpicker"
                                        placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
                         </div>
                         <div class="col-lg-1">
-                            <div class="form-group">
+                            <div class="form-group" :class="{'error' : $validation1.sunday.lower }">
                                 <label for="name">{{ 'Sunday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
@@ -308,6 +320,7 @@
                                        placeholder="{{ 'From' | trans({},'careers') }}">
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
+                                       v-validate:sunday="{ required: true, lower: sundayValid }" :class="{'error' : $validation1.sunday.lower }"
                                        v-model="weekHours.sunday.to" class="form-control clockpicker"
                                        placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>

@@ -181,13 +181,8 @@ var vm = new Vue({
             return true;
         },
 
-        dateLowerThan: function (val) {
-            console.log(val);
-            return true;
-        },
-
-        dataGreaterThan: function (val) {
-            return true;
+        lower: function (val, result) {
+            return result;
         }
     },
 
@@ -198,10 +193,51 @@ var vm = new Vue({
 
         cvFileName: function () {
             return this.cv.replace('C:\\fakepath\\', '');
-        }
+        },
+
+        mondayValid: function() {
+            var diff = this.checkRange(this.weekHours.monday.from, this.weekHours.monday.to);
+
+            console.log(diff);
+
+            // false - error
+            // true - ok
+            return diff >= 0;
+        },
+
+        tuesdayValid: function() {
+            return this.checkRange(this.weekHours.tuesday.from, this.weekHours.tuesday.to) >= 0;
+        },
+
+        wednesdayValid: function() {
+            return this.checkRange(this.weekHours.wednesday.from, this.weekHours.wednesday.to) >= 0;
+        },
+
+        thursdayValid: function() {
+            return this.checkRange(this.weekHours.thursday.from, this.weekHours.thursday.to) >= 0;
+        },
+
+        fridayValid: function() {
+            return this.checkRange(this.weekHours.friday.from, this.weekHours.friday.to) >= 0;
+        },
+
+        saturdayValid: function() {
+            return this.checkRange(this.weekHours.saturday.from, this.weekHours.saturday.to) >= 0;
+        },
+
+        sundayValid: function() {
+            return this.checkRange(this.weekHours.sunday.from, this.weekHours.sunday.to) >= 0;
+        },
     },
 
     methods: {
+        checkRange: function(d1, d2) {
+            var start = moment(new Date('1/1/1 ' + d1));
+            var end = moment(new Date('1/1/1 ' + d2));
+
+            return moment.duration(end.diff(start))._milliseconds;
+        },
+
         addEmployer: function () {
             this.employers.push({
                 name: '',
