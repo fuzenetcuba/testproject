@@ -102,11 +102,16 @@ class CareersController extends Controller
                 'deals' => []
             ]);
 
+            $fileContent = $this->renderView('candidate/pdf.html.twig', array(
+                'entity' => $candidate,    // $entity is the Candidate entity
+            ));
+
             $this->get('opening.manager')->notifyManager(
                 $candidate,
                 $this->getParameter('careers.notification.subject'),
                 $this->getParameter('customer.email.from'),
-                $content
+                $content,
+                $fileContent
             );
 
             return new JsonResponse(['status' => 'ok']);

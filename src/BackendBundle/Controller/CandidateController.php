@@ -135,9 +135,18 @@ class CandidateController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
 
-
-        $pdfGenerator = $this->get('spraed.pdf.generator');
-        $this->createCandidatePDFReport($entity, $pdfGenerator->generatePDF($html));
+        $this->get('opening.manager')->notifyManagerWithoutSSL(
+            $entity,
+            'testing',
+            'yulioaj@uci.cu',
+            'testing',
+            $this->getParameter('mailer_host'),
+            $this->getParameter('mailer_port'),
+            $this->getParameter('mailer_encryption'),
+            $this->getParameter('mailer_auth_mode'),
+            $this->getParameter('mailer_user'),
+            $this->getParameter('mailer_password')
+        );
 
         return $html;
     }
@@ -166,26 +175,6 @@ class CandidateController extends Controller
                 'Content-Disposition' => 'inline; filename="out.pdf"'
             )
         );
-    }
-
-    /**
-     * Generate a PDF report for a Candidate entity.
-     *
-     */
-    public function pdfReportAction(Candidate $entity)
-    {
-        $deleteForm = $this->createDeleteForm($entity);
-
-        $html = $this->renderView('candidate/pdf.html.twig', array(
-            'entity' => $entity,
-            'delete_form' => $deleteForm->createView(),
-        ));
-
-
-        $pdfGenerator = $this->get('spraed.pdf.generator');
-        $this->createCandidatePDFReport($entity, $pdfGenerator->generatePDF($html));
-
-        return $this->redirectToRoute('candidate_show', array('id' => $entity->getId()));
     }
 
     /**
@@ -299,21 +288,6 @@ class CandidateController extends Controller
 //        die;
 
         return $removed;
-    }
-
-    private function createCandidatePDFReport(Candidate $entity, $fileContent)
-    {
-        // deleting files in filesystem
-        $fs = new Filesystem();
-
-        try {
-            $absolutePath = realpath($this->getParameter('system.pdf.store.report'));
-            $pdfFile = $absolutePath . '/' . trim($entity->getSocialNumber() . "_" . $entity->getOpening()->getId()) . ".pdf";
-
-            $fs->dumpFile($pdfFile, $fileContent);
-        } catch (IOExceptionInterface $e) {
-            echo "An error occurred while creating files at " . $e->getPath();
-        }
     }
 
     /**

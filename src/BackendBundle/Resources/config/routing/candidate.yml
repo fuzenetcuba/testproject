@@ -37,8 +37,3 @@ candidate_export_pdf:
     path:     /{id}/pdf_report
     defaults: { _controller: "BackendBundle:Candidate:exportToPDF" }
     methods:  GET
-
-candidate_pdf_report:
-    path:     /{id}/pdf_report
-    defaults: { _controller: "BackendBundle:Candidate:pdfReport" }
-    methods:  GET
