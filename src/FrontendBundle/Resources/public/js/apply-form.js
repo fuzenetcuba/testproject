@@ -74,31 +74,31 @@ var vm = new Vue({
         availability: 'full',
         availabilityHours: 'all',
         weekHours: {
-            'monday': {
+            monday: {
                 from: null,
                 to: null
             },
-            'tuesday': {
+            tuesday: {
                 from: null,
                 to: null
             },
-            'wednesday': {
+            wednesday: {
                 from: null,
                 to: null
             },
-            'thursday': {
+            thursday: {
                 from: null,
                 to: null
             },
-            'friday': {
+            friday: {
                 from: null,
                 to: null
             },
-            'saturday': {
+            saturday: {
                 from: null,
                 to: null
             },
-            'sunday': {
+            sunday: {
                 from: null,
                 to: null
             }
@@ -178,6 +178,15 @@ var vm = new Vue({
                 return /pdf/.test(val.substr(val.lastIndexOf('.')+1).toLowerCase());
             }
             
+            return true;
+        },
+
+        dateLowerThan: function (val) {
+            console.log(val);
+            return true;
+        },
+
+        dataGreaterThan: function (val) {
             return true;
         }
     },
