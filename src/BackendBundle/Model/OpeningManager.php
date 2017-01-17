@@ -318,6 +318,9 @@ class OpeningManager implements ManagerInterface
         }
 
         $this->mailer->send($message);
+
+        // deleting temp files
+        $this->deleteCandidatePDFReport($candidate);
     }
 
     public function notifyManagerWithoutSSL(Candidate $candidate, $subject, $from, $content, $host, $port, $encrytion, $authMode, $user, $pass)
