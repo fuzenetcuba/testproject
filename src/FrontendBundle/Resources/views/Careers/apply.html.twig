@@ -41,9 +41,10 @@
 {% block page_content %}
     <section v-cloak class="inner-content apply-form" id="apply-form">
         <div class="container apply-info">
-            <img alt="{{ opening.business }}"
-                 title="{{ opening.business }}"
-                 src="{{ asset('images/business/' ~ opening.business.logo) }} "/>
+            <div class="apply-info-img" style="background-image: url('{{ asset('images/business/' ~ opening.business.logo) }}')"></div>
+            {#<img alt="{{ opening.business }}"#}
+                 {#title="{{ opening.business }}"#}
+                 {#src="{{ asset('images/business/' ~ opening.business.logo) }} "/>#}
             <h1 class="apply-header">
                 {{ opening.position }}
             </h1>
