@@ -175,9 +175,9 @@ var vm = new Vue({
     validators: {
         pdf: function (val) {
             if ("" !== val.trim()) {
-                return /pdf/.test(val.substr(val.lastIndexOf('.')+1).toLowerCase());
+                return /pdf/.test(val.substr(val.lastIndexOf('.') + 1).toLowerCase());
             }
-            
+
             return true;
         },
 
@@ -239,45 +239,51 @@ var vm = new Vue({
         mondayValid: function() {
             var diff = this.checkRange(this.weekHours.monday.from, this.weekHours.monday.to);
 
-            console.log(diff);
+            // console.log(diff);
 
             // false - error
             // true - ok
             return diff >= 0;
         },
 
-        tuesdayValid: function() {
+        tuesdayValid: function () {
             return this.checkRange(this.weekHours.tuesday.from, this.weekHours.tuesday.to) >= 0;
         },
 
-        wednesdayValid: function() {
+        wednesdayValid: function () {
             return this.checkRange(this.weekHours.wednesday.from, this.weekHours.wednesday.to) >= 0;
         },
 
-        thursdayValid: function() {
-            console.log(this.checkRange(this.weekHours.thursday.from, this.weekHours.thursday.to));
+        thursdayValid: function () {
             return this.checkRange(this.weekHours.thursday.from, this.weekHours.thursday.to) >= 0;
         },
 
-        fridayValid: function() {
+        fridayValid: function () {
             return this.checkRange(this.weekHours.friday.from, this.weekHours.friday.to) >= 0;
         },
 
-        saturdayValid: function() {
+        saturdayValid: function () {
             return this.checkRange(this.weekHours.saturday.from, this.weekHours.saturday.to) >= 0;
         },
 
-        sundayValid: function() {
+        sundayValid: function () {
             return this.checkRange(this.weekHours.sunday.from, this.weekHours.sunday.to) >= 0;
-        },
+        }
     },
 
     methods: {
-        checkRange: function(d1, d2) {
-            var start = moment(new Date('1/1/1 ' + d1));
-            var end = moment(new Date('1/1/1 ' + d2));
+        checkRange: function (d1, d2) {
+            // console.log("d1: " + d1);
+            // console.log("d2: " + d2);
+            if (d1 == null || d2 == null) {
+                // console.log("no diff");
+                return 0;
+            } else {
+                var start = moment(new Date('1/1/1 ' + d1));
+                var end = moment(new Date('1/1/1 ' + d2));
 
-            return moment.duration(end.diff(start))._milliseconds;
+                return moment.duration(end.diff(start))._milliseconds;
+            }
         },
 
         addEmployer: function () {

@@ -10,7 +10,7 @@
     {{- 'Businesses' | trans({}, 'homepage') -}},
     {{- 'Deals' | trans({}, 'homepage') -}},
     {{- 'Buying' | trans({}, 'homepage') -}}
-    " xmlns:v-validate="http://www.w3.org/1999/xhtml"/>
+    " xmlns:v-validate="http://www.w3.org/1999/xhtml" xmlns:v-validate="http://www.w3.org/1999/xhtml"/>
 
     <meta name="description" content="
     {{- 'Apply for' | trans({}, 'careers') ~ ' ' ~ opening.position ~ ' ' ~ "in" ~ ' ' | trans({}, 'careers') ~ opening.business.name -}}
@@ -41,9 +41,11 @@
 {% block page_content %}
     <section v-cloak class="inner-content apply-form" id="apply-form">
         <div class="container apply-info">
-            <img alt="{{ opening.business }}"
-                 title="{{ opening.business }}"
-                 src="{{ asset('images/business/' ~ opening.business.logo) }} "/>
+            <div class="apply-info-img"
+                 style="background-image: url('{{ asset('images/business/' ~ opening.business.logo) }}')"></div>
+            {#<img alt="{{ opening.business }}"#}
+            {#title="{{ opening.business }}"#}
+            {#src="{{ asset('images/business/' ~ opening.business.logo) }} "/>#}
             <h1 class="apply-header">
                 {{ opening.position }}
             </h1>
@@ -219,6 +221,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <label v-if="($validation1.monday && $validation1.monday.invalid) || 
                                          ($validation1.tuesday && $validation1.tuesday.invalid) || 
                                          ($validation1.wednesday && $validation1.wednesday.invalid) || 
@@ -231,7 +234,7 @@
                             </label>
                         </div>
                         <div class="col-lg-1">
-                            <div class="form-group" :class="{'error' : $validation1.monday.lower }">
+                            <div class="form-group" {#:class="{'error' : $validation1.monday.lower }"#}>
                                 <label for="name">{{ 'Monday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-model="weekHours.monday.from" class="form-control clockpicker"
@@ -253,7 +256,7 @@
                             </div>
                         </div>
                         <div class="col-lg-1">
-                            <div class="form-group" :class="{'error' : $validation1.tuesday.lower }">
+                            <div class="form-group" {#:class="{'error' : $validation1.tuesday.lower }"#}>
                                 <label for="name">{{ 'Tuesday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
@@ -276,7 +279,7 @@
                             </div>
                         </div>
                         <div class="col-lg-1">
-                            <div class="form-group" :class="{'error' : $validation1.wednesday.lower }">
+                            <div class="form-group" {#:class="{'error' : $validation1.wednesday.lower }"#}>
                                 <label class="special-padding"
                                        for="name">{{ 'Wednesday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
@@ -300,7 +303,7 @@
                             </div>
                         </div>
                         <div class="col-lg-1">
-                            <div class="form-group" :class="{'error' : $validation1.thursday.lower }">
+                            <div class="form-group" {#:class="{'error' : $validation1.thursday.lower }"#}>
                                 <label for="name">{{ 'Thursday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
@@ -323,7 +326,7 @@
                             </div>
                         </div>
                         <div class="col-lg-1">
-                            <div class="form-group" :class="{'error' : $validation1.friday.lower }">
+                            <div class="form-group" {#:class="{'error' : $validation1.friday.lower }"#}>
                                 <label for="name">{{ 'Friday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
@@ -346,7 +349,7 @@
                             </div>
                         </div>
                         <div class="col-lg-1">
-                            <div class="form-group" :class="{'error' : $validation1.saturday.lower }">
+                            <div class="form-group" {#:class="{'error' : $validation1.saturday.lower }"#}>
                                 <label for="name">{{ 'Saturday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
@@ -369,7 +372,7 @@
                             </div>
                         </div>
                         <div class="col-lg-1">
-                            <div class="form-group" :class="{'error' : $validation1.sunday.lower }">
+                            <div class="form-group" {#:class="{'error' : $validation1.sunday.lower }"#}>
                                 <label for="name">{{ 'Sunday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
@@ -408,12 +411,13 @@
                             <div class="form-group">
                                 <label for="name">{{ 'Desired Salary (per hour)' | trans({},'careers') }}</label>
                                 <div class="input-group">
-                                  <span class="input-group-addon">$</span>
-                                  <input type="text"
-                                         v-mask="99.99" v-model="salary"
-                                         placeholder="99.99" 
-                                         class="form-control" placeholder="{{ 'Salary Desired' | trans({},'careers') }}">
-                                  </div>
+                                    <span class="input-group-addon">$</span>
+                                    <input type="text"
+                                           v-mask="99.99" v-model="salary"
+                                           placeholder="99.99"
+                                           class="form-control"
+                                           placeholder="{{ 'Salary Desired' | trans({},'careers') }}">
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-5">

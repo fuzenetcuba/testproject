@@ -2391,6 +2391,7 @@ form .form-group.error {
 
 .hours-row .invalid {
     background-color: rgba(199, 106, 115, 0.25);
+    color: black;
 }
 
 .apply-form form .form-group:hover {
@@ -3225,6 +3226,14 @@ form.filter-openings .select2-container--default .select2-selection--single .sel
     justify-content: space-between;
 }
 
+.apply-info .apply-info-img {
+    width: 300px;
+    height: 150px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 .apply-info img {
     max-height: 100px;
 }
