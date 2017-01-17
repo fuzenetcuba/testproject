@@ -3226,7 +3226,7 @@ form.filter-openings .select2-container--default .select2-selection--single .sel
 }
 
 .apply-info img {
-    max-width: 300px;
+    max-height: 100px;
 }
 
 .apply-form hr {
