@@ -2391,7 +2391,19 @@ form .form-group.error {
 
 .hours-row .invalid {
     background-color: rgba(199, 106, 115, 0.25);
-    color: black;
+}
+
+.hours-row .invalid::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: black;
+}
+.hours-row .invalid::-moz-placeholder { /* Firefox 19+ */
+  color: black;
+}
+.hours-row .invalid:-ms-input-placeholder { /* IE 10+ */
+  color: black;
+}
+.hours-row .invalid:-moz-placeholder { /* Firefox 18- */
+  color: black;
 }
 
 .apply-form form .form-group:hover {
