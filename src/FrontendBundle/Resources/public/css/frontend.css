@@ -2389,6 +2389,23 @@ form .form-group.error {
     border: 1px solid #cc5965 !important;
 }
 
+.hours-row .invalid {
+    background-color: rgba(199, 106, 115, 0.25);
+}
+
+.hours-row .invalid::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: black;
+}
+.hours-row .invalid::-moz-placeholder { /* Firefox 19+ */
+  color: black;
+}
+.hours-row .invalid:-ms-input-placeholder { /* IE 10+ */
+  color: black;
+}
+.hours-row .invalid:-moz-placeholder { /* Firefox 18- */
+  color: black;
+}
+
 .apply-form form .form-group:hover {
     border-color: #FDB125;
 }
@@ -3230,7 +3247,7 @@ form.filter-openings .select2-container--default .select2-selection--single .sel
     background-position: center;
 }
 .apply-info img {
-    max-width: 300px;
+    max-height: 100px;
 }
 
 .apply-form hr {

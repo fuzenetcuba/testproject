@@ -186,6 +186,43 @@ var vm = new Vue({
         }
     },
 
+    watch: {
+        'availabilityHours' : function(val, oldVal) {
+            if ('all' == val) {
+                this.weekHours =  {
+                    monday: {
+                        from: null,
+                        to: null
+                    },
+                    tuesday: {
+                        from: null,
+                        to: null
+                    },
+                    wednesday: {
+                        from: null,
+                        to: null
+                    },
+                    thursday: {
+                        from: null,
+                        to: null
+                    },
+                    friday: {
+                        from: null,
+                        to: null
+                    },
+                    saturday: {
+                        from: null,
+                        to: null
+                    },
+                    sunday: {
+                        from: null,
+                        to: null
+                    }
+                };
+            }
+        }
+    },
+
     computed: {
         coverFileName: function () {
             return this.cover.replace('C:\\fakepath\\', '');
@@ -195,7 +232,11 @@ var vm = new Vue({
             return this.cv.replace('C:\\fakepath\\', '');
         },
 
-        mondayValid: function () {
+        mondayHasValue: function() {
+            return this.weekHours.monday.from !== null;
+        },
+
+        mondayValid: function() {
             var diff = this.checkRange(this.weekHours.monday.from, this.weekHours.monday.to);
 
             // console.log(diff);
