@@ -210,7 +210,7 @@ class OpeningManager implements ManagerInterface
         $candidate->setAvailability($request->request->get('availability'));
         $candidate->setAvailableHours($request->request->get('availabilityHours'));
         $candidate->setWeekAvailable($request->request->get('weekHours'));
-        $candidate->setStartDate(new \DateTime($request->request->get('startDate')));
+        $candidate->setStartDate(\DateTime::createFromFormat('d/m/Y', $request->request->get('startDate')));
         $candidate->setSalary($request->request->get('salary'));
         $candidate->setHasLicense($request->request->get('hasDriverLicense'));
         $candidate->setLicenseNumber($request->request->get('licenseNumber'));
