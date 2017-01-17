@@ -3221,6 +3221,14 @@ form.filter-openings .select2-container--default .select2-selection--single .sel
     justify-content: space-between;
 }
 
+.apply-info .apply-info-img {
+    width: 300px;
+    height: 150px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 .apply-info img {
     max-width: 300px;
 }
