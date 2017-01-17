@@ -2389,6 +2389,10 @@ form .form-group.error {
     border: 1px solid #cc5965 !important;
 }
 
+.hours-row .invalid {
+    background-color: rgba(199, 106, 115, 0.25);
+}
+
 .apply-form form .form-group:hover {
     border-color: #FDB125;
 }

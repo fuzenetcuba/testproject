@@ -200,7 +200,7 @@
                     </div>
                 </fieldset>
                 <fieldset v-if="formApplication" transition="expand">
-                    <div class="row">
+                    <div class="row hours-row">
                         <div class="col-lg-5">
                             <div class="form-group">
                                 <label for="name">{{ 'Hours of availability' | trans({},'careers') }}</label>
@@ -219,9 +219,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <label v-if="$validation1.monday.lower || $validation1.tuesday.lower || $validation1.wednesday.lower || 
-                                         $validation1.thursday.lower || $validation1.friday.lower || $validation1.saturday.lower || 
-                                         $validation1.sunday.lower" class="error">
+                            <label v-if="($validation1.monday && $validation1.monday.invalid) || 
+                                         ($validation1.tuesday && $validation1.tuesday.invalid) || 
+                                         ($validation1.wednesday && $validation1.wednesday.invalid) || 
+                                         ($validation1.thursday && $validation1.thursday.invalid) || 
+                                         ($validation1.friday && $validation1.friday.invalid) || 
+                                         ($validation1.saturday && $validation1.saturday.invalid) || 
+                                         ($validation1.sunday && $validation1.sunday.invalid)" 
+                                          class="error">
                                          {{ 'The end time should be greater than the start time' | trans({}, 'careers') }}
                             </label>
                         </div>
@@ -229,15 +234,22 @@
                             <div class="form-group" :class="{'error' : $validation1.monday.lower }">
                                 <label for="name">{{ 'Monday' | trans({},'careers') }}</label>
                                 <input type="text" :disabled="availabilityHours == 'all'"
-                                       v-mask="99"
                                        v-model="weekHours.monday.from" class="form-control clockpicker"
                                        placeholder="{{ 'From' | trans({},'careers') }}">
-                                <input type="text" :disabled="availabilityHours == 'all'"
+                                <span v-if="weekHours.monday.from">
+                                    <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
-                                       :groups="['hours']"
-                                       v-validate:monday="{ required: true, lower: mondayValid }" :class="{'error' : $validation1.monday.lower }"
+                                       v-validate:monday="{ required: true, lower: mondayValid }"
                                        v-model="weekHours.monday.to" class="form-control clockpicker"
                                        placeholder="{{ 'To' | trans({},'careers') }}">
+                                </span>
+                                <span v-else>
+                                    <input type="text" :disabled="availabilityHours == 'all'"
+                                       v-mask="99"
+                                       v-validate:monday="{ lower: mondayValid }"
+                                       v-model="weekHours.monday.to" class="form-control clockpicker"
+                                       placeholder="{{ 'To' | trans({},'careers') }}">
+                                </span>
                             </div>
                         </div>
                         <div class="col-lg-1">
@@ -249,7 +261,7 @@
                                        placeholder="{{ 'From' | trans({},'careers') }}">
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
-                                       v-validate:tuesday="{ required: true, lower: tuesdayValid }" :class="{'error' : $validation1.tuesday.lower }"
+                                       v-validate:tuesday="{ lower: tuesdayValid }"
                                        v-model="weekHours.tuesday.to" class="form-control clockpicker"
                                        placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
@@ -264,7 +276,7 @@
                                        placeholder="{{ 'From' | trans({},'careers') }}">
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
-                                       v-validate:wednesday="{ required: true, lower: wednesdayValid }" :class="{'error' : $validation1.wednesday.lower }"
+                                       v-validate:wednesday="{ lower: wednesdayValid }"
                                        v-model="weekHours.wednesday.to" class="form-control clockpicker"
                                        placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
@@ -278,7 +290,7 @@
                                        placeholder="{{ 'From' | trans({},'careers') }}">
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
-                                       v-validate:thursday="{ required: true, lower: thursdayValid }" :class="{'error' : $validation1.thursday.lower }"
+                                       v-validate:thursday="{ lower: thursdayValid }"
                                        v-model="weekHours.thursday.to" class="form-control clockpicker"
                                        placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
@@ -292,7 +304,7 @@
                                        placeholder="{{ 'From' | trans({},'careers') }}">
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
-                                       v-validate:friday="{ required: true, lower: fridayValid }" :class="{'error' : $validation1.friday.lower }"
+                                       v-validate:friday="{ lower: fridayValid }"
                                        v-model="weekHours.friday.to" class="form-control clockpicker"
                                        placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
@@ -306,7 +318,7 @@
                                        placeholder="{{ 'From' | trans({},'careers') }}">
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
-                                       v-validate:saturday="{ required: true, lower: saturdayValid }" :class="{'error' : $validation1.saturday.lower }"
+                                       v-validate:saturday="{ lower: saturdayValid }"
                                        v-model="weekHours.saturday.to" class="form-control clockpicker"
                                        placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
@@ -320,7 +332,7 @@
                                        placeholder="{{ 'From' | trans({},'careers') }}">
                                 <input type="text" :disabled="availabilityHours == 'all'"
                                        v-mask="99"
-                                       v-validate:sunday="{ required: true, lower: sundayValid }" :class="{'error' : $validation1.sunday.lower }"
+                                       v-validate:sunday="{ lower: sundayValid }"
                                        v-model="weekHours.sunday.to" class="form-control clockpicker"
                                        placeholder="{{ 'To' | trans({},'careers') }}">
                             </div>
@@ -1055,9 +1067,11 @@
             });
 
             // clockpicker scripts for input time
-            $(".clockpicker").clockpicker({
-                autoclose: true
-            });
+            setInterval(function () {
+                $(".clockpicker").clockpicker({
+                    autoclose: true,
+                });
+            }, 500);
 
             // ===== Scroll to Top ====
             $(window).scroll(function () {
