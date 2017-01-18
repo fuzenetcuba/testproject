@@ -3420,10 +3420,47 @@ div.container-fb-share-button{
     }
 }
 
+label[for="city"] {
+    padding-left: 5px !important;
+}
+
 .application-form {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.application-form .select2-selection {
+    border: none !important;
+}
+
+.application-form .alert button {
+    background-color: red;
+    padding: 5px 10px;
+    border-radius: 50%;
+    color: white;
+}
+
+.application-form .row > div:first-child {
+    padding-left: 0;
+}
+
+.application-form .row {
+    margin: 0;
+}
+
+.application-form .alert {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.application-form .alert span {
+    flex: 1;
+}
+
+.application-form .col-lg-12 {
+    padding-right: 0;
 }
 
 .application-form .input-group-addon {

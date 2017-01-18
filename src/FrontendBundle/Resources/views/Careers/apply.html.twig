@@ -71,10 +71,12 @@
                   @submit.prevent="submitForm()"
                   class="container application-form" novalidate>
 
-                <div v-if="error" class="alert alert-danger">
-                    <button type="button" @click="error = false" class="close" aria-label="Close"><span
+                <div v-if="error" class="alert alert-danger animated fadeInLeft">
+                    <span>
+                        <b>ERROR: </b>${ errorMessage }
+                    </span>
+                    <button type="button" @click="error = !error" class="close" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <b>ERROR: </b>${ errorMessage }
                 </div>
 
                 <fieldset>
@@ -635,7 +637,7 @@
                         </div>
                         <div class="col-lg-1">
                             <div class="form-group">
-                                <label for="name">{{ 'City/State' | trans({},'careers') }}</label>
+                                <label for="city">{{ 'City/State' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-model="schools[0].state"
                                        class="form-control" placeholder="...">
@@ -651,7 +653,7 @@
                         </div>
                         <div class="col-lg-1">
                             <div class="form-group">
-                                <label for="name">{{ 'City/State' | trans({},'careers') }}</label>
+                                <label for="city">{{ 'City/State' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-model="schools[1].state"
                                        class="form-control" placeholder="...">
@@ -679,7 +681,7 @@
                         </div>
                         <div class="col-lg-1">
                             <div class="form-group">
-                                <label for="name">{{ 'City/State' | trans({},'careers') }}</label>
+                                <label for="city">{{ 'City/State' | trans({},'careers') }}</label>
                                 <input type="text" v-model="collegeCity" class="form-control" placeholder="...">
                             </div>
                         </div>

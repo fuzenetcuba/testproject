@@ -89,7 +89,7 @@ class CareersController extends Controller
             for ($i = 0; $i < count($errors); $i++) {
                 $errorsString .= $errors->get($i)->getMessage();
             }
-            return new JsonResponse(array('error' => $errorsString));
+            return new JsonResponse(array('error' => $errorsString), Response::HTTP_UNPROCESSABLE_ENTITY);
         } else {
 
             $this->get('opening.manager')->storeFilesFromRequest($request, $candidate);

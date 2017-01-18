@@ -369,12 +369,11 @@ var vm = new Vue({
                 Routing.generate('careers_store'),
                 formData
             ).then(function (response) {
-                if (response.body.error) {
-                    this.error = true;
-                    this.errorMessage = response.body.error;
-                } else {
-                    this.done = true;
-                }
+                this.done = true;
+            }).catch(function (error) {
+                // 422 - unprocessable entity
+                this.error = true;
+                this.errorMessage = error.body.error;
             });
         }
     }
