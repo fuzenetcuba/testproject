@@ -811,7 +811,19 @@
                                 </div>
                             </div>
                             <div class="col-lg-2">
-                                <div class="form-group">
+                                <div v-if="employer.from" class="form-group">
+                                    <label for="">{{ 'To' | trans({},'careers') }}</label>
+                                    {# <label class="error animated fadeInLeft"
+                                       v-if="$validation1.employer.required">{{ 'This field is required' | trans({},'careers') }}</label> #}
+                                    <label class="error animated fadeInLeft"
+                                       v-if="$validation1.employer.lower">{{ 'The end date should be greater than the start date' | trans({},'careers') }}</label>
+                                    <input type="text"
+                                           v-model="employer.to"
+                                           v-validate:employer="{ required:true, lower: customMethod(employer) }"
+                                           v-mask="99/99/9999"
+                                           class="form-control datepicker" placeholder="DD/MM/YYYY">
+                                </div>
+                                <div v-else class="form-group">
                                     <label for="">{{ 'To' | trans({},'careers') }}</label>
                                     <input type="text"
                                            v-model="employer.to"
@@ -1149,19 +1161,19 @@
                 placeholder: "--- {{ 'Select a value' | trans({}, 'generalbackend') }} ---"
             });
 
-            //  datepicker3 script for input datetime and date
-            $("input.datepicker").datepicker({
-                todayBtn: "linked",
-                keyboardNavigation: false,
-                forceParse: false,
-                autoclose: true,
-                format: "dd/mm/yyyy"
-            });
-
             // clockpicker scripts for input time
             setInterval(function () {
                 $(".clockpicker").clockpicker({
                     autoclose: true,
+                });
+
+                //  datepicker3 script for input datetime and date
+                $("input.datepicker").datepicker({
+                    todayBtn: "linked",
+                    keyboardNavigation: false,
+                    forceParse: false,
+                    autoclose: true,
+                    format: "dd/mm/yyyy"
                 });
             }, 500);
 

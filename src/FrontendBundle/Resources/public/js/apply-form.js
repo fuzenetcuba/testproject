@@ -286,6 +286,18 @@ var vm = new Vue({
             }
         },
 
+        customMethod: function(employer) {
+            var parts = employer.from.split('/');
+            var start = moment(new Date(parts[2], parts[1] - 1, parts[0]));
+
+            var parts = employer.to.split('/');
+            var end = moment(new Date(parts[2], parts[1] - 1, parts[0]));
+
+            console.log(moment.duration(end.diff(start))._milliseconds);
+
+            return moment.duration(end.diff(start))._milliseconds > 0;
+        },
+
         addEmployer: function () {
             this.employers.push({
                 name: '',
