@@ -71,10 +71,12 @@
                   @submit.prevent="submitForm()"
                   class="container application-form" novalidate>
 
-                <div v-if="error" class="alert alert-danger">
-                    <button type="button" @click="error = false" class="close" aria-label="Close"><span
+                <div v-if="error" class="alert alert-danger animated fadeInLeft">
+                    <span>
+                        <b>ERROR: </b>${ errorMessage }
+                    </span>
+                    <button type="button" @click="error = !error" class="close" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <b>ERROR: </b>${ errorMessage }
                 </div>
 
                 <fieldset>
@@ -172,18 +174,34 @@
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <div class="form-group">
+                            <div class="form-group boolean-toggle">
                                 <label for="name">{{ 'Are you over 18 years old?' | trans({},'careers') }}</label>
+                                <label class="error animated fadeInLeft"
+                                       v-if="$validation1.adult && $validation1.adult.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
                                     <div class="btn-group btn-group-lg" role="group">
-                                        <button @click="adult=true" :class="{'active': adult}" type="button"
-                                                class="btn btn-default">{{ 'YES' | trans({},'careers') }}
-                                        </button>
+                                        <label v-if="!adult">
+                                            <input v-validate:adult="{ required: true }"
+                                                name="adultsRadio" type="radio" id="one" value="true" v-model="adult">
+                                            &nbsp; {{ 'YES' | trans({},'careers') }}
+                                        </label>
+                                        <label v-else>
+                                            <input
+                                                name="adultsRadio" type="radio" id="one" value="true" v-model="adult">
+                                            &nbsp; {{ 'YES' | trans({},'careers') }}
+                                        </label>
                                     </div>
                                     <div class="btn-group btn-group-lg" role="group">
-                                        <button @click="adult=false" :class="{'active': !adult}" type="button"
-                                                class="btn btn-default">NO
-                                        </button>
+                                        <label v-if="adult">
+                                            <input
+                                                name="adultsRadio" type="radio" id="one" value="false" v-model="adult">
+                                            &nbsp; {{ 'NO' | trans({},'careers') }}
+                                        </label>
+                                        <label v-else>
+                                            <input v-validate:adult="{ required: true }"
+                                                name="adultsRadio" type="radio" id="one" value="false" v-model="adult">
+                                            &nbsp; {{ 'NO' | trans({},'careers') }}
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -497,18 +515,34 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
+                            <div class="form-group boolean-toggle">
                                 <label for="">{{ 'Are you legally eligible for employment in the United States' | trans({},'careers') }}</label>
+                                <label class="error animated fadeInLeft"
+                                       v-if="$validation1.legal && $validation1.legal.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
                                     <div class="btn-group btn-group-lg" role="group">
-                                        <button @click="legal = true" :class="{'active' : legal}"
-                                                type="button" class="btn btn-default">{{ 'YES' | trans({},'careers') }}
-                                        </button>
+                                        <label v-if="!legal">
+                                            <input v-validate:legal="{ required: true }"
+                                                name="legalsRadio" type="radio" id="one" value="true" v-model="legal">
+                                            &nbsp; {{ 'YES' | trans({},'careers') }}
+                                        </label>
+                                        <label v-else>
+                                            <input
+                                                name="legalsRadio" type="radio" id="one" value="true" v-model="legal">
+                                            &nbsp; {{ 'YES' | trans({},'careers') }}
+                                        </label>
                                     </div>
                                     <div class="btn-group btn-group-lg" role="group">
-                                        <button @click="legal = false" :class="{'active' : !legal}"
-                                                type="button" class="btn btn-default">NO
-                                        </button>
+                                        <label v-if="legal">
+                                            <input
+                                                name="legalsRadio" type="radio" id="one" value="false" v-model="legal">
+                                            &nbsp; {{ 'NO' | trans({},'careers') }}
+                                        </label>
+                                        <label v-else>
+                                            <input v-validate:legal="{ required: true }"
+                                                name="legalsRadio" type="radio" id="one" value="false" v-model="legal">
+                                            &nbsp; {{ 'NO' | trans({},'careers') }}
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -635,7 +669,7 @@
                         </div>
                         <div class="col-lg-1">
                             <div class="form-group">
-                                <label for="name">{{ 'City/State' | trans({},'careers') }}</label>
+                                <label for="city">{{ 'City/State' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-model="schools[0].state"
                                        class="form-control" placeholder="...">
@@ -651,7 +685,7 @@
                         </div>
                         <div class="col-lg-1">
                             <div class="form-group">
-                                <label for="name">{{ 'City/State' | trans({},'careers') }}</label>
+                                <label for="city">{{ 'City/State' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-model="schools[1].state"
                                        class="form-control" placeholder="...">
@@ -679,7 +713,7 @@
                         </div>
                         <div class="col-lg-1">
                             <div class="form-group">
-                                <label for="name">{{ 'City/State' | trans({},'careers') }}</label>
+                                <label for="city">{{ 'City/State' | trans({},'careers') }}</label>
                                 <input type="text" v-model="collegeCity" class="form-control" placeholder="...">
                             </div>
                         </div>
@@ -777,7 +811,19 @@
                                 </div>
                             </div>
                             <div class="col-lg-2">
-                                <div class="form-group">
+                                <div v-if="employer.from" class="form-group">
+                                    <label for="">{{ 'To' | trans({},'careers') }}</label>
+                                    {# <label class="error animated fadeInLeft"
+                                       v-if="$validation1.employer.required">{{ 'This field is required' | trans({},'careers') }}</label> #}
+                                    <label class="error animated fadeInLeft"
+                                       v-if="$validation1.employer.lower">{{ 'The end date should be greater than the start date' | trans({},'careers') }}</label>
+                                    <input type="text"
+                                           v-model="employer.to"
+                                           v-validate:employer="{ required:true, lower: customMethod(employer) }"
+                                           v-mask="99/99/9999"
+                                           class="form-control datepicker" placeholder="DD/MM/YYYY">
+                                </div>
+                                <div v-else class="form-group">
                                     <label for="">{{ 'To' | trans({},'careers') }}</label>
                                     <input type="text"
                                            v-model="employer.to"
@@ -1115,19 +1161,19 @@
                 placeholder: "--- {{ 'Select a value' | trans({}, 'generalbackend') }} ---"
             });
 
-            //  datepicker3 script for input datetime and date
-            $("input.datepicker").datepicker({
-                todayBtn: "linked",
-                keyboardNavigation: false,
-                forceParse: false,
-                autoclose: true,
-                format: "dd/mm/yyyy"
-            });
-
             // clockpicker scripts for input time
             setInterval(function () {
                 $(".clockpicker").clockpicker({
                     autoclose: true,
+                });
+
+                //  datepicker3 script for input datetime and date
+                $("input.datepicker").datepicker({
+                    todayBtn: "linked",
+                    keyboardNavigation: false,
+                    forceParse: false,
+                    autoclose: true,
+                    format: "dd/mm/yyyy"
                 });
             }, 500);
 

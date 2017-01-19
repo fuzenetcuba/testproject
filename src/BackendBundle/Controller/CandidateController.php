@@ -135,19 +135,6 @@ class CandidateController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
 
-        $this->get('opening.manager')->notifyManagerWithoutSSL(
-            $entity,
-            'testing',
-            'yulioaj@uci.cu',
-            'testing',
-            $this->getParameter('mailer_host'),
-            $this->getParameter('mailer_port'),
-            $this->getParameter('mailer_encryption'),
-            $this->getParameter('mailer_auth_mode'),
-            $this->getParameter('mailer_user'),
-            $this->getParameter('mailer_password')
-        );
-
         return $html;
     }
 
