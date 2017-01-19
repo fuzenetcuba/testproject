@@ -2472,6 +2472,18 @@ form .form-group.error {
     resize: vertical;
 }
 
+.boolean-toggle {
+    height: 52px !important;
+}
+
+.boolean-toggle .btn-group-lg {
+    text-align: center;
+}
+
+.boolean-toggle .btn-group-lg label {
+    margin-top: 5px;
+}
+
 .apply-form select {
     -webkit-appearance: none;
 }

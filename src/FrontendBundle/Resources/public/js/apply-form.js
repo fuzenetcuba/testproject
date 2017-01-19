@@ -70,7 +70,7 @@ var vm = new Vue({
         state: '',
         zipCode: '',
         securityNumber: '',
-        adult: 0,
+        adult: null,
         availability: 'full',
         availabilityHours: 'all',
         weekHours: {
@@ -110,7 +110,7 @@ var vm = new Vue({
         licenseNumber: '',
         licenseState: '',
         licenseExpiration: '',
-        legal: true,
+        legal: null,
         crime: false,
         crimeExplain: '',
         background: true,
