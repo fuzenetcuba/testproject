@@ -178,8 +178,34 @@
                                 <label for="name">{{ 'Are you over 18 years old?' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
                                        v-if="$validation1.adult && $validation1.adult.required">{{ 'This field is required' | trans({},'careers') }}</label>
-                                <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                                    <div class="btn-group btn-group-lg" role="group">
+                                <div class="btn-group btn-group-justified" role="group">
+                                    <ul>
+                                        <li v-if="!adult">
+                                            <input v-validate:adult="{ required: true }"
+                                                name="adultsRadio" type="radio" id="yes" value="true" v-model="adult">
+                                            <label for="yes">{{ 'YES' | trans({},'careers') }}</label>
+                                            <div class="check"></div>
+                                        </li>
+                                        <li v-else>
+                                            <input
+                                                name="adultsRadio" type="radio" id="yes" value="true" v-model="adult">
+                                            <label for="yes">{{ 'YES' | trans({},'careers') }}</label>
+                                            <div class="check"></div>
+                                        </li>
+                                        <li v-if="adult">
+                                            <input
+                                                name="adultsRadio" type="radio" id="no" value="false" v-model="adult">
+                                            <label for="no">NO</label>
+                                            <div class="check"></div>
+                                        </li>
+                                        <li v-else>
+                                            <input v-validate:adult="{ required: true }"
+                                                name="adultsRadio" type="radio" id="no" value="false" v-model="adult">
+                                            <label for="no">NO</label>
+                                            <div class="check"></div>
+                                        </li>
+                                    </ul>
+                                    {# <div class="btn-group btn-group-lg" role="group">
                                         <label v-if="!adult">
                                             <input v-validate:adult="{ required: true }"
                                                 name="adultsRadio" type="radio" id="one" value="true" v-model="adult">
@@ -202,7 +228,7 @@
                                                 name="adultsRadio" type="radio" id="one" value="false" v-model="adult">
                                             &nbsp; {{ 'NO' | trans({},'careers') }}
                                         </label>
-                                    </div>
+                                    </div> #}
                                 </div>
                             </div>
                         </div>
@@ -520,7 +546,7 @@
                                 <label class="error animated fadeInLeft"
                                        v-if="$validation1.legal && $validation1.legal.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                                    <div class="btn-group btn-group-lg" role="group">
+                                    {# <div class="btn-group btn-group-lg" role="group">
                                         <label v-if="!legal">
                                             <input v-validate:legal="{ required: true }"
                                                 name="legalsRadio" type="radio" id="one" value="true" v-model="legal">
@@ -543,7 +569,33 @@
                                                 name="legalsRadio" type="radio" id="one" value="false" v-model="legal">
                                             &nbsp; {{ 'NO' | trans({},'careers') }}
                                         </label>
-                                    </div>
+                                    </div> #}
+                                    <ul>
+                                        <li v-if="legal == null">
+                                            <input v-validate:legal="{ required: true }"
+                                                name="legalsRadio" type="radio" id="legalyes" value="true" v-model="legal">
+                                            <label for="legalyes">{{ 'YES' | trans({},'careers') }}</label>
+                                            <div class="check"></div>
+                                        </li>
+                                        <li v-else>
+                                            <input 
+                                                name="legalsRadio" type="radio" id="legalyes" value="true" v-model="legal">
+                                            <label for="legalyes">{{ 'YES' | trans({},'careers') }}</label>
+                                            <div class="check"></div>
+                                        </li>
+                                        <li v-if="legal == null">
+                                            <input v-validate:legal="{ required: true }"
+                                                name="legalsRadio" type="radio" id="legalno" value="false" v-model="legal">
+                                            <label for="legalno">{{ 'NO' | trans({},'careers') }}</label>
+                                            <div class="check"></div>
+                                        </li>
+                                        <li v-else>
+                                            <input
+                                                name="legalsRadio" type="radio" id="legalno" value="false" v-model="legal">
+                                            <label for="legalno">{{ 'NO' | trans({},'careers') }}</label>
+                                            <div class="check"></div>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
