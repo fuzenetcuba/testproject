@@ -178,8 +178,34 @@
                                 <label for="name">{{ 'Are you over 18 years old?' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
                                        v-if="$validation1.adult && $validation1.adult.required">{{ 'This field is required' | trans({},'careers') }}</label>
-                                <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                                    <div class="btn-group btn-group-lg" role="group">
+                                <div class="btn-group btn-group-justified" role="group">
+                                    <ul>
+                                        <li v-if="!adult">
+                                            <input v-validate:adult="{ required: true }"
+                                                name="adultsRadio" type="radio" id="yes" value="true" v-model="adult">
+                                            <label for="yes">{{ 'YES' | trans({},'careers') }}</label>
+                                            <div class="check"></div>
+                                        </li>
+                                        <li v-else>
+                                            <input
+                                                name="adultsRadio" type="radio" id="yes" value="true" v-model="adult">
+                                            <label for="yes">{{ 'YES' | trans({},'careers') }}</label>
+                                            <div class="check"></div>
+                                        </li>
+                                        <li v-if="adult">
+                                            <input
+                                                name="adultsRadio" type="radio" id="no" value="false" v-model="adult">
+                                            <label for="no">NO</label>
+                                            <div class="check"></div>
+                                        </li>
+                                        <li v-else>
+                                            <input v-validate:adult="{ required: true }"
+                                                name="adultsRadio" type="radio" id="no" value="false" v-model="adult">
+                                            <label for="no">NO</label>
+                                            <div class="check"></div>
+                                        </li>
+                                    </ul>
+                                    {# <div class="btn-group btn-group-lg" role="group">
                                         <label v-if="!adult">
                                             <input v-validate:adult="{ required: true }"
                                                 name="adultsRadio" type="radio" id="one" value="true" v-model="adult">
@@ -202,7 +228,7 @@
                                                 name="adultsRadio" type="radio" id="one" value="false" v-model="adult">
                                             &nbsp; {{ 'NO' | trans({},'careers') }}
                                         </label>
-                                    </div>
+                                    </div> #}
                                 </div>
                             </div>
                         </div>
@@ -484,7 +510,19 @@
                             </div>
                         </div>
                         <div class="col-lg-3">
-                            <div class="form-group">
+                            <div v-if="hasDriverLicense" class="form-group" 
+                                :class="{'error' : $validation1.licensenumber.required }">
+                                <label for="name">{{ 'Drivers License Number' | trans({},'careers') }}</label>
+                                <label class="error animated fadeInLeft"
+                                       v-if="$validation1.licensenumber.required">{{ 'This field is required' | trans({},'careers') }}</label>
+                                <input type="text"
+                                       v-model="licenseNumber"
+                                       v-validate:licenseNumber="{ required:true }"
+                                       :disabled="hasDriverLicense == false"
+                                       class="form-control"
+                                       placeholder="{{ 'Drivers License Number' | trans({},'careers') }}">
+                            </div>
+                            <div v-else class="form-group">
                                 <label for="name">{{ 'Drivers License Number' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-model="licenseNumber"
@@ -494,7 +532,20 @@
                             </div>
                         </div>
                         <div class="col-lg-3">
-                            <div class="form-group">
+                            <div class="form-group"
+                                v-if="hasDriverLicense"
+                                :class="{'error' : $validation1.licensestate.required }">
+                                <label for="name">{{ 'State' | trans({},'careers') }}</label>
+                                <label class="error animated fadeInLeft"
+                                       v-if="$validation1.licensestate.required">{{ 'This field is required' | trans({},'careers') }}</label>
+                                <input type="text"
+                                       v-model="licenseState"
+                                       v-validate:licenseState="{ required:true }"
+                                       :disabled="hasDriverLicense == false"
+                                       class="form-control" placeholder="{{ 'State' | trans({},'careers') }}">
+                            </div>
+                            <div class="form-group"
+                                v-else>
                                 <label for="name">{{ 'State' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-model="licenseState"
@@ -503,7 +554,21 @@
                             </div>
                         </div>
                         <div class="col-lg-2">
-                            <div class="form-group">
+                            <div class="form-group"
+                                v-if="hasDriverLicense"
+                                :class="{'error' : $validation1.licenseexpiration.required }">
+                                <label for="name">{{ 'Expiration Date' | trans({},'careers') }}</label>
+                                <label class="error animated fadeInLeft"
+                                       v-if="$validation1.licenseexpiration.required">{{ 'This field is required' | trans({},'careers') }}</label>
+                                <input type="text"
+                                       v-mask="99/99/9999"
+                                       v-model="licenseExpiration"
+                                       v-validate:licenseExpiration="{ required:true }"
+                                       :disabled="hasDriverLicense == false"
+                                       class="form-control datepicker" placeholder="DD/MM/YYYY">
+                            </div>
+                            <div class="form-group"
+                                v-else>
                                 <label for="name">{{ 'Expiration Date' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-mask="99/99/9999"
@@ -520,7 +585,7 @@
                                 <label class="error animated fadeInLeft"
                                        v-if="$validation1.legal && $validation1.legal.required">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                                    <div class="btn-group btn-group-lg" role="group">
+                                    {# <div class="btn-group btn-group-lg" role="group">
                                         <label v-if="!legal">
                                             <input v-validate:legal="{ required: true }"
                                                 name="legalsRadio" type="radio" id="one" value="true" v-model="legal">
@@ -543,7 +608,33 @@
                                                 name="legalsRadio" type="radio" id="one" value="false" v-model="legal">
                                             &nbsp; {{ 'NO' | trans({},'careers') }}
                                         </label>
-                                    </div>
+                                    </div> #}
+                                    <ul>
+                                        <li v-if="legal == null">
+                                            <input v-validate:legal="{ required: true }"
+                                                name="legalsRadio" type="radio" id="legalyes" value="true" v-model="legal">
+                                            <label for="legalyes">{{ 'YES' | trans({},'careers') }}</label>
+                                            <div class="check"></div>
+                                        </li>
+                                        <li v-else>
+                                            <input
+                                                name="legalsRadio" type="radio" id="legalyes" value="true" v-model="legal">
+                                            <label for="legalyes">{{ 'YES' | trans({},'careers') }}</label>
+                                            <div class="check"></div>
+                                        </li>
+                                        <li v-if="legal == null">
+                                            <input v-validate:legal="{ required: true }"
+                                                name="legalsRadio" type="radio" id="legalno" value="false" v-model="legal">
+                                            <label for="legalno">{{ 'NO' | trans({},'careers') }}</label>
+                                            <div class="check"></div>
+                                        </li>
+                                        <li v-else>
+                                            <input
+                                                name="legalsRadio" type="radio" id="legalno" value="false" v-model="legal">
+                                            <label for="legalno">{{ 'NO' | trans({},'careers') }}</label>
+                                            <div class="check"></div>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -573,7 +664,18 @@
                             </div>
                         </div>
                         <div class="col-lg-8">
-                            <div class="form-group">
+                            <div class="form-group" v-if="crime">
+                                <label for="name">{{ 'Explain' | trans({},'careers') }}</label>
+                                <label class="error animated fadeInLeft"
+                                       v-if="$validation1.crime.required">{{ 'This field is required' | trans({},'careers') }}</label>
+                                <input type="text"
+                                       v-model="crimeExplain"
+                                       v-validate:crime="{ required:true }"
+                                       :disabled="crime == false"
+                                       class="form-control" placeholder="...">
+                            </div>
+                            <div v-else
+                                class="form-group" >
                                 <label for="name">{{ 'Explain' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-model="crimeExplain"
@@ -601,7 +703,19 @@
                             </div>
                         </div>
                         <div class="col-lg-8">
-                            <div class="form-group">
+                            <div v-if="!background"
+                                class="form-group">
+                                <label for="name">{{ 'Explain' | trans({},'careers') }}</label>
+                                <label class="error animated fadeInLeft"
+                                       v-if="$validation1.background.required">{{ 'This field is required' | trans({},'careers') }}</label>
+                                <input type="text"
+                                       v-model="backExplain"
+                                       v-validate:background="{ required:true }"
+                                       :disabled="background == true"
+                                       class="form-control" placeholder="...">
+                            </div>
+                            <div v-else
+                                class="form-group">
                                 <label for="name">{{ 'Explain' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-model="backExplain"
