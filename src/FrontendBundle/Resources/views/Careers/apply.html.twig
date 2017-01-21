@@ -550,7 +550,7 @@
                                 <label for="">{{ 'Are you legally eligible for employment in the United States' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
                                        v-if="$validation1.legal && $validation1.legal.required">{{ 'This field is required' | trans({},'careers') }}</label>
-                                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                <div class="btn-group btn-group-justified" role="group">
                                     <label class="btn btn-default" v-if="legal == null">
                                         <input v-validate:legal="{ required: true }"
                                             name="legalsRadio" type="radio" id="legalyes" value="true" v-model="legal">
@@ -585,17 +585,24 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="name">{{ 'Have you been convicted of a crime?' | trans({},'careers') }}</label>
-                                <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                                    <div class="btn-group btn-group-lg" role="group">
-                                        <button @click="crime = true" :class="{'active' : crime}"
-                                                type="button" class="btn btn-default">{{ 'YES' | trans({},'careers') }}
-                                        </button>
-                                    </div>
-                                    <div class="btn-group btn-group-lg" role="group">
-                                        <button @click="crime = false" :class="{'active' : !crime}"
-                                                type="button" class="btn btn-default">NO
-                                        </button>
-                                    </div>
+                                <label class="error animated fadeInLeft"
+                                       v-if="$validation1.convicted && $validation1.convicted.required">{{ 'This field is required' | trans({},'careers') }}</label>
+                                <div class="btn-group btn-group-justified" role="group">
+                                    <label v-if="crime == null"
+                                        class="btn btn-default" :class="{ 'active' : crime }">
+                                        <input type="radio" v-model="crime" value="true"
+                                            v-validate:convicted="{ required:true }"
+                                            autocomplete="off"> {{ 'YES' | trans({},'careers') }}
+                                    </label>
+                                    <label v-else
+                                        class="btn btn-default" :class="{ 'active' : crime }">
+                                        <input type="radio" v-model="crime" :value="true"
+                                            autocomplete="off"> {{ 'YES' | trans({},'careers') }}
+                                    </label>
+                                    <label class="btn btn-default" :class="{ 'active' : crime == false }">
+                                        <input type="radio" v-model="crime" :value="false" 
+                                            autocomplete="off"> {{ 'NO' | trans({},'careers') }}
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -624,17 +631,24 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="name">{{ 'May we do a background check?' | trans({},'careers') }}</label>
-                                <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                                    <div class="btn-group btn-group-lg" role="group">
-                                        <button @click="background = true" :class="{'active' : background}"
-                                                type="button" class="btn btn-default">{{ 'YES' | trans({},'careers') }}
-                                        </button>
-                                    </div>
-                                    <div class="btn-group btn-group-lg" role="group">
-                                        <button @click="background = false" :class="{'active' : !background}"
-                                                type="button" class="btn btn-default">NO
-                                        </button>
-                                    </div>
+                                <label class="error animated fadeInLeft"
+                                       v-if="$validation1.backgcheck && $validation1.backgcheck.required">{{ 'This field is required' | trans({},'careers') }}</label>
+                                <div class="btn-group btn-group-justified" role="group">
+                                    <label v-if="background == null"
+                                        class="btn btn-default" :class="{ 'active' : background }">
+                                        <input type="radio" v-model="background" value="true"
+                                            v-validate:backgcheck="{ required:true }"
+                                            autocomplete="off"> {{ 'YES' | trans({},'careers') }}
+                                    </label>
+                                    <label v-else
+                                        class="btn btn-default" :class="{ 'active' : background }">
+                                        <input type="radio" v-model="background" :value="true"
+                                            autocomplete="off"> {{ 'YES' | trans({},'careers') }}
+                                    </label>
+                                    <label class="btn btn-default" :class="{ 'active' : background == false }">
+                                        <input type="radio" v-model="background" :value="false" 
+                                            autocomplete="off"> {{ 'NO' | trans({},'careers') }}
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -647,7 +661,7 @@
                                 <input type="text"
                                        v-model="backExplain"
                                        v-validate:background="{ required:true }"
-                                       :disabled="background == true"
+                                       :disabled="background"
                                        class="form-control" placeholder="...">
                             </div>
                             <div v-else
@@ -655,7 +669,7 @@
                                 <label for="name">{{ 'Explain' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-model="backExplain"
-                                       :disabled="background == true"
+                                       :disabled="background"
                                        class="form-control" placeholder="...">
                             </div>
                         </div>
@@ -1052,45 +1066,43 @@
                         </div>
                     </div>
                 </fieldset>
-                <fieldset>
+                <fieldset class="uploads">
                     <div class="row">
-                        <div class="col-lg-5">
+                        <div class="col-lg-6">
                             <div v-if="!formApplication" class="form-group">
                                 <label for="">{{ 'Upload your resume in PDF format' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="!$validation1.cv.valid">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="!$validation1.file.valid">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.cv.pdf && !$validation1.cv.pristine">{{ 'This file is not in PDF format' | trans({},'careers') }}</label>
+                                       v-if="$validation1.file.pdf && !$validation1.file.pristine">{{ 'This file is not in PDF format' | trans({},'careers') }}</label>
                                 <label class="btn btn-block btn-default btn-file right">
                                     <i class="fa fa-upload"></i>
                                     <span>Choose file ...</span>
                                     <span class="label label-default" v-if="cvFileName">${ cvFileName }</span>
                                     <input v-model="cv"
-                                           v-validate:cv="{ required:true, pdf:true }"
-                                           id="cv"
+                                           v-validate:file="{ required: true, pdf: true }"
                                            name="cv"
                                            type="file" style="display: none;">
                                 </label>
                             </div>
 
                             <div v-if="formApplication" class="form-group">
-                                <label for="">{{ 'Upload your curriculum in PDF format' | trans({},'careers') }}</label>
+                                <label for="">{{ 'Upload your resume in PDF format' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.cv.pdf && !$validation1.cv.pristine">{{ 'This file is not in PDF format' | trans({},'careers') }}</label>
+                                       v-if="$validation1.other.pdf && !$validation1.other.pristine">{{ 'This file is not in PDF format' | trans({},'careers') }}</label>
                                 <label class="btn btn-block btn-default btn-file right">
                                     <i class="fa fa-upload"></i>
                                     <span>{{ 'Choose file ...' | trans({},'careers') }}</span>
                                     <span class="label label-default" v-if="cvFileName">${ cvFileName }</span>
                                     <input v-model="cv"
-                                           v-validate:cv="{ pdf:true }"
-                                           id="cv"
+                                           v-validate:other="{ pdf:true }"
                                            name="cv"
                                            type="file" style="display: none;">
                                 </label>
                             </div>
                         </div>
 
-                        <div class="col-lg-5 col-lg-offset-2">
+                        <div class="col-lg-6">
                             <div v-if="!formApplication" class="form-group">
                                 <label for="">{{ 'Upload your cover letter in PDF format' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
