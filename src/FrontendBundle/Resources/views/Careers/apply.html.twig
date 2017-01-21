@@ -653,7 +653,7 @@
                             </div>
                         </div>
                         <div class="col-lg-8">
-                            <div v-if="!background"
+                            <div v-if="!background || background == null"
                                 class="form-group">
                                 <label for="name">{{ 'Explain' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
@@ -661,7 +661,7 @@
                                 <input type="text"
                                        v-model="backExplain"
                                        v-validate:background="{ required:true }"
-                                       :disabled="background"
+                                       :disabled="background || background == null"
                                        class="form-control" placeholder="...">
                             </div>
                             <div v-else
@@ -669,7 +669,7 @@
                                 <label for="name">{{ 'Explain' | trans({},'careers') }}</label>
                                 <input type="text"
                                        v-model="backExplain"
-                                       :disabled="background"
+                                       :disabled="background || background == null"
                                        class="form-control" placeholder="...">
                             </div>
                         </div>
