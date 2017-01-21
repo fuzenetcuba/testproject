@@ -2510,9 +2510,14 @@ form .form-group.error {
     box-shadow: none;
 }
 
-.apply-form button.btn.btn-default {
+.apply-form button.btn.btn-default, .apply-form label.btn.btn-default {
     border: none;
     font-size: 14px;
+    text-align: center !important;
+}
+
+label.btn.btn-default input[type="radio"] {
+    display: none;
 }
 
 .apply-form .btn-group > .btn-group:last-child > button {
