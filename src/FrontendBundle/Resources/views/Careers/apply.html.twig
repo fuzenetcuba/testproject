@@ -550,7 +550,7 @@
                                 <label for="">{{ 'Are you legally eligible for employment in the United States' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
                                        v-if="$validation1.legal && $validation1.legal.required">{{ 'This field is required' | trans({},'careers') }}</label>
-                                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                <div class="btn-group btn-group-justified" role="group">
                                     <label class="btn btn-default" v-if="legal == null">
                                         <input v-validate:legal="{ required: true }"
                                             name="legalsRadio" type="radio" id="legalyes" value="true" v-model="legal">
@@ -1052,45 +1052,43 @@
                         </div>
                     </div>
                 </fieldset>
-                <fieldset>
+                <fieldset class="uploads">
                     <div class="row">
-                        <div class="col-lg-5">
+                        <div class="col-lg-6">
                             <div v-if="!formApplication" class="form-group">
                                 <label for="">{{ 'Upload your resume in PDF format' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="!$validation1.cv.valid">{{ 'This field is required' | trans({},'careers') }}</label>
+                                       v-if="!$validation1.file.valid">{{ 'This field is required' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.cv.pdf && !$validation1.cv.pristine">{{ 'This file is not in PDF format' | trans({},'careers') }}</label>
+                                       v-if="$validation1.file.pdf && !$validation1.file.pristine">{{ 'This file is not in PDF format' | trans({},'careers') }}</label>
                                 <label class="btn btn-block btn-default btn-file right">
                                     <i class="fa fa-upload"></i>
                                     <span>Choose file ...</span>
                                     <span class="label label-default" v-if="cvFileName">${ cvFileName }</span>
                                     <input v-model="cv"
-                                           v-validate:cv="{ required:true, pdf:true }"
-                                           id="cv"
+                                           v-validate:file="{ required: true, pdf: true }"
                                            name="cv"
                                            type="file" style="display: none;">
                                 </label>
                             </div>
 
                             <div v-if="formApplication" class="form-group">
-                                <label for="">{{ 'Upload your curriculum in PDF format' | trans({},'careers') }}</label>
+                                <label for="">{{ 'Upload your resume in PDF format' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
-                                       v-if="$validation1.cv.pdf && !$validation1.cv.pristine">{{ 'This file is not in PDF format' | trans({},'careers') }}</label>
+                                       v-if="$validation1.other.pdf && !$validation1.other.pristine">{{ 'This file is not in PDF format' | trans({},'careers') }}</label>
                                 <label class="btn btn-block btn-default btn-file right">
                                     <i class="fa fa-upload"></i>
                                     <span>{{ 'Choose file ...' | trans({},'careers') }}</span>
                                     <span class="label label-default" v-if="cvFileName">${ cvFileName }</span>
                                     <input v-model="cv"
-                                           v-validate:cv="{ pdf:true }"
-                                           id="cv"
+                                           v-validate:other="{ pdf:true }"
                                            name="cv"
                                            type="file" style="display: none;">
                                 </label>
                             </div>
                         </div>
 
-                        <div class="col-lg-5 col-lg-offset-2">
+                        <div class="col-lg-6">
                             <div v-if="!formApplication" class="form-group">
                                 <label for="">{{ 'Upload your cover letter in PDF format' | trans({},'careers') }}</label>
                                 <label class="error animated fadeInLeft"
