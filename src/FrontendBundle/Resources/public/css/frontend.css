@@ -2414,6 +2414,15 @@ form .form-group.error {
     display: none !important;
 }
 
+.onoffswitch-ios-label {
+    background-color: #2196F3;
+}
+
+.onoffswitch-ios-label, .onoffswitch-ios-label:before {
+    border-color: #2196F3;
+}
+
+
 /* without input checkbox  */
 .onoffswitch-ios-label.checked {
     background-color: #FDB125;
@@ -2510,9 +2519,14 @@ form .form-group.error {
     box-shadow: none;
 }
 
-.apply-form button.btn.btn-default {
+.apply-form button.btn.btn-default, .apply-form label.btn.btn-default {
     border: none;
     font-size: 14px;
+    text-align: center !important;
+}
+
+label.btn.btn-default input[type="radio"] {
+    display: none;
 }
 
 .apply-form .btn-group > .btn-group:last-child > button {
@@ -3405,13 +3419,21 @@ div.container-fb-share-button{
     }
 }
 
-.onoffswitch-ios-label i {
-    display: none;
+.onoffswitch-ios-label i.fa-arrow-down:before {
+    content: "\f061";
+}
+
+.onoffswitch-ios-label i.fa-arrow-up:before {
+    content: "\f060";
 }
 
 @media (max-width: 1024px) {
-    .onoffswitch-ios-label i {
-        display: inline-block;
+    .onoffswitch-ios-label i.fa-arrow-down:before {
+        content: "\f063";
+    }
+
+    .onoffswitch-ios-label i.fa-arrow-up:before {
+        content: "\f062";
     }
 
     .apply-info {
@@ -3596,4 +3618,8 @@ label[for="city"] {
 
 .boolean-toggle input[type=radio]:checked ~ label{
   color: #BF8601;
+}
+
+fieldset.uploads {
+    width: 100%;
 }
