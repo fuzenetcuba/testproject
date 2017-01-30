@@ -1,0 +1,16 @@
+[15-Jan-2017 21:41:38 UTC] PHP Fatal error:  Class 'Spraed\PDFGeneratorBundle\SpraedPDFGeneratorBundle' not found in /home/pmmusiccity/public_html/app/AppKernel.php on line 30
+[15-Jan-2017 21:41:46 UTC] PHP Fatal error:  Class 'Spraed\PDFGeneratorBundle\SpraedPDFGeneratorBundle' not found in /home/pmmusiccity/public_html/app/AppKernel.php on line 30
+[20-Jan-2017 19:17:46 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[20-Jan-2017 19:19:26 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[20-Jan-2017 20:56:49 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[20-Jan-2017 20:58:07 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[22-Jan-2017 03:08:18 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[26-Jan-2017 18:00:58 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[26-Jan-2017 18:03:41 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[26-Jan-2017 18:05:50 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[26-Jan-2017 18:07:47 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[26-Jan-2017 18:09:09 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[26-Jan-2017 18:10:28 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[26-Jan-2017 18:12:17 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[26-Jan-2017 18:13:43 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[29-Jan-2017 15:26:11 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
