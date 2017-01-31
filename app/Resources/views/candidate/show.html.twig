@@ -3,15 +3,15 @@
        style="margin-bottom: 7px;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a>
-    Candidate data
+    {{ 'Candidate data' | trans({}, 'candidatebackend') | raw }}
 {% endblock %}{% block page_content %}
 
     <div class="row">
         <div class="col-xs-5 text-center">
-            <b>Business</b>
+            <b>{{ 'Business' | trans({}, 'candidatebackend') | raw }}</b>
         </div>
         <div class="col-xs-5 col-xs-offset-2 text-center">
-            <b>Position</b>
+            <b>{{ 'Position' | trans({}, 'candidatebackend') | raw }}</b>
         </div>
     </div>
     <div class="row">
@@ -44,7 +44,7 @@
         </div>
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Zipcode</dt>
+                <dt>{{ 'Zipcode' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.zipCode }}</dd>
             </dl>
         </div>
@@ -55,13 +55,13 @@
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Fullname</dt>
+                <dt>{{ 'Fullname' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.fullName }}</dd>
             </dl>
         </div>
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Social Security or <br/>Tax Id Number</dt>
+                <dt>{{ 'Social Security or' | trans({}, 'candidatebackend') | raw }} <br/>{{ 'Tax Id Number' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.socialNumber }}</dd>
             </dl>
         </div>
@@ -72,13 +72,13 @@
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Address</dt>
+                <dt>{{ 'Address' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.address }}</dd>
             </dl>
         </div>
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Adult (over 18 years old)</dt>
+                <dt>{{ 'Adult (over 18 years old)' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>
                     <div class="onoffswitch-ios switch-xs">
                         {% if (entity.adult) %}
@@ -97,13 +97,13 @@
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>City</dt>
+                <dt>{{ 'City' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.city }}</dd>
             </dl>
         </div>
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Phone</dt>
+                <dt>{{ 'Phone' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.phone }}</dd>
             </dl>
         </div>
@@ -114,14 +114,14 @@
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>State</dt>
+                <dt>{{ 'State' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.state }}</dd>
             </dl>
         </div>
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Available Hours</dt>
-                <dd>{{ entity.availableHours }}</dd>
+                <dt>{{ 'Available Hours' | trans({}, 'candidatebackend') | raw }}</dt>
+                <dd>{{ entity.availableHours == "all" ? "All" : "-" }}</dd>
             </dl>
         </div>
     </div>
@@ -132,20 +132,20 @@
             <dl class="dl-horizontal">
                 <div class="hr-line-dashed"></div>
                 <div class="hr-line-dashed"></div>
-                <dt>Week Availability</dt>
+                <dt>{{ 'Week Availability' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>
                     {% if(entity.availableHours == 'all') %}
                         {{ "-" }}
                     {% else %}
                         <div>
                             <div class="row">
-                                <div class="col-sm-1"><b>Monday</b></div>
-                                <div class="col-sm-1"><b>Tuesday</b></div>
-                                <div class="col-sm-1"><b>Wednesday</b></div>
-                                <div class="col-sm-1"><b>Thursday</b></div>
-                                <div class="col-sm-1"><b>Friday</b></div>
-                                <div class="col-sm-1"><b>Saturday</b></div>
-                                <div class="col-sm-1"><b>Sunday</b></div>
+                                <div class="col-sm-1"><b>{{ 'Monday' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                <div class="col-sm-1"><b>{{ 'Tuesday' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                <div class="col-sm-1"><b>{{ 'Wednesday' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                <div class="col-sm-1"><b>{{ 'Thursday' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                <div class="col-sm-1"><b>{{ 'Friday' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                <div class="col-sm-1"><b>{{ 'Saturday' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                <div class="col-sm-1"><b>{{ 'Sunday' | trans({}, 'candidatebackend') | raw }}</b></div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-1">{{ entity.weekAvailable|json_decode.monday.from ~ " - " ~ entity.weekAvailable|json_decode.monday.to }}</div>
@@ -169,13 +169,13 @@
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Start Date</dt>
+                <dt>{{ 'Start Date' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.startDate|date('d-M-Y') }}</dd>
             </dl>
         </div>
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Years High School</dt>
+                <dt>{{ 'Years High School' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.yearsHighschool }}</dd>
             </dl>
         </div>
@@ -186,13 +186,13 @@
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Salary Desired</dt>
+                <dt>{{ 'Salary Desired' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.salary is empty ? "-" : entity.salary }}</dd>
             </dl>
         </div>
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Has Diploma</dt>
+                <dt>{{ 'Has Diploma' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>
                     <div class="onoffswitch-ios switch-xs">
                         {% if (entity.hasDiploma == "true") %}
@@ -211,13 +211,13 @@
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Availability</dt>
+                <dt>{{ 'Availability' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.availability == "full" ? "Full Time" : (entity.availability == "part" ? "Part Time" : "Either") }}</dd>
             </dl>
         </div>
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Has GED</dt>
+                <dt>{{ 'Has GED' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>
                     <div class="onoffswitch-ios switch-xs">
                         {% if (entity.hasGED == "true") %}
@@ -236,7 +236,7 @@
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Has Driver's License</dt>
+                <dt>{{ "Has Driver's License" | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>
                     <div class="onoffswitch-ios switch-xs">
                         {% if (entity.hasLicense == "true") %}
@@ -250,7 +250,7 @@
         </div>
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Schools</dt>
+                <dt>{{ 'Schools' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>
                     {% if(entity.schools|json_decode[0].name is not empty) %}
                         {% for school in entity.schools|json_decode %}
@@ -259,7 +259,7 @@
                             {% endif %}
                         {% endfor %}
                     {% else %}
-                        {{ "There are no school related" }}
+                        {{ "There are no school related" | trans({}, 'candidatebackend') | raw }}
                     {% endif %}
                 </dd>
             </dl>
@@ -271,13 +271,13 @@
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Driver's License Number</dt>
+                <dt>{{ "Driver's License Number" | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.licenseNumber is empty ? "-" : entity.licenseNumber }}</dd>
             </dl>
         </div>
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Years College</dt>
+                <dt>{{ 'Years College' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.yearsCollege is empty ? "-" : entity.yearsCollege }}</dd>
             </dl>
         </div>
@@ -288,13 +288,13 @@
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Driver's License State</dt>
+                <dt>{{ "Driver's License State" | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.licenseState is empty ? "-" : entity.licenseState }}</dd>
             </dl>
         </div>
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>College School</dt>
+                <dt>{{ 'College School' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.collegeSchool is empty ? "-" : entity.collegeSchool }}</dd>
             </dl>
         </div>
@@ -305,22 +305,24 @@
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>License Expiration</dt>
+                <dt>{{ 'License Expiration' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.licenseExpiration is empty ? "-" : entity.licenseExpiration }}</dd>
             </dl>
         </div>
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>College State</dt>
+                <dt>{{ 'College State' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.collegeState is empty ? "-" : entity.collegeState }}</dd>
             </dl>
         </div>
     </div>
 
+    <div class="hr-line-dashed"></div>
+
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Legal Worker in USA</dt>
+                <dt>{{ 'Legal Worker in USA' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>
                     <div class="onoffswitch-ios switch-xs">
                         {% if (entity.legalWorker == "true") %}
@@ -334,7 +336,7 @@
         </div>
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Major</dt>
+                <dt>{{ 'Major' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.major is empty ? "-" : entity.major }}</dd>
             </dl>
         </div>
@@ -345,7 +347,7 @@
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Convicted of a Crime</dt>
+                <dt>{{ 'Convicted of a Crime' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>
                     <div class="onoffswitch-ios switch-xs">
                         {% if (entity.crime == "true") %}
@@ -359,7 +361,7 @@
         </div>
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Degree</dt>
+                <dt>{{ 'Degree' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.degree is empty ? "-" : entity.degree }}</dd>
             </dl>
         </div>
@@ -370,7 +372,7 @@
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Crime Explain</dt>
+                <dt>{{ 'Crime Explain' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.crimeExplain is empty ? "-" : entity.crimeExplain }}</dd>
             </dl>
         </div>
@@ -387,7 +389,7 @@
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Background check?</dt>
+                <dt>{{ 'Background check?' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>
                     <div class="onoffswitch-ios switch-xs">
                         {% if (entity.background == "true") %}
@@ -401,7 +403,7 @@
         </div>
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Contact Employers</dt>
+                <dt>{{ 'Contact Employers' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>
                     <div class="onoffswitch-ios switch-xs">
                         {% if (entity.contactEmployers == "true") %}
@@ -420,13 +422,13 @@
     <div class="row">
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Background Explain</dt>
+                <dt>{{ 'Background Explain' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.backExplain is empty ? "-" : entity.backExplain }}</dd>
             </dl>
         </div>
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>Employment Name</dt>
+                <dt>{{ 'Employment Name' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.employmentName is empty ? "-" : entity.employmentName }}</dd>
             </dl>
         </div>
@@ -438,23 +440,23 @@
             <dl class="dl-horizontal">
                 <div class="hr-line-dashed"></div>
                 <div class="hr-line-dashed"></div>
-                <dt>Employers</dt>
+                <dt>{{ 'Employers' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>
                     {% if(entity.employers|json_decode[0].name is not empty) %}
                         <div>
                             {% for employer in entity.employers|json_decode %}
                                 <div class="row">
-                                    <div class="col-sm-1"><b>Name</b></div>
-                                    <div class="col-sm-1"><b>Address</b></div>
-                                    <div class="col-sm-1"><b>Phone</b></div>
-                                    <div class="col-sm-1"><b>Position</b></div>
-                                    <div class="col-sm-1"><b>From</b></div>
-                                    <div class="col-sm-1"><b>To</b></div>
-                                    <div class="col-sm-1"><b>Mode</b></div>
-                                    <div class="col-sm-1"><b>Hours</b></div>
-                                    <div class="col-sm-1"><b>Salary</b></div>
-                                    <div class="col-sm-1"><b>Supervisor</b></div>
-                                    <div class="col-sm-1"><b>Department</b></div>
+                                    <div class="col-sm-1"><b>{{ 'Name' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                    <div class="col-sm-1"><b>{{ 'Address' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                    <div class="col-sm-1"><b>{{ 'Phone' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                    <div class="col-sm-1"><b>{{ 'Position' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                    <div class="col-sm-1"><b>{{ 'From' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                    <div class="col-sm-1"><b>{{ 'To' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                    <div class="col-sm-1"><b>{{ 'Mode' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                    <div class="col-sm-1"><b>{{ 'Hours' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                    <div class="col-sm-1"><b>{{ 'Salary' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                    <div class="col-sm-1"><b>{{ 'Supervisor' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                    <div class="col-sm-1"><b>{{ 'Department' | trans({}, 'candidatebackend') | raw }}</b></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-1">{{ employer.name is empty ? "-" : employer.name }}</div>
@@ -471,8 +473,8 @@
                                 </div>
                                 <hr class="hr-line-solid">
                                 <div class="row">
-                                    <div class="col-sm-6"><b>Leaving Reason</b></div>
-                                    <div class="col-sm-6"><b>Duties</b></div>
+                                    <div class="col-sm-6"><b>{{ 'Leaving Reason' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                    <div class="col-sm-6"><b>{{ 'Duties' | trans({}, 'candidatebackend') | raw }}</b></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">{{ employer.leavingReason is empty ? "-" : employer.leavingReason }}</div>
@@ -484,18 +486,18 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ "There are no employers history related" }}
+                        {{ 'There are no employers history related' | trans({}, 'candidatebackend') | raw }}
                     {% endif %}
                 </dd>
                 <div class="hr-line-dashed"></div>
-                <dt>References</dt>
+                <dt>{{ 'References' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>
                     {% if(entity.references|json_decode[0].name is not empty) %}
                         <div>
                             <div class="row">
-                                <div class="col-sm-1"><b>Name</b></div>
-                                <div class="col-sm-1"><b>Phone</b></div>
-                                <div class="col-sm-1"><b>Professional</b></div>
+                                <div class="col-sm-1"><b>{{ 'Name' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                <div class="col-sm-1"><b>{{ 'Phone' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                <div class="col-sm-1"><b>{{ 'Professional' | trans({}, 'candidatebackend') | raw }}</b></div>
                             </div>
                             {% for reference in entity.references|json_decode %}
                                 <div class="row">
@@ -517,17 +519,17 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ "There are no references related" }}
+                        {{ 'There are no references related' | trans({}, 'candidatebackend') | raw }}
                     {% endif %}
                 </dd>
                 <div class="hr-line-dashed"></div>
-                <dt>Skills</dt>
+                <dt>{{ 'Skills' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.skills is empty ? "-" : entity.skills }}</dd>
                 <div class="hr-line-dashed"></div>
-                <dt>Best Fit</dt>
+                <dt>{{ 'Best Fit' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.bestFit is empty ? "-" : entity.bestFit }}</dd>
                 <div class="hr-line-dashed"></div>
-                <dt>CV</dt>
+                <dt>{{ 'CV' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>
                     {% if(entity.cv is not empty and entity.cv != "tmp-cv") %}
                         <a target="_blank" href="{{ asset('uploads/') ~ entity.cv }}">
@@ -535,11 +537,11 @@
                             <span class="label label-default">{{ entity.cv }}</span>
                         </a>
                     {% else %}
-                        <span class="label label-default">No CV related</span>
+                        <span class="label label-default">{{ 'No CV related' | trans({}, 'candidatebackend') | raw }}</span>
                     {% endif %}
                 </dd>
                 <div class="hr-line-dashed"></div>
-                <dt>Cover Letter</dt>
+                <dt>{{ 'Cover Letter' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>
                     {% if(entity.coverLetter is not empty and entity.coverLetter != "tmp-cover") %}
                         <a target="_blank" href="{{ asset('uploads/') ~ entity.coverLetter }}">
@@ -547,7 +549,7 @@
                             <span class="label label-default text">{{ entity.coverLetter }}</span>
                         </a>
                     {% else %}
-                        <span class="label label-default">No Cover Letter related</span>
+                        <span class="label label-default">{{ 'No Cover Letter related' | trans({}, 'candidatebackend') | raw }}</span>
                     {% endif %}
                 </dd>
                 <div class="hr-line-dashed"></div>
@@ -559,7 +561,7 @@
         <div class="col-md-2 text-right">
             <a class="btn btn-success" href="{{ path('candidate') }}">
                 <span class="glyphicon glyphicon-chevron-left"></span>
-                Back to the list
+                {{ 'Back to the list' | trans({}, 'generalbackend') }}
             </a>
         </div>
         <div class="col-md-10">
@@ -575,12 +577,12 @@
                target="_blank"
                href="{{ path('candidate_export_pdf', { 'id': entity.id }) }}">
                 <span class="fa fa-file-pdf-o"></span>
-                Export to PDF
+                {{ 'Export to PDF' | trans({}, 'generalbackend') }}
             </a>
 
             <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
                 <span class="fa fa-remove"></span>
-                Delete
+                {{ 'Delete' | trans({}, 'generalbackend') }}
             </a>
 
 
@@ -596,18 +598,18 @@
                                 aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                     </button>
                     <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
-                    <h4 class="modal-title">Atention!!!</h4>
+                    <h4 class="modal-title">{{ 'Atention' | trans({}, 'generalbackend') }}!!!</h4>
                 </div>
                 <div id="modal-content" class="modal-body">
-                    <strong>Are you sure you want to delete this data?</strong>
+                    <strong>{{ 'Are you sure you want to delete this data?' | trans({}, 'generalbackend') }}</strong>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ path('candidate_delete', { 'id': entity.id }) }}"
                           name="form-delete" method="post">
-                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
                         <button id="modal-btn" type="submit" class="btn btn-danger" name="candidate-id"
                                 value="{{ entity.id }}">
-                            <span class="glyphicon glyphicon-ok"></span> Save changes
+                            <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}
                         </button>
                     </form>
                 </div>
