@@ -15,26 +15,27 @@
 
 {% endblock %}
 
-        {% block active_category %}active{% endblock %}
+        {% block active_opening_category %}active{% endblock %}
 
         {% block page_heading_title %}
-            {{ 'Business Category list' | trans({}, 'categorybackend') }}
+            {{ 'Opening Category list' | trans({}, 'openingcategorybackend') }}
         {% endblock %}
 
     {% block page_heading_action_button %}
-        <a class="btn btn-success navbar-btn pull-right" href="{{ path('category_new') }}">
+        <a class="btn btn-success navbar-btn pull-right" href="{{ path('opening_category_new') }}">
             <span class="fa fa-plus"></span>
-            {{ 'New business category' | trans({}, 'categorybackend') }}
+            {{ 'New opening category' | trans({}, 'openingcategorybackend') }}
         </a>
     {% endblock %}
 
         {% block page_content %}
 
             <div>
-                <span class="col-sm-2"><b>{{ 'Total items' | trans({}, 'generalbackend') }}: </b> {{ entities.getTotalItemCount }}</span>
+                <span class="col-sm-2"><b>{{ 'Total items' | trans({}, 'generalbackend') }}
+                        : </b> {{ entities.getTotalItemCount }}</span>
 
                 <div class="col-sm-10 form-group form-inline text-right">
-                    <form name="find-form" action="{{ path('category_find') }}" method="post">
+                    <form name="find-form" action="{{ path('opening_category_find') }}" method="post">
                         <div class="input-group">
                             <input id="find-form-text" class="form-control" autofocus="on" name="find-form-text"
                                    autocomplete="off"
@@ -49,7 +50,7 @@
                 </div>
             </div>
 
-            <form id="batch_action_form" action="{{ path('category_batch') }}" method="post">
+            <form id="batch_action_form" action="{{ path('opening_category_batch') }}" method="post">
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
@@ -62,20 +63,20 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Name' | trans({}, 'categorybackend'), 'e.name') }}
+                            {{ knp_pagination_sortable(entities, 'Name' | trans({}, 'openingcategorybackend'), 'e.name') }}
                             {% if entities.isSorted('e.name') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Slug' | trans({}, 'categorybackend'), 'e.slug') }}
+                            {{ knp_pagination_sortable(entities, 'Slug' | trans({}, 'openingcategorybackend'), 'e.slug') }}
                             {% if entities.isSorted('e.slug') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
                         <th class="text-navy">Parent</th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Description' | trans({}, 'categorybackend'), 'e.description') }}
+                            {{ knp_pagination_sortable(entities, 'Description' | trans({}, 'openingcategorybackend'), 'e.description') }}
                             {% if entities.isSorted('e.description') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
@@ -95,7 +96,7 @@
 
 
                             <td class="text-navy">
-                                <a href="{{ path('category_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
+                                <a href="{{ path('opening_category_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
                             </td>
 
 
@@ -114,11 +115,14 @@
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-xs btn-outline btn-primary"
-                                       href="{{ path('category_show', { 'id': entity.id }) }}"> <span
-                                                class="fa fa-search"></span> </a> <a
-                                            class="btn btn-xs btn-outline btn-primary"
-                                            href="{{ path('category_edit', { 'id': entity.id }) }}"> <span
-                                                class="fa fa-pencil"></span> </a></div>
+                                       href="{{ path('opening_category_show', { 'id': entity.id }) }}">
+                                        <span class="fa fa-search"></span>
+                                    </a>
+                                    <a class="btn btn-xs btn-outline btn-primary"
+                                       href="{{ path('opening_category_edit', { 'id': entity.id }) }}">
+                                        <span class="fa fa-pencil"></span>
+                                    </a>
+                                </div>
                             </td>
 
                         </tr>
@@ -141,7 +145,7 @@
                         <div class="form-group pagination pull-right">
                             <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
                                 <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                                    {{ 'Delete Business Category' | trans({}, 'categorybackend') }}
+                                    {{ 'Delete Opening Category' | trans({}, 'openingcategorybackend') }}
                                 </option>
                             </select>
                         </div>
@@ -164,7 +168,8 @@
                             Modal message
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
+                            <button type="button" class="btn btn-white"
+                                    data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
                             <button id="modal-btn" type="submit" class="btn btn-success"
                                     onclick="$('#batch_action_form').submit();">
                                 <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}

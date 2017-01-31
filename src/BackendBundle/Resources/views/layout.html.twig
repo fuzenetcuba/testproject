@@ -109,7 +109,12 @@
 
                     <li class="{% block active_category %}{% endblock %}">
                         <a href="{{ path('category') }}"><i class="fa fa-reorder"></i> <span
-                                    class="nav-label">{{ 'Categories' | trans({}, 'generalbackend') }}</span></a>
+                                    class="nav-label">{{ 'Business Categories' | trans({}, 'generalbackend') }}</span></a>
+                    </li>
+
+                    <li class="{% block active_opening_category %}{% endblock %}">
+                        <a href="{{ path('opening_category') }}"><i class="fa fa-reorder"></i> <span
+                                    class="nav-label">{{ 'Opening Categories' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_deal %}{% endblock %}">

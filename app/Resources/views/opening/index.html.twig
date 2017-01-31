@@ -75,6 +75,12 @@
                                             </th>
                          #}
                         <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'Opening Categories' | trans({}, 'openingcategorybackend'), 'e.categories') }}
+                            {% if entities.isSorted('e.categories') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
+                        <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Description'| trans({}, 'openingbackend'), 'e.description') }}
                             {% if entities.isSorted('e.description') %}
                                 <span class="fa fa-sort"></span>
@@ -104,6 +110,12 @@
                             </td>
 
                             {# <td>{{ entity.department }}</td> #}
+
+                            <td>
+                                {% for category in entity.categories %}
+                                    <span class="label label-primary">{{ category }}</span>
+                                {% endfor %}
+                            </td>
 
                             <td>{{ entity.description }}</td>
 

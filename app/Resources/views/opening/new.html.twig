@@ -57,6 +57,23 @@
             </div>
             <div class="hr-line-dashed"></div> #}
 
+            <div class="form-group{% if(form.categories.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for=""
+                       class="col-md-2 control-label">{{ form_label(form.categories) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.categories, { 'attr': {'class' : 'form-control select2-field', 'style' : 'width: 100%'}}) }}
+                    {% if form.categories.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.categories.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
 
 
             <div class="form-group{% if(form.description.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">

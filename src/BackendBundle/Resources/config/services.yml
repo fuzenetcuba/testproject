@@ -7,6 +7,10 @@ services:
         class: BackendBundle\Model\CategoryManager
         arguments: ["@doctrine.orm.entity_manager"]
 
+    opening.category.manager:
+        class: BackendBundle\Model\OpeningCategoryManager
+        arguments: ["@doctrine.orm.entity_manager"]
+
     deal.manager:
         class: BackendBundle\Model\DealManager
         arguments: ["@doctrine.orm.entity_manager"]

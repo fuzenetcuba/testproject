@@ -3,20 +3,24 @@
 {% block custom_css %}
     {{ parent() }}
 
+
     <!-- select2 Styles -->
     <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
           type="text/css"/>
 
+    <link rel="stylesheet" href="{{ asset('bundles/frontend/css/flag-icon.min.css') }}"
+          type="text/css"/>
+
 {% endblock %}
 
-        {% block active_opening %}active{% endblock %}
+        {% block active_opening_category %}active{% endblock %}
 
         {% block page_heading_title %}
-            <a class="btn btn-default navbar-btn" href="{{ path('opening') }}"
+            <a class="btn btn-default navbar-btn" href="{{ path('opening_category') }}"
                style="margin-bottom: 7px;">
                 <span class="glyphicon glyphicon-chevron-up"></span>
             </a>
-            {{ 'Opening edition' |trans({}, 'openingbackend') }}
+            {{ 'Opening Category edition' | trans({}, 'openingcategorybackend') }}
         {% endblock %}
 
         {% block page_content %}
@@ -35,16 +39,14 @@
                 <div class="tab-content">
                     <div id="tab-1" class="tab-pane active">
                         <div class="panel-body">
-
-                            <div class="form-group{% if(edit_form.position.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                                <label for=""
-                                       class="col-md-2 control-label">{{ form_label(edit_form.position) }}</label>
+                            <div class="form-group{% if(edit_form.name.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for="" class="col-md-2 control-label">{{ form_label(edit_form.name) }}</label>
 
                                 <div class="col-md-6">
-                                    {{ form_widget(edit_form.position, { 'attr': {'class' : 'form-control'}}) }}
-                                    {% if edit_form.position.vars['errors']|length > 0 %}
+                                    {{ form_widget(edit_form.name, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.name.vars['errors']|length > 0 %}
                                         <ul class="message">
-                                            {% for error in edit_form.position.vars['errors'] %}
+                                            {% for error in edit_form.name.vars['errors'] %}
                                                 <li>{{ error.message }}</li>
                                             {% endfor %}
                                         </ul>
@@ -53,38 +55,6 @@
                             </div>
                             <div class="hr-line-dashed"></div>
 
-                            {# <div class="form-group{% if(edit_form.department.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                                <label for="" class="col-md-2 control-label">{{ form_label(edit_form.department) }}</label>
-
-                                <div class="col-md-6">
-                                    {{ form_widget(edit_form.department, { 'attr': {'class' : 'form-control'}}) }}
-                                    {% if edit_form.department.vars['errors']|length > 0 %}
-                                    <ul class="message">
-                                        {% for error in edit_form.department.vars['errors'] %}
-                                        <li>{{ error.message }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <div class="hr-line-dashed"></div> #}
-
-                            <div class="form-group{% if(edit_form.categories.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                                <label for=""
-                                       class="col-md-2 control-label">{{ form_label(edit_form.categories) }}</label>
-
-                                <div class="col-md-6">
-                                    {{ form_widget(edit_form.categories, { 'attr': {'class' : 'form-control select2-field', 'style' : 'width: 100%'}}) }}
-                                    {% if edit_form.categories.vars['errors']|length > 0 %}
-                                        <ul class="message">
-                                            {% for error in edit_form.categories.vars['errors'] %}
-                                                <li>{{ error.message }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <div class="hr-line-dashed"></div>
 
                             <div class="form-group{% if(edit_form.description.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                                 <label for=""
@@ -103,15 +73,32 @@
                             </div>
                             <div class="hr-line-dashed"></div>
 
-                            <div class="form-group{% if(edit_form.business.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                                <label for=""
-                                       class="col-md-2 control-label">{{ form_label(edit_form.business) }}</label>
+                            <div class="form-group{% if(edit_form.icon.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for="" class="col-md-2 control-label">{{ form_label(edit_form.icon) }}</label>
 
                                 <div class="col-md-6">
-                                    {{ form_widget(edit_form.business, { 'attr': {'class' : 'form-control select2-field', 'style' : 'width: 100%'}}) }}
-                                    {% if edit_form.business.vars['errors']|length > 0 %}
+                                    {{ form_widget(edit_form.icon, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.icon.vars['errors']|length > 0 %}
                                         <ul class="message">
-                                            {% for error in edit_form.business.vars['errors'] %}
+                                            {% for error in edit_form.icon.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+
+                            <div class="form-group{% if(edit_form.parent.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.parent) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.parent, { 'attr': {'class' : 'form-control select2-field', 'style' : 'width: 100%'}}) }}
+                                    {% if edit_form.parent.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.parent.vars['errors'] %}
                                                 <li>{{ error.message }}</li>
                                             {% endfor %}
                                         </ul>
@@ -123,48 +110,50 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group form-actions">
                 <div class="col-md-2 text-right">
-                    <a class="btn btn-success" href="{{ path('opening') }}">
+                    <a class="btn btn-success" href="{{ path('opening_category') }}">
                         <span class="glyphicon glyphicon-chevron-left"></span>
-                        {{ 'Back to the list' |trans({}, 'generalbackend') }}
+                        {{ 'Back to the list' | trans({}, 'generalbackend') }}
                     </a>
                 </div>
                 <div class="col-md-10">
 
+
                     {{ form_widget(edit_form.submit, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
+
 
                     <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
                         <span class="fa fa-remove"></span>
-                        {{ 'Delete' |trans({}, 'generalbackend') }}
+                        {{ 'Delete' | trans({}, 'generalbackend') }}
                     </a>
+
 
                     {{ form(edit_form) }}
                 </div>
             </div>
+
 
             <div class="modal inmodal" id="modalDelete" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content animated bounceInRight">
                         <div id="modal-title" class="modal-header red-bg">
                             <button type="button" class="close" data-dismiss="modal"><span
-                                        aria-hidden="true">&times;</span><span
-                                        class="sr-only">{{ 'Close' |trans({}, 'generalbackend') }}</span>
+                                        aria-hidden="true">&times;</span><span class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
                             </button>
                             <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
-                            <h4 class="modal-title">{{ 'Atention' |trans({}, 'generalbackend') }}!!!</h4>
+                            <h4 class="modal-title">{{ 'Atention' | trans({}, 'generalbackend') }}!!!</h4>
                         </div>
                         <div id="modal-content" class="modal-body">
-                            <strong>{{ 'Are you sure you want to delete this data?' |trans({}, 'generalbackend') }}</strong>
+                            <strong>{{ 'Are you sure you want to delete this data?' | trans({}, 'generalbackend') }}</strong>
                         </div>
                         <div class="modal-footer">
-                            <form action="{{ path('opening_delete', { 'id': entity.id }) }}"
+                            <form action="{{ path('opening_category_delete', { 'id': entity.id }) }}"
                                   name="form-delete" method="post">
-                                <button type="button" class="btn btn-white"
-                                        data-dismiss="modal">{{ 'Close' |trans({}, 'generalbackend') }}</button>
-                                <button id="modal-btn" type="submit" class="btn btn-danger" name="opening-id"
+                                <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
+                                <button id="modal-btn" type="submit" class="btn btn-danger" name="category-id"
                                         value="{{ entity.id }}">
-                                    <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' |trans({}, 'generalbackend') }}
+                                    <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}
                                 </button>
                             </form>
                         </div>
@@ -191,13 +180,10 @@
 
             $(document).ready(function () {
 
-
-
                 //  select2 scripts for batch actions combobox
                 $(".select2-field").select2({
-                    placeholder: "--- {{ 'Select a value' |trans({}, 'generalbackend') }} ---"
+                    placeholder: "--- {{ 'Select a value' | trans({}, 'generalbackend') }} ---"
                 });
-
 
             });
 

@@ -44,6 +44,7 @@ class OpeningType extends AbstractType
         }
         $builder    
             // ->add('department')
+            ->add('categories')
             ->add('description', 'textarea', [
                 'attr' => ['rows' => '10']
             ]);

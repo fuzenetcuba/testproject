@@ -3,22 +3,20 @@
 {% block custom_css %}
     {{ parent() }}
 
-
-
     <!-- select2 Styles -->
     <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
           type="text/css"/>
 
 {% endblock %}
 
-        {% block active_category %}active{% endblock %}
+        {% block active_opening_category %}active{% endblock %}
 
         {% block page_heading_title %}
-            <a class="btn btn-default navbar-btn" href="{{ path('category') }}"
+            <a class="btn btn-default navbar-btn" href="{{ path('opening_category') }}"
                style="margin-bottom: 7px;">
                 <span class="glyphicon glyphicon-chevron-up"></span>
             </a>
-            {{ 'Business Category creation' | trans({},'categorybackend') }}
+            {{ 'Opening Category creation' | trans({},'openingcategorybackend') }}
         {% endblock %}
 
         {% block page_content %}
@@ -95,11 +93,9 @@
             </div>
             <div class="hr-line-dashed"></div>
 
-
-
             <div class="form-group">
                 <div class="col-md-2 text-right">
-                    <a class="btn btn-success" href="{{ path('category') }}">
+                    <a class="btn btn-success" href="{{ path('opening_category') }}">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                         {{ 'Back to the list' | trans({},'generalbackend') }}
                     </a>
@@ -108,9 +104,6 @@
 
                     {{ form_widget(form.submit, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
                     {{ form_widget(form.submitback, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
-
-
-
 
                     {{ form(form) }}
 
@@ -135,8 +128,6 @@
         <script type="text/javascript">
 
             $(document).ready(function () {
-
-
 
                 //  select2 scripts for batch actions combobox
                 $(".select2-field").select2({
