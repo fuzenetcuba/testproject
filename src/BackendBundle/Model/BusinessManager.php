@@ -266,6 +266,30 @@ class BusinessManager implements ManagerInterface
     /**
      * Fetchs a list of businesses that have some position available
      *
+     * @return array            List of businesses
+     */
+    public function findBusinessHaveOpenings()
+    {
+        $query = $this->findAllQuery();
+
+        $query
+            ->join('b.openings', 'o')
+            ->addGroupBy('o.id')
+            ->andHaving('count(o) > 0')
+        ;
+
+        // multilanguage search criterias done introspecting the default locale
+        $query = $query->getQuery()->setHint(
+            Query::HINT_CUSTOM_OUTPUT_WALKER,
+            'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+        );
+
+        return $query->getResult();
+    }
+
+    /**
+     * Fetchs a list of businesses that have some position with related categories
+     *
      * @param  OpeningCategory $openingCategory Opening
      * @return array                            List of businesses
      */

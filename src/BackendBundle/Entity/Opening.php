@@ -80,6 +80,11 @@ class Opening
         $this->categories = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->position;
+    }
+
 
     /**
      * @return mixed

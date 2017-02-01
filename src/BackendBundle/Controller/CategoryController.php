@@ -28,7 +28,7 @@ class CategoryController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $query, $request->query->get('page', 1), 5
+            $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
         );
 
         return $this->render('category/index.html.twig', array(
@@ -56,7 +56,7 @@ class CategoryController extends Controller
 
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
-                $query, $request->query->get('page', 1), 5
+                $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
             );
 
             return $this->render('category/index.html.twig', array(

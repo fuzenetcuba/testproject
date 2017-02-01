@@ -248,6 +248,11 @@ class Candidate
      */
     private $opening;
 
+    public function __toString()
+    {
+        return "" . $this->fullName();
+    }
+
     /**
      * @return mixed
      */
