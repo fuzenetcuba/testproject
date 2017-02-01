@@ -25,6 +25,9 @@ parameters:
     google_client_id: 123
     google_client_secret: 123
 
+    # Pagination of backend CRUD list
+    cruds.pagination.items: 12
+
     # Frontend
     deals.pagination.items: 12
     business.pagination.items: 12
