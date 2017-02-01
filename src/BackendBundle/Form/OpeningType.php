@@ -42,9 +42,21 @@ class OpeningType extends AbstractType
                     'attr' => ['class' => 'form-control select2-field'],
                 ]);
         }
-        $builder    
+        if ($this->select) {
+            $builder
+                ->add('categories', EntityType::class, [
+                    'required' => false,
+                    'attr' => ['class' => 'form-control select2-field'],
+                    'class' => 'BackendBundle\Entity\OpeningCategory',
+                    'choice_label' => 'name',
+                    'empty_value' => 'All opening categories',
+                ]);
+        } else {
+            $builder
+                ->add('categories');
+        }
+        $builder
             // ->add('department')
-            ->add('categories')
             ->add('description', 'textarea', [
                 'attr' => ['rows' => '10']
             ]);
@@ -61,7 +73,7 @@ class OpeningType extends AbstractType
                     'choice_label' => 'name',
                     'empty_value' => 'All the businesses',
                     'required' => false,
-                    'attr' => ['class' => 'form-control select2-field', 'v-model' => 'currentPosition']
+                    'attr' => ['class' => 'form-control select2-field', 'v-model' => 'currentOpeningCategory']
                 ]);
         } else {
             $builder

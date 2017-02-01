@@ -284,14 +284,17 @@ class OpeningManager implements ManagerInterface
         $query = $this->findAllQuery();
 
         if (isset($conditions['business'])) {
-            $query->join('o.business', 'b')
+            $query
+                ->join('o.business', 'b')
                 ->andWhere('b.slug = :slug')
                 ->setParameter('slug', $conditions['business']);
         }
 
-        if (isset($conditions['opening'])) {
-            $query->andWhere('o.id = :id')
-                ->setParameter('id', $conditions['opening']);
+        if (isset($conditions['categories'])) {
+            $query
+                ->join('o.categories', 'c')
+                ->andWhere('c.id = :id')
+                ->setParameter('id', $conditions['categories']);
         }
 
         $query->addOrderBy('o.position', 'ASC');
@@ -310,10 +313,10 @@ class OpeningManager implements ManagerInterface
             ->setBody($content, 'text/html')
             ->attach(\Swift_Attachment::fromPath($pdfFile));
 
-        if($candidate->getCv() != "tmp-cv"){
+        if ($candidate->getCv() != "tmp-cv") {
             $message->attach(\Swift_Attachment::fromPath($this->storePath . DIRECTORY_SEPARATOR . $candidate->getCv()));
         }
-        if($candidate->getCoverLetter() != "tmp-cover"){
+        if ($candidate->getCoverLetter() != "tmp-cover") {
             $message->attach(\Swift_Attachment::fromPath($this->storePath . DIRECTORY_SEPARATOR . $candidate->getCoverLetter()));
         }
 
@@ -385,7 +388,7 @@ class OpeningManager implements ManagerInterface
         try {
             $absolutePath = realpath($this->reportsPath);
             $pdfFile = $absolutePath . DIRECTORY_SEPARATOR . trim($candidate->getSocialNumber() . "_" . $candidate->getOpening()->getId()) . ".pdf";
-            if($this->filesystem->exists($pdfFile)) {
+            if ($this->filesystem->exists($pdfFile)) {
                 $this->filesystem->remove($pdfFile);
             }
         } catch (IOExceptionInterface $e) {

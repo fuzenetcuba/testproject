@@ -2,8 +2,10 @@
 
 namespace BackendBundle\Model;
 
+use BackendBundle\Entity\Business;
 use BackendBundle\Entity\OpeningCategory;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Query;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -33,7 +35,7 @@ class OpeningCategoryManager implements ManagerInterface
         return $this->em
             ->createQueryBuilder('q')
             ->select('f')
-            ->from('BackendBundle:OpeningCategory')
+            ->from('BackendBundle:OpeningCategory', 'f')
         ;
     }
 
@@ -78,6 +80,8 @@ class OpeningCategoryManager implements ManagerInterface
         if (!$instance) {
             throw new NotFoundHttpException(sprintf('The category with id "%s" could not be found', $id));
         }
+
+        return $instance;
     }
 
     /**
@@ -112,5 +116,30 @@ class OpeningCategoryManager implements ManagerInterface
     {
         $this->em->remove($instance);
         $this->em->flush();
+    }
+
+    /**
+     * Fetchs a list of openings that have some position available
+     *
+     * @param  Business $business Opening
+     * @return array             List of businesses
+     */
+    public function findOpeningsCategoryWithBusiness(Business $business)
+    {
+        $query = $this->findAllQuery();
+
+        $query
+            ->join('f.openings', 'o')
+            ->join('o.business', 'b')
+            ->andWhere('b.id = :id')
+            ->setParameter('id', $business->getId());
+
+        // multilanguage search criterias done introspecting the default locale
+        $query = $query->getQuery()->setHint(
+            Query::HINT_CUSTOM_OUTPUT_WALKER,
+            'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+        );
+
+        return $query->getResult();
     }
 }

@@ -64,20 +64,20 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4 animated fadeInLeft">
-                        <select v-model="currentPosition" name="opening[position]" class="form-control select2-field"
-                            @input="fetchData($event.target)"
-                        >
-                            <option value="-1">{{ 'All the openings' | trans({}, 'careers') }}</option>
-                            <option v-for="position in positions" :value="position.id">${ position.position }</option>
-                        </select>
-                    </div>
                     <div class="col-sm-4 border-left-right">
                         <select v-model="currentBusiness" name="opening[business]" class="form-control select2-field"
-                            @input="fetchData($event.target)"
+                                @input="fetchData($event.target)"
                         >
                             <option value="-1">{{ 'All the businesses' | trans({}, 'careers') }}</option>
                             <option v-for="business in businesses" :value="business.id">${ business.name }</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4 animated fadeInLeft">
+                        <select v-model="currentOpeningCategory" name="opening[categories]" class="form-control select2-field"
+                            @input="fetchData($event.target)"
+                        >
+                            <option value="-1">{{ 'All opening categories' | trans({}, 'careers') }}</option>
+                            <option v-for="category in opening_categories" :value="category.id">${ category.name }</option>
                         </select>
                     </div>
                     <div class="col-sm-4 animated fadeInRight">

@@ -6,10 +6,10 @@ Vue.http.options.emulateJSON = true;
 var vm = new Vue({
     el: '.careers',
     data: {
-        positions: [],
+        opening_categories: [],
         businesses: [],
 
-        currentPosition: '-1',
+        currentOpeningCategory: '-1',
         currentBusiness: '-1',
 
         loading: false,
@@ -20,13 +20,13 @@ var vm = new Vue({
             var formData = new FormData(document.forms[1]);
             var input = '';
 
-            formData.append('position', this.currentPosition);
+            formData.append('categories', this.currentOpeningCategory);
             formData.append('business', this.currentBusiness);
 
             if (target.name.match(/business/)) {
                 input = 'business';
             } else {
-                input = 'position';
+                input = 'categories';
             }
 
             formData.append(input, target.value);
@@ -38,7 +38,7 @@ var vm = new Vue({
                 formData
             ).then(function (response) {
                 this.businesses = JSON.parse(response.body.business);
-                this.positions = JSON.parse(response.body.position);
+                this.opening_categories = JSON.parse(response.body.categories);
                 this.loading = false;
             });
         }
@@ -52,7 +52,7 @@ var vm = new Vue({
             formData
         ).then(function (response) {
             this.businesses = JSON.parse(response.body.business);
-            this.positions = JSON.parse(response.body.position);
+            this.opening_categories = JSON.parse(response.body.categories);
         });
     }
 });
