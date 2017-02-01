@@ -3,7 +3,9 @@
 namespace FrontendBundle\Controller;
 
 use BackendBundle\Entity\Opening;
+use BackendBundle\Entity\OpeningCategory;
 use BackendBundle\Form\OpeningType;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -48,9 +50,15 @@ class CareersController extends Controller
             /** @var Opening $opening */
             $opening = $form->getData();
 
+            if ($opening->getCategories() instanceof OpeningCategory) {
+                $categories = null !== $opening->getCategories() ? $opening->getCategories()->getId() : null;
+            } else if ($opening->getCategories() instanceof ArrayCollection) {
+                $categories = 0 !== $opening->getCategories()->count() ? $opening->getCategories()->first()->getId() : null;
+            }
+
             $conditions = array_merge([
                 'business' => null !== $opening->getBusiness() ? $opening->getBusiness()->getSlug() : null,
-                'opening' => null !== $opening->getPosition() ? $opening->getPosition()->getId() : null,
+                'categories' => $categories,
             ], $conditions);
         }
 
@@ -120,20 +128,20 @@ class CareersController extends Controller
 
     public function autocompleteAction(Request $request)
     {
-        $position = $request->request->get('position');
         $business = $request->request->get('business');
+        $openingCategory = $request->request->get('categories');
 
         $businesses = [];
-        $positions = [];
+        $openingCategories = [];
 
-        if (0 === count($positions)) {
-            if (null === $position || '-1' == $position) {
-                $positions = $this->get('opening.manager')->findAllQuery()->getQuery()->getResult();
+        if (0 === count($openingCategories)) {
+            if (null === $openingCategory || '-1' == $openingCategory) {
+                $openingCategories = $this->get('opening.category.manager')->findAllQuery()->getQuery()->getResult();
             } else {
-                $position = $this->get('opening.manager')->find($position);
-                $positions = $this->get('opening.manager')->findAllQuery()->getQuery()->getResult();
+                $openingCategory = $this->get('opening.category.manager')->find($openingCategory);
+                $openingCategories = $this->get('opening.category.manager')->findAllQuery()->getQuery()->getResult();
                 // fetch the matching businesses
-                $businesses = $this->get('business.manager')->findBusinessWithOpening($position);
+                $businesses = $this->get('business.manager')->findBusinessWithOpeningCategory($openingCategory);
             }
         }
 
@@ -144,7 +152,7 @@ class CareersController extends Controller
                 $business = $this->get('business.manager')->find($business);
                 $businesses = $this->get('business.manager')->findAll();
                 // fetch the matching openings
-                $positions = $this->get('opening.manager')->findOpeningsWithBusiness($business);
+                $openingCategories = $this->get('opening.category.manager')->findOpeningsCategoryWithBusiness($business);
             }
         }
 
@@ -155,13 +163,15 @@ class CareersController extends Controller
             'deals',
             'customers',
             'openings',
+            'children',
+            'parent',
         ]);
 
         $serializer = new Serializer([$normalizer], [$encoder]);
 
         return new JsonResponse([
             'business' => $serializer->serialize($businesses, 'json'),
-            'position' => $serializer->serialize($positions, 'json')
+            'categories' => $serializer->serialize($openingCategories, 'json')
         ]);
     }
 }

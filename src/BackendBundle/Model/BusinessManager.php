@@ -4,6 +4,7 @@ namespace BackendBundle\Model;
 
 use BackendBundle\Entity\Business;
 use BackendBundle\Entity\Opening;
+use BackendBundle\Entity\OpeningCategory;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -239,7 +240,7 @@ class BusinessManager implements ManagerInterface
 
     /**
      * Fetchs a list of businesses that have some position available
-     * 
+     *
      * @param  Opening $opening Opening
      * @return array            List of businesses
      */
@@ -251,6 +252,32 @@ class BusinessManager implements ManagerInterface
             ->join('b.openings', 'o')
             ->andWhere('o.id = :id')
             ->setParameter('id', $opening->getId())
+        ;
+
+        // multilanguage search criterias done introspecting the default locale
+        $query = $query->getQuery()->setHint(
+            Query::HINT_CUSTOM_OUTPUT_WALKER,
+            'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+        );
+
+        return $query->getResult();
+    }
+
+    /**
+     * Fetchs a list of businesses that have some position available
+     *
+     * @param  OpeningCategory $openingCategory Opening
+     * @return array                            List of businesses
+     */
+    public function findBusinessWithOpeningCategory(OpeningCategory $openingCategory)
+    {
+        $query = $this->findAllQuery();
+
+        $query
+            ->join('b.openings', 'o')
+            ->join('o.categories', 'c')
+            ->andWhere('c.id = :id')
+            ->setParameter('id', $openingCategory->getId())
         ;
 
         // multilanguage search criterias done introspecting the default locale

@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -53,6 +54,13 @@ class Opening
     private $business;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="BackendBundle\Entity\OpeningCategory", inversedBy="openings")
+     */
+    private $categories;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="text", nullable=false)
@@ -66,6 +74,12 @@ class Opening
      * @Gedmo\Locale
      */
     private $locale;
+
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
+
 
     /**
      * @return mixed
@@ -166,5 +180,46 @@ class Opening
     public function setTranslatableLocale($locale)
     {
         $this->locale = $locale;
+    }
+
+
+    /**
+     * Adds, if not already defined a category to the business
+     *
+     * @param \BackendBundle\Entity\OpeningCategory $category
+     */
+    public function addCategory(OpeningCategory $category)
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+        }
+    }
+
+    /**
+     * Remove, if exists, a category from the associated categories
+     *
+     * @param \BackendBundle\Entity\OpeningCategory $category
+     */
+    public function removeCategory(OpeningCategory $category)
+    {
+        if ($this->categories->contains($category)) {
+            $this->categories->removeElement($category);
+        }
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param ArrayCollection $categories
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
     }
 }

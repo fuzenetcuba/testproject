@@ -41,7 +41,7 @@
     <table class="table table-striped">
         <tr>
             <th style="width: 50%;">Id</th>
-            <th style="width: 50%;">Zipcode</th>
+            <th style="width: 50%;">{{ 'Zipcode' | trans({}, 'candidatebackend') | raw }}</th>
         </tr>
         <tr>
             <td>{{ entity.id }}<br/><br/></td>
@@ -49,8 +49,8 @@
         </tr>
 
         <tr>
-            <th>Fullname</th>
-            <th>Social Security or Tax Id Number</th>
+            <th>{{ 'Fullname' | trans({}, 'candidatebackend') | raw }}</th>
+            <th>{{ 'Social Security or Tax Id Number' | trans({}, 'candidatebackend') | raw }}</th>
         </tr>
         <tr>
             <td>{{ entity.fullName }}<br/><br/></td>
@@ -58,14 +58,14 @@
         </tr>
 
         <tr>
-            <th>Address</th>
-            <th>Adult (over 18 years old)</th>
+            <th>{{ 'Address' | trans({}, 'candidatebackend') | raw }}</th>
+            <th>{{ 'Adult (over 18 years old)' | trans({}, 'candidatebackend') | striptags }}</th>
         </tr>
         <tr>
             <td>{{ entity.address }}<br/><br/></td>
             <td>
                 {% if (entity.adult) %}
-                    <span class="text-success">YES</span>
+                    <span class="text-success">{{ 'YES' | trans({}, 'candidatebackend') | raw }}</span>
                 {% else %}
                     <span class="text-danger">NO</span>
                 {% endif %}
@@ -73,8 +73,8 @@
         </tr>
 
         <tr>
-            <th>City</th>
-            <th>Phone</th>
+            <th>{{ 'City' | trans({}, 'candidatebackend') | raw }}</th>
+            <th>{{ 'Phone' | trans({}, 'candidatebackend') | raw }}</th>
         </tr>
         <tr>
             <td>{{ entity.city }}<br/><br/></td>
@@ -82,18 +82,18 @@
         </tr>
 
         <tr>
-            <th>State</th>
-            <th>Available Hours</th>
+            <th>{{ 'State' | trans({}, 'candidatebackend') | raw }}</th>
+            <th>{{ 'Available Hours' | trans({}, 'candidatebackend') | raw }}</th>
         </tr>
         <tr>
             <td>{{ entity.state }}<br/><br/></td>
-            <td>{{ entity.availableHours }}<br/><br/></td>
+            <td>{{ entity.availableHours == "all" ? "All" : "-" }}<br/><br/></td>
         </tr>
     </table>
 
     <table class="table table-striped">
         <tr>
-            <th colspan="7">Week Availability</th>
+            <th colspan="7">{{ 'Week Availability' | trans({}, 'candidatebackend') | striptags }}</th>
         </tr>
         {% if(entity.availableHours == 'all') %}
             <tr>
@@ -101,13 +101,13 @@
             </tr>
         {% else %}
             <tr>
-                <th>Monday</th>
-                <th>Tuesday</th>
-                <th>Wednesday</th>
-                <th>Thursday</th>
-                <th>Friday</th>
-                <th>Saturday</th>
-                <th>Sunday</th>
+                <th>{{ 'Monday' | trans({}, 'candidatebackend') | raw }}</th>
+                <th>{{ 'Tuesday' | trans({}, 'candidatebackend') | raw }}</th>
+                <th>{{ 'Wednesday' | trans({}, 'candidatebackend') | raw }}</th>
+                <th>{{ 'Thursday' | trans({}, 'candidatebackend') | raw }}</th>
+                <th>{{ 'Friday' | trans({}, 'candidatebackend') | raw }}</th>
+                <th>{{ 'Saturday' | trans({}, 'candidatebackend') | raw }}</th>
+                <th>{{ 'Sunday' | trans({}, 'candidatebackend') | raw }}</th>
             </tr>
             <tr>
                 <td>{{ entity.weekAvailable|json_decode.monday.from ~ " - " ~ entity.weekAvailable|json_decode.monday.to }}
@@ -130,8 +130,8 @@
 
     <table class="table table-striped">
         <tr>
-            <th style="width: 50%;">Start Date</th>
-            <th style="width: 50%;">Years High School</th>
+            <th style="width: 50%;">{{ 'Start Date' | trans({}, 'candidatebackend') | raw }}</th>
+            <th style="width: 50%;">{{ 'Years High School' | trans({}, 'candidatebackend') | raw }}</th>
         </tr>
         <tr>
             <td>{{ entity.startDate|date('d-M-Y') }}<br/><br/></td>
@@ -139,14 +139,14 @@
         </tr>
 
         <tr>
-            <th>Salary Desired</th>
-            <th>Has Diploma</th>
+            <th>{{ 'Salary Desired' | trans({}, 'candidatebackend') | raw }}</th>
+            <th>{{ 'Has Diploma' | trans({}, 'candidatebackend') | raw }}</th>
         </tr>
         <tr>
             <td>{{ entity.salary is empty ? "-" : entity.salary }}<br/><br/></td>
             <td>
                 {% if (entity.hasDiploma == "true") %}
-                    <span class="text-success">YES</span>
+                    <span class="text-success">{{ 'YES' | trans({}, 'candidatebackend') | raw }}</span>
                 {% elseif (entity.hasDiploma == "false") %}
                     <span class="text-danger">NO</span>
                 {% endif %}
@@ -154,15 +154,15 @@
         </tr>
 
         <tr>
-            <th>Availability</th>
-            <th>Has GED</th>
+            <th>{{ 'Availability' | trans({}, 'candidatebackend') | raw }}</th>
+            <th>{{ 'Has GED' | trans({}, 'candidatebackend') | raw }}</th>
         </tr>
         <tr>
             <td>{{ entity.availability == "full" ? "Full Time" : (entity.availability == "part" ? "Part Time" : "Either") }}
                 <br/><br/></td>
             <td>
                 {% if (entity.hasGED == "true") %}
-                    <span class="text-success">YES</span>
+                    <span class="text-success">{{ 'YES' | trans({}, 'candidatebackend') | raw }}</span>
                 {% elseif (entity.hasGED == "false") %}
                     <span class="text-danger">NO</span>
                 {% endif %}
@@ -170,13 +170,13 @@
         </tr>
 
         <tr>
-            <th>Has Driver's License</th>
-            <th>Schools</th>
+            <th>{{ "Has Driver's License" | trans({}, 'candidatebackend') | striptags }}</th>
+            <th>{{ 'Schools' | trans({}, 'candidatebackend') | raw }}</th>
         </tr>
         <tr>
             <td>
                 {% if (entity.hasLicense == "true") %}
-                    <span class="text-success">YES</span>
+                    <span class="text-success">{{ 'YES' | trans({}, 'candidatebackend') | raw }}</span>
                 {% elseif (entity.hasLicense == "false") %}
                     <span class="text-danger">NO</span>
                 {% endif %}
@@ -191,14 +191,14 @@
                         {% endif %}
                     {% endfor %}
                 {% else %}
-                    {{ "There are no school related" }}
+                    {{ "There are no school related" | trans({}, 'candidatebackend') | raw }}
                 {% endif %}
                 <br/><br/></td>
         </tr>
 
         <tr>
-            <th>Driver's License Number</th>
-            <th>Years College</th>
+            <th>{{ "Driver's License Number" | trans({}, 'candidatebackend') | striptags }}</th>
+            <th>{{ 'Years College' | trans({}, 'candidatebackend') | raw }}</th>
         </tr>
         <tr>
             <td>{{ entity.licenseNumber is empty ? "-" : entity.licenseNumber }}<br/><br/></td>
@@ -206,8 +206,8 @@
         </tr>
 
         <tr>
-            <th>Driver's License State</th>
-            <th>College School</th>
+            <th>{{ "Driver's License State" | trans({}, 'candidatebackend') | striptags }}</th>
+            <th>{{ 'College School' | trans({}, 'candidatebackend') | raw }}</th>
         </tr>
         <tr>
             <td>{{ entity.licenseState is empty ? "-" : entity.licenseState }}<br/><br/></td>
@@ -215,8 +215,8 @@
         </tr>
 
         <tr>
-            <th>License Expiration</th>
-            <th>College State</th>
+            <th>{{ 'License Expiration' | trans({}, 'candidatebackend') | striptags }}</th>
+            <th>{{ 'College State' | trans({}, 'candidatebackend') | raw }}</th>
         </tr>
         <tr>
             <td>{{ entity.licenseExpiration is empty ? "-" : entity.licenseExpiration }}<br/><br/></td>
@@ -224,13 +224,13 @@
         </tr>
 
         <tr>
-            <th>Legal Worker in USA</th>
-            <th>Major</th>
+            <th>{{ 'Legal Worker in USA' | trans({}, 'candidatebackend') | raw }}</th>
+            <th>{{ 'Major' | trans({}, 'candidatebackend') | raw }}</th>
         </tr>
         <tr>
             <td>
                 {% if (entity.legalWorker == "true") %}
-                    <span class="text-success">YES</span>
+                    <span class="text-success">{{ 'YES' | trans({}, 'candidatebackend') | raw }}</span>
                 {% elseif (entity.legalWorker == "false") %}
                     <span class="text-danger">NO</span>
                 {% endif %}
@@ -239,13 +239,13 @@
         </tr>
 
         <tr>
-            <th>Convicted of a Crime</th>
-            <th>Degree</th>
+            <th>{{ 'Convicted of a Crime' | trans({}, 'candidatebackend') | raw }}</th>
+            <th>{{ 'Degree' | trans({}, 'candidatebackend') | raw }}</th>
         </tr>
         <tr>
             <td>
                 {% if (entity.crime == "true") %}
-                    <span class="text-danger">YES</span>
+                    <span class="text-danger">{{ 'YES' | trans({}, 'candidatebackend') | raw }}</span>
                 {% elseif (entity.crime == "false") %}
                     <span class="text-success">NO</span>
                 {% endif %}
@@ -254,7 +254,7 @@
         </tr>
 
         <tr>
-            <th>Crime Explain</th>
+            <th>{{ 'Crime Explain' | trans({}, 'candidatebackend') | raw }}</th>
             <th>GPA</th>
         </tr>
         <tr>
@@ -263,20 +263,20 @@
         </tr>
 
         <tr>
-            <th>Background check?</th>
-            <th>Contact Employers</th>
+            <th>{{ 'Background check?' | trans({}, 'candidatebackend') | striptags }}</th>
+            <th>{{ 'Contact Employers' | trans({}, 'candidatebackend') | striptags }}</th>
         </tr>
         <tr>
             <td>
                 {% if (entity.background == "true") %}
-                    <span class="text-success">YES</span>
+                    <span class="text-success">{{ 'YES' | trans({}, 'candidatebackend') | raw }}</span>
                 {% elseif (entity.background == "false") %}
                     <span class="text-danger">NO</span>
                 {% endif %}
                 <br/><br/></td>
             <td>
                 {% if (entity.contactEmployers == "true") %}
-                    <span class="text-success">YES</span>
+                    <span class="text-success">{{ 'YES' | trans({}, 'candidatebackend') | raw }}</span>
                 {% elseif (entity.contactEmployers == "false") %}
                     <span class="text-danger">NO</span>
                 {% endif %}
@@ -284,8 +284,8 @@
         </tr>
 
         <tr>
-            <th>Background Explain</th>
-            <th>Employment Name</th>
+            <th>{{ 'Background Explain' | trans({}, 'candidatebackend') | striptags }}</th>
+            <th>{{ 'Employment Name' | trans({}, 'candidatebackend') | raw }}</th>
         </tr>
         <tr>
             <td>{{ entity.backExplain is empty ? "-" : entity.backExplain }}<br/><br/></td>
@@ -296,17 +296,17 @@
 
     <table class="table table-striped">
         <tr>
-            <th colspan="6">Employers</th>
+            <th colspan="6">{{ 'Employers' | trans({}, 'candidatebackend') | raw }}</th>
         </tr>
         {% if(entity.employers|json_decode[0].name is not empty) %}
             {% for employer in entity.employers|json_decode %}
                 <tr>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Phone</th>
-                    <th>Position</th>
-                    <th>From</th>
-                    <th>To</th>
+                    <th>{{ 'Name' | trans({}, 'candidatebackend') | raw }}</th>
+                    <th>{{ 'Address' | trans({}, 'candidatebackend') | raw }}</th>
+                    <th>{{ 'Phone' | trans({}, 'candidatebackend') | raw }}</th>
+                    <th>{{ 'Position' | trans({}, 'candidatebackend') | raw }}</th>
+                    <th>{{ 'From' | trans({}, 'candidatebackend') | raw }}</th>
+                    <th>{{ 'To' | trans({}, 'candidatebackend') | raw }}</th>
                 </tr>
                 <tr style="border-top: 1px #2e2e2e solid !important;">
                     <td>{{ employer.name is empty ? "-" : employer.name }}<br/><br/></td>
@@ -317,11 +317,11 @@
                     <td>{{ employer.to }}<br/><br/></td>
                 </tr>
                 <tr>
-                    <th>Mode</th>
-                    <th>Hours</th>
-                    <th>Salary</th>
-                    <th>Supervisor</th>
-                    <th>Department</th>
+                    <th>{{ 'Mode' | trans({}, 'candidatebackend') | raw }}</th>
+                    <th>{{ 'Hours' | trans({}, 'candidatebackend') | raw }}</th>
+                    <th>{{ 'Salary' | trans({}, 'candidatebackend') | raw }}</th>
+                    <th>{{ 'Supervisor' | trans({}, 'candidatebackend') | raw }}</th>
+                    <th>{{ 'Department' | trans({}, 'candidatebackend') | raw }}</th>
                     <th></th>
                 </tr>
                 <tr>
@@ -334,13 +334,13 @@
                     <td><br/><br/></td>
                 </tr>
                 <tr>
-                    <th colspan="6"><b>Leaving Reason</b></th>
+                    <th colspan="6"><b>Leaving Reason' | trans({}, 'candidatebackend') | striptags }}</b></th>
                 </tr>
                 <tr>
                     <td colspan="6">{{ employer.leavingReason is empty ? "-" : employer.leavingReason }}<br/><br/></td>
                 </tr>
                 <tr>
-                    <th colspan="6"><b>Duties</b></th>
+                    <th colspan="6"><b>Duties' | trans({}, 'candidatebackend') | raw }}</b></th>
                 </tr>
                 <tr>
                     <td colspan="6">{{ employer.duties is empty ? "-" : employer.duties }}<br/><br/></td>
@@ -353,7 +353,7 @@
             {% endfor %}
         {% else %}
             <tr>
-                <td colspan="6">{{ "There are no employers history related" }}</td>
+                <td colspan="6">{{ "There are no employers history related" | trans({}, 'candidatebackend') | raw }}</td>
             </tr>
         {% endif %}
 
@@ -362,13 +362,13 @@
 
     <table class="table table-striped">
         <tr>
-            <th colspan="3">References</th>
+            <th colspan="3">{{ 'References' | trans({}, 'candidatebackend') | raw }}</th>
         </tr>
         {% if(entity.references|json_decode[0].name is not empty) %}
             <tr>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Professional</th>
+                <th>{{ 'Name' | trans({}, 'candidatebackend') | raw }}</th>
+                <th>{{ 'Phone' | trans({}, 'candidatebackend') | raw }}</th>
+                <th>{{ 'Professional' | trans({}, 'candidatebackend') | raw }}</th>
             </tr>
             {% for reference in entity.references|json_decode %}
                 <tr>
@@ -376,7 +376,7 @@
                     <td>{{ reference.phone is empty ? "-" : reference.phone }}</td>
                     <td>
                         {% if (reference.profesional) %}
-                            <span class="text-success">YES</span>
+                            <span class="text-success">{{ 'YES' | trans({}, 'candidatebackend') | raw }}</span>
                         {% else %}
                             <span class="text-danger">NO</span>
                         {% endif %}
@@ -390,19 +390,19 @@
             {% endfor %}
         {% else %}
             <tr>
-                <td colspan="3">{{ "There are no references related" }}</td>
+                <td colspan="3">{{ "There are no references related" | trans({}, 'candidatebackend') | raw }}</td>
             </tr>
         {% endif %}
     </table>
 
     <br/><br/>
 
-    <div><b>Skills</b></div>
+    <div><b>{{ 'Skills' | trans({}, 'candidatebackend') | raw }}</b></div>
     <div>{{ entity.skills is empty ? "-" : entity.skills }}</div>
 
     <br/>
 
-    <div><b>Best Fit</b></div>
+    <div><b>{{ 'Best Fit' | trans({}, 'candidatebackend') | raw }}</b></div>
     <div>{{ entity.bestFit is empty ? "-" : entity.bestFit }}</div>
 
     <br/><br/><br/>

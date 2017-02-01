@@ -4,7 +4,8 @@ Logout: Salir
 Dashboard: Tablero
 Businesses: Negocios
 Business: Negocio
-Categories: Categorías
+Business Categories: Categorías de Negocio
+Opening Categories: Categorías de Empleo
 Deals: Ofertas
 Rewards: Recompensas
 Customers: Clientes
@@ -50,3 +51,4 @@ Total items: Total de elementos
 Batch actions: Acciones en lote
 Openings: Empleos
 Candidates: Candidatos
+Export to PDF: Exportar a PDF
