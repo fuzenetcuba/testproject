@@ -147,10 +147,10 @@ class CareersController extends Controller
 
         if (0 === count($businesses)) {
             if ((null === $business || '-1' == $business)) {
-                $businesses = $this->get('business.manager')->findAll();
+                $businesses = $this->get('business.manager')->findBusinessHaveOpenings();
             } else {
                 $business = $this->get('business.manager')->find($business);
-                $businesses = $this->get('business.manager')->findAll();
+                $businesses = $this->get('business.manager')->findBusinessHaveOpenings();
                 // fetch the matching openings
                 $openingCategories = $this->get('opening.category.manager')->findOpeningsCategoryWithBusiness($business);
             }
