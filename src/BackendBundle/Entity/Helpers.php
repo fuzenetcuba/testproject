@@ -102,6 +102,11 @@ class Helpers {
     private $person;
 
 
+
+    public function __toString()
+    {
+        return "" . $this->id;
+    }
     /**
      * Get id
      *
