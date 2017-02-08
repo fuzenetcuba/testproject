@@ -14,3 +14,5 @@
 [26-Jan-2017 18:12:17 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
 [26-Jan-2017 18:13:43 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
 [29-Jan-2017 15:26:11 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[02-Feb-2017 22:50:33 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[06-Feb-2017 06:52:41 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
