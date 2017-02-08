@@ -29,11 +29,22 @@
 {% block page_content %}
 
     <section class="inner-content section-spaces-line">
+    
         <div class="row">
             <div class="jobafair-careers-list careers-result col-lg-10 col-lg-offset-1">
             {% if openings | length > 0 %}
                 <table class="table table-hover table-responsive">
                     <thead>
+                    <tr>
+                        <th class="hidden-xs"></th>
+                        <th class="hidden-xs"></th>
+                        <th class="hidden-xs"></th>
+                        <th>
+                            <a class="btn btn-green btn-block" href="{{ path('careers_index') }}">
+                                {{ 'Back to Search' | trans({}, 'careers') }}
+                            </a>
+                        </th>
+                    </tr>
                     <tr>
                         <th class="hidden-xs">{{ 'Business' | trans({}, 'careers') }}</th>
                         <th class="hidden-xs">{{ 'Position' | trans({}, 'careers') }}</th>

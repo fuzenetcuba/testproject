@@ -1114,7 +1114,7 @@ section.signup h2 {
 }
 
 .inner-content {
-    margin-top: 113px;
+    margin-top: 153px;
 }
 
 div.container-image {
@@ -3298,7 +3298,7 @@ div.container-fb-share-button{
 
 @media (max-width: 1150px){
     div.container-fb-share-button{
-        top: 140px;
+        top: 100px;
     }
 }
 

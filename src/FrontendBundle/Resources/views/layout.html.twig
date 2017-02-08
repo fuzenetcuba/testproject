@@ -128,10 +128,9 @@
                                 <br/>
                                 {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteAddress' })) }}
                                 <br/>
-                                {{ 'Phone' | trans({}, 'homepage') }}
-                                .: {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websitePhone' })) }}
+                                {{ 'Phone' | trans({}, 'homepage') }}: {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websitePhone' })) }}
                                 <br/>
-                                {{ 'Fax' | trans({}, 'homepage') }}.: {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteFax' })) }}<br/>
+                                {{ 'Fax' | trans({}, 'homepage') }}: {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteFax' })) }}<br/>
                                 E-mail:
                                 <a class="green-link"
                                    href="mailto:{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteEmail' })) }}">
