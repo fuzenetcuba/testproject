@@ -36,8 +36,15 @@
                 <table class="table table-hover table-responsive">
                     <thead>
                     <tr>
-                        <th>
-                            <a class="btn btn-blue btn-block" href="
+                        <td class="hidden-xs"></td>
+                        <td class="hidden-xs"></td>
+                        <td class="text-right">
+                            <a class="btn btn-green" href="{{ path('careers_index') }}">
+                                {{ 'Back to Search' | trans({}, 'careers') }}
+                            </a>
+                        </td>
+                        <td class="text-right">
+                            <a class="btn btn-blue btn-block" target="_blank" download="{{ 'Application form' | trans({}, 'careers') ~ '.pdf' }}" href="
                                 {% if app.request.get('_locale') == 'en' %}
                                     {{ asset('bundles/frontend/files/job-application-form-en.pdf') }}
                                 {% elseif app.request.get('_locale') == 'es' %}
@@ -46,14 +53,7 @@
                             ">
                                 {{ 'Download Form' | trans({}, 'careers') }}
                             </a>
-                        </th>
-                        <th class="hidden-xs"></th>
-                        <th class="hidden-xs"></th>
-                        <th>
-                            <a class="btn btn-green btn-block" href="{{ path('careers_index') }}">
-                                {{ 'Back to Search' | trans({}, 'careers') }}
-                            </a>
-                        </th>
+                        </td>
                     </tr>
                     <tr>
                         <th class="hidden-xs">{{ 'Business' | trans({}, 'careers') }}</th>
