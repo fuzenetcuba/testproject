@@ -36,7 +36,17 @@
                 <table class="table table-hover table-responsive">
                     <thead>
                     <tr>
-                        <th class="hidden-xs"></th>
+                        <th>
+                            <a class="btn btn-blue btn-block" href="
+                                {% if app.request.get('_locale') == 'en' %}
+                                    {{ asset('bundles/frontend/files/job-application-form-en.pdf') }}
+                                {% elseif app.request.get('_locale') == 'es' %}
+                                    {{ asset('bundles/frontend/files/job-application-form-es.pdf') }}
+                                {% endif %}
+                            ">
+                                {{ 'Download Form' | trans({}, 'careers') }}
+                            </a>
+                        </th>
                         <th class="hidden-xs"></th>
                         <th class="hidden-xs"></th>
                         <th>
