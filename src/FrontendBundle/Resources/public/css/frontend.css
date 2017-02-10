@@ -3623,3 +3623,13 @@ label[for="city"] {
 fieldset.uploads {
     width: 100%;
 }
+
+.careers-top-buttons {
+    text-align: right;
+}
+
+@media(max-width: 1000px) {
+    .careers-top-buttons {
+        text-align: center;
+    }
+}
