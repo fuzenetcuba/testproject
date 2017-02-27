@@ -13,7 +13,7 @@ var map = new ol.Map({
             source: new ol.source.ImageStatic({
                 attributions: [
                     new ol.Attribution({
-                        html: '<strong style="font-size: 11px;">&copy; Fuzenet Marketing, 2016</strong>'
+                        html: '<strong style="font-size: 11px;">&copy; Fuzenet Marketing, 2016 - ' + new Date().getFullYear() + '</strong>'
                     })
                 ],
                 url: map_blank,

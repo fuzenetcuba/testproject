@@ -13,7 +13,7 @@ var raster = new ol.layer.Image({
     source: new ol.source.ImageStatic({
         attributions: [
             new ol.Attribution({
-                html: '<strong style="font-size: 11px;">&copy; Fuzenet Marketing, 2016</strong>'
+                html: '<strong style="font-size: 11px;">&copy; Fuzenet Marketing, 2016 - ' + new Date().getFullYear() + '</strong>'
             })
         ],
         url: url + (url.endsWith('/') ? '' : '/') + 'bundles/backend/images/map.png',
@@ -33,7 +33,7 @@ var map = new ol.Map({
         center: [center[0], center[1] + 200],
         zoom: 3,
         minZoom: 1,
-        maxZoom: 4
+        maxZoom: 5
     })
 });
 
