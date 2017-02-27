@@ -103,8 +103,8 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Start Date' | trans({}, 'candidatebackend'), 'e.startDate') }}
-                            {% if entities.isSorted('e.startDate') %}
+                            {{ knp_pagination_sortable(entities, 'Date' | trans({}, 'candidatebackend'), 'e.created') }}
+                            {% if entities.isSorted('e.created') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
@@ -171,7 +171,11 @@
 
                             <td>{{ entity.phone }}</td>
 
-                            <td>{{ entity.startDate|date('d-M-Y') }}</td>
+                            <td>
+                                {% if entity.created %}
+                                    {{ entity.created|date('d-M-Y') }}
+                                {% endif %}
+                            </td>
 
                             <td>{{ entity.availability == "full" ? "Full Time" : (entity.availability == "part" ? "Part Time" : "Either") }}</td>
 
