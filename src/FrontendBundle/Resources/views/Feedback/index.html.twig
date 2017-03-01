@@ -1,0 +1,229 @@
+{% extends '@Frontend/layout.html.twig' %}
+
+{% block title %} {{- "Feedback" | trans({}, 'general') -}} {% endblock %}
+
+{% block metatags %}
+    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+    {{- 'Feedback' | trans({}, 'homepage') -}},
+    {{- 'Mall' | trans({}, 'homepage') -}},
+    " />
+    <meta name="description" content="
+    {{- 'Go search the best deals in Plaza Mariachi to get a great winning experience' | trans({}, 'deals') -}}
+    " />
+{% endblock %}
+
+{% block page_content %}
+    <section v-cloak class="inner-content section-spaces-line" id="feedback-section">
+        <div class="container">
+            <div v-if="!done" class="row m-b text-center">
+                <h2>{{ 'Please take this short survey about your experience in our mall' }}</h2>
+            </div>
+            <validator name="form">
+            <form v-if="!done" class="form-horizontal survey-form">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-lg-6">Are you satisfied with the overall Plaza Mariachi appearance?</label>
+                        <div class="col-lg-6 no-margin-top">
+                            <label class="control control--radio"> YES
+                                <input type="radio" v-model="form.satisfied" :value="1" name="satisfied" checked="checked"/>
+                                <div class="control__indicator"></div>
+                            </label>
+                            <label class="control control--radio"> NO
+                                <input type="radio" v-model="form.satisfied" :value="0" name="satisfied" name="radio"/>
+                                <div class="control__indicator"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <label class="full">Would you recommend Plaza Mariachi to your friends?</label>
+                            <label class="control control--radio"> YES
+                                <input type="radio" v-model="form.recommend" :value="1" name="recommend" checked="checked"/>
+                                <div class="control__indicator"></div>
+                            </label>
+                            <label class="control control--radio"> NO
+                                <input type="radio" v-model="form.recommend" :value="0" name="recommend"/>
+                                <div class="control__indicator"></div>
+                            </label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>
+                                Why would you not recommend Plaza Mariachi to your friends?
+                            </label>
+                            <label v-if="$form.explain1 && $form.explain1.required" class="error fadeInLeft">
+                                This field is required
+                            </label>
+                            <span v-if="!form.recommend">
+                            <textarea 
+                                v-model="form.recommendExplain" 
+                                v-validate:explain1="{ required: true }"
+                                class="form-control" rows="5"></textarea>
+                            </span>
+                            <span v-if="form.recommend">
+                            <textarea 
+                                disabled 
+                                v-model="form.recommendExplain" 
+                                class="form-control" rows="5"></textarea>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <label class="full">Are you satisfied with the selection of stores within the Plaza Mariachi?</label>
+                            <label class="control control--radio"> YES
+                                <input type="radio" v-model="form.stores" :value="1" checked="checked"/>
+                                <div class="control__indicator"></div>
+                            </label>
+                            <label class="control control--radio"> NO
+                                <input type="radio" v-model="form.stores" :value="0" name="radio"/>
+                                <div class="control__indicator"></div>
+                            </label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>
+                                What additional stores would you like to see at Plaza Mariachi?
+                            </label>
+                            <label v-if="$form.explain2 && $form.explain2.required" class="error fadeInLeft">
+                                This field is required
+                            </label>
+                            <span v-if="!form.stores">
+                            <textarea 
+                                v-model="form.storesExplain" 
+                                v-validate:explain2="{ required: true }"
+                            class="form-control" rows="5"></textarea>
+                            </span>
+                            <span v-if="form.stores">
+                            <textarea 
+                                disabled 
+                                v-model="form.storesExplain" 
+                                class="form-control" rows="5"></textarea>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <label class="full">Are you satisfied with the food selection?</label>
+                            <label class="control control--radio"> YES
+                                <input type="radio" v-model="form.food" :value="1" checked="checked"/>
+                                <div class="control__indicator"></div>
+                            </label>
+                            <label class="control control--radio"> NO
+                                <input type="radio" v-model="form.food" :value="0" name="radio"/>
+                                <div class="control__indicator"></div>
+                            </label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>
+                                What food selections would you like to see at Plaza Mariachi?
+                            </label>
+                            <label v-if="$form.explain3 && $form.explain3.required" class="error fadeInLeft">
+                                This field is required
+                            </label>
+                            <span v-if="!form.food">
+                                <textarea
+                                    v-model="form.foodExplain"
+                                    v-validate:explain3="{ required: true }"
+                                    class="form-control" rows="5"></textarea>
+                            </span>
+                            <span v-if="form.food">
+                                <textarea
+                                    disabled
+                                    v-model="form.foodExplain" 
+                                    class="form-control" rows="5"></textarea>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <label>
+                                Please rate Plaza Mariachi
+                            </label>
+                        </div>
+                        <div class="col-lg-6">
+                             <star-rating :value.sync="form.rate" name="rating"></star-rating>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <label>
+                                Would you like for us to contact you about your experience?
+                            </label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="control control--radio"> YES
+                                <input type="radio" v-model="form.contact" :value="1"/>
+                                <div class="control__indicator"></div>
+                            </label>
+                            <label class="control control--radio"> NO
+                                <input type="radio" v-model="form.contact" :value="0" name="radio"/>
+                                <div class="control__indicator"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-4">
+                            <input type="text" :disabled="!form.contact" 
+                                v-model="form.name" class="form-control" placeholder="NAME">
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="text" :disabled="!form.contact" 
+                                v-model="form.email" class="form-control" placeholder="EMAIL">
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="text" :disabled="!form.contact" 
+                                v-model="form.phone" class="form-control" placeholder="PHONE">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <button type="button" 
+                        :disabled="!$form.valid"
+                        @click="submitForm()"
+                        class="btn btn-lg btn-info">
+                        <i class="fa fa-send"></i> SEND FEEDBACK
+                    </button>
+                </div>
+            </form>
+            </validator>
+
+            <div v-if="done" class="application-done">
+                <h2>
+                    Thank you for sending your feedback! <a class="btn btn-default" href="{{ path('frontend_homepage') }}">GO HOME</a>
+                </h2>
+                <div class="animated fadeInUp sa-icon sa-success animate">
+                    <span class="sa-line sa-tip animateSuccessTip"></span>
+                    <span class="sa-line sa-long animateSuccessLong"></span>
+
+                    <div class="sa-placeholder"></div>
+                    <div class="sa-fix"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}
+
+{% block custom_js %}
+    {{ parent() }}
+
+    <!-- Script for sticky filter bar -->
+    <script src="{{ asset('bundles/frontend/js/vue-validator.min.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/vue-resource.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/feedback.js') }}"></script>
+
+    <!-- Script for select2 plugin -->
+    <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"></script>
+{% endblock %}

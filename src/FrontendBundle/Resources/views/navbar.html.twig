@@ -165,6 +165,9 @@
                     <li class="{% if current == 'careers' %}active{% endif %}">
                         <a href="{{ path("careers_index") }}">{{ 'Careers' | trans({}, 'menu') }}</a>
                     </li>
+                    <li class="{% if current == 'survey' %}active{% endif %}">
+                        <a href="{{ path("survey") }}">  {{ 'Feedback' | trans({}, 'menu') }}</a>
+                    </li>
                     {#{% endif %}#}
                     <li class="visible-xs">
                         <a href="{{ path("subscription_request") }}">{{ 'Subscribe' | trans({}, 'menu') }}</a>
@@ -238,10 +241,17 @@
         </div>
         <!-- Your share button code -->
         <div class="container-fb-share-button">
-            <div class="fb-share-button"
-                 data-href="http://plazamariachi.com"
-                 data-layout="box_count">
-            </div>
+            {#<div class="fb-share-button"#}
+                 {#data-href="http://plazamariachi.com"#}
+                 {#data-layout="box_count">#}
+            {#</div>#}
+            <div class="fb-like"
+                 data-href="https://plazamariachi.com/"
+                 data-layout="box_count"
+                 data-action="like"
+                 data-size="small"
+                 data-show-faces="false"
+                 data-share="false"></div>
         </div>
     </nav>
 </div>
