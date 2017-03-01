@@ -165,6 +165,9 @@
                     <li class="{% if current == 'careers' %}active{% endif %}">
                         <a href="{{ path("careers_index") }}">{{ 'Careers' | trans({}, 'menu') }}</a>
                     </li>
+                    <li class="{% if current == 'survey' %}active{% endif %}">
+                        <a href="{{ path("survey") }}">  {{ 'Feedback' | trans({}, 'menu') }}</a>
+                    </li>
                     {#{% endif %}#}
                     <li class="visible-xs">
                         <a href="{{ path("subscription_request") }}">{{ 'Subscribe' | trans({}, 'menu') }}</a>

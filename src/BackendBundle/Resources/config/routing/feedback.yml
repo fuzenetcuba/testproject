@@ -1,0 +1,34 @@
+feedback:
+    path:     /
+    defaults: { _controller: "BackendBundle:Feedback:index" }
+    methods:  GET
+
+feedback_find:
+    path:     /find
+    defaults: { _controller: "BackendBundle:Feedback:find" }
+    methods:  [POST, GET]
+
+feedback_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:Feedback:show" }
+    methods:  GET
+
+feedback_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:Feedback:new" }
+    methods:  [GET, POST]
+
+feedback_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:Feedback:edit" }
+    methods:  [GET, POST, PUT]
+
+feedback_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:Feedback:delete" }
+    methods:  [POST, DELETE]
+    
+feedback_batch:
+    path:     /feedback_batch
+    defaults: { _controller: "BackendBundle:Feedback:batch" }
+    methods:  POST

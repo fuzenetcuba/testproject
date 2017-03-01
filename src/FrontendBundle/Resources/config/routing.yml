@@ -82,3 +82,14 @@ job_fair:
         path: /
         permanent: true
 
+survey:
+    path:      /feedback
+    defaults:
+        _controller: FrontendBundle:Survey:index
+
+survey_store:
+    path:      /feedback/save
+    defaults:
+        _controller: FrontendBundle:Survey:save
+    options:
+        expose: true
