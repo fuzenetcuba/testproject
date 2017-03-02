@@ -3668,6 +3668,15 @@ fieldset.uploads {
 
 .star-rating__star.is-selected {
   color: #FFD700;
+  visibility: hidden;
+}
+
+.star-rating__star.is-selected:after {
+    position: absolute;
+    display: block;
+    content: "\2605";
+    visibility: visible;
+    top: 3px;
 }
 
 .star-rating__star.is-disabled:hover {
