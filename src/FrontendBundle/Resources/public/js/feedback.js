@@ -120,7 +120,7 @@ var vm = new Vue({
 
         form: {
             satisfied: true,
-            recommend: false,
+            recommend: true,
             recommendExplain: '',
             stores: false,
             storesExplain: '',

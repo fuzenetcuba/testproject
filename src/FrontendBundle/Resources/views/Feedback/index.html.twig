@@ -48,7 +48,7 @@
                                 <div class="control__indicator"></div>
                             </label>
                         </div>
-                        <div class="col-lg-6">
+                        <div v-if="!form.recommend" class="col-lg-6 animated fadeInLeft">
                             <label>
                                 Why would you not recommend Plaza Mariachi to your friends?
                             </label>
@@ -62,10 +62,10 @@
                                 class="form-control" rows="5"></textarea>
                             </span>
                             <span v-if="form.recommend">
-                            <textarea 
+                            {# <textarea 
                                 disabled 
                                 v-model="form.recommendExplain" 
-                                class="form-control" rows="5"></textarea>
+                                class="form-control" rows="5"></textarea> #}
                             </span>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                                 <div class="control__indicator"></div>
                             </label>
                         </div>
-                        <div class="col-lg-6">
+                        <div v-if="!form.stores" class="col-lg-6 animated fadeInLeft">
                             <label>
                                 What additional stores would you like to see at Plaza Mariachi?
                             </label>
@@ -97,10 +97,10 @@
                             class="form-control" rows="5"></textarea>
                             </span>
                             <span v-if="form.stores">
-                            <textarea 
+                            {# <textarea 
                                 disabled 
                                 v-model="form.storesExplain" 
-                                class="form-control" rows="5"></textarea>
+                                class="form-control" rows="5"></textarea> #}
                             </span>
                         </div>
                     </div>
@@ -118,7 +118,7 @@
                                 <div class="control__indicator"></div>
                             </label>
                         </div>
-                        <div class="col-lg-6">
+                        <div v-if="!form.food" class="col-lg-6 animated fadeInLeft">
                             <label>
                                 What food selections would you like to see at Plaza Mariachi?
                             </label>
@@ -132,10 +132,10 @@
                                     class="form-control" rows="5"></textarea>
                             </span>
                             <span v-if="form.food">
-                                <textarea
+                                {# <textarea
                                     disabled
                                     v-model="form.foodExplain" 
-                                    class="form-control" rows="5"></textarea>
+                                    class="form-control" rows="5"></textarea> #}
                             </span>
                         </div>
                     </div>
