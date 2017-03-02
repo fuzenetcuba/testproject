@@ -3658,7 +3658,7 @@ fieldset.uploads {
   vertical-align: middle;
   line-height: 1;
   font-size: 1.5em;
-  color: #ABABAB;
+  color: #ABABAB;   
   transition: color .2s ease-out;
 }
 
@@ -3796,11 +3796,15 @@ fieldset.uploads {
     background: #7b7b7b;
 }
 
-#feedback-section .col-lg-6 label.full {
+#feedback-section label.full {
     width: 100%;
 }
 
 #feedback-section div.application-done {
     flex-direction: column;
     padding: 40px 0;
+}
+
+#feedback-section {
+    padding: 20px;
 }
