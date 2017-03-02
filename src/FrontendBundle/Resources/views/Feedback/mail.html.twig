@@ -1,0 +1,37 @@
+<h1>New feedback received from</h1>
+
+Name: {{ feedback.name }}
+Phone: {{ feedback.phone }}
+Email: {{ feedback.email }}
+
+<label class="col-lg-6">Are you satisfied with the overall Plaza Mariachi appearance?</label> <br/>
+
+{% if feedback.satisfied %} YES {% else %} NO {% endif %} <br/>
+
+<label class="full">Would you recommend Plaza Mariachi to your friends?</label> <br/>
+
+{% if feedback.recommended %} YES {% else %} NO {% endif %} <br/>
+
+<label>Why would you not recommend Plaza Mariachi to your friends?</label> <br/>
+
+{{ feedback.whyNotRecommend }} <br/>
+
+<label class="full">Are you satisfied with the selection of stores within the Plaza Mariachi?</label> <br/>
+
+{% if feedback.storesSatisfied %} YES {% else %} NO {% endif %} <br/>
+
+<label>What additional stores would you like to see at Plaza Mariachi?</label> <br/>
+
+{{ feedback.additionalStores }} <br/>
+
+<label class="full">Are you satisfied with the food selection?</label> <br/>
+
+{% if feedback.foodSatisfied %} YES {% else %} NO {% endif %} <br/>
+
+<label>What food selections would you like to see at Plaza Mariachi?</label> <br/>
+
+{{ feedback.additionalFood }} <br/>
+
+<label>Please rate Plaza Mariachi</label> <br/>
+
+{{ feedback.rate }}<br/>

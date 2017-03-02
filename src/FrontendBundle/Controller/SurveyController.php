@@ -44,7 +44,18 @@ class SurveyController extends Controller
         $em->persist($feedback);
         $em->flush();
 
-        dump($feedback); die ;
+        $content = $this->renderView('@Frontend/Feedback/mail.html.twig', [
+            'feedback' => $feedback,
+        ]);
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject('New feedback')
+            ->setFrom($this->getParameter('customer.email.from'))
+            ->setTo('info@plazamariachi.com')
+            ->setBody($content, 'text/html')
+        ;
+
+        $this->get('mailer')->send($message);
 
         return new JsonResponse(['ok' => true]);
     }
