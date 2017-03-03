@@ -162,6 +162,11 @@
                                     class="nav-label">{{ 'Settings' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
+                    <li class="{% block active_feedback %}{% endblock %}">
+                        <a href="{{ path('feedback') }}"><i class="fa fa-comments"></i> <span
+                                    class="nav-label">{{ 'Feedback' | trans({}, 'generalbackend') }}</span></a>
+                    </li>
+
                     <li class="special_link">
                         <a title="{{ 'Logout' | trans({}, 'generalbackend') }}" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> <span
                                     class="nav-label">{{ 'Logout' | trans({}, 'generalbackend') }}</span></a>

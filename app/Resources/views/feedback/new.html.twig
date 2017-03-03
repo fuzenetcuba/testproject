@@ -1,0 +1,339 @@
+    {% extends 'BackendBundle::layout.html.twig' %}
+
+{% block custom_css %}
+    {{ parent() }}
+
+                
+                        <!-- iCheck Styles -->
+            <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/iCheck/custom.css') }}"
+                  type="text/css"/>
+                                <!-- iCheck Styles -->
+            <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/iCheck/custom.css') }}"
+                  type="text/css"/>
+                                            <!-- iCheck Styles -->
+            <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/iCheck/custom.css') }}"
+                  type="text/css"/>
+                                            <!-- iCheck Styles -->
+            <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/iCheck/custom.css') }}"
+                  type="text/css"/>
+                                                                        
+                <!-- select2 Styles -->
+        <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
+              type="text/css"/>
+    
+{% endblock %}
+
+        {% block active_feedback  %}active{% endblock %}
+
+        {% block page_heading_title %}
+    <a class="btn btn-default navbar-btn" href="{{ path('feedback')}}"
+       style="margin-bottom: 7px;">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+    Feedback creation
+    {% endblock %}
+
+        {% block page_content %}
+
+        {{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
+
+                            
+                
+                    <div class="form-group{% if(form.satisfied.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.satisfied) }}</label>
+
+                        <div class="col-md-1">
+                            <div class="checkbox-inline">
+                                {{ form_widget(form.satisfied, { 'attr': {'class' : 'form-control i-checks'}}) }}
+                                {% if form.satisfied.vars['errors']|length > 0 %}
+                                <ul class="message">
+                                    {% for error in form.satisfied.vars['errors'] %}
+                                    <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.recommended.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.recommended) }}</label>
+
+                        <div class="col-md-1">
+                            <div class="checkbox-inline">
+                                {{ form_widget(form.recommended, { 'attr': {'class' : 'form-control i-checks'}}) }}
+                                {% if form.recommended.vars['errors']|length > 0 %}
+                                <ul class="message">
+                                    {% for error in form.recommended.vars['errors'] %}
+                                    <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.whyNotRecommend.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.whyNotRecommend) }}</label>
+
+                        <div class="col-md-6">
+                            {{ form_widget(form.whyNotRecommend, { 'attr': {'class' : 'form-control'}}) }}
+                            {% if form.whyNotRecommend.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.whyNotRecommend.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.storesSatisfied.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.storesSatisfied) }}</label>
+
+                        <div class="col-md-1">
+                            <div class="checkbox-inline">
+                                {{ form_widget(form.storesSatisfied, { 'attr': {'class' : 'form-control i-checks'}}) }}
+                                {% if form.storesSatisfied.vars['errors']|length > 0 %}
+                                <ul class="message">
+                                    {% for error in form.storesSatisfied.vars['errors'] %}
+                                    <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.additionalStores.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.additionalStores) }}</label>
+
+                        <div class="col-md-6">
+                            {{ form_widget(form.additionalStores, { 'attr': {'class' : 'form-control'}}) }}
+                            {% if form.additionalStores.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.additionalStores.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.foodSatisfied.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.foodSatisfied) }}</label>
+
+                        <div class="col-md-1">
+                            <div class="checkbox-inline">
+                                {{ form_widget(form.foodSatisfied, { 'attr': {'class' : 'form-control i-checks'}}) }}
+                                {% if form.foodSatisfied.vars['errors']|length > 0 %}
+                                <ul class="message">
+                                    {% for error in form.foodSatisfied.vars['errors'] %}
+                                    <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.additionalFood.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.additionalFood) }}</label>
+
+                        <div class="col-md-6">
+                            {{ form_widget(form.additionalFood, { 'attr': {'class' : 'form-control'}}) }}
+                            {% if form.additionalFood.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.additionalFood.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.rate.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.rate) }}</label>
+
+                        <div class="col-md-6">
+                            {{ form_widget(form.rate, { 'attr': {'class' : 'form-control'}}) }}
+                            {% if form.rate.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.rate.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.name.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.name) }}</label>
+
+                        <div class="col-md-6">
+                            {{ form_widget(form.name, { 'attr': {'class' : 'form-control'}}) }}
+                            {% if form.name.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.name.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.email.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.email) }}</label>
+
+                        <div class="col-md-6">
+                            {{ form_widget(form.email, { 'attr': {'class' : 'form-control'}}) }}
+                            {% if form.email.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.email.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.phone.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.phone) }}</label>
+
+                        <div class="col-md-6">
+                            {{ form_widget(form.phone, { 'attr': {'class' : 'form-control'}}) }}
+                            {% if form.phone.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.phone.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                    
+                            
+            
+                <div class="form-group">
+    <div class="col-md-2 text-right">
+        <a class="btn btn-success" href="{{ path('feedback') }}">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            Back to the list
+        </a>
+    </div>
+    <div class="col-md-10">
+
+                            {{ form_widget(form.submit, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
+            {{ form_widget(form.submitback, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
+        
+                
+                
+                
+                    {{ form(form) }}
+        
+            </div>
+</div>
+
+
+    {{ form_end(form) }}
+
+    {% endblock %}
+
+    {% block custom_js %}
+    {{ parent() }}
+
+                                            <!-- iCheck Scripts -->
+                <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
+                        type="text/javascript"></script>
+                                                <!-- iCheck Scripts -->
+                <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
+                        type="text/javascript"></script>
+                                                                    <!-- iCheck Scripts -->
+                <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
+                        type="text/javascript"></script>
+                                                                    <!-- iCheck Scripts -->
+                <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
+                        type="text/javascript"></script>
+                                                                                                                            
+                <!-- select2 Scripts -->
+        <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"
+                type="text/javascript"></script>
+        {% endblock %}
+
+    {% block inline_js %}
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+
+                                            
+                //  iCheck scripts for checkboxes and radios
+                $(".i-checks").iCheck({
+                    checkboxClass: "icheckbox_square-green",
+                    radioClass: "iradio_square-green",
+                });
+                
+                                                
+                //  iCheck scripts for checkboxes and radios
+                $(".i-checks").iCheck({
+                    checkboxClass: "icheckbox_square-green",
+                    radioClass: "iradio_square-green",
+                });
+                
+                                                                    
+                //  iCheck scripts for checkboxes and radios
+                $(".i-checks").iCheck({
+                    checkboxClass: "icheckbox_square-green",
+                    radioClass: "iradio_square-green",
+                });
+                
+                                                                    
+                //  iCheck scripts for checkboxes and radios
+                $(".i-checks").iCheck({
+                    checkboxClass: "icheckbox_square-green",
+                    radioClass: "iradio_square-green",
+                });
+                
+                                                                                                                            
+                
+        //  select2 scripts for batch actions combobox
+        $(".select2-field").select2({
+            placeholder: "--- Select a value ---"
+        });
+        
+    
+    });
+
+    </script>
+    {% endblock %}

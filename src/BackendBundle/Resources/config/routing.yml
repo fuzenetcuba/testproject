@@ -62,3 +62,7 @@ fos_user_logout_ajax:
         permanent: true
     options:
         expose: true
+
+backend_feedback:
+    resource: "@BackendBundle/Resources/config/routing/feedback.yml"
+    prefix:   /feedback
