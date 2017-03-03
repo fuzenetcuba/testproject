@@ -45,9 +45,9 @@
                     {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerBecomeMemberToday' })) }}
                 </h2>
                 <p class="m-t-lg m-b-lg">
-                    <a class="btn btn-blue" href="{{ path('fos_user_registration_register') }}">{{ 'BECOME A MEMBER' | trans({}, 'subscription') }}</a>
+                    <a title="{{ 'BECOME A MEMBER' | trans({}, 'subscription') }}" class="btn btn-blue" href="{{ path('fos_user_registration_register') }}">{{ 'BECOME A MEMBER' | trans({}, 'subscription') }}</a>
                     <span class="m-l-lg m-r-lg">{{ 'or' | trans({}, 'subscription') }}</span>
-                    <a class="btn btn-green" href="{{ path('frontend_homepage') }}">{{ 'GO TO PLAZA HOME' | trans({}, 'subscription') }}</a>
+                    <a title="{{ 'GO TO PLAZA HOME' | trans({}, 'subscription') }}" class="btn btn-green" href="{{ path('frontend_homepage') }}">{{ 'GO TO PLAZA HOME' | trans({}, 'subscription') }}</a>
                 </p>
             </div>
         </div>

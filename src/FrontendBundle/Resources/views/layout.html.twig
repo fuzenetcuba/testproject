@@ -128,11 +128,11 @@
                                 <br/>
                                 {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteAddress' })) }}
                                 <br/>
-                                {{ 'Phone' | trans({}, 'homepage') }}: <a class="green-link" href="tel:+1{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websitePhone' })) | unformat_phone }}">{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websitePhone' })) }}</a>
+                                {{ 'Phone' | trans({}, 'homepage') }}: <a title="{{ 'Phone' | trans({}, 'homepage') }}" class="green-link" href="tel:+1{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websitePhone' })) | unformat_phone }}">{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websitePhone' })) }}</a>
                                 <br/>
-                                {{ 'Fax' | trans({}, 'homepage') }}: <a class="green-link" href="tel:+1{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteFax' })) | unformat_phone }}">{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteFax' })) }}</a><br/>
+                                {{ 'Fax' | trans({}, 'homepage') }}: <a title="{{ 'Fax' | trans({}, 'homepage') }}" class="green-link" href="tel:+1{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteFax' })) | unformat_phone }}">{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteFax' })) }}</a><br/>
                                 E-mail:
-                                <a class="green-link"
+                                <a class="green-link" title="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteEmail' })) }}"
                                    href="mailto:{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteEmail' })) }}">
                                     {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteEmail' })) }}
                                 </a><br/>
@@ -170,7 +170,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <a href="{{ path('mall_map', { 'slug' : 'all' }) }}"
+                        <a title="{{ 'MALL MAP' | trans({}, 'homepage') }}" href="{{ path('mall_map', { 'slug' : 'all' }) }}"
                            class="btn btn-green">{{ 'MALL MAP' | trans({}, 'homepage') }}</a>
                     </div>
                 </div>
@@ -182,28 +182,28 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlTwitter' })) is not empty %}
-                            <a href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlTwitter' })) }}"
+                            <a title="Twitter" href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlTwitter' })) }}"
                                target="_blank"
                                class="btn btn-circle-muted btn-outline btn-social-icon btn-twitter text-muted m-l m-r">
                                 <span class="fa fa-twitter"></span>
                             </a>
                         {% endif %}
                         {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlGoogle' })) is not empty %}
-                            <a href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlGoogle' })) }}"
+                            <a title="Google +" href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlGoogle' })) }}"
                                target="_blank"
                                class="btn btn-circle-muted btn-outline btn-social-icon btn-google text-muted m-l m-r">
                                 <span class="fa fa-google"></span>
                             </a>
                         {% endif %}
                         {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlFacebook' })) is not empty %}
-                            <a href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlFacebook' })) }}"
+                            <a title="Facebook" href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlFacebook' })) }}"
                                target="_blank"
                                class="btn btn-circle-muted btn-outline btn-social-icon btn-facebook text-muted m-l m-r">
                                 <span class="fa fa-facebook"></span>
                             </a>
                         {% endif %}
                         {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlInstagram' })) is not empty %}
-                            <a href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlInstagram' })) }}"
+                            <a title="Instagram" href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlInstagram' })) }}"
                                target="_blank"
                                class="btn btn-circle-muted btn-outline btn-social-icon btn-instagram text-muted m-l m-r">
                                 <span class="fa fa-instagram"></span>

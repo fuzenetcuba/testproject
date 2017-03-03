@@ -48,7 +48,7 @@
                         <h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteSlogan' })) | upper }}</h1>
                         <h1 id="coming-soon-text">{{ 'opening soon' | trans({}, 'homepage') }}</h1>
                         <p>
-                            <a class="btn btn-lg btn-amber" href="{{ path('careers_find') }}{#{ path("fos_user_registration_register") }#}"
+                            <a title="{{ 'GET HIRED' | trans({}, 'homepage') }}" class="btn btn-lg btn-amber" href="{{ path('careers_find') }}{#{ path("fos_user_registration_register") }#}"
                                role="button">{{ 'GET HIRED' | trans({}, 'homepage') }}</a>
                         </p>
                     </div>
@@ -100,19 +100,19 @@
     {#<div class="container-image ">#}
     {#<img class="center-height" alt="{{ deal.name }}" title="{{ deal.name }}" src="{{ asset('images/deals/' ~ deal.image) }} "/>#}
     {#<div class="overlay">#}
-    {#<a class="info" href="{{ path('deal_details', {'slug' : deal.slug}) }}">#}
+    {#<a title="Deal details" class="info" href="{{ path('deal_details', {'slug' : deal.slug}) }}">#}
     {#{{ 'Show Deal' | trans({}, 'homepage') }}#}
     {#</a>#}
     {#</div>#}
     {#</div>#}
     {#</div>#}
-    {#<p><a class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View#}
+    {#<p><a title="Deal details" class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View#}
     {#Deal</a></p>#}
     {#</div>#}
     {#{% endfor %}#}
 
     {#<div class="col-sm-12 text-center show-all-deals">#}
-    {#<a href="{{ path('deals') }}" class="btn btn-lg btn-xl btn-amber">#}
+    {#<a title="{{ 'VIEW ALL DEALS' | trans({}, 'homepage') }}" href="{{ path('deals') }}" class="btn btn-lg btn-xl btn-amber">#}
     {#{{ 'VIEW ALL DEALS' | trans({}, 'homepage') }}#}
     {#</a>#}
     {#</div>#}
@@ -154,7 +154,7 @@
                     #}
                     <br />
                     <br />
-                    <a href="{{ path('careers_index') }}"
+                    <a title="{{ 'JOIN US' | trans({}, 'homepage') }}" href="{{ path('careers_index') }}"
                        class="btn btn-lg btn-green">{{ 'JOIN US' | trans({}, 'homepage') }}</a>
 
                 </div>
@@ -176,7 +176,7 @@
             <div class="col-sm-12 text-center">
                 {% for business in featured_brands %}
                     <div class="col-sm-4 text-center">
-                        <a href="{{ path('business_details', {'slug' : business.slug}) }}"
+                        <a title="{{ business.name }}" href="{{ path('business_details', {'slug' : business.slug}) }}"
                            class="thumbnail">
                             <div class="container-image business-image">
                                 <img class="center-height img-responsive business-image"
@@ -192,7 +192,7 @@
             </div>
 
             <div class="col-sm-12 text-center show-all-deals">
-                <a href="{{ path('business_list') }}" class="btn btn-lg btn-xl btn-amber">
+                <a title="{{ 'SEE ALL THE BRANDS' | trans({}, 'homepage') }}" href="{{ path('business_list') }}" class="btn btn-lg btn-xl btn-amber">
                     {{ 'SEE ALL THE BRANDS' | trans({}, 'homepage') }}
                 </a>
             </div>
@@ -208,7 +208,7 @@
                     <h2>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerBecomeMemberToday' })) }}</h2>
                     <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderBecomeMemberToday' })) }}</p>
 
-                    <a href="{{ path('fos_user_registration_register') }}"
+                    <a title="{{ 'SIGNUP' | trans({}, 'homepage') }}" href="{{ path('fos_user_registration_register') }}"
                        class="btn btn-lg btn-xl btn-blue">{{ 'SIGNUP' | trans({}, 'homepage') }}</a>
                 </div>
             </div>
