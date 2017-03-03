@@ -63,3 +63,8 @@ services:
         class: BackendBundle\Twig\JsonDecodeExtension
         tags:
             - { name: twig.extension }
+
+    app.twig.unformat_phone_extension:
+        class: BackendBundle\Twig\UnformatPhoneExtension
+        tags:
+            - { name: twig.extension }

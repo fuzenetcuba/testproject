@@ -43,7 +43,7 @@
                                 </a>
                             </li>
                             <li>
-                                <i class="fa fa-phone"></i> <a href="tel:{{ business.phone }}">{{ business.phone }}</a>
+                                <i class="fa fa-phone"></i> <a href="tel:+1{{ business.phone | unformat_phone }}">{{ business.phone }}</a>
                             </li>
                             {% if business.website is not null %}
                             <li>
