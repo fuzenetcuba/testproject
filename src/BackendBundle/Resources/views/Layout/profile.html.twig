@@ -10,7 +10,7 @@
                  {% endif %}
                  "/>
         </span>
-        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <a title="{{ app.user.username }}" data-toggle="dropdown" class="dropdown-toggle" href="#">
             <span class="clear">
                 <span class="block m-t-xs">
                     <strong id="logged-in-user" class="font-bold">
@@ -25,10 +25,10 @@
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-fw fa-clipboard"></i> {{ 'Profile' | trans({}, 'generalbackend') }}</a></li>
-                <li><a href="{{ path('fos_user_change_password') }}"><i class="fa fa-fw fa-key"></i> {{ 'Change password' | trans({}, 'generalbackend') }}</a></li>
+                <li><a title="{{ 'Profile' | trans({}, 'generalbackend') }}" href="{{ path('fos_user_profile_show') }}"><i class="fa fa-fw fa-clipboard"></i> {{ 'Profile' | trans({}, 'generalbackend') }}</a></li>
+                <li><a title="{{ 'Change password' | trans({}, 'generalbackend') }}" href="{{ path('fos_user_change_password') }}"><i class="fa fa-fw fa-key"></i> {{ 'Change password' | trans({}, 'generalbackend') }}</a></li>
                 <li class="divider"></li>
-                <li><a href="{{ path('fos_user_security_logout') }}" onclick="FB.logout(function(response) {});"><i class="fa fa-fw fa-sign-out"></i> {{ 'Logout' | trans({}, 'generalbackend') }}</a></li>
+                <li><a title="{{ 'Logout' | trans({}, 'generalbackend') }}" href="{{ path('fos_user_security_logout') }}" onclick="FB.logout(function(response) {});"><i class="fa fa-fw fa-sign-out"></i> {{ 'Logout' | trans({}, 'generalbackend') }}</a></li>
             </ul>
         {% endif %}
     </div>

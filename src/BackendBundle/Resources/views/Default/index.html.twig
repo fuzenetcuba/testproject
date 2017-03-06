@@ -21,7 +21,7 @@
                     <h1 class="no-margins">{{ cant_business }}</h1>
 
                     <div class="stat-percent font-bold text-success">
-                        <a href="{{ path('business') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
+                        <a title="{{ 'Manage' | trans({}, 'generalbackend') }}" href="{{ path('business') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
                                     class="fa fa-cog"></i></a>
                     </div>
                     <small>{{ 'Total businesses' | trans({}, 'generalbackend') }}</small>
@@ -38,7 +38,7 @@
                     <h1 class="no-margins">{{ cant_deal }}</h1>
 
                     <div class="stat-percent font-bold text-info">
-                        <a href="{{ path('deal') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
+                        <a title="{{ 'Manage' | trans({}, 'generalbackend') }}" href="{{ path('deal') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
                                     class="fa fa-cog"></i></a>
                     </div>
                     <small>{{ 'Total deals' | trans({}, 'generalbackend') }}</small>
@@ -55,7 +55,7 @@
                     <h1 class="no-margins">{{ cant_customer }}</h1>
 
                     <div class="stat-percent font-bold text-navy">
-                        <a href="{{ path('customer') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
+                        <a title="{{ 'Manage' | trans({}, 'generalbackend') }}" href="{{ path('customer') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
                                     class="fa fa-cog"></i></a>
                     </div>
                     <small>{{ 'Total customers' | trans({}, 'generalbackend') }}</small>
@@ -72,7 +72,7 @@
                     <h1 class="no-margins">{{ cant_category }}</h1>
 
                     <div class="stat-percent font-bold text-danger">
-                        <a href="{{ path('category') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
+                        <a title="{{ 'Manage' | trans({}, 'generalbackend') }}" href="{{ path('category') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
                                     class="fa fa-cog"></i></a>
                     </div>
                     <small>{{ 'Total categories' | trans({}, 'generalbackend') }}</small>
@@ -89,7 +89,7 @@
                     </h5>
 
                     <div class="ibox-tools">
-                        <a class="collapse-link">
+                        <a title="Collapse" class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
                         </a>
                     </div>
@@ -111,7 +111,7 @@
                                     <tr>
                                         <td class="text-center">{{ loop.index }}</td>
                                         <td>
-                                            <a href="{{ path('business_show', {'id' : topBusiness[0].id}) }}">
+                                            <a title="Top business" href="{{ path('business_show', {'id' : topBusiness[0].id}) }}">
                                                 {{ topBusiness[0].name|length > 30 ? topBusiness[0].name|slice(0,30) ~ '...' : topBusiness[0].name }}
                                             </a>
                                         </td>
@@ -138,7 +138,7 @@
                     </h5>
 
                     <div class="ibox-tools">
-                        <a class="collapse-link">
+                        <a title="Collapse" class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
                         </a>
                     </div>
@@ -157,7 +157,7 @@
                         {% for top_deal in top_deals_created_date %}
                             <tr>
                                 <td>
-                                    <a href="{{ path('deal_show', {'id' : top_deal.id}) }}">
+                                    <a title="Top deals" href="{{ path('deal_show', {'id' : top_deal.id}) }}">
                                         {{ top_deal.description|length > 60 ? top_deal.description|slice(0,60) ~ "..." : top_deal.description }}
                                     </a>
                                 </td>

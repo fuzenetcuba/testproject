@@ -154,7 +154,7 @@
                 </p>
                 <br/>
 
-                <a target="_blank" href="{{ asset('bundles/frontend/files/job-application-form-' ~ app.request.locale ~ '.pdf') }}"
+                <a title="{{ 'Download Application Form' | trans({}, 'general') }}" target="_blank" href="{{ asset('bundles/frontend/files/job-application-form-' ~ app.request.locale ~ '.pdf') }}"
                    class="btn btn-lg btn-amber">{{ 'Download Application Form' | trans({}, 'general') }}</a>
             </div>
         </div>
@@ -210,5 +210,5 @@
         </div>
     </section>
 
-    <a href="#" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
+    <a title="Return to top" href="#" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
 {% endblock %}

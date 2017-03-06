@@ -12,35 +12,39 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ path('frontend_homepage') }}">
+                <a title="Navbar brand" class="navbar-brand" href="{{ path('frontend_homepage') }}">
                     <img src="{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteLogo' }))) }}"
                          alt="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) }}"
                          title="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) }}"
                     />
                 </a>
 
-                {#<a class="navbar-brand" href="#"><i id="logged-in-user">user</i></a>#}
-                {#<a class="navbar-brand" href="#" onclick="FB.logout(function(response) {});">#}
+                {#<a title="user" class="navbar-brand" href="#"><i id="logged-in-user">user</i></a>#}
+                {#<a title="Logout" class="navbar-brand" href="#" onclick="FB.logout(function(response) {});">#}
                 {#<small> Logout</small>#}
                 {#</a>#}
             </div>
             <div class="second-navbar navbar-collapse collapse hidden-xs">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="{{ path("subscription_request") }}">{{ 'Subscribe' | trans({}, 'menu') }}</a>
+                        <a title="{{ 'Subscribe' | trans({}, 'menu') }}"
+                           href="{{ path("subscription_request") }}">{{ 'Subscribe' | trans({}, 'menu') }}</a>
                     </li>
                     <li>
-                        <a href="{{ path('mall_map', { 'slug' : 'all' }) }}">{{ 'Plaza Map' | trans({}, 'menu') }}</a>
+                        <a title="{{ 'Plaza Map' | trans({}, 'menu') }}"
+                           href="{{ path('mall_map', { 'slug' : 'all' }) }}">{{ 'Plaza Map' | trans({}, 'menu') }}</a>
                     </li>
                     <li class="dropdown hidden-xs">
                         {% if not app.user %}
-                            <a class="dropdown-toggle" data-toggle="dropdown"
+                            <a title="{{ 'Login/Register' | trans({}, 'menu') }}" class="dropdown-toggle"
+                               data-toggle="dropdown"
                                href="#">{{ 'Login/Register' | trans({}, 'menu') }}</a>
                         {% else %}
-                            <a class="dropdown-toggle navbar-avatar" data-toggle="dropdown" href="#">
+                            <a title="" class="dropdown-toggle navbar-avatar" data-toggle="dropdown" href="#">
                                 {{ app.user.fullName() }}
                                 &nbsp;
-                                <img alt="{{ app.user.fullName() }}" title="{{ app.user.fullName() }}" class="img-avatar-small img-circle"
+                                <img alt="{{ app.user.fullName() }}" title="{{ app.user.fullName() }}"
+                                     class="img-avatar-small img-circle"
                                      src="
                                      {% if((app.user.image) is not null) %}
                                         {{ asset('images/users/' ~ app.user.image) }}
@@ -79,7 +83,8 @@
                                         </button>
 
                                         <p class="text-center">
-                                            <a class="text-green" href="{{ path('fos_user_resetting_request') }}">
+                                            <a title="{{ 'Forgot your password?' | trans({}, 'menu') }}"
+                                               class="text-green" href="{{ path('fos_user_resetting_request') }}">
                                                 <small>{{ 'Forgot your password?' | trans({}, 'menu') }}</small>
                                             </a>
                                         </p>
@@ -88,7 +93,8 @@
                                             <small>{{ 'Do not have an account?' | trans({}, 'menu') }}</small>
                                         </p>
 
-                                        <a class="btn btn-sm btn-blue btn-block"
+                                        <a title="{{ 'Create an account' | trans({}, 'menu') }}"
+                                           class="btn btn-sm btn-blue btn-block"
                                            href="{{ path('fos_user_registration_register') }}">
                                             {{ 'Create an account' | trans({}, 'menu') }}
                                         </a>
@@ -101,7 +107,8 @@
                                             <small>... {{ 'or login with' | trans({}, 'menu') }} ...</small>
                                         </p>
 
-                                        <a class="btn btn-block btn-social btn-facebook" href="#" onclick="fb_login();">
+                                        <a title="Facebook" class="btn btn-block btn-social btn-facebook" href="#"
+                                           onclick="fb_login();">
                                             <span class="fa fa-facebook pull-left ali"></span> Facebook
                                         </a>
                                     </form>
@@ -116,14 +123,16 @@
                                 {#</li>#}
                                 {#<li class="divider"></li>#}
                                 <li>
-                                    <a href="{{ path('fos_user_security_logout') }}">
+                                    <a title="{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}"
+                                       href="{{ path('fos_user_security_logout') }}">
                                         <i class="fa fa-sign-out"></i> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                                     </a>
                                 </li>
                                 {% if is_granted('ROLE_ADMIN') %}
                                     <li class="divider"></li>
                                     <li>
-                                        <a target="_blank" href="{{ path('backend_homepage') }}">
+                                        <a title="{{ 'Admin' | trans({}, 'menu') }}" target="_blank"
+                                           href="{{ path('backend_homepage') }}">
                                             <i class="fa fa-cog"></i> {{ 'Admin' | trans({}, 'menu') }}
                                         </a>
                                     </li>
@@ -134,12 +143,14 @@
                     </li>
                     <li class="language-selector">
                         {% if app.request.get('_locale') == 'en' %}
-                            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'es'})) }}">
+                            <a title="{{ 'Spanish' | trans({}, 'menu', 'es') }}"
+                               href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'es'})) }}">
                                 {#<span class="flag-icon flag-icon-es"></span>#}
                                 {{ 'Spanish' | trans({}, 'menu', 'es') }}
                             </a>
                         {% elseif app.request.get('_locale') == 'es' %}
-                            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'en'})) }}">
+                            <a title="{{ 'English' | trans({}, 'menu', 'en') }}"
+                               href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'en'})) }}">
                                 {#<span class="flag-icon flag-icon-us"></span>#}
                                 {{ 'English' | trans({}, 'menu', 'en') }}
                             </a>
@@ -150,43 +161,52 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="{% if current_static is defined and current_static == 'about' %}active{% endif %}">
-                        <a href="{{ path('frontend_static_page', { 'name' : 'about' }) }}">{{ 'About' | trans({}, 'menu') }}</a>
+                        <a title="{{ 'About' | trans({}, 'menu') }}"
+                           href="{{ path('frontend_static_page', { 'name' : 'about' }) }}">{{ 'About' | trans({}, 'menu') }}</a>
                     </li>
                     <li class="{% if current == 'business' %}active{% endif %}">
-                        <a href="{{ path('business_list') }}">{{ 'Directory' | trans({}, 'menu') }}</a>
+                        <a title="{{ 'Directory' | trans({}, 'menu') }}"
+                           href="{{ path('business_list') }}">{{ 'Directory' | trans({}, 'menu') }}</a>
                     </li>
                     {#<li class="{% if current in ['deals', 'deal'] %}active{% endif %}">#}
-                    {#<a href="{{ path('deals') }}">{{ 'Deals' | trans({}, 'menu') }}</a>#}
+                    {#<a title="{{ 'Deals' | trans({}, 'menu') }}" href="{{ path('deals') }}">{{ 'Deals' | trans({}, 'menu') }}</a>#}
                     {#</li>#}
                     {#<li class="{% if current == 'news' %}active{% endif %}">#}
-                    {#<a href="#">{{ 'News & Events' | trans({}, 'menu') }}</a>#}
+                    {#<a title="{{ 'News & Events' | trans({}, 'menu') }}" href="#">{{ 'News & Events' | trans({}, 'menu') }}</a>#}
                     {#</li>#}
                     {#{% if (app.request.getSchemeAndHttpHost() != 'http://plazamariachi.com' ) %}#}
                     <li class="{% if current == 'careers' %}active{% endif %}">
-                        <a href="{{ path("careers_index") }}">{{ 'Careers' | trans({}, 'menu') }}</a>
+                        <a title="{{ 'Careers' | trans({}, 'menu') }}"
+                           href="{{ path("careers_index") }}">{{ 'Careers' | trans({}, 'menu') }}</a>
                     </li>
                     <li class="{% if current == 'survey' %}active{% endif %}">
-                        <a href="{{ path("survey") }}">  {{ 'Feedback' | trans({}, 'menu') }}</a>
+                        <a title="{{ 'Feedback' | trans({}, 'menu') }}"
+                           href="{{ path("survey") }}">  {{ 'Feedback' | trans({}, 'menu') }}</a>
                     </li>
                     {#{% endif %}#}
                     <li class="visible-xs">
-                        <a href="{{ path("subscription_request") }}">{{ 'Subscribe' | trans({}, 'menu') }}</a>
+                        <a title="{{ 'Subscribe' | trans({}, 'menu') }}"
+                           href="{{ path("subscription_request") }}">{{ 'Subscribe' | trans({}, 'menu') }}</a>
                     </li>
                     <li class="visible-xs">
-                        <a href="{{ path('mall_map', { 'slug' : 'all' }) }}">{{ 'Plaza Map' | trans({}, 'menu') }}</a>
+                        <a title="{{ 'Plaza Map' | trans({}, 'menu') }}"
+                           href="{{ path('mall_map', { 'slug' : 'all' }) }}">{{ 'Plaza Map' | trans({}, 'menu') }}</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">{{ 'Contact' | trans({}, 'menu') }}</a>
+                        <a title="{{ 'Contact' | trans({}, 'menu') }}" class="page-scroll"
+                           href="#contact">{{ 'Contact' | trans({}, 'menu') }}</a>
                     </li>
 
                     <li class="dropdown visible-xs">
                         {% if not app.user %}
-                            <a href="{{ path('fos_user_security_login') }}">Login/Register</a>
+                            <a title="Login/Register" href="{{ path('fos_user_security_login') }}">Login/Register</a>
                         {% else %}
-                            <a class="dropdown-toggle navbar-avatar" data-toggle="dropdown" href="#">
+                            <a title="{{ app.user.fullName() }}" class="dropdown-toggle navbar-avatar"
+                               data-toggle="dropdown" href="#">
                                 {{ app.user.fullName() }}
                                 &nbsp;
-                                <img alt="{{ app.user.fullName() }}" title="{{ app.user.fullName() }}" class="img-avatar-small img-circle"
+                                <img alt="{{ app.user.fullName() }}" title="{{ app.user.fullName() }}"
+                                     class="img-avatar-small img-circle"
                                      src="
                                      {% if((app.user.image) is not null) %}
                                         {{ asset('images/users/' ~ app.user.image) }}
@@ -206,14 +226,16 @@
                                 {#</li>#}
                                 {#<li class="divider"></li>#}
                                 <li>
-                                    <a href="{{ path('fos_user_security_logout') }}">
+                                    <a title="{{ 'layout.logout' | trans({}, 'FOSUserBundle') }}"
+                                       href="{{ path('fos_user_security_logout') }}">
                                         <i class="fa fa-sign-out"></i> {{ 'layout.logout' | trans({}, 'FOSUserBundle') }}
                                     </a>
                                 </li>
                                 {% if is_granted('ROLE_ADMIN') %}
                                     <li class="divider"></li>
                                     <li>
-                                        <a target="_blank" href="{{ path('backend_homepage') }}">
+                                        <a title="{{ 'Admin' | trans({}, 'menu') }}" target="_blank"
+                                           href="{{ path('backend_homepage') }}">
                                             <i class="fa fa-cog"></i> {{ 'Admin' | trans({}, 'menu') }}
                                         </a>
                                     </li>
@@ -224,12 +246,14 @@
                     </li>
                     <li class="language-selector visible-xs">
                         {% if app.request.get('_locale') == 'en' %}
-                            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'es'})) }}">
+                            <a title="{{ 'Spanish' | trans({}, 'menu', 'es') }}"
+                               href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'es'})) }}">
                                 {#<span class="flag-icon flag-icon-es"></span>#}
                                 {{ 'Spanish' | trans({}, 'menu', 'es') }}
                             </a>
                         {% elseif app.request.get('_locale') == 'es' %}
-                            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'en'})) }}">
+                            <a title="{{ 'English' | trans({}, 'menu', 'en') }}"
+                               href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'en'})) }}">
                                 {#<span class="flag-icon flag-icon-us"></span>#}
                                 {{ 'English' | trans({}, 'menu', 'en') }}
                             </a>
@@ -242,16 +266,25 @@
         <!-- Your share button code -->
         <div class="container-fb-share-button">
             {#<div class="fb-share-button"#}
-                 {#data-href="http://plazamariachi.com"#}
-                 {#data-layout="box_count">#}
+            {#data-href="http://plazamariachi.com"#}
+            {#data-layout="box_count">#}
             {#</div>#}
-            <div class="fb-like"
-                 data-href="https://plazamariachi.com/"
-                 data-layout="box_count"
-                 data-action="like"
-                 data-size="small"
-                 data-show-faces="false"
-                 data-share="false"></div>
+            {#<div class="fb-like"#}
+            {#data-href="https://plazamariachi.com/"#}
+            {#data-layout="box_count"#}
+            {#data-action="like"#}
+            {#data-size="small"#}
+            {#data-show-faces="false"#}
+            {#data-share="false">#}
+            {#</div>#}
+
+            <a href="http://www.facebook.com/share.php?u=http://plazamariachi.com&title=Plaza%20Mariachi%20Music%20City"
+               data-toggle="tooltip"
+               title="{{ 'Share on Facebook' | trans({}, 'general') }}"
+               class="btn btn-social-icon btn-facebook"
+               target="_blank">
+                <span class="fa fa-facebook"></span>
+            </a>
         </div>
     </nav>
 </div>

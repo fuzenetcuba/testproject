@@ -15,11 +15,11 @@
     <ul class="pagination pagination-lg">
         {% if previous is defined %}
             <li>
-                <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}" class="fa fa-chevron-left"></a>
+                <a title="Previous" href="{{ path(route, query|merge({(pageParameterName): previous})) }}" class="fa fa-chevron-left"></a>
             </li>
         {% else %}
             <li class="disabled">
-                <a href="#" class="fa fa-chevron-left"></a>
+                <a title="Previous" href="#" class="fa fa-chevron-left"></a>
             </li>
         {% endif %}
 
@@ -70,11 +70,11 @@
 
         {% if next is defined %}
             <li>
-                <a href="{{ path(route, query|merge({(pageParameterName): next})) }}" class="fa fa-chevron-right"></a>
+                <a title="Next" href="{{ path(route, query|merge({(pageParameterName): next})) }}" class="fa fa-chevron-right"></a>
             </li>
         {% else %}
             <li class="disabled">
-                <a href="#" class="fa fa-chevron-right"></a>
+                <a title="Next" href="#" class="fa fa-chevron-right"></a>
             </li>
         {% endif %}
     </ul>

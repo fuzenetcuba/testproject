@@ -56,15 +56,15 @@
                 </div>
             </div>
             <div class="btn-group btn-group-justified">
-                <a class="btn btn-green btn-outline hide-filters-action" role="button"
+                <a title="Print" class="btn btn-green btn-outline hide-filters-action" role="button"
                    onclick="print();">
                     <i class="fa fa-print"></i>
                 </a>
-                <a class="btn btn-green btn-outline hide-filters-action" role="button"
+                <a title="Mall map" class="btn btn-green btn-outline hide-filters-action" role="button"
                    href="{{ path('mall_map', { 'slug' : 'all' }) }}">
                     <i class="fa fa-map-marker"></i>
                 </a>
-                <a class="btn btn-green btn-outline hide-filters hidden-lg" role="button">
+                <a title="Hide" class="btn btn-green btn-outline hide-filters hidden-lg" role="button">
                     <i class="fa fa-chevron-left"></i>
                 </a>
             </div>
@@ -81,7 +81,7 @@
                     <div class="col-sm-12 text-center">
                         {% for business in col %}
                             <div class="col-sm-3 text-center">
-                                <a href="{{ path('business_details', {'slug' : business.slug}) }}"
+                                <a title="{{ business.name }}" href="{{ path('business_details', {'slug' : business.slug}) }}"
                                    class="thumbnail">
                                     <div class="container-image business-image">
                                         <img class="center-height img-responsive business-image"
