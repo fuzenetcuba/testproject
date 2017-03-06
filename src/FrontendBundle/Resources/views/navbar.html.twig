@@ -282,9 +282,12 @@
                data-toggle="tooltip"
                title="{{ 'Share on Facebook' | trans({}, 'general') }}"
                class="btn btn-social-icon btn-facebook"
+               onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,' +
+                                'scrollbars=yes,height=600,width=600');return false;"
                target="_blank">
                 <span class="fa fa-facebook"></span>
             </a>
+
         </div>
     </nav>
 </div>
