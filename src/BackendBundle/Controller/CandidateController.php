@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Controller;
 
+use Doctrine\ORM\Query;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
@@ -54,7 +55,11 @@ class CandidateController extends Controller
                 . "e.id LIKE '%" . $find . "%' OR "
                 . "e.id LIKE '%" . $find . "%' "
                 . "ORDER BY e.id ASC";
-            $query = $em->createQuery($dql);
+            $query = $em->createQuery($dql)
+                ->setHint(
+                    Query::HINT_CUSTOM_OUTPUT_WALKER,
+                    'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+                );
 
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(

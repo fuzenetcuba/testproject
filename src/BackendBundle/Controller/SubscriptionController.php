@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Controller;
 
+use Doctrine\ORM\Query;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;//------------
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -50,7 +51,11 @@ class SubscriptionController extends Controller
             $dql = "SELECT e FROM BackendBundle:Subscription e WHERE "
                 . "e.email LIKE '%" . $find . "%' "
                 . "ORDER BY e.id ASC";
-            $query = $em->createQuery($dql);
+            $query = $em->createQuery($dql)
+                ->setHint(
+                    Query::HINT_CUSTOM_OUTPUT_WALKER,
+                    'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+                );
 
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
