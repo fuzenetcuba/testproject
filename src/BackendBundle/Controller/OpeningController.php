@@ -28,12 +28,12 @@ class OpeningController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
+            $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
         );
 
-    return $this->render('opening/index.html.twig', array(
-        'entities' => $pagination,
-    ));
+        return $this->render('opening/index.html.twig', array(
+            'entities' => $pagination,
+        ));
     }
 
     /**
@@ -43,19 +43,21 @@ class OpeningController extends Controller
     public function findAction(Request $request)
     {
         $find = $request->get('find-form-text');
-        
+
         if ($find) {
             $em = $this->getDoctrine()->getManager();
 
-            $dql = "SELECT e FROM BackendBundle:Opening e WHERE "
-                    . "e.id LIKE '%" . $find . "%' OR "
-                    . "e.id LIKE '%" . $find . "%' "
-                    . "ORDER BY e.id ASC";
+            $dql = "SELECT e FROM BackendBundle:Opening e "
+                . "WHERE "
+                . "e.position LIKE '%" . $find . "%' OR "
+                . "e.department LIKE '%" . $find . "%' OR "
+                . "e.description LIKE '%" . $find . "%' "
+                . "ORDER BY e.id ASC";
             $query = $em->createQuery($dql);
 
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
-                    $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
+                $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
             );
 
             return $this->render('opening/index.html.twig', array(
@@ -88,36 +90,37 @@ class OpeningController extends Controller
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('opening_new'));
             } else {
-            return $this->redirectToRoute('opening_show', array('id' => $entity->getId()));            }
+                return $this->redirectToRoute('opening_show', array('id' => $entity->getId()));
+            }
 
         }
 
-    return $this->render('opening/new.html.twig', array(
-        'entity' => $entity,
-        'form' => $form->createView(),
-    ));
+        return $this->render('opening/new.html.twig', array(
+            'entity' => $entity,
+            'form' => $form->createView(),
+        ));
     }
 
-            /**
-        * Creates a form to create a Opening entity.
-        *
-        * @param Opening $entity The entity
-        *
-        * @return \Symfony\Component\Form\Form The form
-        */
-        private function createCreateForm(Opening $entity)
-        {
-            $form = $this->createForm('BackendBundle\Form\OpeningType', $entity, array(
-                'action' => $this->generateUrl('opening_new'),
-                'method' => 'POST',
-            ));
+    /**
+     * Creates a form to create a Opening entity.
+     *
+     * @param Opening $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCreateForm(Opening $entity)
+    {
+        $form = $this->createForm('BackendBundle\Form\OpeningType', $entity, array(
+            'action' => $this->generateUrl('opening_new'),
+            'method' => 'POST',
+        ));
 
-            $form->add('submit', SubmitType::class, array('label' => 'Create'));
-            $form->add('submitback', SubmitType::class, array('label' => 'Create & Back'));
+        $form->add('submit', SubmitType::class, array('label' => 'Create'));
+        $form->add('submitback', SubmitType::class, array('label' => 'Create & Back'));
 
-            return $form;
-        }
-    
+        return $form;
+    }
+
     /**
      * Finds and displays a Opening entity.
      *
@@ -141,7 +144,7 @@ class OpeningController extends Controller
         $deleteForm = $this->createDeleteForm($entity);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
-    
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -152,20 +155,20 @@ class OpeningController extends Controller
             return $this->redirectToRoute('opening_show', array('id' => $entity->getId()));
         }
 
-    return $this->render('opening/edit.html.twig', array(
-        'entity' => $entity,
-        'edit_form' => $editForm->createView(),
-        'delete_form' => $deleteForm->createView(),
-    ));
+        return $this->render('opening/edit.html.twig', array(
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 
     /**
-    * Creates a form to edit a Opening entity.
-    *
-    * @param Opening $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Opening entity.
+     *
+     * @param Opening $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Opening $entity)
     {
         $form = $this->createForm('BackendBundle\Form\OpeningType', $entity, array(
@@ -201,24 +204,23 @@ class OpeningController extends Controller
         return $this->redirect($this->generateUrl('opening'));
 
 
-
     }
 
     /**
-    * Creates a form to delete a Opening entity.
-    *
-    * @param Opening $entity The Opening entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to delete a Opening entity.
+     *
+     * @param Opening $entity The Opening entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createDeleteForm(Opening $entity)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('opening_delete', array('id' => $entity->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
+
     /**
      * Do several batch actions over Opening entities.
      *
@@ -228,7 +230,7 @@ class OpeningController extends Controller
         $action = $request->get('batch_action_do');
         $ids = $request->get('batch_action_checkbox');
         $recordsSelected = false;
-        
+
         if ($ids) {
             $em = $this->getDoctrine()->getManager();
 
