@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Controller;
 
+use Doctrine\ORM\Query;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;//------------
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -28,12 +29,12 @@ class FeedbackController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $query, $request->query->get('page', 1), 5
+            $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
         );
 
-    return $this->render('feedback/index.html.twig', array(
-        'entities' => $pagination,
-    ));
+        return $this->render('feedback/index.html.twig', array(
+            'entities' => $pagination,
+        ));
     }
 
     /**
@@ -43,19 +44,23 @@ class FeedbackController extends Controller
     public function findAction(Request $request)
     {
         $find = $request->get('find-form-text');
-        
+
         if ($find) {
             $em = $this->getDoctrine()->getManager();
 
             $dql = "SELECT e FROM BackendBundle:Feedback e WHERE "
-                    . "e.id LIKE '%" . $find . "%' OR "
-                    . "e.id LIKE '%" . $find . "%' "
-                    . "ORDER BY e.id ASC";
-            $query = $em->createQuery($dql);
+                . "e.name LIKE '%" . $find . "%' OR "
+                . "e.email LIKE '%" . $find . "%' "
+                . "ORDER BY e.id ASC";
+            $query = $em->createQuery($dql)
+                ->setHint(
+                    Query::HINT_CUSTOM_OUTPUT_WALKER,
+                    'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+                );
 
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
-                    $query, $request->query->get('page', 1), 5
+                $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
             );
 
             return $this->render('feedback/index.html.twig', array(
@@ -88,36 +93,37 @@ class FeedbackController extends Controller
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('feedback_new'));
             } else {
-            return $this->redirectToRoute('feedback_show', array('id' => $entity->getId()));            }
+                return $this->redirectToRoute('feedback_show', array('id' => $entity->getId()));
+            }
 
         }
 
-    return $this->render('feedback/new.html.twig', array(
-        'entity' => $entity,
-        'form' => $form->createView(),
-    ));
+        return $this->render('feedback/new.html.twig', array(
+            'entity' => $entity,
+            'form' => $form->createView(),
+        ));
     }
 
-            /**
-        * Creates a form to create a Feedback entity.
-        *
-        * @param Feedback $entity The entity
-        *
-        * @return \Symfony\Component\Form\Form The form
-        */
-        private function createCreateForm(Feedback $entity)
-        {
-            $form = $this->createForm('BackendBundle\Form\FeedbackType', $entity, array(
-                'action' => $this->generateUrl('feedback_new'),
-                'method' => 'POST',
-            ));
+    /**
+     * Creates a form to create a Feedback entity.
+     *
+     * @param Feedback $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCreateForm(Feedback $entity)
+    {
+        $form = $this->createForm('BackendBundle\Form\FeedbackType', $entity, array(
+            'action' => $this->generateUrl('feedback_new'),
+            'method' => 'POST',
+        ));
 
-            $form->add('submit', SubmitType::class, array('label' => 'Create'));
-            $form->add('submitback', SubmitType::class, array('label' => 'Create & Back'));
+        $form->add('submit', SubmitType::class, array('label' => 'Create'));
+        $form->add('submitback', SubmitType::class, array('label' => 'Create & Back'));
 
-            return $form;
-        }
-    
+        return $form;
+    }
+
     /**
      * Finds and displays a Feedback entity.
      *
@@ -141,7 +147,7 @@ class FeedbackController extends Controller
         $deleteForm = $this->createDeleteForm($entity);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
-    
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -152,20 +158,20 @@ class FeedbackController extends Controller
             return $this->redirectToRoute('feedback_show', array('id' => $entity->getId()));
         }
 
-    return $this->render('feedback/edit.html.twig', array(
-        'entity' => $entity,
-        'edit_form' => $editForm->createView(),
-        'delete_form' => $deleteForm->createView(),
-    ));
+        return $this->render('feedback/edit.html.twig', array(
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 
     /**
-    * Creates a form to edit a Feedback entity.
-    *
-    * @param Feedback $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Feedback entity.
+     *
+     * @param Feedback $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Feedback $entity)
     {
         $form = $this->createForm('BackendBundle\Form\FeedbackType', $entity, array(
@@ -201,24 +207,23 @@ class FeedbackController extends Controller
         return $this->redirect($this->generateUrl('feedback'));
 
 
-
     }
 
     /**
-    * Creates a form to delete a Feedback entity.
-    *
-    * @param Feedback $entity The Feedback entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to delete a Feedback entity.
+     *
+     * @param Feedback $entity The Feedback entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createDeleteForm(Feedback $entity)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('feedback_delete', array('id' => $entity->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
+
     /**
      * Do several batch actions over Feedback entities.
      *
@@ -228,7 +233,7 @@ class FeedbackController extends Controller
         $action = $request->get('batch_action_do');
         $ids = $request->get('batch_action_checkbox');
         $recordsSelected = false;
-        
+
         if ($ids) {
             $em = $this->getDoctrine()->getManager();
 

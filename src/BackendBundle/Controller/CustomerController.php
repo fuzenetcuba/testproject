@@ -3,6 +3,7 @@
 namespace BackendBundle\Controller;
 
 use BackendBundle\Form\customerType;
+use Doctrine\ORM\Query;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -55,7 +56,11 @@ class CustomerController extends Controller
                 . " e.phone LIKE '%" . $find . "%' OR "
                 . " e.email LIKE '%" . $find . "%') "
                 . " ORDER BY e.id ASC";
-            $query = $em->createQuery($dql);
+            $query = $em->createQuery($dql)
+                ->setHint(
+                    Query::HINT_CUSTOM_OUTPUT_WALKER,
+                    'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+                );
 
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
