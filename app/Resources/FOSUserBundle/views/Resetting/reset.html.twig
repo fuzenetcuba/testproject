@@ -1,5 +1,14 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block metatags %}
+    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+    {{- 'Resseting Password' | trans({}, 'fosuser') -}}
+    "/>
+    <meta name="description" content="
+    {{- 'Resseting Password' | trans({}, 'fosuser') -}}
+    "/>
+{% endblock %}
+
 {% block title '- ' ~ 'Resseting Password' | trans({}, 'fosuser') %}
 
 {% block page_content %}

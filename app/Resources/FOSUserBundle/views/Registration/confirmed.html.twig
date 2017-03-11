@@ -1,5 +1,14 @@
 {% extends '@Frontend/layout.html.twig' %}
 
+{% block metatags %}
+    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+    {{- 'Confirmed Registration' | trans({}, 'fosuser') -}}
+    "/>
+    <meta name="description" content="
+    {{- 'Confirmed Registration' | trans({}, 'fosuser') -}}
+    "/>
+{% endblock %}
+
 {% block title '- ' ~ 'Confirmed Registration' | trans({}, 'fosuser') %}
 
 {% block page_content %}
