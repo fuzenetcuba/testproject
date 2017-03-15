@@ -245,7 +245,7 @@ class Candidate
     /**
      * @var Opening
      *
-     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\Opening")
+     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\Opening", inversedBy="candidates")
      */
     private $opening;
 

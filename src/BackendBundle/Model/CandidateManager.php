@@ -4,6 +4,7 @@ namespace BackendBundle\Model;
 
 use BackendBundle\Entity\Candidate;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Query;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -114,6 +115,61 @@ class CandidateManager implements ManagerInterface
     {
         $this->em->remove($instance);
         $this->em->flush();
+    }
+
+    /**
+     * Fetch cant of candidates of month
+     *
+     * @param  \DateTime $startMonth
+     * @param  \DateTime $endMonth
+     * @return array                            Amount of candidates
+     */
+    public function findCandidatesOfMonth(\DateTime $startMonth, \DateTime $endMonth)
+    {
+        $query = $this->em
+            ->createQueryBuilder('q')
+            ->select('count(c)')
+            ->from('BackendBundle:Candidate', 'c')
+            ->where('c.created BETWEEN :s AND :e')
+            ->setParameter('s', $startMonth->format('Y-m-d'))
+            ->setParameter('e', $endMonth->format('Y-m-d'));
+
+        // multilanguage search criterias done introspecting the default locale
+        $query = $query->getQuery()->setHint(
+            Query::HINT_CUSTOM_OUTPUT_WALKER,
+            'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+        );
+
+        return $query->getSingleScalarResult();
+    }
+
+    /**
+     * Fetch list of amount of candidates per month
+     *
+     * @param  int $lasts                       Months to retrieve candidates
+     * @return array                            List of candidates
+     */
+    public function findCandidatesOfLastMonths($lasts)
+    {
+        $list = array();
+
+        $lasts -= 1;
+
+        for ($i = $lasts; $i >= 1; $i--) {
+            $start = new \DateTime('first day of ' . $i . ' months ago');
+            $end = new \DateTime('last day of ' . $i . ' months ago');
+
+            $list[0][$lasts - $i] = $start->format('F, Y');
+            $list[1][$lasts - $i] = $this->findCandidatesOfMonth($start, $end);
+        }
+
+        $startCurrentMonth = new \DateTime('first day of this month');
+        $endCurrentMonth = new \DateTime('last day of this month');
+
+        $list[0][$lasts] = $startCurrentMonth->format('F, Y');
+        $list[1][$lasts] = $this->findCandidatesOfMonth($startCurrentMonth, $endCurrentMonth);
+
+        return $list;
     }
 
 }

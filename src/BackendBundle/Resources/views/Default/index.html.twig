@@ -137,16 +137,16 @@
                     <div>
                         <span class="pull-right text-right">
                             <h3 class="font-bold no-margins">
-                                Amount applying candidates per business
+                                {{ 'Amount applying candidates per business' | trans({},'generalbackend') }}
                             </h3>
                             <small>
-                                Total candidates: {{ cant_candidate }}
+                                {{ 'Total candidates' | trans({},'generalbackend') }}: {{ cant_candidate }}
                             </small>
                         </span>
                         <h3 class="font-bold no-margins">
-                            Behavior of applying candidates
+                            {{ 'Behavior of applying candidates' | trans({},'generalbackend') }}
                         </h3>
-                        <small>Past 6 months</small>
+                        <small>{{ 'Past' | trans({},'generalbackend') }} {{ candidates_of_lasts_months[0]|length }} {{ 'months' | trans({},'generalbackend') }}</small>
                     </div>
 
                     <div class="m-t-sm">
@@ -158,39 +158,33 @@
                             </div>
                             <div class="col-md-4">
                                 <ul class="stat-list m-t-lg">
+                                    {% set sum_candidate = 0 %}
+                                    {% for b in business_most_candidates|slice(0, 4) %}
+                                        {% set sum_candidate = sum_candidate + b.candidates %}
+                                        <li>
+                                            <h2 class="no-margins">{{ b.candidates }}
+                                                <span class="text-right pull-right">
+                                                    {{ (b.candidates * 100 / cant_candidate)|round(2) }}%
+                                                </span>
+                                            </h2>
+                                            <small>{{ b.0.name }}</small>
+                                            <div class="progress progress-mini">
+                                                <div class="progress-bar"
+                                                     style="width: {{ b.candidates * 100 / cant_candidate }}%;"></div>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
                                     <li>
-                                        <h2 class="no-margins">2,346</h2>
-                                        <small>Total orders in period</small>
+                                        <h2 class="no-margins ">{{ cant_candidate - sum_candidate }}
+                                            <span class="text-right pull-right">
+                                                    {{ ((cant_candidate - sum_candidate) * 100 / cant_candidate)|round(2) }}
+                                                %
+                                            </span>
+                                        </h2>
+                                        <small>{{ 'Others businesses' | trans({},'generalbackend') }}</small>
                                         <div class="progress progress-mini">
-                                            <div class="progress-bar" style="width: 48%;"></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <h2 class="no-margins ">4,422</h2>
-                                        <small>Orders in last month</small>
-                                        <div class="progress progress-mini">
-                                            <div class="progress-bar" style="width: 60%;"></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <h2 class="no-margins ">4,422</h2>
-                                        <small>Orders in last month</small>
-                                        <div class="progress progress-mini">
-                                            <div class="progress-bar" style="width: 60%;"></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <h2 class="no-margins ">4,422</h2>
-                                        <small>Orders in last month</small>
-                                        <div class="progress progress-mini">
-                                            <div class="progress-bar" style="width: 60%;"></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <h2 class="no-margins ">4,422</h2>
-                                        <small>Orders in last month</small>
-                                        <div class="progress progress-mini">
-                                            <div class="progress-bar" style="width: 60%;"></div>
+                                            <div class="progress-bar"
+                                                 style="width: {{ (cant_candidate - sum_candidate) * 100 / cant_candidate }}%;"></div>
                                         </div>
                                     </li>
                                 </ul>
@@ -201,11 +195,11 @@
                     <div class="m-t-md">
                         <small class="pull-right">
                             <i class="fa fa-clock-o"> </i>
-                            Update on 16.07.2015
+                            {{ 'Updated on' | trans({},'generalbackend') }} {{ date('today')|date('F d, Y') }}
                         </small>
                         <small>
-                            <strong>Analysis of sales:</strong> The value has been changed over time, and last month
-                            reached a level over $50,000.
+                            <strong>{{ 'Analysis of candidates' | trans({},'generalbackend') }}: </strong>
+                            {{ 'The value has been changed over time, and to this moment has reached a level of' | trans({},'generalbackend') }} {{ cant_candidate }} {{ 'candidates.' | trans({},'generalbackend') }}
                         </small>
                     </div>
                 </div>
@@ -330,7 +324,15 @@
             $(document).ready(function () {
 
                 var lineData = {
-                    labels: ["January", "February", "March", "April", "May", "June"],
+                    labels: [
+                        {% for month in candidates_of_lasts_months[0] %}
+                        {% if not loop.last %}
+                        "{{ month }}",
+                        {% else %}
+                        "{{ month }}"
+                        {% endif %}
+                        {% endfor %}
+                    ],
                     datasets: [
                         {
                             label: "{{ 'Candidates Resume' | trans({},'generalbackend') }}",
@@ -340,7 +342,15 @@
                             pointStrokeColor: "#fff",
                             pointHighlightFill: "#fff",
                             pointHighlightStroke: "rgba(26,179,148,1)",
-                            data: [48, 48, 60, 39, 56, 37]
+                            data: [
+                                {% for candidates in candidates_of_lasts_months[1] %}
+                                {% if not loop.last %}
+                                {{ candidates }},
+                                {% else %}
+                                {{ candidates }}
+                                {% endif %}
+                                {% endfor %}
+                            ]
                         }
                     ]
                 };

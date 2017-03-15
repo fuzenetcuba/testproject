@@ -49,3 +49,6 @@ parameters:
         - careers1@test.com
     careers.notification.subject: 'A new candidate has applied to an opening'
     careers.apply.online: true
+
+    # Quantity of month to show amount of candidates statistics on Dashboard
+    settings.graph.candidates.past.months: 12

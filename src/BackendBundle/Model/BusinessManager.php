@@ -312,4 +312,31 @@ class BusinessManager implements ManagerInterface
 
         return $query->getResult();
     }
+
+    /**
+     * Fetchs a list of businesses that have more Candidates
+     *
+     * @return array                            List of businesses
+     */
+    public function findBusinessWithMostCandidates()
+    {
+        $query = $this->findAllQuery();
+
+        $query
+            ->addSelect('count(c) AS candidates')
+            ->join('b.openings', 'o')
+            ->join('o.candidates', 'c')
+            ->addGroupBy('b.id')
+            ->andHaving('count(c) > 0')
+            ->addOrderBy('candidates', 'DESC')
+        ;
+
+        // multilanguage search criterias done introspecting the default locale
+        $query = $query->getQuery()->setHint(
+            Query::HINT_CUSTOM_OUTPUT_WALKER,
+            'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+        );
+
+        return $query->getResult();
+    }
 }

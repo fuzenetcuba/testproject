@@ -40,6 +40,12 @@ class DefaultController extends Controller
         // find top deals by created date
         $topDealsByCreatedDate = $em->getRepository('BackendBundle:Deal')->findRecentDeals(5);
 
+        // find top businesses with most candidates
+        $businessWithMostCandidates = $bMgr->findBusinessWithMostCandidates();
+
+        // find candidates of last months
+        $candidatesOfLastMonths = $caMgr->findCandidatesOfLastMonths($this->getParameter('settings.graph.candidates.past.months'));
+
         return $this->render('BackendBundle:Default:index.html.twig', array(
             'cant_business' => $cantBusiness,
             'cant_category' => $cantCategory,
@@ -48,7 +54,9 @@ class DefaultController extends Controller
             'cant_feedback' => $cantFeedback,
             'cant_candidate' => $cantCandidate,
             'top_business_num_deals' => $topBNumDeals,
-            'top_deals_created_date' => $topDealsByCreatedDate
+            'top_deals_created_date' => $topDealsByCreatedDate,
+            'business_most_candidates' => $businessWithMostCandidates,
+            'candidates_of_lasts_months' => $candidatesOfLastMonths
         ));
     }
 
