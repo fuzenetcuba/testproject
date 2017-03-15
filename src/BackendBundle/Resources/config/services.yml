@@ -27,6 +27,14 @@ services:
         class: BackendBundle\Model\SubscriptionManager
         arguments: ["@doctrine.orm.entity_manager"]
 
+    feedback.manager:
+        class: BackendBundle\Model\FeedbackManager
+        arguments: ["@doctrine.orm.entity_manager"]
+
+    candidate.manager:
+        class: BackendBundle\Model\CandidateManager
+        arguments: ["@doctrine.orm.entity_manager"]
+
     opening.manager:
         class: BackendBundle\Model\OpeningManager
         arguments: ["@doctrine.orm.entity_manager", "@mailer", "@filesystem", "@spraed.pdf.generator", "%careers.pdf.store%", "%careers.pdf.store.report%", "%careers.contact.email%"]

@@ -11,7 +11,7 @@
 
 
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <span class="label label-success pull-right"><i class="fa fa-briefcase"></i></span>
@@ -21,14 +21,15 @@
                     <h1 class="no-margins">{{ cant_business }}</h1>
 
                     <div class="stat-percent font-bold text-success">
-                        <a title="{{ 'Manage' | trans({}, 'generalbackend') }}" href="{{ path('business') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
+                        <a title="{{ 'Manage' | trans({}, 'generalbackend') }}"
+                           href="{{ path('business') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
                                     class="fa fa-cog"></i></a>
                     </div>
                     <small>{{ 'Total businesses' | trans({}, 'generalbackend') }}</small>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <span class="label label-info pull-right"><i class="fa fa-tag"></i></span>
@@ -38,14 +39,15 @@
                     <h1 class="no-margins">{{ cant_deal }}</h1>
 
                     <div class="stat-percent font-bold text-info">
-                        <a title="{{ 'Manage' | trans({}, 'generalbackend') }}" href="{{ path('deal') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
+                        <a title="{{ 'Manage' | trans({}, 'generalbackend') }}"
+                           href="{{ path('deal') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
                                     class="fa fa-cog"></i></a>
                     </div>
                     <small>{{ 'Total deals' | trans({}, 'generalbackend') }}</small>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <span class="label label-primary pull-right"><i class="fa fa-user"></i></span>
@@ -55,14 +57,15 @@
                     <h1 class="no-margins">{{ cant_customer }}</h1>
 
                     <div class="stat-percent font-bold text-navy">
-                        <a title="{{ 'Manage' | trans({}, 'generalbackend') }}" href="{{ path('customer') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
+                        <a title="{{ 'Manage' | trans({}, 'generalbackend') }}"
+                           href="{{ path('customer') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
                                     class="fa fa-cog"></i></a>
                     </div>
                     <small>{{ 'Total customers' | trans({}, 'generalbackend') }}</small>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <span class="label label-danger pull-right"><i class="fa fa-reorder"></i></span>
@@ -72,14 +75,144 @@
                     <h1 class="no-margins">{{ cant_category }}</h1>
 
                     <div class="stat-percent font-bold text-danger">
-                        <a title="{{ 'Manage' | trans({}, 'generalbackend') }}" href="{{ path('category') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
+                        <a title="{{ 'Manage' | trans({}, 'generalbackend') }}"
+                           href="{{ path('category') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
                                     class="fa fa-cog"></i></a>
                     </div>
                     <small>{{ 'Total categories' | trans({}, 'generalbackend') }}</small>
                 </div>
             </div>
         </div>
+        <div class="col-lg-2">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-warning pull-right"><i class="fa fa-comments"></i></span>
+                    <h5>{{ 'Feedbacks' | trans({},'generalbackend') }}</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{{ cant_feedback }}</h1>
+
+                    <div class="stat-percent font-bold text-warning">
+                        <a title="{{ 'Manage' | trans({}, 'generalbackend') }}"
+                           href="{{ path('feedback') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
+                                    class="fa fa-cog"></i></a>
+                    </div>
+                    <small>{{ 'Total feedbacks' | trans({}, 'generalbackend') }}</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-success pull-right"><i class="fa fa-user"></i></span>
+                    <h5>{{ 'Candidates' | trans({},'generalbackend') }}</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{{ cant_candidate }}</h1>
+
+                    <div class="stat-percent font-bold text-success">
+                        <a title="{{ 'Manage' | trans({}, 'generalbackend') }}"
+                           href="{{ path('candidate') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
+                                    class="fa fa-cog"></i></a>
+                    </div>
+                    <small>{{ 'Total candidates' | trans({}, 'generalbackend') }}</small>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{ 'Candidates Resume' | trans({},'generalbackend') }}</h5>
+
+                    <div class="ibox-tools">
+                        <a title="Collapse" class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div>
+                        <span class="pull-right text-right">
+                            <h3 class="font-bold no-margins">
+                                Amount applying candidates per business
+                            </h3>
+                            <small>
+                                Total candidates: {{ cant_candidate }}
+                            </small>
+                        </span>
+                        <h3 class="font-bold no-margins">
+                            Behavior of applying candidates
+                        </h3>
+                        <small>Past 6 months</small>
+                    </div>
+
+                    <div class="m-t-sm">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div>
+                                    <canvas id="lineChartCandidates" height="114"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <ul class="stat-list m-t-lg">
+                                    <li>
+                                        <h2 class="no-margins">2,346</h2>
+                                        <small>Total orders in period</small>
+                                        <div class="progress progress-mini">
+                                            <div class="progress-bar" style="width: 48%;"></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h2 class="no-margins ">4,422</h2>
+                                        <small>Orders in last month</small>
+                                        <div class="progress progress-mini">
+                                            <div class="progress-bar" style="width: 60%;"></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h2 class="no-margins ">4,422</h2>
+                                        <small>Orders in last month</small>
+                                        <div class="progress progress-mini">
+                                            <div class="progress-bar" style="width: 60%;"></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h2 class="no-margins ">4,422</h2>
+                                        <small>Orders in last month</small>
+                                        <div class="progress progress-mini">
+                                            <div class="progress-bar" style="width: 60%;"></div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h2 class="no-margins ">4,422</h2>
+                                        <small>Orders in last month</small>
+                                        <div class="progress progress-mini">
+                                            <div class="progress-bar" style="width: 60%;"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="m-t-md">
+                        <small class="pull-right">
+                            <i class="fa fa-clock-o"> </i>
+                            Update on 16.07.2015
+                        </small>
+                        <small>
+                            <strong>Analysis of sales:</strong> The value has been changed over time, and last month
+                            reached a level over $50,000.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-lg-4">
             <div class="ibox float-e-margins">
@@ -111,7 +244,8 @@
                                     <tr>
                                         <td class="text-center">{{ loop.index }}</td>
                                         <td>
-                                            <a title="Top business" href="{{ path('business_show', {'id' : topBusiness[0].id}) }}">
+                                            <a title="Top business"
+                                               href="{{ path('business_show', {'id' : topBusiness[0].id}) }}">
                                                 {{ topBusiness[0].name|length > 30 ? topBusiness[0].name|slice(0,30) ~ '...' : topBusiness[0].name }}
                                             </a>
                                         </td>
@@ -176,5 +310,61 @@
 
 {% endblock %}
 
-        {% block inline_js %}
-        {% endblock %}
+    {% block custom_js %}
+        {{ parent() }}
+        <!-- Flot -->
+        <script src="{{ asset('bundles/backend/js/plugins/flot/jquery.flot.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('bundles/backend/js/plugins/flot/jquery.flot.tooltip.min.js') }}"
+                type="text/javascript"></script>
+        <script src="{{ asset('bundles/backend/js/plugins/flot/jquery.flot.resize.js') }}"
+                type="text/javascript"></script>
+
+        <!-- ChartJS-->
+        <script src="{{ asset('bundles/backend/js/plugins/chartJs/Chart.min.js') }}" type="text/javascript"></script>
+    {% endblock %}
+
+
+    {% block inline_js %}
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+
+                var lineData = {
+                    labels: ["January", "February", "March", "April", "May", "June"],
+                    datasets: [
+                        {
+                            label: "{{ 'Candidates Resume' | trans({},'generalbackend') }}",
+                            fillColor: "rgba(26,179,148,0.5)",
+                            strokeColor: "rgba(26,179,148,0.7)",
+                            pointColor: "rgba(26,179,148,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(26,179,148,1)",
+                            data: [48, 48, 60, 39, 56, 37]
+                        }
+                    ]
+                };
+
+                var lineOptions = {
+                    scaleShowGridLines: true,
+                    scaleGridLineColor: "rgba(0,0,0,.05)",
+                    scaleGridLineWidth: 1,
+                    bezierCurve: true,
+                    bezierCurveTension: 0.4,
+                    pointDot: true,
+                    pointDotRadius: 5,
+                    pointDotStrokeWidth: 2,
+                    pointHitDetectionRadius: 20,
+                    datasetStroke: true,
+                    datasetStrokeWidth: 2,
+                    datasetFill: true,
+                    responsive: true,
+                };
+
+
+                var ctx = document.getElementById("lineChartCandidates").getContext("2d");
+                var myNewChart = new Chart(ctx).Line(lineData, lineOptions);
+
+            });
+        </script>
+    {% endblock %}

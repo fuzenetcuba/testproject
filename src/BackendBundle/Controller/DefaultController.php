@@ -23,6 +23,12 @@ class DefaultController extends Controller
         $cuMgr = $this->get('customer.manager');
         $cantCustomer = count($cuMgr->findAll());
 
+        $feMgr = $this->get('feedback.manager');
+        $cantFeedback = count($feMgr->findAll());
+
+        $caMgr = $this->get('candidate.manager');
+        $cantCandidate = count($caMgr->findAll());
+
         // find top businesses by number of deals
         $queryTopBNumDeals = $em->getRepository('BackendBundle:Business')->findTopBusinessByCantDeals();
         if (count($queryTopBNumDeals) > 5) {
@@ -39,6 +45,8 @@ class DefaultController extends Controller
             'cant_category' => $cantCategory,
             'cant_deal' => $cantDeal,
             'cant_customer' => $cantCustomer,
+            'cant_feedback' => $cantFeedback,
+            'cant_candidate' => $cantCandidate,
             'top_business_num_deals' => $topBNumDeals,
             'top_deals_created_date' => $topDealsByCreatedDate
         ));
