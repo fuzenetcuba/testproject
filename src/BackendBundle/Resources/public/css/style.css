@@ -3530,7 +3530,7 @@ video {
 /* Summernote text editor  */
 .note-editor {
   height: auto !important;
-  min-height: 300px;
+  min-height: 200px;
 }
 .note-editor.fullscreen {
   z-index: 2050;
