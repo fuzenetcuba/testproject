@@ -1,5 +1,14 @@
 {% extends 'BackendBundle::layout.html.twig' %}
 
+{% block metatags %}
+    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+    {{- 'Edit profile of' | trans({}, 'fosuser') ~ ' ' ~ app.user.username -}}
+    "/>
+    <meta name="description" content="
+    {{- 'Edit profile of' | trans({}, 'fosuser') ~ ' ' ~ app.user.username -}}
+    "/>
+{% endblock %}
+
 {% block active_users %}active{% endblock %}
 {% block page_heading_title %}
     {{ 'Edit profile of' | trans({}, 'fosuser') }} <b>{{ app.user.username }}</b>

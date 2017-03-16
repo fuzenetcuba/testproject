@@ -69,6 +69,15 @@ class Opening
     private $description;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\Candidate", mappedBy="opening",
+     *     cascade={"persist", "remove", "merge"}
+     * )
+     */
+    private $candidates;
+
+    /**
      * @var string
      *
      * @Gedmo\Locale
@@ -78,6 +87,7 @@ class Opening
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->candidates = new ArrayCollection();
     }
 
     public function __toString()
