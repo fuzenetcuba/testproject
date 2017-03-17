@@ -1,7 +1,8 @@
 {% extends 'BackendBundle::layout.html.twig' %}
 
 {% block metatags %}
-    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+    <meta name="keywords"
+          content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
     {{- 'Profile of' | trans({}, 'fosuser') ~ ' ' ~ user.username -}}
     "/>
     <meta name="description" content="
@@ -15,36 +16,34 @@
 {% endblock %}
 
 {% block page_content %}
-    <dl class="dl-horizontal">
-        <dt>{{ 'Full name' | trans({}, 'fosuser') }}</dt>
-        <dd>{{ user.fullName }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}</dt>
-        <dd>{{ user.username }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>{{ 'Phone' | trans({}, 'fosuser') }}</dt>
-        <dd>{{ user.phone }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}</dt>
-        <dd>{{ user.email }}</dd>
-        <div class="hr-line-dashed"></div>
-        {% if(user.image is not null) %}
-            <dt>{{ 'Photo' | trans({}, 'fosuser') }}</dt>
-            <dd>
+
+    <div class="row widget-text-box no-padding">
+        <div class="col-lg-4 navy-bg p-lg text-center">
+            {% if(user.image is not null) %}
                 <img style="max-width: 70%; height: auto;" src="{{ asset('images/users/' ~ user.image) }}"
-                     alt="{{ user.image }}"/>
-            </dd>
-            <div class="hr-line-dashed"></div>
-        {% endif %}
-    </dl>
-    <div class="form-group border-top padding-basic-top">
-        <div class="col-md-12">
-            <a class="btn btn-success" role="button" href="{{ path('fos_user_profile_edit') }}">
-                <span class="fa fa-pencil"></span> {{ 'Edit info' | trans({}, 'fosuser') }}
-            </a>
-            <a class="btn btn-primary" role="button" href="{{ path('fos_user_change_password') }}">
-                <span class="fa fa-key"></span> {{ 'change_password.submit' | trans({}, 'FOSUserBundle') }}
-            </a>
+                     class="m-t-md img-circle circle-border m-b-md" alt="{{ user.image }}"/>
+            {% endif %}
+            <div class="m-b-md">
+                <h1 class="font-bold no-margins">
+                    {{ user.fullName }}
+                </h1>
+                <small>[{{ user.username }}]</small>
+            </div>
+        </div>
+        <div class="col-lg-8 p-lg">
+            {% if(user.phone is not null) %}
+                <p><span class="fa fa-phone"></span> {{ user.phone }}</p>
+            {% endif %}
+            <p><span class="fa fa-envelope"></span> {{ user.email }}</p>
+            <div class="m-t-lg">
+                <a class="btn btn-sm btn-success" role="button" href="{{ path('fos_user_profile_edit') }}">
+                    <span class="fa fa-pencil"></span> {{ 'Edit profile' | trans({}, 'fosuser') }}
+                </a>
+                <a class="btn btn-sm btn-primary" role="button" href="{{ path('fos_user_change_password') }}">
+                    <span class="fa fa-key"></span> {{ 'change_password.submit' | trans({}, 'FOSUserBundle') }}
+                </a>
+            </div>
         </div>
     </div>
+
 {% endblock %}
