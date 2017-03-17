@@ -1,4 +1,8 @@
 services:
+    alert.manager:
+        class: BackendBundle\Model\AlertManager
+        arguments: ["@doctrine.orm.entity_manager"]
+
     business.manager:
         class: BackendBundle\Model\BusinessManager
         arguments: ["@doctrine.orm.entity_manager"]
