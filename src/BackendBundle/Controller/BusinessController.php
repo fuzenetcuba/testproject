@@ -89,7 +89,7 @@ class BusinessController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The business was created succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The business was created successfully.');
 
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('business_new'));
@@ -165,7 +165,7 @@ class BusinessController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The business was updated succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The business was updated successfully.');
             return $this->redirectToRoute('business_show', array('id' => $entity->getId()));
         }
 
@@ -214,7 +214,7 @@ class BusinessController extends Controller
         $em->flush();
 
         // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('success', 'The business was deleted succesfully.');
+        $this->get('session')->getFlashBag()->add('success', 'The business was deleted successfully.');
         return $this->redirect($this->generateUrl('business'));
 
 
@@ -260,7 +260,7 @@ class BusinessController extends Controller
                     }
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Businesss deleted succesfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Businesss deleted successfully.');
                 }
             }
             $em->flush();

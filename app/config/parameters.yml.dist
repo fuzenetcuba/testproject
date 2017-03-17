@@ -52,3 +52,8 @@ parameters:
 
     # Quantity of month to show amount of candidates statistics on Dashboard
     settings.graph.candidates.past.months: 12
+
+
+    # Alerts parameters
+    # Antiquity of Alerts that will be removed
+    alert.antiquity.months: 3

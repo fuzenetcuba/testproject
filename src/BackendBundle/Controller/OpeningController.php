@@ -90,7 +90,7 @@ class OpeningController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The opening was created succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The opening was created successfully.');
 
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('opening_new'));
@@ -156,7 +156,7 @@ class OpeningController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The opening was updated succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The opening was updated successfully.');
             return $this->redirectToRoute('opening_show', array('id' => $entity->getId()));
         }
 
@@ -205,7 +205,7 @@ class OpeningController extends Controller
         $em->flush();
 
         // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('success', 'The opening was deleted succesfully.');
+        $this->get('session')->getFlashBag()->add('success', 'The opening was deleted successfully.');
         return $this->redirect($this->generateUrl('opening'));
 
 
@@ -251,7 +251,7 @@ class OpeningController extends Controller
                     }
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Openings deleted succesfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Openings deleted successfully.');
                 }
             }
             $em->flush();

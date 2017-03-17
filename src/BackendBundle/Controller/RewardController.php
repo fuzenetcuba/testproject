@@ -89,7 +89,7 @@ class RewardController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The reward was created succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The reward was created successfully.');
 
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('reward_new'));
@@ -166,7 +166,7 @@ class RewardController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The reward was updated succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The reward was updated successfully.');
             return $this->redirectToRoute('reward_show', array('id' => $entity->getId()));
         }
 
@@ -215,7 +215,7 @@ class RewardController extends Controller
         $em->flush();
 
         // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('success', 'The reward was deleted succesfully.');
+        $this->get('session')->getFlashBag()->add('success', 'The reward was deleted successfully.');
         return $this->redirect($this->generateUrl('reward'));
 
 
@@ -261,7 +261,7 @@ class RewardController extends Controller
                     }
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Rewards deleted succesfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Rewards deleted successfully.');
                 }
             }
             $em->flush();

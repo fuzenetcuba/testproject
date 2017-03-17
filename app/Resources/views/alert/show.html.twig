@@ -1,34 +1,25 @@
-{% extends 'BackendBundle::layout.html.twig' %}{% block active_helpers %}active{% endblock %}{% block page_heading_title %}
-    <a class="btn btn-default navbar-btn" href="{{ path('helpers') }}"
+{% extends 'BackendBundle::layout.html.twig' %}{% block active_alert %}active{% endblock %}{% block page_heading_title %}
+    <a class="btn btn-default navbar-btn" href="{{ path('alert') }}"
        style="margin-bottom: 7px;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a>
-    Helpers data
+    Alert data
 {% endblock %}{% block page_content %}
     <dl class="dl-horizontal">
         <tbody>
         <dt>Id</dt>
         <dd>{{ entity.id }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Date</dt>
-        <dd>{{ entity.date|date('d-M-Y') }}</dd>
+        <dt>Message</dt>
+        <dd>{{ entity.message }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Time</dt>
-        <dd>{{ entity.time|date('h:i A') }}</dd>
+        <dt>Url</dt>
+        <dd>{{ entity.url }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Datetime</dt>
-        <dd>{{ entity.dateTime|date('d-M-Y h:i A') }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Daterange</dt>
-        <dd>{{ entity.dateRange }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Timerange</dt>
-        <dd>{{ entity.timeRange }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Isactive</dt>
+        <dt>Checked</dt>
         <dd>
             <div class="onoffswitch-ios switch-xs">
-                {% if (entity.isActive) %}
+                {% if (entity.checked) %}
                     <label class="onoffswitch-ios-label checked"></label>
                 {% else %}
                     <label class="onoffswitch-ios-label"></label>
@@ -36,38 +27,24 @@
             </div>
         </dd>
         <div class="hr-line-dashed"></div>
-        <dt>Imagename</dt>
-        <dd>{{ entity.imageName }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Updatedat</dt>
-        <dd>{{ entity.updatedAt|date('d-M-Y h:i A') }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Image Preview</dt>
-        <dd><img style="max-width: 70%; height: auto;" src="{{ asset('images/users/' ~ entity.imageName) }}"/></dd>
+        <dt>Date</dt>
+        <dd>{{ entity.date|date('d-M-Y') }}</dd>
         <div class="hr-line-dashed"></div>
         </tbody>
     </dl>
     <div class="form-group">
         <div class="col-md-2 text-right">
-            <a class="btn btn-success" href="{{ path('helpers') }}">
+            <a class="btn btn-success" href="{{ path('alert') }}">
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 Back to the list
             </a>
         </div>
         <div class="col-md-10">
 
-
-            <a class="btn btn-primary"
-               href="{{ path('helpers_edit', { 'id': entity.id }) }}">
-                <span class="fa fa-pencil"></span>
-                Edit
-            </a>
-
             <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
                 <span class="fa fa-remove"></span>
                 Delete
             </a>
-
 
         </div>
     </div>
@@ -87,10 +64,10 @@
                     <strong>Are you sure you want to delete this data?</strong>
                 </div>
                 <div class="modal-footer">
-                    <form action="{{ path('helpers_delete', { 'id': entity.id }) }}"
+                    <form action="{{ path('alert_delete', { 'id': entity.id }) }}"
                           name="form-delete" method="post">
                         <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                        <button id="modal-btn" type="submit" class="btn btn-danger" name="helpers-id"
+                        <button id="modal-btn" type="submit" class="btn btn-danger" name="alert-id"
                                 value="{{ entity.id }}">
                             <span class="glyphicon glyphicon-ok"></span> Save changes
                         </button>

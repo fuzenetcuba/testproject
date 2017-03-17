@@ -146,4 +146,25 @@ class AlertManager implements ManagerInterface
             ->getResult();
     }
 
+    /**
+     * Remove all alert older than # months
+     *
+     * @param $months
+     *
+     * @return mixed
+     */
+    public function deleteAlertsOlderThan($months)
+    {
+        $monthsDate = new \DateTime($months . ' months ago');
+
+        return $this->em
+            ->createQueryBuilder('q')
+            ->delete('BackendBundle:Alert', 'a')
+            ->where('a.date <= :date')
+            ->andWhere('a.checked = true')
+            ->setParameter('date', $monthsDate->format('Y-m-d'))
+            ->getQuery()
+            ->getResult();
+    }
+
 }

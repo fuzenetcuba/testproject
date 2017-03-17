@@ -89,7 +89,7 @@ class DealController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The deal was created succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The deal was created successfully.');
 
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('deal_new'));
@@ -165,7 +165,7 @@ class DealController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The deal was updated succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The deal was updated successfully.');
             return $this->redirectToRoute('deal_show', array('id' => $entity->getId()));
         }
 
@@ -214,7 +214,7 @@ class DealController extends Controller
         $em->flush();
 
         // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('success', 'The deal was deleted succesfully.');
+        $this->get('session')->getFlashBag()->add('success', 'The deal was deleted successfully.');
         return $this->redirect($this->generateUrl('deal'));
 
 
@@ -260,7 +260,7 @@ class DealController extends Controller
                     }
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Deals deleted succesfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Deals deleted successfully.');
                 }
             }
             $em->flush();

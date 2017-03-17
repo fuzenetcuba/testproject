@@ -87,7 +87,7 @@ class SubscriptionController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The subscription was created succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The subscription was created successfully.');
 
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('subscription_new'));
@@ -153,7 +153,7 @@ class SubscriptionController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The subscription was updated succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The subscription was updated successfully.');
             return $this->redirectToRoute('subscription_show', array('id' => $entity->getId()));
         }
 
@@ -202,7 +202,7 @@ class SubscriptionController extends Controller
         $em->flush();
 
         // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('success', 'The subscription was deleted succesfully.');
+        $this->get('session')->getFlashBag()->add('success', 'The subscription was deleted successfully.');
         return $this->redirect($this->generateUrl('subscription'));
 
 
@@ -248,7 +248,7 @@ class SubscriptionController extends Controller
                     }
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Subscriptions deleted succesfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Subscriptions deleted successfully.');
                 }
             }
             $em->flush();

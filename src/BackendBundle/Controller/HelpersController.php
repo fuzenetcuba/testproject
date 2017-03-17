@@ -83,7 +83,7 @@ class HelpersController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The helpers was created succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The helpers was created successfully.');
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('helpers_new'));
             } else {
@@ -147,7 +147,7 @@ class HelpersController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The helpers was updated succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The helpers was updated successfully.');
             return $this->redirectToRoute('helpers_show', array('id' => $entity->getId()));
         }
 
@@ -196,7 +196,7 @@ class HelpersController extends Controller
         $em->flush();
 
         // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('success', 'The helpers was deleted succesfully.');
+        $this->get('session')->getFlashBag()->add('success', 'The helpers was deleted successfully.');
         return $this->redirect($this->generateUrl('helpers'));
     }
 
@@ -240,7 +240,7 @@ class HelpersController extends Controller
                     }
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Helperss deleted succesfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Helperss deleted successfully.');
                 }
             }
             $em->flush();

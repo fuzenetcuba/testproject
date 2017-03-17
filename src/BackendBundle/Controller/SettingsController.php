@@ -53,7 +53,7 @@ class SettingsController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The settings was created succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The settings was created successfully.');
 
             return $this->redirectToRoute('settings_show', array('id' => $entity->getId()));
         }
@@ -109,7 +109,7 @@ class SettingsController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The settings was updated succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The settings was updated successfully.');
             return $this->redirectToRoute('settings_show', array('id' => $entity->getId()));
         }
 

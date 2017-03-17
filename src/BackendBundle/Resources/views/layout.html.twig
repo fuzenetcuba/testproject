@@ -157,6 +157,11 @@
                                     class="nav-label">{{ 'Candidates' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
+                    <li class="{% block active_alert %}{% endblock %}">
+                        <a title="{{ 'Alerts' | trans({}, 'generalbackend') }}" href="{{ path('alert') }}"><i class="fa fa-bell"></i> <span
+                                    class="nav-label">{{ 'Alerts' | trans({}, 'generalbackend') }}</span></a>
+                    </li>
+
                     <li class="{% block active_settings %}{% endblock %}">
                         <a title="{{ 'Settings' | trans({}, 'generalbackend') }}" href="{{ path('settings') }}"><i class="fa fa-cog"></i> <span
                                     class="nav-label">{{ 'Settings' | trans({}, 'generalbackend') }}</span></a>

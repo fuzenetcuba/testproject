@@ -89,7 +89,7 @@ class CategoryController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The category was created succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The category was created successfully.');
 
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('category_new'));
@@ -165,7 +165,7 @@ class CategoryController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The category was updated succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The category was updated successfully.');
             return $this->redirectToRoute('category_show', array('id' => $entity->getId()));
         }
 
@@ -214,7 +214,7 @@ class CategoryController extends Controller
         $em->flush();
 
         // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('success', 'The category was deleted succesfully.');
+        $this->get('session')->getFlashBag()->add('success', 'The category was deleted successfully.');
         return $this->redirect($this->generateUrl('category'));
 
 
@@ -260,7 +260,7 @@ class CategoryController extends Controller
                     }
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Categorys deleted succesfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Categorys deleted successfully.');
                 }
             }
             $em->flush();
