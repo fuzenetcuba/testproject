@@ -46,7 +46,7 @@
                 {{ 'Delete' | trans({}, 'generalbackend') }}
             </a>
 
-            <a title="Details" class="btn btn-primary" href="{{ entity.url }}">
+            <a title="Details" class="btn btn-primary" href="{{ path('alert_details', {'id' : entity.id}) }}">
                 {{ 'View' | trans({}, 'alertbackend') }} <span class="fa fa-angle-double-right"></span>
             </a>
 

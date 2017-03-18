@@ -277,6 +277,21 @@ class OpeningManager implements ManagerInterface
     {
         $this->em->persist($candidate);
         $this->em->flush();
+
+        return $this->findUniqueCandidate($candidate->getSocialNumber(), $candidate->getOpening());
+    }
+
+    public function findUniqueCandidate($socialSecurity, Opening $opening)
+    {
+        return $this->em->createQueryBuilder()
+            ->select('c')
+            ->from('BackendBundle:Candidate', 'c')
+            ->where('c.socialNumber = :sn')
+            ->andWhere('c.opening = :op')
+            ->setParameter('sn', $socialSecurity)
+            ->setParameter('op', $opening)
+            ->getQuery()
+            ->getSingleResult();
     }
 
     public function findMatchingOpenings(array $conditions = [])

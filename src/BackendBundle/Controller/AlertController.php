@@ -24,7 +24,7 @@ class AlertController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $dql = "SELECT e FROM BackendBundle:Alert e ORDER BY e.id ASC";
+        $dql = "SELECT e FROM BackendBundle:Alert e ORDER BY e.date DESC";
         $query = $em->createQuery($dql);
 
         $paginator = $this->get('knp_paginator');
@@ -52,7 +52,7 @@ class AlertController extends Controller
             $dql = "SELECT e FROM BackendBundle:Alert e WHERE "
                 . "e.message LIKE '%" . $find . "%' OR "
                 . "e.url LIKE '%" . $find . "%' "
-                . "ORDER BY e.id ASC";
+                . "ORDER BY e.date DESC";
             $query = $em->createQuery($dql);
 
             $paginator = $this->get('knp_paginator');
@@ -94,7 +94,7 @@ class AlertController extends Controller
     {
         $this->checkAlert($entity);
 
-        return $this->redirect($entity->getUrl());
+        return $this->redirect($this->get('request')->getUriForPath($entity->getUrl()));
     }
 
 

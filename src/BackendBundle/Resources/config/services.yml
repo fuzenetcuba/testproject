@@ -86,3 +86,9 @@ services:
         arguments: ["@translator"]
         tags:
             - { name: twig.extension }
+
+    alert.event.listener:
+        class: BackendBundle\Listener\AlertEventListener
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: kernel.event_subscriber }

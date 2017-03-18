@@ -9,16 +9,16 @@ Check Alerts: Chequear Alertas
 Uncheck Alerts: Deschequear Alertas
 View: Ver
 Alert data: Datos de alerta
-%y% year ago: hace %y% año
-%y% years ago: hace %y% años
-%m% month ago: hace %m% mes
-%m% months ago: hace %m% meses
-%d% day ago: hace %d% día
-%d% days ago: hace %d% días
-%h% hour ago: hace %h% hora
-%h% hours ago: hace %h% horas
-%i% minute ago: hace %m% minuto
-%i% minutes ago: hace %m% minutos
-%s% second ago: hace %s% segundo
-%s% seconds ago: hace %s% segundos
++y+ year ago: hace +y+ año
++y+ years ago: hace +y+ años
++m+ month ago: hace +m+ mes
++m+ months ago: hace +m+ meses
++d+ day ago: hace +d+ día
++d+ days ago: hace +d+ días
++h+ hour ago: hace +h+ hora
++h+ hours ago: hace +h+ horas
++i+ minute ago: hace +i+ minuto
++i+ minutes ago: hace +i+ minutos
++s+ second ago: hace +s+ segundo
++s+ seconds ago: hace +s+ segundos
 View All Alerts: Ver todas las alertas

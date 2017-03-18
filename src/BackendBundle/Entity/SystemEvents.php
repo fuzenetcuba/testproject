@@ -11,6 +11,6 @@ namespace BackendBundle\Entity;
 final class SystemEvents extends BaseEnum
 {
     const
-        REWARD_ON_REGISTER = 'user.created'
+        ALERT_EVENTS = 'alert.event'
     ;
 }

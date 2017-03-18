@@ -13,6 +13,11 @@ alert_show:
     defaults: { _controller: "BackendBundle:Alert:show" }
     methods:  GET
 
+alert_details:
+    path:     /{id}/details
+    defaults: { _controller: "BackendBundle:Alert:details" }
+    methods:  GET
+
 alert_delete:
     path:     /{id}/delete
     defaults: { _controller: "BackendBundle:Alert:delete" }

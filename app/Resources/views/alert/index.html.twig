@@ -117,7 +117,7 @@
                             <td>{{ entity.date|date('d-M-Y') }} <small><b>{{ " (" ~ entity.date | antiquity_date ~ ")" }}</b></small></td>
 
                             <td>
-                                <a title="Details" class="btn btn-primary btn-xs" href="{{ entity.url }}">
+                                <a title="Details" class="btn btn-primary btn-xs" href="{{ path('alert_details', {'id' : entity.id}) }}">
                                     {{ 'View' | trans({}, 'alertbackend') }} <span class="fa fa-angle-double-right"></span>
                                 </a>
                             </td>
@@ -168,19 +168,19 @@
             <div class="modal inmodal" id="modalDelete" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content animated bounceInRight">
-                        <div id="modal-title" class="modal-header red-bg">
+                        <div class="modal-header red-bg">
                             <button type="button" class="close" data-dismiss="modal"><span
                                         aria-hidden="true">&times;</span><span class="sr-only">{{ 'Close' | trans({},'generalbackend') }}</span>
                             </button>
                             <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
                             <h4 class="modal-title">{{ 'Attention' | trans({},'generalbackend') }}!!!</h4>
                         </div>
-                        <div id="modal-content" class="modal-body">
+                        <div class="modal-body">
                             <strong>{{ 'Are you sure you want to delete items?' | trans({},'generalbackend') }}</strong> {{ 'After this action, data will not be restored.' | trans({},'generalbackend') }}
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                            <a href="{{ path('alert_delete_older') }}" id="modal-btn" class="btn btn-danger"
+                            <a href="{{ path('alert_delete_older') }}" class="btn btn-danger"
                                name="alert-id">
                                 <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({},'generalbackend') }}
                             </a>
