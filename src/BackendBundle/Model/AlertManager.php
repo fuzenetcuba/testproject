@@ -117,16 +117,54 @@ class AlertManager implements ManagerInterface
     }
 
     /**
-     * Returns the alerts that are checked
+     * Count alerts that are checked
      *
      * @return array
      */
-    public function findAlertsChecked()
+    public function countAlertsChecked()
+    {
+        return $this->em
+            ->createQueryBuilder('q')
+            ->select('count(a)')
+            ->from('BackendBundle:Alert', 'a')
+            ->where('a.checked = true')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * Count alerts that are not checked
+     *
+     * @return array
+     */
+    public function countAlertsUnchecked()
+    {
+        return $this->em
+            ->createQueryBuilder('q')
+            ->select('count(a)')
+            ->from('BackendBundle:Alert', 'a')
+            ->where('a.checked = false')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * Returns the alerts that are checked
+     *
+     * @param $limit
+     * @return array
+     */
+    public function findAlertsChecked($limit = 0)
     {
         $query = $this->findAllQuery();
 
+        if ($limit > 0) {
+            $query->setMaxResults($limit);
+        }
+
         return $query
             ->where('a.checked = true')
+            ->orderBy('a.date', 'DESC')
             ->getQuery()
             ->getResult();
     }
@@ -134,14 +172,20 @@ class AlertManager implements ManagerInterface
     /**
      * Returns the alerts that are not checked
      *
+     * @param $limit
      * @return array
      */
-    public function findAlertsUnchecked()
+    public function findAlertsUnchecked($limit = 0)
     {
         $query = $this->findAllQuery();
 
+        if ($limit > 0) {
+            $query->setMaxResults($limit);
+        }
+
         return $query
             ->where('a.checked = false')
+            ->orderBy('a.date', 'DESC')
             ->getQuery()
             ->getResult();
     }

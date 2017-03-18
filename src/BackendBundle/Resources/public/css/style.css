@@ -136,7 +136,7 @@ h5 {
 .navbar-top-links .dropdown-messages,
 .navbar-top-links .dropdown-tasks,
 .navbar-top-links .dropdown-alerts {
-  width: 310px;
+  width: 350px;
   min-width: 0;
 }
 .navbar-top-links .dropdown-messages {
@@ -7791,4 +7791,49 @@ label.required:before {
 
 .form-actions {
   margin-top: 20px;
+}
+
+
+.center-height {
+  width: auto;
+  height: auto !important;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-height: 300px;
+  max-width: 100%;
+}
+
+.dropdown-messages-box a.message-box-link {
+  padding: 0 !important;
+  color: #676a6c;
+  font-size: 12px;
+}
+
+.dropdown-messages-box a.message-box-link:hover {
+  padding: 0 !important;
+  color: #333333;
+}
+
+.dropdown-messages-box .message-box-icon {
+  padding: 5px 20px !important;
+}
+
+.dropdown-messages-box .message-box-icon .outline-icon {
+  padding: 10px !important;
+  border-radius: 50%;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.border-navy {
+  border-color: #1ab394;
+}
+
+.dropdown-messages-box a.message-box-link:hover .border-navy {
+  color: #FFFFFF;
+  background-color: #1ab394;
 }

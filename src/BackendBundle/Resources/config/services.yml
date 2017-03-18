@@ -80,3 +80,9 @@ services:
         class: BackendBundle\Twig\UnformatPhoneExtension
         tags:
             - { name: twig.extension }
+
+    app.twig.antiquity_date_extension:
+        class: BackendBundle\Twig\AntiquityDateExtension
+        arguments: ["@translator"]
+        tags:
+            - { name: twig.extension }

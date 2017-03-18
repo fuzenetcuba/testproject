@@ -18,29 +18,29 @@
         {% block active_alert %}active{% endblock %}
 
         {% block page_heading_title %}
-            Alert list
+            {{ 'Alert list' | trans({}, 'alertbackend') }}
         {% endblock %}
 
     {% block page_heading_action_button %}
         <a class="btn btn-danger navbar-btn pull-right" data-toggle="modal" data-target="#modalDelete">
             <span class="fa fa-remove"></span>
-            Delete alert older than {{ older_than }} months
+            {{ 'Delete alert older than %months% months' | trans({ '%months%' : older_than }, 'alertbackend') }}
         </a>
     {% endblock %}
 
         {% block page_content %}
 
             <div>
-                <span class="col-sm-2"><b>Total items: </b> {{ entities.getTotalItemCount }}</span>
+                <span class="col-sm-2"><b>{{ 'Total items' | trans({},'generalbackend') }}: </b> {{ entities.getTotalItemCount }}</span>
 
                 <div class="col-sm-10 form-group form-inline text-right">
                     <form name="find-form" action="{{ path('alert_find') }}" method="post">
                         <div class="input-group">
                             <input id="find-form-text" class="form-control" autofocus="on" name="find-form-text"
                                    autocomplete="off"
-                                   type="text" placeholder="Text to find..."/>
+                                   type="text" placeholder="{{ 'Text to find' | trans({},'generalbackend') }}..."/>
                         <span class="input-group-btn">
-                            <button type="submit" name="find-form-send" value="sending" class="btn btn-primary">Find
+                            <button type="submit" name="find-form-send" value="sending" class="btn btn-primary">{{ 'Find' | trans({},'generalbackend') }}
                             </button>
                         </span>
                         </div>
@@ -61,31 +61,31 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Message', 'e.message') }}
+                            {{ knp_pagination_sortable(entities, 'Message' | trans({}, 'alertbackend'), 'e.message') }}
                             {% if entities.isSorted('e.message') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Checked', 'e.checked') }}
+                            {{ knp_pagination_sortable(entities, 'Checked' | trans({}, 'alertbackend'), 'e.checked') }}
                             {% if entities.isSorted('e.checked') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Date', 'e.date') }}
+                            {{ knp_pagination_sortable(entities, 'Date' | trans({}, 'alertbackend'), 'e.date') }}
                             {% if entities.isSorted('e.date') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Details Url', 'e.url') }}
+                            {{ knp_pagination_sortable(entities, 'Details Url' | trans({}, 'alertbackend'), 'e.url') }}
                             {% if entities.isSorted('e.url') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
 
-                        <th class="text-navy">Actions</th>
+                        <th class="text-navy">{{ 'Actions' | trans({},'generalbackend') }}</th>
                     </tr>
                     </thead>
 
@@ -101,24 +101,25 @@
                                 <a href="{{ path('alert_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
                             </td>
 
-                            <td>{{ entity.message }}</td>
+                            <td>{{ entity.message | raw }}</td>
 
 
                             <td>
                                 <div class="onoffswitch-ios switch-xs">
-                                    {% if (entity.checked) %}
-                                        <label class="onoffswitch-ios-label checked"></label>
-                                    {% else %}
-                                        <label class="onoffswitch-ios-label"></label>
-                                    {% endif %}
+                                    <input type="checkbox" name="switch-ios-{{ entity.id }}"
+                                           class="onoffswitch-ios-checkbox"
+                                           id="switch-ios-{{ entity.id }}" {{ entity.checked ? 'checked' : '' }}>
+                                    <label class="onoffswitch-ios-label" for="switch-ios-{{ entity.id }}"
+                                           onclick="checkAlert({{ entity.id }});"></label>
                                 </div>
                             </td>
 
-                            <td>{{ entity.date|date('d-M-Y') }}</td>
+                            <td>{{ entity.date|date('d-M-Y') }} <small><b>{{ " (" ~ entity.date | antiquity_date ~ ")" }}</b></small></td>
 
                             <td>
-                                <a title="Details" class="btn btn-primary btn-xs" href="{{ entity.url }}"><span
-                                            class="fa fa-arrow-right"></span></a>
+                                <a title="Details" class="btn btn-primary btn-xs" href="{{ entity.url }}">
+                                    {{ 'View' | trans({}, 'alertbackend') }} <span class="fa fa-angle-double-right"></span>
+                                </a>
                             </td>
 
                             <td>
@@ -134,7 +135,7 @@
                     {% else %}
                         <tr>
                             <td colspan="7">
-                                There are not entries...
+                                {{ 'There are not entries' | trans({},'generalbackend') }}...
                             </td>
                         </tr>
                     {% endfor %}
@@ -150,7 +151,13 @@
                         <div class="form-group pagination pull-right">
                             <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
                                 <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                                    Delete Alerts
+                                    {{ 'Delete Alerts' | trans({}, 'alertbackend') }}
+                                </option>
+                                <option value="enable" data-toggle="modal" data-target="#modalBatch">
+                                    {{ 'Check Alerts' | trans({}, 'alertbackend') }}
+                                </option>
+                                <option value="disable" data-toggle="modal" data-target="#modalBatch">
+                                    {{ 'Uncheck Alerts' | trans({}, 'alertbackend') }}
                                 </option>
                             </select>
                         </div>
@@ -163,20 +170,19 @@
                     <div class="modal-content animated bounceInRight">
                         <div id="modal-title" class="modal-header red-bg">
                             <button type="button" class="close" data-dismiss="modal"><span
-                                        aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                        aria-hidden="true">&times;</span><span class="sr-only">{{ 'Close' | trans({},'generalbackend') }}</span>
                             </button>
                             <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
-                            <h4 class="modal-title">Attention!!!</h4>
+                            <h4 class="modal-title">{{ 'Attention' | trans({},'generalbackend') }}!!!</h4>
                         </div>
                         <div id="modal-content" class="modal-body">
-                            <strong>Are you sure you want to delete items?</strong> After this action, data will not be
-                            restored.
+                            <strong>{{ 'Are you sure you want to delete items?' | trans({},'generalbackend') }}</strong> {{ 'After this action, data will not be restored.' | trans({},'generalbackend') }}
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                             <a href="{{ path('alert_delete_older') }}" id="modal-btn" class="btn btn-danger"
                                name="alert-id">
-                                <span class="glyphicon glyphicon-ok"></span> Save changes
+                                <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({},'generalbackend') }}
                             </a>
                         </div>
                     </div>
@@ -189,19 +195,19 @@
                         <div id="modal-title" class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">
                                 <span aria-hidden="true">&times;</span>
-                                <span class="sr-only">Close</span>
+                                <span class="sr-only">{{ 'Close' | trans({},'generalbackend') }}</span>
                             </button>
                             <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
-                            <h4 class="modal-title">Antention!!!</h4>
+                            <h4 class="modal-title">{{ 'Antention' | trans({},'generalbackend') }}!!!</h4>
                         </div>
                         <div id="modal-content" class="modal-body">
                             Modal message
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({},'generalbackend') }}</button>
                             <button id="modal-btn" type="submit" class="btn btn-success"
                                     onclick="$('#batch_action_form').submit();">
-                                <span class="glyphicon glyphicon-ok"></span> Save changes
+                                <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({},'generalbackend') }}
                             </button>
                         </div>
                     </div>
@@ -247,7 +253,7 @@
                 //  select2 scripts for batch actions combobox
                 $("#batch_action_do").select2({
                     minimumResultsForSearch: Infinity,
-                    placeholder: "--- Select an action ---"
+                    placeholder: "--- {{ 'Select an action' | trans({}, 'generalbackend') }} ---"
                 }).on("select2:select", function (e) {
                     var batchValue = $("#batch_action_do").val();
 
@@ -255,9 +261,42 @@
                         $("#modalBatch").modal("show");
                         batchActions("delete");
                     }
+                    if (batchValue == "enable") {
+                        $("#modalBatch").modal("show");
+                        batchActions("enable");
+                    }
+                    if (batchValue == "disable") {
+                        $("#modalBatch").modal("show");
+                        batchActions("disable");
+                    }
                 }).val("null").trigger("change");
 
             });
+
+            function checkAlert(id) {
+
+                var conexion;
+                if (window.XMLHttpRequest) {
+                    conexion = new XMLHttpRequest();
+                } else {
+                    conexion = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+//            conexion.onreadystatechange = function () {
+//                if (conexion.readyState == 4 && conexion.status == 200) {
+//                    /* esta parte donde dice principal, ese es el nombre del div que tenemos
+//                     en la pagina home que es donde se va a mostrar la información cuando
+//                     el usuario de clic en un enlace */
+//                    document.getElementById("value-user-enabled-" + id).innerHTML = conexion.responseText;
+//                }
+//            }
+
+                /* en el segundo parametro puede ir una direccion a la cual se va a dirigir ya
+                 sea web/otra_pagina o mas fácil seria poner el nombre de la ruta que tenemos
+                 en el routing usando la funcion path como esta en el ejemplo */
+                conexion.open("GET", Routing.generate("alert_check", {id: id}), true);
+                conexion.send();
+            }
 
             function batchActions(action) {
                 var panelTitle = document.getElementById("modal-title");
@@ -266,9 +305,22 @@
                 switch (action) {
                     case "delete":
                         panelTitle.setAttribute("class", "modal-header red-bg");
-                        panelContent.innerHTML = "<strong>Are you sure you want to delete items?</strong> After this action, data will not be restored.";
+                        panelContent.innerHTML = "<strong>{{ 'Are you sure you want to delete items?' | trans({},'generalbackend') }}</strong> {{ 'After this action, data will not be restored.' | trans({},'generalbackend') }}";
                         panelBtn.setAttribute("class", "btn btn-danger");
                         break;
+
+                    case "disable":
+                        panelTitle.setAttribute("class", "modal-header yellow-bg");
+                        panelContent.innerHTML = "<strong>{{ 'Are you sure you want to uncheck items?' | trans({}, 'generalbackend') }}</strong>";
+                        panelBtn.setAttribute("class", "btn btn-warning");
+                        break;
+
+                    case "enable":
+                        panelTitle.setAttribute("class", "modal-header navy-bg");
+                        panelContent.innerHTML = "<strong>{{ 'Are you sure you want to check items?' | trans({}, 'generalbackend') }}</strong>";
+                        panelBtn.setAttribute("class", "btn btn-primary");
+                        break;
+
                 }
             }
         </script>

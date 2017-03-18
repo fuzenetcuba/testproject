@@ -57,3 +57,12 @@ parameters:
     # Alerts parameters
     # Antiquity of Alerts that will be removed
     alert.antiquity.months: 3
+
+    # Max alert to show on notification inbox
+    alert.max.notification.inbox: 5
+
+    # Email to send notifications
+    alert.notification: true
+    alert.notification.email:
+        - careers@test.com
+        - careers1@test.com

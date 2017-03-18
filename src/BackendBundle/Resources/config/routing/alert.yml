@@ -17,6 +17,12 @@ alert_delete:
     path:     /{id}/delete
     defaults: { _controller: "BackendBundle:Alert:delete" }
     methods:  [POST, DELETE]
+
+alert_check:
+    path:  /{id}/enable
+    defaults: { _controller: "BackendBundle:Alert:check" }
+    options:
+        expose: true
     
 alert_batch:
     path:     /alert_batch
@@ -27,3 +33,11 @@ alert_delete_older:
     path:     /alert_delete_older
     defaults: { _controller: "BackendBundle:Alert:deleteOlder" }
     methods:  GET
+
+alert_get_unchecked_notifications:
+    path:     /unchecked_alerts
+    defaults: { _controller: "BackendBundle:Alert:getNotificationUncheckedAlerts" }
+
+alert_count_unchecked_notifications:
+    path:     /count_unchecked_alerts
+    defaults: { _controller: "BackendBundle:Alert:countUncheckedAlerts" }
