@@ -4,9 +4,12 @@ namespace FrontendBundle\Controller;
 
 use BackendBundle\Entity\Opening;
 use BackendBundle\Entity\OpeningCategory;
+use BackendBundle\Entity\SystemEvents;
 use BackendBundle\Form\OpeningType;
 use Doctrine\Common\Collections\ArrayCollection;
+use FrontendBundle\Event\Event;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\FormEvent;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -101,7 +104,7 @@ class CareersController extends Controller
         } else {
 
             $this->get('opening.manager')->storeFilesFromRequest($request, $candidate);
-            $this->get('opening.manager')->saveCandidate($candidate);
+            $savedCandidate = $this->get('opening.manager')->saveCandidate($candidate);
             $content = $this->renderView('@Backend/Emails/customer.html.twig', [
                 'content' => sprintf('%s Has applied to the %s position (%s)',
                     $candidate->fullName(), $candidate->getOpening()->getPosition(),
@@ -113,6 +116,15 @@ class CareersController extends Controller
             $fileContent = $this->renderView('candidate/pdf.html.twig', array(
                 'entity' => $candidate,    // $entity is the Candidate entity
             ));
+
+            // Alert data
+            $alertMessage = sprintf('<strong>%s</strong> has applied to the <strong>%s</strong> position <br /><small class="text-muted">%s</small>',
+                $candidate->fullName(), $candidate->getOpening()->getPosition(),
+                (new \DateTime())->format('F j, Y, g:i a'));
+            $alertUrl = '/admin/candidate/'. $savedCandidate->getId() .'/show';
+
+            // dispatching Alert event
+            $this->get('event_dispatcher')->dispatch(SystemEvents::ALERT_EVENTS, new Event($alertMessage, $alertUrl));
 
             $this->get('opening.manager')->notifyManager(
                 $candidate,

@@ -1,0 +1,120 @@
+{% extends 'BackendBundle::layout.html.twig' %}{% block active_alert %}active{% endblock %}{% block page_heading_title %}
+    <a class="btn btn-default navbar-btn" href="{{ path('alert') }}"
+       style="margin-bottom: 7px;">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+    {{ 'Alert data' | trans({}, 'alertbackend') }}
+{% endblock %}{% block page_content %}
+    <dl class="dl-horizontal">
+        <tbody>
+        <dt>Id</dt>
+        <dd>{{ entity.id }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Message' | trans({}, 'alertbackend') }}</dt>
+        <dd>{{ entity.message | raw }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Details Url' | trans({}, 'alertbackend') }}</dt>
+        <dd>{{ entity.url }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Checked' | trans({}, 'alertbackend') }}</dt>
+        <dd>
+            <div class="onoffswitch-ios switch-xs">
+                <input type="checkbox" name="switch-ios-{{ entity.id }}"
+                       class="onoffswitch-ios-checkbox"
+                       id="switch-ios-{{ entity.id }}" {{ entity.checked ? 'checked' : '' }}>
+                <label class="onoffswitch-ios-label" for="switch-ios-{{ entity.id }}"
+                       onclick="checkAlert({{ entity.id }});"></label>
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Date' | trans({}, 'alertbackend') }}</dt>
+        <dd>{{ entity.date|date('d-M-Y') }}</dd>
+        <div class="hr-line-dashed"></div>
+        </tbody>
+    </dl>
+    <div class="form-group">
+        <div class="col-md-2 text-right">
+            <a class="btn btn-success" href="{{ path('alert') }}">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                {{ 'Back to the list' | trans({}, 'generalbackend') }}
+            </a>
+        </div>
+        <div class="col-md-10">
+
+            <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
+                <span class="fa fa-remove"></span>
+                {{ 'Delete' | trans({}, 'generalbackend') }}
+            </a>
+
+            <a title="Details" class="btn btn-primary" href="{{ path('alert_details', {'id' : entity.id}) }}">
+                {{ 'View' | trans({}, 'alertbackend') }} <span class="fa fa-angle-double-right"></span>
+            </a>
+
+        </div>
+    </div>
+
+
+    <div class="modal inmodal" id="modalDelete" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight">
+                <div id="modal-title" class="modal-header red-bg">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                                aria-hidden="true">&times;</span><span
+                                class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
+                    </button>
+                    <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
+                    <h4 class="modal-title">{{ 'Attention' | trans({}, 'generalbackend') }}!!!</h4>
+                </div>
+                <div id="modal-content" class="modal-body">
+                    <strong>{{ 'Are you sure you want to delete this data?' | trans({}, 'generalbackend') }}</strong>
+                </div>
+                <div class="modal-footer">
+                    <form action="{{ path('alert_delete', { 'id': entity.id }) }}"
+                          name="form-delete" method="post">
+                        <button type="button" class="btn btn-white"
+                                data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
+                        <button id="modal-btn" type="submit" class="btn btn-danger" name="alert-id"
+                                value="{{ entity.id }}">
+                            <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+    {% block inline_js %}
+
+        <script type="text/javascript">
+
+            function checkAlert(id) {
+
+                var conexion;
+                if (window.XMLHttpRequest) {
+                    conexion = new XMLHttpRequest();
+                } else {
+                    conexion = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+//            conexion.onreadystatechange = function () {
+//                if (conexion.readyState == 4 && conexion.status == 200) {
+//                    /* esta parte donde dice principal, ese es el nombre del div que tenemos
+//                     en la pagina home que es donde se va a mostrar la información cuando
+//                     el usuario de clic en un enlace */
+//                    document.getElementById("value-user-enabled-" + id).innerHTML = conexion.responseText;
+//                }
+//            }
+
+                /* en el segundo parametro puede ir una direccion a la cual se va a dirigir ya
+                 sea web/otra_pagina o mas fácil seria poner el nombre de la ruta que tenemos
+                 en el routing usando la funcion path como esta en el ejemplo */
+                conexion.open("GET", Routing.generate("alert_check", {id: id}), true);
+                conexion.send();
+            }
+
+        </script>
+
+    {% endblock %}

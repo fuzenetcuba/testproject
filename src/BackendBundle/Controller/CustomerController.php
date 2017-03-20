@@ -149,7 +149,7 @@ class CustomerController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The user was created succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The user was created successfully.');
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('customer_new'));
             } else {
@@ -293,7 +293,7 @@ class CustomerController extends Controller
                 $em->flush();
 
                 // Mostrando mensaje
-                $this->get('session')->getFlashBag()->add('success', 'The user was updated succesfully.');
+                $this->get('session')->getFlashBag()->add('success', 'The user was updated successfully.');
                 return $this->redirect($this->generateUrl('customer_show', array('id' => $id)));
             }
         }
@@ -335,7 +335,7 @@ class CustomerController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The user was deleted succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The user was deleted successfully.');
             return $this->redirect($this->generateUrl('customer'));
         }
 
@@ -423,7 +423,7 @@ class CustomerController extends Controller
                     $this->get('session')->getFlashBag()->add('warning', 'You can\'t delete your own user.');
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Users deleted succesfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Users deleted successfully.');
                 }
             } elseif ($action == "enable") {
                 foreach ($ids as $id) {
@@ -439,7 +439,7 @@ class CustomerController extends Controller
                 }
 
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Users enabled succesfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Users enabled successfully.');
                 }
             } elseif ($action == "disable") {
                 foreach ($ids as $id) {
@@ -461,7 +461,7 @@ class CustomerController extends Controller
                     $this->get('session')->getFlashBag()->add('warning', 'You can\'t disable your own user.');
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Users disabled succesfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Users disabled successfully.');
                 }
             }
             $em->flush();

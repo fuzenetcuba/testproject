@@ -91,7 +91,7 @@ class CandidateController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The candidate was created succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The candidate was created successfully.');
 
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('candidate_new'));
@@ -185,7 +185,7 @@ class CandidateController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The candidate was updated succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The candidate was updated successfully.');
             return $this->redirectToRoute('candidate_show', array('id' => $entity->getId()));
         }
 
@@ -240,7 +240,7 @@ class CandidateController extends Controller
         $em->flush();
 
         // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('success', 'The candidate was deleted succesfully.');
+        $this->get('session')->getFlashBag()->add('success', 'The candidate was deleted successfully.');
 
         return $this->redirect($this->generateUrl('candidate'));
 
@@ -329,7 +329,7 @@ class CandidateController extends Controller
                     }
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Candidates deleted succesfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Candidates deleted successfully.');
                 }
                 if ($errorRemoving) {
                     $this->get('session')->getFlashBag()->add('warning', 'One or more files of candidates do not exist or was not removed because an error.');

@@ -1,4 +1,8 @@
 services:
+    alert.manager:
+        class: BackendBundle\Model\AlertManager
+        arguments: ["@doctrine.orm.entity_manager"]
+
     business.manager:
         class: BackendBundle\Model\BusinessManager
         arguments: ["@doctrine.orm.entity_manager"]
@@ -76,3 +80,15 @@ services:
         class: BackendBundle\Twig\UnformatPhoneExtension
         tags:
             - { name: twig.extension }
+
+    app.twig.antiquity_date_extension:
+        class: BackendBundle\Twig\AntiquityDateExtension
+        arguments: ["@translator"]
+        tags:
+            - { name: twig.extension }
+
+    alert.event.listener:
+        class: BackendBundle\Listener\AlertEventListener
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: kernel.event_subscriber }

@@ -26,7 +26,7 @@
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The {{ entity_class|lower }} was created succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The {{ entity_class|lower }} was created successfully.');
 
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('{{ route_name_prefix }}_new'));

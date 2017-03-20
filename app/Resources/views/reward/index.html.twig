@@ -163,7 +163,7 @@
                                 <span class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
                             </button>
                             <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
-                            <h4 class="modal-title">{{ 'Atention' | trans({}, 'generalbackend') }}!!!</h4>
+                            <h4 class="modal-title">{{ 'Attention' | trans({}, 'generalbackend') }}!!!</h4>
                         </div>
                         <div id="modal-content" class="modal-body">
                             Modal message
@@ -237,7 +237,7 @@
                 switch (action) {
                     case "delete":
                         panelTitle.setAttribute("class", "modal-header red-bg");
-                        panelContent.innerHTML = "<strong>{{ 'Are you sure you want to delete items?' | trans({}, 'generalbackend') }}</strong> {{ 'After this action, data will not be restorable.' | trans({}, 'generalbackend') }}";
+                        panelContent.innerHTML = "<strong>{{ 'Are you sure you want to delete items?' | trans({}, 'generalbackend') }}</strong> {{ 'After this action, data will not be restored.' | trans({}, 'generalbackend') }}";
                         panelBtn.setAttribute("class", "btn btn-danger");
                         break;
                 }

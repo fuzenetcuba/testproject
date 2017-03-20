@@ -165,7 +165,7 @@ class OpeningCategoryController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The opening category was updated succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The opening category was updated successfully.');
             return $this->redirectToRoute('opening_category_show', array('id' => $entity->getId()));
         }
 
@@ -214,7 +214,7 @@ class OpeningCategoryController extends Controller
         $em->flush();
 
         // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('success', 'The opening category was deleted succesfully.');
+        $this->get('session')->getFlashBag()->add('success', 'The opening category was deleted successfully.');
         return $this->redirect($this->generateUrl('opening_category'));
 
 
@@ -260,7 +260,7 @@ class OpeningCategoryController extends Controller
                     }
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Opening categories deleted succesfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Opening categories deleted successfully.');
                 }
             }
             $em->flush();

@@ -88,7 +88,7 @@ class FeedbackController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The feedback was created succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The feedback was created successfully.');
 
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('feedback_new'));
@@ -154,7 +154,7 @@ class FeedbackController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The feedback was updated succesfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The feedback was updated successfully.');
             return $this->redirectToRoute('feedback_show', array('id' => $entity->getId()));
         }
 
@@ -203,7 +203,7 @@ class FeedbackController extends Controller
         $em->flush();
 
         // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('success', 'The feedback was deleted succesfully.');
+        $this->get('session')->getFlashBag()->add('success', 'The feedback was deleted successfully.');
         return $this->redirect($this->generateUrl('feedback'));
 
 
@@ -249,7 +249,7 @@ class FeedbackController extends Controller
                     }
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Feedbacks deleted succesfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Feedbacks deleted successfully.');
                 }
             }
             $em->flush();

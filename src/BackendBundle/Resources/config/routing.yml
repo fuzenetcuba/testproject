@@ -1,3 +1,7 @@
+backend_alert:
+    resource: "@BackendBundle/Resources/config/routing/alert.yml"
+    prefix:   /alert
+
 backend_candidate:
     resource: "@BackendBundle/Resources/config/routing/candidate.yml"
     prefix:   /candidate

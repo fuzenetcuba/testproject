@@ -1,0 +1,71 @@
+<li class="dropdown">
+    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="index.html#">
+        <i class="fa fa-bell"></i> <span
+                class="label label-primary">{{ render(controller('BackendBundle:Alert:countUncheckedAlerts')) }}</span>
+    </a>
+    <ul class="dropdown-menu dropdown-messages">
+        {#<li>#}
+        {#<div class="dropdown-messages-box">#}
+        {#<a href="profile.html" class="message-box-link">#}
+        {#<div class="media-body">#}
+        {#<div class="col-lg-10 no-padding">#}
+        {#<div class="message-box-icon pull-left text-center">#}
+        {#<span class="fa fa-bell-o text-navy outline-icon border-navy"></span>#}
+        {#</div>#}
+
+        {#<strong>Mike Loreipsum</strong> started following <strong>Monica#}
+        {#Smith</strong>.#}
+        {#<br>#}
+        {#<small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>#}
+        {#</div>#}
+
+        {#<div class="col-lg-2 no-padding">#}
+        {#<small class="pull-right">46h ago</small>#}
+        {#</div>#}
+        {#</div>#}
+        {#</a>#}
+        {#</div>#}
+        {#</li>#}
+        {#<li class="divider"></li>#}
+
+        {% for alert in alerts %}
+            <li>
+                <div class="dropdown-messages-box">
+                    <a href="{{ path('alert_show', { 'id' : alert.id }) }}" class="message-box-link">
+                        <div class="media-body">
+                            <div class="col-lg-10 no-padding">
+                                <div class="message-box-icon pull-left text-center">
+                                    <span class="fa fa-bell-o text-navy outline-icon border-navy"></span>
+                                </div>
+
+                                {{ alert.message|raw }}
+                            </div>
+
+                            <div class="col-lg-2 no-padding">
+                                <small class="pull-right text-center">{{ alert.date | antiquity_date }}</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="divider"></li>
+        {% else %}
+            <li>
+                <div class="text-center link-block text-navy">
+                    <h3>
+                        <i class="fa fa-check-circle"></i> <strong>There are no alerts</strong>
+                    </h3>
+                </div>
+            </li>
+            <li class="divider"></li>
+        {% endfor %}
+
+        <li>
+            <div class="text-center link-block">
+                <a href="{{ path('alert') }}">
+                    <strong>{{ 'View All Alerts' | trans({}, 'alertbackend') }}</strong> <i class="fa fa-angle-double-right"></i>
+                </a>
+            </div>
+        </li>
+    </ul>
+</li>

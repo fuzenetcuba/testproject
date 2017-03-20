@@ -1,0 +1,48 @@
+alert:
+    path:     /
+    defaults: { _controller: "BackendBundle:Alert:index" }
+    methods:  GET
+
+alert_find:
+    path:     /find
+    defaults: { _controller: "BackendBundle:Alert:find" }
+    methods:  [POST, GET]
+
+alert_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:Alert:show" }
+    methods:  GET
+
+alert_details:
+    path:     /{id}/details
+    defaults: { _controller: "BackendBundle:Alert:details" }
+    methods:  GET
+
+alert_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:Alert:delete" }
+    methods:  [POST, DELETE]
+
+alert_check:
+    path:  /{id}/enable
+    defaults: { _controller: "BackendBundle:Alert:check" }
+    options:
+        expose: true
+    
+alert_batch:
+    path:     /alert_batch
+    defaults: { _controller: "BackendBundle:Alert:batch" }
+    methods:  POST
+
+alert_delete_older:
+    path:     /alert_delete_older
+    defaults: { _controller: "BackendBundle:Alert:deleteOlder" }
+    methods:  GET
+
+alert_get_unchecked_notifications:
+    path:     /unchecked_alerts
+    defaults: { _controller: "BackendBundle:Alert:getNotificationUncheckedAlerts" }
+
+alert_count_unchecked_notifications:
+    path:     /count_unchecked_alerts
+    defaults: { _controller: "BackendBundle:Alert:countUncheckedAlerts" }
