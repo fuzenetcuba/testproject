@@ -8,6 +8,7 @@ use Gedmo\Mapping\Annotation\Slug;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
  * Deal class
@@ -17,6 +18,11 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @Vich\Uploadable
  * @ORM\Entity(repositoryClass="BackendBundle\Repository\DealRepository")
  * @ORM\Table(name="deal")
+ * @DoctrineAssert\UniqueEntity(
+ *     fields={"name"},
+ *     errorPath="name",
+ *     message="Already exist a Deal with this name"
+ * )
  */
 class Deal
 {
