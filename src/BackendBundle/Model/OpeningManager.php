@@ -178,7 +178,23 @@ class OpeningManager implements ManagerInterface
                 ->getOneOrNullResult();
 
             if (!$object) {
-                throw new NotFoundHttpException(sprintf('Opening with slug "%s" could not be found', $slug));
+
+                $qb = $this->em
+                    ->getRepository('Gedmo\Translatable\Entity\Translation')
+                    ->createQueryBuilder('t');
+
+                $qb->orWhere('t.field = :f AND t.content = :c');
+                $qb->setParameter('f', 'slug');
+                $qb->setParameter('c', $slug);
+
+                /** @var \Gedmo\Translatable\Entity\Translation[] $trs */
+                $trs = $qb->getQuery()->getResult();
+
+                $object = $this->find($trs[0]->getForeignKey());
+
+                if (!$object) {
+                    throw new NotFoundHttpException(sprintf('Opening with slug "%s" could not be found', $slug));
+                }
             }
         }
 
