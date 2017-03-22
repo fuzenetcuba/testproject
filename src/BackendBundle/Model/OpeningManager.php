@@ -90,7 +90,7 @@ class OpeningManager implements ManagerInterface
      */
     public function findAll()
     {
-        return $this->findAllQuery()->getResult();
+        return $this->findAllQuery()->getQuery()->getResult();
     }
 
     /**
@@ -449,5 +449,55 @@ class OpeningManager implements ManagerInterface
         );
 
         return $query->getResult();
+    }
+
+    /**
+     * Update slugs of Openings with Business_ID + Position
+     */
+    public function updateSlugs()
+    {
+        $openings = $this->findAll();
+
+        $records = array("openings" => 0, "translations" => 0);
+
+        foreach ($openings as $opening) {
+            $slugPieces = explode('-', $opening->getSlug());
+            $bID = $slugPieces[0];
+            $businessID = $opening->getBusiness()->getId();
+            if ($bID != $businessID) {
+                // $businessID . "-" . $opening->getSlug()
+                $opening->setSlug(null); // Set null because the real slug is generated in the onFlush event of the Opening
+                $this->em->persist($opening);
+//                var_export("Opening Slug: " . $businessID . "-" . $opening->getSlug() . "\n");
+                $records["openings"]++;
+            }
+
+            $qb = $this->em
+                ->getRepository('Gedmo\Translatable\Entity\Translation')
+                ->createQueryBuilder('t')
+                ->where('t.field = :f')
+                ->andWhere('t.objectClass = :o')
+                ->andWhere('t.foreignKey = :k')
+                ->setParameter('f', 'slug')
+                ->setParameter('o', 'BackendBundle\Entity\Opening')
+                ->setParameter('k', $opening->getId())
+                ->getQuery()
+                ->getResult();
+
+            if (count($qb) > 0) {
+                $slugPieces = explode('-', $qb[0]->getContent());
+                $bID = $slugPieces[0];
+                if ($bID != $businessID) {
+                    $qb[0]->setContent($businessID . "-" . $qb[0]->getContent());
+                    $this->em->persist($qb[0]);
+//                    var_export("Translation Slug: " . $businessID . "-" . $qb[0]->getContent() . "\n");
+                    $records["translations"]++;
+                }
+            }
+        }
+
+        $this->em->flush();
+
+        return $records;
     }
 }
