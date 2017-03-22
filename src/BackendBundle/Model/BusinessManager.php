@@ -141,7 +141,31 @@ class BusinessManager implements ManagerInterface
         ;
 
         if (!$object) {
-            throw new NotFoundHttpException(sprintf('Business with slug "%s" could not be found', $slug));
+            $object = $this->em
+                ->createQuery('SELECT d FROM BackendBundle:Business d WHERE d.slug = :slug')
+                ->setParameter('slug', $slug)
+                ->getOneOrNullResult()
+            ;
+
+            if (!$object) {
+
+                $qb = $this->em
+                ->getRepository('Gedmo\Translatable\Entity\Translation')
+                ->createQueryBuilder('t');
+
+                $qb->orWhere('t.field = :f AND t.content = :c');
+                $qb->setParameter('f', 'slug');
+                $qb->setParameter('c', $slug);
+
+                /** @var \Gedmo\Translatable\Entity\Translation[] $trs */
+                $trs = $qb->getQuery()->getResult();
+
+                $object = $this->find($trs[0]->getForeignKey());
+
+                if (!$object) {
+                    throw new NotFoundHttpException(sprintf('Business with slug "%s" could not be found', $slug));
+                }
+            }
         }
 
         return $object;

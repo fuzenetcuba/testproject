@@ -4,6 +4,8 @@ namespace BackendBundle\Repository;
 
 use BackendBundle\Entity\Business;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * BusinessRepository
@@ -22,8 +24,7 @@ class BusinessRepository extends EntityRepository
     {
         return $this->getEntityManager()
             ->createQuery('SELECT b FROM BackendBundle:Business b ORDER BY b.name ASC')
-            ->getResult()
-            ;
+            ->getResult();
     }
 
     /**
@@ -35,8 +36,7 @@ class BusinessRepository extends EntityRepository
     {
         return $this->getEntityManager()
             ->createQuery('SELECT b FROM BackendBundle:Business b ORDER BY b.createdAt')
-            ->getResult()
-            ;
+            ->getResult();
     }
 
     /**
@@ -48,8 +48,7 @@ class BusinessRepository extends EntityRepository
     {
         return $this->getEntityManager()
             ->createQuery('SELECT b, COUNT(d) AS dealsCount FROM BackendBundle:Business b LEFT JOIN BackendBundle:Deal d WHERE d.business = b.id GROUP BY b ORDER BY dealsCount DESC')
-            ->getResult()
-            ;
+            ->getResult();
     }
 
     /**
@@ -64,8 +63,7 @@ class BusinessRepository extends EntityRepository
             ->createQuery(
                 'SELECT b FROM BackendBundle:Business b JOIN b.categories c ORDER BY c.name ASC'
             )
-            ->getResult()
-            ;
+            ->getResult();
     }
 
     /**
@@ -81,8 +79,7 @@ class BusinessRepository extends EntityRepository
             ->createQuery(
                 'SELECT b FROM BackendBundle:Business b JOIN b.deals d ORDER BY d.createdAt DESC'
             )
-            ->getResult()
-        ;
+            ->getResult();
     }
 
     /**
@@ -90,13 +87,13 @@ class BusinessRepository extends EntityRepository
      * the same categories as the original
      *
      * @param \BackendBundle\Entity\Business $business
-     * @param int                            $max
+     * @param int $max
      *
      * @return array|Business[]
      */
     public function findRelatedBusinesses(Business $business, $max = 4)
     {
-        $categoryIds = array_map(function($item) {
+        $categoryIds = array_map(function ($item) {
             return $item->getId();
         }, $business->getCategories()->toArray());
 
@@ -107,8 +104,7 @@ class BusinessRepository extends EntityRepository
             ')
             ->setParameter('id', $business->getId())
             ->setParameter('categories', $categoryIds)
-            ->getResult()
-        ;
+            ->getResult();
 
         // empty array if no related products could be found
         if (0 === count($items)) {

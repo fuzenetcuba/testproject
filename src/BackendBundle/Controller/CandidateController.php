@@ -27,7 +27,7 @@ class CandidateController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $dql = "SELECT e FROM BackendBundle:Candidate e ORDER BY e.id ASC";
+        $dql = "SELECT e FROM BackendBundle:Candidate e ORDER BY e.created DESC";
         $query = $em->createQuery($dql);
 
         $paginator = $this->get('knp_paginator');
@@ -54,7 +54,7 @@ class CandidateController extends Controller
             $dql = "SELECT e FROM BackendBundle:Candidate e WHERE "
                 . "e.id LIKE '%" . $find . "%' OR "
                 . "e.id LIKE '%" . $find . "%' "
-                . "ORDER BY e.id ASC";
+                . "ORDER BY e.created DESC";
             $query = $em->createQuery($dql)
                 ->setHint(
                     Query::HINT_CUSTOM_OUTPUT_WALKER,

@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
  * Business class
@@ -17,6 +18,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @Vich\Uploadable
  * @ORM\Table(name="business")
  * @ORM\Entity(repositoryClass="BackendBundle\Repository\BusinessRepository")
+ * @DoctrineAssert\UniqueEntity(
+ *     fields={"name"},
+ *     errorPath="name",
+ *     message="Already exist a Business with this name"
+ * )
  */
 class Business
 {
@@ -32,7 +38,7 @@ class Business
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * @ORM\Column(name="name", type="string", length=255)
      * @Assert\Length(min="3", minMessage="The name must have 3 characters or more")
      * @Groups({"group1", "map"})
      * @Gedmo\Translatable

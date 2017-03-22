@@ -5,12 +5,18 @@ namespace BackendBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
  * Represents an opening job in a given position for a business
  *
  * @package \BackendBundle\Entity
- * @ORM\Entity
+ * @ORM\Entity()
+ * @DoctrineAssert\UniqueEntity(
+ *     fields={"position", "business"},
+ *     errorPath="business",
+ *     message="Already exist this opening for this Business"
+ * )
  */
 class Opening
 {
@@ -32,7 +38,14 @@ class Opening
     /**
      * @var string
      *
-     * @Gedmo\Slug(fields={"position"})
+     * @Gedmo\Slug(fields={"position"}, handlers={
+     *      @Gedmo\SlugHandler(class="Gedmo\Sluggable\Handler\RelativeSlugHandler", options={
+     *          @Gedmo\SlugHandlerOption(name="relationField", value="business"),
+     *          @Gedmo\SlugHandlerOption(name="relationSlugField", value="id"),
+     *          @Gedmo\SlugHandlerOption(name="separator", value="-"),
+     *          @Gedmo\SlugHandlerOption(name="urilize", value=true)
+     *      })
+     * })
      * @ORM\Column(type="string", unique=true, length=128)
      * @Gedmo\Translatable
      */

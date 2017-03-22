@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Mapping\Annotation\Slug;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
  * Class Category
@@ -15,6 +16,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Entity
  * @ORM\Table(name="category")
+ * @DoctrineAssert\UniqueEntity(
+ *     fields={"name"},
+ *     errorPath="name",
+ *     message="Already exist a Category with this name"
+ * )
  */
 class Category
 {
