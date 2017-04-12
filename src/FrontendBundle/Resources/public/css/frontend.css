@@ -3808,3 +3808,11 @@ fieldset.uploads {
 #feedback-section {
     padding: 20px;
 }
+
+.summary {
+    background-color: white !important;
+}
+
+.summary .col-lg-2 {
+    background-color: white !important;
+}
