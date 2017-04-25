@@ -41,6 +41,7 @@ class BusinessType extends AbstractType
             ->add('hoursEnd', TimeType::class, array('widget' => 'single_text', 'html5' => false))
             ->add('website')
             ->add('email')
+            ->add('notifyEmails', 'text')
             ->add('phone')
             ->add('isPublic', null, ['label' => 'Public'])
             ->add('mallMapDirections', TextareaType::class, array(

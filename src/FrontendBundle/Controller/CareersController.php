@@ -130,6 +130,7 @@ class CareersController extends Controller
                 $candidate,
                 $this->getParameter('careers.notification.subject'),
                 $this->getParameter('customer.email.from'),
+                $candidate->getOpening()->getBusiness()->getNotifyEmails(),
                 $content,
                 $fileContent
             );

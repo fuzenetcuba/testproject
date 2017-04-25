@@ -333,14 +333,14 @@ class OpeningManager implements ManagerInterface
         return $query;
     }
 
-    public function notifyManager(Candidate $candidate, $subject, $from, $content, $fileContent = null)
+    public function notifyManager(Candidate $candidate, $subject, $from, $copies, $content, $fileContent = null)
     {
         $pdfFile = $this->createCandidatePDFReport($candidate, $fileContent);
 
         $message = \Swift_Message::newInstance()
             ->setSubject($subject)
             ->setFrom($from)
-            ->setTo($this->careersEmail)
+            ->setTo(array_merge($this->careersEmail, explode(',', $copies)))
             ->setBody($content, 'text/html')
             ->attach(\Swift_Attachment::fromPath($pdfFile));
 

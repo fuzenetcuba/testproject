@@ -106,6 +106,11 @@ class Business
     private $email;
 
     /**
+     * @ORM\Column(name="notify_email", type="string", length=255)
+     */
+    private $notifyEmails;
+
+    /**
      * @ORM\Column(name="mall_map_directions", type="string", nullable=true)
      * @Gedmo\Translatable
      */
@@ -834,5 +839,15 @@ class Business
     public function setIsPublic($value)
     {
         $this->isPublic = $value;
+    }
+
+    public function getNotifyEmails()
+    {
+        return $this->notifyEmails;
+    }
+
+    public function setNotifyEmails($emails)
+    {
+        $this->notifyEmails = $emails;
     }
 }
