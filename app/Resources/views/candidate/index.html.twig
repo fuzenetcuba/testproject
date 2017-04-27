@@ -12,7 +12,8 @@
     <!-- select2 Styles -->
     <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
           type="text/css"/>
-
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/datapicker/datepicker3.css') }}"
+          type="text/css"/>
 {% endblock %}
 
         {% block active_candidate %}active{% endblock %}
@@ -31,9 +32,20 @@
         {% block page_content %}
 
             <div>
-                <span class="col-sm-2"><b>{{ 'Total items' |trans({}, 'generalbackend') }}: </b> {{ entities.getTotalItemCount }}</span>
+                <span class="col-sm-1"><b>{{ 'Total items' |trans({}, 'generalbackend') }}: </b> {{ entities.getTotalItemCount }}</span>
 
-                <div class="col-sm-10 form-group form-inline text-right">
+                <div class="col-sm-11 form-group form-inline text-right">
+                    <form id="export-form" name="export-form" action="{{ path('candidate_find') }}" method="post" novalidate>
+                    <span class="pull-left">
+                        <div class="input-daterange input-group" id="datepicker">
+                            <input type="text" required class="input-sm form-control" name="start" />
+                            <span class="input-group-addon">TO</span>
+                            <input type="text" required class="input-sm form-control" name="end" />
+                        </div>
+
+                        <button type="submit" class="btn btn-info">EXPORT TO PDF</button>
+                    </span>
+                    </form>
                     <form name="find-form" action="{{ path('candidate_find') }}" method="post">
                         <div class="input-group">
                             <input id="find-form-text" class="form-control" autofocus="on" name="find-form-text"
@@ -273,6 +285,14 @@
         <!-- select2 Scripts -->
         <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"
                 type="text/javascript"></script>
+        <script src="{{ asset('bundles/backend/js/moment.min.js') }}"
+                type="text/javascript"></script>
+        <script src="{{ asset('bundles/backend/js/plugins/datapicker/bootstrap-datepicker.js') }}"
+                type="text/javascript"></script> 
+        <script src="{{ asset('bundles/backend/js/jquery-validation.min.js') }}"
+                type="text/javascript"></script>
+        <script src="{{ asset('bundles/backend/js/jquery-validate-tooltip.js') }}"
+                type="text/javascript"></script>
     {% endblock %}
 
 
@@ -312,6 +332,14 @@
                 }).val("null").trigger("change");
 
             });
+
+            $('.input-daterange').datepicker({
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#export-form').validate();
 
             function batchActions(action) {
                 var panelTitle = document.getElementById("modal-title");

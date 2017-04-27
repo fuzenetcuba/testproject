@@ -20,7 +20,9 @@
     <!-- select2 Styles -->
     <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
           type="text/css"/>
-    type="text/css"/>
+
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/bootstrap-tokenfield.min.css') }}"
+          type="text/css"/>
 
     <link rel="stylesheet" href="{{ asset('bundles/backend/css/map/ol.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/backend/css/map/ol3-popup.css') }}">
@@ -81,6 +83,23 @@
                     {% if form.email.vars['errors']|length > 0 %}
                         <ul class="message">
                             {% for error in form.email.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+            <div class="form-group{% if(form.notifyEmails.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for=""
+                       class="col-md-2 control-label">{{ form_label(form.notifyEmails) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.notifyEmails, { 'attr': {'class' : 'form-control tags-field', 'style' : 'width: 100%'}}) }}
+                    {% if form.notifyEmails.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.notifyEmails.vars['errors'] %}
                                 <li>{{ error.message }}</li>
                             {% endfor %}
                         </ul>
@@ -363,6 +382,9 @@
         <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"
                 type="text/javascript"></script>
 
+        <script src="{{ asset('bundles/backend/js/bootstrap-tokenfield.min.js') }}"
+                type="text/javascript"></script>
+
         <script src="{{ asset('bundles/backend/js/ol.js') }}"></script>
         <script src="{{ asset('bundles/backend/js/ol3-popup.js') }}"></script>
         <script src="{{ asset('bundles/frontend/js/tween.js') }}"></script>
@@ -400,6 +422,44 @@
                 setTimeout(function () {
                     placeMarker();
                 }, 10);
+
+                $('.tags-field')
+                  .on('tokenfield:createtoken', function (e) {
+                    var data = e.attrs.value.split('|')
+                    e.attrs.value = data[1] || data[0]
+                    e.attrs.label = data[1] ? data[0] + ' (' + data[1] + ')' : data[0]
+
+                    var re = /\S+@\S+\.\S+/
+                    var valid = re.test(e.attrs.value)
+                    if (!valid) {
+                      toastr.error('"' + e.attrs.value + '" is not a valid email');
+                      return false;
+                    }
+                  })
+
+                  .on('tokenfield:createdtoken', function (e) {
+                    // Über-simplistic e-mail validation
+                    var re = /\S+@\S+\.\S+/
+                    var valid = re.test(e.attrs.value)
+                    if (!valid) {
+                      $(e.relatedTarget).addClass('invalid');
+                      toastr.error('"' + e.attrs.value + '" is not a valid email');
+                      return false;
+                    }
+                  })
+
+                  .on('tokenfield:edittoken', function (e) {
+                    if (e.attrs.label !== e.attrs.value) {
+                      var label = e.attrs.label.split(' (')
+                      e.attrs.value = label[0] + '|' + e.attrs.value
+                    }
+                  })
+
+                  // .on('tokenfield:removedtoken', function (e) {
+                  //   alert('Token removed! Token value was: ' + e.attrs.value)
+                  // })
+
+                  .tokenfield()
 
                 $('a#map-download').on('click', function (e) {
                     // download visible part of the map

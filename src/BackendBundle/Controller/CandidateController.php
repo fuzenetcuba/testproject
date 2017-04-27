@@ -46,16 +46,56 @@ class CandidateController extends Controller
      */
     public function findAction(Request $request)
     {
+        $start = \DateTime::createFromFormat('m/d/Y', $request->get('start'));
+        $end = \DateTime::createFromFormat('m/d/Y', $request->get('end'));
+
         $find = $request->get('find-form-text');
 
-        if ($find) {
-            $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->createQueryBuilder()
+            ->select('e')
+            ->from('BackendBundle:Candidate', 'e')
+        ;
 
-            $dql = "SELECT e FROM BackendBundle:Candidate e WHERE "
-                . "e.id LIKE '%" . $find . "%' OR "
-                . "e.id LIKE '%" . $find . "%' "
-                . "ORDER BY e.created DESC";
-            $query = $em->createQuery($dql)
+        if ($find) {
+            $qb->orWhere('e.id LIKE :find')
+                ->setParameter('find', '%' . $find . '%');
+        }
+
+        if ($start || $end) {
+            $qb->andWhere('e.created BETWEEN :start AND :end')
+                ->setParameter('start', $start)
+                ->setParameter('end', $end)
+            ;
+
+            $query = $qb->getQuery()
+                ->setHint(
+                    Query::HINT_CUSTOM_OUTPUT_WALKER,
+                    'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+            );
+
+            $pdfGenerator = $this->get('spraed.pdf.generator'); 
+            $paginator = $this->get('knp_paginator');
+            $pagination = $paginator->paginate(
+                $query, $request->query->get('page', 1), 1000
+            );
+
+            // export directly the PDF
+            $html = $this->renderView('candidate/listpdf.html.twig', array(
+                'entities' => $pagination,
+            ));
+
+            return new Response($pdfGenerator->generatePDF($html),
+                200,
+                array(
+                    'Content-Type' => 'application/pdf',
+                    'Content-Disposition' => 'attachment; filename="out.pdf"'
+                )
+            );
+        }
+
+        if ($find) {
+            $query = $qb->getQuery()
                 ->setHint(
                     Query::HINT_CUSTOM_OUTPUT_WALKER,
                     'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
