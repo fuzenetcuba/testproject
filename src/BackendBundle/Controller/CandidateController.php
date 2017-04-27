@@ -63,16 +63,16 @@ class CandidateController extends Controller
         }
 
         if ($start || $end) {
+            $qb->andWhere('e.created BETWEEN :start AND :end')
+                ->setParameter('start', $start)
+                ->setParameter('end', $end)
+            ;
+
             $query = $qb->getQuery()
                 ->setHint(
                     Query::HINT_CUSTOM_OUTPUT_WALKER,
                     'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
             );
-
-            $qb->andWhere('e.created BETWEEN :start AND :end')
-                ->setParameter('start', $start)
-                ->setParameter('end', $end)
-            ;
 
             $pdfGenerator = $this->get('spraed.pdf.generator'); 
             $paginator = $this->get('knp_paginator');
