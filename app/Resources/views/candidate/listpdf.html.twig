@@ -49,9 +49,9 @@
             <th class="text-navy">
                 {{ 'State' | trans({}, 'candidatebackend') }}
             </th>
-            <th class="text-navy">
+            {# <th class="text-navy">
                 {{ 'Social Number' | trans({}, 'candidatebackend') }}
-            </th>
+            </th> #}
             <th class="text-navy">
                 {{ 'Adult' | trans({}, 'candidatebackend') }}
             </th>
@@ -67,9 +67,9 @@
             <th class="text-navy">
                 {{ 'Legal Worker' | trans({}, 'candidatebackend') }}
             </th>
-            <th class="text-navy">
+            {# <th class="text-navy">
                 {{ 'Convicted' | trans({}, 'candidatebackend') }}
-            </th>
+            </th> #}
         </tr>
         </thead>
 
@@ -90,7 +90,7 @@
 
                 <td>{{ entity.state }}</td>
 
-                <td>{{ entity.socialNumber }}</td>
+                {# <td>{{ entity.socialNumber }}</td> #}
 
                 <td>
                     <div class="onoffswitch-ios switch-xs">
@@ -114,7 +114,7 @@
 
                 <td>{{ entity.legalWorker }}</td>
 
-                <td>
+                {# <td>
                     <div class="onoffswitch-ios switch-xs">
                         {% if (not entity.crime) %}
                             <span class="badge badge-danger">{{ entity.crime }}</span>
@@ -122,7 +122,7 @@
                             <span class="badge badge-success">{{ "No" }}</span>
                         {% endif %}
                     </div>
-                </td>
+                </td> #}
             </tr>
         {% else %}
             <tr>

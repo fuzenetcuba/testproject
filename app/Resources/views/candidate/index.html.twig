@@ -96,12 +96,12 @@
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
-                        <th class="text-navy">
+                        {# <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Social Number' | trans({}, 'candidatebackend'), 'e.socialNumber') }}
                             {% if entities.isSorted('e.socialNumber') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
-                        </th>
+                        </th> #}
                         <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Adult' | trans({}, 'candidatebackend'), 'e.adult') }}
                             {% if entities.isSorted('e.adult') %}
@@ -132,12 +132,12 @@
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
-                        <th class="text-navy">
+                        {# <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Convicted' | trans({}, 'candidatebackend'), 'e.crime') }}
                             {% if entities.isSorted('e.crime') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
-                        </th>
+                        </th> #}
 
                         <th class="text-navy">{{ 'Actions' | trans({}, 'generalbackend') }}</th>
                     </tr>
@@ -169,7 +169,7 @@
 
                             <td>{{ entity.state }}</td>
 
-                            <td>{{ entity.socialNumber }}</td>
+                            {# <td>{{ entity.socialNumber }}</td> #}
 
                             <td>
                                 <div class="onoffswitch-ios switch-xs">
@@ -193,7 +193,7 @@
 
                             <td>{{ entity.legalWorker }}</td>
 
-                            <td>
+                            {# <td>
                                 <div class="onoffswitch-ios switch-xs">
                                     {% if (not entity.crime) %}
                                         <span class="badge badge-danger">{{ entity.crime }}</span>
@@ -201,7 +201,7 @@
                                         <span class="badge badge-success">{{ "No" }}</span>
                                     {% endif %}
                                 </div>
-                            </td>
+                            </td> #}
 
                             <td>
                                 <div class="btn-group">
