@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="
+        {%- if app.request.get('_locale') == 'en' -%}
+        {{- 'en' -}}
+        {%- elseif app.request.get('_locale') == 'es' -%}
+        {{- 'es' -}}
+        {%- endif -%}
+        ">
+
+<head>
+    <title>Plaza Mariachi | PDF Application Data</title>
+
+    {#<!-- Bootstrap Styles -->#}
+    <link rel="stylesheet" href="{{ absolute_url(asset('bundles/backend/css/bootstrap-only-css.css')) }}"
+          type="text/css"/>
+    {#<link rel="stylesheet" href="{{ absolute_url(asset('bundles/backend/css/bootstrap.min.css')) }}" type="text/css"/>#}
+    <!-- Template Styles -->
+    <link rel="stylesheet" href="{{ absolute_url(asset('bundles/backend/css/style.css')) }}" type="text/css"/>
+    <!-- PDF Candidate Styles -->
+    {#<link rel="stylesheet" href="{{ absolute_url(asset('bundles/backend/css/pdfCandidate.css')) }}" type="text/css"/>#}
+    <style type="text/css">
+        @media print{@page {size: landscape}}
+        @media print{    
+            * {
+                font-size: 7pt !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="white-bg">
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th class="text-navy">
+                {{ 'Business' | trans({}, 'candidatebackend') }}
+            </th>
+            <th class="text-navy">
+                {{ 'Position' | trans({}, 'candidatebackend') }}
+            </th>
+            <th class="text-navy">
+                {{ 'Fullname' | trans({}, 'candidatebackend') }}
+            </th>
+            <th class="text-navy">
+                {{ 'City' | trans({}, 'candidatebackend') }}
+            </th>
+            <th class="text-navy">
+                {{ 'State' | trans({}, 'candidatebackend') }}
+            </th>
+            <th class="text-navy">
+                {{ 'Social Number' | trans({}, 'candidatebackend') }}
+            </th>
+            <th class="text-navy">
+                {{ 'Adult' | trans({}, 'candidatebackend') }}
+            </th>
+            <th class="text-navy">
+                {{ 'Phone' | trans({}, 'candidatebackend') }}
+            </th>
+            <th class="text-navy">
+                {{ 'Date' | trans({}, 'candidatebackend') }}
+            </th>
+            <th class="text-navy">
+                {{ 'Availability' | trans({}, 'candidatebackend') }}
+            </th>
+            <th class="text-navy">
+                {{ 'Legal Worker' | trans({}, 'candidatebackend') }}
+            </th>
+            <th class="text-navy">
+                {{ 'Convicted' | trans({}, 'candidatebackend') }}
+            </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>
+                    <img style="max-width: 100px; height: auto;" src="{{ asset('images/business//' ~ entity.opening.business.logo) }}"
+                         alt="{{ entity.opening.business.logo }}"/>
+                    {{ entity.opening.business.name }}
+                </td>
+
+                <td>{{ entity.opening.position }}</td>
+
+                <td>{{ entity.fullName }}</td>
+
+                <td>{{ entity.city }}</td>
+
+                <td>{{ entity.state }}</td>
+
+                <td>{{ entity.socialNumber }}</td>
+
+                <td>
+                    <div class="onoffswitch-ios switch-xs">
+                        {% if (entity.adult) %}
+                            <label class="onoffswitch-ios-label checked"></label>
+                        {% else %}
+                            <label class="onoffswitch-ios-label"></label>
+                        {% endif %}
+                    </div>
+                </td>
+
+                <td>{{ entity.phone }}</td>
+
+                <td>
+                    {% if entity.created %}
+                        {{ entity.created|date('d-M-Y') }}
+                    {% endif %}
+                </td>
+
+                <td>{{ entity.availability == "full" ? "Full Time" : (entity.availability == "part" ? "Part Time" : "Either") }}</td>
+
+                <td>{{ entity.legalWorker }}</td>
+
+                <td>
+                    <div class="onoffswitch-ios switch-xs">
+                        {% if (not entity.crime) %}
+                            <span class="badge badge-danger">{{ entity.crime }}</span>
+                        {% else %}
+                            <span class="badge badge-success">{{ "No" }}</span>
+                        {% endif %}
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">
+                    {{ 'There are not entries' | trans({}, 'generalbackend') }}...
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
