@@ -7837,3 +7837,11 @@ label.required:before {
   color: #FFFFFF;
   background-color: #1ab394;
 }
+
+#export-form .tooltip-inner {
+  background-color: red !important;
+}
+
+#export-form .tooltip-arrow {
+  border-top-color: red !important;
+}
