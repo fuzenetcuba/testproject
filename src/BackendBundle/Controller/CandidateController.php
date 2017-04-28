@@ -35,8 +35,13 @@ class CandidateController extends Controller
             $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
         );
 
+        $dql = "SELECT e FROM BackendBundle:Candidate e ORDER BY e.created";
+        $query = $em->createQuery($dql);
+        $first = $query->setMaxResults(1)->getOneOrNullResult();
+
         return $this->render('candidate/index.html.twig', array(
             'entities' => $pagination,
+            'first' => $first,
         ));
     }
 
@@ -58,7 +63,15 @@ class CandidateController extends Controller
         ;
 
         if ($find) {
-            $qb->orWhere('e.id LIKE :find')
+            $qb->join('e.opening', 'o')
+                ->join('o.business', 'b')
+                ->orWhere('e.id LIKE :find')
+                ->orWhere('e.id LIKE :find')
+                ->orWhere('e.lastName LIKE :find')
+                ->orWhere('e.middleName LIKE :find')
+                ->orWhere('e.firstName LIKE :find')
+                ->orWhere('o.position LIKE :find')
+                ->orWhere('b.name LIKE :find')
                 ->setParameter('find', '%' . $find . '%');
         }
 
@@ -106,9 +119,14 @@ class CandidateController extends Controller
                 $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
             );
 
+            $dql = "SELECT e FROM BackendBundle:Candidate e ORDER BY e.created";
+            $query = $em->createQuery($dql);
+            $first = $query->setMaxResults(1)->getOneOrNullResult();
+
             return $this->render('candidate/index.html.twig', array(
                 'entities' => $pagination,
-                'textFind' => $find
+                'textFind' => $find,
+                'first' => $first,
             ));
         } else {
             return $this->redirect($this->generateUrl('candidate'));
