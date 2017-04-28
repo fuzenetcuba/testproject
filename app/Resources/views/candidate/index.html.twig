@@ -38,12 +38,12 @@
                     <form id="export-form" name="export-form" action="{{ path('candidate_find') }}" method="post" novalidate>
                     <span class="pull-left">
                         <div class="input-daterange input-group" id="datepicker">
-                            <input type="text" required class="input-sm form-control" name="start" />
+                            <input type="text" required class="input-sm form-control" name="start" placeholder="{{ 'Start date' |trans({}, 'generalbackend') }}" />
                             <span class="input-group-addon">TO</span>
-                            <input type="text" required class="input-sm form-control" name="end" />
+                            <input type="text" required class="input-sm form-control" name="end"  placeholder="{{ 'End date' |trans({}, 'generalbackend') }}" />
                         </div>
 
-                        <button type="submit" class="btn btn-info">EXPORT TO PDF</button>
+                        <button type="submit" class="btn btn-info">{{ 'EXPORT TO PDF' |trans({}, 'generalbackend') }}</button>
                     </span>
                     </form>
                     <form name="find-form" action="{{ path('candidate_find') }}" method="post">
@@ -96,12 +96,12 @@
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
-                        <th class="text-navy">
+                        {# <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Social Number' | trans({}, 'candidatebackend'), 'e.socialNumber') }}
                             {% if entities.isSorted('e.socialNumber') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
-                        </th>
+                        </th> #}
                         <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Adult' | trans({}, 'candidatebackend'), 'e.adult') }}
                             {% if entities.isSorted('e.adult') %}
@@ -132,12 +132,12 @@
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
-                        <th class="text-navy">
+                        {# <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Convicted' | trans({}, 'candidatebackend'), 'e.crime') }}
                             {% if entities.isSorted('e.crime') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
-                        </th>
+                        </th> #}
 
                         <th class="text-navy">{{ 'Actions' | trans({}, 'generalbackend') }}</th>
                     </tr>
@@ -169,7 +169,7 @@
 
                             <td>{{ entity.state }}</td>
 
-                            <td>{{ entity.socialNumber }}</td>
+                            {# <td>{{ entity.socialNumber }}</td> #}
 
                             <td>
                                 <div class="onoffswitch-ios switch-xs">
@@ -193,7 +193,7 @@
 
                             <td>{{ entity.legalWorker }}</td>
 
-                            <td>
+                            {# <td>
                                 <div class="onoffswitch-ios switch-xs">
                                     {% if (not entity.crime) %}
                                         <span class="badge badge-danger">{{ entity.crime }}</span>
@@ -201,7 +201,7 @@
                                         <span class="badge badge-success">{{ "No" }}</span>
                                     {% endif %}
                                 </div>
-                            </td>
+                            </td> #}
 
                             <td>
                                 <div class="btn-group">
