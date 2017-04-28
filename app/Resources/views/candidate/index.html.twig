@@ -38,7 +38,8 @@
                     <form id="export-form" name="export-form" action="{{ path('candidate_find') }}" method="post" novalidate>
                     <span class="pull-left">
                         <div class="input-daterange input-group" id="datepicker">
-                            <input type="text" required class="input-sm form-control" name="start" placeholder="{{ 'Start date' |trans({}, 'generalbackend') }}" />
+                            <input type="text" required class="input-sm form-control" name="start" 
+                                placeholder="{{ 'Start date' |trans({}, 'generalbackend') }}" value="{{ first.created | date('m/d/Y') }}" />
                             <span class="input-group-addon">TO</span>
                             <input type="text" required class="input-sm form-control" name="end"  placeholder="{{ 'End date' |trans({}, 'generalbackend') }}" />
                         </div>
