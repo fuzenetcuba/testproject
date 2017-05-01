@@ -192,18 +192,16 @@
 
                             <td>{{ entity.availability == "full" ? "Full Time" : (entity.availability == "part" ? "Part Time" : "Either") }}</td>
 
-                            <td>{{ entity.legalWorker }}</td>
-
-                            {# <td>
+                            <td>
                                 <div class="onoffswitch-ios switch-xs">
-                                    {% if (not entity.crime) %}
-                                        <span class="badge badge-danger">{{ entity.crime }}</span>
+                                    {% if entity.legalWorker %}
+                                        <label class="onoffswitch-ios-label checked"></label>
                                     {% else %}
-                                        <span class="badge badge-success">{{ "No" }}</span>
+                                        <label class="onoffswitch-ios-label"></label>
                                     {% endif %}
                                 </div>
-                            </td> #}
-
+                            </td>
+                            
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-xs btn-outline btn-primary"
