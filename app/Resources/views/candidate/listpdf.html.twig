@@ -25,6 +25,10 @@
                 font-size: 7pt !important;
             }
         }
+
+        span.checked:before {
+            content:url("data:image/gif;base64,R0lGODlhCgAKAJEAAAAAAP///////wAAACH5BAEAAAIALAAAAAAKAAoAAAISlG8AeMq5nnsiSlsjzmpzmj0FADs=");
+        }
     </style>
 </head>
 
@@ -93,13 +97,11 @@
                 {# <td>{{ entity.socialNumber }}</td> #}
 
                 <td>
-                    <div class="onoffswitch-ios switch-xs">
-                        {% if (entity.adult) %}
-                            <label class="onoffswitch-ios-label checked"></label>
-                        {% else %}
-                            <label class="onoffswitch-ios-label"></label>
-                        {% endif %}
-                    </div>
+                    {% if (entity.adult) %}
+                        <img src="http://imageog.flaticon.com/icons/png/512/25/25404.png?size=28x28&pad=10,10,10,10&ext=png&bg=FFFFFFFF"/>
+                    {% else %}
+                        &times;
+                    {% endif %}
                 </td>
 
                 <td>{{ entity.phone }}</td>
@@ -112,7 +114,13 @@
 
                 <td>{{ entity.availability == "full" ? "Full Time" : (entity.availability == "part" ? "Part Time" : "Either") }}</td>
 
-                <td>{{ entity.legalWorker }}</td>
+                <td>
+                    {% if (entity.legalWorker) %}
+                        <img src="http://imageog.flaticon.com/icons/png/512/25/25404.png?size=28x28&pad=10,10,10,10&ext=png&bg=FFFFFFFF"/>
+                    {% else %}
+                        &times;
+                    {% endif %}
+                </td>
 
                 {# <td>
                     <div class="onoffswitch-ios switch-xs">
