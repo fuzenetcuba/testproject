@@ -192,7 +192,15 @@
 
                             <td>{{ entity.availability == "full" ? "Full Time" : (entity.availability == "part" ? "Part Time" : "Either") }}</td>
 
-                            <td>{{ entity.legalWorker }}</td>
+                            <td>
+                                <div class="onoffswitch-ios switch-xs">
+                                    {% if entity.legalWorker %}
+                                        <label class="onoffswitch-ios-label checked"></label>
+                                    {% else %}
+                                        <label class="onoffswitch-ios-label"></label>
+                                    {% endif %}
+                                </div>
+                            </td>
 
                             {# <td>
                                 <div class="onoffswitch-ios switch-xs">
