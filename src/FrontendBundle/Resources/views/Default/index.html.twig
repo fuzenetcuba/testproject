@@ -17,6 +17,13 @@
     "/>
 {% endblock %}
 
+{% block custom_css %}
+    {{ parent() }}
+
+    <link href="{{ asset('bundles/frontend/css/flipclock.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/frontend/css/flipclock-theme.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block inline_css %}
     <style type="text/css" rel="stylesheet">
         .landing-page .header-back.one {
@@ -46,7 +53,8 @@
                 <div class="container">
                     <div class="carousel-caption blank">
                         <h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteSlogan' })) | upper }}</h1>
-                        <h1 id="coming-soon-text">{{ 'opening soon' | trans({}, 'homepage') }}</h1>
+                        <h1 id="coming-soon-text">{{ 'opening in' | trans({}, 'homepage') }}</h1>
+                        <div class="flip-counter clock"></div>
                         <p>
                             <a title="{{ 'GET HIRED' | trans({}, 'homepage') }}" class="btn btn-lg btn-amber" href="{{ path('careers_find') }}{#{ path("fos_user_registration_register") }#}"
                                role="button">{{ 'GET HIRED' | trans({}, 'homepage') }}</a>
@@ -220,7 +228,8 @@
 {% block custom_js %}
     {{ parent() }}
 
-    {#<script src="{{ asset('bundles/frontend/js/app.js') }}"></script>#}
+    <script src="{{ asset('bundles/frontend/js/flipclock.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/moment.min.js') }}"></script>
 {% endblock %}
 
 {% block inline_js %}
@@ -262,6 +271,24 @@
 
             })();
 
+            var clock;
+            clock = $('.flip-counter').FlipClock({
+                clockFace: 'DailyCounter',
+                autoStart: false,
+                showSeconds: true,
+                // callbacks: {
+                //     stop: function() {
+                //         $('.message').html('The clock has stopped!')
+                //     }
+                // }
+            });
+
+            var end = moment([2017, 4, 12, 17, 00]);
+            var start = moment(new Date());
+
+            clock.setTime(end.diff(start, 'seconds') );
+            clock.setCountdown(true);
+            clock.start();
         });
     </script>
 {% endblock %}
