@@ -424,6 +424,7 @@ body.landing-page {
     text-align: left;
     text-shadow: 0 0 0 transparent;
     color: #643b22 !important;
+    width: 100%;
 }
 
 .landing-page .carousel-caption .btn {
@@ -3321,6 +3322,14 @@ div.container-fb-share-button{
 #coming-soon-text {
     color: #E75F25;
     text-shadow: #FFFFFF 0 0 10px;
+    float: left;
+    margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+    #coming-soon-text {
+        width: 100%;
+    }
 }
 
 .jobafair-careers-list {
