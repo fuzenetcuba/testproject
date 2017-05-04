@@ -35,6 +35,23 @@
             background-size: cover;
             background-position: bottom center;
         }
+
+        @media (max-width: 1024px) {
+            .landing-page .header-back.one {
+                background-image: url('/bundles/frontend/img/plaza-mariachi-based-on-bilboard-tablet.jpg');
+                height: 500px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .landing-page .header-back.one {
+                background-image: url('/bundles/frontend/img/plaza-mariachi-based-on-bilboard-mobile.jpg');
+                -webkit-background-size: 100% 100%;
+                -moz-background-size: 100% 100%;
+                -o-background-size: 100% 100%;
+                background-size: 100% 100%;
+            }
+        }
     </style>
 {% endblock %}
 
