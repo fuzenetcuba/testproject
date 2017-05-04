@@ -2488,9 +2488,9 @@ var FlipClock;
 
     FlipClock.Lang.Spanish = {
 
-        'years'   : 'AÃ±os',
+        'years'   : 'Años',
         'months'  : 'Meses',
-        'days'    : 'DÃ­as',
+        'days'    : 'Días',
         'hours'   : 'Horas',
         'minutes' : 'Minutos',
         'seconds' : 'Segundos'
