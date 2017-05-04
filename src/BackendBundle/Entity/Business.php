@@ -106,7 +106,7 @@ class Business
     private $email;
 
     /**
-     * @ORM\Column(name="notify_email", type="string", length=255)
+     * @ORM\Column(name="notify_email", type="string", length=255, nullable=true)
      */
     private $notifyEmails;
 
