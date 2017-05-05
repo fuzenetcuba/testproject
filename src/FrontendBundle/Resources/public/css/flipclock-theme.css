@@ -35,7 +35,7 @@
     right: -110px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1024px) {
     .clock { margin: 120px auto 30px; display: block; width: 100%; transform: none;}
     
     .flip-clock-wrapper ul { height: 50px; line-height: 50px; }
