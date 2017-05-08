@@ -66,3 +66,8 @@ parameters:
     alert.notification.email:
         - careers@test.com
         - careers1@test.com
+        
+    google_calendar:
+        api_key_file: PATH TO YOUR P12 FILE # For example app/Resources/GoogleCalendarBundle/XXXX.p12
+        api_url: 'https://www.googleapis.com/auth/calendar'
+        client_email: XXXX@XXXX.iam.gserviceaccount.com
