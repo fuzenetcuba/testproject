@@ -21,9 +21,13 @@ class CalendarController extends Controller
         // pick the first matching calendar
         $calendar = array_filter($calendars, function ($calendar) use ($key) {
             return preg_match('/'. $key . '/', strtolower($calendar['summary']));
-        })[0];
+        });
 
-        $calendarId = $calendar['id'];
+        if (count($calendar) == 0) {
+            throw $this->createNotFoundException('Calendar not found');
+        }
+
+        $calendarId = $calendar[0]['id'];
         $events = $this->get('calendar.google')->getEventsOnRange(
             $calendarId, 
             new \DateTime(),
