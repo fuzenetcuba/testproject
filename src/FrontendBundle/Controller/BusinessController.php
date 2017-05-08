@@ -22,6 +22,8 @@ class BusinessController extends Controller
             $sortMode = SortingMode::SORT_NONE;
         }
 
+        $category = $request->get('category');
+
         $form = $this->createForm(new BusinessFilter());
         $form->handleRequest($request);
         $data = $form->getData();
@@ -34,6 +36,10 @@ class BusinessController extends Controller
             if ($this->get('session')->has(self::FILTER_SESSION)) {
                 $data = $this->get('session')->get(self::FILTER_SESSION);
             }
+        }
+
+        if (null !== $category) {
+            $data['category'] = $this->get('category.manager')->findBySlug($category);
         }
 
         $paginator = $this->get('knp_paginator');

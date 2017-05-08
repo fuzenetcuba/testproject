@@ -93,3 +93,8 @@ survey_store:
         _controller: FrontendBundle:Survey:save
     options:
         expose: true
+
+calendar:
+    path:      /calendars
+    defaults:
+        _controller: FrontendBundle:Calendar:index

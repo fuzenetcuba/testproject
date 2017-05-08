@@ -25,34 +25,6 @@
 {% endblock %}
 
 {% block inline_css %}
-    <style type="text/css" rel="stylesheet">
-        .landing-page .header-back.one {
-            background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBanner' }))) }}');
-            background-repeat: no-repeat;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            background-position: bottom center;
-        }
-
-        @media (max-width: 1024px) {
-            .landing-page .header-back.one {
-                background-image: url('/bundles/frontend/img/plaza-mariachi-based-on-bilboard-tablet.jpg');
-                height: 500px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .landing-page .header-back.one {
-                background-image: url('/bundles/frontend/img/plaza-mariachi-based-on-bilboard-mobile.jpg');
-                -webkit-background-size: 100% 100%;
-                -moz-background-size: 100% 100%;
-                -o-background-size: 100% 100%;
-                background-size: 100% 100%;
-            }
-        }
-    </style>
 {% endblock %}
 
 {% block navbar %}
@@ -69,13 +41,16 @@
             <div class="item active animated fadeIn">
                 <div class="container">
                     <div class="carousel-caption blank">
-                        <h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteSlogan' })) | upper }}</h1>
-                        <h1 id="coming-soon-text">{{ 'opening in' | trans({}, 'homepage') }}</h1>
-                        <div class="flip-counter clock"></div>
-                        <p>
-                            <a title="{{ 'GET HIRED' | trans({}, 'homepage') }}" class="btn btn-lg btn-amber" href="{{ path('careers_find') }}{#{ path("fos_user_registration_register") }#}"
-                               role="button">{{ 'GET HIRED' | trans({}, 'homepage') }}</a>
-                        </p>
+                        <h1 id="coming-soon-text">{{ 'Opening May 12 at 5pm' | trans({}, 'homepage') }}</h1>
+                        {# <div class="flip-counter clock"></div> #}
+
+                        <h1 class="bottom-title">{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteSlogan' })) | upper }}</h1>
+                        <div class="boxes">
+                            <div class="box green"><a href="{{ path('business_list', {'category' : 'retail'}) }}">Shop</a></div>
+                            <div class="box blue"><a href="{{ path('business_list', {'category' : 'dining'}) }}">Dine</a></div>
+                            <div class="box orange">Art</div>
+                            <div class="box purple">Music</div>
+                        </div>
                     </div>
                     <div class="carousel-image wow zoomIn">
                     </div>

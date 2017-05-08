@@ -4,6 +4,7 @@ namespace BackendBundle\Model;
 
 use BackendBundle\Entity\Category;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Query;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -78,6 +79,8 @@ class CategoryManager implements ManagerInterface
         if (!$instance) {
             throw new NotFoundHttpException(sprintf('The category with id "%s" could not be found', $id));
         }
+
+        return $instance;
     }
 
     /**
@@ -112,5 +115,57 @@ class CategoryManager implements ManagerInterface
     {
         $this->em->remove($instance);
         $this->em->flush();
+    }
+
+    /**
+     * Find a category by the slug
+     *
+     * @param $slug
+     *
+     * @return \BackendBundle\Entity\Category
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function findBySlug($slug)
+    {
+        $object = $this->em
+            ->createQuery('SELECT d FROM BackendBundle:Category d WHERE d.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->setHint(
+                Query::HINT_CUSTOM_OUTPUT_WALKER,
+                'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+            )
+            ->getOneOrNullResult()
+        ;
+
+        if (!$object) {
+            $object = $this->em
+                ->createQuery('SELECT d FROM BackendBundle:Business d WHERE d.slug = :slug')
+                ->setParameter('slug', $slug)
+                ->getOneOrNullResult()
+            ;
+
+            if (!$object) {
+
+                $qb = $this->em
+                ->getRepository('Gedmo\Translatable\Entity\Translation')
+                ->createQueryBuilder('t');
+
+                $qb->orWhere('t.field = :f AND t.content = :c');
+                $qb->setParameter('f', 'slug');
+                $qb->setParameter('c', $slug);
+
+                /** @var \Gedmo\Translatable\Entity\Translation[] $trs */
+                $trs = $qb->getQuery()->getResult();
+
+                $object = $this->find($trs[0]->getForeignKey());
+
+                if (!$object) {
+                    throw new NotFoundHttpException(sprintf('Category with slug "%s" could not be found', $slug));
+                }
+            }
+        }
+
+        return $object;
     }
 }

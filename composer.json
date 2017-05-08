@@ -26,7 +26,8 @@
         "doctrine/doctrine-fixtures-bundle": "^2.3",
         "twig/extensions": "^1.3",
         "jms/i18n-routing-bundle": "2.0",
-        "spraed/pdf-generator-bundle": "^1.3"
+        "spraed/pdf-generator-bundle": "^1.3",
+        "djamy/google-calendar-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
