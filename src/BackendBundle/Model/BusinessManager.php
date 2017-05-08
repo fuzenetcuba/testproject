@@ -160,10 +160,15 @@ class BusinessManager implements ManagerInterface
                 /** @var \Gedmo\Translatable\Entity\Translation[] $trs */
                 $trs = $qb->getQuery()->getResult();
 
-                $object = $this->find($trs[0]->getForeignKey());
-
-                if (!$object) {
+                if(!$trs){
                     throw new NotFoundHttpException(sprintf('Business with slug "%s" could not be found', $slug));
+
+                } else {
+                    $object = $this->find($trs[0]->getForeignKey());
+
+                    if (!$object) {
+                        throw new NotFoundHttpException(sprintf('Business with slug "%s" could not be found', $slug));
+                    }
                 }
             }
         }
