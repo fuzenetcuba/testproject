@@ -11,6 +11,7 @@ web/css/*
 web/js/*
 web/uploads/*
 web/reports/*
+app/Resources/keys/*
  
 # -- Composer -----------------------------------------
 composer.phar
