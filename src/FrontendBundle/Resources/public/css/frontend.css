@@ -3844,6 +3844,7 @@ fieldset.uploads {
     background-size: 145%;
     background-position: bottom center;
     height: 500px;
+    opacity: .3;
 }
 
 .landing-page .carousel-caption.blank {
