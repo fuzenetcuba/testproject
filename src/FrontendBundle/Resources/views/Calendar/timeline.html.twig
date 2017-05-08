@@ -28,34 +28,58 @@
             <div class="row m-b">
                 <div class="col-lg-12 text-center">
                     <div class="section-line amber-line"></div>
-                    <h1>Title</h1>
+                    <h1>Lorem ipsum dolor sit amet</h1>
                 </div>
             </div>
 
             <p class="text-muted-strong text-justify">
-                adsd
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque ea quas, quaerat et molestias rem. Eligendi alias, possimus sequi, praesentium animi et quos vitae velit eum ad, ab fugit illum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur deserunt commodi cumque, magni harum expedita, veniam nostrum. Cum blanditiis nostrum repellat commodi reprehenderit, ducimus, quod laudantium sapiente, provident aliquid voluptas.
             </p>
 
             <div id="vertical-timeline" class="vertical-container dark-timeline center-orientation">
+                {% for event in events %}
                 <div class="vertical-timeline-block">
                     <div class="vertical-timeline-icon navy-bg">
-                        <i class="fa fa-briefcase"></i>
+                        <i class="fa fa-calendar"></i>
                     </div>
 
                     <div class="vertical-timeline-content">
-                        <h2>Meeting</h2>
-                        <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.
-                        </p>
-                        <a href="timeline_2.html#" class="btn btn-sm btn-primary"> More info</a>
+                        <h2>{{ event.summary }}</h2>
+                        <p>{{ event.description }}</p>
+                        {# <a href="timeline_2.html#" class="btn btn-sm btn-primary"> More info</a> #}
                         <span class="vertical-date">
-                            Today <br>
-                            <small>Dec 24</small>
+                            <div></div>
+                            <small data-date="{{ event.start.dateTime }}"></small>
                         </span>
                     </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </section>
 
 
+{% endblock %}
+
+{% block custom_js %}
+    {{ parent() }}
+
+    <script src="{{ asset('bundles/frontend/js/moment.min.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/moment.es.js') }}"></script>
+{% endblock %}
+
+{% block inline_js %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var now = moment();
+
+            $('.vertical-date small').each(function() {
+                var str = $(this).data('date');
+                var date = moment(str);
+
+                $(this).text(date.locale('{{ app.request.get('_locale') }}').from(now));
+                $(this).prev().text(date.format('DD/MM/YYYY'))
+            })
+        });
+    </script>
 {% endblock %}

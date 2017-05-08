@@ -10,23 +10,28 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CalendarController extends Controller
 {
-    public function indexAction()
+    public function indexAction($key, Request $request)
     {
-        $calendars = $this->get('calendar.google')->listCalendars();
+        $calendars = $this->get('calendar.google')
+            ->listCalendars()
+            ->toSimpleObject()
+            ->items
+        ;
 
-        $calendarId = $calendars->toSimpleObject()->items[0]['id'];
-        var_dump($calendarId);
+        // pick the first matching calendar
+        $calendar = array_filter($calendars, function ($calendar) use ($key) {
+            return preg_match('/'. $key . '/', strtolower($calendar['summary']));
+        })[0];
 
+        $calendarId = $calendar['id'];
         $events = $this->get('calendar.google')->getEventsOnRange(
             $calendarId, 
             new \DateTime(),
             new \DateTime('now +1 month')
         )->toSimpleObject()->items;
 
-        // var_dump($events);
-
         return $this->render('FrontendBundle:Calendar:timeline.html.twig', [
-            'events' => $events,
+            'events' => array_reverse($events),
         ]);
     }
 }

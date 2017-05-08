@@ -95,6 +95,6 @@ survey_store:
         expose: true
 
 calendar:
-    path:      /calendars
+    path:      /calendars/{key}
     defaults:
         _controller: FrontendBundle:Calendar:index
