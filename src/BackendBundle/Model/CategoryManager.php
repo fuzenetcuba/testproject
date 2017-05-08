@@ -140,7 +140,7 @@ class CategoryManager implements ManagerInterface
 
         if (!$object) {
             $object = $this->em
-                ->createQuery('SELECT d FROM BackendBundle:Business d WHERE d.slug = :slug')
+                ->createQuery('SELECT d FROM BackendBundle:Category d WHERE d.slug = :slug')
                 ->setParameter('slug', $slug)
                 ->getOneOrNullResult()
             ;
@@ -158,10 +158,15 @@ class CategoryManager implements ManagerInterface
                 /** @var \Gedmo\Translatable\Entity\Translation[] $trs */
                 $trs = $qb->getQuery()->getResult();
 
-                $object = $this->find($trs[0]->getForeignKey());
-
-                if (!$object) {
+                if(!$trs){
                     throw new NotFoundHttpException(sprintf('Category with slug "%s" could not be found', $slug));
+                    
+                } else {
+                    $object = $this->find($trs[0]->getForeignKey());
+                    
+                    if (!$object) {
+                        throw new NotFoundHttpException(sprintf('Category with slug "%s" could not be found', $slug));
+                    }
                 }
             }
         }
