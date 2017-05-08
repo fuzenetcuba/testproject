@@ -1,6 +1,6 @@
 .flip-clock-wrapper {
-    padding: 5px 0;
-    transform: scale(.8) translateX(-70px);
+    padding: 50px 0;
+    /*transform: scale(.8) translateX(-70px);*/
     transform-origin: center;
     width: 100%;
 }

@@ -13,6 +13,7 @@ class CalendarController extends Controller
     public function indexAction()
     {
         $calendars = $this->get('calendar.google')->listCalendars();
+var_dump($calendars); die ;
 
         $calendarId = $calendars->toSimpleObject()->items[0]['id'];
         var_dump($calendarId);
