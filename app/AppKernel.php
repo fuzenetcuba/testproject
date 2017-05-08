@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
             new Spraed\PDFGeneratorBundle\SpraedPDFGeneratorBundle(),
+            new Djamy\GoogleCalendarBundle\DjamyGoogleCalendarBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
