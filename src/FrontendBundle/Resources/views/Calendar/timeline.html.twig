@@ -45,11 +45,22 @@
 
                     <div class="vertical-timeline-content">
                         <h2>{{ event.summary }}</h2>
-                        <p>{{ event.description }}</p>
+                        <p>
+                            {{ event.description }}
+                        </p>
+                        {# <p class="col-sm-4">
+                            <i class="fa fa-clock-o"></i> {{ event.start.dateTime | date('h:i A')  }}
+                        </p> #}
+                        {% if event.location is defined %}
+                        <p class="col-sm-8">
+                            <i class="fa fa-map-marker"></i> {{ event.location  }}
+                        </p>
+                        {% endif %}
                         {# <a href="timeline_2.html#" class="btn btn-sm btn-primary"> More info</a> #}
                         <span class="vertical-date">
                             <div></div>
-                            <small data-date="{{ event.start.dateTime }}"></small>
+                            <small data-date="{{ event.start.dateTime }}"></small><br/>
+                            {# <small><i class="fa fa-clock-o"></i> {{ event.start.dateTime | date('h:i A')  }}</small> #}
                         </span>
                     </div>
                 </div>
@@ -73,12 +84,14 @@
         $(document).ready(function () {
             var now = moment();
 
-            $('.vertical-date small').each(function() {
+            $('.vertical-date small:first-of-type').each(function() {
                 var str = $(this).data('date');
                 var date = moment(str);
 
                 $(this).text(date.locale('{{ app.request.get('_locale') }}').from(now));
-                $(this).prev().text(date.format('DD/MM/YYYY'))
+                $(this).prev().html(
+                    date.format('DD/MM/YYYY h:mm A')
+                )
             })
         });
     </script>

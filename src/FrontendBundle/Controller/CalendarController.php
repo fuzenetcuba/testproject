@@ -33,7 +33,7 @@ class CalendarController extends Controller
             new \DateTime(),
             new \DateTime('now +1 month')
         )->toSimpleObject()->items;
-
+// var_dump($events); die ;
         return $this->render('FrontendBundle:Calendar:timeline.html.twig', [
             'events' => array_reverse($events),
         ]);
