@@ -3937,6 +3937,6 @@ html, body {
     overflow-x: hidden; 
 }
 
-.vertical-timeline-content p:not(:first-of-type) {
+.vertical-timeline-content p {
     padding-left: 0;
 }

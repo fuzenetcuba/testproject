@@ -45,9 +45,11 @@
 
                     <div class="vertical-timeline-content">
                         <h2>{{ event.summary }}</h2>
+                        {% if event.description is defined %}
                         <p>
                             {{ event.description }}
                         </p>
+                        {% endif %}
                         {# <p class="col-sm-4">
                             <i class="fa fa-clock-o"></i> {{ event.start.dateTime | date('h:i A')  }}
                         </p> #}
