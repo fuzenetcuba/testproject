@@ -35,7 +35,7 @@ class CalendarController extends Controller
         )->toSimpleObject()->items;
 // var_dump($events); die ;
         return $this->render('FrontendBundle:Calendar:timeline.html.twig', [
-            'events' => array_reverse($events),
+            'events' => $events,
         ]);
     }
 }
