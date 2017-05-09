@@ -33,6 +33,11 @@ class CalendarController extends Controller
             new \DateTime(),
             new \DateTime('now +1 month')
         )->toSimpleObject()->items;
+
+        usort($events, function($a, $b) {
+            return new \DateTime($a['start']['dateTime']) >= new \DateTime($b['start']['dateTime']);
+        });
+
 // var_dump($events); die ;
         return $this->render('FrontendBundle:Calendar:timeline.html.twig', [
             'events' => $events,
