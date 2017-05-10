@@ -130,7 +130,6 @@ class Business
      * @var string
      *
      * @ORM\Column(name="logo", type="string", length=255)
-     * @Gedmo\Translatable
      */
     private $logo;
 

@@ -22,7 +22,9 @@ class BusinessController extends Controller
             $sortMode = SortingMode::SORT_NONE;
         }
 
-        $category = $request->get('category');
+        // split category get parameter by coma
+        $splitCategories = explode(',', $request->get('category'));
+        $category = count($splitCategories) > 1 ? $splitCategories : $splitCategories[0];
 
         $form = $this->createForm(new BusinessFilter());
         $form->handleRequest($request);
@@ -38,8 +40,19 @@ class BusinessController extends Controller
             }
         }
 
-        if (null !== $category) {
-            $data['category'] = $this->get('category.manager')->findBySlug($category);
+        if (null !== $category and !empty($category)) {
+            if (!is_array($category)) {
+                $catObject = $this->get('category.manager')->findBySlug($category);
+                $data['category'] = $catObject->getId();
+            } else {
+                $catIds = array();
+                foreach ($category as $i => $cat) {
+                    $catObject = $this->get('category.manager')->findBySlug($cat);
+                    $catIds[$i] = $catObject->getId();
+                }
+
+                $data['category'] = $catIds;
+            }
         }
 
         $paginator = $this->get('knp_paginator');
