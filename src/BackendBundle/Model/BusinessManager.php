@@ -238,13 +238,24 @@ class BusinessManager implements ManagerInterface
     {
         $query = $this->findAllSorted($sortingMode);
 
-        if (array_key_exists('category', $filters) && isset($filters['category'])) {
+        if (array_key_exists('category', $filters) && isset($filters['category']) ) {
             $query
                 ->join('b.categories', 'c')
-                ->andWhere('c.id = :category')
-                ->orWhere('c.parent = :category')
-                ->setParameter('category', $filters['category']->getId())
             ;
+
+            if(!is_array($filters['category'])) {
+                $query
+                    ->andWhere('c.id = :category')
+                    ->orWhere('c.parent = :category')
+                    ->setParameter('category', $filters['category'])
+                ;
+            } else {
+                $query
+                    ->andWhere($query->expr()->in('c.id', ':cat_array'))
+                    ->orWhere($query->expr()->in('c.parent', ':cat_array'))
+                    ->setParameter('cat_array', $filters['category'])
+                ;
+            }
         }
 
         if (array_key_exists('search', $filters) && isset($filters['search'])) {
