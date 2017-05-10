@@ -37,9 +37,19 @@
         <dt>{{ 'Mall Map Directions' | trans({}, 'businessbackend') }}</dt>
         <dd>{{ entity.mallMapDirections }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>{{ 'Social Media' | trans({}, 'businessbackend') }}</dt>
+        <dt>Facebook</dt>
         <dd>{{ entity.socialMedia }}</dd>
         <div class="hr-line-dashed"></div>
+        {% if(entity.instagram is not empty) %}
+            <dt>Instagram</dt>
+            <dd>{{ entity.instagram }}</dd>
+            <div class="hr-line-dashed"></div>
+        {% endif %}
+        {% if(entity.twitter is not empty) %}
+            <dt>Twitter</dt>
+            <dd>{{ entity.twitter }}</dd>
+            <div class="hr-line-dashed"></div>
+        {% endif %}
         <dt>{{ 'Categories' | trans({}, 'businessbackend') }}</dt>
         <dd>
             {% for category in entity.categories %}

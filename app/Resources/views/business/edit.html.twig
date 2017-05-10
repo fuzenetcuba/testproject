@@ -191,6 +191,40 @@
                             </div>
                             <div class="hr-line-dashed"></div>
 
+                            <div class="form-group{% if(edit_form.instagram.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.instagram) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.instagram, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.instagram.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.instagram.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.twitter.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.twitter) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.twitter, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.twitter.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.twitter.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
                             <div class="form-group{% if(edit_form.website.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                                 <label for="" class="col-md-2 control-label">{{ form_label(edit_form.website) }}</label>
 
@@ -207,23 +241,24 @@
                             </div>
                             <div class="hr-line-dashed"></div>
 
-        <div class="form-group{% if(edit_form.isPublic.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-            <label for="isPublic" class="col-md-2 control-label">{{ form_label(edit_form.isPublic) }}</label>
+                            <div class="form-group{% if(edit_form.isPublic.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for="isPublic"
+                                       class="col-md-2 control-label">{{ form_label(edit_form.isPublic) }}</label>
 
-            <div class="col-md-1">
-                <div class="checkbox-inline">
-                    {{ form_widget(edit_form.isPublic, { 'attr': {'class' : 'form-control i-checks' }}) }}
-                    {% if edit_form.isPublic.vars['errors']|length > 0 %}
-                        <ul class="message">
-                            {% for error in edit_form.isPublic.vars['errors'] %}
-                                <li>{{ error.message }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-        <div class="hr-line-dashed"></div>
+                                <div class="col-md-1">
+                                    <div class="checkbox-inline">
+                                        {{ form_widget(edit_form.isPublic, { 'attr': {'class' : 'form-control i-checks' }}) }}
+                                        {% if edit_form.isPublic.vars['errors']|length > 0 %}
+                                            <ul class="message">
+                                                {% for error in edit_form.isPublic.vars['errors'] %}
+                                                    <li>{{ error.message }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
 
                             <div class="form-group{% if(edit_form.mallMapDirections.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                                 <label for=""
@@ -364,8 +399,10 @@
                 <div class="hidden">
 
                     {{ form(edit_form) }}
-                    <input type="hidden" name="map_blank" id="map_blank" value="{{ asset('bundles/backend/images/map.png') }}" />
-                    <input type="hidden" name="map_pin" id="map_pin" value="{{ asset('bundles/backend/images/pin.png') }}" />
+                    <input type="hidden" name="map_blank" id="map_blank"
+                           value="{{ asset('bundles/backend/images/map.png') }}"/>
+                    <input type="hidden" name="map_pin" id="map_pin"
+                           value="{{ asset('bundles/backend/images/pin.png') }}"/>
                 </div>
             </div>
 
@@ -413,9 +450,9 @@
         <script src="{{ asset('bundles/backend/js/plugins/datapicker/bootstrap-datepicker.js') }}"
                 type="text/javascript"></script>
 
-    <!-- iCheck Scripts -->
-    <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
-            type="text/javascript"></script>
+        <!-- iCheck Scripts -->
+        <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
+                type="text/javascript"></script>
 
         <!-- select2 Scripts -->
         <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"
@@ -436,11 +473,11 @@
 
             $(document).ready(function () {
 
-            //  iCheck scripts for checkboxes and radios
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-green',
-            });
+                //  iCheck scripts for checkboxes and radios
+                $('.i-checks').iCheck({
+                    checkboxClass: 'icheckbox_square-green',
+                    radioClass: 'iradio_square-green',
+                });
 
                 //  clockpicker script for input time
                 $("form .clockpicker").clockpicker();
@@ -464,42 +501,42 @@
                 }, 10);
 
                 $('.tags-field')
-                  .on('tokenfield:createtoken', function (e) {
-                    var data = e.attrs.value.split('|')
-                    e.attrs.value = data[1] || data[0]
-                    e.attrs.label = data[1] ? data[0] + ' (' + data[1] + ')' : data[0]
+                        .on('tokenfield:createtoken', function (e) {
+                            var data = e.attrs.value.split('|')
+                            e.attrs.value = data[1] || data[0]
+                            e.attrs.label = data[1] ? data[0] + ' (' + data[1] + ')' : data[0]
 
-                    var re = /\S+@\S+\.\S+/
-                    var valid = re.test(e.attrs.value)
-                    if (!valid) {
-                      toastr.error('"' + e.attrs.value + '" is not a valid email');
-                      return false;
-                    }
-                  })
+                            var re = /\S+@\S+\.\S+/
+                            var valid = re.test(e.attrs.value)
+                            if (!valid) {
+                                toastr.error('"' + e.attrs.value + '" is not a valid email');
+                                return false;
+                            }
+                        })
 
-                  .on('tokenfield:createdtoken', function (e) {
-                    // Über-simplistic e-mail validation
-                    var re = /\S+@\S+\.\S+/
-                    var valid = re.test(e.attrs.value)
-                    if (!valid) {
-                      $(e.relatedTarget).addClass('invalid');
-                      toastr.error('"' + e.attrs.value + '" is not a valid email');
-                      return false;
-                    }
-                  })
+                        .on('tokenfield:createdtoken', function (e) {
+                            // Über-simplistic e-mail validation
+                            var re = /\S+@\S+\.\S+/
+                            var valid = re.test(e.attrs.value)
+                            if (!valid) {
+                                $(e.relatedTarget).addClass('invalid');
+                                toastr.error('"' + e.attrs.value + '" is not a valid email');
+                                return false;
+                            }
+                        })
 
-                  .on('tokenfield:edittoken', function (e) {
-                    if (e.attrs.label !== e.attrs.value) {
-                      var label = e.attrs.label.split(' (')
-                      e.attrs.value = label[0] + '|' + e.attrs.value
-                    }
-                  })
+                        .on('tokenfield:edittoken', function (e) {
+                            if (e.attrs.label !== e.attrs.value) {
+                                var label = e.attrs.label.split(' (')
+                                e.attrs.value = label[0] + '|' + e.attrs.value
+                            }
+                        })
 
-                  // .on('tokenfield:removedtoken', function (e) {
-                  //   alert('Token removed! Token value was: ' + e.attrs.value)
-                  // })
+                        // .on('tokenfield:removedtoken', function (e) {
+                        //   alert('Token removed! Token value was: ' + e.attrs.value)
+                        // })
 
-                  .tokenfield();
+                        .tokenfield();
 
                 $('a#map-download').on('click', function (e) {
                     // download visible part of the map

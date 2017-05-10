@@ -28,7 +28,11 @@ class BusinessType extends AbstractType
                 'required' => false,
                 'validation_groups' => array('creation')))
             ->add('socialMedia', null, array(
-                'label' => 'Social Media'))
+                'label' => 'Facebook'))
+            ->add('instagram', null, array(
+                'label' => 'Instagram'))
+            ->add('twitter', null, array(
+                'label' => 'Twitter'))
             ->add('androidApp', null, array(
                 'label' => 'Android App'))
             ->add('iosApp', null, array(

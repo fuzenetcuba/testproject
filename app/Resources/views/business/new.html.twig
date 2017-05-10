@@ -172,6 +172,38 @@
             </div>
             <div class="hr-line-dashed"></div>
 
+            <div class="form-group{% if(form.instagram.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.instagram) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.instagram, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.instagram.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.instagram.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+            <div class="form-group{% if(form.twitter.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.twitter) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.twitter, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.twitter.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.twitter.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
             <div class="form-group{% if(form.website.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                 <label for="" class="col-md-2 control-label">{{ form_label(form.website) }}</label>
 
