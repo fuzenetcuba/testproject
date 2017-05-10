@@ -7845,3 +7845,15 @@ label.required:before {
 #export-form .tooltip-arrow {
   border-top-color: red !important;
 }
+
+.color-bg-0 { background-color: #5484ED; }
+.color-bg-1 { background-color: #A4BDFC; }
+.color-bg-2 { background-color: #46D6DB; }
+.color-bg-3 { background-color: #7AE7BF; }
+.color-bg-4 { background-color: #51B749; }
+.color-bg-5 { background-color: #FBD75B; }
+.color-bg-6 { background-color: #FFB878; }
+.color-bg-7 { background-color: #FF887C; }
+.color-bg-8 { background-color: #DC2127; }
+.color-bg-9 { background-color: #DBADFF; }
+.color-bg-10 { background-color: #E1E1E1; }
