@@ -1,6 +1,6 @@
 {% extends '@Frontend/layout.html.twig' %}
 
-{% block title %} {{ "Plaza Mariachi Events | Entertainment Calendar" |trans({}, 'calendar') }} {% endblock %}
+{% block title %} {{ "Entertainment Calendar" |trans({}, 'calendar') }} {% endblock %}
 
 {% block metatags %}
     <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
