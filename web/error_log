@@ -828,3 +828,344 @@ Stack trace:
 [08-May-2017 20:16:56 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/CategoryManager.php on line 161
 [08-May-2017 20:17:19 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/CategoryManager.php on line 161
 [08-May-2017 20:27:33 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/CategoryManager.php on line 161
+[09-May-2017 00:33:53 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 03:57:41 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 03:57:48 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 03:57:59 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 03:58:07 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 03:58:10 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 03:58:21 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 03:58:24 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 03:58:31 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 03:58:34 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 06:24:21 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 06:24:24 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 08:12:38 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 08:30:32 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 12:11:33 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 12:50:37 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 17:22:42 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[09-May-2017 17:22:43 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[09-May-2017 17:22:44 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[09-May-2017 17:23:57 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[09-May-2017 17:25:40 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[09-May-2017 17:32:00 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[09-May-2017 17:59:46 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 17:59:50 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 17:59:57 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 18:00:04 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 18:00:08 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 18:00:18 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 18:00:22 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 18:00:32 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 18:00:35 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 18:00:42 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 18:00:45 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 18:00:49 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 18:01:04 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 18:08:01 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 18:30:25 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[09-May-2017 18:56:25 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[09-May-2017 18:57:52 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[10-May-2017 03:13:51 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[10-May-2017 04:46:24 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[10-May-2017 09:18:36 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[10-May-2017 09:18:40 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[10-May-2017 09:18:44 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[10-May-2017 09:18:48 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[10-May-2017 09:18:52 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[10-May-2017 09:18:56 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[10-May-2017 10:42:08 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[10-May-2017 11:27:24 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[10-May-2017 13:41:55 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[10-May-2017 13:48:04 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[10-May-2017 14:08:05 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[10-May-2017 22:50:22 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[11-May-2017 07:31:57 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[11-May-2017 07:41:37 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[11-May-2017 07:41:48 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[11-May-2017 11:11:53 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[11-May-2017 11:53:44 UTC] PHP Warning:  Error while sending QUERY packet. PID=5142 in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php on line 104
+[11-May-2017 11:53:45 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:53:46 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 64 bytes) in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php on line 106
+[11-May-2017 11:53:46 UTC] PHP Warning:  Error while sending QUERY packet. PID=5695 in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php on line 91
+[11-May-2017 11:53:48 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 72 bytes) in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php on line 104
+[11-May-2017 11:53:52 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:53:56 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/pmmusiccity/public_html/app/cache/prod/appProdUrlMatcher.php:2848
+Stack trace:
+#0 /home/pmmusiccity/public_html/app/cache/prod/classes.php(372): appProdUrlMatcher->match('/images/setting...')
+#1 /home/pmmusiccity/public_html/vendor/jms/i18n-routing-bundle/JMS/I18nRoutingBundle/Router/I18nRouter.php(179): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/pmmusiccity/public_html/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php(154): JMS\I18nRoutingBundle\Router\I18nRouter->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/pmmusiccity/public_html/v in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:54:02 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:54:03 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:54:06 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:54:42 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:54:43 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:54:48 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:54:53 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/pmmusiccity/public_html/app/cache/prod/appProdUrlMatcher.php:2848
+Stack trace:
+#0 /home/pmmusiccity/public_html/app/cache/prod/classes.php(372): appProdUrlMatcher->match('/images/setting...')
+#1 /home/pmmusiccity/public_html/vendor/jms/i18n-routing-bundle/JMS/I18nRoutingBundle/Router/I18nRouter.php(179): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/pmmusiccity/public_html/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php(154): JMS\I18nRoutingBundle\Router\I18nRouter->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/pmmusiccity/public_html/v in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:54:59 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:55:00 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:55:04 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:55:06 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:55:22 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:55:24 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:55:48 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:56:08 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:56:15 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/pmmusiccity/public_html/app/cache/prod/appProdUrlMatcher.php:2848
+Stack trace:
+#0 /home/pmmusiccity/public_html/app/cache/prod/classes.php(372): appProdUrlMatcher->match('/images/setting...')
+#1 /home/pmmusiccity/public_html/vendor/jms/i18n-routing-bundle/JMS/I18nRoutingBundle/Router/I18nRouter.php(179): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/pmmusiccity/public_html/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php(154): JMS\I18nRoutingBundle\Router\I18nRouter->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/pmmusiccity/public_html/v in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:56:30 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:56:46 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:56:53 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:56:58 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/pmmusiccity/public_html/app/cache/prod/appProdUrlMatcher.php:2848
+Stack trace:
+#0 /home/pmmusiccity/public_html/app/cache/prod/classes.php(372): appProdUrlMatcher->match('/images/setting...')
+#1 /home/pmmusiccity/public_html/vendor/jms/i18n-routing-bundle/JMS/I18nRoutingBundle/Router/I18nRouter.php(179): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/pmmusiccity/public_html/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php(154): JMS\I18nRoutingBundle\Router\I18nRouter->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/pmmusiccity/public_html/v in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:57:12 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:57:18 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:57:18 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:57:22 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:57:29 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:57:38 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:57:39 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:57:41 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:57:49 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:58:00 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/pmmusiccity/public_html/app/cache/prod/appProdUrlMatcher.php:2848
+Stack trace:
+#0 /home/pmmusiccity/public_html/app/cache/prod/classes.php(372): appProdUrlMatcher->match('/images/setting...')
+#1 /home/pmmusiccity/public_html/vendor/jms/i18n-routing-bundle/JMS/I18nRoutingBundle/Router/I18nRouter.php(179): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/pmmusiccity/public_html/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php(154): JMS\I18nRoutingBundle\Router\I18nRouter->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/pmmusiccity/public_html/v in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:58:12 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:58:27 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:58:38 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:58:50 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:58:51 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:58:52 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Routing\Exception\ResourceNotFoundException' in /home/pmmusiccity/public_html/app/cache/prod/appProdUrlMatcher.php:2848
+Stack trace:
+#0 /home/pmmusiccity/public_html/app/cache/prod/classes.php(372): appProdUrlMatcher->match('/images/setting...')
+#1 /home/pmmusiccity/public_html/vendor/jms/i18n-routing-bundle/JMS/I18nRoutingBundle/Router/I18nRouter.php(179): Symfony\Component\Routing\Matcher\UrlMatcher->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#2 /home/pmmusiccity/public_html/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/EventListener/RouterListener.php(154): JMS\I18nRoutingBundle\Router\I18nRouter->matchRequest(Object(Symfony\Component\HttpFoundation\Request))
+#3 [internal function]: Symfony\Component\HttpKernel\EventListener\RouterListener->onKernelRequest(Object(Symfony\Component\HttpKernel\Event\GetResponseEvent), 'kernel.request', Object(Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher))
+#4 /home/pmmusiccity/public_html/v in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[11-May-2017 11:58:57 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#1 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=loca...', 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
+#3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
