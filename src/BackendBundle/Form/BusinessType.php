@@ -33,6 +33,10 @@ class BusinessType extends AbstractType
                 'label' => 'Instagram'))
             ->add('twitter', null, array(
                 'label' => 'Twitter'))
+            ->add('pinterest', null, array(
+                'label' => 'Pinterest'))
+            ->add('snapchat', null, array(
+                'label' => 'Snapchat'))
             ->add('androidApp', null, array(
                 'label' => 'Android App'))
             ->add('iosApp', null, array(

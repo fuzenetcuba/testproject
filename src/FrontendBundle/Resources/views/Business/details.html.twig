@@ -102,6 +102,24 @@
                                     </a>
                                 </li>
                             {% endif %}
+                            {% if(business.pinterest is not empty) %}
+                                <li>
+                                    <i class="fa fa-pinterest"></i>
+                                    <a title="{{ business.pinterest }}" target="_blank" href="{{ business.pinterest }}">
+                                        {{ business.pinterest }}
+                                        <sub><span class="fa fa-external-link"></span></sub>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if(business.snapchat is not empty) %}
+                                <li>
+                                    <i class="fa fa-snapchat"></i>
+                                    <a title="{{ business.snapchat }}" target="_blank" href="{{ business.snapchat }}">
+                                        {{ business.snapchat }}
+                                        <sub><span class="fa fa-external-link"></span></sub>
+                                    </a>
+                                </li>
+                            {% endif %}
                             <li>
                                 <p class="text-muted-strong">
                                     <i class="fa fa-map-marker"></i>
