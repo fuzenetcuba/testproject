@@ -49,7 +49,7 @@ class BusinessType extends AbstractType
             ))
             ->add('hoursEnd', TimeType::class, array('widget' => 'single_text', 'html5' => false))
             ->add('website')
-            ->add('email')
+            ->add('email', TextType::class, ['required' => false])
             ->add('notifyEmails', TextType::class, ['required' => false])
             ->add('phone')
             ->add('isPublic', null, ['label' => 'Public'])
