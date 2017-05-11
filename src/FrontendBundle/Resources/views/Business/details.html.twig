@@ -54,16 +54,18 @@
 
                     <span class="business-info">
                         <ul class="list-unstyled">
-                            {#<li>#}
-                            {#<i class="fa fa-clock-o"></i>#}
-                            {#{{ business.hoursBegin|date("h:i A") ~ " - " ~ business.hoursEnd|date("h:i A") }}#}
-                            {#</li>#}
+                            <li>
+                            <i class="fa fa-clock-o"></i>
+                            {{ business.hoursBegin|date("h:i A") ~ " - " ~ business.hoursEnd|date("h:i A") }}
+                            </li>
+                            {% if business.email is not empty %}
                             <li>
                                 <i class="fa fa-envelope"></i>
                                 <a title="Email" href="mailto:{{ business.email }}">
                                     {{ business.email }}
                                 </a>
                             </li>
+                            {% endif %}
                             <li>
                                 <i class="fa fa-phone"></i> <a title="Phone"
                                                                href="tel:+1{{ business.phone | unformat_phone }}">{{ business.phone }}</a>
