@@ -167,6 +167,22 @@ class Business
     /**
      * @var string
      *
+     * @ORM\Column(name="instagram", type="string", length=255, nullable=true)
+     * @Assert\Url()
+     */
+    private $instagram;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="twitter", type="string", length=255, nullable=true)
+     * @Assert\Url()
+     */
+    private $twitter;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="ios_app", type="string", length=255, nullable=true)
      * @Assert\Url()
      */
@@ -848,5 +864,61 @@ class Business
     public function setNotifyEmails($emails)
     {
         $this->notifyEmails = $emails;
+    }
+
+    /**
+     * Set instagram
+     *
+     * @param string $instagram
+     * @return Business
+     */
+    public function setInstagram($instagram)
+    {
+        $this->instagram = $instagram;
+
+        return $this;
+    }
+
+    /**
+     * Get instagram
+     *
+     * @return string 
+     */
+    public function getInstagram()
+    {
+        return $this->instagram;
+    }
+
+    /**
+     * Set twitter
+     *
+     * @param string $twitter
+     * @return Business
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+
+        return $this;
+    }
+
+    /**
+     * Get twitter
+     *
+     * @return string 
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
+
+    /**
+     * Get isPublic
+     *
+     * @return boolean 
+     */
+    public function getIsPublic()
+    {
+        return $this->isPublic;
     }
 }
