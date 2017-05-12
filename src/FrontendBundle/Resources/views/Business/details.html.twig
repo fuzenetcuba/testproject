@@ -16,6 +16,16 @@
     "/>
 {% endblock %}
 
+
+{% block custom_css %}
+    {{ parent() }}
+    {# styles for bluimp gallery #}
+    <link type="text/css" href="{{ asset('bundles/backend/css/plugins/blueimp/css/blueimp-gallery.min.css') }}"
+          rel="stylesheet">
+{% endblock %}
+
+
+
 {% block page_content %}
     <section class="inner-content section-spaces">
         <div class="container">
@@ -54,16 +64,18 @@
 
                     <span class="business-info">
                         <ul class="list-unstyled">
-                            {#<li>#}
-                            {#<i class="fa fa-clock-o"></i>#}
-                            {#{{ business.hoursBegin|date("h:i A") ~ " - " ~ business.hoursEnd|date("h:i A") }}#}
-                            {#</li>#}
                             <li>
-                                <i class="fa fa-envelope"></i>
-                                <a title="Email" href="mailto:{{ business.email }}">
-                                    {{ business.email }}
-                                </a>
+                                <i class="fa fa-clock-o"></i>
+                                {{ business.hoursBegin|date("h:i A") ~ " - " ~ business.hoursEnd|date("h:i A") }}
                             </li>
+                            {% if business.email is not empty %}
+                                <li>
+                                    <i class="fa fa-envelope"></i>
+                                    <a title="Email" href="mailto:{{ business.email }}">
+                                        {{ business.email }}
+                                    </a>
+                                </li>
+                            {% endif %}
                             <li>
                                 <i class="fa fa-phone"></i> <a title="Phone"
                                                                href="tel:+1{{ business.phone | unformat_phone }}">{{ business.phone }}</a>
@@ -98,6 +110,24 @@
                                     <i class="fa fa-twitter-square"></i>
                                     <a title="{{ business.twitter }}" target="_blank" href="{{ business.twitter }}">
                                         {{ business.twitter }}
+                                        <sub><span class="fa fa-external-link"></span></sub>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if(business.pinterest is not empty) %}
+                                <li>
+                                    <i class="fa fa-pinterest"></i>
+                                    <a title="{{ business.pinterest }}" target="_blank" href="{{ business.pinterest }}">
+                                        {{ business.pinterest }}
+                                        <sub><span class="fa fa-external-link"></span></sub>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if(business.snapchat is not empty) %}
+                                <li>
+                                    <i class="fa fa-snapchat"></i>
+                                    <a title="{{ business.snapchat }}" target="_blank" href="{{ business.snapchat }}">
+                                        {{ business.snapchat }}
                                         <sub><span class="fa fa-external-link"></span></sub>
                                     </a>
                                 </li>
@@ -155,6 +185,22 @@
             </div>
         </div>
     </section>
+
+    {#{% if business.images | length > 0 %}#}
+        {#<section class="section-spaces-line">#}
+            {#<div class="container related-businesses">#}
+                {#<div class="container">#}
+                    {#<div class="carousel carousel-slider">#}
+                        {#{% for image in business.images %}#}
+                            {#<a class="carousel-item" href="#item-{{ loop.index }}">#}
+                                {#<img src="{{ asset('images/business/gallery/' ~ image.imgName) }}">#}
+                            {#</a>#}
+                        {#{% endfor %}#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</section>#}
+    {#{% endif %}#}
 
     {#{% if business.androidApp is not null or business.iosApp is not null %}#}
     {#<section class="section-spaces-line">#}
@@ -290,7 +336,7 @@
                                            class="product-name">{{ item.name }}</a>
 
                                         <div class="small m-t-xs">
-                                            {{ item.description | truncate(200, true) }}
+                                            {{ item.description | truncate(70, true) }}
                                         </div>
                                         <div class="m-t text-center">
                                             <a title="{{ 'See more' | trans({}, 'business') }}"
@@ -310,9 +356,20 @@
 
 {% endblock %}
 
+{% block custom_js %}
+    {{ parent() }}
+
+    {# scripts for blueimp gallery #}
+    <script src="{{ asset('bundles/backend/js/plugins/blueimp/jquery.blueimp-gallery.min.js') }}"></script>
+{% endblock %}
+
 
 {% block inline_js %}
     <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('.carousel').carousel();
+        });
 
         $('.carousel .item').each(function () {
             var next = $(this).next();
@@ -344,7 +401,6 @@
             "telephone": "{{ business.phone }}",
             "sameAs" : "{{ business.socialMedia }}"
         }
-
 
 
 

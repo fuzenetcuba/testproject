@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Controller;
 
+use BackendBundle\Entity\Image;
 use Doctrine\ORM\Query;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -133,17 +134,81 @@ class BusinessController extends Controller
     {
         $deleteForm = $this->createDeleteForm($entity);
 
+        $imageEntity = new Image();
+        $imageEntity->setBusiness($entity);
+
+        $imageForm = $this->createForm('BackendBundle\Form\ImageType', $imageEntity, array(
+            'action' => $this->generateUrl('business_upload_image', array('id' => $entity->getId())),
+            'method' => 'POST',
+        ));
+
         return $this->render('business/show.html.twig', array(
             'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
+            'image_form' => $imageForm->createView(),
         ));
+    }
+
+    public function uploadImageAction(Request $request, Business $business)
+    {
+        $deleteForm = $this->createDeleteForm($business);
+
+        $entity = new Image();
+        $entity->setBusiness($business);
+
+        $form = $this->createForm('BackendBundle\Form\ImageType', $entity, array(
+            'action' => $this->generateUrl('business_upload_image', array('id' => $business->getId())),
+            'method' => 'POST',
+        ));
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($entity);
+            $em->flush();
+
+            // Mostrando mensaje
+            $this->get('session')->getFlashBag()->add('success', 'The image of the business was uploaded successfully.');
+
+            return $this->redirectToRoute('business_show', array('id' => $business->getId()));
+
+        }
+
+        // Mostrando mensaje
+        $this->get('session')->getFlashBag()->add('danger', 'The image have one or more problems. Got to the upload view to look error details on fields');
+
+        return $this->render('business/show.html.twig', array(
+            'entity' => $business,
+            'delete_form' => $deleteForm->createView(),
+            'image_form' => $form->createView(),
+        ));
+    }
+
+    public function deleteImageAction(Request $request, Image $entity)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $businessId = $entity->getBusiness()->getId();
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Image entity.');
+        }
+
+        $em->remove($entity);
+        $em->flush();
+
+        // Mostrando mensaje
+        $this->get('session')->getFlashBag()->add('success', 'The image of business was deleted successfully.');
+        return $this->redirect($this->generateUrl('business_show', array('id' => $businessId)));
+
+
     }
 
     /**
      * Displays a form to edit an existing Business entity.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \BackendBundle\Entity\Business            $entity
+     * @param \BackendBundle\Entity\Business $entity
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @throws \LogicException

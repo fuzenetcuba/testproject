@@ -225,6 +225,40 @@
                             </div>
                             <div class="hr-line-dashed"></div>
 
+                            <div class="form-group{% if(edit_form.pinterest.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.pinterest) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.pinterest, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.pinterest.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.pinterest.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.snapchat.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.snapchat) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.snapchat, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.snapchat.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.snapchat.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
                             <div class="form-group{% if(edit_form.website.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                                 <label for="" class="col-md-2 control-label">{{ form_label(edit_form.website) }}</label>
 
