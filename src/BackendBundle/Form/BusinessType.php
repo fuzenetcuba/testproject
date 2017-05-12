@@ -33,6 +33,10 @@ class BusinessType extends AbstractType
                 'label' => 'Instagram'))
             ->add('twitter', null, array(
                 'label' => 'Twitter'))
+            ->add('pinterest', null, array(
+                'label' => 'Pinterest'))
+            ->add('snapchat', null, array(
+                'label' => 'Snapchat'))
             ->add('androidApp', null, array(
                 'label' => 'Android App'))
             ->add('iosApp', null, array(
@@ -45,7 +49,7 @@ class BusinessType extends AbstractType
             ))
             ->add('hoursEnd', TimeType::class, array('widget' => 'single_text', 'html5' => false))
             ->add('website')
-            ->add('email')
+            ->add('email', TextType::class, ['required' => false])
             ->add('notifyEmails', TextType::class, ['required' => false])
             ->add('phone')
             ->add('isPublic', null, ['label' => 'Public'])

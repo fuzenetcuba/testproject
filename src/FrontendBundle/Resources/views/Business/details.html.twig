@@ -20,7 +20,8 @@
 {% block custom_css %}
     {{ parent() }}
     {# styles for bluimp gallery #}
-    <link type="text/css" href="{{ asset('bundles/backend/css/plugins/blueimp/css/blueimp-gallery.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('bundles/backend/css/plugins/blueimp/css/blueimp-gallery.min.css') }}"
+          rel="stylesheet">
 {% endblock %}
 
 
@@ -67,12 +68,14 @@
                                 <i class="fa fa-clock-o"></i>
                                 {{ business.hoursBegin|date("h:i A") ~ " - " ~ business.hoursEnd|date("h:i A") }}
                             </li>
-                            <li>
-                                <i class="fa fa-envelope"></i>
-                                <a title="Email" href="mailto:{{ business.email }}">
-                                    {{ business.email }}
-                                </a>
-                            </li>
+                            {% if business.email is not empty %}
+                                <li>
+                                    <i class="fa fa-envelope"></i>
+                                    <a title="Email" href="mailto:{{ business.email }}">
+                                        {{ business.email }}
+                                    </a>
+                                </li>
+                            {% endif %}
                             <li>
                                 <i class="fa fa-phone"></i> <a title="Phone"
                                                                href="tel:+1{{ business.phone | unformat_phone }}">{{ business.phone }}</a>
@@ -107,6 +110,24 @@
                                     <i class="fa fa-twitter-square"></i>
                                     <a title="{{ business.twitter }}" target="_blank" href="{{ business.twitter }}">
                                         {{ business.twitter }}
+                                        <sub><span class="fa fa-external-link"></span></sub>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if(business.pinterest is not empty) %}
+                                <li>
+                                    <i class="fa fa-pinterest"></i>
+                                    <a title="{{ business.pinterest }}" target="_blank" href="{{ business.pinterest }}">
+                                        {{ business.pinterest }}
+                                        <sub><span class="fa fa-external-link"></span></sub>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if(business.snapchat is not empty) %}
+                                <li>
+                                    <i class="fa fa-snapchat"></i>
+                                    <a title="{{ business.snapchat }}" target="_blank" href="{{ business.snapchat }}">
+                                        {{ business.snapchat }}
                                         <sub><span class="fa fa-external-link"></span></sub>
                                     </a>
                                 </li>
@@ -315,7 +336,7 @@
                                            class="product-name">{{ item.name }}</a>
 
                                         <div class="small m-t-xs">
-                                            {{ item.description | truncate(200, true) }}
+                                            {{ item.description | truncate(70, true) }}
                                         </div>
                                         <div class="m-t text-center">
                                             <a title="{{ 'See more' | trans({}, 'business') }}"
@@ -380,6 +401,7 @@
             "telephone": "{{ business.phone }}",
             "sameAs" : "{{ business.socialMedia }}"
         }
+
 
 
 

@@ -100,7 +100,7 @@ class Business
     private $website;
 
     /**
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      *
      * @Assert\Email()
      */
@@ -180,6 +180,22 @@ class Business
      * @Assert\Url()
      */
     private $twitter;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pinterest", type="string", length=255, nullable=true)
+     * @Assert\Url()
+     */
+    private $pinterest;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="snapchat", type="string", length=255, nullable=true)
+     * @Assert\Url()
+     */
+    private $snapchat;
 
     /**
      * @var string
@@ -921,6 +937,52 @@ class Business
     public function getTwitter()
     {
         return $this->twitter;
+    }
+
+    /**
+     * Set pinterest
+     *
+     * @param string $pinterest
+     * @return Business
+     */
+    public function setPinterest($url)
+    {
+        $this->pinterest = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get pinterest
+     *
+     * @return string 
+     */
+    public function getPinterest()
+    {
+        return $this->pinterest;
+    }
+
+    /**
+     * Set snapchat
+     *
+     * @param string $snapchat
+     * @return Business
+     */
+    public function setSnapchat($url)
+    {
+        $this->snapchat = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get snapchat
+     *
+     * @return string 
+     */
+    public function getSnapchat()
+    {
+        return $this->snapchat;
     }
 
     /**

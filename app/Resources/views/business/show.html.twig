@@ -52,6 +52,17 @@
                     <dd>{{ entity.twitter }}</dd>
                     <div class="hr-line-dashed"></div>
                 {% endif %}
+                {% if(entity.pinterest is not empty) %}
+                    <dt>Pinterest</dt>
+                    <dd>{{ entity.pinterest }}</dd>
+                    <div class="hr-line-dashed"></div>
+                {% endif %}
+                {% if(entity.snapchat is not empty) %}
+                    <dt>Snapchat</dt>
+                    <dd>{{ entity.snapchat }}</dd>
+                    <div class="hr-line-dashed"></div>
+                {% endif %}
+
                 <dt>{{ 'Categories' | trans({}, 'businessbackend') }}</dt>
                 <dd>
                     {% for category in entity.categories %}
@@ -108,6 +119,7 @@
                             <i class="fa fa-expand"></i>
                         </a>
                     </div>
+
                 </div>
                 <div class="ibox-content">
 
