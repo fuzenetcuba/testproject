@@ -186,21 +186,21 @@
         </div>
     </section>
 
-    {% if business.images | length > 0 %}
-        <section class="section-spaces-line">
-            <div class="container related-businesses">
-                <div class="container">
-                    <div class="carousel carousel-slider">
-                        {% for image in business.images %}
-                            <a class="carousel-item" href="#item-{{ loop.index }}">
-                                <img src="{{ asset('images/business/gallery/' ~ image.imgName) }}">
-                            </a>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </section>
-    {% endif %}
+    {#{% if business.images | length > 0 %}#}
+        {#<section class="section-spaces-line">#}
+            {#<div class="container related-businesses">#}
+                {#<div class="container">#}
+                    {#<div class="carousel carousel-slider">#}
+                        {#{% for image in business.images %}#}
+                            {#<a class="carousel-item" href="#item-{{ loop.index }}">#}
+                                {#<img src="{{ asset('images/business/gallery/' ~ image.imgName) }}">#}
+                            {#</a>#}
+                        {#{% endfor %}#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</section>#}
+    {#{% endif %}#}
 
     {#{% if business.androidApp is not null or business.iosApp is not null %}#}
     {#<section class="section-spaces-line">#}
