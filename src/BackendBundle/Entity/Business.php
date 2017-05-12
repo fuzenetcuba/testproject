@@ -3,6 +3,7 @@
 namespace BackendBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Mapping\Annotation\Slug;
@@ -250,6 +251,15 @@ class Business
     private $openings;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\Image", mappedBy="business",
+     *     cascade={"persist", "remove", "merge"}
+     * )
+     */
+    private $images;
+
+    /**
      * @var boolean
      * @ORM\Column(type="boolean")
      */
@@ -266,6 +276,7 @@ class Business
         $this->categories = new ArrayCollection();
         $this->customers = new ArrayCollection();
         $this->openings = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function __toString()
@@ -920,5 +931,48 @@ class Business
     public function getIsPublic()
     {
         return $this->isPublic;
+    }
+
+    /**
+     * Add images
+     *
+     * @param \BackendBundle\Entity\Image $images
+     * @return Business
+     */
+    public function addImage(\BackendBundle\Entity\Image $images)
+    {
+        $this->images[] = $images;
+
+        return $this;
+    }
+
+    /**
+     * Remove images
+     *
+     * @param \BackendBundle\Entity\Image $images
+     */
+    public function removeImage(\BackendBundle\Entity\Image $images)
+    {
+        $this->images->removeElement($images);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * Get images
+     *
+     * @param Collection $images
+     */
+    public function setImages($images)
+    {
+        $this->images = $images;
     }
 }

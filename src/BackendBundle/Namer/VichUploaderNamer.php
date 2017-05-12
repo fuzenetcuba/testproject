@@ -29,6 +29,9 @@ class VichUploaderNamer implements NamerInterface
                 $alt = $this->slugify($object->getName());
                 echo "dsfgsdf";
                 break;
+            case "business_gallery_image":
+                $alt = $this->slugify($object->getBusiness()->getName() . "-" . $object->getDescription());
+                break;
             case "deal_image":
                 $alt = $this->slugify($object->getName());
                 break;
