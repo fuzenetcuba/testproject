@@ -42,8 +42,8 @@
                 <div class="container">
                     <div class="carousel-caption blank">
                         <h1 class="bottom-title">{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteSlogan' })) | upper }}</h1>
-                        <h1 id="coming-soon-text">{{ 'Opening May 12 at 5pm' | trans({}, 'homepage') }}</h1>
-                        <div class="flip-counter clock"></div>
+                        <h1 id="coming-soon-text">{{ 'NOW OPEN' | trans({}, 'homepage') }}</h1>
+                        {# <div class="flip-counter clock"></div> #}
                         
                         <div class="boxes">
                             <div class="box green"><a href="{{ path('business_list', {'category' : 'grocery,clothing,electronics,art,beauty-salon,fine-jewelry,gifts-specialty,sports'}) }}">{{ 'Shop' | trans({}, 'homepage') }}</a></div>
