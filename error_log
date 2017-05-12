@@ -1,0 +1,12 @@
+[08-May-2017 14:45:17 UTC] PHP Fatal error:  Class 'Djamy\GoogleCalendarBundle\DjamyGoogleCalendarBundle' not found in /home/pmmusiccity/public_html/app/AppKernel.php on line 31
+[08-May-2017 14:45:17 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Debug\Exception\ClassNotFoundException' with message 'Attempted to load class "DjamyGoogleCalendarBundle" from namespace "Djamy\GoogleCalendarBundle".
+Did you forget a "use" statement for another namespace?' in /home/pmmusiccity/public_html/app/AppKernel.php:31
+Stack trace:
+#0 {main}
+  thrown in /home/pmmusiccity/public_html/app/AppKernel.php on line 31
+[08-May-2017 14:45:42 UTC] PHP Fatal error:  Class 'Djamy\GoogleCalendarBundle\DjamyGoogleCalendarBundle' not found in /home/pmmusiccity/public_html/app/AppKernel.php on line 31
+[08-May-2017 14:45:42 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Debug\Exception\ClassNotFoundException' with message 'Attempted to load class "DjamyGoogleCalendarBundle" from namespace "Djamy\GoogleCalendarBundle".
+Did you forget a "use" statement for another namespace?' in /home/pmmusiccity/public_html/app/AppKernel.php:31
+Stack trace:
+#0 {main}
+  thrown in /home/pmmusiccity/public_html/app/AppKernel.php on line 31

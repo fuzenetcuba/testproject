@@ -1169,3 +1169,7 @@ Stack trace:
 #2 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'pmmusicc_plaza', '5S@zqC8nc^FtJZ5...', Array)
 #3 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
 #4 /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[12-May-2017 03:45:37 UTC] PHP Fatal error:  Call to a member function getForeignKey() on a non-object in /home/pmmusiccity/public_html/src/BackendBundle/Model/OpeningManager.php on line 193
+[12-May-2017 11:47:42 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[12-May-2017 12:01:49 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
+[12-May-2017 12:03:15 UTC] PHP Fatal error:  Call to a member function format() on a non-object in /home/pmmusiccity/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Types/DateType.php on line 53
