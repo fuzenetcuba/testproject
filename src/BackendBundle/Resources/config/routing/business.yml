@@ -32,3 +32,13 @@ business_batch:
     path:     /business_batch
     defaults: { _controller: "BackendBundle:Business:batch" }
     methods:  POST
+
+business_upload_image:
+    path:     /{id}/uploadimage
+    defaults: { _controller: "BackendBundle:Business:uploadImage" }
+    methods:  POST
+
+business_delete_image:
+    path:     /{id}/deleteimage
+    defaults: { _controller: "BackendBundle:Business:deleteImage" }
+    methods:  GET

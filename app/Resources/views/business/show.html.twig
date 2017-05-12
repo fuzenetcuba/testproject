@@ -5,102 +5,160 @@
     </a>
     {{ 'Business data' | trans({}, 'businessbackend') }}
 {% endblock %}{% block page_content %}
-    <dl class="dl-horizontal">
-        <tbody>
-        <dt>Id</dt>
-        <dd>{{ entity.id }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>{{ 'Name' | trans({}, 'businessbackend') }}</dt>
-        <dd>{{ entity.name }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Slug</dt>
-        <dd>{{ entity.slug }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>{{ 'Description' | trans({}, 'businessbackend') }}</dt>
-        <dd>{{ entity.description }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>{{ 'Email' | trans({}, 'businessbackend') }}</dt>
-        <dd>{{ entity.email }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>{{ 'Notify Emails' | trans({}, 'businessbackend') }}</dt>
-        <dd>{{ entity.notifyEmails }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>{{ 'Phone' | trans({}, 'businessbackend') }}</dt>
-        <dd>{{ entity.phone }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>{{ 'Website' | trans({}, 'businessbackend') }}</dt>
-        <dd>{{ entity.website }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>{{ 'Hour of operation' | trans({}, 'businessbackend') }}</dt>
-        <dd>{{ entity.hoursBegin|date("h:i A") }} to {{ entity.hoursBegin|date("h:i A") }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>{{ 'Mall Map Directions' | trans({}, 'businessbackend') }}</dt>
-        <dd>{{ entity.mallMapDirections }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Facebook</dt>
-        <dd>{{ entity.socialMedia }}</dd>
-        <div class="hr-line-dashed"></div>
-        {% if(entity.instagram is not empty) %}
-            <dt>Instagram</dt>
-            <dd>{{ entity.instagram }}</dd>
-            <div class="hr-line-dashed"></div>
-        {% endif %}
-        {% if(entity.twitter is not empty) %}
-            <dt>Twitter</dt>
-            <dd>{{ entity.twitter }}</dd>
-            <div class="hr-line-dashed"></div>
-        {% endif %}
-        {% if(entity.pinterest is not empty) %}
-            <dt>Pinterest</dt>
-            <dd>{{ entity.pinterest }}</dd>
-            <div class="hr-line-dashed"></div>
-        {% endif %}
-        {% if(entity.snapchat is not empty) %}
-            <dt>Snapchat</dt>
-            <dd>{{ entity.snapchat }}</dd>
-            <div class="hr-line-dashed"></div>
-        {% endif %}
+    <div class="row">
+        <div class="col-sm-4">
+            <dl class="dl-horizontal">
+                <tbody>
+                <dt>Id</dt>
+                <dd>{{ entity.id }}</dd>
+                <div class="hr-line-dashed"></div>
+                <dt>{{ 'Name' | trans({}, 'businessbackend') }}</dt>
+                <dd>{{ entity.name }}</dd>
+                <div class="hr-line-dashed"></div>
+                <dt>Slug</dt>
+                <dd>{{ entity.slug }}</dd>
+                <div class="hr-line-dashed"></div>
+                <dt>{{ 'Description' | trans({}, 'businessbackend') }}</dt>
+                <dd>{{ entity.description }}</dd>
+                <div class="hr-line-dashed"></div>
+                <dt>{{ 'Email' | trans({}, 'businessbackend') }}</dt>
+                <dd>{{ entity.email }}</dd>
+                <div class="hr-line-dashed"></div>
+                <dt>{{ 'Notify Emails' | trans({}, 'businessbackend') }}</dt>
+                <dd>{{ entity.notifyEmails }}</dd>
+                <div class="hr-line-dashed"></div>
+                <dt>{{ 'Phone' | trans({}, 'businessbackend') }}</dt>
+                <dd>{{ entity.phone }}</dd>
+                <div class="hr-line-dashed"></div>
+                <dt>{{ 'Website' | trans({}, 'businessbackend') }}</dt>
+                <dd>{{ entity.website }}</dd>
+                <div class="hr-line-dashed"></div>
+                <dt>{{ 'Hour of operation' | trans({}, 'businessbackend') }}</dt>
+                <dd>{{ entity.hoursBegin|date("h:i A") }} to {{ entity.hoursBegin|date("h:i A") }}</dd>
+                <div class="hr-line-dashed"></div>
+                <dt>{{ 'Mall Map Directions' | trans({}, 'businessbackend') }}</dt>
+                <dd>{{ entity.mallMapDirections }}</dd>
+                <div class="hr-line-dashed"></div>
+                <dt>Facebook</dt>
+                <dd>{{ entity.socialMedia }}</dd>
+                <div class="hr-line-dashed"></div>
+                {% if(entity.instagram is not empty) %}
+                    <dt>Instagram</dt>
+                    <dd>{{ entity.instagram }}</dd>
+                    <div class="hr-line-dashed"></div>
+                {% endif %}
+                {% if(entity.twitter is not empty) %}
+                    <dt>Twitter</dt>
+                    <dd>{{ entity.twitter }}</dd>
+                    <div class="hr-line-dashed"></div>
+                {% endif %}
+                {% if(entity.pinterest is not empty) %}
+                    <dt>Pinterest</dt>
+                    <dd>{{ entity.pinterest }}</dd>
+                    <div class="hr-line-dashed"></div>
+                {% endif %}
+                {% if(entity.snapchat is not empty) %}
+                    <dt>Snapchat</dt>
+                    <dd>{{ entity.snapchat }}</dd>
+                    <div class="hr-line-dashed"></div>
+                {% endif %}
 
-        <dt>{{ 'Categories' | trans({}, 'businessbackend') }}</dt>
-        <dd>
-            {% for category in entity.categories %}
-                <span class="label label-primary">{{ category }}</span>
-            {% endfor %}
-        </dd>
-        <div class="hr-line-dashed"></div>
-        <dt>{{ 'Created At' | trans({}, 'businessbackend') }}</dt>
-        <dd>{{ entity.createdAt|date('d-M-Y h:i A') }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>{{ 'Updated At' | trans({}, 'businessbackend') }}</dt>
-        <dd>{{ entity.updatedAt|date('d-M-Y h:i A') }}</dd>
-        <div class="hr-line-dashed"></div>
-        <dt>Logo</dt>
-        <dd><img style="max-width: 70%; height: auto;" src="{{ asset('images/business//' ~ entity.logo) }}"
-                 alt="{{ entity.logo }}"/></dd>
-        <div class="hr-line-dashed"></div>
-        {% if entity.androidApp is not null %}
-            <dt>{{ 'Android App' | trans({}, 'businessbackend') }}</dt>
-            <dd>
-                <div class="col-xs-6 col-md-4 col-lg-2">
-                    <a href="{{ entity.androidApp }}"><img class="img-responsive" alt="Get it on Google Play"
-                                                           src="{{ asset('bundles/frontend/img/google_play_badge.png') }}"/></a>
+                <dt>{{ 'Categories' | trans({}, 'businessbackend') }}</dt>
+                <dd>
+                    {% for category in entity.categories %}
+                        <span class="label label-primary">{{ category }}</span>
+                    {% endfor %}
+                </dd>
+                <div class="hr-line-dashed"></div>
+                <dt>{{ 'Created At' | trans({}, 'businessbackend') }}</dt>
+                <dd>{{ entity.createdAt|date('d-M-Y h:i A') }}</dd>
+                <div class="hr-line-dashed"></div>
+                <dt>{{ 'Updated At' | trans({}, 'businessbackend') }}</dt>
+                <dd>{{ entity.updatedAt|date('d-M-Y h:i A') }}</dd>
+                <div class="hr-line-dashed"></div>
+                <dt>Logo</dt>
+                <dd><img style="max-width: 70%; height: auto;" src="{{ asset('images/business/' ~ entity.logo) }}"
+                         alt="{{ entity.logo }}"/></dd>
+                {% if entity.androidApp is not null %}
+                    <div class="hr-line-dashed"></div>
+                    <dt>{{ 'Android App' | trans({}, 'businessbackend') }}</dt>
+                    <dd>
+                        <div class="col-xs-6 col-md-4 col-lg-2">
+                            <a href="{{ entity.androidApp }}"><img class="img-responsive" alt="Get it on Google Play"
+                                                                   src="{{ asset('bundles/frontend/img/google_play_badge.png') }}"/></a>
+                        </div>
+                    </dd>
+                {% endif %}
+                {% if entity.iosApp is not null %}
+                    <div class="hr-line-dashed"></div>
+                    <dt>{{ 'iOS App' | trans({}, 'businessbackend') }}</dt>
+                    <dd>
+                        <div class="col-xs-6 col-md-4 col-lg-2">
+                            <a href="{{ entity.iosApp }}"><img style="width: 100%;" alt="Download on the App Store"
+                                                               src="{{ asset('bundles/frontend/img/apple_store_badge.svg') }}"/></a>
+                        </div>
+                    </dd>
+                {% endif %}
+                </tbody>
+            </dl>
+        </div>
+        <div class="col-sm-8">
+
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h4>{{ 'Images Gallery of' | trans({}, 'businessbackend') ~ " " ~ entity.name }}</h4>
+                    <a class="btn btn-sm btn-success inline" data-toggle="modal" data-target="#modalImage">
+                        <span class="fa fa-image"></span>
+                        {{ 'Upload image' | trans({}, 'businessbackend') }}
+                    </a>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="fullscreen-link">
+                            <i class="fa fa-expand"></i>
+                        </a>
+                    </div>
+
                 </div>
-            </dd>
-            <div class="hr-line-dashed"></div>
-        {% endif %}
-        {% if entity.iosApp is not null %}
-            <dt>{{ 'iOS App' | trans({}, 'businessbackend') }}</dt>
-            <dd>
-                <div class="col-xs-6 col-md-4 col-lg-2">
-                    <a href="{{ entity.iosApp }}"><img style="width: 100%;" alt="Download on the App Store"
-                                                       src="{{ asset('bundles/frontend/img/apple_store_badge.svg') }}"/></a>
+                <div class="ibox-content">
+
+                    <div>
+                        {% for image in entity.images %}
+
+                            <div class="file-box">
+                                <div class="file">
+                                    <a href="#">
+                                        <span class="corner"></span>
+
+                                        <div class="image">
+                                            <img alt="image" class="img-responsive"
+                                                 src="{{ asset('images/business/gallery/' ~ image.imgName) }}">
+                                        </div>
+                                        <div class="file-name">
+                                            {{ image.imgName }}
+                                            <br/>
+                                            <small>Added: {{ image.createdAt|date('M d, Y') }}</small>
+                                        </div>
+                                    </a>
+                                    <a href="{{ path('business_delete_image', { 'id' : image.id }) }}"
+                                       class="btn btn-xs btn-danger delete-image" data-toggle="tooltip" title="{{ 'Delete' | trans({}, 'generalbackend') }}">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-            </dd>
-            <div class="hr-line-dashed"></div>
-        {% endif %}
-        </tbody>
-    </dl>
+            </div>
+
+        </div>
+    </div>
+
     <div class="form-group">
+        <div class="hr-line-dashed"></div>
         <div class="col-md-2 text-right">
             <a class="btn btn-success" href="{{ path('business') }}">
                 <span class="glyphicon glyphicon-chevron-left"></span>
@@ -108,8 +166,6 @@
             </a>
         </div>
         <div class="col-md-10">
-
-
             <a class="btn btn-primary"
                href="{{ path('business_edit', { 'id': entity.id }) }}">
                 <span class="fa fa-pencil"></span>
@@ -120,8 +176,6 @@
                 <span class="fa fa-remove"></span>
                 {{ 'Delete' | trans({}, 'generalbackend') }}
             </a>
-
-
         </div>
     </div>
 
@@ -155,5 +209,80 @@
         </div>
     </div>
 
+    <div class="modal inmodal" id="modalImage" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight">
+                {{ form_start(image_form, {'attr': {'class':'form-horizontal'}}) }}
 
+                <div id="modal-title" class="modal-header blue-bg">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                                aria-hidden="true">&times;</span><span
+                                class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
+                    </button>
+                    <i class="fa fa-image modal-icon text-white"></i>
+                    <h4 class="modal-title">{{ 'Upload image for' | trans({}, 'businessbackend') ~ " " ~ entity.name }}</h4>
+                </div>
+                <div id="modal-content" class="modal-body">
+                    <div class="panel-body">
+
+                        <div class="form-group{% if(image_form.imgFile.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                            <label for=""
+                                   class="col-md-2 control-label">{{ form_label(image_form.imgFile) }}</label>
+
+                            <div class="col-md-10">
+                                {{ form_widget(image_form.imgFile, { 'attr': {'class' : 'form-control'}}) }}
+                                {% if image_form.imgFile.vars['errors']|length > 0 %}
+                                    <ul class="message">
+                                        {% for error in image_form.imgFile.vars['errors'] %}
+                                            <li>{{ error.message }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group{% if(image_form.description.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                            <label for="" class="col-md-2 control-label">{{ form_label(image_form.description) }}
+                            </label>
+
+                            <div class="col-md-10">
+                                {{ form_widget(image_form.description, { 'attr': {'class' : 'form-control'}}) }}
+                                {% if image_form.description.vars['errors']|length > 0 %}
+                                    <ul class="message">
+                                        {% for error in image_form.description.vars['errors'] %}
+                                            <li>{{ error.message }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white"
+                            data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
+                    <button type="submit" class="btn btn-success">
+                        <span class="fa fa-arrow-circle-up"></span> {{ 'Upload' | trans({}, 'generalbackend') }}
+                    </button>
+                </div>
+                <div class="hidden">{{ form_rest(image_form) }}</div>
+                {{ form_end(image_form) }}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block inline_js %}
+
+    <script>
+        $(document).ready(function () {
+            $('.file-box').each(function () {
+                animationHover(this, 'pulse');
+            });
+        });
+    </script>
 {% endblock %}
