@@ -160,7 +160,7 @@ class Business
     /**
      * @var string
      *
-     * @ORM\Column(name="social_media", type="string", length=255)
+     * @ORM\Column(name="social_media", type="string", length=255, nullable=true)
      * @Assert\Url()
      */
     private $socialMedia;

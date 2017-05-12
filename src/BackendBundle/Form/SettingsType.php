@@ -31,6 +31,8 @@ class SettingsType extends AbstractType
             ->add('websiteUrlFacebook')
             ->add('websiteUrlFlickr')
             ->add('websiteUrlInstagram')
+            ->add('pinterest')
+            ->add('snapchat')
             ->add('websiteLogoImage', FileType::class, array(
                 'required' => false,
                 'validation_groups' => array('creation')))

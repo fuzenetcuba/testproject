@@ -209,6 +209,20 @@
                                 <span class="fa fa-instagram"></span>
                             </a>
                         {% endif %}
+                        {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'pinterest' })) is not empty %}
+                            <a title="Follow us on Instagram" href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'pinterest' })) }}"
+                               target="_blank"
+                               class="btn btn-circle-muted btn-outline btn-social-icon btn-pinterest text-muted m-l m-r">
+                                <span class="fa fa-pinterest"></span>
+                            </a>
+                        {% endif %}
+                        {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'snapchat' })) is not empty %}
+                            <a title="Follow us on Instagram" href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'snapchat' })) }}"
+                               target="_blank"
+                               class="btn btn-circle-muted btn-outline btn-social-icon btn-snapchat text-muted m-l m-r">
+                                <span class="fa fa-snapchat"></span>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

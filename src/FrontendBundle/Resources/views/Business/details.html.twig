@@ -89,6 +89,7 @@
                                     </a>
                                 </li>
                             {% endif %}
+                            {% if business.socialMedia is not empty %}
                             <li>
                                 <i class="fa fa-facebook-official"></i>
                                 <a title="{{ business.socialMedia }}" target="_blank" href="{{ business.socialMedia }}">
@@ -96,6 +97,7 @@
                                     <sub><span class="fa fa-external-link"></span></sub>
                                 </a>
                             </li>
+                            {% endif %}
                             {% if(business.instagram is not empty) %}
                                 <li>
                                     <i class="fa fa-instagram"></i>
