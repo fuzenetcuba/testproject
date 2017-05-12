@@ -184,6 +184,26 @@ class BusinessController extends Controller
         ));
     }
 
+    public function deleteImageAction(Request $request, Image $entity)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $businessId = $entity->getBusiness()->getId();
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Image entity.');
+        }
+
+        $em->remove($entity);
+        $em->flush();
+
+        // Mostrando mensaje
+        $this->get('session')->getFlashBag()->add('success', 'The image of business was deleted successfully.');
+        return $this->redirect($this->generateUrl('business_show', array('id' => $businessId)));
+
+
+    }
+
     /**
      * Displays a form to edit an existing Business entity.
      *

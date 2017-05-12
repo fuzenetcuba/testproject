@@ -141,6 +141,10 @@
                                             <small>Added: {{ image.createdAt|date('M d, Y') }}</small>
                                         </div>
                                     </a>
+                                    <a href="{{ path('business_delete_image', { 'id' : image.id }) }}"
+                                       class="btn btn-xs btn-danger delete-image" data-toggle="tooltip" title="{{ 'Delete' | trans({}, 'generalbackend') }}">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
                                 </div>
                             </div>
 
