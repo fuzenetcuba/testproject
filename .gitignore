@@ -7,6 +7,9 @@ app/cache/*
 app/logs/*
 vendor/*
 web/bundles/*
+web/images/business/*
+web/images/deals/*
+web/images/users/*
 web/css/*
 web/js/*
 web/uploads/*
