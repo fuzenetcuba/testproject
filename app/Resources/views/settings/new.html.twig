@@ -247,6 +247,39 @@
             </div>
             <div class="hr-line-dashed"></div>
 
+            <div class="form-group{% if(form.pinterest.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.pinterest) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.pinterest, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.pinterest.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.pinterest.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+            <div class="form-group{% if(form.snapchat.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for="" class="col-md-2 control-label">{{ form_label(form.snapchat) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.snapchat, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.snapchat.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.snapchat.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+
             <div class="form-group{% if(form.websiteLogoImage.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                 <label for="" class="col-md-2 control-label">{{ form_label(form.websiteLogoImage) }}</label>
 
