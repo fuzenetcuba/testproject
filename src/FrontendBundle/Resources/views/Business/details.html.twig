@@ -24,6 +24,27 @@
           rel="stylesheet">
 {% endblock %}
 
+{% block inline_css %}
+    <style type="text/css" rel="stylesheet">
+        .blueimp-gallery-item {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center center;
+            background-color: #fff;
+            border: 1px solid #555;
+            margin: 5px;
+            transition: all 0.3s ease 0s;
+        }
+        .blueimp-gallery-item:hover {
+            box-shadow: 0 0 15px rgba(0,0,0,0.25);
+            transform: scaleX(1.2) scaleY(1.2);
+        }
+    </style>
+{% endblock %}
+
 
 
 {% block page_content %}
@@ -37,7 +58,7 @@
                          src="{{ asset('images/business/' ~ business.logo) }}">
 
 
-                    <div class="col-md-8 col-md-offset-2">
+                    <div class="col-md-8 col-md-offset-2 m-t-lg">
                         <div class="col-xs-6">
                             {% if business.androidApp is not null %}
                                 <a href="{{ business.androidApp }}">
@@ -188,21 +209,31 @@
         </div>
     </section>
 
-    {#{% if business.images | length > 0 %}#}
-        {#<section class="section-spaces-line">#}
-            {#<div class="container related-businesses">#}
-                {#<div class="container">#}
-                    {#<div class="carousel carousel-slider">#}
-                        {#{% for image in business.images %}#}
-                            {#<a class="carousel-item" href="#item-{{ loop.index }}">#}
-                                {#<img src="{{ asset('images/business/gallery/' ~ image.imgName) }}">#}
-                            {#</a>#}
-                        {#{% endfor %}#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</section>#}
-    {#{% endif %}#}
+    {% if business.images | length > 0 %}
+        <section class="section-spaces-line">
+            <div class="container related-businesses">
+                <div class="container  text-center">
+                    <div id="blueimp-gallery" class="blueimp-gallery">
+                        <div class="slides"></div>
+                        <h3 class="title"></h3>
+                        <a class="prev">‹</a>
+                        <a class="next">›</a>
+                        <a class="close">×</a>
+                        <a class="play-pause"></a>
+                        <ol class="indicator"></ol>
+                    </div>
+
+                    <div id="links">
+                        {% for image in business.images %}
+                        <a class="blueimp-gallery-item" href="{{ asset('images/business/gallery/' ~ image.imgName) }}" title="{{ image.description }}"
+                           style="background-image: url('{{ asset('images/business/gallery/' ~ image.imgName) }}');">
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
 
     {#{% if business.androidApp is not null or business.iosApp is not null %}#}
     {#<section class="section-spaces-line">#}
@@ -370,7 +401,14 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('.carousel').carousel();
+            document.getElementById('links').onclick = function (event) {
+                event = event || window.event;
+                var target = event.target || event.srcElement,
+                        link = target.src ? target.parentNode : target,
+                        options = {index: link, event: event},
+                        links = this.getElementsByTagName('a');
+                blueimp.Gallery(links, options);
+            };
         });
 
         $('.carousel .item').each(function () {
