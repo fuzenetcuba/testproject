@@ -226,7 +226,9 @@ class OpeningManager implements ManagerInterface
         $candidate->setAvailability($request->request->get('availability'));
         $candidate->setAvailableHours($request->request->get('availabilityHours'));
         $candidate->setWeekAvailable($request->request->get('weekHours'));
-        $candidate->setStartDate(\DateTime::createFromFormat('d/m/Y', $request->request->get('startDate')));
+        $candidate->setStartDate(
+            \DateTime::createFromFormat('d/m/Y', $request->request->get('startDate')) != false ? \DateTime::createFromFormat('d/m/Y', $request->request->get('startDate')) : null
+        );
         $candidate->setSalary($request->request->get('salary'));
         $candidate->setHasLicense($request->request->get('hasDriverLicense'));
         $candidate->setLicenseNumber($request->request->get('licenseNumber'));
@@ -291,6 +293,8 @@ class OpeningManager implements ManagerInterface
 
     public function saveCandidate(Candidate $candidate)
     {
+        // var_dump($candidate); die ;
+
         $this->em->persist($candidate);
         $this->em->flush();
 
@@ -335,12 +339,16 @@ class OpeningManager implements ManagerInterface
 
     public function notifyManager(Candidate $candidate, $subject, $from, $copies, $content, $fileContent = null)
     {
+        $copies = array_filter(explode(',', $copies), function ($email) {
+            return !empty($email);
+        });
+
         $pdfFile = $this->createCandidatePDFReport($candidate, $fileContent);
 
         $message = \Swift_Message::newInstance()
             ->setSubject($subject)
             ->setFrom($from)
-            ->setTo(array_merge($this->careersEmail, explode(',', $copies)))
+            ->setTo(array_merge($this->careersEmail, $copies))
             ->setBody($content, 'text/html')
             ->attach(\Swift_Attachment::fromPath($pdfFile));
 
