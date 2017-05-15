@@ -47,15 +47,15 @@
             <th class="text-navy">
                 {{ 'Fullname' | trans({}, 'candidatebackend') }}
             </th>
-            <th class="text-navy">
+            {# <th class="text-navy">
                 {{ 'City' | trans({}, 'candidatebackend') }}
             </th>
             <th class="text-navy">
                 {{ 'State' | trans({}, 'candidatebackend') }}
-            </th>
-            {# <th class="text-navy">
-                {{ 'Social Number' | trans({}, 'candidatebackend') }}
             </th> #}
+            <th class="text-navy">
+                {{ 'Social Number' | trans({}, 'candidatebackend') }}
+            </th>
             <th class="text-navy">
                 {{ 'Adult' | trans({}, 'candidatebackend') }}
             </th>
@@ -89,12 +89,12 @@
                 <td>{{ entity.opening.position }}</td>
 
                 <td>{{ entity.fullName }}</td>
-
+{# 
                 <td>{{ entity.city }}</td>
 
                 <td>{{ entity.state }}</td>
-
-                {# <td>{{ entity.socialNumber }}</td> #}
+ #}
+                <td>{{ entity.socialNumber }}</td>
 
                 <td>
                     {% if (entity.adult) %}

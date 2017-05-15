@@ -41,7 +41,8 @@
                             <input type="text" required class="input-sm form-control" name="start" 
                                 placeholder="{{ 'Start date' |trans({}, 'generalbackend') }}" value="{{ first.created | date('m/d/Y') }}" />
                             <span class="input-group-addon">TO</span>
-                            <input type="text" required class="input-sm form-control" name="end"  placeholder="{{ 'End date' |trans({}, 'generalbackend') }}" />
+                            <input type="text" required class="input-sm form-control" name="end"  
+                                placeholder="{{ 'End date' |trans({}, 'generalbackend') }}" value="{{ 'now' | date('m/d/Y') }}" />
                         </div>
 
                         <button type="submit" class="btn btn-info">{{ 'EXPORT TO PDF' |trans({}, 'generalbackend') }}</button>
