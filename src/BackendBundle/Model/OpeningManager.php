@@ -298,7 +298,8 @@ class OpeningManager implements ManagerInterface
         $this->em->persist($candidate);
         $this->em->flush();
 
-        return $this->findUniqueCandidate($candidate->getSocialNumber(), $candidate->getOpening());
+        // return $this->findUniqueCandidate($candidate->getSocialNumber(), $candidate->getOpening());
+        return $candidate;
     }
 
     public function findUniqueCandidate($socialSecurity, Opening $opening)
