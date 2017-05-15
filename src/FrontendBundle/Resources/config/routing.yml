@@ -98,3 +98,4 @@ calendar:
     path:      /calendars/{key}
     defaults:
         _controller: FrontendBundle:Calendar:index
+        key: 'music'

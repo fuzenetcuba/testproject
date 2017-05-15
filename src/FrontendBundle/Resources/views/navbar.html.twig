@@ -168,6 +168,10 @@
                         <a title="{{ 'Directory' | trans({}, 'menu') }}"
                            href="{{ path('business_list') }}">{{ 'Directory' | trans({}, 'menu') }}</a>
                     </li>
+                    <li class="{% if current == 'calendar' %}active{% endif %}">
+                        <a title="{{ 'Event Calendar' | trans({}, 'menu') }}"
+                           href="{{ path('calendar') }}">{{ 'Event Calendar' | trans({}, 'menu') }}</a>
+                    </li>
                     {#<li class="{% if current in ['deals', 'deal'] %}active{% endif %}">#}
                     {#<a title="{{ 'Deals' | trans({}, 'menu') }}" href="{{ path('deals') }}">{{ 'Deals' | trans({}, 'menu') }}</a>#}
                     {#</li>#}
