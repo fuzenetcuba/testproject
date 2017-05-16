@@ -77,7 +77,7 @@ class CalendarController extends Controller
                 'title' => $event['summary'],
                 'start' => $event['start']['dateTime'],
                 'description' => $event['description'],
-                'location' => $event['location'] ?? '',
+                'location' => isset($event['location']) ? $event['location'] : '',
             ];
         }, $events);
 
