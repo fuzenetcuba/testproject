@@ -92,16 +92,16 @@ class CareersController extends Controller
         $candidate = $this->get('opening.manager')->fromRequest($request);
 
         // validating the candidate data
-        $validator = $this->get('validator');
-        $errors = $validator->validate($candidate, null, array('application'));
+        // $validator = $this->get('validator');
+        // $errors = $validator->validate($candidate, null, array('application'));
 
-        $errorsString = "";
-        if (count($errors) > 0) {
-            for ($i = 0; $i < count($errors); $i++) {
-                $errorsString .= $errors->get($i)->getMessage();
-            }
-            return new JsonResponse(array('error' => $errorsString), Response::HTTP_UNPROCESSABLE_ENTITY);
-        } else {
+        // $errorsString = "";
+        // if (count($errors) > 0) {
+        //     for ($i = 0; $i < count($errors); $i++) {
+        //         $errorsString .= $errors->get($i)->getMessage();
+        //     }
+        //     return new JsonResponse(array('error' => $errorsString), Response::HTTP_UNPROCESSABLE_ENTITY);
+        // } else {
 
             $this->get('opening.manager')->storeFilesFromRequest($request, $candidate);
             $savedCandidate = $this->get('opening.manager')->saveCandidate($candidate);
@@ -136,7 +136,7 @@ class CareersController extends Controller
             );
 
             return new JsonResponse(['status' => 'ok']);
-        }
+        // }
     }
 
     public function autocompleteAction(Request $request)

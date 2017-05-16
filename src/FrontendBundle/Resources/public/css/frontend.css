@@ -3949,3 +3949,23 @@ html, body {
   max-height: 3.6em;
   line-height: 1.8em;
 }
+
+.fc-right {
+    display: none;
+}
+
+span.event--close {
+    float: right;
+    cursor: pointer;
+    font-size: 15pt;
+    line-height: .6;
+}
+
+.event--location {
+    margin-top: 10px;
+    display: block;
+}
+
+#calendar {
+    margin-top: 40px;
+}

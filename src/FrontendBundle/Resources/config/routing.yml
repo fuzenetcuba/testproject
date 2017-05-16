@@ -94,6 +94,12 @@ survey_store:
     options:
         expose: true
 
+calendar_json:
+    path:      /calendars/json/{key}
+    defaults:
+        _controller: FrontendBundle:Calendar:json
+        key: 'music'
+
 calendar:
     path:      /calendars/{key}
     defaults:

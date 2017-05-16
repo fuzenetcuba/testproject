@@ -1,0 +1,102 @@
+{% extends '@Frontend/layout.html.twig' %}
+
+{% block title %} {{ "Entertainment Calendar" |trans({}, 'calendar') }} {% endblock %}
+
+{% block metatags %}
+    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+    {{ 'Mall' | trans({}, 'homepage') }},
+    {{ 'Businesses' | trans({}, 'homepage') }},
+    {{ 'Deals' | trans({}, 'homepage') }},
+    {{ 'Buying' | trans({}, 'homepage') }},
+    {{ 'Events' | trans({}, 'homepage') }},
+    {{ 'Calendar' | trans({}, 'homepage') }},
+    "/>
+    <meta name="description" content="
+    {#- retrieving settings values -#}
+    {#-{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'textAbout' })) -}}-#}
+    {{- "At Plaza Mariachi you'll hear Hispanic music, see Latin relics, discover old and new Mexico in food, fashion and much more. Come explore Plaza Mariachi today!" | trans({}, 'general') -}}
+    "/>
+{% endblock %}
+
+{% block custom_css %}
+    <link href="{{ asset('bundles/frontend/css/fullcalendar.css') }}" rel="stylesheet">
+    {{ parent() }}
+{% endblock %}
+
+{% block page_content %}
+<section class="inner-content section-spaces-line">
+    <div class="container">
+        <div class="row m-b">
+            <div class="col-lg-12 text-center">
+                <div class="section-line amber-line"></div>
+                <h1>{{ 'Plaza Mariachi Entertainment Calendar' | trans({}, 'calendar') }}</h1>
+            </div>
+        </div>
+
+        <p class="text-muted-strong text-justify">
+            {{ 'Come to the Plaza Mariachi to enjoy great food and beverages, art, shopping and live entertainment. Below you will find a list of the acts that are scheduled to perform at Plaza Mariachi to help you plan your visit. Please note that dates and times are subject to change.' | trans({}, 'calendar') }}
+        </p>
+
+        <div id="calendar"></div>
+    </div>
+</section>
+{% endblock %}
+
+{% block custom_js %}
+    {{ parent() }}
+
+    <script src="{{ asset('bundles/frontend/js/moment.min.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/moment.es.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('bundles/frontend/js/fullcalendar.es.js') }}"></script>
+{% endblock %}
+
+{% block inline_js %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                events: "{{ path('calendar_json') }}",
+                lang: '{{ app.request.get('_locale') }}',
+                header: {
+                    left: '',
+                    center: 'title',
+                    right : ''
+                },
+                eventClick: function(calEvent, jsEvent, view) {
+                    var title = $('<span />', { 'class':'event--title' }).text(calEvent.title);
+                    var closeButton = $('<span />', { 'class':'event--close' }).html("&times;");
+                    var description = $('<span />', { 'class':'event--description' }).text(calEvent.description);
+                    var location = calEvent.location;
+
+                    if (calEvent.location) {
+                        var location = $('<small />', { 'class':'event--location' }).html('<i class="fa fa-map-marker"></i> ' + calEvent.location);
+                    }
+
+                    if ($(this).data("bs.popover") == undefined) {
+                        $(this).popover({
+                            content: description.append(location),
+                            title: title.append(closeButton),
+                            html: true,
+                            placement: 'auto top'
+                        });
+                    }
+
+                    $(this).stop().popover('show');
+
+                    return false;
+                }
+            });
+
+            $('html').on('click', function(e) {
+                if ($(e.target).hasClass('event--close')) {
+                    $(e.target).parent().parent().parent().popover('destroy');
+                }
+
+                if (typeof $(e.target).data('original-title') == 'undefined' &&
+                    !$(e.target).parents().is('.popover.in')) {
+                    $('[data-original-title]').popover('destroy');
+                }
+            });
+        });
+    </script>
+{% endblock %}
