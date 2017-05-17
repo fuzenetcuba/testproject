@@ -16,7 +16,8 @@ security:
     role_hierarchy:
         ROLE_CUSTOMER:      ROLE_USER
         ROLE_BUSINESS:      ROLE_CUSTOMER
-        ROLE_ADMIN:         ROLE_BUSINESS
+        ROLE_SUPERVISOR:    ROLE_BUSINESS
+        ROLE_ADMIN:         ROLE_BUSINESS, ROLE_SUPERVISOR
 
 
     firewalls:
@@ -72,6 +73,69 @@ security:
 
         # --------------------- PROFILE SECURITY ACTIONS ---------------------
         - { path: ^/admin/change/profile, role: IS_AUTHENTICATED_FULLY }
+
+        # --------------------- SUPERVISOR ACTIONS [ONLY VIEW AND DOWNLOAD INFO] ---------------------
+        - { path: ^/admin/$, role: ROLE_SUPERVISOR }
+
+        - { path: ^/admin/alert/$, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/alert/find, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/alert/.+/show, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/alert/.+/details, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/alert/unchecked_alerts, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/alert/count_unchecked_alerts, role: ROLE_SUPERVISOR }
+
+        - { path: ^/admin/candidate/$, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/candidate/find, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/candidate/.+/show, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/candidate/.+/pdf_report, role: ROLE_SUPERVISOR }
+
+        - { path: ^/admin/settings/$, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/settings/.+/show, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/settings/setting/.+, role: ROLE_SUPERVISOR }
+
+#        - { path: ^/admin/mails/send, role: ROLE_SUPERVISOR }
+
+        - { path: ^/admin/subscription/$, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/subscription/find, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/subscription/.+/show, role: ROLE_SUPERVISOR }
+
+        - { path: ^/admin/customer/$, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/customer/find, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/customer/.+/show, role: ROLE_SUPERVISOR }
+
+        - { path: ^/admin/reward/$, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/reward/find, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/reward/.+/show, role: ROLE_SUPERVISOR }
+
+        - { path: ^/admin/deal/$, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/deal/find, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/deal/.+/show, role: ROLE_SUPERVISOR }
+
+        - { path: ^/admin/category/$, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/category/find, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/category/.+/show, role: ROLE_SUPERVISOR }
+
+        - { path: ^/admin/opening_category/$, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/opening_category/find, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/opening_category/.+/show, role: ROLE_SUPERVISOR }
+
+        - { path: ^/admin/business/$, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/business/find, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/business/.+/show, role: ROLE_SUPERVISOR }
+
+        - { path: ^/admin/user/$, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/user/find, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/user/.+/show, role: ROLE_SUPERVISOR }
+
+        - { path: ^/admin/opening/$, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/opening/find, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/opening/.+/show, role: ROLE_SUPERVISOR }
+
+        - { path: ^/admin/feedback/$, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/feedback/find, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/feedback/.+/show, role: ROLE_SUPERVISOR }
+
+        - { path: ^/admin/logout-ajax, role: ROLE_SUPERVISOR }
 
         # --------------------- ADMIN ACTIONS ---------------------
         - { path: ^/admin/, role: ROLE_ADMIN }
