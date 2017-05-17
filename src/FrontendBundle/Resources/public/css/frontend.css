@@ -3969,3 +3969,7 @@ span.event--close {
 #calendar {
     margin-top: 40px;
 }
+
+.calendar--selector a:first-child {
+    margin-left: 20px;
+}

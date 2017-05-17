@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CalendarController extends Controller
 {
-    public function indexAction($key, Request $request)
+    public function indexAction($view, $key, Request $request)
     {
         $calendars = $this->get('calendar.google')
             ->listCalendars()
@@ -39,7 +39,7 @@ class CalendarController extends Controller
             return new \DateTime($a['start']['dateTime']) >= new \DateTime($b['start']['dateTime']);
         });
 
-        return $this->render('FrontendBundle:Calendar:calendar.html.twig', [
+        return $this->render(sprintf('FrontendBundle:Calendar:%s.html.twig', $view), [
             'events' => $events,
         ]);
     }
