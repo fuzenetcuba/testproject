@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use BackendBundle\Entity\Candidate;
 use BackendBundle\Form\CandidateType;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Candidate controller.
@@ -59,8 +60,7 @@ class CandidateController extends Controller
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder()
             ->select('e')
-            ->from('BackendBundle:Candidate', 'e')
-        ;
+            ->from('BackendBundle:Candidate', 'e');
 
         if ($find) {
             $qb->join('e.opening', 'o')
@@ -78,16 +78,15 @@ class CandidateController extends Controller
         if ($start || $end) {
             $qb->andWhere('e.created BETWEEN :start AND :end')
                 ->setParameter('start', $start)
-                ->setParameter('end', $end)
-            ;
+                ->setParameter('end', $end);
 
             $query = $qb->getQuery()
                 ->setHint(
                     Query::HINT_CUSTOM_OUTPUT_WALKER,
                     'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
-            );
+                );
 
-            $pdfGenerator = $this->get('spraed.pdf.generator'); 
+            $pdfGenerator = $this->get('spraed.pdf.generator');
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
                 $query, $request->query->get('page', 1), 1000
@@ -98,11 +97,13 @@ class CandidateController extends Controller
                 'entities' => $pagination,
             ));
 
+            $today = new \DateTime('NOW');
+
             return new Response($pdfGenerator->generatePDF($html),
                 200,
                 array(
                     'Content-Type' => 'application/pdf',
-                    'Content-Disposition' => 'attachment; filename="out.pdf"'
+                    'Content-Disposition' => 'attachment;filename="job-applications-' . $today->format('Ymd') . '.pdf"'
                 )
             );
         }
@@ -218,11 +219,13 @@ class CandidateController extends Controller
 
         $pdfGenerator = $this->get('spraed.pdf.generator');
 
+        $today = new \DateTime('NOW');
+
         return new Response($pdfGenerator->generatePDF($html),
             200,
             array(
                 'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'inline; filename="out.pdf"'
+                'Content-Disposition' => 'attachment;filename="job-applications-' . $today->format('Ymd') . '.pdf"'
             )
         );
     }

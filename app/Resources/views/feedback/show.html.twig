@@ -1,106 +1,106 @@
-    {% extends 'BackendBundle::layout.html.twig' %}{% block active_feedback  %}active{% endblock %}{% block page_heading_title %}
-    <a class="btn btn-default navbar-btn" href="{{ path('feedback')}}"
+{% extends 'BackendBundle::layout.html.twig' %}{% block active_feedback %}active{% endblock %}{% block page_heading_title %}
+    <a class="btn btn-default navbar-btn" href="{{ path('feedback') }}"
        style="margin-bottom: 7px;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a>
     Feedback data
-    {% endblock %}{% block page_content %}
+{% endblock %}{% block page_content %}
     <dl class="dl-horizontal">
         <tbody>
-            <dt>Id</dt>
-                <dd>{{ entity.id }}</dd>
-            <div class="hr-line-dashed"></div>
-            <dt>Satisfied</dt>
-                <dd>
-                    <div class="onoffswitch-ios switch-xs">
-                        {% if (entity.satisfied) %}
-                        <label class="onoffswitch-ios-label checked"></label>
-                        {% else %}
-                        <label class="onoffswitch-ios-label"></label>
-                        {% endif %}
-                    </div>
-                </dd>
-            <div class="hr-line-dashed"></div>
-            <dt>Recommended</dt>
-                <dd>
-                    <div class="onoffswitch-ios switch-xs">
-                        {% if (entity.recommended) %}
-                        <label class="onoffswitch-ios-label checked"></label>
-                        {% else %}
-                        <label class="onoffswitch-ios-label"></label>
-                        {% endif %}
-                    </div>
-                </dd>
-            <div class="hr-line-dashed"></div>
-            <dt>Whynotrecommend</dt>
-                <dd>{{ entity.whyNotRecommend }}</dd>
-            <div class="hr-line-dashed"></div>
-            <dt>Storessatisfied</dt>
-                <dd>
-                    <div class="onoffswitch-ios switch-xs">
-                        {% if (entity.storesSatisfied) %}
-                        <label class="onoffswitch-ios-label checked"></label>
-                        {% else %}
-                        <label class="onoffswitch-ios-label"></label>
-                        {% endif %}
-                    </div>
-                </dd>
-            <div class="hr-line-dashed"></div>
-            <dt>Additionalstores</dt>
-                <dd>{{ entity.additionalStores }}</dd>
-            <div class="hr-line-dashed"></div>
-            <dt>Foodsatisfied</dt>
-                <dd>
-                    <div class="onoffswitch-ios switch-xs">
-                        {% if (entity.foodSatisfied) %}
-                        <label class="onoffswitch-ios-label checked"></label>
-                        {% else %}
-                        <label class="onoffswitch-ios-label"></label>
-                        {% endif %}
-                    </div>
-                </dd>
-            <div class="hr-line-dashed"></div>
-            <dt>Additionalfood</dt>
-                <dd>{{ entity.additionalFood }}</dd>
-            <div class="hr-line-dashed"></div>
-            <dt>Rate</dt>
-                <dd>{{ entity.rate }}</dd>
-            <div class="hr-line-dashed"></div>
-            <dt>Name</dt>
-                <dd>{{ entity.name }}</dd>
-            <div class="hr-line-dashed"></div>
-            <dt>Email</dt>
-                <dd>{{ entity.email }}</dd>
-            <div class="hr-line-dashed"></div>
-            <dt>Phone</dt>
-                <dd>{{ entity.phone }}</dd>
-            <div class="hr-line-dashed"></div>
+        <dt>Id</dt>
+        <dd>{{ entity.id }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Satisfied</dt>
+        <dd>
+            <div class="onoffswitch-ios switch-xs">
+                {% if (entity.satisfied) %}
+                    <label class="onoffswitch-ios-label checked"></label>
+                {% else %}
+                    <label class="onoffswitch-ios-label"></label>
+                {% endif %}
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Recommended</dt>
+        <dd>
+            <div class="onoffswitch-ios switch-xs">
+                {% if (entity.recommended) %}
+                    <label class="onoffswitch-ios-label checked"></label>
+                {% else %}
+                    <label class="onoffswitch-ios-label"></label>
+                {% endif %}
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Whynotrecommend</dt>
+        <dd>{{ entity.whyNotRecommend }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Storessatisfied</dt>
+        <dd>
+            <div class="onoffswitch-ios switch-xs">
+                {% if (entity.storesSatisfied) %}
+                    <label class="onoffswitch-ios-label checked"></label>
+                {% else %}
+                    <label class="onoffswitch-ios-label"></label>
+                {% endif %}
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Additionalstores</dt>
+        <dd>{{ entity.additionalStores }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Foodsatisfied</dt>
+        <dd>
+            <div class="onoffswitch-ios switch-xs">
+                {% if (entity.foodSatisfied) %}
+                    <label class="onoffswitch-ios-label checked"></label>
+                {% else %}
+                    <label class="onoffswitch-ios-label"></label>
+                {% endif %}
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Additionalfood</dt>
+        <dd>{{ entity.additionalFood }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Rate</dt>
+        <dd>{{ entity.rate }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Name</dt>
+        <dd>{{ entity.name }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Email</dt>
+        <dd>{{ entity.email }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Phone</dt>
+        <dd>{{ entity.phone }}</dd>
+        <div class="hr-line-dashed"></div>
         </tbody>
-    </dl>    <div class="form-group">
-    <div class="col-md-2 text-right">
-        <a class="btn btn-success" href="{{ path('feedback') }}">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            Back to the list
-        </a>
-    </div>
-    <div class="col-md-10">
+    </dl>
+    <div class="form-group">
+        <div class="col-md-2 text-right">
+            <a class="btn btn-success" href="{{ path('feedback') }}">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Back to the list
+            </a>
+        </div>
+        <div class="col-md-10">
 
-                
-                
-                            <a class="btn btn-primary"
+
+            <a class="btn btn-primary"
                href="{{ path('feedback_edit', { 'id': entity.id }) }}">
                 <span class="fa fa-pencil"></span>
                 Edit
             </a>
-        
-                            <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
+
+            <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
                 <span class="fa fa-remove"></span>
                 Delete
             </a>
-        
-        
-            </div>
-</div>
+
+
+        </div>
+    </div>
 
 
     <div class="modal inmodal" id="modalDelete" tabindex="-1" role="dialog" aria-hidden="true">
@@ -131,4 +131,4 @@
     </div>
 
 
-    {% endblock %}
+{% endblock %}
