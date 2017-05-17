@@ -16,15 +16,15 @@
     <section v-cloak class="inner-content section-spaces-line" id="feedback-section">
         <div class="container">
             <div v-if="!done" class="row m-b text-center">
-                <h2>{{ 'Please take this short survey about your experience in our mall' }}</h2>
+                <h2>{{ 'Please take this short survey about your experience in our mall' | trans({}, 'feedback') }}</h2>
             </div>
             <validator name="form">
             <form v-if="!done" class="form-horizontal survey-form">
                 <div class="row">
                     <div class="form-group">
-                        <label class="col-lg-5 col-lg-offset-1">Are you satisfied with the overall Plaza Mariachi appearance?</label>
+                        <label class="col-lg-5 col-lg-offset-1">{{ 'Are you satisfied with the overall Plaza Mariachi appearance?' | trans({}, 'feedback') }}</label>
                         <div class="col-lg-5 no-margin-top">
-                            <label class="control control--radio"> YES
+                            <label class="control control--radio"> {{ 'YES' | trans({}, 'feedback') }}
                                 <input type="radio" v-model="form.satisfied" :value="1" name="satisfied" checked="checked"/>
                                 <div class="control__indicator"></div>
                             </label>
@@ -38,8 +38,8 @@
                 <div class="row">
                     <div class="form-group">
                         <div class="col-lg-5 col-lg-offset-1">
-                            <label class="full">Would you recommend Plaza Mariachi to your friends?</label>
-                            <label class="control control--radio"> YES
+                            <label class="full">{{ 'Would you recommend Plaza Mariachi to your friends?' | trans({}, 'feedback') }}</label>
+                            <label class="control control--radio"> {{ 'YES' | trans({}, 'feedback') }}
                                 <input type="radio" v-model="form.recommend" :value="1" name="recommend" checked="checked"/>
                                 <div class="control__indicator"></div>
                             </label>
@@ -50,10 +50,10 @@
                         </div>
                         <div v-if="!form.recommend" class="col-lg-5 animated fadeInLeft">
                             <label>
-                                Why would you not recommend Plaza Mariachi to your friends?
+                                {{ 'Why would you not recommend Plaza Mariachi to your friends?' | trans({}, 'feedback') }}
                             </label>
                             <label v-if="$form.explain1 && $form.explain1.required" class="error fadeInLeft">
-                                This field is required
+                                {{ 'This field is required' | trans({}, 'feedback') }}
                             </label>
                             <span v-if="!form.recommend">
                             <textarea 
@@ -73,22 +73,22 @@
                 <div class="row">
                     <div class="form-group">
                         <div class="col-lg-5 col-lg-offset-1">
-                            <label class="full">Are you satisfied with the selection of stores within the Plaza Mariachi?</label>
-                            <label class="control control--radio"> YES
-                                <input type="radio" v-model="form.stores" :value="1" checked="checked"/>
+                            <label class="full">{{ 'Are you satisfied with the selection of stores within the Plaza Mariachi?' | trans({}, 'feedback') }}</label>
+                            <label class="control control--radio"> {{ 'YES' | trans({}, 'feedback') }}
+                                <input type="radio" v-model="form.stores" :value="1" name="radio1" checked="checked"/>
                                 <div class="control__indicator"></div>
                             </label>
                             <label class="control control--radio"> NO
-                                <input type="radio" v-model="form.stores" :value="0" name="radio"/>
+                                <input type="radio" v-model="form.stores" :value="0" name="radio1"/>
                                 <div class="control__indicator"></div>
                             </label>
                         </div>
                         <div v-if="!form.stores" class="col-lg-5 animated fadeInLeft">
                             <label>
-                                What additional stores would you like to see at Plaza Mariachi?
+                                {{ 'What additional stores would you like to see at Plaza Mariachi?' | trans({}, 'feedback') }}
                             </label>
                             <label v-if="$form.explain2 && $form.explain2.required" class="error fadeInLeft">
-                                This field is required
+                                {{ 'This field is required' | trans({}, 'feedback') }}
                             </label>
                             <span v-if="!form.stores">
                             <textarea 
@@ -108,22 +108,22 @@
                 <div class="row">
                     <div class="form-group">
                         <div class="col-lg-5 col-lg-offset-1">
-                            <label class="full">Are you satisfied with the food selection?</label>
-                            <label class="control control--radio"> YES
-                                <input type="radio" v-model="form.food" :value="1" checked="checked"/>
+                            <label class="full">{{ 'Are you satisfied with the food selection?' | trans({}, 'feedback') }}</label>
+                            <label class="control control--radio"> {{ 'YES' | trans({}, 'feedback') }}
+                                <input type="radio" v-model="form.food" :value="1" name="radio2" checked="checked"/>
                                 <div class="control__indicator"></div>
                             </label>
                             <label class="control control--radio"> NO
-                                <input type="radio" v-model="form.food" :value="0" name="radio"/>
+                                <input type="radio" v-model="form.food" :value="0" name="radio2"/>
                                 <div class="control__indicator"></div>
                             </label>
                         </div>
                         <div v-if="!form.food" class="col-lg-5 animated fadeInLeft">
                             <label>
-                                What food selections would you like to see at Plaza Mariachi?
+                                {{ 'What food selections would you like to see at Plaza Mariachi?' | trans({}, 'feedback') }}
                             </label>
                             <label v-if="$form.explain3 && $form.explain3.required" class="error fadeInLeft">
-                                This field is required
+                                {{ 'This field is required' | trans({}, 'feedback') }}
                             </label>
                             <span v-if="!form.food">
                                 <textarea
@@ -144,7 +144,7 @@
                     <div class="form-group">
                         <div class="col-lg-5 col-lg-offset-1">
                             <label>
-                                Please rate Plaza Mariachi
+                                {{ 'Please rate Plaza Mariachi' | trans({}, 'feedback') }}
                             </label>
                         </div>
                         <div class="col-lg-5">
@@ -156,16 +156,16 @@
                     <div class="form-group">
                         <div class="col-lg-5 col-lg-offset-1">
                             <label>
-                                Would you like for us to contact you about your experience?
+                                {{ 'Would you like for us to contact you about your experience?' | trans({}, 'feedback') }}
                             </label>
                         </div>
                         <div class="col-lg-5 no-margin-top">
-                            <label class="control control--radio"> YES
-                                <input type="radio" v-model="form.contact" :value="1"/>
+                            <label class="control control--radio"> {{ 'YES' | trans({}, 'feedback') }}
+                                <input type="radio" v-model="form.contact" :value="1" name="radio3"/>
                                 <div class="control__indicator"></div>
                             </label>
                             <label class="control control--radio"> NO
-                                <input type="radio" v-model="form.contact" :value="0" name="radio"/>
+                                <input type="radio" v-model="form.contact" :value="0" name="radio3"/>
                                 <div class="control__indicator"></div>
                             </label>
                         </div>
@@ -175,15 +175,15 @@
                     <div class="form-group">
                         <div class="col-lg-3 m-b col-lg-offset-1">
                             <input type="text" :disabled="!form.contact" 
-                                v-model="form.name" class="form-control" placeholder="NAME">
+                                v-model="form.name" class="form-control" placeholder="{{ 'NAME' | trans({}, 'feedback') }}">
                         </div>
                         <div class="col-lg-3 m-b">
                             <input type="text" :disabled="!form.contact" 
-                                v-model="form.email" class="form-control" placeholder="EMAIL">
+                                v-model="form.email" class="form-control" placeholder="{{ 'EMAIL' | trans({}, 'feedback') }}">
                         </div>
                         <div class="col-lg-3 m-b">
                             <input type="text" :disabled="!form.contact" 
-                                v-model="form.phone" class="form-control" placeholder="PHONE">
+                                v-model="form.phone" class="form-control" placeholder="{{ 'PHONE' | trans({}, 'feedback') }}">
                         </div>
                     </div>
                 </div>
@@ -193,7 +193,7 @@
                         :disabled="!$form.valid"
                         @click="submitForm()"
                         class="btn btn-lg btn-info">
-                        <i class="fa fa-send"></i> SEND FEEDBACK
+                        <i class="fa fa-send"></i> {{ 'SEND FEEDBACK' | trans({}, 'feedback') }}
                     </button>
                 </div>
             </form>
@@ -201,7 +201,7 @@
 
             <div v-if="done" class="application-done">
                 <h2>
-                    Thank you for sending your feedback! <a title="GO HOME" class="btn btn-default" href="{{ path('frontend_homepage') }}">GO HOME</a>
+                    {{ 'Thank you for sending your feedback!' | trans({}, 'feedback') }} <a title="GO HOME" class="btn btn-default" href="{{ path('frontend_homepage') }}">{{ 'GO HOME' | trans({}, 'feedback') }}</a>
                 </h2>
                 <div class="animated fadeInUp sa-icon sa-success animate">
                     <span class="sa-line sa-tip animateSuccessTip"></span>

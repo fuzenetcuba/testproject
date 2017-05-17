@@ -18,29 +18,29 @@
         {% block active_feedback %}active{% endblock %}
 
         {% block page_heading_title %}
-            Feedback list
+            {{ 'Feedback list' | trans({}, 'feedbackbackend') }}
         {% endblock %}
 
     {% block page_heading_action_button %}
         <a class="btn btn-success navbar-btn pull-right" href="{{ path('feedback_new') }}">
             <span class="fa fa-plus"></span>
-            New feedback
+            {{ 'New feedback' | trans({}, 'feedbackbackend') }}
         </a>
     {% endblock %}
 
         {% block page_content %}
 
             <div>
-                <span class="col-sm-2"><b>Total items: </b> {{ entities.getTotalItemCount }}</span>
+                <span class="col-sm-2"><b>{{ 'Total items' | trans({}, 'generalbackend') }}: </b> {{ entities.getTotalItemCount }}</span>
 
                 <div class="col-sm-10 form-group form-inline text-right">
                     <form name="find-form" action="{{ path('feedback_find') }}" method="post">
                         <div class="input-group">
                             <input id="find-form-text" class="form-control" autofocus="on" name="find-form-text"
                                    autocomplete="off"
-                                   type="text" placeholder="Text to find..."/>
+                                   type="text" placeholder="{{ 'Text to find' | trans({}, 'generalbackend') }}..."/>
                         <span class="input-group-btn">
-                            <button type="submit" name="find-form-send" value="sending" class="btn btn-primary">Find
+                            <button type="submit" name="find-form-send" value="sending" class="btn btn-primary">{{ 'Find' | trans({}, 'generalbackend') }}
                             </button>
                         </span>
                         </div>
@@ -61,13 +61,13 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Satisfied', 'e.satisfied') }}
+                            {{ knp_pagination_sortable(entities, 'Satisfied' | trans({}, 'feedbackbackend'), 'e.satisfied') }}
                             {% if entities.isSorted('e.satisfied') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Recommended', 'e.recommended') }}
+                            {{ knp_pagination_sortable(entities, 'Recommended' | trans({}, 'feedbackbackend'), 'e.recommended') }}
                             {% if entities.isSorted('e.recommended') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
@@ -80,7 +80,7 @@
                                             </th>
                          #}
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Store selection', 'e.storesSatisfied') }}
+                            {{ knp_pagination_sortable(entities, 'Stores selection' | trans({}, 'feedbackbackend'), 'e.storesSatisfied') }}
                             {% if entities.isSorted('e.storesSatisfied') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
@@ -93,7 +93,7 @@
                                             </th>
                          #}
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Food selection', 'e.foodSatisfied') }}
+                            {{ knp_pagination_sortable(entities, 'Food selection' | trans({}, 'feedbackbackend'), 'e.foodSatisfied') }}
                             {% if entities.isSorted('e.foodSatisfied') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
@@ -106,19 +106,19 @@
                                             </th>
                          #}
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Rate', 'e.rate') }}
+                            {{ knp_pagination_sortable(entities, 'Rate' | trans({}, 'feedbackbackend'), 'e.rate') }}
                             {% if entities.isSorted('e.rate') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Name', 'e.name') }}
+                            {{ knp_pagination_sortable(entities, 'Name' | trans({}, 'feedbackbackend'), 'e.name') }}
                             {% if entities.isSorted('e.name') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Email', 'e.email') }}
+                            {{ knp_pagination_sortable(entities, 'Email' | trans({}, 'feedbackbackend'), 'e.email') }}
                             {% if entities.isSorted('e.email') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
@@ -130,7 +130,7 @@
                                                 {% endif %}
                                             </th>
                          #}
-                        <th class="text-navy">Actions</th>
+                        <th class="text-navy">{{ 'Actions' | trans({}, 'generalbackend') }}</th>
                     </tr>
                     </thead>
 
@@ -227,7 +227,7 @@
                     {% else %}
                         <tr>
                             <td colspan="14">
-                                There are not entries...
+                                {{ 'There are not entries' | trans({}, 'generalbackend') }}...
                             </td>
                         </tr>
                     {% endfor %}
@@ -243,7 +243,7 @@
                         <div class="form-group pagination pull-right">
                             <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
                                 <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                                    Delete Feedbacks
+                                    {{ 'Delete Feedbacks' | trans({}, 'feedbackbackend') }}
                                 </option>
                             </select>
                         </div>
@@ -257,19 +257,19 @@
                         <div id="modal-title" class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">
                                 <span aria-hidden="true">&times;</span>
-                                <span class="sr-only">Close</span>
+                                <span class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
                             </button>
                             <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
-                            <h4 class="modal-title">Antention!!!</h4>
+                            <h4 class="modal-title">{{ 'Antention' | trans({}, 'generalbackend') }}!!!</h4>
                         </div>
                         <div id="modal-content" class="modal-body">
                             Modal message
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
                             <button id="modal-btn" type="submit" class="btn btn-success"
                                     onclick="$('#batch_action_form').submit();">
-                                <span class="glyphicon glyphicon-ok"></span> Save changes
+                                <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}
                             </button>
                         </div>
                     </div>
@@ -315,7 +315,7 @@
                 //  select2 scripts for batch actions combobox
                 $("#batch_action_do").select2({
                     minimumResultsForSearch: Infinity,
-                    placeholder: "--- Select an action ---"
+                    placeholder: "--- {{ 'Select an action' | trans({}, 'generalbackend') }} ---"
                 }).on("select2:select", function (e) {
                     var batchValue = $("#batch_action_do").val();
 
@@ -334,7 +334,7 @@
                 switch (action) {
                     case "delete":
                         panelTitle.setAttribute("class", "modal-header red-bg");
-                        panelContent.innerHTML = "<strong>Are you sure you want to delete items?</strong> After this action, data will not be restored.";
+                        panelContent.innerHTML = "<strong>{{ 'Are you sure you want to delete items?' | trans({}, 'generalbackend') }}</strong> {{ 'After this action, data will not be restored.' | trans({}, 'generalbackend') }}";
                         panelBtn.setAttribute("class", "btn btn-danger")
                         break;
                 }

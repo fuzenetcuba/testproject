@@ -28,17 +28,17 @@ class SurveyController extends Controller
     {
         $feedback = new Feedback();
 
-        $feedback->satisfied = $request->request->get('satisfied');
-        $feedback->recommended = $request->request->get('recommend');
-        $feedback->whyNotRecommend = $request->request->get('recommendExplain');
-        $feedback->storesSatisfied = $request->request->get('stores');
-        $feedback->additionalStores = $request->request->get('storesExplain');
-        $feedback->foodSatisfied = $request->request->get('food');
-        $feedback->additionalFood = $request->request->get('foodExplain');
-        $feedback->rate = $request->request->get('rate');
-        $feedback->name = $request->request->get('name');
-        $feedback->email = $request->request->get('email');
-        $feedback->phone = $request->request->get('phone');
+        $feedback->setSatisfied($request->request->get('satisfied'));
+        $feedback->setRecommended($request->request->get('recommend'));
+        $feedback->setWhyNotRecommend($request->request->get('recommendExplain'));
+        $feedback->setStoresSatisfied($request->request->get('stores'));
+        $feedback->setAdditionalStores($request->request->get('storesExplain'));
+        $feedback->setFoodSatisfied($request->request->get('food'));
+        $feedback->setAdditionalFood($request->request->get('foodExplain'));
+        $feedback->setRate($request->request->get('rate'));
+        $feedback->setName($request->request->get('name'));
+        $feedback->setEmail($request->request->get('email'));
+        $feedback->setPhone($request->request->get('phone'));
 
         $em = $this->getDoctrine()->getEntityManager();
         $em->persist($feedback);

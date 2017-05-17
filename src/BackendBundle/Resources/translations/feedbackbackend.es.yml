@@ -1,26 +1,27 @@
-Feedback list: Lista de ofertas
-New feedback: Nueva oferta
+Feedback list: Lista de encuestas
+New feedback: Nueva encuesta
 Name: Nombre
-Description: Descripción
-Starts At: Inicia el
-Ends At: Finaliza el
-Starts at: Inicia el
-Ends at: Finaliza el
-Video: Video
-Image: Imagen
-Points: Puntos
-Enabled: Habilitado
-Is active: Habilitado
-Business: Negocio
-No business related: No hay negocio relacionado
-Delete Feedbacks: Eliminar Ofertas
-Enable Feedbacks: Habilitar Ofertas
-Disable Feedbacks: Deshabilitar Ofertas
-Feedback data: Datos de la oferta
-Created At: Creado el
-Updated At: Actualizado el
-Feedback edition: Editar oferta
-Feedback creation: Crear oferta
+Satisfied: Satisfecho
+Recommended: Recomendado
+Why not recommend: ¿Por qué no <br />recomendaría?
+Why not recommend?: ¿Por qué no recomendaría?
+Stores selection: Selección de tiendas
+Stores selection <br />satisfied: Satisfecho con la <br />selección de tiendas
+Additional stores: Tiendas adicionales
+Food selection: Selección de comida
+Food selection <br />satisfied: Satisfecho con la <br />selección de comida
+Food selection satisfied: Satisfecho con la selección de comida
+Additional food: Comidas adicionales
+Rate: Puntuación
+Name: Nombre
+Email: Correo
+Phone: Teléfono
+Delete Feedbacks: Eliminar Encuestas
+Enable Feedbacks: Habilitar Encuestas
+Disable Feedbacks: Deshabilitar Encuestas
+Feedback data: Datos de la encuesta
+Feedback edition: Editar encuesta
+Feedback creation: Crear encuesta
 Update: Actualizar
 Create: Crear
 Create & Back: Crear y volver
