@@ -13,15 +13,15 @@ feedback_show:
     defaults: { _controller: "BackendBundle:Feedback:show" }
     methods:  GET
 
-feedback_new:
-    path:     /new
-    defaults: { _controller: "BackendBundle:Feedback:new" }
-    methods:  [GET, POST]
+#feedback_new:
+#    path:     /new
+#    defaults: { _controller: "BackendBundle:Feedback:new" }
+#    methods:  [GET, POST]
 
-feedback_edit:
-    path:     /{id}/edit
-    defaults: { _controller: "BackendBundle:Feedback:edit" }
-    methods:  [GET, POST, PUT]
+#feedback_edit:
+#    path:     /{id}/edit
+#    defaults: { _controller: "BackendBundle:Feedback:edit" }
+#    methods:  [GET, POST, PUT]
 
 feedback_delete:
     path:     /{id}/delete

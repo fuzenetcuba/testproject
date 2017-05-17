@@ -72,6 +72,7 @@ security:
         - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
         # --------------------- PROFILE SECURITY ACTIONS ---------------------
+        - { path: ^/admin/profile, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/admin/change/profile, role: IS_AUTHENTICATED_FULLY }
 
         # --------------------- SUPERVISOR ACTIONS [ONLY VIEW AND DOWNLOAD INFO] ---------------------

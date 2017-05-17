@@ -13,17 +13,17 @@
             </a>
         </div>
         <div class="col-md-10">
-
-            <a class="btn btn-primary"
-               href="{{ path('settings_edit', { 'id': entity.id }) }}">
-                <span class="fa fa-pencil"></span>
-                {{ 'Edit' | trans({}, 'generalbackend') }}
-            </a>
-
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-primary"
+                   href="{{ path('settings_edit', { 'id': entity.id }) }}">
+                    <span class="fa fa-pencil"></span>
+                    {{ 'Edit' | trans({}, 'generalbackend') }}
+                </a>
+            {% endif %}
         </div>
     </div>
-    <br />
-    <br />
+    <br/>
+    <br/>
     <dl class="dl-horizontal">
         <tbody>
         <dt>Id</dt>
@@ -102,92 +102,92 @@
         <dd>{{ entity.subheaderTodaysHoursOperation }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Header' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br/>
             {{ 'Top Deals Of Day' | trans({}, 'settingsbackend') }}</dt>
         <dd>{{ entity.headerTopDealsOfDay }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br/>
             {{ 'Top Deals Of Day' | trans({}, 'settingsbackend') }}</dt>
         <dd>{{ entity.subheaderTopDealsOfDay }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Header' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br/>
             {{ 'Contact Us' | trans({}, 'homepage') }}</dt>
         <dd>{{ entity.headerContactUs }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br/>
             {{ 'Contact Us' | trans({}, 'homepage') }}</dt>
         <dd>{{ entity.subheaderContactUs }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Header' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br/>
             {{ 'Business Active Deals' | trans({}, 'settingsbackend') }}</dt>
         <dd>{{ entity.headerBusinessActiveDeals }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br/>
             {{ 'Business Active Deals' | trans({}, 'settingsbackend') }}</dt>
         <dd>{{ entity.subheaderBusinessActiveDeals }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Header' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br/>
             {{ 'Related Businesses' | trans({}, 'settingsbackend') }}</dt>
         <dd>{{ entity.headerBusinessRelatedBusinesses }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br/>
             {{ 'Related Businesses' | trans({}, 'settingsbackend') }}</dt>
         <dd>{{ entity.subheaderBusinessRelatedBusinesses }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Header' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br/>
             {{ 'Stay Close' | trans({}, 'settingsbackend') }}</dt>
         <dd>{{ entity.headerStayClose }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br/>
             {{ 'Stay Close' | trans({}, 'settingsbackend') }}</dt>
         <dd>{{ entity.subheaderStayClose }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Header' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br/>
             {{ 'Login' | trans({}, 'settingsbackend') }}</dt>
         <dd>{{ entity.headerLogin }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Text' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Text' | trans({}, 'settingsbackend') }} <br/>
             {{ 'Login' | trans({}, 'settingsbackend') }}</dt>
         <dd>{{ entity.textLogin|raw|nl2br }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Header' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br/>
             {{ 'About' | trans({}, 'settingsbackend') }}</dt>
         <dd>{{ entity.headerAbout }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br/>
             {{ 'About' | trans({}, 'settingsbackend') }}</dt>
         <dd>{{ entity.subheaderAbout }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Text' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Text' | trans({}, 'settingsbackend') }} <br/>
             {{ 'About' | trans({}, 'settingsbackend') }}</dt>
         <dd>{{ entity.textAbout|raw|nl2br }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Header' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Header' | trans({}, 'settingsbackend') }} <br/>
             {{ 'Subscribe For Deals' | trans({}, 'settingsbackend') }}</dt>
         <dd>{{ entity.headerSubscribeForDeals }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Subheader' | trans({}, 'settingsbackend') }} <br/>
             {{ 'Subscribe For Deals' | trans({}, 'settingsbackend') }}</dt>
         <dd>{{ entity.subheaderSubscribeForDeals }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
-            {{ 'Text' | trans({}, 'settingsbackend') }} <br />
+            {{ 'Text' | trans({}, 'settingsbackend') }} <br/>
             {{ 'Subscribe For Deals' | trans({}, 'settingsbackend') }}
         </dt>
         <dd>{{ entity.textSubscribeForDeals|raw|nl2br }}</dd>
@@ -215,13 +215,13 @@
             </a>
         </div>
         <div class="col-md-10">
-
-            <a class="btn btn-primary"
-               href="{{ path('settings_edit', { 'id': entity.id }) }}">
-                <span class="fa fa-pencil"></span>
-                {{ 'Edit' | trans({}, 'generalbackend') }}
-            </a>
-
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-primary"
+                   href="{{ path('settings_edit', { 'id': entity.id }) }}">
+                    <span class="fa fa-pencil"></span>
+                    {{ 'Edit' | trans({}, 'generalbackend') }}
+                </a>
+            {% endif %}
         </div>
     </div>
 

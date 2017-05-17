@@ -20,16 +20,19 @@
 {% endblock %}
 
 {% block page_heading_action_button %}
-    <a class="btn btn-success navbar-btn pull-right" href="{{ path('user_new') }}">
-        <span class="fa fa-plus"></span>
-        {{ 'New user' | trans({}, 'userbackend') }}
-    </a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="btn btn-success navbar-btn pull-right" href="{{ path('user_new') }}">
+            <span class="fa fa-plus"></span>
+            {{ 'New user' | trans({}, 'userbackend') }}
+        </a>
+    {% endif %}
 {% endblock %}
 
 {% block page_content %}
 
     <div>
-        <span class="col-sm-2"><b>{{ 'Total items' | trans({}, 'generalbackend') }}:</b> {{ entities.getTotalItemCount }}</span>
+        <span class="col-sm-2"><b>{{ 'Total items' | trans({}, 'generalbackend') }}
+                :</b> {{ entities.getTotalItemCount }}</span>
 
         <div class="col-sm-10 form-group form-inline text-right">
             <form name="find-form" action="{{ path('user_find') }}" method="post">
@@ -118,14 +121,18 @@
                     <td>{{ entity.phone }}</td>
                     <td id="value-user-enabled-{{ entity.id }}" class="text-center">
                         <div class="onoffswitch-ios switch-xs">
-                            {% if (entity.id != app.user.id) %}
-                                <input type="checkbox" name="switch-ios-{{ entity.id }}"
-                                       class="onoffswitch-ios-checkbox"
-                                       id="switch-ios-{{ entity.id }}" {{ entity.enabled ? 'checked' : '' }}>
-                                <label class="onoffswitch-ios-label" for="switch-ios-{{ entity.id }}"
-                                       onclick="userEnabled({{ entity.id }});"></label>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                {% if (entity.id != app.user.id) %}
+                                    <input type="checkbox" name="switch-ios-{{ entity.id }}"
+                                           class="onoffswitch-ios-checkbox"
+                                           id="switch-ios-{{ entity.id }}" {{ entity.enabled ? 'checked' : '' }}>
+                                    <label class="onoffswitch-ios-label" for="switch-ios-{{ entity.id }}"
+                                           onclick="userEnabled({{ entity.id }});"></label>
+                                {% else %}
+                                    <label class="onoffswitch-ios-label checked"></label>
+                                {% endif %}
                             {% else %}
-                                <label class="onoffswitch-ios-label checked"></label>
+                                <label class="onoffswitch-ios-label {{ entity.enabled ? 'checked' : '' }}"></label>
                             {% endif %}
                         </div>
                     </td>
@@ -142,10 +149,12 @@
                                href="{{ path('user_show', { 'id': entity.id }) }}">
                                 <span class="fa fa-search"></span>
                             </a>
-                            <a class="btn btn-xs btn-outline btn-primary"
-                               href="{{ path('user_edit', { 'id': entity.id }) }}">
-                                <span class="fa fa-pencil"></span>
-                            </a>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a class="btn btn-xs btn-outline btn-primary"
+                                   href="{{ path('user_edit', { 'id': entity.id }) }}">
+                                    <span class="fa fa-pencil"></span>
+                                </a>
+                            {% endif %}
                         </div>
                     </td>
                 </tr>
@@ -165,19 +174,21 @@
                 {{ knp_pagination_render(entities) }}
             </div>
             <div class="col-md-4">
-                <div class="form-group pagination pull-right">
-                    <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
-                        <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                            {{ 'Delete Users' | trans({}, 'userbackend') }}
-                        </option>
-                        <option value="enable" data-toggle="modal" data-target="#modalBatch">
-                            {{ 'Enable Users' | trans({}, 'userbackend') }}
-                        </option>
-                        <option value="disable" data-toggle="modal" data-target="#modalBatch">
-                            {{ 'Disable Users' | trans({}, 'userbackend') }}
-                        </option>
-                    </select>
-                </div>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <div class="form-group pagination pull-right">
+                        <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
+                            <option value="delete" data-toggle="modal" data-target="#modalBatch">
+                                {{ 'Delete Users' | trans({}, 'userbackend') }}
+                            </option>
+                            <option value="enable" data-toggle="modal" data-target="#modalBatch">
+                                {{ 'Enable Users' | trans({}, 'userbackend') }}
+                            </option>
+                            <option value="disable" data-toggle="modal" data-target="#modalBatch">
+                                {{ 'Disable Users' | trans({}, 'userbackend') }}
+                            </option>
+                        </select>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </form>
@@ -187,7 +198,8 @@
             <div class="modal-content animated bounceInRight">
                 <div id="modal-title" class="modal-header {# blue-bg #}">
                     <button type="button" class="close" data-dismiss="modal"><span
-                                aria-hidden="true">&times;</span><span class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
+                                aria-hidden="true">&times;</span><span
+                                class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
                     </button>
                     <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
                     <h4 class="modal-title">{{ 'Attention' | trans({}, 'generalbackend') }}!!!</h4>
@@ -196,7 +208,8 @@
                     {# Text to show #}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
+                    <button type="button" class="btn btn-white"
+                            data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
                     <button id="modal-btn" type="submit" class="btn {# btn-danger #}"
                             onclick="$('#batch_action_form').submit();">
                         <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}
