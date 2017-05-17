@@ -101,7 +101,8 @@ calendar_json:
         key: 'music'
 
 calendar:
-    path:      /calendars/{key}
+    path:      /calendars/{view}/{key}
     defaults:
         _controller: FrontendBundle:Calendar:index
         key: 'music'
+        view: 'timeline'
