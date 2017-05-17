@@ -98,7 +98,7 @@
 
                 $(this).text(date.locale('{{ app.request.get('_locale') }}').from(now));
                 $(this).prev().html(
-                    date.format('DD/MM/YYYY h:mm A')
+                    date.format('MM/DD/YYYY h:mm A')
                 )
             });
 
