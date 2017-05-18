@@ -193,6 +193,14 @@ body.landing-page {
     border-top: 4px solid #B0B42B;
 }
 
+@media (max-width: 600px) {
+.landing-page .navbar-default .navbar-nav > .active > a,
+.landing-page .navbar-default .navbar-nav > .active > a:hover {
+    border-bottom: 4px solid #B0B42B;
+}
+
+}
+
 .landing-page .navbar-default .navbar-nav > li > a:hover,
 .landing-page .navbar-default .navbar-nav > li > a:focus {
     color: #B0B42B;
