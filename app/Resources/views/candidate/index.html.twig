@@ -24,28 +24,33 @@
 
     {% block page_heading_action_button %}
         {#<a class="btn btn-success navbar-btn pull-right" href="{{ path('candidate_new') }}">#}
-            {#<span class="fa fa-plus"></span>#}
-            {#New candidate#}
+        {#<span class="fa fa-plus"></span>#}
+        {#New candidate#}
         {#</a>#}
     {% endblock %}
 
         {% block page_content %}
 
             <div>
-                <span class="col-sm-1"><b>{{ 'Total items' |trans({}, 'generalbackend') }}: </b> {{ entities.getTotalItemCount }}</span>
+                <span class="col-sm-1"><b>{{ 'Total items' |trans({}, 'generalbackend') }}
+                        : </b> {{ entities.getTotalItemCount }}</span>
 
                 <div class="col-sm-11 form-group form-inline text-right">
-                    <form id="export-form" name="export-form" action="{{ path('candidate_find') }}" method="post" novalidate>
+                    <form id="export-form" name="export-form" action="{{ path('candidate_find') }}" method="post"
+                          novalidate>
                     <span class="pull-left">
                         <div class="input-daterange input-group" id="datepicker">
-                            <input type="text" required class="input-sm form-control" name="start" 
-                                placeholder="{{ 'Start date' |trans({}, 'generalbackend') }}" value="{{ first.created | date('m/d/Y') }}" />
+                            <input type="text" required class="input-sm form-control" name="start"
+                                   placeholder="{{ 'Start date' |trans({}, 'generalbackend') }}"
+                                   value="{{ first.created | date('m/d/Y') }}"/>
                             <span class="input-group-addon">TO</span>
-                            <input type="text" required class="input-sm form-control" name="end"  
-                                placeholder="{{ 'End date' |trans({}, 'generalbackend') }}" value="{{ 'now' | date('m/d/Y') }}" />
+                            <input type="text" required class="input-sm form-control" name="end"
+                                   placeholder="{{ 'End date' |trans({}, 'generalbackend') }}"
+                                   value="{{ 'now' | date('m/d/Y') }}"/>
                         </div>
 
-                        <button type="submit" class="btn btn-info">{{ 'EXPORT TO PDF' |trans({}, 'generalbackend') }}</button>
+                        <button type="submit"
+                                class="btn btn-info">{{ 'EXPORT TO PDF' |trans({}, 'generalbackend') }}</button>
                     </span>
                     </form>
                     <form name="find-form" action="{{ path('candidate_find') }}" method="post">
@@ -54,7 +59,8 @@
                                    autocomplete="off"
                                    type="text" placeholder="{{ 'Text to find' |trans({}, 'generalbackend') }}..."/>
                         <span class="input-group-btn">
-                            <button type="submit" name="find-form-send" value="sending" class="btn btn-primary">{{ 'Find' | trans({}, 'generalbackend') }}
+                            <button type="submit" name="find-form-send" value="sending"
+                                    class="btn btn-primary">{{ 'Find' | trans({}, 'generalbackend') }}
                             </button>
                         </span>
                         </div>
@@ -158,7 +164,8 @@
                             </td>
 
                             <td>
-                                <img style="max-width: 100px; height: auto;" src="{{ asset('images/business//' ~ entity.opening.business.logo) }}"
+                                <img style="max-width: 100px; height: auto;"
+                                     src="{{ asset('images/business//' ~ entity.opening.business.logo) }}"
                                      alt="{{ entity.opening.business.logo }}"/>
                                 {{ entity.opening.business.name }}
                             </td>
@@ -202,7 +209,7 @@
                                     {% endif %}
                                 </div>
                             </td>
-                            
+
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-xs btn-outline btn-primary"
@@ -215,8 +222,8 @@
                                                 class="fa fa-file-pdf-o"></span>
                                     </a>
                                     {#<a class="btn btn-xs btn-outline btn-primary"#}
-                                       {#href="{{ path('candidate_edit', { 'id': entity.id }) }}"> <span#}
-                                                {#class="fa fa-pencil"></span>#}
+                                    {#href="{{ path('candidate_edit', { 'id': entity.id }) }}"> <span#}
+                                    {#class="fa fa-pencil"></span>#}
                                     {#</a>#}
                                 </div>
                             </td>
@@ -238,13 +245,15 @@
                         {{ knp_pagination_render(entities) }}
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group pagination pull-right">
-                            <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
-                                <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                                    {{ 'Delete Candidates' | trans({}, 'candidatebackend') }}
-                                </option>
-                            </select>
-                        </div>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="form-group pagination pull-right">
+                                <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
+                                    <option value="delete" data-toggle="modal" data-target="#modalBatch">
+                                        {{ 'Delete Candidates' | trans({}, 'candidatebackend') }}
+                                    </option>
+                                </select>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </form>
@@ -264,7 +273,8 @@
                             Modal message
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
+                            <button type="button" class="btn btn-white"
+                                    data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
                             <button id="modal-btn" type="submit" class="btn btn-success"
                                     onclick="$('#batch_action_form').submit();">
                                 <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}
@@ -288,7 +298,7 @@
         <script src="{{ asset('bundles/backend/js/moment.min.js') }}"
                 type="text/javascript"></script>
         <script src="{{ asset('bundles/backend/js/plugins/datapicker/bootstrap-datepicker.js') }}"
-                type="text/javascript"></script> 
+                type="text/javascript"></script>
         <script src="{{ asset('bundles/backend/js/jquery-validation.min.js') }}"
                 type="text/javascript"></script>
         <script src="{{ asset('bundles/backend/js/jquery-validate-tooltip.js') }}"

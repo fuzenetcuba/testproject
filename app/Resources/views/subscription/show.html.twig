@@ -20,8 +20,8 @@
         <dd>
             {% for category in entity.categories %}
                 <span class="label label-primary">{{ category }}</span>
-                {% else %}
-                    <span class="label label-default">{{ 'No categories' | trans({}, 'subscriptionbackend') }}</span>
+            {% else %}
+                <span class="label label-default">{{ 'No categories' | trans({}, 'subscriptionbackend') }}</span>
             {% endfor %}
         </dd>
         <div class="hr-line-dashed"></div>
@@ -35,20 +35,18 @@
             </a>
         </div>
         <div class="col-md-10">
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-primary"
+                   href="{{ path('subscription_edit', { 'id': entity.id }) }}">
+                    <span class="fa fa-pencil"></span>
+                    {{ 'Edit' | trans({}, 'generalbackend') }}
+                </a>
 
-
-            <a class="btn btn-primary"
-               href="{{ path('subscription_edit', { 'id': entity.id }) }}">
-                <span class="fa fa-pencil"></span>
-                {{ 'Edit' | trans({}, 'generalbackend') }}
-            </a>
-
-            <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
-                <span class="fa fa-remove"></span>
-                {{ 'Delete' | trans({}, 'generalbackend') }}
-            </a>
-
-
+                <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
+                    <span class="fa fa-remove"></span>
+                    {{ 'Delete' | trans({}, 'generalbackend') }}
+                </a>
+            {% endif %}
         </div>
     </div>
 
@@ -58,7 +56,8 @@
             <div class="modal-content animated bounceInRight">
                 <div id="modal-title" class="modal-header red-bg">
                     <button type="button" class="close" data-dismiss="modal"><span
-                                aria-hidden="true">&times;</span><span class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
+                                aria-hidden="true">&times;</span><span
+                                class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
                     </button>
                     <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
                     <h4 class="modal-title">{{ 'Attention' | trans({}, 'generalbackend') }}!!!</h4>
@@ -69,7 +68,8 @@
                 <div class="modal-footer">
                     <form action="{{ path('subscription_delete', { 'id': entity.id }) }}"
                           name="form-delete" method="post">
-                        <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
+                        <button type="button" class="btn btn-white"
+                                data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
                         <button id="modal-btn" type="submit" class="btn btn-danger" name="subscription-id"
                                 value="{{ entity.id }}">
                             <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}

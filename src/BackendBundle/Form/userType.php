@@ -20,6 +20,7 @@ class userType extends AbstractType
         $choiceList = new SimpleChoiceList(array(
             'Customer' => 'ROLE_CUSTOMER',
             'Business' => 'ROLE_BUSINESS',
+            'Supervisor' => 'ROLE_SUPERVISOR',
             'Admin' => 'ROLE_ADMIN'
         ));
         $builder
@@ -29,6 +30,7 @@ class userType extends AbstractType
                 'choices' => array(
                     'ROLE_CUSTOMER' => 'Customer',
                     'ROLE_BUSINESS' => 'Business',
+                    'ROLE_SUPERVISOR' => 'Supervisor',
                     'ROLE_ADMIN' => 'Admin'
                 ),
                 'expanded' => true,

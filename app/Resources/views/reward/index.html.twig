@@ -22,16 +22,19 @@
         {% endblock %}
 
     {% block page_heading_action_button %}
-        <a class="btn btn-success navbar-btn pull-right" href="{{ path('reward_new') }}">
-            <span class="fa fa-plus"></span>
-            {{ 'New reward' | trans({}, 'rewardbackend') }}
-        </a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a class="btn btn-success navbar-btn pull-right" href="{{ path('reward_new') }}">
+                <span class="fa fa-plus"></span>
+                {{ 'New reward' | trans({}, 'rewardbackend') }}
+            </a>
+        {% endif %}
     {% endblock %}
 
         {% block page_content %}
 
             <div>
-                <span class="col-sm-2"><b>{{ 'Total items' | trans({}, 'generalbackend') }}: </b> {{ entities.getTotalItemCount }}</span>
+                <span class="col-sm-2"><b>{{ 'Total items' | trans({}, 'generalbackend') }}
+                        : </b> {{ entities.getTotalItemCount }}</span>
 
                 <div class="col-sm-10 form-group form-inline text-right">
                     <form name="find-form" action="{{ path('reward_find') }}" method="post">
@@ -119,11 +122,16 @@
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-xs btn-outline btn-primary"
-                                       href="{{ path('reward_show', { 'id': entity.id }) }}"> <span
-                                                class="fa fa-search"></span> </a> <a
-                                            class="btn btn-xs btn-outline btn-primary"
-                                            href="{{ path('reward_edit', { 'id': entity.id }) }}"> <span
-                                                class="fa fa-pencil"></span> </a></div>
+                                       href="{{ path('reward_show', { 'id': entity.id }) }}">
+                                        <span class="fa fa-search"></span>
+                                    </a>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <a class="btn btn-xs btn-outline btn-primary"
+                                           href="{{ path('reward_edit', { 'id': entity.id }) }}">
+                                            <span class="fa fa-pencil"></span>
+                                        </a>
+                                    {% endif %}
+                                </div>
                             </td>
 
                         </tr>
@@ -143,13 +151,15 @@
                         {{ knp_pagination_render(entities) }}
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group pagination pull-right">
-                            <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
-                                <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                                    {{ 'Delete Rewards' | trans({}, 'rewardbackend') }}
-                                </option>
-                            </select>
-                        </div>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="form-group pagination pull-right">
+                                <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
+                                    <option value="delete" data-toggle="modal" data-target="#modalBatch">
+                                        {{ 'Delete Rewards' | trans({}, 'rewardbackend') }}
+                                    </option>
+                                </select>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </form>
@@ -169,7 +179,8 @@
                             Modal message
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
+                            <button type="button" class="btn btn-white"
+                                    data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
                             <button id="modal-btn" type="submit" class="btn btn-success"
                                     onclick="$('#batch_action_form').submit();">
                                 <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}

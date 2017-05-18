@@ -40,11 +40,12 @@
             </a>
         </div>
         <div class="col-md-10">
-
-            <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
-                <span class="fa fa-remove"></span>
-                {{ 'Delete' | trans({}, 'generalbackend') }}
-            </a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
+                    <span class="fa fa-remove"></span>
+                    {{ 'Delete' | trans({}, 'generalbackend') }}
+                </a>
+            {% endif %}
 
             <a title="Details" class="btn btn-primary" href="{{ path('alert_details', {'id' : entity.id}) }}">
                 {{ 'View' | trans({}, 'alertbackend') }} <span class="fa fa-angle-double-right"></span>

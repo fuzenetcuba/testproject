@@ -17,15 +17,16 @@
 
     {% block page_heading_action_button %}
         {#<a class="btn btn-success navbar-btn pull-right" href="{{ path('settings_new') }}">#}
-            {#<span class="fa fa-plus"></span>#}
-            {#New settings#}
+        {#<span class="fa fa-plus"></span>#}
+        {#New settings#}
         {#</a>#}
     {% endblock %}
 
         {% block page_content %}
 
             <div>
-                <span class="col-sm-2"><b>{{ 'Total items' | trans({}, 'generalbackend') }}: </b> {{ entities.getTotalItemCount }}</span>
+                <span class="col-sm-2"><b>{{ 'Total items' | trans({}, 'generalbackend') }}
+                        : </b> {{ entities.getTotalItemCount }}</span>
 
             </div>
 
@@ -112,10 +113,12 @@
                                    href="{{ path('settings_show', { 'id': entity.id }) }}">
                                     <span class="fa fa-search"></span>
                                 </a>
-                                <a class="btn btn-xs btn-outline btn-primary"
-                                   href="{{ path('settings_edit', { 'id': entity.id }) }}">
-                                    <span class="fa fa-pencil"></span>
-                                </a>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <a class="btn btn-xs btn-outline btn-primary"
+                                       href="{{ path('settings_edit', { 'id': entity.id }) }}">
+                                        <span class="fa fa-pencil"></span>
+                                    </a>
+                                {% endif %}
                             </div>
                         </td>
                     </tr>
