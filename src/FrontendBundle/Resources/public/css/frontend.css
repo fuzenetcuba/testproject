@@ -274,7 +274,7 @@ body.landing-page {
 @media (max-width: 767px) {
     .navbar-fixed-bottom .navbar-collapse,
     .navbar-fixed-top .navbar-collapse {
-        max-height: 340px !important;
+        max-height: 380px !important;
     }
 }
 

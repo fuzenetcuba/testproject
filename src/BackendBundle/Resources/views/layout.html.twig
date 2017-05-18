@@ -93,77 +93,93 @@
                     {% include '@Backend/Layout/profile.html.twig' %}
 
                     <li class="{% block active_dashboard %}{% endblock %}">
-                        <a title="{{ 'Dashboard' | trans({}, 'generalbackend') }}" href="{{ path('backend_homepage') }}"><i class="fa fa-th-large"></i> <span
+                        <a title="{{ 'Dashboard' | trans({}, 'generalbackend') }}"
+                           href="{{ path('backend_homepage') }}"><i class="fa fa-th-large"></i> <span
                                     class="nav-label">{{ 'Dashboard' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     {#<li class="{% block active_helpers %}{% endblock %}">#}
-                        {#<a title="" href="{{ path('helpers') }}"><i class="fa fa-android"></i><span#}
-                                    {#class="nav-label">Helpers</span></a>#}
+                    {#<a title="" href="{{ path('helpers') }}"><i class="fa fa-android"></i><span#}
+                    {#class="nav-label">Helpers</span></a>#}
                     {#</li>#}
 
                     <li class="{% block active_business %}{% endblock %}">
-                        <a title="{{ 'Businesses' | trans({}, 'generalbackend') }}" href="{{ path('business') }}"><i class="fa fa-briefcase"></i> <span
+                        <a title="{{ 'Businesses' | trans({}, 'generalbackend') }}" href="{{ path('business') }}"><i
+                                    class="fa fa-briefcase"></i> <span
                                     class="nav-label">{{ 'Businesses' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_category %}{% endblock %}">
-                        <a title="{{ 'Business Categories' | trans({}, 'generalbackend') }}" href="{{ path('category') }}"><i class="fa fa-reorder"></i> <span
+                        <a title="{{ 'Business Categories' | trans({}, 'generalbackend') }}"
+                           href="{{ path('category') }}"><i class="fa fa-reorder"></i> <span
                                     class="nav-label">{{ 'Business Categories' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_opening_category %}{% endblock %}">
-                        <a title="{{ 'Opening Categories' | trans({}, 'generalbackend') }}" href="{{ path('opening_category') }}"><i class="fa fa-reorder"></i> <span
+                        <a title="{{ 'Opening Categories' | trans({}, 'generalbackend') }}"
+                           href="{{ path('opening_category') }}"><i class="fa fa-reorder"></i> <span
                                     class="nav-label">{{ 'Opening Categories' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_deal %}{% endblock %}">
-                        <a title="{{ 'Deals' | trans({}, 'generalbackend') }}" href="{{ path('deal') }}"><i class="fa fa-tag"></i><span
+                        <a title="{{ 'Deals' | trans({}, 'generalbackend') }}" href="{{ path('deal') }}"><i
+                                    class="fa fa-tag"></i><span
                                     class="nav-label">{{ 'Deals' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_reward %}{% endblock %}">
-                        <a title="{{ 'Rewards' | trans({}, 'generalbackend') }}" href="{{ path('reward') }}"><i class="fa fa-star"></i><span
+                        <a title="{{ 'Rewards' | trans({}, 'generalbackend') }}" href="{{ path('reward') }}"><i
+                                    class="fa fa-star"></i><span
                                     class="nav-label">{{ 'Rewards' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_customer %}{% endblock %}">
-                        <a title="{{ 'Customers' | trans({}, 'generalbackend') }}" href="{{ path('customer') }}"><i class="fa fa-user"></i> <span
+                        <a title="{{ 'Customers' | trans({}, 'generalbackend') }}" href="{{ path('customer') }}"><i
+                                    class="fa fa-user"></i> <span
                                     class="nav-label">{{ 'Customers' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_subscription %}{% endblock %}">
-                        <a title="{{ 'Subscriptions' | trans({}, 'generalbackend') }}" href="{{ path('subscription') }}"><i class="fa fa-flag"></i> <span
+                        <a title="{{ 'Subscriptions' | trans({}, 'generalbackend') }}"
+                           href="{{ path('subscription') }}"><i class="fa fa-flag"></i> <span
                                     class="nav-label">{{ 'Subscriptions' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
-                    <li class="{% block active_mails %}{% endblock %}">
-                        <a title="{{ 'Mails' | trans({}, 'generalbackend') }}" href="{{ path('mails_send') }}"><i class="fa fa-send"></i> <span
-                                    class="nav-label">{{ 'Mails' | trans({}, 'generalbackend') }}</span></a>
-                    </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="{% block active_mails %}{% endblock %}">
+                            <a title="{{ 'Mails' | trans({}, 'generalbackend') }}" href="{{ path('mails_send') }}"><i
+                                        class="fa fa-send"></i> <span
+                                        class="nav-label">{{ 'Mails' | trans({}, 'generalbackend') }}</span></a>
+                        </li>
+                    {% endif %}
 
                     <li class="{% block active_users %}{% endblock %}">
-                        <a title="{{ 'Users' | trans({}, 'generalbackend') }}" href="{{ path('user') }}"><i class="fa fa-users"></i> <span
+                        <a title="{{ 'Users' | trans({}, 'generalbackend') }}" href="{{ path('user') }}"><i
+                                    class="fa fa-users"></i> <span
                                     class="nav-label">{{ 'Users' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_opening %}{% endblock %}">
-                        <a title="{{ 'Openings' | trans({}, 'generalbackend') }}" href="{{ path('opening') }}"><i class="fa fa-cog"></i> <span
+                        <a title="{{ 'Openings' | trans({}, 'generalbackend') }}" href="{{ path('opening') }}"><i
+                                    class="fa fa-cog"></i> <span
                                     class="nav-label">{{ 'Openings' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_candidate %}{% endblock %}">
-                        <a title="{{ 'Candidates' | trans({}, 'generalbackend') }}" href="{{ path('candidate') }}"><i class="fa fa-user"></i> <span
+                        <a title="{{ 'Candidates' | trans({}, 'generalbackend') }}" href="{{ path('candidate') }}"><i
+                                    class="fa fa-user"></i> <span
                                     class="nav-label">{{ 'Candidates' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_alert %}{% endblock %}">
-                        <a title="{{ 'Alerts' | trans({}, 'generalbackend') }}" href="{{ path('alert') }}"><i class="fa fa-bell"></i> <span
+                        <a title="{{ 'Alerts' | trans({}, 'generalbackend') }}" href="{{ path('alert') }}"><i
+                                    class="fa fa-bell"></i> <span
                                     class="nav-label">{{ 'Alerts' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
                     <li class="{% block active_settings %}{% endblock %}">
-                        <a title="{{ 'Settings' | trans({}, 'generalbackend') }}" href="{{ path('settings') }}"><i class="fa fa-cog"></i> <span
+                        <a title="{{ 'Settings' | trans({}, 'generalbackend') }}" href="{{ path('settings') }}"><i
+                                    class="fa fa-cog"></i> <span
                                     class="nav-label">{{ 'Settings' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
@@ -173,7 +189,8 @@
                     </li>
 
                     <li class="special_link">
-                        <a title="{{ 'Logout' | trans({}, 'generalbackend') }}" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> <span
+                        <a title="{{ 'Logout' | trans({}, 'generalbackend') }}"
+                           href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> <span
                                     class="nav-label">{{ 'Logout' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
@@ -194,7 +211,8 @@
                                     class="fa fa-bars"></i> </a>
 
                         <div class="navbar-title navbar-text text-muted">
-                            <h2><a title="Plaza Mariachi" class="text-muted" href="{{ path('frontend_homepage') }}">Plaza Mariachi</a>
+                            <h2><a title="Plaza Mariachi" class="text-muted" href="{{ path('frontend_homepage') }}">Plaza
+                                    Mariachi</a>
                             </h2>
                         </div>
                     </div>

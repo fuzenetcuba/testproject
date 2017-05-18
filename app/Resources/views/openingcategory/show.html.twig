@@ -30,7 +30,7 @@
             {% for opening in entity.openings %}
                 <span class="label label-primary">{{ opening }}</span>
             {% else %}
-                <span class="label label-warning">{{ 'No openings related'  | trans({}, 'openingcategorybackend')}}</span>
+                <span class="label label-warning">{{ 'No openings related'  | trans({}, 'openingcategorybackend') }}</span>
             {% endfor %}
         </dd>
         <div class="hr-line-dashed"></div>
@@ -49,20 +49,18 @@
             </a>
         </div>
         <div class="col-md-10">
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-primary"
+                   href="{{ path('opening_category_edit', { 'id': entity.id }) }}">
+                    <span class="fa fa-pencil"></span>
+                    {{ 'Edit' | trans({}, 'generalbackend') }}
+                </a>
 
-
-            <a class="btn btn-primary"
-               href="{{ path('opening_category_edit', { 'id': entity.id }) }}">
-                <span class="fa fa-pencil"></span>
-                {{ 'Edit' | trans({}, 'generalbackend') }}
-            </a>
-
-            <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
-                <span class="fa fa-remove"></span>
-                {{ 'Delete' | trans({}, 'generalbackend') }}
-            </a>
-
-
+                <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
+                    <span class="fa fa-remove"></span>
+                    {{ 'Delete' | trans({}, 'generalbackend') }}
+                </a>
+            {% endif %}
         </div>
     </div>
 

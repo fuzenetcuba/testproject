@@ -61,7 +61,8 @@
         </div>
         <div class="col-xs-6">
             <dl class="dl-horizontal m-b-none">
-                <dt>{{ 'Social Security or' | trans({}, 'candidatebackend') | raw }} <br/>{{ 'Tax Id Number' | trans({}, 'candidatebackend') | raw }}</dt>
+                <dt>{{ 'Social Security or' | trans({}, 'candidatebackend') | raw }}
+                    <br/>{{ 'Tax Id Number' | trans({}, 'candidatebackend') | raw }}</dt>
                 <dd>{{ entity.socialNumber }}</dd>
             </dl>
         </div>
@@ -141,10 +142,13 @@
                             <div class="row">
                                 <div class="col-sm-1"><b>{{ 'Monday' | trans({}, 'candidatebackend') | raw }}</b></div>
                                 <div class="col-sm-1"><b>{{ 'Tuesday' | trans({}, 'candidatebackend') | raw }}</b></div>
-                                <div class="col-sm-1"><b>{{ 'Wednesday' | trans({}, 'candidatebackend') | raw }}</b></div>
-                                <div class="col-sm-1"><b>{{ 'Thursday' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                <div class="col-sm-1"><b>{{ 'Wednesday' | trans({}, 'candidatebackend') | raw }}</b>
+                                </div>
+                                <div class="col-sm-1"><b>{{ 'Thursday' | trans({}, 'candidatebackend') | raw }}</b>
+                                </div>
                                 <div class="col-sm-1"><b>{{ 'Friday' | trans({}, 'candidatebackend') | raw }}</b></div>
-                                <div class="col-sm-1"><b>{{ 'Saturday' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                <div class="col-sm-1"><b>{{ 'Saturday' | trans({}, 'candidatebackend') | raw }}</b>
+                                </div>
                                 <div class="col-sm-1"><b>{{ 'Sunday' | trans({}, 'candidatebackend') | raw }}</b></div>
                             </div>
                             <div class="row">
@@ -446,17 +450,27 @@
                         <div>
                             {% for employer in entity.employers|json_decode %}
                                 <div class="row">
-                                    <div class="col-sm-1"><b>{{ 'Name' | trans({}, 'candidatebackend') | raw }}</b></div>
-                                    <div class="col-sm-1"><b>{{ 'Address' | trans({}, 'candidatebackend') | raw }}</b></div>
-                                    <div class="col-sm-1"><b>{{ 'Phone' | trans({}, 'candidatebackend') | raw }}</b></div>
-                                    <div class="col-sm-1"><b>{{ 'Position' | trans({}, 'candidatebackend') | raw }}</b></div>
-                                    <div class="col-sm-1"><b>{{ 'From' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                    <div class="col-sm-1"><b>{{ 'Name' | trans({}, 'candidatebackend') | raw }}</b>
+                                    </div>
+                                    <div class="col-sm-1"><b>{{ 'Address' | trans({}, 'candidatebackend') | raw }}</b>
+                                    </div>
+                                    <div class="col-sm-1"><b>{{ 'Phone' | trans({}, 'candidatebackend') | raw }}</b>
+                                    </div>
+                                    <div class="col-sm-1"><b>{{ 'Position' | trans({}, 'candidatebackend') | raw }}</b>
+                                    </div>
+                                    <div class="col-sm-1"><b>{{ 'From' | trans({}, 'candidatebackend') | raw }}</b>
+                                    </div>
                                     <div class="col-sm-1"><b>{{ 'To' | trans({}, 'candidatebackend') | raw }}</b></div>
-                                    <div class="col-sm-1"><b>{{ 'Mode' | trans({}, 'candidatebackend') | raw }}</b></div>
-                                    <div class="col-sm-1"><b>{{ 'Hours' | trans({}, 'candidatebackend') | raw }}</b></div>
-                                    <div class="col-sm-1"><b>{{ 'Salary' | trans({}, 'candidatebackend') | raw }}</b></div>
-                                    <div class="col-sm-1"><b>{{ 'Supervisor' | trans({}, 'candidatebackend') | raw }}</b></div>
-                                    <div class="col-sm-1"><b>{{ 'Department' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                    <div class="col-sm-1"><b>{{ 'Mode' | trans({}, 'candidatebackend') | raw }}</b>
+                                    </div>
+                                    <div class="col-sm-1"><b>{{ 'Hours' | trans({}, 'candidatebackend') | raw }}</b>
+                                    </div>
+                                    <div class="col-sm-1"><b>{{ 'Salary' | trans({}, 'candidatebackend') | raw }}</b>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <b>{{ 'Supervisor' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                    <div class="col-sm-1">
+                                        <b>{{ 'Department' | trans({}, 'candidatebackend') | raw }}</b></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-1">{{ employer.name is empty ? "-" : employer.name }}</div>
@@ -473,8 +487,10 @@
                                 </div>
                                 <hr class="hr-line-solid">
                                 <div class="row">
-                                    <div class="col-sm-6"><b>{{ 'Leaving Reason' | trans({}, 'candidatebackend') | raw }}</b></div>
-                                    <div class="col-sm-6"><b>{{ 'Duties' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                    <div class="col-sm-6">
+                                        <b>{{ 'Leaving Reason' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                    <div class="col-sm-6"><b>{{ 'Duties' | trans({}, 'candidatebackend') | raw }}</b>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">{{ employer.leavingReason is empty ? "-" : employer.leavingReason }}</div>
@@ -497,7 +513,8 @@
                             <div class="row">
                                 <div class="col-sm-1"><b>{{ 'Name' | trans({}, 'candidatebackend') | raw }}</b></div>
                                 <div class="col-sm-1"><b>{{ 'Phone' | trans({}, 'candidatebackend') | raw }}</b></div>
-                                <div class="col-sm-1"><b>{{ 'Professional' | trans({}, 'candidatebackend') | raw }}</b></div>
+                                <div class="col-sm-1"><b>{{ 'Professional' | trans({}, 'candidatebackend') | raw }}</b>
+                                </div>
                             </div>
                             {% for reference in entity.references|json_decode %}
                                 <div class="row">
@@ -580,11 +597,12 @@
                 {{ 'Export to PDF' | trans({}, 'generalbackend') }}
             </a>
 
-            <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
-                <span class="fa fa-remove"></span>
-                {{ 'Delete' | trans({}, 'generalbackend') }}
-            </a>
-
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
+                    <span class="fa fa-remove"></span>
+                    {{ 'Delete' | trans({}, 'generalbackend') }}
+                </a>
+            {% endif %}
 
         </div>
     </div>
@@ -606,7 +624,8 @@
                 <div class="modal-footer">
                     <form action="{{ path('candidate_delete', { 'id': entity.id }) }}"
                           name="form-delete" method="post">
-                        <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
+                        <button type="button" class="btn btn-white"
+                                data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
                         <button id="modal-btn" type="submit" class="btn btn-danger" name="candidate-id"
                                 value="{{ entity.id }}">
                             <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}

@@ -219,13 +219,12 @@ class CandidateController extends Controller
 
         $pdfGenerator = $this->get('spraed.pdf.generator');
 
-        $today = new \DateTime('NOW');
-
         return new Response($pdfGenerator->generatePDF($html),
             200,
             array(
                 'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'attachment;filename="job-applications-' . $today->format('Ymd') . '.pdf"'
+                'Content-Disposition' => 'attachment;filename="job-application-'
+                    . $entity->getFirstName() . '-' . $entity->getCreated()->format('Ymd') . '.pdf"'
             )
         );
     }
