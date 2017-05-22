@@ -34,7 +34,11 @@
                 <dd>{{ entity.website }}</dd>
                 <div class="hr-line-dashed"></div>
                 <dt>{{ 'Hour of operation' | trans({}, 'businessbackend') }}</dt>
-                <dd>{{ entity.hoursBegin|date("h:i A") }} to {{ entity.hoursBegin|date("h:i A") }}</dd>
+                <dd>
+                    {%  for hour in entity.hours %}
+                        <p>{{ hour | raw }}</p>
+                    {% endfor %}
+                </dd>
                 <div class="hr-line-dashed"></div>
                 <dt>{{ 'Mall Map Directions' | trans({}, 'businessbackend') }}</dt>
                 <dd>{{ entity.mallMapDirections }}</dd>

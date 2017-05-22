@@ -86,8 +86,10 @@
                     <span class="business-info">
                         <ul class="list-unstyled">
                             <li>
-                                <i class="fa fa-clock-o"></i>
-                                {{ business.hoursBegin|date("h:i A") ~ " - " ~ business.hoursEnd|date("h:i A") }}
+                                <i class="fa fa-clock-o"></i> {{ 'Hour of operation' | trans({}, 'businessbackend') }}
+                                {%  for hour in business.hours %}
+                                    <p class="text-gray">{{ hour | raw }}</p>
+                                {% endfor %}
                             </li>
                             {% if business.email is not empty %}
                                 <li>

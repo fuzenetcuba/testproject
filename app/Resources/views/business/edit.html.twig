@@ -21,6 +21,12 @@
     <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
           type="text/css"/>
 
+    <!-- selectize Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/selectize/selectize.css') }}"
+          type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/selectize/selectize.default.css') }}"
+          type="text/css"/>
+
     <link rel="stylesheet" href="{{ asset('bundles/backend/css/bootstrap-tokenfield.min.css') }}"
           type="text/css"/>
 
@@ -141,31 +147,14 @@
                             </div>
                             <div class="hr-line-dashed"></div>
 
-                            <div class="form-group
-            {% if(edit_form.hoursBegin.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}
-            {% if(edit_form.hoursEnd.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}
-            ">
-                                <label for=""
-                                       class="col-md-2 control-label">{{ form_label(edit_form.hoursBegin) }}</label>
+                            <div class="form-group {% if(edit_form.hours.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for="" class="col-md-2 control-label">{{ form_label(edit_form.hours) }}</label>
 
                                 <div class="col-md-6">
-                                    <div class="col-md-6 clockpicker" data-autoclose="true">
-                                        {{ form_widget(edit_form.hoursBegin, { 'attr': {'class' : 'form-control', 'placeholder' : 'from'}}) }}
-                                    </div>
-                                    <div class="col-md-6 clockpicker" data-autoclose="true">
-                                        {{ form_widget(edit_form.hoursEnd, { 'attr': {'class' : 'form-control', 'placeholder' : 'to'}}) }}
-                                    </div>
-
-                                    {% if edit_form.hoursBegin.vars['errors']|length > 0 %}
+                                    {{ form_widget(edit_form.hours, { 'attr': {'class' : 'selectize-field', 'placeholder' : 'hours'}}) }}
+                                    {% if edit_form.hours.vars['errors']|length > 0 %}
                                         <ul class="message">
-                                            {% for error in edit_form.hoursBegin.vars['errors'] %}
-                                                <li>{{ error.message }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                    {% endif %}
-                                    {% if edit_form.hoursEnd.vars['errors']|length > 0 %}
-                                        <ul class="message">
-                                            {% for error in edit_form.hoursEnd.vars['errors'] %}
+                                            {% for error in edit_form.hours.vars['errors'] %}
                                                 <li>{{ error.message }}</li>
                                             {% endfor %}
                                         </ul>
@@ -496,6 +485,10 @@
         <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"
                 type="text/javascript"></script>
 
+        <!-- selectize Scripts -->
+        <script src="{{ asset('bundles/backend/js/plugins/selectize/selectize.min.js') }}"
+                type="text/javascript"></script>
+
         <!-- tokenfield Scripts -->
         <script src="{{ asset('bundles/backend/js/bootstrap-tokenfield.min.js') }}"
                 type="text/javascript"></script>
@@ -518,8 +511,15 @@
                 });
 
                 //  clockpicker script for input time
-                $("form .clockpicker").clockpicker();
+//                $("form .clockpicker").clockpicker();
 
+                //  selectize scripts for hours
+                $(".selectize-field").selectize({
+                    plugins: ['remove_button', 'restore_on_backspace'],
+                    delimiter: ';',
+                    persist: false,
+                    create: true
+                });
                 //  datepicker3 script for input datetime and date
                 $("form input.datepicker").datepicker({
                     todayBtn: "linked",
