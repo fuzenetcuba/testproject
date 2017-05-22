@@ -79,18 +79,10 @@ class Business
     private $phone;
 
     /**
-     * @ORM\Column(name="hours_begin", type="time")
-     *
-     * @Assert\Time()
+     * @ORM\Column(type="array", nullable=true)
+     * @Gedmo\Translatable
      */
-    private $hoursBegin;
-
-    /**
-     * @ORM\Column(name="hours_end", type="time")
-     *
-     * @Assert\Time()
-     */
-    private $hoursEnd;
+    private $hours;
 
     /**
      * @ORM\Column(name="website", type="string", length=255, nullable=true)
@@ -457,49 +449,26 @@ class Business
     }
 
     /**
-     * Set hoursBegin
+     * Set hours
      *
-     * @param \DateTime $hoursBegin
+     * @param \DateTime $hours
      * @return Business
      */
-    public function setHoursBegin($hoursBegin)
+    public function setHours($hours)
     {
-        $this->hoursBegin = $hoursBegin;
+        $this->hours = $hours;
 
         return $this;
     }
 
     /**
-     * Get hoursBegin
+     * Get hours
      *
      * @return \DateTime
      */
-    public function getHoursBegin()
+    public function getHours()
     {
-        return $this->hoursBegin;
-    }
-
-    /**
-     * Set hoursEnd
-     *
-     * @param \DateTime $hoursEnd
-     * @return Business
-     */
-    public function setHoursEnd($hoursEnd)
-    {
-        $this->hoursEnd = $hoursEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get hoursEnd
-     *
-     * @return \DateTime
-     */
-    public function getHoursEnd()
-    {
-        return $this->hoursEnd;
+        return $this->hours;
     }
 
     /**

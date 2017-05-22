@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Form;
 
+use BackendBundle\Form\DataTransformer\ArrayToDelimitedStringTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -42,12 +43,9 @@ class BusinessType extends AbstractType
             ->add('iosApp', null, array(
                 'label' => 'iOS App'))
             ->add('categories')
-            ->add('hoursBegin', TimeType::class, array(
-                'label' => "Hours of operation",
-                'widget' => 'single_text',
-                'html5' => false
+            ->add('hours', TextType::class, array(
+                'label' => "Hours of operation"
             ))
-            ->add('hoursEnd', TimeType::class, array('widget' => 'single_text', 'html5' => false))
             ->add('website')
             ->add('email', TextType::class, ['required' => false])
             ->add('notifyEmails', TextType::class, ['required' => false])
@@ -60,6 +58,9 @@ class BusinessType extends AbstractType
             ->add('mallMapY', HiddenType::class)
             ->add('customers')
         ;
+
+        $builder
+            ->get('hours')->addModelTransformer(new ArrayToDelimitedStringTransformer(';', 0, 0));
     }
 
     /**
