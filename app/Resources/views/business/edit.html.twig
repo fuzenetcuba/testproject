@@ -151,7 +151,7 @@
                                 <label for="" class="col-md-2 control-label">{{ form_label(edit_form.hours) }}</label>
 
                                 <div class="col-md-6">
-                                    {{ form_widget(edit_form.hours, { 'attr': {'class' : 'selectize-field', 'placeholder' : 'hours'}}) }}
+                                    {{ form_widget(edit_form.hours, { 'attr': {'class' : 'selectize-field', 'placeholder' : 'Insert hours' : 'Insert hours' | trans({}, 'businessbackend') }}) }}
                                     {% if edit_form.hours.vars['errors']|length > 0 %}
                                         <ul class="message">
                                             {% for error in edit_form.hours.vars['errors'] %}

@@ -33,7 +33,7 @@
                 <dt>{{ 'Website' | trans({}, 'businessbackend') }}</dt>
                 <dd>{{ entity.website }}</dd>
                 <div class="hr-line-dashed"></div>
-                <dt>{{ 'Hour of operation' | trans({}, 'businessbackend') }}</dt>
+                <dt>{{ 'Regular Hours' | trans({}, 'businessbackend') }}</dt>
                 <dd>
                     {%  for hour in entity.hours %}
                         <p>{{ hour | raw }}</p>
