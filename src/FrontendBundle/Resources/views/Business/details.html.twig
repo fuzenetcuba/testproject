@@ -87,14 +87,14 @@
                     <span class="business-info">
                         <ul class="list-unstyled">
                             {% if business.hours is not empty or business.hours | length > 0 %}
-                                <li>
+                                <li class="business-info-hours">
                                     {% for hour in business.hours %}
                                         {% if loop.first %}
-                                            <p class="text-gray" style="margin: 10px 0 0 0;">
+                                            <p>
                                                 <i class="fa fa-clock-o"></i> {{ hour | raw }}
                                             </p>
                                         {% else %}
-                                            <p class="text-gray" style="margin: 10px 0 0 25px;">{{ hour | raw }}</p>
+                                            <p>{{ hour | raw }}</p>
                                         {% endif %}
                                     {% endfor %}
                                 </li>
@@ -415,14 +415,14 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            document.getElementById('links').onclick = function (event) {
-                event = event || window.event;
-                var target = event.target || event.srcElement,
+            $('#links').on('click',function (e) {
+                e = e || window.event;
+                var target = e.target || e.srcElement,
                         link = target.src ? target.parentNode : target,
-                        options = {index: link, event: event},
-                        links = this.getElementsByTagName('a');
+                        options = {index: link, event: e},
+                        links = $(this).find('a');
                 blueimp.Gallery(links, options);
-            };
+            });
         });
 
         $('.carousel .item').each(function () {

@@ -1316,6 +1316,15 @@ div.print-deal-list div {
     width: 40px !important;
 }
 
+.business-info-hours p {
+    color: #555555 !important;
+    margin: 10px 0 0 25px;
+}
+
+.business-info-hours p:first-of-type {
+    margin: 10px 0 0 0;
+}
+
 /*
  * Row with equal height columns
  * --------------------------------------------------
