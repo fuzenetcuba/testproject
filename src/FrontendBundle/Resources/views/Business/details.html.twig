@@ -88,9 +88,14 @@
                         <ul class="list-unstyled">
                             {% if business.hours is not empty or business.hours | length > 0 %}
                                 <li>
-                                    <i class="fa fa-clock-o"></i> {{ 'Regular Hours' | trans({}, 'businessbackend') }}
                                     {% for hour in business.hours %}
-                                        <p class="text-gray" style="margin: 10px 0 0 25px;">{{ hour | raw }}</p>
+                                        {% if loop.first %}
+                                            <p class="text-gray" style="margin: 10px 0 0 0;">
+                                                <i class="fa fa-clock-o"></i> {{ hour | raw }}
+                                            </p>
+                                        {% else %}
+                                            <p class="text-gray" style="margin: 10px 0 0 25px;">{{ hour | raw }}</p>
+                                        {% endif %}
                                     {% endfor %}
                                 </li>
                             {% endif %}
@@ -450,6 +455,7 @@
             "telephone": "{{ business.phone }}",
             "sameAs" : "{{ business.socialMedia }}"
         }
+
 
 
 
