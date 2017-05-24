@@ -28,6 +28,14 @@
             background-size: cover;
             background-position: bottom center;
         }
+
+        @media (max-width: 1024px) {
+            background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'tabletBanner' }))) }}');
+        }
+
+        @media (max-width: 768px) {
+            background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'mobileBanner' }))) }}');
+        }
     </style>
 {% endblock %}
 

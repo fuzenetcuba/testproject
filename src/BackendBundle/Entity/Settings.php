@@ -225,6 +225,70 @@ class Settings
     /**
      * @var string
      *
+     * @ORM\Column(type="string")
+     */
+    private $mobileBanner;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @var File
+     *
+     * @Gedmo\Translatable
+     *
+     * @Vich\UploadableField(mapping="setting_image", fileNameProperty="websiteBanner",
+     *      groups={"creation"}
+     * )
+     * @Assert\Image(
+     *     minWidth="16",
+     *     maxWidth="3000",
+     *     minWidthMessage="The image must have a with between 16 and 3000 pixels",
+     *     maxWidthMessage="The image must have a with between 16 and 3000 pixels",
+     *     minHeight="16",
+     *     maxHeight="3000",
+     *     minHeightMessage="The image must have a height between 16 and 3000 pixels",
+     *     maxHeightMessage="The image must have a height between 16 and 3000 pixels",
+     *     maxSize="2M",
+     *     maxSizeMessage="The image must have 2 MB (megabytes) or less"
+     * )
+     */
+    private $mobileBannerImage;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $tabletBanner;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @var File
+     *
+     * @Gedmo\Translatable
+     *
+     * @Vich\UploadableField(mapping="setting_image", fileNameProperty="websiteBanner",
+     *      groups={"creation"}
+     * )
+     * @Assert\Image(
+     *     minWidth="16",
+     *     maxWidth="3000",
+     *     minWidthMessage="The image must have a with between 16 and 3000 pixels",
+     *     maxWidthMessage="The image must have a with between 16 and 3000 pixels",
+     *     minHeight="16",
+     *     maxHeight="3000",
+     *     minHeightMessage="The image must have a height between 16 and 3000 pixels",
+     *     maxHeightMessage="The image must have a height between 16 and 3000 pixels",
+     *     maxSize="2M",
+     *     maxSizeMessage="The image must have 2 MB (megabytes) or less"
+     * )
+     */
+    private $tabletBannerImage;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      * @Gedmo\Translatable
      * @Assert\NotBlank()
