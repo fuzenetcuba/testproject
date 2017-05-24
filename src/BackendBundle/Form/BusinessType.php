@@ -44,7 +44,8 @@ class BusinessType extends AbstractType
                 'label' => 'iOS App'))
             ->add('categories')
             ->add('hours', TextType::class, array(
-                'label' => "Hours of operation"
+                'label' => "Regular Hours",
+                'required' => false
             ))
             ->add('website')
             ->add('email', TextType::class, ['required' => false])

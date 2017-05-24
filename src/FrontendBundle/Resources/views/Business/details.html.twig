@@ -38,8 +38,9 @@
             margin: 5px;
             transition: all 0.3s ease 0s;
         }
+
         .blueimp-gallery-item:hover {
-            box-shadow: 0 0 15px rgba(0,0,0,0.25);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
             transform: scaleX(1.2) scaleY(1.2);
         }
     </style>
@@ -85,12 +86,15 @@
 
                     <span class="business-info">
                         <ul class="list-unstyled">
-                            <li>
-                                <i class="fa fa-clock-o"></i> {{ 'Hour of operation' | trans({}, 'businessbackend') }}
-                                {%  for hour in business.hours %}
-                                    <p class="text-gray">{{ hour | raw }}</p>
-                                {% endfor %}
-                            </li>
+                            {% if business.hours is not empty or business.hours | length > 0 %}
+                                <li>
+                                    <i class="fa fa-clock-o"></i> {{ 'Regular Hours' | trans({}, 'businessbackend') }}
+                                    {% for hour in business.hours %}
+                                        <p class="text-gray" style="margin: 10px 0 0 25px;">{{ hour | raw }}</p>
+                                    {% endfor %}
+                                </li>
+                            {% endif %}
+
                             {% if business.email is not empty %}
                                 <li>
                                     <i class="fa fa-envelope"></i>
@@ -113,13 +117,14 @@
                                 </li>
                             {% endif %}
                             {% if business.socialMedia is not empty %}
-                            <li>
-                                <i class="fa fa-facebook-official"></i>
-                                <a title="{{ business.socialMedia }}" target="_blank" href="{{ business.socialMedia }}">
-                                    {{ business.socialMedia }}
-                                    <sub><span class="fa fa-external-link"></span></sub>
-                                </a>
-                            </li>
+                                <li>
+                                    <i class="fa fa-facebook-official"></i>
+                                    <a title="{{ business.socialMedia }}" target="_blank"
+                                       href="{{ business.socialMedia }}">
+                                        {{ business.socialMedia }}
+                                        <sub><span class="fa fa-external-link"></span></sub>
+                                    </a>
+                                </li>
                             {% endif %}
                             {% if(business.instagram is not empty) %}
                                 <li>
@@ -227,9 +232,11 @@
 
                     <div id="links">
                         {% for image in business.images %}
-                        <a class="blueimp-gallery-item" href="{{ asset('images/business/gallery/' ~ image.imgName) }}" title="{{ image.description }}"
-                           style="background-image: url('{{ asset('images/business/gallery/' ~ image.imgName) }}');">
-                        </a>
+                            <a class="blueimp-gallery-item"
+                               href="{{ asset('images/business/gallery/' ~ image.imgName) }}"
+                               title="{{ image.description }}"
+                               style="background-image: url('{{ asset('images/business/gallery/' ~ image.imgName) }}');">
+                            </a>
                         {% endfor %}
                     </div>
                 </div>
@@ -443,6 +450,7 @@
             "telephone": "{{ business.phone }}",
             "sameAs" : "{{ business.socialMedia }}"
         }
+
 
 
 
