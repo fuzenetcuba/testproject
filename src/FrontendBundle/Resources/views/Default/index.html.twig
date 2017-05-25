@@ -28,19 +28,19 @@
 
     <style type="text/css">
         {#.landing-page .carousel-caption.blank {#}
-            {#background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBanner' }))) }}');#}
+        {#background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBanner' }))) }}');#}
         {#}#}
 
         {#@media (max-width: 1200px) {#}
-            {#.landing-page .carousel-caption.blank {#}
-                {#background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'tabletBanner' }))) }}');#}
-            {#}#}
+        {#.landing-page .carousel-caption.blank {#}
+        {#background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'tabletBanner' }))) }}');#}
+        {#}#}
         {#}#}
 
         {#@media (max-width: 768px) {#}
-            {#.landing-page .carousel-caption.blank {#}
-                {#background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'mobileBanner' }))) }}');#}
-            {#}#}
+        {#.landing-page .carousel-caption.blank {#}
+        {#background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'mobileBanner' }))) }}');#}
+        {#}#}
         {#}#}
     </style>
 
@@ -65,16 +65,18 @@
                         {# <div class="flip-counter clock"></div> #}
 
                         <div class="boxes">
-                            <div class="box green"><a
-                                        href="{{ path('business_list', {'category' : 'grocery,clothing,electronics,art,beauty-salon,fine-jewelry,gifts-specialty,sports'}) }}">{{ 'Shop' | trans({}, 'homepage') }}</a>
+                            <div class="box green">
+                                <a href="{{ path('business_list', {'category' : 'grocery,clothing,electronics,art,beauty-salon,fine-jewelry,gifts-specialty,sports'}) }}">{{ 'Shop' | trans({}, 'homepage') }}</a>
                             </div>
-                            <div class="box blue"><a
-                                        href="{{ path('business_list', {'category' : 'dining,food-court-vendor,fast-food-chain'}) }}">{{ 'Dine' | trans({}, 'homepage') }}</a>
+                            <div class="box blue">
+                                <a href="{{ path('business_list', {'category' : 'dining,food-court-vendor,fast-food-chain'}) }}">{{ 'Dine' | trans({}, 'homepage') }}</a>
                             </div>
-                            <div class="box orange"><a href="http://ceibagallery.com"
-                                                       target="_blank">{{ 'Art' | trans({}, 'homepage') }}</a></div>
-                            <div class="box purple"><a
-                                        href="{{ path('calendar', {'key':'music'}) }}">{{ 'Music' | trans({}, 'homepage') }}</a>
+                            <div class="box orange">
+                                <a href="http://ceibagallery.com"
+                                   target="_blank">{{ 'Art' | trans({}, 'homepage') }}</a>
+                            </div>
+                            <div class="box purple">
+                                <a href="{{ path('calendar', {'key':'music'}) }}">{{ 'Music' | trans({}, 'homepage') }}</a>
                             </div>
                         </div>
                     </div>
