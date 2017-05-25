@@ -8,6 +8,7 @@ app/logs/*
 vendor/*
 web/bundles/*
 web/images/business/*
+web/images/settings/*
 web/images/deals/*
 web/images/users/*
 web/css/*

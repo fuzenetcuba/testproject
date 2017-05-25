@@ -143,12 +143,12 @@
         <div class="hr-line-dashed"></div>
         <dt>
             {{ 'Header' | trans({}, 'settingsbackend') }} <br/>
-            {{ 'Stay Close' | trans({}, 'settingsbackend') }}</dt>
+            {{ 'Stay close' | trans({}, 'settingsbackend') }}</dt>
         <dd>{{ entity.headerStayClose }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
             {{ 'Subheader' | trans({}, 'settingsbackend') }} <br/>
-            {{ 'Stay Close' | trans({}, 'settingsbackend') }}</dt>
+            {{ 'Stay close' | trans({}, 'settingsbackend') }}</dt>
         <dd>{{ entity.subheaderStayClose }}</dd>
         <div class="hr-line-dashed"></div>
         <dt>
@@ -203,6 +203,14 @@
         <div class="hr-line-dashed"></div>
         <dt>{{ 'Website Banner' | trans({}, 'settingsbackend') }}</dt>
         <dd><img style="max-width: 70%; height: auto;" src="{{ asset('images/settings/' ~ entity.websiteBanner) }}"/>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Tablet Banner' | trans({}, 'settingsbackend') }}</dt>
+        <dd><img style="max-width: 70%; height: auto;" src="{{ asset('images/settings/' ~ entity.tabletBanner) }}"/>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Mobile Banner' | trans({}, 'settingsbackend') }}</dt>
+        <dd><img style="max-width: 70%; height: auto;" src="{{ asset('images/settings/' ~ entity.mobileBanner) }}"/>
         </dd>
         <div class="hr-line-dashed"></div>
         </tbody>
