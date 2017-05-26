@@ -27,21 +27,21 @@
 {% block inline_css %}
 
     <style type="text/css">
-        {#.landing-page .carousel-caption.blank {#}
-        {#background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBanner' }))) }}');#}
-        {#}#}
+        .landing-page .carousel-caption.blank {
+            background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBanner' }))) }}');
+        }
 
-        {#@media (max-width: 1200px) {#}
-        {#.landing-page .carousel-caption.blank {#}
-        {#background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'tabletBanner' }))) }}');#}
-        {#}#}
-        {#}#}
+        @media (max-width: 1200px) {
+            .landing-page .carousel-caption.blank {
+                background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'tabletBanner' }))) }}');
+            }
+        }
 
-        {#@media (max-width: 768px) {#}
-        {#.landing-page .carousel-caption.blank {#}
-        {#background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'mobileBanner' }))) }}');#}
-        {#}#}
-        {#}#}
+        @media (max-width: 768px) {
+            .landing-page .carousel-caption.blank {
+                background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'mobileBanner' }))) }}');
+            }
+        }
     </style>
 
 {% endblock %}
