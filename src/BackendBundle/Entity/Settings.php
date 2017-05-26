@@ -241,6 +241,69 @@ class Settings
     /**
      * @var string
      *
+     * @Gedmo\Translatable
+     * @ORM\Column(type="string")
+     */
+    private $mobileBanner;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @var File
+     *
+     *
+     * @Vich\UploadableField(mapping="setting_image", fileNameProperty="mobileBanner",
+     *      groups={"creation"}
+     * )
+     * @Assert\Image(
+     *     minWidth="16",
+     *     maxWidth="3000",
+     *     minWidthMessage="The image must have a with between 16 and 3000 pixels",
+     *     maxWidthMessage="The image must have a with between 16 and 3000 pixels",
+     *     minHeight="16",
+     *     maxHeight="3000",
+     *     minHeightMessage="The image must have a height between 16 and 3000 pixels",
+     *     maxHeightMessage="The image must have a height between 16 and 3000 pixels",
+     *     maxSize="2M",
+     *     maxSizeMessage="The image must have 2 MB (megabytes) or less"
+     * )
+     */
+    private $mobileBannerImage;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Translatable
+     * @ORM\Column(type="string")
+     */
+    private $tabletBanner;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @var File
+     *
+     * @Vich\UploadableField(mapping="setting_image", fileNameProperty="tabletBanner",
+     *      groups={"creation"}
+     * )
+     * @Assert\Image(
+     *     minWidth="16",
+     *     maxWidth="3000",
+     *     minWidthMessage="The image must have a with between 16 and 3000 pixels",
+     *     maxWidthMessage="The image must have a with between 16 and 3000 pixels",
+     *     minHeight="16",
+     *     maxHeight="3000",
+     *     minHeightMessage="The image must have a height between 16 and 3000 pixels",
+     *     maxHeightMessage="The image must have a height between 16 and 3000 pixels",
+     *     maxSize="2M",
+     *     maxSizeMessage="The image must have 2 MB (megabytes) or less"
+     * )
+     */
+    private $tabletBannerImage;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      * @Gedmo\Translatable
      * @Assert\NotBlank()
@@ -1562,4 +1625,91 @@ class Settings
         return $this->snapchat;
     }
 
+    /**
+     * @return string
+     */
+    public function getTabletBanner()
+    {
+        return $this->tabletBanner;
+    }
+
+    /**
+     * @param string $websiteLogo
+     */
+    public function setTabletBanner($path)
+    {
+        $this->tabletBanner = $path;
+    }
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\File $websiteBannerImage
+     */
+    public function setTabletBannerImage(File $tabletBannerImage = null)
+    {
+        $this->tabletBannerImage = $tabletBannerImage;
+
+        if ($tabletBannerImage) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    /**
+     * @return File
+     */
+    public function getTabletBannerImage()
+    {
+        return $this->tabletBannerImage;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMobileBanner()
+    {
+        return $this->mobileBanner;
+    }
+
+    /**
+     * @param string $websiteLogo
+     */
+    public function setMobileBanner($path)
+    {
+        $this->mobileBanner = $path;
+    }
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\File $websiteBannerImage
+     */
+    public function setMobileBannerImage(File $mobileBannerImage = null)
+    {
+        $this->mobileBannerImage = $mobileBannerImage;
+
+        if ($mobileBannerImage) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    /**
+     * @return File
+     */
+    public function getMobileBannerImage()
+    {
+        return $this->mobileBannerImage;
+    }
 }

@@ -25,6 +25,25 @@
 {% endblock %}
 
 {% block inline_css %}
+
+    <style type="text/css">
+        .landing-page .carousel-caption.blank {
+            background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBanner' }))) }}');
+        }
+
+        @media (max-width: 1200px) {
+            .landing-page .carousel-caption.blank {
+                background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'tabletBanner' }))) }}');
+            }
+        }
+
+        @media (max-width: 768px) {
+            .landing-page .carousel-caption.blank {
+                background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'mobileBanner' }))) }}');
+            }
+        }
+    </style>
+
 {% endblock %}
 
 {% block navbar %}
@@ -44,12 +63,21 @@
                         <h1 class="bottom-title">{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteSlogan' })) | upper }}</h1>
                         <h1 id="coming-soon-text">{{ 'NOW OPEN' | trans({}, 'homepage') }}</h1>
                         {# <div class="flip-counter clock"></div> #}
-                        
+
                         <div class="boxes">
-                            <div class="box green"><a href="{{ path('business_list', {'category' : 'grocery,clothing,electronics,art,beauty-salon,fine-jewelry,gifts-specialty,sports'}) }}">{{ 'Shop' | trans({}, 'homepage') }}</a></div>
-                            <div class="box blue"><a href="{{ path('business_list', {'category' : 'dining,food-court-vendor,fast-food-chain'}) }}">{{ 'Dine' | trans({}, 'homepage') }}</a></div>
-                            <div class="box orange"><a href="http://ceibagallery.com" target="_blank">{{ 'Art' | trans({}, 'homepage') }}</a></div>
-                            <div class="box purple"><a href="{{ path('calendar', {'key':'music'}) }}">{{ 'Music' | trans({}, 'homepage') }}</a></div>
+                            <div class="box green">
+                                <a href="{{ path('business_list', {'category' : 'grocery,clothing,electronics,art,beauty-salon,fine-jewelry,gifts-specialty,sports'}) }}">{{ 'Shop' | trans({}, 'homepage') }}</a>
+                            </div>
+                            <div class="box blue">
+                                <a href="{{ path('business_list', {'category' : 'dining,food-court-vendor,fast-food-chain'}) }}">{{ 'Dine' | trans({}, 'homepage') }}</a>
+                            </div>
+                            <div class="box orange">
+                                <a href="http://ceibagallery.com"
+                                   target="_blank">{{ 'Art' | trans({}, 'homepage') }}</a>
+                            </div>
+                            <div class="box purple">
+                                <a href="{{ path('calendar', {'key':'music'}) }}">{{ 'Music' | trans({}, 'homepage') }}</a>
+                            </div>
                         </div>
                     </div>
                     <div class="carousel-image wow zoomIn">
@@ -152,8 +180,8 @@
                     </p>
                     <br />
                     #}
-                    <br />
-                    <br />
+                    <br/>
+                    <br/>
                     <a title="{{ 'JOIN US' | trans({}, 'homepage') }}" href="{{ path('careers_index') }}"
                        class="btn btn-lg btn-green">{{ 'JOIN US' | trans({}, 'homepage') }}</a>
 
@@ -192,7 +220,8 @@
             </div>
 
             <div class="col-sm-12 text-center show-all-deals">
-                <a title="{{ 'SEE ALL THE BRANDS' | trans({}, 'homepage') }}" href="{{ path('business_list') }}" class="btn btn-lg btn-xl btn-amber">
+                <a title="{{ 'SEE ALL THE BRANDS' | trans({}, 'homepage') }}" href="{{ path('business_list') }}"
+                   class="btn btn-lg btn-xl btn-amber">
                     {{ 'SEE ALL THE BRANDS' | trans({}, 'homepage') }}
                 </a>
             </div>
@@ -208,7 +237,8 @@
                     <h2>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerBecomeMemberToday' })) }}</h2>
                     <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderBecomeMemberToday' })) }}</p>
 
-                    <a title="{{ 'SIGNUP' | trans({}, 'homepage') }}" href="{{ path('fos_user_registration_register') }}"
+                    <a title="{{ 'SIGNUP' | trans({}, 'homepage') }}"
+                       href="{{ path('fos_user_registration_register') }}"
                        class="btn btn-lg btn-xl btn-blue">{{ 'SIGNUP' | trans({}, 'homepage') }}</a>
                 </div>
             </div>
@@ -278,7 +308,7 @@
             var end = moment([2017, 4, 12, 17, 00]);
             var start = moment(new Date());
 
-            clock.setTime(end.diff(start, 'seconds') );
+            clock.setTime(end.diff(start, 'seconds'));
             clock.setCountdown(true);
             clock.start();
         });

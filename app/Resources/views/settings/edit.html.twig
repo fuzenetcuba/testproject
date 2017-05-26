@@ -339,6 +339,40 @@
                             </div>
                             <div class="hr-line-dashed"></div>
 
+                            <div class="form-group{% if(edit_form.tabletBannerImage.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.tabletBannerImage) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.tabletBannerImage, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.tabletBannerImage.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.tabletBannerImage.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.mobileBannerImage.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.mobileBannerImage) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.mobileBannerImage, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.mobileBannerImage.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.mobileBannerImage.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
                             <div class="form-group{% if(edit_form.headerFeatureBrands.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                                 <label for=""
                                        class="col-md-2 control-label">{{ form_label(edit_form.headerFeatureBrands) }}</label>

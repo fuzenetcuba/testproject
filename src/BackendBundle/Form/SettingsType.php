@@ -39,6 +39,12 @@ class SettingsType extends AbstractType
             ->add('websiteBannerImage', FileType::class, array(
                 'required' => false,
                 'validation_groups' => array('creation')))
+            ->add('mobileBannerImage', FileType::class, array(
+                'required' => false,
+                'validation_groups' => array('creation')))
+            ->add('tabletBannerImage', FileType::class, array(
+                'required' => false,
+                'validation_groups' => array('creation')))
             ->add('headerFeatureBrands')
             ->add('subheaderFeatureBrands')
             ->add('headerBecomeMemberToday')
