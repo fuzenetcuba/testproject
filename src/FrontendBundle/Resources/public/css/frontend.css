@@ -3852,20 +3852,20 @@ fieldset.uploads {
 }
 
 .landing-page .header-back.one {
-    background-image: url('/bundles/frontend/img/pattern.png');
+    /*background-image: url('/bundles/frontend/img/pattern.png');*/
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: 145%;
-    background-position: bottom center;
+    background-size: cover;
+    background-position: center;
     height: 500px;
-    opacity: .3;
+    /*opacity: .3;*/
 }
 
 @media (max-width: 1024px) {
     .landing-page .header-back.one {
-        background-size: 245%;
+        /*background-size: 245%;*/
     }
 }
 

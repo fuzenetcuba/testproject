@@ -27,18 +27,18 @@
 {% block inline_css %}
 
     <style type="text/css">
-        .landing-page .carousel-caption.blank {
+        .landing-page .header-back.one {
             background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBanner' }))) }}');
         }
 
         @media (max-width: 1200px) {
-            .landing-page .carousel-caption.blank {
+            .landing-page .header-back.one {
                 background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'tabletBanner' }))) }}');
             }
         }
 
         @media (max-width: 768px) {
-            .landing-page .carousel-caption.blank {
+            .landing-page .header-back.one {
                 background-image: url('{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'mobileBanner' }))) }}');
             }
         }
@@ -60,11 +60,11 @@
             <div class="item active animated fadeIn">
                 <div class="container">
                     <div class="carousel-caption blank">
-                        <h1 class="bottom-title">{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteSlogan' })) | upper }}</h1>
-                        <h1 id="coming-soon-text">{{ 'NOW OPEN' | trans({}, 'homepage') }}</h1>
+                        {#<h1 class="bottom-title">{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteSlogan' })) | upper }}</h1>
+                        <h1 id="coming-soon-text">{{ 'NOW OPEN' | trans({}, 'homepage') }}</h1>#}
                         {# <div class="flip-counter clock"></div> #}
 
-                        <div class="boxes">
+                        {#<div class="boxes">
                             <div class="box green">
                                 <a href="{{ path('business_list', {'category' : 'grocery,clothing,electronics,art,beauty-salon,fine-jewelry,gifts-specialty,sports'}) }}">{{ 'Shop' | trans({}, 'homepage') }}</a>
                             </div>
@@ -78,7 +78,7 @@
                             <div class="box purple">
                                 <a href="{{ path('calendar', {'key':'music'}) }}">{{ 'Music' | trans({}, 'homepage') }}</a>
                             </div>
-                        </div>
+                        </div>#}
                     </div>
                     <div class="carousel-image wow zoomIn">
                     </div>
@@ -90,62 +90,66 @@
     </div>
 
     {# top deals #}
-    {#<section id="features" class="container section-spaces-line top-deals">#}
-    {#<div class="row">#}
-    {#<div class="col-lg-12 text-center">#}
-    {#<div class="section-line pink-line"></div>#}
-    {#<h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerTodaysHoursOperation' })) }}</h1>#}
-    {#<p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderTodaysHoursOperation' })) }}</p>#}
-    {#</div>#}
-    {#</div>#}
+    {#<section id="features" class="container section-spaces-line top-deals">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-line pink-line"></div>
+                <h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerTodaysHoursOperation' })) }}</h1>
+                <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderTodaysHoursOperation' })) }}</p>
+            </div>
+        </div>
 
-    {#<div class="col-sm-12 text-center m-b">#}
-    {#<h2 class="m-t-n">#}
-    {#<span class="font-bold">{{ 'Every week day' | trans({}, 'homepage') }}</span>,#}
-    {#from <span class="font-bold">10:00am</span> to <span class="font-bold">9:00pm</span>#}
-    {#</h2>#}
-    {#</div>#}
-    {#</section>#}
+        <div class="col-sm-12 text-center m-b">
+            <h2 class="m-t-n">
+                <span class="font-bold">{{ 'Every week day' | trans({}, 'homepage') }}</span>,
+                from <span class="font-bold">10:00am</span> to <span class="font-bold">9:00pm</span>
+            </h2>
+        </div>
+    </section>#}
 
     {# top deals #}
-    {#<section id="features" class="gray-bg section-spaces-line top-deals">#}
-    {#<div class="container">#}
-    {#<div class="row m-b">#}
-    {#<div class="col-lg-12 text-center">#}
-    {#<div class="section-line amber-line"></div>#}
-    {#<h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerTopDealsOfDay' })) }}</h1>#}
+    {#<section id="features" class="gray-bg section-spaces-line top-deals">
+        <div class="container">
+            <div class="row m-b">
+                <div class="col-lg-12 text-center">
+                    <div class="section-line amber-line"></div>
+                    <h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerTopDealsOfDay' })) }}</h1>
 
-    {#<p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderTopDealsOfDay' })) }}</p>#}
-    {#</div>#}
-    {#</div>#}
+                    <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderTopDealsOfDay' })) }}</p>
+                </div>
+            </div>
 
-    {#{% for deal in deals %}#}
-    {#<div class="col-sm-4 text-center">#}
-    {#<h3>{{ deal.name | upper }}</h3>#}
-    {#<p>{{ 'AT' | trans({}, 'general') }}: {{ deal.business.name | upper }}</p>#}
-    {#<p>{{ 'ENDS' | trans({}, 'general') }}: {{ deal.endsAt | date('m/d/Y') }}</p>#}
-    {#<div class="hovereffect">#}
-    {#<div class="container-image ">#}
-    {#<img class="center-height" alt="{{ deal.name }}" title="{{ deal.name }}" src="{{ asset('images/deals/' ~ deal.image) }} "/>#}
-    {#<div class="overlay">#}
-    {#<a title="Deal details" class="info" href="{{ path('deal_details', {'slug' : deal.slug}) }}">#}
-    {#{{ 'Show Deal' | trans({}, 'homepage') }}#}
-    {#</a>#}
-    {#</div>#}
-    {#</div>#}
-    {#</div>#}
-    {#<p><a title="Deal details" class="btn btn-info" href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View#}
-    {#Deal</a></p>#}
-    {#</div>#}
-    {#{% endfor %}#}
+            {% for deal in deals %}
+                <div class="col-sm-4 text-center">
+                    <h3>{{ deal.name | upper }}</h3>
+                    <p>{{ 'AT' | trans({}, 'general') }}: {{ deal.business.name | upper }}</p>
+                    <p>{{ 'ENDS' | trans({}, 'general') }}: {{ deal.endsAt | date('m/d/Y') }}</p>
+                    <div class="hovereffect">
+                        <div class="container-image ">
+                            <img class="center-height" alt="{{ deal.name }}" title="{{ deal.name }}"
+                                 src="{{ asset('images/deals/' ~ deal.image) }} "/>
+                            <div class="overlay">
+                                <a title="Deal details" class="info"
+                                   href="{{ path('deal_details', {'slug' : deal.slug}) }}">
+                                    {{ 'Show Deal' | trans({}, 'homepage') }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <p><a title="Deal details" class="btn btn-info"
+                          href="{{ path('deal_details', {'slug' : deal.slug}) }}" role="button">View
+                            Deal</a></p>
+                </div>
+            {% endfor %}
 
-    {#<div class="col-sm-12 text-center show-all-deals">#}
-    {#<a title="{{ 'VIEW ALL DEALS' | trans({}, 'homepage') }}" href="{{ path('deals') }}" class="btn btn-lg btn-xl btn-amber">#}
-    {#{{ 'VIEW ALL DEALS' | trans({}, 'homepage') }}#}
-    {#</a>#}
-    {#</div>#}
-    {#</div>#}
-    {#</section>#}
+            <div class="col-sm-12 text-center show-all-deals">
+                <a title="{{ 'VIEW ALL DEALS' | trans({}, 'homepage') }}" href="{{ path('deals') }}"
+                   class="btn btn-lg btn-xl btn-amber">
+                    {{ 'VIEW ALL DEALS' | trans({}, 'homepage') }}
+                </a>
+            </div>
+        </div>
+    </section>#}
 
 
     {# job fair #}
