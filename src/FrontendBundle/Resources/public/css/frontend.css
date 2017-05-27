@@ -347,7 +347,7 @@ body.landing-page {
 
 .landing-page .carousel,
 .landing-page .carousel.carousel-adjusted {
-    height: 600px;
+    height: 700px;
 }
 
 @media (max-width: 767px) {
@@ -3859,7 +3859,7 @@ fieldset.uploads {
     -o-background-size: cover;
     background-size: cover;
     background-position: center;
-    height: 600px;
+    height: 700px;
     /*opacity: .3;*/
 }
 
@@ -3874,7 +3874,7 @@ fieldset.uploads {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 500px;
+    height: 700px;
     top: 0;
 }
 
