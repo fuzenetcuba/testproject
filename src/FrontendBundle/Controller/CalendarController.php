@@ -5,6 +5,7 @@ namespace FrontendBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * {@inheritDoc}
@@ -34,6 +35,12 @@ class CalendarController extends Controller
             new \DateTime(),
             new \DateTime('now +1 month')
         )->toSimpleObject()->items;
+
+        if (0 === count($events) && 'calendar' != $view) {
+            return new RedirectResponse(
+                $this->generateUrl('calendar', ['view' => 'calendar'])
+            );
+        }
 
         usort($events, function($a, $b) {
             return new \DateTime($a['start']['dateTime']) >= new \DateTime($b['start']['dateTime']);
