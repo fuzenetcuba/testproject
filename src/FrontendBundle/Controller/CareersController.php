@@ -45,10 +45,14 @@ class CareersController extends Controller
 
         $conditions = [];
 
+        $objBusiness = null;
+
         if (null !== $business && null === $form->getData()) {
             $conditions = [
                 'business' => $business
             ];
+
+            $objBusiness = $this->get('business.manager')->findBySlug($business);
         } else if (null !== $form->getData()) {
             /** @var Opening $opening */
             $opening = $form->getData();
@@ -59,8 +63,11 @@ class CareersController extends Controller
                 $categories = 0 !== $opening->getCategories()->count() ? $opening->getCategories()->first()->getId() : null;
             }
 
+            $business = null !== $opening->getBusiness() ? $opening->getBusiness()->getSlug() : null;
+            $objBusiness = $this->get('business.manager')->findBySlug($business);
+
             $conditions = array_merge([
-                'business' => null !== $opening->getBusiness() ? $opening->getBusiness()->getSlug() : null,
+                'business' => $business,
                 'categories' => $categories,
             ], $conditions);
         }
@@ -74,7 +81,8 @@ class CareersController extends Controller
         $pagination->setTemplate('FrontendBundle::paginator.html.twig');
 
         return $this->render('@Frontend/Careers/find.html.twig', [
-            'openings' => $pagination
+            'openings' => $pagination,
+            'business' => $objBusiness
         ]);
     }
 

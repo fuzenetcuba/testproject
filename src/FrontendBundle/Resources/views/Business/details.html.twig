@@ -186,10 +186,10 @@
 
                     {% if business.openings | length > 0 %}
                         <div class="openings col-lg-8">
-                            <a title="{{ 'CHECK OPEN POSITIONS FOR THIS BUSINESS' | trans({}, 'business') }}"
+                            <a title="{{ 'OPEN JOB POSITIONS' | trans({}, 'business') }}"
                                href="{{ path('careers_find', {'business':business.slug}) }}"
                                class="btn btn-blue btn-block">
-                                {{ 'CHECK OPEN POSITIONS FOR THIS BUSINESS' | trans({}, 'business') }}
+                                {{ 'OPEN JOB POSITIONS' | trans({}, 'business') }}
                             </a>
                         </div>
                     {% endif %}
