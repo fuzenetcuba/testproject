@@ -3,7 +3,8 @@
 {% block title %} {{- "Find careers" | trans({}, 'careers') -}} {% endblock %}
 
 {% block metatags %}
-    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+    <meta name="keywords"
+          content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
     {{- 'Careers searching' | trans({}, 'homepage') -}},
     {{- 'Mall' | trans({}, 'homepage') -}},
     {{- 'Businesses' | trans({}, 'homepage') -}},
@@ -29,92 +30,130 @@
 {% block page_content %}
 
     <section class="inner-content section-spaces-line">
-    
+
         <div class="row">
             <div class="jobafair-careers-list careers-result col-lg-10 col-lg-offset-1">
-            {% if openings | length > 0 %}
-                <table class="table table-hover table-responsive">
-                    <thead>
-                    <tr>
-                        <td colspan="4" class="careers-top-buttons">
-                            <br />
-                            <a title="{{ 'Back to Search' | trans({}, 'careers') }}" class="btn btn-green" href="{{ path('careers_index') }}">
-                                {{ 'Back to Search' | trans({}, 'careers') }}
-                            </a>
-                            <a title="{{ 'Application form' | trans({}, 'careers') ~ '.pdf' }}" class="btn btn-blue" target="_blank" download="{{ 'Application form' | trans({}, 'careers') ~ '.pdf' }}" href="
+                {% if openings | length > 0 %}
+                    <table class="table table-hover table-responsive">
+                        <thead>
+                        <tr>
+                            <td colspan="4" class="careers-top-buttons">
+                                <br/>
+                                <a title="{{ 'Back to Search' | trans({}, 'careers') }}" class="btn btn-green"
+                                   href="{{ path('careers_index') }}">
+                                    {{ 'Back to Search' | trans({}, 'careers') }}
+                                </a>
+                                <a title="{{ 'Application form' | trans({}, 'careers') ~ '.pdf' }}" class="btn btn-blue"
+                                   target="_blank" download="{{ 'Application form' | trans({}, 'careers') ~ '.pdf' }}"
+                                   href="
                                 {% if app.request.get('_locale') == 'en' %}
                                     {{ asset('bundles/frontend/files/job-application-form-en.pdf') }}
                                 {% elseif app.request.get('_locale') == 'es' %}
                                     {{ asset('bundles/frontend/files/job-application-form-es.pdf') }}
                                 {% endif %}
                             ">
-                                {{ 'Download Form' | trans({}, 'careers') }}
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="hidden-xs">{{ 'Business' | trans({}, 'careers') }}</th>
-                        <th class="hidden-xs">{{ 'Position' | trans({}, 'careers') }}</th>
-                        {# <th class="hidden-xs">Department</th> #}
-                        <th class="hidden-xs">{{ 'Description' | trans({}, 'careers') }}</th>
-                        {% if careers_apply %}<th class="hidden-xs">{{ 'Apply Now!' | trans({}, 'careers') }}</th>{% endif %}
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for opening in openings %}
-                        <tr class="hidden-sm hidden-md hidden-lg marker">
-                            <td>{{ 'Position' | trans({}, 'careers') }}</td>
-                            <td colspan="2">
-                                {{ opening.position }}
-                            </td>
-                        </tr>
-                        <tr class="hidden-sm hidden-md hidden-lg">
-                            <td>{{ 'Business' | trans({}, 'careers') }}</td>
-                            <td colspan="2">
-                                <img alt="{{ opening.business.name }}"
-                                             title="{{ opening.business.name }}"
-                                             src="{{ asset('images/business/' ~ opening.business.logo) }} "/>
-                            </td>
-                        </tr>
-                        <tr class="hidden-sm hidden-md hidden-lg">
-                            <td>{{ 'Description' | trans({}, 'careers') }}</td>
-                            <td colspan="2">{{ opening.description }}</td>
-                        </tr>
-                        {% if careers_apply %}
-                        <tr class="hidden-sm hidden-md hidden-lg">
-                            <td colspan="3">
-                                <a title="{{ 'APPLY' | trans({}, 'careers') }}" class="btn btn-amber btn-block" href="{{ path('careers_apply', {'slug':opening.slug}) }}">
-                                    {{ 'APPLY' | trans({}, 'careers') }}
+                                    {{ 'Download Form' | trans({}, 'careers') }}
                                 </a>
                             </td>
                         </tr>
-                        {% endif %}
-                        <tr class="hidden-xs">
-                            <td>
-                                <img style="width: 100%;" 
-                                             alt="{{ opening.business.name }}"
-                                             title="{{ opening.business.name }}"
-                                             src="{{ asset('images/business/' ~ opening.business.logo) }} "/>
-                            </td>
-                            <td>{{ opening.position }}</td>
-                            {# <td class="hidden-xs">{{ opening.department }}</td> #}
-                            <td>{{ opening.description }}</td>
+                        <tr>
+                            <th class="hidden-xs">{{ 'Business' | trans({}, 'careers') }}</th>
+                            <th class="hidden-xs">{{ 'Position' | trans({}, 'careers') }}</th>
+                            {# <th class="hidden-xs">Department</th> #}
+                            <th class="hidden-xs">{{ 'Description' | trans({}, 'careers') }}</th>
                             {% if careers_apply %}
-                            <td>
-                                <a title="{{ 'APPLY' | trans({}, 'careers') }}" class="btn btn-amber btn-block" href="{{ path('careers_apply', {'slug':opening.slug}) }}">
-                                    {{ 'APPLY' | trans({}, 'careers') }}
-                                </a>
-                            </td>
-                            {% endif %}
+                                <th class="hidden-xs">{{ 'Apply Now!' | trans({}, 'careers') }}</th>{% endif %}
                         </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <div class="alert alert-danger">
-                    {{ 'No openings have been published yet' | trans({}, 'careers') }}
-                </div>
-            {% endif %}
+                        </thead>
+                        <tbody>
+                        {% for opening in openings %}
+                            <tr class="hidden-sm hidden-md hidden-lg marker">
+                                <td>{{ 'Position' | trans({}, 'careers') }}</td>
+                                <td colspan="2">
+                                    {{ opening.position }}
+                                </td>
+                            </tr>
+                            <tr class="hidden-sm hidden-md hidden-lg">
+                                <td>{{ 'Business' | trans({}, 'careers') }}</td>
+                                <td colspan="2">
+                                    <img alt="{{ opening.business.name }}"
+                                         title="{{ opening.business.name }}"
+                                         src="{{ asset('images/business/' ~ opening.business.logo) }} "/>
+                                </td>
+                            </tr>
+                            <tr class="hidden-sm hidden-md hidden-lg">
+                                <td>{{ 'Description' | trans({}, 'careers') }}</td>
+                                <td colspan="2">{{ opening.description }}</td>
+                            </tr>
+                            {% if careers_apply %}
+                                <tr class="hidden-sm hidden-md hidden-lg">
+                                    <td colspan="3">
+                                        <a title="{{ 'APPLY' | trans({}, 'careers') }}" class="btn btn-amber btn-block"
+                                           href="{{ path('careers_apply', {'slug':opening.slug}) }}">
+                                            {{ 'APPLY' | trans({}, 'careers') }}
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                            <tr class="hidden-xs">
+                                <td>
+                                    <img style="width: 100%;"
+                                         alt="{{ opening.business.name }}"
+                                         title="{{ opening.business.name }}"
+                                         src="{{ asset('images/business/' ~ opening.business.logo) }} "/>
+                                </td>
+                                <td>{{ opening.position }}</td>
+                                {# <td class="hidden-xs">{{ opening.department }}</td> #}
+                                <td>{{ opening.description }}</td>
+                                {% if careers_apply %}
+                                    <td>
+                                        <a title="{{ 'APPLY' | trans({}, 'careers') }}" class="btn btn-amber btn-block"
+                                           href="{{ path('careers_apply', {'slug':opening.slug}) }}">
+                                            {{ 'APPLY' | trans({}, 'careers') }}
+                                        </a>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <div class="finished text-center">
+                        <div class="application-done">
+                            <div class="sa-icon sa-success animate">
+                                <span class="sa-line sa-tip animateSuccessTip"></span>
+                                <span class="sa-line sa-long animateSuccessLong"></span>
+
+                                <div class="sa-placeholder"></div>
+                                <div class="sa-fix"></div>
+                            </div>
+                        </div>
+                        <br/>
+
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
+
+                        {% if business is not null %}
+                            <p class="text-gray">{{ "Thank you for your interest in joining our team. We don't have any current openings at %business_name% but, if you would like to be considered for future openings, please email your resume and information to" | trans({'%business_name%' : business.name}, 'careers') }}</p>
+                        {% else %}
+                            <p class="text-gray">{{ "Thank you for your interest in joining our team. We don't have any current openings at %business_name% but, if you would like to be considered for future openings, please email your resume and information to" | trans({'%business_name%' : business.name}, 'careers') }}</p>
+                        {% endif %}
+                            <h2><a href="mailto:careers@plazamariachi.com" class="green-link">careers@plazamariachi.com</a></h2>
+                        <br/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
+                                <div class="col-sm-12">
+                                    <a title="{{ "KEEP APPLYING" | trans({}, 'careers') }}"
+                                       class="btn btn-success btn-lg"
+                                       HREF="{{ path("careers_index") }}">{{ "KEEP APPLYING" | trans({}, 'careers') }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
         <div class="row text-center hidden-print">
@@ -162,16 +201,16 @@
 
 
             // ===== Scroll to Top ====
-            $(window).scroll(function() {
+            $(window).scroll(function () {
                 if ($(this).scrollTop() >= 100) {        // If page is scrolled more than 50px
                     $('#return-to-top').fadeIn(200);    // Fade in the arrow
                 } else {
                     $('#return-to-top').fadeOut(200);   // Else fade out the arrow
                 }
             });
-            $('#return-to-top').click(function() {      // When arrow is clicked
+            $('#return-to-top').click(function () {      // When arrow is clicked
                 $('body,html').animate({
-                    scrollTop : 0                       // Scroll to top of body
+                    scrollTop: 0                       // Scroll to top of body
                 }, 500);
             });
 
