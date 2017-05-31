@@ -1,3 +1,7 @@
+backend_post:
+    resource: "@BackendBundle/Resources/config/routing/post.yml"
+    prefix:   /post
+
 backend_alert:
     resource: "@BackendBundle/Resources/config/routing/alert.yml"
     prefix:   /alert

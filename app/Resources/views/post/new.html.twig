@@ -1,0 +1,375 @@
+    {% extends 'BackendBundle::layout.html.twig' %}
+
+{% block custom_css %}
+    {{ parent() }}
+
+                
+                                                            <!-- iCheck Styles -->
+            <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/iCheck/custom.css') }}"
+                  type="text/css"/>
+                                <!-- datepicker3 Styles -->
+            <link rel="stylesheet"
+                  href="{{ asset('bundles/backend/css/plugins/datapicker/datepicker3.css') }}"
+                  type="text/css"/>
+                                                                                                            
+                <!-- select2 Styles -->
+        <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
+              type="text/css"/>
+    
+{% endblock %}
+
+        {% block active_post  %}active{% endblock %}
+
+        {% block page_heading_title %}
+    <a class="btn btn-default navbar-btn" href="{{ path('post')}}"
+       style="margin-bottom: 7px;">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+    Post creation
+    {% endblock %}
+
+        {% block page_content %}
+
+        {{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
+
+                            
+                
+                    <div class="form-group{% if(form.title.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.title) }}</label>
+
+                        <div class="col-md-6">
+                            {{ form_widget(form.title, { 'attr': {'class' : 'form-control'}}) }}
+                            {% if form.title.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.title.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.route.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.route) }}</label>
+
+                        <div class="col-md-6">
+                            {{ form_widget(form.route, { 'attr': {'class' : 'form-control'}}) }}
+                            {% if form.route.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.route.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.content.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.content) }}</label>
+
+                        <div class="col-md-6">
+                            {{ form_widget(form.content, { 'attr': {'class' : 'form-control'}}) }}
+                            {% if form.content.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.content.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.published.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.published) }}</label>
+
+                        <div class="col-md-1">
+                            <div class="checkbox-inline">
+                                {{ form_widget(form.published, { 'attr': {'class' : 'form-control i-checks'}}) }}
+                                {% if form.published.vars['errors']|length > 0 %}
+                                <ul class="message">
+                                    {% for error in form.published.vars['errors'] %}
+                                    <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.createdAt.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.createdAt) }}</label>
+
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                                {{ form_widget(form.createdAt, { 'attr': {'class' : 'form-control datepicker'}}) }}
+                                {% if form.createdAt.vars['errors']|length > 0 %}
+                                <ul class="message">
+                                    {% for error in form.createdAt.vars['errors'] %}
+                                    <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.updatedAt.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.updatedAt) }}</label>
+
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                                {{ form_widget(form.updatedAt, { 'attr': {'class' : 'form-control datepicker'}}) }}
+                                {% if form.updatedAt.vars['errors']|length > 0 %}
+                                <ul class="message">
+                                    {% for error in form.updatedAt.vars['errors'] %}
+                                    <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.metaTitle.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.metaTitle) }}</label>
+
+                        <div class="col-md-6">
+                            {{ form_widget(form.metaTitle, { 'attr': {'class' : 'form-control'}}) }}
+                            {% if form.metaTitle.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.metaTitle.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.metaKeywords.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.metaKeywords) }}</label>
+
+                        <div class="col-md-6">
+                            {{ form_widget(form.metaKeywords, { 'attr': {'class' : 'form-control'}}) }}
+                            {% if form.metaKeywords.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.metaKeywords.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.metaDescription.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.metaDescription) }}</label>
+
+                        <div class="col-md-6">
+                            {{ form_widget(form.metaDescription, { 'attr': {'class' : 'form-control'}}) }}
+                            {% if form.metaDescription.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.metaDescription.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.optionalMetas.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.optionalMetas) }}</label>
+
+                        <div class="col-md-6">
+                            {{ form_widget(form.optionalMetas, { 'attr': {'class' : 'form-control'}}) }}
+                            {% if form.optionalMetas.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.optionalMetas.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.customCss.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.customCss) }}</label>
+
+                        <div class="col-md-6">
+                            {{ form_widget(form.customCss, { 'attr': {'class' : 'form-control'}}) }}
+                            {% if form.customCss.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.customCss.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                                
+                
+                    <div class="form-group{% if(form.customJs.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for="" class="col-md-2 control-label">{{ form_label(form.customJs) }}</label>
+
+                        <div class="col-md-6">
+                            {{ form_widget(form.customJs, { 'attr': {'class' : 'form-control'}}) }}
+                            {% if form.customJs.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.customJs.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                                    
+                            
+                <div class="form-group{% if(form.author.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                    <label for=""
+                           class="col-md-2 control-label">{{ form_label(form.author) }}</label>
+
+                    <div class="col-md-6">
+                        {{ form_widget(form.author, { 'attr': {'class' : 'form-control select2-field', 'style' : 'width: 100%'}}) }}
+                        {% if form.author.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.author.vars['errors'] %}
+                            <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+
+            
+                <div class="form-group{% if(form.images.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                    <label for=""
+                           class="col-md-2 control-label">{{ form_label(form.images) }}</label>
+
+                    <div class="col-md-6">
+                        {{ form_widget(form.images, { 'attr': {'class' : 'form-control select2-field', 'style' : 'width: 100%'}}) }}
+                        {% if form.images.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.images.vars['errors'] %}
+                            <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+
+            
+            
+                <div class="form-group">
+    <div class="col-md-2 text-right">
+        <a class="btn btn-success" href="{{ path('post') }}">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            Back to the list
+        </a>
+    </div>
+    <div class="col-md-10">
+
+                            {{ form_widget(form.submit, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
+            {{ form_widget(form.submitback, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
+        
+                
+                
+                
+                    {{ form(form) }}
+        
+            </div>
+</div>
+
+
+    {{ form_end(form) }}
+
+    {% endblock %}
+
+    {% block custom_js %}
+    {{ parent() }}
+
+                                                                                                        <!-- iCheck Scripts -->
+                <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
+                        type="text/javascript"></script>
+                                                <!-- datepicker3 Scripts -->
+                <script src="{{ asset('bundles/backend/js/plugins/datapicker/bootstrap-datepicker.js') }}"
+                        type="text/javascript"></script>
+                                                                                                                                                                                    
+                <!-- select2 Scripts -->
+        <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"
+                type="text/javascript"></script>
+        {% endblock %}
+
+    {% block inline_js %}
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+
+                                                                                                        
+                //  iCheck scripts for checkboxes and radios
+                $(".i-checks").iCheck({
+                    checkboxClass: "icheckbox_square-green",
+                    radioClass: "iradio_square-green",
+                });
+                
+                                                
+                //  datepicker3 script for input datetime and date
+                $("form input.datepicker").datepicker({
+                    todayBtn: "linked",
+                    keyboardNavigation: false,
+                    forceParse: false,
+                    autoclose: true,
+                    format: "yyyy-mm-dd"
+                });
+                
+                                                                                                                                                                                    
+                
+        //  select2 scripts for batch actions combobox
+        $(".select2-field").select2({
+            placeholder: "--- Select a value ---"
+        });
+        
+    
+    });
+
+    </script>
+    {% endblock %}
