@@ -21,6 +21,10 @@
         .highlight {
             background-color: #FFFF88;
         }
+        .CodeMirror-lines {
+            cursor: text;
+            line-height: 1.35;
+        }
     </style>
 {% endblock %}
 
@@ -152,6 +156,12 @@
                                         class="nav-label">{{ 'Mails' | trans({}, 'generalbackend') }}</span></a>
                         </li>
                     {% endif %}
+
+                    <li class="{% block active_post %}{% endblock %}">
+                        <a title="{{ 'Posts' | trans({}, 'generalbackend') }}" href="{{ path('post') }}"><i
+                                    class="fa fa-file-text"></i> <span
+                                    class="nav-label">{{ 'Posts' | trans({}, 'generalbackend') }}</span></a>
+                    </li>
 
                     <li class="{% block active_users %}{% endblock %}">
                         <a title="{{ 'Users' | trans({}, 'generalbackend') }}" href="{{ path('user') }}"><i
@@ -364,6 +374,9 @@
         $(document).ready(function () {
             // Set idle time
             $(document).idleTimer(3600000);
+
+            // Set tooltip
+            $("body").tooltip({ selector: '[data-toggle=tooltip]' });
         });
 
         $(document).on("idle.idleTimer", function (event, elem, obj) {

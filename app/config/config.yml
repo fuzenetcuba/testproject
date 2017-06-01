@@ -143,6 +143,13 @@ vich_uploader:
             delete_on_update:   true
             delete_on_remove:   true
             namer:              app.vichuploader.namer #vich_uploader.namer_uniqid
+        post_gallery_image:
+            uri_prefix:         /images/post/gallery
+            upload_destination: %kernel.root_dir%/../web/images/post/gallery
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            namer:              app.vichuploader.namer #vich_uploader.namer_uniqid
         deal_image:
             uri_prefix:         /images/deals
             upload_destination: %kernel.root_dir%/../web/images/deals

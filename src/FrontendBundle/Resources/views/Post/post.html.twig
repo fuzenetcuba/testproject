@@ -1,0 +1,39 @@
+{% extends '@Frontend/layout.html.twig' %}
+
+{% block title %} {{ post.metaTitle }} {% endblock %}
+
+{% block metatags %}
+    <meta name="keywords"
+          content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+    {{ 'Mall' | trans({}, 'homepage') }},
+    {{ 'Businesses' | trans({}, 'homepage') }},
+    {{ 'Deals' | trans({}, 'homepage') }},
+    {{ 'Buying' | trans({}, 'homepage') }},
+    {{ post.metaKeywords }}
+    "/>
+    <meta name="description" content="{{ post.metaDescription }}"/>
+
+    {{ post.optionalMetas | raw }}
+
+{% endblock %}
+
+{% block custom_css %}
+    {{ parent() }}
+
+    <!-- Custom Style sheet -->
+    <style type="text/css">
+        {{ post.customCss | raw }}
+    </style>
+{% endblock %}
+
+{% block page_content %}
+
+    {{ post.content | raw }}
+
+{% endblock %}
+
+{% block custom_js %}
+    {{ parent() }}
+
+    {{ post.customJs | raw }}
+{% endblock %}
