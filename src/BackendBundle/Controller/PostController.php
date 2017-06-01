@@ -2,12 +2,14 @@
 
 namespace BackendBundle\Controller;
 
+use BackendBundle\Entity\PostImage;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;//------------
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use BackendBundle\Entity\Post;
 use BackendBundle\Form\PostType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Post controller.
@@ -28,12 +30,12 @@ class PostController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $query, $request->query->get('page', 1), 5
+            $query, $request->query->get('page', 1), 5
         );
 
-    return $this->render('post/index.html.twig', array(
-        'entities' => $pagination,
-    ));
+        return $this->render('post/index.html.twig', array(
+            'entities' => $pagination,
+        ));
     }
 
     /**
@@ -43,19 +45,19 @@ class PostController extends Controller
     public function findAction(Request $request)
     {
         $find = $request->get('find-form-text');
-        
+
         if ($find) {
             $em = $this->getDoctrine()->getManager();
 
             $dql = "SELECT e FROM BackendBundle:Post e WHERE "
-                    . "e.id LIKE '%" . $find . "%' OR "
-                    . "e.id LIKE '%" . $find . "%' "
-                    . "ORDER BY e.id ASC";
+                . "e.id LIKE '%" . $find . "%' OR "
+                . "e.id LIKE '%" . $find . "%' "
+                . "ORDER BY e.id ASC";
             $query = $em->createQuery($dql);
 
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
-                    $query, $request->query->get('page', 1), 5
+                $query, $request->query->get('page', 1), 5
             );
 
             return $this->render('post/index.html.twig', array(
@@ -75,7 +77,7 @@ class PostController extends Controller
     {
         $entity = new Post();
         $entity->setAuthor($this->getUser());
-        
+
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -90,36 +92,37 @@ class PostController extends Controller
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('post_new'));
             } else {
-            return $this->redirectToRoute('post_show', array('id' => $entity->getId()));            }
+                return $this->redirectToRoute('post_show', array('id' => $entity->getId()));
+            }
 
         }
 
-    return $this->render('post/new.html.twig', array(
-        'entity' => $entity,
-        'form' => $form->createView(),
-    ));
+        return $this->render('post/new.html.twig', array(
+            'entity' => $entity,
+            'form' => $form->createView(),
+        ));
     }
 
-            /**
-        * Creates a form to create a Post entity.
-        *
-        * @param Post $entity The entity
-        *
-        * @return \Symfony\Component\Form\Form The form
-        */
-        private function createCreateForm(Post $entity)
-        {
-            $form = $this->createForm('BackendBundle\Form\PostType', $entity, array(
-                'action' => $this->generateUrl('post_new'),
-                'method' => 'POST',
-            ));
+    /**
+     * Creates a form to create a Post entity.
+     *
+     * @param Post $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCreateForm(Post $entity)
+    {
+        $form = $this->createForm('BackendBundle\Form\PostType', $entity, array(
+            'action' => $this->generateUrl('post_new'),
+            'method' => 'POST',
+        ));
 
-            $form->add('submit', SubmitType::class, array('label' => 'Create'));
-            $form->add('submitback', SubmitType::class, array('label' => 'Create & Back'));
+        $form->add('submit', SubmitType::class, array('label' => 'Create'));
+        $form->add('submitback', SubmitType::class, array('label' => 'Create & Back'));
 
-            return $form;
-        }
-    
+        return $form;
+    }
+
     /**
      * Finds and displays a Post entity.
      *
@@ -143,9 +146,10 @@ class PostController extends Controller
         $deleteForm = $this->createDeleteForm($entity);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
-    
+
+        $em = $this->getDoctrine()->getManager();
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
@@ -154,20 +158,32 @@ class PostController extends Controller
             return $this->redirectToRoute('post_show', array('id' => $entity->getId()));
         }
 
-    return $this->render('post/edit.html.twig', array(
-        'entity' => $entity,
-        'edit_form' => $editForm->createView(),
-        'delete_form' => $deleteForm->createView(),
-    ));
+        // Image functions
+        $imageEntity = new PostImage();
+
+        $imageForm = $this->createForm('BackendBundle\Form\PostImageType', $imageEntity, array(
+            'action' => $this->generateUrl('post_upload_image'),
+            'method' => 'POST',
+        ));
+
+        $postImages = $em->getRepository('BackendBundle:PostImage')->findAll();
+
+        return $this->render('post/edit.html.twig', array(
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+            'image_form' => $imageForm->createView(),
+            'post_images' => $postImages,
+        ));
     }
 
     /**
-    * Creates a form to edit a Post entity.
-    *
-    * @param Post $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Post entity.
+     *
+     * @param Post $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Post $entity)
     {
         $form = $this->createForm('BackendBundle\Form\PostType', $entity, array(
@@ -203,24 +219,23 @@ class PostController extends Controller
         return $this->redirect($this->generateUrl('post'));
 
 
-
     }
 
     /**
-    * Creates a form to delete a Post entity.
-    *
-    * @param Post $entity The Post entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to delete a Post entity.
+     *
+     * @param Post $entity The Post entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createDeleteForm(Post $entity)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('post_delete', array('id' => $entity->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
+
     /**
      * Do several batch actions over Post entities.
      *
@@ -230,7 +245,7 @@ class PostController extends Controller
         $action = $request->get('batch_action_do');
         $ids = $request->get('batch_action_checkbox');
         $recordsSelected = false;
-        
+
         if ($ids) {
             $em = $this->getDoctrine()->getManager();
 
@@ -254,5 +269,58 @@ class PostController extends Controller
 
 
         return $this->redirect($this->generateUrl('post'));
+    }
+
+    public function uploadImageAction(Request $request)
+    {
+        $entity = new PostImage();
+
+        $form = $this->createForm('BackendBundle\Form\PostImageType', $entity, array(
+            'action' => $this->generateUrl('post_upload_image'),
+            'method' => 'POST',
+        ));
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($entity);
+            $em->flush();
+
+            // Mostrando mensaje
+            $this->get('session')->getFlashBag()->add('success', 'The image of the post was uploaded successfully.');
+
+//            return $this->redirectToRoute('business_show', array('id' => $business->getId()));
+
+        }
+
+        // Mostrando mensaje
+        $this->get('session')->getFlashBag()->add('danger', 'The image have one or more problems. Got to the upload view to look error details on fields');
+
+        return new Response("OK");
+
+//        return $this->render('business/show.html.twig', array(
+//            'entity' => $business,
+//            'delete_form' => $deleteForm->createView(),
+//            'image_form' => $form->createView(),
+//        ));
+    }
+
+    public function deleteImageAction(Request $request, PostImage $entity)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Image entity.');
+        }
+
+        $em->remove($entity);
+        $em->flush();
+
+        // Mostrando mensaje
+        $this->get('session')->getFlashBag()->add('success', 'The image of post was deleted successfully.');
+
+        return new Response("OK");
+
+//        return $this->redirect($this->generateUrl('business_show', array('id' => $businessId)));
     }
 }

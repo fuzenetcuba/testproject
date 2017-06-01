@@ -314,116 +314,15 @@
                 type="text/javascript"></script>
         <script src="{{ asset('bundles/backend/js/plugins/codemirror/mode/htmlmixed/htmlmixed.js') }}"
                 type="text/javascript"></script>
+
+        <script src="{{ asset('bundles/backend/js/post-scripts.js') }}"
+                type="text/javascript"></script>
     {% endblock %}
 
     {% block inline_js %}
         <script type="text/javascript">
 
-            var editorContent;
-            function initEditorContent() {
-                if (editorContent instanceof CodeMirror) {
-                    editorContent.refresh();
-                } else {
-                    var mixedMode = {
-                        name: "htmlmixed",
-                        scriptTypes: [{
-                            matches: /\/x-handlebars-template|\/x-mustache/i,
-                            mode: null
-                        },
-                            {
-                                matches: /(text|application)\/(x-)?vb(a|script)/i,
-                                mode: "vbscript"
-                            }]
-                    };
-                    editorContent = CodeMirror.fromTextArea(document.getElementById("backendbundle_post_content"), {
-                        mode: mixedMode,
-                        lineNumbers: true,
-                        matchBrackets: true,
-                        styleActiveLine: true,
-                        lineWrapping: true,
-                        foldGutter: true,
-                        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-                        extraKeys: {"Ctrl-Space": "autocomplete"},
-                        theme: "dracula"
-                    });
-                    editorContent.setSize('100%', 500);
-                }
-            }
-
-            var editorMetas;
-            function initEditorMetas() {
-                if (editorMetas instanceof CodeMirror) {
-                    editorMetas.refresh();
-                } else {
-                    var mixedMode = {
-                        name: "htmlmixed",
-                        scriptTypes: [{
-                            matches: /\/x-handlebars-template|\/x-mustache/i,
-                            mode: null
-                        },
-                            {
-                                matches: /(text|application)\/(x-)?vb(a|script)/i,
-                                mode: "vbscript"
-                            }]
-                    };
-                    editorMetas = CodeMirror.fromTextArea(document.getElementById("backendbundle_post_optionalMetas"), {
-                        mode: mixedMode,
-                        lineNumbers: true,
-                        matchBrackets: true,
-                        styleActiveLine: true,
-                        lineWrapping: true,
-                        foldGutter: true,
-                        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-                        extraKeys: {"Ctrl-Space": "autocomplete"},
-                        theme: "dracula"
-                    });
-                    editorMetas.setSize('100%', 400);
-                }
-            }
-
-            var editorCSS;
-            function initEditorCSS() {
-                if (editorCSS instanceof CodeMirror) {
-                    editorCSS.refresh();
-                } else {
-                    editorCSS = CodeMirror.fromTextArea(document.getElementById("backendbundle_post_customCss"), {
-                        mode: "css",
-                        lineNumbers: true,
-                        matchBrackets: true,
-                        styleActiveLine: true,
-                        lineWrapping: true,
-                        foldGutter: true,
-                        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-                        extraKeys: {"Ctrl-Space": "autocomplete"},
-                        theme: "dracula"
-                    });
-                    editorCSS.setSize('100%', 400);
-                }
-            }
-
-            var editorJS;
-            function initEditorJS() {
-                if (editorJS instanceof CodeMirror) {
-                    editorJS.refresh();
-                } else {
-                    editorJS = CodeMirror.fromTextArea(document.getElementById("backendbundle_post_customJs"), {
-                        mode: "javascript",
-                        lineNumbers: true,
-                        matchBrackets: true,
-                        styleActiveLine: true,
-                        lineWrapping: true,
-                        foldGutter: true,
-                        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-                        extraKeys: {"Ctrl-Space": "autocomplete"},
-                        theme: "dracula"
-                    });
-                    editorJS.setSize('100%', 400);
-                }
-            }
-
-
             $(document).ready(function () {
-
 
                 //  iCheck scripts for checkboxes and radios
                 $(".i-checks").iCheck({
@@ -435,22 +334,6 @@
                 //  select2 scripts for batch actions combobox
                 $(".select2-field").select2({
                     placeholder: "--- Select a value ---"
-                });
-
-                //  codemirror
-                // Only load editors if tab has been clicked
-                initEditorContent();
-                $('#post-tabs > li > a[href="#post-basic"]').on('shown.bs.tab', function (e) {
-                    initEditorContent();
-                });
-                $('#post-tabs > li > a[href="#post-optional-metas"]').on('shown.bs.tab', function (e) {
-                    initEditorMetas();
-                });
-                $('#post-tabs > li > a[href="#post-custom-css"]').on('shown.bs.tab', function (e) {
-                    initEditorCSS();
-                });
-                $('#post-tabs > li > a[href="#post-custom-js"]').on('shown.bs.tab', function (e) {
-                    initEditorJS();
                 });
 
             });

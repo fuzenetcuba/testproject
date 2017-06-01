@@ -32,3 +32,13 @@ post_batch:
     path:     /post_batch
     defaults: { _controller: "BackendBundle:Post:batch" }
     methods:  POST
+
+post_upload_image:
+    path:     /uploadimage
+    defaults: { _controller: "BackendBundle:Post:uploadImage" }
+    methods:  POST
+
+post_delete_image:
+    path:     /{id}/deleteimage
+    defaults: { _controller: "BackendBundle:Post:deleteImage" }
+    methods:  GET
