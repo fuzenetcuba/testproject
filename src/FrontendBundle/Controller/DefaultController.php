@@ -64,6 +64,21 @@ class DefaultController extends Controller
         return $this->render("FrontendBundle:Static:" . $name . ".html.twig");
     }
 
+    public function postPageAction($route)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $post = $em->getRepository('BackendBundle:Post')->findOneBy(array('route' => $route));
+
+        if(!$post){
+            return $this->redirectToRoute('frontend_homepage');
+        }
+
+        return $this->render("FrontendBundle:Post:post.html.twig", array(
+            'post' => $post
+        ));
+    }
+
 
     /**
      * Displays robots.txt.

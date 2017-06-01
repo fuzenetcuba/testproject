@@ -13,6 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  *
  * @ORM\Entity()
  * @ORM\Table(name="post")
+ * @ORM\HasLifecycleCallbacks()
  * @DoctrineAssert\UniqueEntity(
  *     fields={"route"},
  *     errorPath="route",
@@ -44,6 +45,7 @@ class Post
      *
      * @ORM\Column(name="route", type="string", length=255)
      * @Assert\NotBlank(message="The route must have 3 characters or more")
+     * @Assert\Regex(pattern="/^[a-z0-9]+(?:-[a-z0-9]+)*$/", message="The route must have only alphanumeric and hyphen characters")
      * @Gedmo\Translatable
      */
     private $route;
@@ -149,11 +151,50 @@ class Post
     {
         $this->createdAt = new \DateTime();
 
+        $this->customCss = "/* EDITOR FOR CSS CODE
+=======================================================================================
+Write your separate custom CSS code here. No need to write the code inside STYLE tags
+======================================================================================= */";
+        $this->customJs = "<script type=\"text/javascript\">
+/* EDITOR FOR JAVASCRIPT CODE
+===================================================================================================
+Write your separate custom Javascript code here. 
+You must write the code into SCRIPT tags, or even you can include some importing files 
+=================================================================================================== */
+</script>";
+
+        $this->optionalMetas = "<!-- EDITOR FOR HTML MIXED CODE 																		-->
+<!-- ==================================================================================================	-->
+<!-- You can add some meta tags to support another feature in this post.  								-->
+<!-- Eg.: <meta property=\"og:title\" content=\"Plaza Mariachi Music City\" />								-->
+<!-- ==================================================================================================	-->
+<!-- As this code is insert into the <head></head> section, you can include also some  					-->
+<!-- <link /> tag to import CSS files. 																	-->
+<!-- Eg.: <link rel=\"stylesheet\" href=\"/bundles/backend/css/bootstrap.min.css\" type=\"text/css\"/>		-->
+<!-- ==================================================================================================	-->";
+
+        $this->content = "<!-- EDITOR FOR HTML MIXED CODE 																		-->
+<!-- ==================================================================================================	-->
+<!-- Write your HTML code here. You can mix some kind of code, like CSS and Javascript, just like a  	-->
+<!-- real code editor.  																				-->
+<!-- ==================================================================================================	-->
+<!-- The content will be rendered inside tags prepared for that, it means you have no wrap the 			-->
+<!-- code inside HTML and/or BODY tags.  																-->
+<!-- ==================================================================================================	-->";
+
         if (null === $this->updatedAt) {
             $this->updatedAt = new \DateTime();
         }
 
         $this->images = new ArrayCollection();
+    }
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+        $this->updatedAt = new \DateTime();
     }
 
     public function __toString()
