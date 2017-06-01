@@ -6,10 +6,6 @@ frontend_static_page:
     path:     /base/{name}
     defaults: { _controller: FrontendBundle:Default:staticPage }
 
-frontend_post_page:
-    path:     /{route}
-    defaults: { _controller: FrontendBundle:Default:postPage }
-
 frontend_loged_in:
     path:     /frontend_loged
     defaults: { _controller: FrontendBundle:Default:logedIn }

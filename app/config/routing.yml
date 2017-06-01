@@ -60,3 +60,9 @@ fos_js_routing:
 _errors:
     resource: "@TwigBundle/Resources/config/routing/errors.xml"
     prefix: /_error
+
+# Serve all Post pages in last case
+# This route must be at the end because could have conflict with other routes
+frontend_post_page:
+    path:     /{route}
+    defaults: { _controller: FrontendBundle:Default:postPage }

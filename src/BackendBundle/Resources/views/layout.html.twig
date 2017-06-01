@@ -374,6 +374,9 @@
         $(document).ready(function () {
             // Set idle time
             $(document).idleTimer(3600000);
+
+            // Set tooltip
+            $("body").tooltip({ selector: '[data-toggle=tooltip]' });
         });
 
         $(document).on("idle.idleTimer", function (event, elem, obj) {
