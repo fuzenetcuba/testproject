@@ -81,8 +81,9 @@ class PostController extends Controller
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
+        $em = $this->getDoctrine()->getManager();
+
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
@@ -97,9 +98,22 @@ class PostController extends Controller
 
         }
 
+        // Image functions
+        $imageEntity = new PostImage();
+
+        $imageForm = $this->createForm('BackendBundle\Form\PostImageType', $imageEntity, array(
+            'action' => $this->generateUrl('post_upload_image'),
+            'method' => 'POST',
+        ));
+
+        $postImages = $em->getRepository('BackendBundle:PostImage')->findAll();
+
+
         return $this->render('post/new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
+            'image_form' => $imageForm->createView(),
+            'post_images' => $postImages,
         ));
     }
 
