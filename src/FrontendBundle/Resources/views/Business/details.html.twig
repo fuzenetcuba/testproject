@@ -415,12 +415,12 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('#links').on('click',function (e) {
+            $('#links a').on('click',function (e) {
                 e = e || window.event;
                 var target = e.target || e.srcElement,
                         link = target.src ? target.parentNode : target,
                         options = {index: link, event: e},
-                        links = $(this).find('a');
+                        links = $('#links a');
                 blueimp.Gallery(links, options);
             });
         });

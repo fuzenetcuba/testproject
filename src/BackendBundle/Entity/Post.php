@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Entity;
 
+use BackendBundle\Validator\Constraints\RouteConstraint;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -45,7 +46,7 @@ class Post
      *
      * @ORM\Column(name="route", type="string", length=255)
      * @Assert\NotBlank(message="The route must have 3 characters or more")
-     * @Assert\Regex(pattern="/^[a-z0-9]+(?:-[a-z0-9]+)*$/", message="The route must have only alphanumeric and hyphen characters")
+     * @Assert\Regex(pattern="/^[a-z0-9]+(?:-[a-z0-9]+)*$/", message="The route must have only alphanumeric and hyphen characters and a slash at begin. Eg.: /custom-route")
      * @Gedmo\Translatable
      */
     private $route;
