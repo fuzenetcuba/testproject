@@ -210,7 +210,7 @@
                             </a>
                         {% endif %}
                         {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'pinterest' })) is not empty %}
-                            <a title="Follow us on Instagram" href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'pinterest' })) }}"
+                            <a title="Follow us on Pinterest" href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'pinterest' })) }}"
                                target="_blank"
                                class="btn btn-circle-muted btn-outline btn-social-icon btn-pinterest text-muted m-l m-r">
                                 <span class="fa fa-pinterest"></span>
@@ -223,6 +223,12 @@
                                 <span class="fa fa-snapchat"></span>
                             </a>
                         {% endif %}
+
+                        <a title="Follow us on Trip Advisor" href="https://www.tripadvisor.com/Attraction_Review-g55229-d12398886-Reviews-Plaza_Mariachi_Music_City-Nashville_Davidson_County_Tennessee.html"
+                           target="_blank"
+                           class="btn btn-circle-muted btn-outline btn-social-icon btn-tripadvisor text-muted m-l m-r">
+                            <span class="fa fa-tripadvisor"></span>
+                        </a>
                     </div>
                 </div>
             </div>

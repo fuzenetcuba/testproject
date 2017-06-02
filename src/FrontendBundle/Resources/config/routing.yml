@@ -1,6 +1,8 @@
 frontend_homepage:
     path:     /
     defaults: { _controller: FrontendBundle:Default:index }
+    options:
+        expose: true
 
 frontend_static_page:
     path:     /base/{name}

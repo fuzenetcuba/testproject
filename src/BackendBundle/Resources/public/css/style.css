@@ -4242,6 +4242,10 @@ video {
     padding: 20px 30px 30px 30px;
 }
 
+.modal-lg90{
+    width: 90%;
+}
+
 .inmodal .modal-body {
     background: #f8fafb;
 }
