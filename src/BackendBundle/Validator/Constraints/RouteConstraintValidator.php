@@ -34,7 +34,7 @@ class RouteConstraintValidator extends ConstraintValidator
         try {
             $route = $matcher->match($value);
 
-            if ($route) {
+            if ($route && false === strpos($route['_route'], 'frontend_post_page')) {
                 $this->context->buildViolation($constraint->message)
                     ->setParameter('{{ route }}', $value)
                     ->addViolation()
