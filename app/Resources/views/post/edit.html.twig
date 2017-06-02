@@ -316,7 +316,7 @@
 
             <div class="modal inmodal fade" id="image-gallery" tabindex="-1" role="dialog"
                  aria-hidden="true">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-lg90">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal"><span
@@ -330,34 +330,27 @@
                         </div>
                         <div class="modal-body">
 
-                            {% for image in post_images %}
+                            <div id="image-gallery-item-list">
+                                {% for image in post_images %}
 
-                                <div class="file-box">
-                                    <div class="file">
-                                        <a class="file-link" href="#">
-                                            <span class="corner"></span>
+                                    <div class="file-box">
+                                        <div class="file">
+                                            <a class="file-link" href="#">
+                                                <span class="corner"></span>
 
-                                            <div class="image">
-                                                <img alt="{{ image.description }}" class="img-responsive"
-                                                     src="{{ asset('images/post/gallery/' ~ image.imgName) }}">
-                                            </div>
-                                            <div class="file-name">
-                                                {{ image.imgName }}
-                                                <br/>
-                                                <small>Added: {{ image.createdAt|date('M d, Y') }}</small>
-                                            </div>
-                                        </a>
-                                        {% if is_granted('ROLE_ADMIN') %}
-                                            <a href="{{ path('post_delete_image', { 'id' : image.id }) }}"
-                                               class="btn btn-xs btn-danger delete-image" data-toggle="tooltip"
-                                               title="{{ 'Delete' | trans({}, 'generalbackend') }}">
-                                                <i class="fa fa-trash"></i>
+                                                <div class="image">
+                                                    <img alt="{{ image.description }}" class="img-responsive"
+                                                         src="{{ asset('images/post/gallery/' ~ image.imgName) }}">
+                                                </div>
+                                                <div class="file-name">
+                                                    {{ image.imgName }}
+                                                </div>
                                             </a>
-                                        {% endif %}
+                                        </div>
                                     </div>
-                                </div>
 
-                            {% endfor %}
+                                {% endfor %}
+                            </div>
 
                             <div class="ibox collapsed">
                                 <div class="ibox-title">
@@ -372,7 +365,7 @@
                                 <div class="ibox-content">
                                     <div>
 
-                                        {{ form_start(image_form, {'attr': {'class':'form-horizontal'}}) }}
+                                        {{ form_start(image_form, {'attr': {'class':'form-horizontal' }}) }}
 
                                         <div class="form-group{% if(image_form.imgFile.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                                             <label for=""
@@ -408,6 +401,14 @@
                                             </div>
                                         </div>
 
+                                        <div class="row">
+                                            <div class="col-md-10 col-md-offset-2">
+                                                <a href="#" id="image-gallery-upload" class="btn btn-success">
+                                                    <span class="fa fa-arrow-circle-up"></span> {{ 'Upload' | trans({}, 'generalbackend') }}
+                                                </a>
+                                            </div>
+                                        </div>
+
                                         <div class="hidden">{{ form_rest(image_form) }}</div>
                                         {{ form_end(image_form) }}
                                     </div>
@@ -428,6 +429,26 @@
             <div class="hidden">
                 <input id="editor-content-coords" type="hidden" value=""/>
                 <div id="code-to-insert" class="hidden"></div>
+            </div>
+
+            <div id="file-template" class="hidden">
+                <div class="file-box" id="">
+                    <div class="file">
+                        <a class="file-link" href="#">
+                            <span class="corner"></span>
+
+                            <div class="image">
+                                <img alt="" src="" class="img-responsive">
+                            </div>
+                            <div class="file-name">
+                            </div>
+                        </a>
+                        <a href="#" class="btn btn-xs btn-danger delete-image" data-toggle="tooltip"
+                           title="Delete" data-file-id="">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
 
         {% endblock %}

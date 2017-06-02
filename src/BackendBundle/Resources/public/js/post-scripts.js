@@ -166,6 +166,78 @@ function dismissAtach() {
     resetFileSelection();
 }
 
+function uploadFileAJAX() {
+    var formTag = $('form[name="backendbundle_postimage"]');
+    var formdata = new FormData(formTag[0]);
+
+    $.ajax({
+        type: "POST",
+        url: Routing.generate("post_upload_image"),
+        processData: false,
+        contentType: false,
+        cache: false,
+        // contentType: 'application/x-www-form-urlencoded',
+        data: formdata
+    }).done(function (html) {
+        // alert(html);
+        insertDataIntoTemplate(JSON.parse(html));
+    });
+
+    // reset form
+    formTag[0].reset();
+    return false;
+}
+
+function deleteFileAJAX() {
+    var fileId = $(this).attr('data-file-id');
+
+    $.ajax({
+        type: "GET",
+        url: Routing.generate("post_delete_image", {'id': fileId}),
+        processData: false,
+        contentType: false,
+        cache: false,
+        data: null
+    }).done(function (html) {
+        var parsedData = JSON.parse(html);
+        removeDataFromTemplate(parsedData.id);
+    });
+    return false;
+}
+
+function insertDataIntoTemplate(dataFile) {
+    var emptyTemplate = $('#file-template').html();
+    var $template = $(emptyTemplate);
+
+    $template.attr('id', 'file-box-' + dataFile.id);
+    $template.find('.file-link .image img').attr('alt', dataFile.description);
+    $template.find('.file-link .image img').attr('src', '/images/post/gallery/' + dataFile.imgName);
+    $template.find('.file-link .file-name').append(dataFile.imgName);
+
+    $template.find('a.delete-image').attr('data-file-id', dataFile.id);
+
+    $('#image-gallery-item-list').append($template);
+
+    refreshBindEvents();
+}
+
+function removeDataFromTemplate(fileId) {
+    $('#file-box-' + fileId).remove();
+    refreshBindEvents();
+}
+
+function refreshBindEvents() {
+    $('.file-link').unbind('click').on('click', attachFile);
+
+    $('.file-box a.delete-image').unbind('click').on('click', deleteFileAJAX);
+
+    $('#image-gallery-attach').unbind('click').on('click', function (e) {
+        restoreEditorContentCords();
+        $('#image-gallery').modal('hide');
+    });
+
+    $('#image-gallery-upload').unbind('click').on('click', uploadFileAJAX);
+}
 
 $(document).ready(function () {
 
@@ -185,17 +257,12 @@ $(document).ready(function () {
         initEditorJS();
     });
 
-
     // image gallery modal events
-    $('#image-gallery').on('show.bs.modal', function (e) {
+    $('#image-gallery').unbind('show.bs.modal').on('show.bs.modal', function (e) {
         saveEditorContentCords();
     });
-    $('#image-gallery').on('hide.bs.modal', dismissAtach);
+    $('#image-gallery').unbind('hide.bs.modal').on('hide.bs.modal', dismissAtach);
 
-    $('.file-link').on('click', attachFile);
-
-    $('#image-gallery-attach').on('click', function (e) {
-        restoreEditorContentCords();
-        $('#image-gallery').modal('hide');
-    });
+    // refreshing bind events
+    refreshBindEvents();
 });

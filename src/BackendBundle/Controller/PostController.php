@@ -300,23 +300,18 @@ class PostController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The image of the post was uploaded successfully.');
+            $result = array(
+                'id' => $entity->getId(),
+                'imgName' => $entity->getImgName(),
+                'description' => $entity->getDescription(),
+                'createdAt' => $entity->getCreatedAt(),
+                'updatedAt' => $entity->getUpdatedAt(),
+            );
 
-//            return $this->redirectToRoute('business_show', array('id' => $business->getId()));
-
+            return new Response(json_encode($result));
         }
 
-        // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('danger', 'The image have one or more problems. Got to the upload view to look error details on fields');
-
-        return new Response("OK");
-
-//        return $this->render('business/show.html.twig', array(
-//            'entity' => $business,
-//            'delete_form' => $deleteForm->createView(),
-//            'image_form' => $form->createView(),
-//        ));
+        return new Response("Error", 500);
     }
 
     public function deleteImageAction(Request $request, PostImage $entity)
@@ -327,14 +322,11 @@ class PostController extends Controller
             throw $this->createNotFoundException('Unable to find Image entity.');
         }
 
+        $id = array('id' => $entity->getId());
+
         $em->remove($entity);
         $em->flush();
 
-        // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('success', 'The image of post was deleted successfully.');
-
-        return new Response("OK");
-
-//        return $this->redirect($this->generateUrl('business_show', array('id' => $businessId)));
+        return new Response(json_encode($id));
     }
 }

@@ -37,8 +37,12 @@ post_upload_image:
     path:     /uploadimage
     defaults: { _controller: "BackendBundle:Post:uploadImage" }
     methods:  POST
+    options:
+        expose: true
 
 post_delete_image:
     path:     /{id}/deleteimage
     defaults: { _controller: "BackendBundle:Post:deleteImage" }
     methods:  GET
+    options:
+        expose: true
