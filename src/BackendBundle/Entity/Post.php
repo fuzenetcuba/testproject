@@ -47,6 +47,7 @@ class Post
      * @ORM\Column(name="route", type="string", length=255)
      * @Assert\NotBlank(message="The route must have 3 characters or more")
      * @Assert\Regex(pattern="/^[a-z0-9]+(?:-[a-z0-9]+)*$/", message="The route must have only alphanumeric and hyphen characters and a slash at begin. Eg.: /custom-route")
+     * @RouteConstraint()
      * @Gedmo\Translatable
      */
     private $route;

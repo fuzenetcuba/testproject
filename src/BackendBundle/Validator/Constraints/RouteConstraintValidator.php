@@ -32,7 +32,9 @@ class RouteConstraintValidator extends ConstraintValidator
         $matcher = $this->router->getMatcher();
 
         try {
-            $route = $matcher->match($value);
+
+            // matching simple routes
+            $route = $matcher->match('/' . $value);
 
             if ($route && false === strpos($route['_route'], 'frontend_post_page')) {
                 $this->context->buildViolation($constraint->message)
