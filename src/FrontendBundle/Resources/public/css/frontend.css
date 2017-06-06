@@ -3990,3 +3990,14 @@ span.event--close {
 .calendar--selector a:first-child {
     margin-left: 20px;
 }
+
+p.text-muted a,
+p.text-muted a:active,
+p.text-muted a:visited {
+    color: #337ab7;
+}
+
+p.text-muted a:hover,
+p.text-muted a:focus {
+    color: #23527c;
+}
