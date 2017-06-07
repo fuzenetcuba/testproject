@@ -1,53 +1,57 @@
-    {% extends 'BackendBundle::layout.html.twig' %}{% block active_postimage  %}active{% endblock %}{% block page_heading_title %}
-    <a class="btn btn-default navbar-btn" href="{{ path('post_image')}}"
+{% extends 'BackendBundle::layout.html.twig' %}{% block active_postimage %}active{% endblock %}{% block page_heading_title %}
+    <a class="btn btn-default navbar-btn" href="{{ path('post_image') }}"
        style="margin-bottom: 7px;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a>
-    PostImage data
-    {% endblock %}{% block page_content %}
+    Post Image data
+{% endblock %}{% block page_content %}
     <dl class="dl-horizontal">
         <tbody>
-            <dt>Id</dt>
-                <dd>{{ entity.id }}</dd>
-            <div class="hr-line-dashed"></div>
-            <dt>Imgname</dt>
-                <dd>{{ entity.imgName }}</dd>
-            <div class="hr-line-dashed"></div>
-            <dt>Description</dt>
-                <dd>{{ entity.description }}</dd>
-            <div class="hr-line-dashed"></div>
-            <dt>Createdat</dt>
-                <dd>{{ entity.createdAt|date('d-M-Y h:i A') }}</dd>
-            <div class="hr-line-dashed"></div>
-            <dt>Updatedat</dt>
-                <dd>{{ entity.updatedAt|date('d-M-Y h:i A') }}</dd>
-            <div class="hr-line-dashed"></div>
+        <dt>Id</dt>
+        <dd>{{ entity.id }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Image Name</dt>
+        <dd>{{ entity.imgName }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Description</dt>
+        <dd>{{ entity.description }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Created At</dt>
+        <dd>{{ entity.createdAt|date('d-M-Y h:i A') }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Updated At</dt>
+        <dd>{{ entity.updatedAt|date('d-M-Y h:i A') }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>Image</dt>
+        <dd><img style="max-width: 70%; height: auto;" src="{{ asset('images/post/gallery/' ~ entity.imgName) }}"
+                 alt="{{ entity.imgName }}"/></dd>
+        <div class="hr-line-dashed"></div>
         </tbody>
-    </dl>    <div class="form-group">
-    <div class="col-md-2 text-right">
-        <a class="btn btn-success" href="{{ path('post_image') }}">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            Back to the list
-        </a>
-    </div>
-    <div class="col-md-10">
+    </dl>
+    <div class="form-group">
+        <div class="col-md-2 text-right">
+            <a class="btn btn-success" href="{{ path('post_image') }}">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Back to the list
+            </a>
+        </div>
+        <div class="col-md-10">
 
-                
-                
-                            <a class="btn btn-primary"
+
+            <a class="btn btn-primary"
                href="{{ path('post_image_edit', { 'id': entity.id }) }}">
                 <span class="fa fa-pencil"></span>
                 Edit
             </a>
-        
-                            <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
+
+            <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
                 <span class="fa fa-remove"></span>
                 Delete
             </a>
-        
-        
-            </div>
-</div>
+
+
+        </div>
+    </div>
 
 
     <div class="modal inmodal" id="modalDelete" tabindex="-1" role="dialog" aria-hidden="true">
@@ -78,4 +82,4 @@
     </div>
 
 
-    {% endblock %}
+{% endblock %}
