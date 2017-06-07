@@ -88,6 +88,15 @@
                             </div>
                             <div class="hr-line-dashed"></div>
 
+                            <div class="row m-b-sm">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <a class="btn btn-white btn-sm" data-toggle="modal" data-placement="top"
+                                       title="Image Gallery" data-target="#image-gallery" href="#">
+                                        <i class="fa fa-picture-o"></i>
+                                    </a>
+                                </div>
+                            </div>
+
                             <div class="form-group{% if(form.content.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                                 <label for="" class="col-md-2 control-label">{{ form_label(form.content) }}</label>
 
@@ -268,8 +277,145 @@
             </div>
 
 
-
             {{ form_end(form) }}
+
+
+            <div class="modal inmodal fade" id="image-gallery" tabindex="-1" role="dialog"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg90">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span
+                                        aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                            </button>
+                            <h4 class="modal-title">Image Gallery</h4>
+                            <small class="font-bold">
+                                Manage all images of the Gallery. <br/>
+                                You can remove only the images that have been added in the creating/editing context.
+                            </small>
+                        </div>
+                        <div class="modal-body">
+
+                            <div id="image-gallery-item-list">
+                                {% for image in post_images %}
+
+                                    <div class="file-box">
+                                        <div class="file">
+                                            <a class="file-link" href="#">
+                                                <span class="corner"></span>
+
+                                                <div class="image">
+                                                    <img alt="{{ image.description }}" class="img-responsive"
+                                                         src="{{ asset('images/post/gallery/' ~ image.imgName) }}">
+                                                </div>
+                                                <div class="file-name">
+                                                    {{ image.imgName }}
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+
+                            <div class="ibox collapsed">
+                                <div class="ibox-title">
+                                    <h5>Upload Image</h5>
+                                    <div class="ibox-tools">
+                                        <a class="btn btn-xs collapse-link">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <div class="ibox-content">
+                                    <div>
+
+                                        {{ form_start(image_form, {'attr': {'class':'form-horizontal' }}) }}
+
+                                        <div class="form-group{% if(image_form.imgFile.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                            <label for=""
+                                                   class="col-md-2 control-label">{{ form_label(image_form.imgFile) }}</label>
+
+                                            <div class="col-md-10">
+                                                {{ form_widget(image_form.imgFile, { 'attr': {'class' : 'form-control'}}) }}
+                                                {% if image_form.imgFile.vars['errors']|length > 0 %}
+                                                    <ul class="message">
+                                                        {% for error in image_form.imgFile.vars['errors'] %}
+                                                            <li>{{ error.message }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="hr-line-dashed"></div>
+
+                                        <div class="form-group{% if(image_form.description.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                            <label for=""
+                                                   class="col-md-2 control-label">{{ form_label(image_form.description) }}
+                                            </label>
+
+                                            <div class="col-md-10">
+                                                {{ form_widget(image_form.description, { 'attr': {'class' : 'form-control'}}) }}
+                                                {% if image_form.description.vars['errors']|length > 0 %}
+                                                    <ul class="message">
+                                                        {% for error in image_form.description.vars['errors'] %}
+                                                            <li>{{ error.message }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-10 col-md-offset-2">
+                                                <a href="#" id="image-gallery-upload" class="btn btn-success">
+                                                    <span class="fa fa-arrow-circle-up"></span> {{ 'Upload' | trans({}, 'generalbackend') }}
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="hidden">{{ form_rest(image_form) }}</div>
+                                        {{ form_end(image_form) }}
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                            <button id="image-gallery-attach" type="button" class="btn btn-primary">Insert file</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden">
+                <input id="editor-content-coords" type="hidden" value=""/>
+                <div id="code-to-insert" class="hidden"></div>
+            </div>
+
+            <div id="file-template" class="hidden">
+                <div class="file-box" id="">
+                    <div class="file">
+                        <a class="file-link" href="#">
+                            <span class="corner"></span>
+
+                            <div class="image">
+                                <img alt="" src="" class="img-responsive">
+                            </div>
+                            <div class="file-name">
+                            </div>
+                        </a>
+                        <a href="#" class="btn btn-xs btn-danger delete-image" data-toggle="tooltip"
+                           title="Delete" data-file-id="">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
         {% endblock %}
 
@@ -314,116 +460,15 @@
                 type="text/javascript"></script>
         <script src="{{ asset('bundles/backend/js/plugins/codemirror/mode/htmlmixed/htmlmixed.js') }}"
                 type="text/javascript"></script>
+
+        <script src="{{ asset('bundles/backend/js/post-scripts.js') }}"
+                type="text/javascript"></script>
     {% endblock %}
 
     {% block inline_js %}
         <script type="text/javascript">
 
-            var editorContent;
-            function initEditorContent() {
-                if (editorContent instanceof CodeMirror) {
-                    editorContent.refresh();
-                } else {
-                    var mixedMode = {
-                        name: "htmlmixed",
-                        scriptTypes: [{
-                            matches: /\/x-handlebars-template|\/x-mustache/i,
-                            mode: null
-                        },
-                            {
-                                matches: /(text|application)\/(x-)?vb(a|script)/i,
-                                mode: "vbscript"
-                            }]
-                    };
-                    editorContent = CodeMirror.fromTextArea(document.getElementById("backendbundle_post_content"), {
-                        mode: mixedMode,
-                        lineNumbers: true,
-                        matchBrackets: true,
-                        styleActiveLine: true,
-                        lineWrapping: true,
-                        foldGutter: true,
-                        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-                        extraKeys: {"Ctrl-Space": "autocomplete"},
-                        theme: "dracula"
-                    });
-                    editorContent.setSize('100%', 500);
-                }
-            }
-
-            var editorMetas;
-            function initEditorMetas() {
-                if (editorMetas instanceof CodeMirror) {
-                    editorMetas.refresh();
-                } else {
-                    var mixedMode = {
-                        name: "htmlmixed",
-                        scriptTypes: [{
-                            matches: /\/x-handlebars-template|\/x-mustache/i,
-                            mode: null
-                        },
-                            {
-                                matches: /(text|application)\/(x-)?vb(a|script)/i,
-                                mode: "vbscript"
-                            }]
-                    };
-                    editorMetas = CodeMirror.fromTextArea(document.getElementById("backendbundle_post_optionalMetas"), {
-                        mode: mixedMode,
-                        lineNumbers: true,
-                        matchBrackets: true,
-                        styleActiveLine: true,
-                        lineWrapping: true,
-                        foldGutter: true,
-                        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-                        extraKeys: {"Ctrl-Space": "autocomplete"},
-                        theme: "dracula"
-                    });
-                    editorMetas.setSize('100%', 400);
-                }
-            }
-
-            var editorCSS;
-            function initEditorCSS() {
-                if (editorCSS instanceof CodeMirror) {
-                    editorCSS.refresh();
-                } else {
-                    editorCSS = CodeMirror.fromTextArea(document.getElementById("backendbundle_post_customCss"), {
-                        mode: "css",
-                        lineNumbers: true,
-                        matchBrackets: true,
-                        styleActiveLine: true,
-                        lineWrapping: true,
-                        foldGutter: true,
-                        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-                        extraKeys: {"Ctrl-Space": "autocomplete"},
-                        theme: "dracula"
-                    });
-                    editorCSS.setSize('100%', 400);
-                }
-            }
-
-            var editorJS;
-            function initEditorJS() {
-                if (editorJS instanceof CodeMirror) {
-                    editorJS.refresh();
-                } else {
-                    editorJS = CodeMirror.fromTextArea(document.getElementById("backendbundle_post_customJs"), {
-                        mode: "javascript",
-                        lineNumbers: true,
-                        matchBrackets: true,
-                        styleActiveLine: true,
-                        lineWrapping: true,
-                        foldGutter: true,
-                        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-                        extraKeys: {"Ctrl-Space": "autocomplete"},
-                        theme: "dracula"
-                    });
-                    editorJS.setSize('100%', 400);
-                }
-            }
-
-
             $(document).ready(function () {
-
 
                 //  iCheck scripts for checkboxes and radios
                 $(".i-checks").iCheck({
@@ -435,22 +480,6 @@
                 //  select2 scripts for batch actions combobox
                 $(".select2-field").select2({
                     placeholder: "--- Select a value ---"
-                });
-
-                //  codemirror
-                // Only load editors if tab has been clicked
-                initEditorContent();
-                $('#post-tabs > li > a[href="#post-basic"]').on('shown.bs.tab', function (e) {
-                    initEditorContent();
-                });
-                $('#post-tabs > li > a[href="#post-optional-metas"]').on('shown.bs.tab', function (e) {
-                    initEditorMetas();
-                });
-                $('#post-tabs > li > a[href="#post-custom-css"]').on('shown.bs.tab', function (e) {
-                    initEditorCSS();
-                });
-                $('#post-tabs > li > a[href="#post-custom-js"]').on('shown.bs.tab', function (e) {
-                    initEditorJS();
                 });
 
             });

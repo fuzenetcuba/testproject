@@ -92,3 +92,9 @@ services:
         arguments: ["@doctrine.orm.entity_manager"]
         tags:
             - { name: kernel.event_subscriber }
+
+    route.slug.validator:
+        class: BackendBundle\Validator\Constraints\RouteConstraintValidator
+        arguments: ["@router"]
+        tags:
+            - { name: validator.constraint_validator }

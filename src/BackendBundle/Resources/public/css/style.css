@@ -4189,6 +4189,14 @@ a:focus {
     margin: 13px 0;
 }
 
+.hr-line-solid-thin {
+    border-top: 1px solid #c0c0c0;
+    color: #ffffff;
+    background-color: #ffffff;
+    height: 1px;
+    margin: 13px 0;
+}
+
 .hr-line-solid {
     border-bottom: 1px solid #e7eaec;
     background-color: rgba(0, 0, 0, 0);
@@ -4240,6 +4248,10 @@ video {
 
 .modal-body {
     padding: 20px 30px 30px 30px;
+}
+
+.modal-lg90{
+    width: 90%;
 }
 
 .inmodal .modal-body {

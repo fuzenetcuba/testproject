@@ -1,3 +1,7 @@
+backend_post_image:
+    resource: "@BackendBundle/Resources/config/routing/postimage.yml"
+    prefix:   /post_image
+
 backend_post:
     resource: "@BackendBundle/Resources/config/routing/post.yml"
     prefix:   /post
