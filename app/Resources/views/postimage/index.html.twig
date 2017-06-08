@@ -31,9 +31,15 @@
         {% block page_content %}
 
             <div>
-                <span class="col-sm-2"><b>Total items: </b> {{ entities.getTotalItemCount }}</span>
+                <span class="col-sm-1">
+                    <b>Total items: </b> {{ entities.getTotalItemCount }}
+                </span>
 
-                <div class="col-sm-10 form-group form-inline text-right">
+                <span class="col-sm-2">
+                    <input id="checkbox-header" type="checkbox" class="i-checks"/>&nbsp;&nbsp;<b>Select all images</b>
+                </span>
+
+                <div class="col-sm-9 form-group form-inline text-right">
                     <form name="find-form" action="{{ path('post_image_find') }}" method="post">
                         <div class="input-group">
                             <input id="find-form-text" class="form-control" autofocus="on" name="find-form-text"
@@ -49,93 +55,47 @@
             </div>
 
             <form id="batch_action_form" action="{{ path('post_image_batch') }}" method="post">
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <tr>
-                        <th><input id="checkbox-header" type="checkbox" class="i-checks"/></th>
 
-                        <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Id', 'e.id') }}
-                            {% if entities.isSorted('e.id') %}
-                                <span class="fa fa-sort"></span>
-                            {% endif %}
-                        </th>
-                        <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Image Name', 'e.imgName') }}
-                            {% if entities.isSorted('e.imgName') %}
-                                <span class="fa fa-sort"></span>
-                            {% endif %}
-                        </th>
-                        <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Description', 'e.description') }}
-                            {% if entities.isSorted('e.description') %}
-                                <span class="fa fa-sort"></span>
-                            {% endif %}
-                        </th>
-                        <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Created At', 'e.createdAt') }}
-                            {% if entities.isSorted('e.createdAt') %}
-                                <span class="fa fa-sort"></span>
-                            {% endif %}
-                        </th>
-                        <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Updated At', 'e.updatedAt') }}
-                            {% if entities.isSorted('e.updatedAt') %}
-                                <span class="fa fa-sort"></span>
-                            {% endif %}
-                        </th>
-
-                        <th class="text-navy">Actions</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
+                <div class="clearfix">
                     {% for entity in entities %}
-                        <tr>
-                            <td>
-                                <input type="checkbox" class="i-checks" value="{{ entity.id }}"
+
+                        <div class="file-box">
+                            <div class="file">
+                                <a href="{{ path('post_image_show', { 'id': entity.id }) }}">
+                                    <span class="corner"></span>
+
+                                    <div class="image">
+                                        <img alt="image" class="img-responsive"
+                                             src="{{ asset('images/post/gallery/' ~ entity.imgName) }}">
+                                    </div>
+                                    <div class="file-name">
+                                        {{ entity.imgName | truncate(25) }}
+                                    </div>
+                                </a>
+
+
+                                <input type="checkbox" class="i-checks button-group-left" value="{{ entity.id }}"
                                        name="batch_action_checkbox[]"/>
-                            </td>
 
+                                <div class="btn-group button-group-right">
+                                    <a class="btn btn-xs btn-primary"
+                                       href="{{ path('post_image_show', { 'id': entity.id }) }}">
+                                        <span class="fa fa-search"></span>
+                                    </a>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <a class="btn btn-xs btn-success"
+                                           href="{{ path('post_image_edit', { 'id': entity.id }) }}">
+                                            <span class="fa fa-pencil"></span>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
 
-                            <td class="text-navy">
-                                <a href="{{ path('post_image_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
-                            </td>
-
-
-                            <td>{{ entity.imgName }}</td>
-
-
-                            <td>{{ entity.description }}</td>
-
-
-                            <td>{{ entity.createdAt|date('d-M-Y h:i A') }}</td>
-
-
-                            <td>{{ entity.updatedAt|date('d-M-Y h:i A') }}</td>
-
-
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-xs btn-outline btn-primary"
-                                       href="{{ path('post_image_show', { 'id': entity.id }) }}"> <span
-                                                class="fa fa-search"></span> </a> <a
-                                            class="btn btn-xs btn-outline btn-primary"
-                                            href="{{ path('post_image_edit', { 'id': entity.id }) }}"> <span
-                                                class="fa fa-pencil"></span> </a></div>
-                            </td>
-
-                        </tr>
                     {% else %}
-                        <tr>
-                            <td colspan="7">
-                                There are not entries...
-                            </td>
-                        </tr>
+                        <div>There are not entries...</div>
                     {% endfor %}
-                    </tbody>
-                </table>
-
+                </div>
 
                 <div class="form-group">
                     <div class="col-md-8">
@@ -151,6 +111,7 @@
                         </div>
                     </div>
                 </div>
+
             </form>
 
             <div class="modal inmodal" id="modalBatch" tabindex="-1" role="dialog" aria-hidden="true">
@@ -199,7 +160,7 @@
             $(document).ready(function () {
                 //  Highlight scripts to resalt the finded text
                 {% if(textFind is defined) %}
-                $("body table").highlight("{{ textFind }}");
+                $("div.clearfix").highlight("{{ textFind }}");
                 {% endif %}
 
                 //  Ckeck all checkboxes in table
