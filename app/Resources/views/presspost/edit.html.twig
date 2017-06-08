@@ -26,7 +26,7 @@
 
         {% block page_content %}
 
-            {{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
+            {{ form_start(form, {'attr': {'class':'form-horizontal', 'novalidate':'novalidate'}}) }}
 
 
 
@@ -96,7 +96,6 @@
                 <div class="col-md-10">
 
                     {{ form_widget(form.submit, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
-                    {{ form_widget(form.submitback, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
 
                     {{ form(form) }}
 
@@ -137,6 +136,27 @@
                         ['insert', ['link', 'table']]
                     ]
                 });
+
+                $('form').on('submit', function () {
+                    var form = $(this);
+                    var textarea = form.find('textarea');
+                    var content = $('.note-editable').text()
+                    textarea.val(content);
+
+                    if (content == null || content == '' || content == '<p><br></p>') {     // if message content is null
+                        $('#flashbag-block').html(
+                                '<div class="alert alert-danger fade in">'
+                                + '<button class="close" type="button" data-dismiss="alert" aria-hidden="true">×</button>'
+                                + '<span class="fa fa-exclamation-triangle"></span>'
+                                + '{{ 'You must write the content of press note.' | trans({}, 'press') }}'
+                                + '</div>'
+                        );
+
+                        return false;
+                    }
+
+                    return true;
+                })
             });
 
         </script>

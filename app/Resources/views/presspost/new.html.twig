@@ -141,10 +141,10 @@
                 $('form').on('submit', function () {
                     var form = $(this);
                     var textarea = form.find('textarea');
-                    var content = $('.note-editable').text()
+                    var content = $('.note-editable').html()
                     textarea.val(content);
 
-                    if (content == null || content == '') {     // if message content is null
+                    if (content == null || content == '' || content == '<p><br></p>') {     // if message content is null
                         $('#flashbag-block').html(
                                 '<div class="alert alert-danger fade in">'
                                 + '<button class="close" type="button" data-dismiss="alert" aria-hidden="true">×</button>'
