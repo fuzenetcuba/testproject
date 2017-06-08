@@ -1376,6 +1376,15 @@ span.business-info {
     max-height: 100%;
 }
 
+.related-businesses .related-businesses-list {
+    text-align: center;
+}
+
+.related-businesses .related-businesses-list .related-card {
+    float: none;
+    display: inline-block;
+}
+
 .carousel-inner .active.left {
     left: -25%;
 }
@@ -1565,7 +1574,7 @@ a.logout {
 }
 
 .text-pink, .text-pink a {
-    color: #B5013E;
+    color: #C71E7E;
 }
 
 .text-blue, .text-blue a {
@@ -1588,7 +1597,7 @@ a.logout {
 }
 
 .btn-pink.btn-outline {
-    color: #B5013E;
+    color: #C71E7E;
     background-color: #FFFFFF;
 }
 
@@ -1613,7 +1622,7 @@ a.logout {
 }
 
 .pink-bg {
-    background-color: #B5013E;
+    background-color: #C71E7E;
     color: #FFFFFF;
 }
 
@@ -1780,8 +1789,8 @@ fieldset[disabled] .btn-amber.active {
 .btn-pink:active:hover,
 .btn-pink.active:hover,
 .btn-pink.active:focus {
-    background-color: #CB0749;
-    border-color: #CB0749;
+    background-color: #C71E7E;
+    border-color: #C71E7E;
     color: #FFFFFF;
 }
 
