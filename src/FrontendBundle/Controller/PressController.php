@@ -17,9 +17,12 @@ class PressController extends Controller
     {
         $paginator = $this->get('knp_paginator');
 
+//        $qb = $this->get('doctrine.orm.entity_manager')->createQueryBuilder();
+//        $qb->select('BackendBundle:PressPost', 'p')
+//            ->orderBy('p.createdOn', 'desc');
         $news = $this->get('doctrine.orm.entity_manager')
             ->getRepository('BackendBundle:PressPost')
-            ->findAll()
+            ->findBy([], ['createdOn' => 'DESC'])
         ;
 
         $pagination = $paginator->paginate(
