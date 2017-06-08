@@ -1,0 +1,34 @@
+press:
+    path:     /
+    defaults: { _controller: "BackendBundle:PressPost:index" }
+    methods:  GET
+
+press_find:
+    path:     /find
+    defaults: { _controller: "BackendBundle:PressPost:find" }
+    methods:  [POST, GET]
+
+press_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:PressPost:show" }
+    methods:  GET
+
+press_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:PressPost:new" }
+    methods:  [GET, POST]
+
+press_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:PressPost:edit" }
+    methods:  [GET, POST, PUT]
+
+press_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:PressPost:delete" }
+    methods:  [POST, DELETE]
+    
+press_batch:
+    path:     /press_batch
+    defaults: { _controller: "BackendBundle:PressPost:batch" }
+    methods:  POST

@@ -12,12 +12,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  *
  * @package \BackendBundle\Entity
  * @ORM\Entity()
- * @DoctrineAssert\UniqueEntity(
- *     fields={"socialNumber", "opening"},
- *     errorPath="socialNumber",
- *     message="Already exist an application for this Position with this Social Security or Tax Id Number",
- *     groups={"application"}
- * )
  */
 class Candidate
 {

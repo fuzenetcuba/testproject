@@ -204,6 +204,11 @@
                                     class="nav-label">{{ 'Feedbacks' | trans({}, 'generalbackend') }}</span></a>
                     </li>
 
+                    <li class="{% block active_presspost %}{% endblock %}">
+                        <a href="{{ path('press') }}"><i class="fa fa-newspaper-o"></i> <span
+                                    class="nav-label">{{ 'Press' | trans({}, 'generalbackend') }}</span></a>
+                    </li>
+
                     <li class="special_link">
                         <a title="{{ 'Logout' | trans({}, 'generalbackend') }}"
                            href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> <span
