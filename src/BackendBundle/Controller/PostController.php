@@ -3,6 +3,7 @@
 namespace BackendBundle\Controller;
 
 use BackendBundle\Entity\PostImage;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;//------------
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -306,6 +307,28 @@ class PostController extends Controller
                 'description' => $entity->getDescription(),
                 'createdAt' => $entity->getCreatedAt(),
                 'updatedAt' => $entity->getUpdatedAt(),
+            );
+
+            return new Response(json_encode($result));
+        } elseif ($form->isSubmitted() && !$form->isValid()) {
+            $errors = $form->getErrors(true);
+            $parsedErrors = array('imgFile' => '', 'name' => '');
+
+            while ($errors->current() instanceof FormError) {
+
+                switch ($errors->current()->getOrigin()->getName()) {
+                    case 'imgFile':
+                        $parsedErrors['imgFile'] = $errors->current()->getMessage();
+                        break;
+                    case 'name':
+                        $parsedErrors['name'] = $errors->current()->getMessage();
+                        break;
+                }
+                $errors->next();
+            }
+
+            $result = array(
+                'errorMessage' => $parsedErrors
             );
 
             return new Response(json_encode($result));

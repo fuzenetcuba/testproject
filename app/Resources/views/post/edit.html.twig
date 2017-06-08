@@ -364,7 +364,6 @@
                                 </div>
                                 <div class="ibox-content">
                                     <div>
-
                                         {{ form_start(image_form, {'attr': {'class':'form-horizontal' }}) }}
 
                                         <div class="form-group{% if(image_form.imgFile.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
@@ -374,13 +373,7 @@
                                             <div class="col-md-10">
                                                 {{ form_widget(image_form.imgFile, { 'attr': {'class' : 'form-control'}}) }}
                                                 <p class="text-success"><small>You can upload images with a 5MB max of weight and a quadratic max dimentions of 2500px.</small></p>
-                                                {% if image_form.imgFile.vars['errors']|length > 0 %}
-                                                    <ul class="message">
-                                                        {% for error in image_form.imgFile.vars['errors'] %}
-                                                            <li>{{ error.message }}</li>
-                                                        {% endfor %}
-                                                    </ul>
-                                                {% endif %}
+                                                <ul id="img-file-error" class="hidden message"><li></li></ul>
                                             </div>
                                         </div>
                                         <div class="hr-line-dashed"></div>
@@ -388,15 +381,9 @@
                                         <div class="form-group{% if(image_form.name.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                                             <label for="" class="col-md-2 control-label">{{ form_label(image_form.name) }}</label>
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-10">
                                                 {{ form_widget(image_form.name, { 'attr': {'class' : 'form-control'}}) }}
-                                                {% if image_form.name.vars['errors']|length > 0 %}
-                                                    <ul class="message">
-                                                        {% for error in image_form.name.vars['errors'] %}
-                                                            <li>{{ error.message }}</li>
-                                                        {% endfor %}
-                                                    </ul>
-                                                {% endif %}
+                                                <ul id="img-name-error" class="hidden message"><li></li></ul>
                                             </div>
                                         </div>
                                         <div class="hr-line-dashed"></div>
