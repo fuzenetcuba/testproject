@@ -3,6 +3,7 @@
 namespace BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -29,6 +30,7 @@ class PressPost
      * @var string
      *
      * @ORM\Column(name="imave", type="string", length=255, nullable=true)
+     * @Gedmo\Translatable
      */
     private $image;
 
@@ -59,6 +61,7 @@ class PressPost
      * @var string
      *
      * @ORM\Column(name="video", type="string", length=255, nullable=true)
+     * @Gedmo\Translatable
      */
     private $video;
 
@@ -66,9 +69,16 @@ class PressPost
      * @var string
      *
      * @ORM\Column(name="text", type="text", length=255)
+     * @Gedmo\Translatable
      */
     private $text;
 
+    /**
+     * @var string
+     *
+     * @Gedmo\Locale
+     */
+    private $locale;
 
     /**
      * Get id
@@ -166,5 +176,15 @@ class PressPost
     public function setImageFile($imageFile)
     {
         $this->imageFile = $imageFile;
+    }
+
+    /**
+     * Set the translatable locale to refresh the entity
+     *
+     * @param $locale   string  Locale code
+     */
+    public function setTranslatableLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }

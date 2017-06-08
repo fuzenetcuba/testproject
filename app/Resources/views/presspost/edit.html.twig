@@ -28,80 +28,89 @@
 
             {{ form_start(form, {'attr': {'class':'form-horizontal', 'novalidate':'novalidate'}}) }}
 
+            <div class="tabs-container">
+                <ul class="nav nav-tabs">
+                    <li class="{% if app.request.get('_locale') == 'en' %}active{% endif %}"><a
+                                href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'en'})) }}"><i
+                                    class="flag flag-icon flag-icon-us"></i> ENGLISH</a></li>
+                    <li class="{% if app.request.get('_locale') == 'es' %}active{% endif %}"><a
+                                href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : 'es'})) }}"><i
+                                    class="flag flag-icon flag-icon-es"></i> SPANISH</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane active">
+                        <div class="panel-body">
+                            <div class="form-group{% if(form.imageFile.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for="" class="col-md-2 control-label">{{ form_label(form.imageFile) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(form.imageFile, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if form.imageFile.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in form.imageFile.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
 
 
-            <div class="form-group{% if(form.imageFile.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                <label for="" class="col-md-2 control-label">{{ form_label(form.imageFile) }}</label>
+                            <div class="form-group{% if(form.video.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for="" class="col-md-2 control-label">{{ form_label(form.video) }}</label>
 
-                <div class="col-md-6">
-                    {{ form_widget(form.imageFile, { 'attr': {'class' : 'form-control'}}) }}
-                    {% if form.imageFile.vars['errors']|length > 0 %}
-                        <ul class="message">
-                            {% for error in form.imageFile.vars['errors'] %}
-                                <li>{{ error.message }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                </div>
-            </div>
-            <div class="hr-line-dashed"></div>
-
-
-
-            <div class="form-group{% if(form.video.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                <label for="" class="col-md-2 control-label">{{ form_label(form.video) }}</label>
-
-                <div class="col-md-6">
-                    {{ form_widget(form.video, { 'attr': {'class' : 'form-control'}}) }}
-                    {% if form.video.vars['errors']|length > 0 %}
-                        <ul class="message">
-                            {% for error in form.video.vars['errors'] %}
-                                <li>{{ error.message }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                </div>
-            </div>
-            <div class="hr-line-dashed"></div>
+                                <div class="col-md-6">
+                                    {{ form_widget(form.video, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if form.video.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in form.video.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
 
 
+                            <div class="mail-text h-200">
+                                <div class="form-group{% if(form.text.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                    <label for="" class="col-md-2 control-label">{{ form_label(form.text) }}</label>
 
-            <div class="mail-text h-200">
-                <div class="form-group{% if(form.text.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                    <label for="" class="col-md-2 control-label">{{ form_label(form.text) }}</label>
+                                    <div class="col-md-12">
+                                        {% if form.text.vars['errors']|length > 0 %}
+                                            <ul class="message">
+                                                {% for error in form.text.vars['errors'] %}
+                                                    <li>{{ error.message }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                        {{ form_widget(form.text, { 'attr': {'class' : 'form-control large-height summernote'}}) }}
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div class="col-md-12">
-                        {% if form.text.vars['errors']|length > 0 %}
-                            <ul class="message">
-                                {% for error in form.text.vars['errors'] %}
-                                    <li>{{ error.message }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                        {{ form_widget(form.text, { 'attr': {'class' : 'form-control large-height summernote'}}) }}
+
+                            <div class="form-group">
+                                <div class="col-md-2 text-right">
+                                    <a class="btn btn-success" href="{{ path('press') }}">
+                                        <span class="glyphicon glyphicon-chevron-left"></span>
+                                        {{ 'Back to the list' | trans({}, 'generalbackend') }}
+                                    </a>
+                                </div>
+                                <div class="col-md-10">
+
+                                    {{ form_widget(form.submit, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
+
+                                    {{ form(form) }}
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
-
-
-            <div class="form-group">
-                <div class="col-md-2 text-right">
-                    <a class="btn btn-success" href="{{ path('press') }}">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                        {{ 'Back to the list' | trans({}, 'generalbackend') }}
-                    </a>
-                </div>
-                <div class="col-md-10">
-
-                    {{ form_widget(form.submit, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
-
-                    {{ form(form) }}
-
-                </div>
-            </div>
-
             {{ form_end(form) }}
 
         {% endblock %}
