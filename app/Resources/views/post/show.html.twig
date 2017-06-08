@@ -14,6 +14,12 @@
         </div>
         <div class="col-md-10">
 
+            <a class="btn btn-success" target="_blank"
+               href="{{ path('frontend_post_page', { 'route': entity.route }) }}">
+                <span class="fa fa-globe"></span>
+                View
+            </a>
+
             <a class="btn btn-primary"
                href="{{ path('post_edit', { 'id': entity.id }) }}">
                 <span class="fa fa-pencil"></span>
@@ -88,6 +94,12 @@
             </a>
         </div>
         <div class="col-md-10">
+
+            <a class="btn btn-success" target="_blank"
+               href="{{ path('frontend_post_page', { 'route': entity.route }) }}">
+                <span class="fa fa-globe"></span>
+                View
+            </a>
 
             <a class="btn btn-primary"
                href="{{ path('post_edit', { 'id': entity.id }) }}">

@@ -26,6 +26,12 @@
     </style>
 {% endblock %}
 
+{% block navbar %}
+    {% embed '@Frontend/navbar.html.twig' %}
+        {% block navbar_class '' %}
+    {% endembed %}
+{% endblock %}
+
 {% block page_content %}
 
     {{ post.content | raw }}

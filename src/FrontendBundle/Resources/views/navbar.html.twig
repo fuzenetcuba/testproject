@@ -188,7 +188,7 @@
                            href="{{ path("survey") }}">  {{ 'Feedback' | trans({}, 'menu') }}</a>
                     </li>
                     {#{% endif %}#}
-                    <li class="visible-xs">
+                    <li class="visible-xs {% if current == 'subscription' %}active{% endif %}">
                         <a title="{{ 'Subscribe' | trans({}, 'menu') }}"
                            href="{{ path("subscription_request") }}">{{ 'Subscribe' | trans({}, 'menu') }}</a>
                     </li>
@@ -198,7 +198,7 @@
                     </li>
                     <li>
                         <a title="{{ 'Contact' | trans({}, 'menu') }}" class="page-scroll"
-                           href="#contact">{{ 'Contact' | trans({}, 'menu') }}</a>
+                           href="{{ path('frontend_homepage') }}#contact">{{ 'Contact' | trans({}, 'menu') }}</a>
                     </li>
 
                     <li class="dropdown visible-xs">
