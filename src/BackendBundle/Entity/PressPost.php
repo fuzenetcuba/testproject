@@ -77,6 +77,14 @@ class PressPost
     /**
      * @var string
      *
+     * @ORM\Column(name="author", type="string", length=255)
+     * @Gedmo\Translatable
+     */
+    private $author;
+
+    /**
+     * @var string
+     *
      * @Assert\Url()
      * @ORM\Column(name="url", type="text", length=255)
      * @Gedmo\Translatable
@@ -90,6 +98,14 @@ class PressPost
      * @Gedmo\Translatable
      */
     private $text;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="create")
+     */
+    private $createdOn;
 
     /**
      * @var string
@@ -236,5 +252,37 @@ class PressPost
     public function setUrl($url)
     {
         $this->url = $url;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param string $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedOn()
+    {
+        return $this->createdOn;
+    }
+
+    /**
+     * @param mixed $createdOn
+     */
+    public function setCreatedOn($createdOn)
+    {
+        $this->createdOn = $createdOn;
     }
 }

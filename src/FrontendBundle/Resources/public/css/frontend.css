@@ -4141,6 +4141,11 @@ p.text-muted a:focus {
     color: white;
 }
 
+.card-summary a {
+    text-decoration: none;
+    color: inherit;
+}
+
 img {
     max-width: 100%;
 }

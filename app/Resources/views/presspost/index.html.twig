@@ -74,17 +74,17 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Image' | trans({}, 'press'), 'e.image') }}
-                            {% if entities.isSorted('e.image') %}
+                            {{ knp_pagination_sortable(entities, 'Published on' | trans({}, 'press'), 'e.author') }}
+                            {% if entities.isSorted('e.author') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
-                        <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Video' | trans({}, 'press'), 'e.video') }}
-                            {% if entities.isSorted('e.video') %}
-                                <span class="fa fa-sort"></span>
-                            {% endif %}
-                        </th>
+                        {#<th class="text-navy">#}
+                            {#{{ knp_pagination_sortable(entities, 'Video' | trans({}, 'press'), 'e.video') }}#}
+                            {#{% if entities.isSorted('e.video') %}#}
+                                {#<span class="fa fa-sort"></span>#}
+                            {#{% endif %}#}
+                        {#</th>#}
                         <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Text' | trans({}, 'press'), 'e.text') }}
                             {% if entities.isSorted('e.text') %}
@@ -115,10 +115,10 @@
 
                             <td>{{ entity.url }}</td>
 
-                            <td>{{ entity.image }}</td>
+                            <td>{{ entity.author }}</td>
 
 
-                            <td>{{ entity.video }}</td>
+                            {#<td>{{ entity.video }}</td>#}
 
 
                             <td>{{ entity.text }}</td>
