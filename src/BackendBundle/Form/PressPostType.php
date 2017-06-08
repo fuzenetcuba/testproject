@@ -18,6 +18,8 @@ class PressPostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('title')
+            ->add('url')
             ->add('imageFile', FileType::class, ['required' => false])
             ->add('video', UrlType::class, ['label' => 'Video URL', 'required' => false])
             ->add('text', TextareaType::class, [

@@ -60,10 +60,28 @@ class PressPost
     /**
      * @var string
      *
+     * @Assert\Url()
      * @ORM\Column(name="video", type="string", length=255, nullable=true)
      * @Gedmo\Translatable
      */
     private $video;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     * @Gedmo\Translatable
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @Assert\Url()
+     * @ORM\Column(name="url", type="text", length=255)
+     * @Gedmo\Translatable
+     */
+    private $url;
 
     /**
      * @var string
@@ -186,5 +204,37 @@ class PressPost
     public function setTranslatableLocale($locale)
     {
         $this->locale = $locale;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string $url
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
     }
 }

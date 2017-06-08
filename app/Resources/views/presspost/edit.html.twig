@@ -40,6 +40,38 @@
                 <div class="tab-content">
                     <div id="tab-1" class="tab-pane active">
                         <div class="panel-body">
+                            <div class="form-group{% if(form.title.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for="" class="col-md-2 control-label">{{ form_label(form.title) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(form.title, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if form.title.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in form.title.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(form.url.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for="" class="col-md-2 control-label">{{ form_label(form.url) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(form.url, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if form.url.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in form.url.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
                             <div class="form-group{% if(form.imageFile.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                                 <label for="" class="col-md-2 control-label">{{ form_label(form.imageFile) }}</label>
 

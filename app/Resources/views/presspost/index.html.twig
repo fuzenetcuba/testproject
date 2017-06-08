@@ -62,6 +62,18 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'Title', 'e.title') }}
+                            {% if entities.isSorted('e.title') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
+                        <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'URL', 'e.url') }}
+                            {% if entities.isSorted('e.url') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
+                        <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Image' | trans({}, 'press'), 'e.image') }}
                             {% if entities.isSorted('e.image') %}
                                 <span class="fa fa-sort"></span>
@@ -97,6 +109,11 @@
                                 <a href="{{ path('press_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
                             </td>
 
+                            <td class="text-navy">
+                                <a href="{{ path('press_edit', { 'id': entity.id }) }}">{{ entity.title }}</a>
+                            </td>
+
+                            <td>{{ entity.url }}</td>
 
                             <td>{{ entity.image }}</td>
 
