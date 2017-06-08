@@ -47,6 +47,12 @@
 {% endblock %}
 
 
+{% block navbar %}
+    {% embed '@Frontend/navbar.html.twig' %}
+        {% block navbar_class '' %}
+    {% endembed %}
+{% endblock %}
+
 
 {% block page_content %}
     <section class="inner-content section-spaces">

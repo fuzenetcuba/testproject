@@ -22,6 +22,8 @@ class VichUploaderNamer implements NamerInterface
         $file = $mapping->getFile($object);
         $extension = $file->guessExtension();
 
+        $generateUniqueid = true;
+
         $entity = $mapping->getMappingName();
         $alt = "img";
         switch ($entity){
@@ -31,6 +33,10 @@ class VichUploaderNamer implements NamerInterface
                 break;
             case "business_gallery_image":
                 $alt = $this->slugify($object->getBusiness()->getName() . "-" . $object->getDescription());
+                break;
+            case "post_gallery_image":
+                $alt .= "_" . $object->getName();
+                $generateUniqueid = false;
                 break;
             case "deal_image":
                 $alt = $this->slugify($object->getName());
@@ -45,7 +51,7 @@ class VichUploaderNamer implements NamerInterface
 
         $badChars = array(' ',',','á','é','í','ó','ú','ü','$','#','/','(','@','¿','?','/','\\','!','~','"',"'",'´');
 
-        return uniqid(substr($alt, 0, 50) . '_') . '.' . $extension;
+        return $generateUniqueid ? uniqid(substr($alt, 0, 50) . '_') : $alt . '.' . $extension;
     }
 
     public static function slugify($string){

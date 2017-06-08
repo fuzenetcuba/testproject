@@ -18,6 +18,12 @@
 
 {% set current_static = "about" %}
 
+{% block navbar %}
+    {% embed '@Frontend/navbar.html.twig' %}
+        {% block navbar_class '' %}
+    {% endembed %}
+{% endblock %}
+
 {% block page_content %}
 
     {# slider #}

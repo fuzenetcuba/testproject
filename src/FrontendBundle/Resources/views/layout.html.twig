@@ -128,18 +128,24 @@
                                 <br/>
                                 {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteAddress' })) }}
                                 <br/>
-                                {{ 'Phone' | trans({}, 'homepage') }}: <a title="{{ 'Phone' | trans({}, 'homepage') }}" class="green-link" href="tel:+1{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websitePhone' })) | unformat_phone }}">{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websitePhone' })) }}</a>
+                                {{ 'Phone' | trans({}, 'homepage') }}: <a title="{{ 'Phone' | trans({}, 'homepage') }}"
+                                                                          class="green-link"
+                                                                          href="tel:+1{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websitePhone' })) | unformat_phone }}">{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websitePhone' })) }}</a>
                                 <br/>
-                                {{ 'Fax' | trans({}, 'homepage') }}: <a title="{{ 'Fax' | trans({}, 'homepage') }}" class="green-link" href="tel:+1{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteFax' })) | unformat_phone }}">{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteFax' })) }}</a><br/>
+                                {{ 'Fax' | trans({}, 'homepage') }}: <a title="{{ 'Fax' | trans({}, 'homepage') }}"
+                                                                        class="green-link"
+                                                                        href="tel:+1{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteFax' })) | unformat_phone }}">{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteFax' })) }}</a><br/>
                                 E-mail:
-                                <a class="green-link" title="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteEmail' })) }}"
+                                <a class="green-link"
+                                   title="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteEmail' })) }}"
                                    href="mailto:{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteEmail' })) }}">
                                     {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteEmail' })) }}
                                 </a><br/>
                             </address>
                             <br/>
                             <p id="hours-operation">
-                                <strong><span class="green">{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerTodaysHoursOperation' })) ~ ":" }} </span></strong>
+                                <strong><span
+                                            class="green">{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerTodaysHoursOperation' })) ~ ":" }} </span></strong>
                                 <br/>
                                 <small>
                                     {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderTodaysHoursOperation' })) | raw }}
@@ -170,7 +176,8 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <a title="{{ 'MALL MAP' | trans({}, 'homepage') }}" href="{{ path('mall_map', { 'slug' : 'all' }) }}"
+                        <a title="{{ 'MALL MAP' | trans({}, 'homepage') }}"
+                           href="{{ path('mall_map', { 'slug' : 'all' }) }}"
                            class="btn btn-green">{{ 'MALL MAP' | trans({}, 'homepage') }}</a>
                     </div>
                 </div>
@@ -182,49 +189,56 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlTwitter' })) is not empty %}
-                            <a title="Follow us on Twitter" href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlTwitter' })) }}"
+                            <a title="Follow us on Twitter"
+                               href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlTwitter' })) }}"
                                target="_blank"
                                class="btn btn-circle-muted btn-outline btn-social-icon btn-twitter text-muted m-l m-r">
                                 <span class="fa fa-twitter"></span>
                             </a>
                         {% endif %}
                         {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlGoogle' })) is not empty %}
-                            <a title="Follow us on Google +" href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlGoogle' })) }}"
+                            <a title="Follow us on Google +"
+                               href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlGoogle' })) }}"
                                target="_blank"
                                class="btn btn-circle-muted btn-outline btn-social-icon btn-google text-muted m-l m-r">
                                 <span class="fa fa-google"></span>
                             </a>
                         {% endif %}
                         {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlFacebook' })) is not empty %}
-                            <a title="Follow us on Facebook" href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlFacebook' })) }}"
+                            <a title="Follow us on Facebook"
+                               href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlFacebook' })) }}"
                                target="_blank"
                                class="btn btn-circle-muted btn-outline btn-social-icon btn-facebook text-muted m-l m-r">
                                 <span class="fa fa-facebook"></span>
                             </a>
                         {% endif %}
                         {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlInstagram' })) is not empty %}
-                            <a title="Follow us on Instagram" href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlInstagram' })) }}"
+                            <a title="Follow us on Instagram"
+                               href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlInstagram' })) }}"
                                target="_blank"
                                class="btn btn-circle-muted btn-outline btn-social-icon btn-instagram text-muted m-l m-r">
                                 <span class="fa fa-instagram"></span>
                             </a>
                         {% endif %}
                         {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'pinterest' })) is not empty %}
-                            <a title="Follow us on Pinterest" href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'pinterest' })) }}"
+                            <a title="Follow us on Pinterest"
+                               href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'pinterest' })) }}"
                                target="_blank"
                                class="btn btn-circle-muted btn-outline btn-social-icon btn-pinterest text-muted m-l m-r">
                                 <span class="fa fa-pinterest"></span>
                             </a>
                         {% endif %}
                         {% if render(controller('BackendBundle:Settings:getSettings', { 'property' : 'snapchat' })) is not empty %}
-                            <a title="Follow us on Snapchat" href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'snapchat' })) }}"
+                            <a title="Follow us on Snapchat"
+                               href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'snapchat' })) }}"
                                target="_blank"
                                class="btn btn-circle-muted btn-outline btn-social-icon btn-snapchat text-muted m-l m-r">
                                 <span class="fa fa-snapchat"></span>
                             </a>
                         {% endif %}
 
-                        <a title="Follow us on Trip Advisor" href="https://www.tripadvisor.com/Attraction_Review-g55229-d12398886-Reviews-Plaza_Mariachi_Music_City-Nashville_Davidson_County_Tennessee.html"
+                        <a title="Follow us on Trip Advisor"
+                           href="https://www.tripadvisor.com/Attraction_Review-g55229-d12398886-Reviews-Plaza_Mariachi_Music_City-Nashville_Davidson_County_Tennessee.html"
                            target="_blank"
                            class="btn btn-circle-muted btn-outline btn-social-icon btn-tripadvisor text-muted m-l m-r">
                             <span class="fa fa-tripadvisor"></span>
@@ -242,6 +256,9 @@
                 </div>
             </div>
         </section>
+
+        {# Scroll to top button #}
+        <a title="Return to top" id="return-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
     {% endblock %}
 {% endblock %}
 
@@ -266,7 +283,75 @@
 
         $(document).ready(function () {
             // Set tooltip
-            $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+            $("body").tooltip({selector: '[data-toggle=tooltip]'});
+
+            // script for animated navbar to scroll action
+            var cbpAnimatedHeader = (function () {
+                var docElem = document.documentElement,
+                        header = document.querySelector('.navbar-default'),
+                        didScroll = false,
+                        changeHeaderOn = 200;
+
+                function init() {
+                    window.addEventListener('scroll', function (event) {
+                        if (!didScroll) {
+                            didScroll = true;
+                            setTimeout(scrollPage, 250);
+                        }
+                    }, false);
+                }
+
+                function scrollPage() {
+                    var sy = scrollY();
+                    if (sy >= changeHeaderOn) {
+                        $(header).addClass('navbar-scroll');
+
+                        // relocate facebook button on top
+                        if ($('.container-fb-share-button').length) {
+                            $('.container-fb-share-button').addClass('btn-collapsed');
+                        }
+                    } else {
+                        $(header).removeClass('navbar-scroll');
+
+                        // relocate facebook button on top
+                        if ($('.container-fb-share-button').length) {
+                            $('.container-fb-share-button').removeClass('btn-collapsed');
+                        }
+                    }
+                    didScroll = false;
+                }
+
+                function scrollY() {
+                    return window.pageYOffset || docElem.scrollTop;
+                }
+
+                init();
+
+                // END - script for animated navbar to scroll action
+
+                // script for show the go to top button over scroll after the 70% of the height
+
+                var viewHeight = (typeof window.outerHeight !== 'undefined') ? Math.max(window.outerHeight, $(window).height()) : $(window).height();
+
+                var limit = viewHeight * 0.7; // limit in 70%
+
+                // ===== Scroll to Top ====
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() >= limit) {        // If page is scrolled more than 50px
+                        $('#return-to-top').fadeIn(200);    // Fade in the arrow
+                    } else {
+                        $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+                    }
+                });
+                $('#return-to-top').click(function () {      // When arrow is clicked
+                    $('body,html').animate({
+                        scrollTop: 0                       // Scroll to top of body
+                    }, 500);
+                });
+                // END - script for show the go to top button over scroll after the 70% of the height
+
+
+            })();
         });
     </script>
 {% endblock %}

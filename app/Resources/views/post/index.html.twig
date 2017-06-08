@@ -143,6 +143,10 @@
 
                             <td>
                                 <div class="btn-group">
+                                    <a class="btn btn-xs btn-outline btn-primary" target="_blank"
+                                       href="{{ path('frontend_post_page', { 'route': entity.route }) }}">
+                                        <span class="fa fa-globe"></span>
+                                    </a>
                                     <a class="btn btn-xs btn-outline btn-primary"
                                        href="{{ path('post_show', { 'id': entity.id }) }}">
                                         <span class="fa fa-search"></span>

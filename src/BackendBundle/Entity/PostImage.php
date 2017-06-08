@@ -18,8 +18,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  * @ORM\Entity()
  * @Vich\Uploadable
  * @DoctrineAssert\UniqueEntity(
- *     fields={"imgName"},
- *     errorPath="imgName",
+ *     fields={"name"},
+ *     errorPath="name",
  *     message="Already exist an image with this name"
  * )
  */
@@ -61,6 +61,16 @@ class PostImage
      * )
      */
     private $imgFile;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=50)
+     * @Assert\NotBlank(message="The name must have between 3 and 50 characters")
+     * @Assert\Length(min="3", max="50", minMessage="The name must have a minimum of 3 characters", maxMessage="The name must have a max of 50 characters")
+     * @Assert\Regex(pattern="/^[a-z0-9]+(?:-[a-z0-9]+)*$/", message="The name must have only alphanumeric and hyphen characters. Eg.: custom-name")
+     */
+    private $name;
 
     /**
      * @var string
@@ -166,6 +176,29 @@ class PostImage
     public function getImgFile()
     {
         return $this->imgFile;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return PostImage
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**

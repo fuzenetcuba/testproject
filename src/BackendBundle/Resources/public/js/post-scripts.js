@@ -180,7 +180,34 @@ function uploadFileAJAX() {
         data: formdata
     }).done(function (html) {
         // alert(html);
-        insertDataIntoTemplate(JSON.parse(html));
+        var parsedData = JSON.parse(html);
+        if (typeof parsedData['errorMessage'] !== 'undefined') {
+            if (typeof parsedData['errorMessage']['imgFile'] !== 'undefined' && parsedData['errorMessage']['imgFile'] != "") {
+                $('#img-file-error').closest('.form-group').addClass('has-error');
+                $('#img-file-error').removeClass('hidden');
+                $('#img-file-error > li').html(parsedData['errorMessage']['imgFile']);
+            } else {
+                $('#img-file-error').closest('.form-group').removeClass('has-error');
+                $('#img-file-error').addClass('hidden');
+            }
+
+            if (typeof parsedData['errorMessage']['name'] !== 'undefined' && parsedData['errorMessage']['name'] != "") {
+                $('#img-name-error').closest('.form-group').addClass('has-error');
+                $('#img-name-error').removeClass('hidden');
+                $('#img-name-error > li').html(parsedData['errorMessage']['name']);
+            } else {
+                $('#img-name-error').closest('.form-group').removeClass('has-error');
+                $('#img-name-error').addClass('hidden');
+            }
+        } else {
+            $('#img-file-error').closest('.form-group').removeClass('has-error');
+            $('#img-file-error').addClass('hidden');
+            
+            $('#img-name-error').closest('.form-group').removeClass('has-error');
+            $('#img-name-error').addClass('hidden');
+
+            insertDataIntoTemplate(parsedData);
+        }
     });
 
     // reset form

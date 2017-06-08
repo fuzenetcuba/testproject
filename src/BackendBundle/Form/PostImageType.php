@@ -21,6 +21,7 @@ class PostImageType extends AbstractType
                 'label' => 'Image',
                 'required' => false,
                 'validation_groups' => array('creation')))
+            ->add('name')
             ->add('description');
     }
 

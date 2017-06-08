@@ -1082,13 +1082,13 @@ body.landing-page {
 
 .landing-page .navbar-default .nav li a.navbar-avatar img.img-avatar-small {
     position: absolute;
-    top: 16px;
+    top: 0 !important; /*16px*/
     width: 35px;
     height: 35px;
 }
 
 .landing-page .navbar-scroll.navbar-default .nav > li > a.navbar-avatar img.img-avatar-small {
-    top: 12px;
+    top: 0 !important; /*12px*/
 }
 
 .navbar-nav {
@@ -3316,6 +3316,11 @@ div.container-fb-share-button{
     background-color: #FFFFFF;
     border-radius: 6px 0 0 6px;
     padding: 10px;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
 }
 
 @media (max-width: 1150px){
@@ -3334,6 +3339,10 @@ div.container-fb-share-button{
         border-radius: 0;
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
+    }
+    div.container-fb-share-button.btn-collapsed{
+        top: 0;
+        padding: 7px;
     }
 }
 
@@ -3439,7 +3448,7 @@ div.container-fb-share-button{
 
 #return-to-top:hover i {
     color: #fff;
-    top: 5px;
+    /*top: 5px;*/
 }
 
 @media (max-width: 767px) {

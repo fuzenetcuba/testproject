@@ -27,6 +27,12 @@
           type="text/css"/>
 {% endblock %}
 
+{% block navbar %}
+    {% embed '@Frontend/navbar.html.twig' %}
+        {% block navbar_class '' %}
+    {% endembed %}
+{% endblock %}
+
 {% block page_content %}
 
     <section class="inner-content section-spaces-line">
@@ -167,7 +173,6 @@
             </div> #}
             {{ knp_pagination_render(openings) }}
         </div>
-        <a title="Return to top" id="return-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
     </section>
 
 
@@ -197,21 +202,6 @@
             //  select2 scripts for batch actions combobox
             $(".select2-field").select2({
                 placeholder: "--- {{ 'Select a value' | trans({}, 'generalbackend') }} ---"
-            });
-
-
-            // ===== Scroll to Top ====
-            $(window).scroll(function () {
-                if ($(this).scrollTop() >= 100) {        // If page is scrolled more than 50px
-                    $('#return-to-top').fadeIn(200);    // Fade in the arrow
-                } else {
-                    $('#return-to-top').fadeOut(200);   // Else fade out the arrow
-                }
-            });
-            $('#return-to-top').click(function () {      // When arrow is clicked
-                $('body,html').animate({
-                    scrollTop: 0                       // Scroll to top of body
-                }, 500);
             });
 
         });
