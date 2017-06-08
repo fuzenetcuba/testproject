@@ -15,31 +15,32 @@
 
 {% endblock %}
 
-        {% block active_postimage %}active{% endblock %}
+        {% block active_presspost %}active{% endblock %}
 
         {% block page_heading_title %}
-            Post Image list
+            PressPost list
         {% endblock %}
 
     {% block page_heading_action_button %}
-        <a class="btn btn-success navbar-btn pull-right" href="{{ path('post_image_new') }}">
+        <a class="btn btn-success navbar-btn pull-right" href="{{ path('press_new') }}">
             <span class="fa fa-plus"></span>
-            New post image
+            {{ 'New Press Post' | trans({}, 'press') }}
         </a>
     {% endblock %}
 
         {% block page_content %}
 
             <div>
-                <span class="col-sm-2"><b>Total items: </b> {{ entities.getTotalItemCount }}</span>
+                <span class="col-sm-2"><b>{{ 'Total items' | trans({}, 'generalbackend') }}
+                        : </b> {{ entities.getTotalItemCount }}</span>
 
                 <div class="col-sm-10 form-group form-inline text-right">
-                    <form name="find-form" action="{{ path('post_image_find') }}" method="post">
+                    <form name="find-form" action="{{ path('press_find') }}" method="post">
                         <div class="input-group">
                             <input id="find-form-text" class="form-control" autofocus="on" name="find-form-text"
                                    autocomplete="off"
                                    type="text" placeholder="Text to find..."/>
-                        <span class="input-group-btn">
+                            <span class="input-group-btn">
                             <button type="submit" name="find-form-send" value="sending" class="btn btn-primary">Find
                             </button>
                         </span>
@@ -48,7 +49,7 @@
                 </div>
             </div>
 
-            <form id="batch_action_form" action="{{ path('post_image_batch') }}" method="post">
+            <form id="batch_action_form" action="{{ path('press_batch') }}" method="post">
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
@@ -61,31 +62,25 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Image Name', 'e.imgName') }}
-                            {% if entities.isSorted('e.imgName') %}
+                            {{ knp_pagination_sortable(entities, 'Image' | trans({}, 'press'), 'e.image') }}
+                            {% if entities.isSorted('e.image') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Description', 'e.description') }}
-                            {% if entities.isSorted('e.description') %}
+                            {{ knp_pagination_sortable(entities, 'Video' | trans({}, 'press'), 'e.video') }}
+                            {% if entities.isSorted('e.video') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Created At', 'e.createdAt') }}
-                            {% if entities.isSorted('e.createdAt') %}
-                                <span class="fa fa-sort"></span>
-                            {% endif %}
-                        </th>
-                        <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Updated At', 'e.updatedAt') }}
-                            {% if entities.isSorted('e.updatedAt') %}
+                            {{ knp_pagination_sortable(entities, 'Text' | trans({}, 'press'), 'e.text') }}
+                            {% if entities.isSorted('e.text') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
 
-                        <th class="text-navy">Actions</th>
+                        <th class="text-navy">{{ 'Actions' | trans({}, 'generalbackend') }}</th>
                     </tr>
                     </thead>
 
@@ -99,36 +94,33 @@
 
 
                             <td class="text-navy">
-                                <a href="{{ path('post_image_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
+                                <a href="{{ path('press_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
                             </td>
 
 
-                            <td>{{ entity.imgName }}</td>
+                            <td>{{ entity.image }}</td>
 
 
-                            <td>{{ entity.description }}</td>
+                            <td>{{ entity.video }}</td>
 
 
-                            <td>{{ entity.createdAt|date('d-M-Y h:i A') }}</td>
-
-
-                            <td>{{ entity.updatedAt|date('d-M-Y h:i A') }}</td>
+                            <td>{{ entity.text }}</td>
 
 
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-xs btn-outline btn-primary"
-                                       href="{{ path('post_image_show', { 'id': entity.id }) }}"> <span
+                                       href="{{ path('press_show', { 'id': entity.id }) }}"> <span
                                                 class="fa fa-search"></span> </a> <a
                                             class="btn btn-xs btn-outline btn-primary"
-                                            href="{{ path('post_image_edit', { 'id': entity.id }) }}"> <span
+                                            href="{{ path('press_edit', { 'id': entity.id }) }}"> <span
                                                 class="fa fa-pencil"></span> </a></div>
                             </td>
 
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="7">
+                            <td colspan="6">
                                 There are not entries...
                             </td>
                         </tr>
@@ -145,7 +137,7 @@
                         <div class="form-group pagination pull-right">
                             <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
                                 <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                                    Delete Post images
+                                    Delete Pressposts
                                 </option>
                             </select>
                         </div>

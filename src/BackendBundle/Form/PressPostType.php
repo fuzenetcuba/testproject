@@ -4,36 +4,37 @@ namespace BackendBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 
-class PostImageType extends AbstractType
+class PressPostType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('imgFile', FileType::class, array(
-                'label' => 'Image',
-                'required' => false,
-                'validation_groups' => array('creation')))
-            ->add('name')
-            ->add('description');
+            ->add('imageFile', FileType::class, ['required' => false])
+            ->add('video', UrlType::class, ['label' => 'Video URL', 'required' => false])
+            ->add('text', TextareaType::class, [
+                'label' => 'Content',
+            ]);
     }
 
     /**
      * @param OptionsResolver $resolver
+     *
+     * @throws \Symfony\Component\OptionsResolver\Exception\AccessException
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'BackendBundle\Entity\PostImage',
-            'validation_groups' => array('Default', 'creation'),
-            'translation_domain' => 'businessbackend'
+            'data_class' => 'BackendBundle\Entity\PressPost',
+            'translation_domain' => 'press'
         ));
     }
 
@@ -47,7 +48,7 @@ class PostImageType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'backendbundle_postimage';
+        return 'backendbundle_presspost';
     }
 
 

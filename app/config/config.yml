@@ -171,6 +171,13 @@ vich_uploader:
             delete_on_update:   true
             delete_on_remove:   true
             namer:              app.vichuploader.namer #vich_uploader.namer_uniqid
+        press_image:
+            uri_prefix:         /images/press
+            upload_destination: '%kernel.root_dir%/../web/images/press'
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            namer:              app.vichuploader.namer #vich_uploader.namer_uniqid
 
 #config for HWIOAuthBundle
 hwi_oauth:

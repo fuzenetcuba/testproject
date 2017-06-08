@@ -6,24 +6,24 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;//------------
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use BackendBundle\Entity\PostImage;
-use BackendBundle\Form\PostImageType;
+use BackendBundle\Entity\PressPost;
+use BackendBundle\Form\PressPostType;
 
 /**
- * PostImage controller.
+ * PressPost controller.
  *
  */
-class PostImageController extends Controller
+class PressPostController extends Controller
 {
     /**
-     * Lists all PostImage entities.
+     * Lists all PressPost entities.
      *
      */
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $dql = "SELECT e FROM BackendBundle:PostImage e ORDER BY e.id ASC";
+        $dql = "SELECT e FROM BackendBundle:PressPost e ORDER BY e.id ASC";
         $query = $em->createQuery($dql);
 
         $paginator = $this->get('knp_paginator');
@@ -31,13 +31,13 @@ class PostImageController extends Controller
                 $query, $request->query->get('page', 1), 5
         );
 
-    return $this->render('postimage/index.html.twig', array(
+    return $this->render('presspost/index.html.twig', array(
         'entities' => $pagination,
     ));
     }
 
     /**
-     * Find PostImage entities that match with the criteria.
+     * Find PressPost entities that match with the criteria.
      *
      */
     public function findAction(Request $request)
@@ -47,7 +47,7 @@ class PostImageController extends Controller
         if ($find) {
             $em = $this->getDoctrine()->getManager();
 
-            $dql = "SELECT e FROM BackendBundle:PostImage e WHERE "
+            $dql = "SELECT e FROM BackendBundle:PressPost e WHERE "
                     . "e.id LIKE '%" . $find . "%' OR "
                     . "e.id LIKE '%" . $find . "%' "
                     . "ORDER BY e.id ASC";
@@ -58,22 +58,22 @@ class PostImageController extends Controller
                     $query, $request->query->get('page', 1), 5
             );
 
-            return $this->render('postimage/index.html.twig', array(
+            return $this->render('presspost/index.html.twig', array(
                 'entities' => $pagination,
                 'textFind' => $find
             ));
         } else {
-            return $this->redirect($this->generateUrl('post_image'));
+            return $this->redirect($this->generateUrl('press'));
         }
     }
 
     /**
-     * Displays a form to create a new PostImage entity.
+     * Displays a form to create a new PressPost entity.
      *
      */
     public function newAction(Request $request)
     {
-        $entity = new PostImage();
+        $entity = new PressPost();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -83,32 +83,32 @@ class PostImageController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The postimage was created successfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The presspost was created successfully.');
 
             if ($form->get('submitback')->isClicked()) {
-                return $this->redirect($this->generateUrl('post_image_new'));
+                return $this->redirect($this->generateUrl('press_new'));
             } else {
-            return $this->redirectToRoute('post_image_show', array('id' => $entity->getId()));            }
+            return $this->redirectToRoute('press_show', array('id' => $entity->getId()));            }
 
         }
 
-    return $this->render('postimage/new.html.twig', array(
+    return $this->render('presspost/new.html.twig', array(
         'entity' => $entity,
         'form' => $form->createView(),
     ));
     }
 
             /**
-        * Creates a form to create a PostImage entity.
+        * Creates a form to create a PressPost entity.
         *
-        * @param PostImage $entity The entity
+        * @param PressPost $entity The entity
         *
         * @return \Symfony\Component\Form\Form The form
         */
-        private function createCreateForm(PostImage $entity)
+        private function createCreateForm(PressPost $entity)
         {
-            $form = $this->createForm('BackendBundle\Form\PostImageType', $entity, array(
-                'action' => $this->generateUrl('post_image_new'),
+            $form = $this->createForm('BackendBundle\Form\PressPostType', $entity, array(
+                'action' => $this->generateUrl('press_new'),
                 'method' => 'POST',
             ));
 
@@ -119,24 +119,24 @@ class PostImageController extends Controller
         }
     
     /**
-     * Finds and displays a PostImage entity.
+     * Finds and displays a PressPost entity.
      *
      */
-    public function showAction(PostImage $entity)
+    public function showAction(PressPost $entity)
     {
         $deleteForm = $this->createDeleteForm($entity);
 
-        return $this->render('postimage/show.html.twig', array(
+        return $this->render('presspost/show.html.twig', array(
             'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing PostImage entity.
+     * Displays a form to edit an existing PressPost entity.
      *
      */
-    public function editAction(Request $request, PostImage $entity)
+    public function editAction(Request $request, PressPost $entity)
     {
         $deleteForm = $this->createDeleteForm($entity);
         $editForm = $this->createEditForm($entity);
@@ -148,28 +148,28 @@ class PostImageController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The postimage was updated successfully.');
-            return $this->redirectToRoute('post_image_show', array('id' => $entity->getId()));
+            $this->get('session')->getFlashBag()->add('success', 'The presspost was updated successfully.');
+            return $this->redirectToRoute('press_show', array('id' => $entity->getId()));
         }
 
-    return $this->render('postimage/edit.html.twig', array(
+    return $this->render('presspost/edit.html.twig', array(
         'entity' => $entity,
-        'edit_form' => $editForm->createView(),
+        'form' => $editForm->createView(),
         'delete_form' => $deleteForm->createView(),
     ));
     }
 
     /**
-    * Creates a form to edit a PostImage entity.
+    * Creates a form to edit a PressPost entity.
     *
-    * @param PostImage $entity The entity
+    * @param PressPost $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(PostImage $entity)
+    private function createEditForm(PressPost $entity)
     {
-        $form = $this->createForm('BackendBundle\Form\PostImageType', $entity, array(
-            'action' => $this->generateUrl('post_image_edit', array('id' => $entity->getId())),
+        $form = $this->createForm('BackendBundle\Form\PressPostType', $entity, array(
+            'action' => $this->generateUrl('press_edit', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -179,10 +179,10 @@ class PostImageController extends Controller
     }
 
     /**
-     * Deletes a PostImage entity.
+     * Deletes a PressPost entity.
      *
      */
-    public function deleteAction(Request $request, PostImage $entity)
+    public function deleteAction(Request $request, PressPost $entity)
     {
         $form = $this->createDeleteForm($entity);
         $form->handleRequest($request);
@@ -190,37 +190,37 @@ class PostImageController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find PostImage entity.');
+            throw $this->createNotFoundException('Unable to find PressPost entity.');
         }
 
         $em->remove($entity);
         $em->flush();
 
         // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('success', 'The postimage was deleted successfully.');
-        return $this->redirect($this->generateUrl('post_image'));
+        $this->get('session')->getFlashBag()->add('success', 'The presspost was deleted successfully.');
+        return $this->redirect($this->generateUrl('press'));
 
 
 
     }
 
     /**
-    * Creates a form to delete a PostImage entity.
+    * Creates a form to delete a PressPost entity.
     *
-    * @param PostImage $entity The PostImage entity
+    * @param PressPost $entity The PressPost entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createDeleteForm(PostImage $entity)
+    private function createDeleteForm(PressPost $entity)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('post_image_delete', array('id' => $entity->getId())))
+            ->setAction($this->generateUrl('press_delete', array('id' => $entity->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
     }
     /**
-     * Do several batch actions over PostImage entities.
+     * Do several batch actions over PressPost entities.
      *
      */
     public function batchAction(Request $request)
@@ -234,23 +234,23 @@ class PostImageController extends Controller
 
             if ($action == "delete") {
                 foreach ($ids as $id) {
-                    $entity = $em->getRepository('BackendBundle:PostImage')->find($id);
+                    $entity = $em->getRepository('BackendBundle:PressPost')->find($id);
 
                     if (!$entity) {
-                        throw $this->createNotFoundException('Unable to find PostImage entity.');
+                        throw $this->createNotFoundException('Unable to find PressPost entity.');
                     } else {
                         $em->remove($entity);
                         $recordsSelected = true;
                     }
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'PostImages deleted successfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'PressPosts deleted successfully.');
                 }
             }
             $em->flush();
         }
 
 
-        return $this->redirect($this->generateUrl('post_image'));
+        return $this->redirect($this->generateUrl('press'));
     }
 }

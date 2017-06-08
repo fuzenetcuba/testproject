@@ -108,3 +108,8 @@ calendar:
         _controller: FrontendBundle:Calendar:index
         key: 'music'
         view: 'timeline'
+
+press_page:
+    path:     /press
+    defaults:
+        _controller: FrontendBundle:Press:index
