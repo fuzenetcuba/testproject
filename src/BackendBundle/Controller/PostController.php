@@ -31,7 +31,7 @@ class PostController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $query, $request->query->get('page', 1), 5
+            $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
         );
 
         return $this->render('post/index.html.twig', array(
@@ -51,14 +51,16 @@ class PostController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             $dql = "SELECT e FROM BackendBundle:Post e WHERE "
-                . "e.id LIKE '%" . $find . "%' OR "
-                . "e.id LIKE '%" . $find . "%' "
+                . "e.title LIKE '%" . $find . "%' OR "
+                . "e.route LIKE '%" . $find . "%' OR "
+                . "e.metaKeywords LIKE '%" . $find . "%' OR "
+                . "e.metaDescription LIKE '%" . $find . "%' "
                 . "ORDER BY e.id ASC";
             $query = $em->createQuery($dql);
 
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
-                $query, $request->query->get('page', 1), 5
+                $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
             );
 
             return $this->render('post/index.html.twig', array(

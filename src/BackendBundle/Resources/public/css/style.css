@@ -5792,10 +5792,26 @@ ul.notes li div {
     position: relative;
 }
 
-.file-box .file .delete-image {
-    position: absolute;
-    top: 0;
-    right: 0;
+.file-box .file .delete-image,
+.file-box .file .button-group-left,
+.file-box .file .button-group-right,
+.file-box .file .icheckbox_square-green {
+    position: absolute !important;
+    top: 2px;
+}
+
+.file-box .file .icheckbox_square-green {
+    background-color: #FFFFFF;
+}
+
+.file-box .file .button-group-left,
+.file-box .file .icheckbox_square-green {
+    left: 2px;
+}
+
+.file-box .file .delete-image,
+.file-box .file .button-group-right {
+    right: 2px;
 }
 
 .file-box {

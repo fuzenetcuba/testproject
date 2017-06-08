@@ -28,7 +28,7 @@ class PostImageController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $query, $request->query->get('page', 1), 5
+                $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
         );
 
     return $this->render('postimage/index.html.twig', array(
@@ -48,14 +48,13 @@ class PostImageController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             $dql = "SELECT e FROM BackendBundle:PostImage e WHERE "
-                    . "e.id LIKE '%" . $find . "%' OR "
-                    . "e.id LIKE '%" . $find . "%' "
+                    . "e.imgName LIKE '%" . $find . "%' "
                     . "ORDER BY e.id ASC";
             $query = $em->createQuery($dql);
 
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
-                    $query, $request->query->get('page', 1), 5
+                    $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
             );
 
             return $this->render('postimage/index.html.twig', array(

@@ -21,6 +21,12 @@
     <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}">
 {% endblock %}
 
+{% block navbar %}
+    {% embed '@Frontend/navbar.html.twig' %}
+        {% block navbar_class '' %}
+    {% endembed %}
+{% endblock %}
+
 {% block page_content %}
     <section class="inner-content section-spaces-line">
         <div class="filter-deals hidden-print">
