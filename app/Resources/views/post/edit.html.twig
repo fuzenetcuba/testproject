@@ -385,6 +385,22 @@
                                         </div>
                                         <div class="hr-line-dashed"></div>
 
+                                        <div class="form-group{% if(image_form.name.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                            <label for="" class="col-md-2 control-label">{{ form_label(image_form.name) }}</label>
+
+                                            <div class="col-md-6">
+                                                {{ form_widget(image_form.name, { 'attr': {'class' : 'form-control'}}) }}
+                                                {% if image_form.name.vars['errors']|length > 0 %}
+                                                    <ul class="message">
+                                                        {% for error in image_form.name.vars['errors'] %}
+                                                            <li>{{ error.message }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="hr-line-dashed"></div>
+
                                         <div class="form-group{% if(image_form.description.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                                             <label for=""
                                                    class="col-md-2 control-label">{{ form_label(image_form.description) }}
