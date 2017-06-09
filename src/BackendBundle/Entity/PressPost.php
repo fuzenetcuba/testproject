@@ -86,7 +86,7 @@ class PressPost
      * @var string
      *
      * @Assert\Url()
-     * @ORM\Column(name="url", type="text")
+     * @ORM\Column(name="url", type="string", length=255)
      * @Gedmo\Translatable
      */
     private $url;
@@ -94,7 +94,7 @@ class PressPost
     /**
      * @var string
      *
-     * @ORM\Column(name="text", type="text", length=255)
+     * @ORM\Column(name="text", type="string", length=20000)
      * @Gedmo\Translatable
      */
     private $text;
