@@ -74,7 +74,7 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Published on' | trans({}, 'press'), 'e.author') }}
+                            {{ knp_pagination_sortable(entities, 'Publication' | trans({}, 'press'), 'e.author') }}
                             {% if entities.isSorted('e.author') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}

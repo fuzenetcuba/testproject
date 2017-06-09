@@ -18,6 +18,7 @@ class PressPostController extends Controller
     /**
      * Lists all PressPost entities.
      *
+     * @throws \LogicException
      */
     public function indexAction(Request $request)
     {
@@ -28,7 +29,7 @@ class PressPostController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $query, $request->query->get('page', 1), 5
+                $query, $request->query->get('page', 1), 10
         );
 
     return $this->render('presspost/index.html.twig', array(
