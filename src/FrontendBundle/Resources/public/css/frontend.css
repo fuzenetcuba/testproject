@@ -4076,6 +4076,7 @@ p.text-muted a:focus {
 @media (min-width: 700px) {
     .card {
         max-width: 320px;
+        min-width: 320px;
         margin-right: 20px;
         margin-bottom: 20px;
     }
