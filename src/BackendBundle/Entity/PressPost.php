@@ -103,7 +103,6 @@ class PressPost
      * @var \DateTime
      *
      * @ORM\Column(type="datetime")
-     * @Gedmo\Timestampable(on="create")
      */
     private $createdOn;
 
