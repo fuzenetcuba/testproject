@@ -72,6 +72,26 @@
                             </div>
                             <div class="hr-line-dashed"></div>
 
+                            <div class="form-group{% if(form.createdOn.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label class="col-md-2 control-label">{{ form_label(form.createdOn) }}</label>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                                        {{ form_widget(form.createdOn, { 'attr': {'class' : 'form-control datepicker'}}) }}
+                                        {% if form.createdOn.vars['errors']|length > 0 %}
+                                            <ul class="message">
+                                                {% for error in form.createdOn.vars['errors'] %}
+                                                    <li>{{ error.message }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
                             <div class="form-group{% if(form.author.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                                 <label for="" class="col-md-2 control-label">{{ form_label(form.author) }}</label>
 
