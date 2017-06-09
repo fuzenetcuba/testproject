@@ -4094,6 +4094,10 @@ p.text-muted a:focus {
     .card:nth-child(3n) {
         margin-right: 0;
     }
+
+    .card:last-child {
+        margin-right: 0;
+    }
 }
 
 .card span {
