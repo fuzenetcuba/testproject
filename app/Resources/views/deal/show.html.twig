@@ -22,9 +22,9 @@
         <dt>{{ 'Ends At' | trans({}, 'dealbackend') }}</dt>
         <dd>{{ entity.endsAt|date('d-M-Y h:i A') }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>{{ 'Business' | trans({}, 'dealbackend') }}</dt>
+        <dt>{{ 'Brand' | trans({}, 'dealbackend') }}</dt>
         <dd>
-            <span class="label label-{{ entity.business is not empty ? "success" : "warning" }}">{{ entity.business is not empty ? entity.business : "No business related" }}</span>
+            <span class="label label-{{ entity.business is not empty ? "success" : "warning" }}">{{ entity.business is not empty ? entity.business : "No brand related" }}</span>
         </dd>
         <div class="hr-line-dashed"></div>
         <dt>{{ 'Video' | trans({}, 'dealbackend') }}</dt>

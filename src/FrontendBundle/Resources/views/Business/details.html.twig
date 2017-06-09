@@ -65,7 +65,7 @@
                          src="{{ asset('images/business/' ~ business.logo) }}">
 
 
-                    <div class="col-md-8 col-md-offset-2 m-t-lg">
+                    <div class="col-md-8 col-md-offset-2 clearfix m-t-lg m-b-lg">
                         <div class="col-xs-6">
                             {% if business.androidApp is not null %}
                                 <a href="{{ business.androidApp }}">
@@ -191,7 +191,7 @@
                     <p class="text-muted-strong">{{ business.description | nl2br }}</p>
 
                     {% if business.openings | length > 0 %}
-                        <div class="openings col-lg-8">
+                        <div class="openings col-lg-8 m-b">
                             <a title="{{ 'OPEN JOB POSITIONS' | trans({}, 'business') }}"
                                href="{{ path('careers_find', {'business':business.slug}) }}"
                                class="btn btn-blue btn-block">
@@ -200,7 +200,7 @@
                         </div>
                     {% endif %}
 
-                    <ul class="list-inline pull-right">
+                    <ul class="list-inline pull-right m-b">
                         <li>
                             <a href="http://twitter.com/intent/tweet?status=[TITLE]+[URL]" data-toggle="tooltip"
                                title="{{ 'Tweet this business' | trans({}, 'business') }}"

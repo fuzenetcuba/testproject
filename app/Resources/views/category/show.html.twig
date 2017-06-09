@@ -1,9 +1,12 @@
-{% extends 'BackendBundle::layout.html.twig' %}{% block active_category %}active{% endblock %}{% block page_heading_title %}
+{% extends 'BackendBundle::layout.html.twig' %}
+{% block active_brands %}active{% endblock %}
+{% block active_category %}active{% endblock %}
+{% block page_heading_title %}
     <a class="btn btn-default navbar-btn" href="{{ path('category') }}"
        style="margin-bottom: 7px;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a>
-    {{ 'Business Category data' | trans({}, 'categorybackend') }}
+    {{ 'Brand Category data' | trans({}, 'categorybackend') }}
 {% endblock %}{% block page_content %}
     <dl class="dl-horizontal">
         <tbody>
@@ -19,12 +22,12 @@
         <dt>{{ 'Description' | trans({}, 'categorybackend') }}</dt>
         <dd>{{ entity.description }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>{{ 'Businesses' | trans({}, 'categorybackend') }}</dt>
+        <dt>{{ 'Brands' | trans({}, 'categorybackend') }}</dt>
         <dd>
             {% for business in entity.businesses %}
                 <span class="label label-primary">{{ business }}</span>
             {% else %}
-                <span class="label label-warning">No business related</span>
+                <span class="label label-warning">No brand related</span>
             {% endfor %}
         </dd>
         <div class="hr-line-dashed"></div>

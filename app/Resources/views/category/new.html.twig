@@ -11,6 +11,7 @@
 
 {% endblock %}
 
+        {% block active_brands %}active{% endblock %}
         {% block active_category %}active{% endblock %}
 
         {% block page_heading_title %}
@@ -18,7 +19,7 @@
                style="margin-bottom: 7px;">
                 <span class="glyphicon glyphicon-chevron-up"></span>
             </a>
-            {{ 'Business Category creation' | trans({},'categorybackend') }}
+            {{ 'Brand Category creation' | trans({},'categorybackend') }}
         {% endblock %}
 
         {% block page_content %}

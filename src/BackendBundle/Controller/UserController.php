@@ -22,7 +22,9 @@ class UserController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $dql = "SELECT e FROM BackendBundle:SystemUser e ORDER BY e.id ASC";
+        $dql = "SELECT e FROM BackendBundle:SystemUser e "
+            . " WHERE e.roles NOT LIKE '%ROLE_CUSTOMER%' "
+        . "ORDER BY e.id ASC";
         $query = $em->createQuery($dql);
 
         $paginator = $this->get('knp_paginator');
@@ -46,7 +48,8 @@ class UserController extends Controller
 
         if ($find) {
             $em = $this->getDoctrine()->getManager();
-            $dql = "SELECT e FROM BackendBundle:SystemUser e WHERE "
+            $dql = "SELECT e FROM BackendBundle:SystemUser e "
+                . " WHERE e.roles NOT LIKE '%ROLE_CUSTOMER%' AND "
                 . "e.username LIKE '%" . $find . "%' OR "
                 . "e.firstName LIKE '%" . $find . "%' OR "
                 . "e.lastName LIKE '%" . $find . "%' OR "

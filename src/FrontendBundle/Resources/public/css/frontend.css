@@ -4224,3 +4224,8 @@ img {
     -webkit-transition-timing-function: linear;
     transition-timing-function: linear;
 }
+
+input[required]::before {
+    color: #ed5565;
+    content: "* ";
+}

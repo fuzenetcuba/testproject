@@ -94,7 +94,7 @@
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
-                        <th class="text-navy">Business</th>
+                        <th class="text-navy">Brand</th>
                         <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Video' | trans({}, 'dealbackend'), 'e.video') }}
                             {% if entities.isSorted('e.video') %}
@@ -164,7 +164,7 @@
 
 
                             <td>
-                                <span class="label label-{{ entity.business is not empty ? "success" : "warning" }}">{{ entity.business is not empty ? entity.business : "No business related" | trans({}, 'dealbackend') }}</span>
+                                <span class="label label-{{ entity.business is not empty ? "success" : "warning" }}">{{ entity.business is not empty ? entity.business : "No brand related" | trans({}, 'dealbackend') }}</span>
                             </td>
 
 
