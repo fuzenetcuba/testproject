@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="form-group{% if(form.username.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                            {{ form_widget(form.username, { 'attr': {'class' : 'form-control', 'placeholder' : 'Username' | trans({}, 'fosuser')}}) }}
+                            {{ form_widget(form.username, { 'attr': {'class' : 'form-control', 'placeholder' : 'Username (required)' | trans({}, 'fosuser')}}) }}
                             {% if form.username.vars['errors']|length > 0 %}
                                 <ul class="message">
                                     {% for error in form.username.vars['errors'] %}
@@ -66,7 +66,7 @@
                         </div>
 
                         <div class="form-group{% if(form.email.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
-                            {{ form_widget(form.email, { 'attr': {'class' : 'form-control', 'placeholder' : 'Email' | trans({}, 'fosuser')}}) }}
+                            {{ form_widget(form.email, { 'attr': {'class' : 'form-control', 'placeholder' : 'Email (required)' | trans({}, 'fosuser')}}) }}
                             {% if form.email.vars['errors']|length > 0 %}
                                 <ul class="message">
                                     {% for error in form.email.vars['errors'] %}
@@ -81,7 +81,7 @@
 
                                 {{ form_widget(passwordField, { 'attr': {
                                     'class' : 'form-control',
-                                    'placeholder' : loop.index0 ? 'Repeat password' | trans({}, 'fosuser') : 'Password' | trans({}, 'fosuser') }}) }}
+                                    'placeholder' : loop.index0 ? 'Repeat password (required)' | trans({}, 'fosuser') : 'Password (required)' | trans({}, 'fosuser') }}) }}
                                 {% if passwordField.vars['errors']|length > 0 %}
                                     <ul class="message">
                                         {% for error in passwordField.vars['errors'] %}
