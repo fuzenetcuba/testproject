@@ -9,14 +9,14 @@ Edit profile: Editar perfil
 Profile of: Perfil de
 Edit profile of: Editar perfil de
 System User Profile: Perfil de usuario
-Username: Nombre de usuario
-Email: Correo electrónico
+Username (required): Nombre de usuario (requerido)
+Email (required): Correo electrónico (requerido)
 First name: Nombre
 Last name: Apellido
 Register User: Registrar Usuario
 Become a member of: Hazte miembro de
-Password: Contraseña
-Repeat password: Repetir contraseña
+Password (required): Contraseña (requerido)
+Repeat password (required): Repetir contraseña (requerido)
 Confirmed Registration: Registro confirmado
 Congrats: Enhorabuena
 you have been registered successfully: usted ha sido registrado satisfactoriamente
