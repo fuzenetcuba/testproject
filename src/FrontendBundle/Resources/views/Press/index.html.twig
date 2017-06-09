@@ -73,7 +73,8 @@
                                 <a href="{{ item.url }}">
                                     <h3>{{ item.title | upper }}</h3>
 
-                                    {{ item.text | raw }}
+                                    {{ truncateHTML(item.text, 250) | raw }}
+                                    {#{{ item.text | raw }}#}
 
                                     <span class="m-t-lg pull-right">
                                         {{ item.createdOn | date('d/m/Y') }}

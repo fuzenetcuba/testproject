@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
             new Spraed\PDFGeneratorBundle\SpraedPDFGeneratorBundle(),
             new Djamy\GoogleCalendarBundle\DjamyGoogleCalendarBundle(),
+            new Urodoz\Truncate\Bridge\Symfony\UrodozTruncateBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
