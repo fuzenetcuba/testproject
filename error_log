@@ -10,3 +10,8 @@ Did you forget a "use" statement for another namespace?' in /home/pmmusiccity/pu
 Stack trace:
 #0 {main}
   thrown in /home/pmmusiccity/public_html/app/AppKernel.php on line 31
+[16-May-2017 22:19:37 UTC] PHP Parse error:  syntax error, unexpected '?' in /home/pmmusiccity/public_html/src/FrontendBundle/Controller/CalendarController.php on line 80
+[16-May-2017 22:19:37 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Parse Error: syntax error, unexpected '?'' in /home/pmmusiccity/public_html/src/FrontendBundle/Controller/CalendarController.php:80
+Stack trace:
+#0 {main}
+  thrown in /home/pmmusiccity/public_html/src/FrontendBundle/Controller/CalendarController.php on line 80
