@@ -51,7 +51,7 @@ class VichUploaderNamer implements NamerInterface
 
         $badChars = array(' ',',','á','é','í','ó','ú','ü','$','#','/','(','@','¿','?','/','\\','!','~','"',"'",'´');
 
-        return $generateUniqueid ? uniqid(substr($alt, 0, 50) . '_') : $alt . '.' . $extension;
+        return ($generateUniqueid ? uniqid(substr($alt, 0, 50) . '_', true) : $alt) . '.' . $extension;
     }
 
     public static function slugify($string){

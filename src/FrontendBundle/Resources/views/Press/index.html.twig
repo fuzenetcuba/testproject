@@ -35,15 +35,16 @@
                 </div>
             </div>
 
-            <p class="text-muted-strong text-justify">
-                {{ 'Come to the Plaza Mariachi to enjoy great food and beverages, art, shopping and live entertainment. Below you will find a list of the acts that are scheduled to perform at Plaza Mariachi to help you plan your visit. Please note that dates and times are subject to change.' | trans({}, 'calendar') }}
-            </p>
-
-            <div class="section-line amber-line"></div>
-            <h2 class="text-center">Press Contact</h2>
-            <p class="text-muted-strong text-center">
-                Detail contact information goes here temporary
-            </p>
+            <div class="col-lg-12 text-center press-intro">
+                <p class="text-muted-strong">
+                    {{ 'Below you will find links to the news stories that have been done about the Plaza Mariachi Music City in various media outlets.' | trans({}, 'news') }}
+                </p>
+                <hr>
+                <h3 class="text-muted-strong">Press Contact</h3>
+                <p class="text-muted-strong">
+                    Detail contact information goes here temporary
+                </p>
+            </div>
 
             <div class="row">
                 <div class="cards">
@@ -52,13 +53,14 @@
                         <span class="card-header"
                               style="background-image: url({{ asset('images/press/' ~ item.image) }});">
                             <a class="card-title"
-                               {% if item.video is empty %}data-fancybox="gallery" data-fancybox-group="group-{{ loop.index0 }}"{% endif %}
+                               {% if item.video is empty %}data-fancybox="gallery"
+                               data-fancybox-group="group-{{ loop.index0 }}"{% endif %}
                                href="{{ asset('images/press/' ~ item.image) }}">
 					            {#<h3 class="pull-right">#}
-                                    {#<a data-fancybox="gallery" data-fancybox-group="group-{{ loop.index0 }}"#}
-                                       {#href="{{ asset('images/press/' ~ item.image) }}">#}
-                                        {#<i class="fa fa-arrows-alt" aria-hidden="true"></i>#}
-                                    {#</a>#}
+                                {#<a data-fancybox="gallery" data-fancybox-group="group-{{ loop.index0 }}"#}
+                                {#href="{{ asset('images/press/' ~ item.image) }}">#}
+                                {#<i class="fa fa-arrows-alt" aria-hidden="true"></i>#}
+                                {#</a>#}
                                 {#</h3>#}
                                 <i class="fa fa-4x fa-arrows-alt"></i>
                             </a>
@@ -73,11 +75,12 @@
                                 <a href="{{ item.url }}">
                                     <h3>{{ item.title | upper }}</h3>
 
-                                    {{ truncateHTML(item.text, 250) | raw }}
+                                    {{ truncateHTML(item.text, 180) | raw }}
                                     {#{{ item.text | raw }}#}
 
-                                    <span class="m-t-lg pull-right">
-                                        {{ item.createdOn | date('d/m/Y') }}
+                                    <span class="m-t-md card-info text-right">
+                                        {{ 'Published by' | trans({}, 'news') | upper }} {{ item.author | upper }}
+                                        ON {{ item.createdOn | date('d/m/Y') }}
                                     </span>
                                 </a>
                             </span>
@@ -86,7 +89,7 @@
                                     <li>
                                         <a href="http://twitter.com/intent/tweet?status=[TITLE]+[URL]&text={{ item.text }}"
                                            data-toggle="tooltip"
-                                           title="{{ 'Tweet this business' | trans({}, 'business') }}"
+                                           title="{{ 'Tweet this news' | trans({}, 'news') }}"
                                            class="btn btn-circle-muted btn-outline btn-social-icon btn-twitter"
                                            onclick="javascript:this.href=this.href.replace(/\[TITLE\]/, document.title).replace(/\[URL\]/,
                                             window.location);window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,' +
@@ -97,7 +100,7 @@
                                     <li>
                                         <a href="http://www.facebook.com/share.php?u=[URL]&title=[TITLE]&summary={{ item.text }}"
                                            data-toggle="tooltip"
-                                           title="{{ 'Share this business' | trans({}, 'business') }}"
+                                           title="{{ 'Share this news' | trans({}, 'news') }}"
                                            class="btn btn-circle-muted btn-outline btn-social-icon btn-facebook"
                                            onclick="javascript:this.href=this.href.replace(/\[TITLE\]/, document.title).replace(/\[URL\]/,
                                             window.location);window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,' +

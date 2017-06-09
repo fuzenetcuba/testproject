@@ -4146,12 +4146,12 @@ p.text-muted a:focus {
 
 .card .card-meta {
     max-height: 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
     color: #666;
     font-size: .78em;
     text-transform: uppercase;
     position: absolute;
-    bottom: 5%;
+    bottom: 15%;
     padding: 0 5%;
     -moz-transition-property: max-height;
     -o-transition-property: max-height;
@@ -4179,7 +4179,7 @@ p.text-muted a:focus {
 }
 
 .card:hover .card-meta, .card:focus .card-meta {
-    max-height: 4em;
+    /*max-height: 4em;*/
 }
 
 /*.card-header .card-title, .card:hover .card-header .card-title {*/
@@ -4188,6 +4188,10 @@ p.text-muted a:focus {
 
 .card-summary p span {
     display: inline;
+}
+
+.card-summary .card-info {
+    color: #aeaeae;
 }
 
 .card-title a {
@@ -4233,4 +4237,15 @@ img {
 input[required]::before {
     color: #ed5565;
     content: "* ";
+}
+
+.press-intro hr {
+    width: 60px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border-top: 1px solid #b5b5b5;
+}
+
+.press-intro h3 {
+    text-transform: uppercase;
 }
