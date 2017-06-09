@@ -9526,4 +9526,5 @@ label.required:before {
 .note-editable {
     min-height: 300px;
     border: 1px solid #F9F8F8;
+    background-color: white;
 }
