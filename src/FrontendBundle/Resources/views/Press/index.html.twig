@@ -51,14 +51,17 @@
                         <div class="card">
                         <span class="card-header"
                               style="background-image: url({{ asset('images/press/' ~ item.image) }});">
-                            <span class="card-title">
-					            <h3 class="pull-right">
-                                    <a data-fancybox="gallery" data-fancybox-group="group-{{ loop.index0 }}"
-                                       href="{{ asset('images/press/' ~ item.image) }}">
-                                        <i class="fa fa-arrows-alt" aria-hidden="true"></i>
-                                    </a>
-                                </h3>
-                            </span>
+                            <a class="card-title"
+                               {% if item.video is empty %}data-fancybox="gallery" data-fancybox-group="group-{{ loop.index0 }}"{% endif %}
+                               href="{{ asset('images/press/' ~ item.image) }}">
+					            {#<h3 class="pull-right">#}
+                                    {#<a data-fancybox="gallery" data-fancybox-group="group-{{ loop.index0 }}"#}
+                                       {#href="{{ asset('images/press/' ~ item.image) }}">#}
+                                        {#<i class="fa fa-arrows-alt" aria-hidden="true"></i>#}
+                                    {#</a>#}
+                                {#</h3>#}
+                                <i class="fa fa-4x fa-arrows-alt"></i>
+                            </a>
                             {% if item.video is not empty %}
                                 <div class="embed-responsive embed-responsive-16by9">
                                 <iframe class="embed-responsive-item"
