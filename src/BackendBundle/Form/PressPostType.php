@@ -21,7 +21,7 @@ class PressPostType extends AbstractType
         $builder
             ->add('title')
             ->add('url')
-            ->add('author', TextType::class, ['label' => 'Published on'])
+            ->add('author', TextType::class, ['label' => 'Publication'])
             ->add('imageFile', FileType::class, ['required' => false])
             ->add('video', UrlType::class, ['label' => 'Video URL', 'required' => false])
             ->add('text', TextareaType::class, [
