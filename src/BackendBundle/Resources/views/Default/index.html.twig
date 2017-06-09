@@ -15,7 +15,7 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <span class="label label-success pull-right"><i class="fa fa-briefcase"></i></span>
-                    <h5>{{ 'Businesses' | trans({}, 'generalbackend') }}</h5>
+                    <h5>{{ 'Brands' | trans({}, 'generalbackend') }}</h5>
                 </div>
                 <div class="ibox-content">
                     <h1 class="no-margins">{{ cant_business }}</h1>
@@ -25,7 +25,7 @@
                            href="{{ path('business') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
                                     class="fa fa-cog"></i></a>
                     </div>
-                    <small>{{ 'Total businesses' | trans({}, 'generalbackend') }}</small>
+                    <small>{{ 'Total brands' | trans({}, 'generalbackend') }}</small>
                 </div>
             </div>
         </div>
@@ -137,7 +137,7 @@
                     <div>
                         <span class="pull-right text-right">
                             <h3 class="font-bold no-margins">
-                                {{ 'Amount applying candidates per business' | trans({},'generalbackend') }}
+                                {{ 'Amount applying candidates per brand' | trans({},'generalbackend') }}
                             </h3>
                             <small>
                                 {{ 'Total candidates' | trans({},'generalbackend') }}: {{ cant_candidate }}
@@ -184,7 +184,7 @@
                                                 %
                                             </span>
                                         </h2>
-                                        <small>{{ 'Others businesses' | trans({},'generalbackend') }}</small>
+                                        <small>{{ 'Others brands' | trans({},'generalbackend') }}</small>
                                         <div class="progress progress-mini">
                                             <div class="progress-bar"
                                                  style="width: {{ (cant_candidate - sum_candidate) * 100 / cant_candidate }}%;"></div>
@@ -214,7 +214,7 @@
         <div class="col-lg-4">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>{{ 'Top Businesses' | trans({}, 'generalbackend') }} <span
+                    <h5>{{ 'Top Brands' | trans({}, 'generalbackend') }} <span
                                 class="label label-primary pull-right">{{ 'by number of Deals' | trans({}, 'generalbackend') }}</span>
                     </h5>
 
@@ -232,7 +232,7 @@
                                 <thead>
                                 <tr>
                                     <th style="width: 1%" class="text-center">No.</th>
-                                    <th>{{ 'Business' | trans({}, 'generalbackend') }}</th>
+                                    <th>{{ 'Brand' | trans({}, 'generalbackend') }}</th>
                                     <th class="text-center">{{ 'Deals' | trans({}, 'generalbackend') }}</th>
                                 </tr>
                                 </thead>
@@ -241,7 +241,7 @@
                                     <tr>
                                         <td class="text-center">{{ loop.index }}</td>
                                         <td>
-                                            <a title="Top business"
+                                            <a title="Top brand"
                                                href="{{ path('business_show', {'id' : topBusiness[0].id}) }}">
                                                 {{ topBusiness[0].name|length > 30 ? topBusiness[0].name|slice(0,30) ~ '...' : topBusiness[0].name }}
                                             </a>
@@ -251,7 +251,7 @@
                                         </td>
                                     </tr>
                                 {% else %}
-                                    <small>{{ 'There are no business' | trans({}, 'generalbackend') }}</small>
+                                    <small>{{ 'There are no brand' | trans({}, 'generalbackend') }}</small>
                                 {% endfor %}
                                 </tbody>
                             </table>

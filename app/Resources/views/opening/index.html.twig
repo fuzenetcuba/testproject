@@ -70,7 +70,7 @@
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
-                        <th class="text-navy">{{ 'Business' | trans({}, 'openingbackend') }}</th>
+                        <th class="text-navy">{{ 'Brand' | trans({}, 'openingbackend') }}</th>
                         {#                                     <th class="text-navy">
                                                 {{ knp_pagination_sortable(entities, 'Department', 'e.department') }}
                                                 {% if entities.isSorted('e.department') %}
@@ -110,7 +110,7 @@
                             <td>{{ entity.position }}</td>
 
                             <td>
-                                <span class="label label-{{ entity.business is not empty ? "success" : "warning" }}">{{ entity.business is not empty ? entity.business : "No business related" | trans({}, 'dealbackend') }}</span>
+                                <span class="label label-{{ entity.brand is not empty ? "success" : "warning" }}">{{ entity.brand is not empty ? entity.brand : "No brand related" | trans({}, 'dealbackend') }}</span>
                             </td>
 
                             {# <td>{{ entity.department }}</td> #}

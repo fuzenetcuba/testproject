@@ -15,17 +15,18 @@
 
 {% endblock %}
 
+        {% block active_brands %}active{% endblock %}
         {% block active_business %}active{% endblock %}
 
         {% block page_heading_title %}
-            {{ 'Business list' | trans({}, 'businessbackend') }}
+            {{ 'Brand list' | trans({}, 'businessbackend') }}
         {% endblock %}
 
     {% block page_heading_action_button %}
         {% if is_granted('ROLE_ADMIN') %}
             <a class="btn btn-success navbar-btn pull-right" href="{{ path('business_new') }}">
                 <span class="fa fa-plus"></span>
-                {{ 'New business' | trans({}, 'businessbackend') }}
+                {{ 'New brand' | trans({}, 'businessbackend') }}
             </a>
         {% endif %}
     {% endblock %}
@@ -168,7 +169,7 @@
                             {% if is_granted('ROLE_ADMIN') %}
                                 <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
                                     <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                                        {{ 'Delete Business' | trans({}, 'businessbackend') }}
+                                        {{ 'Delete Brand' | trans({}, 'businessbackend') }}
                                     </option>
                                 </select>
                             {% endif %}

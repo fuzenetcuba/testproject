@@ -2,9 +2,10 @@ Profile: Perfil
 Change password: Cambiar contraseña
 Logout: Salir
 Dashboard: Tablero
-Businesses: Negocios
-Business: Negocio
-Business Categories: Categorías de Negocio
+Brands: Negocios
+All Brands: Todos los negocios
+Brand: Negocio
+Brand Categories: Categorías de Negocio
 Opening Categories: Categorías de Empleo
 Deals: Ofertas
 Rewards: Recompensas
@@ -18,15 +19,15 @@ Categories: Categorías
 Feedbacks: Encuestas
 Candidates: Candidatos
 Candidates Resume: Resumen de Candidatos
-Total businesses: Total de negocios
+Total brands: Total de negocios
 Total deals: Total de ofertas
 Total customers: Total de clientes
 Total categories: Total de categorías
 Total feedbacks: Total de contactos
 Total candidates: Total de candidatos
-Top Businesses: Mejores Negocios
+Top Brands: Mejores Negocios
 by number of Deals: por número de Ofertas
-There are no business: No hay negocios
+There are no brand: No hay negocios
 Top Deals: Últimas Ofertas
 by created date: por fecha de creado
 Description: Descripción
@@ -60,9 +61,9 @@ Batch actions: Acciones en lote
 Openings: Empleos
 Candidates: Candidatos
 Export to PDF: Exportar a PDF
-Amount applying candidates per business: Cantidad de candidatos por negocio
+Amount applying candidates per brand: Cantidad de candidatos por negocio
 Total candidates: Total de candidatos
-Others businesses: Otros negocios
+Others brands: Otros negocios
 Behavior of applying candidates: Comportamiento de los candidatos
 Past: Últimos
 months: meses

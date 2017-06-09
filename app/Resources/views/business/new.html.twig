@@ -35,6 +35,7 @@
 
 {% endblock %}
 
+        {% block active_brands %}active{% endblock %}
         {% block active_business %}active{% endblock %}
 
         {% block page_heading_title %}
@@ -42,7 +43,7 @@
                style="margin-bottom: 7px;">
                 <span class="glyphicon glyphicon-chevron-up"></span>
             </a>
-            {{ 'Business creation' | trans({}, 'businessbackend') }}
+            {{ 'Brand creation' | trans({}, 'businessbackend') }}
         {% endblock %}
 
         {% block page_content %}
@@ -259,7 +260,7 @@
                 </div>
                 <span class="text-muted">
                     <i class="fa fa-info-circle"></i>
-                    {{ 'Show this business on the Directory' | trans({}, 'businessbackend') }}
+                    {{ 'Show this brand on the Directory' | trans({}, 'businessbackend') }}
                 </span>
             </div>
             <div class="hr-line-dashed"></div>
@@ -381,7 +382,7 @@
 
             {#<div class="form-group">#}
             {#<label for=""#}
-            {#class="col-md-2 control-label">Business Location</label>#}
+            {#class="col-md-2 control-label">Brand Location</label>#}
 
             {#<div class="col-md-6">#}
             {#<canvas id="mallMapCanvas" width="500" height="317" style="border: 1px solid #000;"#}

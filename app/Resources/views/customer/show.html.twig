@@ -44,12 +44,12 @@
             </dd>
             <div class="hr-line-dashed"></div>
         {% endif %}
-        <dt>{{ 'Businesses' | trans({}, 'customerbackend') }}</dt>
+        <dt>{{ 'Brands' | trans({}, 'customerbackend') }}</dt>
         <dd>
             {% for business in entity.business %}
                 <span class="label label-success">{{ business }}</span>
             {% else %}
-                <span class="label label-warning">{{ 'No businesses related' | trans({}, 'customerbackend') }}</span>
+                <span class="label label-warning">{{ 'No brands related' | trans({}, 'customerbackend') }}</span>
             {% endfor %}
         </dd>
         <div class="hr-line-dashed"></div>

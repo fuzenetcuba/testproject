@@ -21,6 +21,7 @@
         .highlight {
             background-color: #FFFF88;
         }
+
         .CodeMirror-lines {
             cursor: text;
             line-height: 1.35;
@@ -107,16 +108,26 @@
                     {#class="nav-label">Helpers</span></a>#}
                     {#</li>#}
 
-                    <li class="{% block active_business %}{% endblock %}">
-                        <a title="{{ 'Businesses' | trans({}, 'generalbackend') }}" href="{{ path('business') }}"><i
-                                    class="fa fa-briefcase"></i> <span
-                                    class="nav-label">{{ 'Businesses' | trans({}, 'generalbackend') }}</span></a>
-                    </li>
+                    <li class="{% block active_brands %}{% endblock %}">
+                        <a title="{{ 'Brands' | trans({}, 'generalbackend') }}" href="#">
+                            <i class="fa fa-briefcase"></i>
+                            <span class="nav-label">{{ 'Brands' | trans({}, 'generalbackend') }}</span>
+                        </a>
+                        <ul class="nav nav-second-level collapse">
+                            <li class="{% block active_business %}{% endblock %}">
+                                <a title="{{ 'All Brands' | trans({}, 'generalbackend') }}"
+                                   href="{{ path('business') }}">
+                                    <i class="fa fa-briefcase"></i>
+                                    <span class="nav-label">{{ 'All Brands' | trans({}, 'generalbackend') }}</span>
+                                </a>
+                            </li>
 
-                    <li class="{% block active_category %}{% endblock %}">
-                        <a title="{{ 'Business Categories' | trans({}, 'generalbackend') }}"
-                           href="{{ path('category') }}"><i class="fa fa-reorder"></i> <span
-                                    class="nav-label">{{ 'Business Categories' | trans({}, 'generalbackend') }}</span></a>
+                            <li class="{% block active_category %}{% endblock %}">
+                                <a title="{{ 'Brand Categories' | trans({}, 'generalbackend') }}"
+                                   href="{{ path('category') }}"><i class="fa fa-reorder"></i> <span
+                                            class="nav-label">{{ 'Brand Categories' | trans({}, 'generalbackend') }}</span></a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li class="{% block active_opening_category %}{% endblock %}">
@@ -387,7 +398,7 @@
             $(document).idleTimer(3600000);
 
             // Set tooltip
-            $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+            $("body").tooltip({selector: '[data-toggle=tooltip]'});
         });
 
         $(document).on("idle.idleTimer", function (event, elem, obj) {

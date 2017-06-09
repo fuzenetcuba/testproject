@@ -1,13 +1,13 @@
-Business list: Lista de negocios
-New business: Nuevo negocio
+Brand list: Lista de negocios
+New brand: Nuevo negocio
 Name: Nombre
 Email: Correo
 Notify Emails: Correos a notificar
 Phone: Teléfono
 Website: Sitio web
 Categories: Categorías
-Delete Business: Eliminar Negocios
-Business data: Datos del Negocio
+Delete Brand: Eliminar Negocios
+Brand data: Datos del Negocio
 Description: Descripción
 Regular Hours: Horario regular
 Insert hours: Insertar horarios
@@ -15,8 +15,8 @@ Mall Map Directions: Direcciones en el Centro Comercial
 Social Media: Medios Sociales
 Created At: Creado el
 Updated At: Actualizado el
-Business edition: Editar negocio
-Business creation: Crear negocio
+Brand edition: Editar negocio
+Brand creation: Crear negocio
 Update: Actualizar
 Location on the Map: Ubicación en el mapa
 Export Map: Exportar mapa
@@ -29,4 +29,4 @@ Upload image for: Subir imagen para
 Upload image: Subir imagen
 Images Gallery of: Gallería de imágenes de
 Are you sure you want to delete this image?: ¿Está seguro que desea eliminar esta imagen?
-Show this business on the Directory: Mostrar este negocio en el Directorio
+Show this brand on the Directory: Mostrar este negocio en el Directorio
