@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Entity;
 
+use BackendBundle\Validator\Constraints\ConditionalFieldConstraint;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\HttpFoundation\File\File;
@@ -14,6 +15,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Table(name="press_post")
  * @ORM\Entity(repositoryClass="BackendBundle\Repository\PressPostRepository")
  * @Vich\Uploadable
+ * @ConditionalFieldConstraint(first="image", second="video")
  */
 class PressPost
 {

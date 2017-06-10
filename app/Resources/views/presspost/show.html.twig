@@ -10,13 +10,31 @@
             <dt>Id</dt>
                 <dd>{{ entity.id }}</dd>
             <div class="hr-line-dashed"></div>
-            <dt>Image</dt>
-                <dd>{{ entity.image }}</dd>
+            <dt>{{ 'Title' | trans({}, 'press')}}</dt>
+            <dd>{{ entity.title }}</dd>
             <div class="hr-line-dashed"></div>
-            <dt>Video</dt>
-                <dd>{{ entity.video }}</dd>
+            <dt>{{ 'Publication' | trans({}, 'press')}}</dt>
+            <dd>{{ entity.author }}</dd>
             <div class="hr-line-dashed"></div>
-            <dt>Text</dt>
+            <dt>{{ 'Published Date' | trans({}, 'press')}}</dt>
+            <dd>{{ entity.createdOn | date('d/m/Y') }}</dd>
+            <div class="hr-line-dashed"></div>
+            <dt>{{ 'Image' | trans({}, 'press')}}</dt>
+            <dd>
+                <img src="{{ asset('images/press/' ~ entity.image) }}" alt="{{ entity.title }}">
+            </dd>
+            <div class="hr-line-dashed"></div>
+            <dt>{{ 'Video' | trans({}, 'press')}}</dt>
+            <dd>
+                <div class="col-md-6">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item"
+                                src="//{{ entity.video | replace({'http://':'', 'https://': '', 'watch' : 'embed', '?v=': '/'}) }}?showinfo=0"></iframe>
+                    </div>
+                </div>
+            </dd>
+            <div class="hr-line-dashed"></div>
+            <dt>{{ 'Content' | trans({}, 'press')}}</dt>
                 <dd>{{ entity.text | raw }}</dd>
             <div class="hr-line-dashed"></div>
         </tbody>

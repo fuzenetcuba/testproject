@@ -66,9 +66,9 @@
                             </a>
                             {% if item.video is not empty %}
                                 <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
+                                    <iframe class="embed-responsive-item"
                                         src="//{{ item.video | replace({'http://':'', 'https://': '', 'watch' : 'embed', '?v=': '/'}) }}?showinfo=0"></iframe>
-                            </div>
+                                </div>
                             {% endif %}
                         </span>
                             <span class="card-summary">

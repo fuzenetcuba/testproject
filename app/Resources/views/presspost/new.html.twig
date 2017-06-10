@@ -32,7 +32,13 @@
 
         {% block page_content %}
 
-            {{ form_start(form, {'attr': {'class':'form-horizontal', 'novalidate':'novalidate'}}) }}
+            {% if not form.vars.valid %}
+                <div class="alert alert-danger">
+                    {{ form_errors(form) }}
+                </div>
+            {% endif %}
+
+            {{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
 
             <div class="form-group{% if(form.title.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                 <label for="" class="col-md-2 control-label">{{ form_label(form.title) }}</label>
@@ -170,11 +176,9 @@
                     {{ form_widget(form.submit, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
                     {{ form_widget(form.submitback, { 'attr': { 'class' : 'btn btn-primary btn-small', }}) }}
 
-                    {{ form(form) }}
-
                 </div>
             </div>
-
+            {{ form_row(form._token) }}
             {{ form_end(form) }}
 
         {% endblock %}

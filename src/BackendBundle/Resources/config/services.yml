@@ -98,3 +98,9 @@ services:
         arguments: ["@router"]
         tags:
             - { name: validator.constraint_validator }
+
+    conditional.field.validator:
+        class: BackendBundle\Validator\Constraints\ConditionalConstraintValidator
+#        arguments: ["@router"]
+        tags:
+            - { name: validator.constraint_validator }
