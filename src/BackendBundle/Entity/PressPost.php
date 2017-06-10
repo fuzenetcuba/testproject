@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Entity;
 
+use BackendBundle\Validator\Constraints\ConditionalFieldConstraint;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\HttpFoundation\File\File;
@@ -14,6 +15,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Table(name="press_post")
  * @ORM\Entity(repositoryClass="BackendBundle\Repository\PressPostRepository")
  * @Vich\Uploadable
+ * @ConditionalFieldConstraint(first="image", second="video")
  */
 class PressPost
 {
@@ -105,6 +107,13 @@ class PressPost
      * @ORM\Column(type="datetime")
      */
     private $createdOn;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     /**
      * @var string
@@ -204,11 +213,22 @@ class PressPost
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\File\File $imageFile
+     * @param \Symfony\Component\HttpFoundation\File\File $image
+     *
+     * @return $this
+     * @internal param \Symfony\Component\HttpFoundation\File\File $imageFile
      */
-    public function setImageFile($imageFile)
+    public function setImageFile(File $image = null)
     {
-        $this->imageFile = $imageFile;
+        $this->imageFile = $image;
+
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+
+        return $this;
     }
 
     /**
@@ -283,5 +303,21 @@ class PressPost
     public function setCreatedOn($createdOn)
     {
         $this->createdOn = $createdOn;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param mixed $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
     }
 }
