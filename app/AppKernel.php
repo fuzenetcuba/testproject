@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new Spraed\PDFGeneratorBundle\SpraedPDFGeneratorBundle(),
             new Djamy\GoogleCalendarBundle\DjamyGoogleCalendarBundle(),
             new Urodoz\Truncate\Bridge\Symfony\UrodozTruncateBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
