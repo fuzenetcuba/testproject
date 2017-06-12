@@ -75,10 +75,10 @@
                                 <a href="{{ item.url }}">
                                     <h3>{{ item.title | upper }}</h3>
 
-                                    {{ truncateHTML(item.text, 180) | raw }}
+                                    <p class="text-3-lines">{{ truncateHTML(item.text, 180) | raw }}</p>
                                     {#{{ item.text | raw }}#}
 
-                                    <span class="m-t-md card-info text-right">
+                                    <span class="m-t-md card-info m-b-md">
                                         {{ 'Published by' | trans({}, 'news') }} {{ item.author }}
                                         on {{ item.createdOn | date('d/m/Y') }}
                                     </span>
