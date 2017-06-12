@@ -79,8 +79,8 @@
                                     {#{{ item.text | raw }}#}
 
                                     <span class="m-t-md card-info text-right">
-                                        {{ 'Published by' | trans({}, 'news') | lower }} {{ item.author | lower }}
-                                        ON {{ item.createdOn | date('d/m/Y') }}
+                                        {{ 'Published by' | trans({}, 'news') }} {{ item.author }}
+                                        on {{ item.createdOn | date('d/m/Y') }}
                                     </span>
                                 </a>
                             </span>
