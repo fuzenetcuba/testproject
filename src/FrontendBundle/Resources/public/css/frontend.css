@@ -4250,6 +4250,11 @@ input[required]::before {
     text-transform: uppercase;
 }
 
+.press-intro a {
+    display: block;
+    width: 100%;
+}
+
 .text-3-lines {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -4258,4 +4263,11 @@ input[required]::before {
     max-height: 48px;      /* fallback */
     -webkit-line-clamp: 3; /* number of lines to show */
     -webkit-box-orient: vertical;
+}
+
+my-email::after {
+    content: attr(data-domain);
+}
+my-email::before {
+    content: attr(data-user) "\0040";
 }

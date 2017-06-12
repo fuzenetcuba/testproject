@@ -214,6 +214,16 @@
                     ]
                 });
 
+                //  datepicker3 script for input datetime and date
+                $("form input.datepicker").datepicker({
+                    todayBtn: "linked",
+                    keyboardNavigation: false,
+                    forceParse: false,
+                    autoclose: true,
+                    format: "yyyy-mm-dd"
+                });
+
+
                 $('form').on('submit', function () {
                     var form = $(this);
                     var textarea = form.find('textarea');

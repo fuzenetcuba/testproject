@@ -110,7 +110,7 @@ class PressPost
 
     /**
      * @ORM\Column(type="datetime")
-     *
+     * @Gedmo\Timestampable(on="update")
      * @var \DateTime
      */
     private $updatedAt;
