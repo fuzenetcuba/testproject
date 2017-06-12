@@ -357,6 +357,17 @@
                     $('#navbar.navbar-collapse.collapse.in').removeClass('in');
                 });
 
+                if (window.location.hash) {
+                    var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+                    // hash found
+                    if (hash.trim().toLowerCase() == 'contact') {
+                        $('#contact-link').addClass('active');
+                        $('#navbar.navbar-collapse.collapse.in').removeClass('in');
+                    } else {
+                        $('#contact-link').removeClass('active');
+                    }
+                }
+
                 // END - focus contact link
 
             })();
