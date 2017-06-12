@@ -28,6 +28,7 @@ class PressPostType extends AbstractType
             ->add('video', UrlType::class, ['label' => 'Video URL', 'required' => false])
             ->add('text', TextareaType::class, [
                 'label' => 'Content',
+                'required' => false
             ]);
     }
 

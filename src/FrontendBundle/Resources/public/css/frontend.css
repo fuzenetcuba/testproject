@@ -4114,7 +4114,7 @@ p.text-muted a:focus {
     overflow: hidden;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: bottom center;
     background-color: rgba(255, 255, 255, 0.15);
     background-blend-mode: overlay;
     -moz-border-radius: 4px 4px 0 0;
@@ -4248,4 +4248,14 @@ input[required]::before {
 
 .press-intro h3 {
     text-transform: uppercase;
+}
+
+.text-3-lines {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 16px;     /* fallback */
+    max-height: 48px;      /* fallback */
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
 }
