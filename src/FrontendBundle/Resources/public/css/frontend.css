@@ -4114,7 +4114,7 @@ p.text-muted a:focus {
     overflow: hidden;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: bottom center;
     background-color: rgba(255, 255, 255, 0.15);
     background-blend-mode: overlay;
     -moz-border-radius: 4px 4px 0 0;

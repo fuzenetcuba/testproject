@@ -78,7 +78,7 @@
                                     {{ truncateHTML(item.text, 180) | raw }}
                                     {#{{ item.text | raw }}#}
 
-                                    <span class="m-t-md card-info text-right">
+                                    <span class="m-t-md card-info m-b-md">
                                         {{ 'Published by' | trans({}, 'news') }} {{ item.author }}
                                         on {{ item.createdOn | date('d/m/Y') }}
                                     </span>
