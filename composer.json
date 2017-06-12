@@ -28,7 +28,8 @@
         "jms/i18n-routing-bundle": "2.0",
         "spraed/pdf-generator-bundle": "^1.3",
         "djamy/google-calendar-bundle": "dev-master",
-        "urodoz/truncate-html": "@stable"
+        "urodoz/truncate-html": "@stable",
+        "knplabs/knp-menu-bundle": "^2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
