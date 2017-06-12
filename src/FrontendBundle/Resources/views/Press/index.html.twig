@@ -68,13 +68,14 @@
                             </a>
                             {% if item.video is not empty %}
                                 <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item"
+                                    <iframe class="embed-responsive-item" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen"
+                                            msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"
                                         src="//{{ item.video | replace({'http://':'', 'https://': '', 'watch' : 'embed', '?v=': '/'}) }}?showinfo=0"></iframe>
                                 </div>
                             {% endif %}
                         </span>
                             <span class="card-summary">
-                                <a href="{{ item.url }}">
+                                <a href="{{ item.url }}" target="_blank">
                                     <h3>{{ item.title | upper }}</h3>
 
                                     <p class="text-3-lines">{{ truncateHTML(item.text, 180) | raw }}</p>
