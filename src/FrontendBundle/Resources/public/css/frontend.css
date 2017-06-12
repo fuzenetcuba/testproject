@@ -4249,3 +4249,13 @@ input[required]::before {
 .press-intro h3 {
     text-transform: uppercase;
 }
+
+.text-3-lines {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 16px;     /* fallback */
+    max-height: 48px;      /* fallback */
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
