@@ -11,3 +11,7 @@ careers_index: /empleos
 careers_find: /empleos/buscar/{business}
 careers_apply: /empleos/{slug}/aplicar
 careers_store: /empleos/tienda
+job_fair: /feria-de-empleo
+calendar: /calendario/{view}/{key}
+press_page: /prensa
+survey: /encuesta

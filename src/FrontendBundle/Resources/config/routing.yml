@@ -113,3 +113,7 @@ press_page:
     path:     /press
     defaults:
         _controller: FrontendBundle:Press:index
+
+app_sitemap:
+    path:  /sitemap.{_format}
+    defaults: { _controller: FrontendBundle:Default:sitemap, _format: xml }
