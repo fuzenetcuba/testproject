@@ -1,68 +1,71 @@
-    {% extends 'BackendBundle::layout.html.twig' %}{% block active_presspost  %}active{% endblock %}{% block page_heading_title %}
-    <a class="btn btn-default navbar-btn" href="{{ path('press')}}"
+{% extends 'BackendBundle::layout.html.twig' %}{% block active_presspost %}active{% endblock %}{% block page_heading_title %}
+    <a class="btn btn-default navbar-btn" href="{{ path('press') }}"
        style="margin-bottom: 7px;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a>
     PressPost data
-    {% endblock %}{% block page_content %}
+{% endblock %}{% block page_content %}
     <dl class="dl-horizontal">
         <tbody>
-            <dt>Id</dt>
-                <dd>{{ entity.id }}</dd>
-            <div class="hr-line-dashed"></div>
-            <dt>{{ 'Title' | trans({}, 'press')}}</dt>
-            <dd>{{ entity.title }}</dd>
-            <div class="hr-line-dashed"></div>
-            <dt>{{ 'Publication' | trans({}, 'press')}}</dt>
-            <dd>{{ entity.author }}</dd>
-            <div class="hr-line-dashed"></div>
-            <dt>{{ 'Published Date' | trans({}, 'press')}}</dt>
-            <dd>{{ entity.createdOn | date('d/m/Y') }}</dd>
-            <div class="hr-line-dashed"></div>
-            <dt>{{ 'Image' | trans({}, 'press')}}</dt>
+        <dt>Id</dt>
+        <dd>{{ entity.id }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Title' | trans({}, 'press') }}</dt>
+        <dd>{{ entity.title }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Publication' | trans({}, 'press') }}</dt>
+        <dd>{{ entity.author }}</dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Published Date' | trans({}, 'press') }}</dt>
+        <dd>{{ entity.createdOn | date('d/m/Y') }}</dd>
+        <div class="hr-line-dashed"></div>
+        {% if entity.image %}
+
+            <dt>{{ 'Image' | trans({}, 'press') }}</dt>
             <dd>
                 <img src="{{ asset('images/press/' ~ entity.image) }}" alt="{{ entity.title }}">
             </dd>
             <div class="hr-line-dashed"></div>
-            <dt>{{ 'Video' | trans({}, 'press')}}</dt>
-            <dd>
-                <div class="col-md-6">
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item"
-                                src="//{{ entity.video | replace({'http://':'', 'https://': '', 'watch' : 'embed', '?v=': '/'}) }}?showinfo=0"></iframe>
-                    </div>
+        {% endif %}
+        <dt>{{ 'Video' | trans({}, 'press') }}</dt>
+        <dd>
+            <div class="col-md-6">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item"
+                            src="//{{ entity.video | replace({'http://':'', 'https://': '', 'watch' : 'embed', '?v=': '/'}) }}?showinfo=0"></iframe>
                 </div>
-            </dd>
-            <div class="hr-line-dashed"></div>
-            <dt>{{ 'Content' | trans({}, 'press')}}</dt>
-                <dd>{{ entity.text | raw }}</dd>
-            <div class="hr-line-dashed"></div>
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
+        <dt>{{ 'Content' | trans({}, 'press') }}</dt>
+        <dd>{{ entity.text | raw }}</dd>
+        <div class="hr-line-dashed"></div>
         </tbody>
-    </dl>    <div class="form-group">
-    <div class="col-md-2 text-right">
-        <a class="btn btn-success" href="{{ path('press') }}">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            Back to the list
-        </a>
-    </div>
-    <div class="col-md-10">
+    </dl>
+    <div class="form-group">
+        <div class="col-md-2 text-right">
+            <a class="btn btn-success" href="{{ path('press') }}">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Back to the list
+            </a>
+        </div>
+        <div class="col-md-10">
 
-                
-                
-                            <a class="btn btn-primary"
+
+            <a class="btn btn-primary"
                href="{{ path('press_edit', { 'id': entity.id }) }}">
                 <span class="fa fa-pencil"></span>
                 Edit
             </a>
-        
-                            <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
+
+            <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
                 <span class="fa fa-remove"></span>
                 Delete
             </a>
-        
-        
-            </div>
-</div>
+
+
+        </div>
+    </div>
 
 
     <div class="modal inmodal" id="modalDelete" tabindex="-1" role="dialog" aria-hidden="true">
@@ -93,4 +96,4 @@
     </div>
 
 
-    {% endblock %}
+{% endblock %}

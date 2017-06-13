@@ -23,7 +23,7 @@ class PressPostType extends AbstractType
             ->add('title')
             ->add('url')
             ->add('author', TextType::class, ['label' => 'Publication'])
-            ->add('createdOn', DateType::class, array('widget' => 'single_text', 'html5' => false, 'read_only' => true))
+            ->add('createdOn', DateType::class, array('widget' => 'single_text', 'html5' => false, 'required' => true))
             ->add('imageFile', FileType::class, ['required' => false])
             ->add('video', UrlType::class, ['label' => 'Video URL', 'required' => false])
             ->add('text', TextareaType::class, [
