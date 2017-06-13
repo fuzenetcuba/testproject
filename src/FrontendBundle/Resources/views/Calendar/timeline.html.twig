@@ -40,9 +40,9 @@
                 {{ 'Come to the Plaza Mariachi to enjoy great food and beverages, art, shopping and live entertainment. Below you will find a list of the acts that are scheduled to perform at Plaza Mariachi to help you plan your visit. Please note that dates and times are subject to change.' | trans({}, 'calendar') }}
             </p>
 
-            <div class="row m-b-md m-t-md m-r-sm">
-                <div class="pull-right calendar--selector">
-                    {{ 'VIEW AS' | trans({}, 'calendar') }}
+            <div class="row calendar--buttons m-b-md m-t-md text-center">
+                <div class="pull-right calendar--selector m-r-md">
+                    <span class="hidden-xs">{{ 'VIEW AS' | trans({}, 'calendar') }}</span>
                     <a href="{{ path('calendar') }}" class="btn btn-default active">{{ 'TIMELINE' | trans({}, 'calendar' )}}</a>
                     <a href="{{ path('calendar', {'view' : 'calendar'}) }}" class="btn btn-default">{{ 'CALENDAR' | trans({}, 'calendar' )}}</a>
                 </div>
