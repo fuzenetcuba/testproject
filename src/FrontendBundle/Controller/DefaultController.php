@@ -70,7 +70,7 @@ class DefaultController extends Controller
 
         $post = $em->getRepository('BackendBundle:Post')->findOneBy(array('route' => $route));
 
-        if(!$post){
+        if (!$post) {
             return $this->redirectToRoute('frontend_homepage');
         }
 
@@ -116,7 +116,7 @@ class DefaultController extends Controller
             'openings',
         ]);
 
-        if($hl !== null){
+        if ($hl !== null) {
             $businessData = $this->get('business.manager')->findBySlug($hl);
         } else {
             $businessData = null;
@@ -132,7 +132,6 @@ class DefaultController extends Controller
     }
 
 
-
     /**
      * Displays Job Fair Page
      */
@@ -143,5 +142,182 @@ class DefaultController extends Controller
         return $this->render("FrontendBundle:Static:jobfair.html.twig", [
             'openings' => $openings
         ]);
+    }
+
+    /**
+     * Build the sitemap.xml
+     */
+    public function sitemapAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $urls = array();
+        $hostname = $request->getSchemeAndHttpHost();
+
+        // incluye urls multiidioma
+        $languages = array('en', 'es');
+        foreach ($languages as $lang) {
+
+            // Include static routes
+            $urls[] = array(
+                'loc' => $this->get('router')->generate('frontend_homepage', array('_locale' => $lang)),
+                'changefreq' => 'weekly',
+                'priority' => '1.0'
+            );
+
+            $urls[] = array(
+                'loc' => $this->get('router')->generate('fos_user_registration_register', array('_locale' => $lang)),
+                'changefreq' => 'yearly',
+                'priority' => '0.2'
+            );
+
+            $urls[] = array(
+                'loc' => $this->get('router')->generate('fos_user_resetting_request', array('_locale' => $lang)),
+                'changefreq' => 'yearly',
+                'priority' => '0.2'
+            );
+
+            $urls[] = array(
+                'loc' => $this->get('router')->generate('frontend_static_page', array(
+                    '_locale' => $lang,
+                    'name' => 'about'
+                )),
+                'changefreq' => 'monthly',
+                'priority' => '0.3'
+            );
+
+            $urls[] = array(
+                'loc' => $this->get('router')->generate('deals', array('_locale' => $lang)),
+                'changefreq' => 'monthly',
+                'priority' => '0.3'
+            );
+
+            $urls[] = array(
+                'loc' => $this->get('router')->generate('business_list', array('_locale' => $lang)),
+                'changefreq' => 'weekly',
+                'priority' => '0.7'
+            );
+
+            $urls[] = array(
+                'loc' => $this->get('router')->generate('membership', array('_locale' => $lang)),
+                'changefreq' => 'monthly',
+                'priority' => '0.3'
+            );
+
+            $urls[] = array(
+                'loc' => $this->get('router')->generate('subscription_request', array('_locale' => $lang)),
+                'changefreq' => 'monthly',
+                'priority' => '0.3'
+            );
+
+            $urls[] = array(
+                'loc' => $this->get('router')->generate('mall_map', array('_locale' => $lang, 'slug' => 'all')),
+                'changefreq' => 'monthly',
+                'priority' => '0.3'
+            );
+
+            $urls[] = array(
+                'loc' => $this->get('router')->generate('careers_index', array('_locale' => $lang)),
+                'changefreq' => 'weekly',
+                'priority' => '0.7'
+            );
+
+            $urls[] = array(
+                'loc' => $this->get('router')->generate('app_robots', array('_locale' => $lang)),
+                'changefreq' => 'yearly',
+                'priority' => '0.2'
+            );
+
+            $urls[] = array(
+                'loc' => $this->get('router')->generate('job_fair', array('_locale' => $lang)),
+                'changefreq' => 'monthly',
+                'priority' => '0.5'
+            );
+
+            $urls[] = array(
+                'loc' => $this->get('router')->generate('survey', array('_locale' => $lang)),
+                'changefreq' => 'monthly',
+                'priority' => '0.3'
+            );
+
+            $urls[] = array(
+                'loc' => $this->get('router')->generate('calendar', array(
+                    '_locale' => $lang,
+                    'view' => 'music',
+                    'key' => 'timeline'
+                )),
+                'changefreq' => 'weekly',
+                'priority' => '0.7'
+            );
+
+            $urls[] = array(
+                'loc' => $this->get('router')->generate('press_page', array('_locale' => $lang)),
+                'changefreq' => 'weekly',
+                'priority' => '0.7'
+            );
+
+            // Include url of Deals from DB
+            $deals = $em->getRepository('BackendBundle:Deal')->findAll();
+            foreach ($deals as $deal) {
+                $urls[] = array(
+                    'loc' => $this->get('router')->generate('deal_details', array(
+                        '_locale' => $lang,
+                        'slug' => $deal->getSlug()
+                    )),
+                    'changefreq' => 'monthly',
+                    'priority' => '0.3'
+                );
+            }
+
+            // Include url of Business from DB
+            $businesses = $em->getRepository('BackendBundle:Business')->findAll();
+            foreach ($businesses as $business) {
+                $urls[] = array(
+                    'loc' => $this->get('router')->generate('business_details', array(
+                        '_locale' => $lang,
+                        'slug' => $business->getSlug()
+                    )),
+                    'changefreq' => 'weekly',
+                    'priority' => '0.5'
+                );
+            }
+
+            // Include url of Careers from DB
+            $openings = $em->getRepository('BackendBundle:Opening')->findAll();
+            foreach ($openings as $opening) {
+                $urls[] = array(
+                    'loc' => $this->get('router')->generate('careers_apply', array(
+                        '_locale' => $lang,
+                        'slug' => $opening->getSlug()
+                    )),
+                    'changefreq' => 'weekly',
+                    'priority' => '0.5'
+                );
+            }
+
+            // Include url of Posts from DB
+            $posts = $em->getRepository('BackendBundle:Post')->findAll();
+            foreach ($posts as $post) {
+                $urls[] = array(
+                    'loc' => $this->get('router')->generate('frontend_post_page', array(
+                        '_locale' => $lang,
+                        'route' => $post->getRoute()
+                    )),
+                    'changefreq' => 'weekly',
+                    'priority' => '0.5'
+                );
+            }
+
+            // ...
+        }
+
+
+        $response = $this->render('FrontendBundle:Static:sitemap.xml.twig', array(
+            'urls' => $urls,
+            'hostname' => $hostname
+        ));
+
+        $response->headers->add(array('Content-Type' => 'application/xml'));
+        return $response;
     }
 }
