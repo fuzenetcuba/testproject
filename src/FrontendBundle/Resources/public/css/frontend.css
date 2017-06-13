@@ -4259,8 +4259,8 @@ input[required]::before {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    line-height: 16px;     /* fallback */
-    max-height: 48px;      /* fallback */
+    line-height: 16px; /* fallback */
+    max-height: 48px; /* fallback */
     -webkit-line-clamp: 3; /* number of lines to show */
     -webkit-box-orient: vertical;
 }
@@ -4268,6 +4268,18 @@ input[required]::before {
 my-email::after {
     content: attr(data-domain);
 }
+
 my-email::before {
     content: attr(data-user) "\0040";
+}
+
+@media (max-width: 400px) {
+    .calendar--buttons {
+        display: flex;
+        justify-content: center;
+    }
+
+    .calendar--buttons > div {
+        margin-right: 0;
+    }
 }
