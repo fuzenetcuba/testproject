@@ -346,8 +346,35 @@ body.landing-page {
 }
 
 .landing-page .carousel,
-.landing-page .carousel.carousel-adjusted {
-    height: 600px;
+.landing-page .carousel.carousel-adjusted,
+.landing-page .carousel-caption.blank,
+.landing-page .header-back.one {
+    height: 500px;
+}
+
+.landing-page .header-back.one {
+    /*background-image: url('/bundles/frontend/img/pattern.png');*/
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    /*opacity: .3;*/
+}
+
+@media (max-width: 1024px) {
+    .landing-page .header-back.one {
+        /*background-size: 245%;*/
+    }
+}
+
+.landing-page .carousel-caption.blank {
+    /*background-image: url('/bundles/frontend/img/home-logo.png');*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    top: 0;
 }
 
 @media (max-width: 767px) {
@@ -808,11 +835,13 @@ body.landing-page {
         padding-right: 0;
     }
 
-    .footer-left {
+    .footer-left,
+    .contact-left {
         text-align: right !important;
     }
 
-    .footer-right {
+    .footer-right,
+    .contact-right {
         text-align: left !important;
         margin-top: 10px !important;
     }
@@ -1991,11 +2020,18 @@ button.btn-blue.dim:active {
     width: auto;
 }
 
-.footer-left {
+.contact-left,
+.contact-left address {
+    font-size: 20px;
+}
+
+.footer-left,
+.contact-left {
     text-align: center;
 }
 
-.footer-right {
+.footer-right,
+.contact-right {
     text-align: center;
     margin-top: 40px;
 }
@@ -3871,33 +3907,6 @@ fieldset.uploads {
 @font-face {
     font-family: "Montserrat Regular";
     src: url('../fonts/Montserrat-Regular.ttf') format("truetype");
-}
-
-.landing-page .header-back.one {
-    /*background-image: url('/bundles/frontend/img/pattern.png');*/
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
-    height: 500px;
-    /*opacity: .3;*/
-}
-
-@media (max-width: 1024px) {
-    .landing-page .header-back.one {
-        /*background-size: 245%;*/
-    }
-}
-
-.landing-page .carousel-caption.blank {
-    /*background-image: url('/bundles/frontend/img/home-logo.png');*/
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 600px;
-    top: 0;
 }
 
 .boxes {
