@@ -40,7 +40,7 @@
                     {{ 'Below you will find links to the news stories that have been done about the Plaza Mariachi Music City in various media outlets.' | trans({}, 'news') }}
                 </p>
                 <hr>
-                <h3 class="text-muted-strong">Press Contact</h3>
+                <h3 class="text-muted-strong">{{ 'Press Contact' | trans({}, 'news') }}</h3>
                 <p class="text-muted-strong">
                     Cristina O. Allen, Chief Marketing Officer
                 </p>
@@ -83,7 +83,7 @@
 
                                     <span class="m-t-md card-info m-b-md">
                                         {{ 'Published by' | trans({}, 'news') }} {{ item.author }}
-                                        on {{ item.createdOn | date('m/d/Y') }}
+                                        {{ 'on' | trans({}, 'news') }} {{ item.createdOn | date('d/m/Y') }}
                                     </span>
                                 </a>
                             </span>

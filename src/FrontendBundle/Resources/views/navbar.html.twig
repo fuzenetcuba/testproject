@@ -34,6 +34,10 @@
                         <a title="{{ 'Plaza Map' | trans({}, 'menu') }}"
                            href="{{ path('mall_map', { 'slug' : 'all' }) }}">{{ 'Plaza Map' | trans({}, 'menu') }}</a>
                     </li>
+                    <li>
+                        <a title="{{ 'Press' | trans({}, 'menu') }}"
+                           href="{{ path('press_page') }}">{{ 'Press' | trans({}, 'menu') }}</a>
+                    </li>
                     <li class="dropdown hidden-xs">
                         {% if not app.user %}
                             <a title="{{ 'Login/Register' | trans({}, 'menu') }}" class="dropdown-toggle"
@@ -195,6 +199,10 @@
                     <li class="visible-xs">
                         <a title="{{ 'Plaza Map' | trans({}, 'menu') }}"
                            href="{{ path('mall_map', { 'slug' : 'all' }) }}">{{ 'Plaza Map' | trans({}, 'menu') }}</a>
+                    </li>
+                    <li class="visible-xs">
+                        <a title="{{ 'Press' | trans({}, 'menu') }}"
+                           href="{{ path('press_page') }}">{{ 'Press' | trans({}, 'menu') }}</a>
                     </li>
                     <li id="contact-link">
                         <a title="{{ 'Contact' | trans({}, 'menu') }}" class="page-scroll"
