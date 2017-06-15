@@ -143,6 +143,23 @@
                 // check if the input is valid
                 if (!$form.valid()) return false;
 
+                var captchResponse = $('#g-recaptcha-response').val();
+                if (captchResponse.length == 0) {
+                    //user has not yet checked the 'I am not a robot' checkbox
+
+                    $('#user-messages').addClass('alert-danger').show();
+                    $('#user-messages').html("You must check the reCAPTCHA field!");
+
+                    setTimeout(function () {
+                        $('#user-messages').html("");
+                        $('#user-messages').removeClass('alert-danger').hide();
+                    }, 10000);
+
+                    return false;
+                }
+
+                //user is a verified human and you are good to submit your form now
+
                 var formdata = new FormData(formTag[0]);
 
                 $.ajax({

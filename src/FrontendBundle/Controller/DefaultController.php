@@ -167,7 +167,7 @@ class DefaultController extends Controller
             || $message == null || $message == ""
         ) {
             return new Response(json_encode(array('errorMessage' => 'All fields are required!')), 200);
-        } elseif (!$captcha) {
+        } elseif (!$captcha || $captcha == null || $captcha == "") {
             return new Response(json_encode(array('errorMessage' => 'You must check the captcha field!')), 200);
         } else {
             $url = "https://www.google.com/recaptcha/api/siteverify"
@@ -193,7 +193,7 @@ class DefaultController extends Controller
              *  }
              */
 
-            if ($response['success'] == true) {
+            if ($response->success == true) {
                 $content = $this->renderView('@Backend/Emails/customer.html.twig', [
                     'content' => sprintf('%s Has sent this message: <br /> <p>(%s)</p>',
                         $fullName, $message)
