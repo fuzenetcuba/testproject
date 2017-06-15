@@ -69,6 +69,7 @@
 
                 <div class="col-sm-6 contact-right">
                     <h2 class="m-t-none m-b">{{ 'Send us a message' | trans({}, 'contact') }}</h2>
+                    <div id="user-messages" class="hidden alert alert-success m-b"></div>
                     <form role="form" action="" name="frontend-send-contact-form">
                         <div class="form-group">
                             <input name="full-name" class="form-control"
@@ -97,7 +98,6 @@
                             <div class="g-recaptcha" data-sitekey="6LeghiUUAAAAAKQeUM2KoaJVuV8BbOSKQTTBc4Yg"></div>
                         </div>
                         <div>
-                            <span id="user-messages" class="hidden block m-b"></span>
                             <button class="btn btn-success m-t-n-xs ladda-button" data-style="zoom-in" type="submit">
                                 {{ 'Send' | trans({}, 'contact') }}
                             </button>
@@ -158,24 +158,24 @@
 
                     // message
                     if (typeof parsedData['errorMessage'] !== 'undefined') {
-                        $('#user-messages').addClass('text-danger').show();
+                        $('#user-messages').addClass('alert-danger').show();
                         $('#user-messages').html(parsedData['errorMessage']);
 
                         setTimeout(function () {
                             $('#user-messages').html("");
-                            $('#user-messages').removeClass('text-danger').hide();
-                        }, 3000);
+                            $('#user-messages').removeClass('alert-danger').hide();
+                        }, 10000);
                     } else {
                         // reset form
                         formTag[0].reset();
 
-                        $('#user-messages').addClass('text-navy').show();
+                        $('#user-messages').addClass('alert-success').show();
                         $('#user-messages').html(parsedData['message']);
 
                         setTimeout(function () {
                             $('#user-messages').html("");
-                            $('#user-messages').removeClass('text-navy').hide();
-                        }, 3000);
+                            $('#user-messages').removeClass('alert-success').hide();
+                        }, 10000);
                     }
                 });
             });
