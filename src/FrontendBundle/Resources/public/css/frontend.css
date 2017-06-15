@@ -4292,3 +4292,7 @@ my-email::before {
         margin-right: 0;
     }
 }
+
+.no-pointer-event iframe {
+ pointer-events: none;
+}
