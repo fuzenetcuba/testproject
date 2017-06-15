@@ -23,6 +23,9 @@
     <a href="{{ item.uri }}"{{ macros.attributes(item.linkAttributes) }}>
         <i class="{{ item.attribute('icon') }}"></i>
         {{ block('label') }}
+        {% if item.hasChildren %}
+            <span class="fa arrow"></span>
+        {% endif %}
     </a>
 {% endblock %}
 
