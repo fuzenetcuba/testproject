@@ -2,13 +2,13 @@ Profile: Perfil
 Change password: Cambiar contraseña
 Logout: Salir
 Dashboard: Tablero
-Brands: Negocios
-All Brands: Todos los negocios
+Brands: Marcas
+All Brands: Todas las Marcas
 Brand: Negocio
 Brand Categories: Categorías de Negocio
 Opening Categories: Categorías de Empleo
 Deals: Ofertas
-Rewards: Recompensas
+Rewards: Premios
 Customers: Clientes
 Subscriptions: Suscripciones
 Mails: Correos
@@ -71,11 +71,24 @@ Updated on: Actualizado el
 Analysis of candidates: Análisis de candidatos
 The value has been changed over time, and to this moment has reached a level of: El valor ha cambiado con el tiempo, y hasta este momento ha alcanzado un nivel de
 candidates.: candidatos.
-Alerts: Alertas
+Alerts: Notificaciones
 Start date: Fecha inicio
 End date: Fecha fin
 EXPORT TO PDF: EXPORTAR A PDF
 Upload: Subir
-Posts: Publicaciones
+Posts: Entradas
 Posts Images: Imágenes de Publicaciones
 Press: Prensa
+Pages: Páginas
+Press Room: Sala de Prensa
+Media: Multimedia
+Appereance: Apariencia
+Users & Roles: Usuarsio & Roles
+Business Categories: Categorias de Negocio
+Careers: Empleo
+Applicants: Solicitantes
+Open Positions: Posiciones Disponibles
+Job Categories: Categorías de Empleo
+Audience: Audiencia
+Subscribers: Subscriptores
+Mailer: Correo
