@@ -93,6 +93,9 @@
                                       placeholder="{{ 'Type message here (required) ...' | trans({}, 'contact') }}"
                                       required></textarea>
                         </div>
+                        <div class="form-group">
+                            <div class="g-recaptcha" data-sitekey="6LeghiUUAAAAAKQeUM2KoaJVuV8BbOSKQTTBc4Yg"></div>
+                        </div>
                         <div>
                             <span id="user-messages" class="hidden block m-b"></span>
                             <button class="btn btn-success m-t-n-xs ladda-button" data-style="zoom-in" type="submit">
@@ -119,6 +122,10 @@
     </section>
 
 
+{% endblock %}
+
+{% block custom_js %}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 {% endblock %}
 
 {% block inline_js %}

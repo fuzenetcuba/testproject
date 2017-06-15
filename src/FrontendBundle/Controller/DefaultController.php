@@ -154,11 +154,12 @@ class DefaultController extends Controller
             return new Response(json_encode(array('errorMessage' => 'You can access this only using Ajax!')), 400);
         }
 
+        $secret = "6LeghiUUAAAAAMm0qccLzVGRGNsw0khHLIG8CiAQ";
         $fullName = $request->request->get('full-name');
         $email = $request->request->get('email');
         $subject = $request->request->get('subject');
         $message = $request->request->get('message');
-//        $fullName = $request->request->get('full-name');
+        $captcha = $request->request->get('g-recaptcha-response');
 
         if ($fullName == null || $fullName == ""
             || $email == null || $email == ""
@@ -166,24 +167,36 @@ class DefaultController extends Controller
             || $message == null || $message == ""
         ) {
             return new Response(json_encode(array('errorMessage' => 'All fields are required!')), 200);
+        } elseif (!$captcha) {
+            return new Response(json_encode(array('errorMessage' => 'You must check the captcha field!')), 200);
         } else {
-            $content = $this->renderView('@Backend/Emails/customer.html.twig', [
-                'content' => sprintf('%s Has sent this message: <br /> <p>(%s)</p>',
-                    $fullName, $message)
-                ,
-                'deals' => []
-            ]);
-            
-            $message = \Swift_Message::newInstance()
-                ->setSubject($subject)
-                ->setFrom($this->getParameter('customer.email.from'))
-                ->setTo($this->getParameter('customer.email.to.contact'))
-                ->setReplyTo($email)
-                ->setBody($content, 'text/html');
 
-            $this->get('mailer')->send($message);
-            
-            return new Response(json_encode(array('message' => 'The message was sent successfully')), 200);
+            $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify"
+                . "?secret=" . $secret
+                . "&response=" . $captcha
+                . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
+
+            if ($response . 'success' == true) {
+                $content = $this->renderView('@Backend/Emails/customer.html.twig', [
+                    'content' => sprintf('%s Has sent this message: <br /> <p>(%s)</p>',
+                        $fullName, $message)
+                    ,
+                    'deals' => []
+                ]);
+
+                $message = \Swift_Message::newInstance()
+                    ->setSubject($subject)
+                    ->setFrom($this->getParameter('customer.email.from'))
+                    ->setTo($this->getParameter('customer.email.to.contact'))
+                    ->setReplyTo($email)
+                    ->setBody($content, 'text/html');
+
+                $this->get('mailer')->send($message);
+
+                return new Response(json_encode(array('message' => 'The message was sent successfully')), 200);
+            } else {
+                return new Response(json_encode(array('message' => 'You are identify as a robot')), 200);
+            }
         }
     }
 
