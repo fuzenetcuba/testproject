@@ -170,13 +170,30 @@ class DefaultController extends Controller
         } elseif (!$captcha) {
             return new Response(json_encode(array('errorMessage' => 'You must check the captcha field!')), 200);
         } else {
-
-            $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify"
+            $url = "https://www.google.com/recaptcha/api/siteverify"
                 . "?secret=" . $secret
                 . "&response=" . $captcha
-                . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
+                . "&remoteip=" . $_SERVER['REMOTE_ADDR'];
 
-            if ($response . 'success' == true) {
+            $ch = curl_init($url);
+
+            curl_setopt($ch, CURLOPT_POST, 3);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+            $response = json_decode(curl_exec($ch));
+            curl_close($ch);
+
+            /**
+             * JSON response of the request to Google
+             *  {
+             *      "success": true | false,
+             *      "challenge_ts": timestamp,  // timestamp of the challenge load (ISO format yyyy-MM-dd'T'HH:mm:ssZZ)
+             *      "hostname": string,         // the hostname of the site where the reCAPTCHA was solved
+             *      "error-codes": [...]        // optional
+             *  }
+             */
+
+            if ($response['success'] == true) {
                 $content = $this->renderView('@Backend/Emails/customer.html.twig', [
                     'content' => sprintf('%s Has sent this message: <br /> <p>(%s)</p>',
                         $fullName, $message)
@@ -189,13 +206,14 @@ class DefaultController extends Controller
                     ->setFrom($this->getParameter('customer.email.from'))
                     ->setTo($this->getParameter('customer.email.to.contact'))
                     ->setReplyTo($email)
-                    ->setBody($content, 'text/html');
+                    ->setBody($content, 'text/html')
+                    ->attach(null);
 
                 $this->get('mailer')->send($message);
 
                 return new Response(json_encode(array('message' => 'The message was sent successfully')), 200);
             } else {
-                return new Response(json_encode(array('message' => 'You are identify as a robot')), 200);
+                return new Response(json_encode(array('errorMessage' => 'You are identify as a robot')), 200);
             }
         }
     }
