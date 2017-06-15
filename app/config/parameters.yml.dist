@@ -42,6 +42,7 @@ parameters:
     customer.email.subscribe.subject: 'Thank you for subscribing'
     cutomer.email.subscribe.message: |
         You're now subscribed to the Plaza Mariachi website, we which you well!
+    customer.email.to.contact: noreply@test.com
     careers.pdf.store: '%kernel.root_dir%/../web/uploads'
     careers.pdf.store.report: '%kernel.root_dir%/../web/reports'
     careers.contact.email:

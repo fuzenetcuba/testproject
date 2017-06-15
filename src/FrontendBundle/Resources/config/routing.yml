@@ -117,3 +117,10 @@ press_page:
 app_sitemap:
     path:  /sitemap.{_format}
     defaults: { _controller: FrontendBundle:Default:sitemap, _format: xml }
+
+send_contact_message:
+    path:     /send-contact-message
+    defaults: { _controller: "FrontendBundle:Default:sendContactMessage" }
+    methods:  POST
+    options:
+        expose: true

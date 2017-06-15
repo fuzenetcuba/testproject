@@ -14,36 +14,57 @@ class Builder implements ContainerAwareInterface
     {
         $menu = $factory->createItem('root');
 
-        $menu->addChild('Dashboard', array('route' => 'backend_homepage'));
+        $menu->addChild('Dashboard', array('route' => 'backend_homepage'))
+            ->setAttribute('icon', 'fa fa-th-large')
+        ;
 
-        $menu->addChild('Pages', array('route' => 'backend_post'));
-        $menu->addChild('Media', array('route' => 'backend_post_image'));
-        $menu->addChild('Settings', array('route' => 'backend_settings'));
-        $menu->addChild('Brands', array('route' => 'backend_business'));
-        $menu->addChild('Careers', array('route' => 'backend_opening'));
-        $menu->addChild('Audience', array('route' => 'backend_customer'));
-        $menu->addChild('Marketing', array('route' => 'backend_deals'));
+        $menu->addChild('Pages', array('route' => 'post'))
+            ->setAttribute('icon', 'fa fa-files-o')
+        ;
+        $menu->addChild('Media', array('route' => 'post_image'))
+            ->setAttribute('icon', 'fa fa-picture-o')
+        ;
+        $menu->addChild('Settings', array('route' => 'settings'))
+            ->setAttribute('icon', 'fa fa-cog')
+        ;
+        $menu->addChild('Brands', array('route' => 'business'))
+            ->setAttribute('icon', 'fa fa-briefcase')
+        ;
+        $menu->addChild('Careers', array('route' => 'opening'))
+            ->setAttribute('icon', 'fa fa-inbox')
+        ;
+        $menu->addChild('Audience', array('route' => 'customer'))
+            ->setAttribute('icon', 'fa fa-user-circle')
+        ;
+        $menu->addChild('Marketing', array('route' => 'deal'))
+            ->setAttribute('icon', 'fa fa-bar-chart')
+        ;
 
-        $menu['Pages']->addChild('Posts', ['route' => 'backend_post']);
-        $menu['Pages']->addChild('Press Room', ['route' => 'backend_press']);
+        $menu['Pages']->addChild('Posts', ['route' => 'post']);
+        $menu['Pages']->addChild('Press Room', ['route' => 'press']);
 
-        $menu['Settings']->addChild('Appereance', ['route' => 'backend_press']);
-        $menu['Settings']->addChild('Users & Roles', ['route' => 'config_routing_user']);
-        $menu['Settings']->addChild('Alerts', ['route' => 'backend_alerts']);
+        $menu['Settings']->addChild('Appereance', ['route' => 'settings']);
+        $menu['Settings']->addChild('Users & Roles', ['route' => 'user']);
+        $menu['Settings']->addChild('Alerts', ['route' => 'alert']);
 
-        $menu['Brands']->addChild('All Brands', ['route' => 'backend_business']);
-        $menu['Brands']->addChild('Business Categories', ['route' => 'backend_category']);
+        $menu['Brands']->addChild('All Brands', ['route' => 'business']);
+        $menu['Brands']->addChild('Business Categories', ['route' => 'category']);
 
-        $menu['Careers']->addChild('Applicants', ['route' => 'backend_opening']);
-        $menu['Careers']->addChild('Open Positions', ['route' => 'backend_candidate']);
-        $menu['Careers']->addChild('Job Categories', ['route' => 'backend_opening_category']);
+        $menu['Careers']->addChild('Applicants', ['route' => 'opening']);
+        $menu['Careers']->addChild('Open Positions', ['route' => 'candidate']);
+        $menu['Careers']->addChild('Job Categories', ['route' => 'opening_category']);
 
-        $menu['Audience']->addChild('Customers', ['route' => 'backend_customer']);
-        $menu['Audience']->addChild('Subscribers', ['route' => 'backend_subscription']);
+        $menu['Audience']->addChild('Customers', ['route' => 'customer']);
+        $menu['Audience']->addChild('Subscribers', ['route' => 'subscription']);
 
-        $menu['Marketing']->addChild('Deals', ['route' => 'backend_deal']);
-        $menu['Marketing']->addChild('Rewards', ['route' => 'backend_reward']);
-        $menu['Marketing']->addChild('Mailer', ['route' => 'backend_mails']);
+        $menu['Marketing']->addChild('Deals', ['route' => 'deal']);
+        $menu['Marketing']->addChild('Rewards', ['route' => 'reward']);
+        $menu['Marketing']->addChild('Mailer', ['route' => 'mails_send']);
+
+        $menu->addChild('Logout', array('route' => 'fos_user_security_logout'))
+            ->setAttribute('icon', 'fa fa-sign-out')
+            ->setAttribute('class', 'special_link')
+        ;
 
 //        // access services from the container!
 //        $em = $this->container->get('doctrine')->getManager();
