@@ -25,13 +25,6 @@
     {% endembed %}
 {% endblock %}
 
-{% block custom_css %}
-    {{ parent() }}
-
-    <!-- ladda Styles -->
-    <link href="{{ asset('bundles/backend/css/plugins/ladda/ladda-themeless.min.css') }}" rel="stylesheet">
-{% endblock %}
-
 {% block page_content %}
 
     {# slider #}
@@ -102,9 +95,9 @@
                         </div>
                         <div>
                             <span id="user-messages" class="hidden block m-b"></span>
-                            <a id="send-message-btn" class="btn btn-success m-t-n-xs ladda-button" data-style="zoom-in">
+                            <button class="btn btn-success m-t-n-xs ladda-button" data-style="zoom-in" type="submit">
                                 {{ 'Send' | trans({}, 'contact') }}
-                            </a>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -128,29 +121,22 @@
 
 {% endblock %}
 
-{% block custom_js %}
-    {{ parent() }}
-
-    <!-- ladda Scripts -->
-    <script src="{{ asset('bundles/backend/js/plugins/ladda/spin.min.js') }}"></script>
-    <script src="{{ asset('bundles/backend/js/plugins/ladda/ladda.min.js') }}"></script>
-    <script src="{{ asset('bundles/backend/js/plugins/ladda/ladda.jquery.min.js') }}"></script>
-{% endblock %}
-
 {% block inline_js %}
     {{ parent() }}
 
     <script type="text/javascript">
         $(document).ready(function () {
-            var sendButton = $('#send-message-btn');
-            sendButton.ladda();
-            sendButton.click(function () {
-                var formTag = $('form[name="frontend-send-contact-form"]');
-                var formdata = new FormData(formTag[0]);
+            var formTag = $('form[name="frontend-send-contact-form"]');
 
-                // Start loading
-                sendButton.ladda('start');
-                // Do something in backend and then stop ladda
+            formTag.submit(function (e) {
+
+                e.preventDefault();
+                var $form = $(this);
+
+                // check if the input is valid
+                if (!$form.valid()) return false;
+
+                var formdata = new FormData(formTag[0]);
 
                 $.ajax({
                     type: "POST",
@@ -161,9 +147,6 @@
                     // contentType: 'application/x-www-form-urlencoded',
                     data: formdata
                 }).done(function (html) {
-                    // Stop animation
-                    sendButton.ladda('stop');
-
                     var parsedData = JSON.parse(html);
 
                     // message
@@ -188,9 +171,8 @@
                         }, 3000);
                     }
                 });
-
-                return false;
             });
+
         });
     </script>
 {% endblock %}
