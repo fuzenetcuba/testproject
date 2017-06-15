@@ -160,9 +160,13 @@
                         <div class="col-lg-12 text-center">
                             <a title="{{ 'MALL MAP' | trans({}, 'homepage') }}"
                                href="{{ path('mall_map', { 'slug' : 'all' }) }}"
+                               data-toggle="tooltip"
+                               data-placement="top"
                                class="btn btn-green m-r-lg">{{ 'MALL MAP' | trans({}, 'homepage') }}</a>
                             <a title="{{ 'Contact Us' | trans({}, 'homepage') | upper }}"
                                href="{{ path('frontend_static_page', { 'name' : 'contact' }) }}"
+                               data-toggle="tooltip"
+                               data-placement="top"
                                class="btn btn-blue">{{ 'Contact Us' | trans({}, 'homepage') | upper }}</a>
                         </div>
                     </div>
@@ -178,6 +182,8 @@
                             <a title="Follow us on Twitter"
                                href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlTwitter' })) }}"
                                target="_blank"
+                               data-toggle="tooltip"
+                               data-placement="top"
                                class="btn btn-circle-muted btn-outline btn-social-icon btn-twitter text-muted m-l m-r">
                                 <span class="fa fa-twitter"></span>
                             </a>
@@ -186,6 +192,8 @@
                             <a title="Follow us on Google +"
                                href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlGoogle' })) }}"
                                target="_blank"
+                               data-toggle="tooltip"
+                               data-placement="top"
                                class="btn btn-circle-muted btn-outline btn-social-icon btn-google text-muted m-l m-r">
                                 <span class="fa fa-google"></span>
                             </a>
@@ -194,6 +202,8 @@
                             <a title="Follow us on Facebook"
                                href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlFacebook' })) }}"
                                target="_blank"
+                               data-toggle="tooltip"
+                               data-placement="top"
                                class="btn btn-circle-muted btn-outline btn-social-icon btn-facebook text-muted m-l m-r">
                                 <span class="fa fa-facebook"></span>
                             </a>
@@ -202,6 +212,8 @@
                             <a title="Follow us on Instagram"
                                href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlInstagram' })) }}"
                                target="_blank"
+                               data-toggle="tooltip"
+                               data-placement="top"
                                class="btn btn-circle-muted btn-outline btn-social-icon btn-instagram text-muted m-l m-r">
                                 <span class="fa fa-instagram"></span>
                             </a>
@@ -210,6 +222,8 @@
                             <a title="Follow us on Pinterest"
                                href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'pinterest' })) }}"
                                target="_blank"
+                               data-toggle="tooltip"
+                               data-placement="top"
                                class="btn btn-circle-muted btn-outline btn-social-icon btn-pinterest text-muted m-l m-r">
                                 <span class="fa fa-pinterest"></span>
                             </a>
@@ -218,6 +232,8 @@
                             <a title="Follow us on Snapchat"
                                href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'snapchat' })) }}"
                                target="_blank"
+                               data-toggle="tooltip"
+                               data-placement="top"
                                class="btn btn-circle-muted btn-outline btn-social-icon btn-snapchat text-muted m-l m-r">
                                 <span class="fa fa-snapchat"></span>
                             </a>
@@ -226,6 +242,8 @@
                         <a title="Follow us on Trip Advisor"
                            href="https://www.tripadvisor.com/Attraction_Review-g55229-d12398886-Reviews-Plaza_Mariachi_Music_City-Nashville_Davidson_County_Tennessee.html"
                            target="_blank"
+                           data-toggle="tooltip"
+                           data-placement="top"
                            class="btn btn-circle-muted btn-outline btn-social-icon btn-tripadvisor text-muted m-l m-r">
                             <span class="fa fa-tripadvisor"></span>
                         </a>
@@ -251,6 +269,8 @@
 {% block custom_js %}
     <!-- Mainly scripts -->
     <script src="{{ asset('bundles/backend/js/jquery-2.1.1.js') }}"></script>
+    <script src="{{ asset('bundles/backend/js/jquery-validation.min.js') }}"></script>
+    <script src="{{ asset('bundles/backend/js/jquery-validate-tooltip.js') }}"></script>
     <script src="{{ asset('bundles/backend/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('bundles/backend/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
     <script src="{{ asset('bundles/backend/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
