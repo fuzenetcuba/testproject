@@ -23,6 +23,9 @@
     <a href="{{ item.uri }}"{{ macros.attributes(item.linkAttributes) }}>
         <i class="{{ item.attribute('icon') }}"></i>
         {{ block('label') }}
+        {% if item.hasChildren %}
+            <span class="fa arrow"></span>
+        {% endif %}
     </a>
 {% endblock %}
 
@@ -51,4 +54,11 @@
     {# restore current variables #}
     {% set item = currentItem %}
     {% set options = currentOptions %}
+{% endblock %}
+
+{% block label %}
+    {%- set translation_domain = item.extra('translation_domain', 'generalbackend') -%}
+    {%- set label = item.label -%}
+        {%- set label = label|trans(item.extra('translation_params', {}), translation_domain) -%}
+    {%- if options.allow_safe_labels and item.extra('safe_label', false) %}{{ label|raw }}{% else %}{{ label }}{% endif -%}
 {% endblock %}
