@@ -38,7 +38,7 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         careers_apply:         %careers.apply.online%
-        captcha_site_key:      %captcha.site,key%
+        captcha_site_key:      %captcha.site.key%
 
 # Doctrine Configuration
 doctrine:
