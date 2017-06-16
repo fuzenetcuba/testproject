@@ -253,7 +253,7 @@ knp_menu:
     default_renderer: twig
 
 ewz_recaptcha:
-    public_key:  %captcha.site,key%
+    public_key:  %captcha.site.key%
     private_key: %captcha.private.key%
     # Not needed as "%kernel.default_locale%" is the default value for the locale key
     locale_key:  %kernel.default_locale%
