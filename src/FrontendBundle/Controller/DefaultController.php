@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use FrontendBundle\Form\ContactForm;
 
 class DefaultController extends Controller
 {
@@ -151,13 +152,16 @@ class DefaultController extends Controller
      */
     public function contactMessageAction(Request $request)
     {
-        $form = $this->createForm('FrontendBundle\Form\ContactForm', null, array(
+        $form = $this->createForm(ContactForm::class, null, array(
             'action' => $this->generateUrl('contact_message'),
             'method' => 'POST',
         ));
 
         $form->add('submit', SubmitType::class, array('label' => 'Send'));
         $form->handleRequest($request);
+
+//        var_dump($form->isSubmitted());
+//        var_dump($form->getErrorsAsString()); die ;
 
         if ($form->isSubmitted() && $form->isValid()) {
             $fullName = $form->get('fullName')->getData();

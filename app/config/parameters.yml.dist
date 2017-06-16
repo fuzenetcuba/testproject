@@ -73,3 +73,7 @@ parameters:
         api_key_file: app/Resources/keys/google.p12 # For example app/Resources/GoogleCalendarBundle/XXXX.p12
         api_url: 'https://www.googleapis.com/auth/calendar'
         client_email: pm-test@test-452.iam.gserviceaccount.com
+
+    # Google captcha keys
+    captcha.site,key: 6LdeyCUUAAAAAI6VITn-tZ0Qs-cPgTacQJhCPaBS
+    captcha.private.key: 6LdeyCUUAAAAAHNYEGOQsBtOmT0ecgLLZcGQty5f
