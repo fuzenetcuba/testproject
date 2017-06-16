@@ -160,10 +160,10 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $fullName = $form->get('fullName');
-            $email = $form->get('email');
-            $subject = $form->get('subject');
-            $message = $form->get('message');
+            $fullName = $form->get('fullName')->getData();
+            $email = $form->get('email')->getData();
+            $subject = $form->get('subject')->getData();
+            $message = $form->get('message')->getData();
 //            $secret = "6LeghiUUAAAAAMm0qccLzVGRGNsw0khHLIG8CiAQ";
 //            $captcha = $request->request->get('g-recaptcha-response');
 
