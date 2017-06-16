@@ -69,45 +69,79 @@
 
                 <div class="col-sm-6 contact-right">
                     <h2 class="m-t-none m-b">{{ 'Send us a message' | trans({}, 'contact') }}</h2>
-                    <div id="user-messages" class="hidden alert alert-success m-b"></div>
-                    <form role="form" action="" name="frontend-send-contact-form">
-                        <div class="form-group">
-                            <input name="full-name" class="form-control"
-                                   placeholder="{{ 'Full name (required)' | trans({}, 'contact') }}" type="text"
-                                   data-msg="Please fill this field"
-                                   required>
+
+                    <div>
+                        {#  Including the flash bags notifications  #}
+                        {% include '@Backend/Layout/flash_bags.html.twig' %}
+                    </div>
+
+                    {{ form_start(form, {'attr': {'role':'form'}}) }}
+
+                    <div>
+                        <div class="form-group{% if(form.fullName.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                            {{ form_widget(form.fullName, { 'attr': {'class' : 'form-control', 'placeholder':'Full name (required)' | trans({}, 'contact') }}) }}
+                            {% if form.fullName.vars['errors']|length > 0 %}
+                                <ul class="message">
+                                    {% for error in form.fullName.vars['errors'] %}
+                                        <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
                         </div>
-                        <div class="form-group">
-                            <input name="email" class="form-control"
-                                   data-msg="Please fill this field"
-                                   placeholder="{{ 'Email (required)' | trans({}, 'contact') }}" type="email" required>
+
+                        <div class="form-group{% if(form.email.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                            {{ form_widget(form.email, { 'attr': {'class' : 'form-control', 'placeholder':'Email (required)' | trans({}, 'contact') }}) }}
+                            {% if form.email.vars['errors']|length > 0 %}
+                                <ul class="message">
+                                    {% for error in form.email.vars['errors'] %}
+                                        <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
                         </div>
-                        <div class="form-group">
-                            <input name="subject"
-                                   data-msg="Please fill this field"
-                                   class="form-control" placeholder="{{ 'Subject (required)' | trans({}, 'contact') }}"
-                                   type="text" required>
+
+                        <div class="form-group{% if(form.subject.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                            {{ form_widget(form.subject, { 'attr': {'class' : 'form-control', 'placeholder':'Subject (required)' | trans({}, 'contact') }}) }}
+                            {% if form.subject.vars['errors']|length > 0 %}
+                                <ul class="message">
+                                    {% for error in form.subject.vars['errors'] %}
+                                        <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
                         </div>
-                        <div class="form-group">
-                            <textarea name="message" class="form-control"
-                                      data-msg="Please fill this field"
-                                      placeholder="{{ 'Type message here (required) ...' | trans({}, 'contact') }}"
-                                      required></textarea>
+
+                        <div class="form-group{% if(form.message.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                            {{ form_widget(form.message, { 'attr': {'class' : 'form-control', 'placeholder':'Type message here (required) ...' | trans({}, 'contact') }}) }}
+                            {% if form.message.vars['errors']|length > 0 %}
+                                <ul class="message">
+                                    {% for error in form.message.vars['errors'] %}
+                                        <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
                         </div>
+
                         <div class="form-group">
                             <div class="g-recaptcha" data-sitekey="6LeghiUUAAAAAKQeUM2KoaJVuV8BbOSKQTTBc4Yg"></div>
                         </div>
-                        <div>
-                            <button class="btn btn-success m-t-n-xs ladda-button" data-style="zoom-in" type="submit">
-                                {{ 'Send' | trans({}, 'contact') }}
-                            </button>
+                        <div class="form-group">
+                            {{ form_widget(form.submit, { 'attr': { 'class' : 'btn btn-success', }}) }}
                         </div>
-                    </form>
+
+
+                        <div class="hidden">
+                            {{ form(form) }}
+                        </div>
+                    </div>
+
+                    {{ form_end(form) }}
+
                 </div>
+
             </div>
-
-
         </div>
+
     </section>
 
     <section class="section-spaces no-padding m-b-none">
@@ -121,82 +155,4 @@
         </div>
     </section>
 
-
-{% endblock %}
-
-{% block custom_js %}
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-{% endblock %}
-
-{% block inline_js %}
-    {{ parent() }}
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var formTag = $('form[name="frontend-send-contact-form"]');
-
-            formTag.submit(function (e) {
-
-                e.preventDefault();
-                var $form = $(this);
-
-                // check if the input is valid
-                if (!$form.valid()) return false;
-
-                var captchResponse = $('#g-recaptcha-response').val();
-                if (captchResponse.length == 0) {
-                    //user has not yet checked the 'I am not a robot' checkbox
-
-                    $('#user-messages').addClass('alert-danger').show();
-                    $('#user-messages').html("You must check the reCAPTCHA field!");
-
-                    setTimeout(function () {
-                        $('#user-messages').html("");
-                        $('#user-messages').removeClass('alert-danger').hide();
-                    }, 10000);
-
-                    return false;
-                }
-
-                //user is a verified human and you are good to submit your form now
-
-                var formdata = new FormData(formTag[0]);
-
-                $.ajax({
-                    type: "POST",
-                    url: Routing.generate("send_contact_message"),
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-                    // contentType: 'application/x-www-form-urlencoded',
-                    data: formdata
-                }).done(function (html) {
-                    var parsedData = JSON.parse(html);
-
-                    // message
-                    if (typeof parsedData['errorMessage'] !== 'undefined') {
-                        $('#user-messages').addClass('alert-danger').show();
-                        $('#user-messages').html(parsedData['errorMessage']);
-
-                        setTimeout(function () {
-                            $('#user-messages').html("");
-                            $('#user-messages').removeClass('alert-danger').hide();
-                        }, 10000);
-                    } else {
-                        // reset form
-                        formTag[0].reset();
-
-                        $('#user-messages').addClass('alert-success').show();
-                        $('#user-messages').html(parsedData['message']);
-
-                        setTimeout(function () {
-                            $('#user-messages').html("");
-                            $('#user-messages').removeClass('alert-success').hide();
-                        }, 10000);
-                    }
-                });
-            });
-
-        });
-    </script>
 {% endblock %}

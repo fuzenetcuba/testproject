@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new Djamy\GoogleCalendarBundle\DjamyGoogleCalendarBundle(),
             new Urodoz\Truncate\Bridge\Symfony\UrodozTruncateBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new EWZ\Bundle\RecaptchaBundle\EWZRecaptchaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

@@ -206,7 +206,7 @@
                     </li>
                     <li id="contact-link" class="{% if current_static is defined and current_static == 'contact' %}active{% endif %}">
                         <a title="{{ 'Contact' | trans({}, 'menu') }}" class="page-scroll"
-                           href="{{ path('frontend_static_page', { 'name' : 'contact' }) }}">{{ 'Contact' | trans({}, 'menu') }}</a>
+                           href="{{ path('contact_message') }}">{{ 'Contact' | trans({}, 'menu') }}</a>
                     </li>
 
                     <li class="dropdown visible-xs">

@@ -3,6 +3,7 @@
 namespace FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -148,74 +149,54 @@ class DefaultController extends Controller
     /**
      * Send a contact message
      */
-    public function sendContactMessageAction(Request $request)
+    public function contactMessageAction(Request $request)
     {
-        if (!$request->isXmlHttpRequest()) {
-            return new Response(json_encode(array('errorMessage' => 'You can access this only using Ajax!')), 400);
-        }
+        $form = $this->createForm('FrontendBundle\Form\ContactForm', null, array(
+            'action' => $this->generateUrl('contact_message'),
+            'method' => 'POST',
+        ));
 
-        $secret = "6LeghiUUAAAAAMm0qccLzVGRGNsw0khHLIG8CiAQ";
-        $fullName = $request->request->get('full-name');
-        $email = $request->request->get('email');
-        $subject = $request->request->get('subject');
-        $message = $request->request->get('message');
-        $captcha = $request->request->get('g-recaptcha-response');
+        $form->add('submit', SubmitType::class, array('label' => 'Send'));
+        $form->handleRequest($request);
 
-        if ($fullName == null || $fullName == ""
-            || $email == null || $email == ""
-            || $subject == null || $subject == ""
-            || $message == null || $message == ""
-        ) {
-            return new Response(json_encode(array('errorMessage' => 'All fields are required!')), 200);
-        } elseif (!$captcha || $captcha == null || $captcha == "") {
-            return new Response(json_encode(array('errorMessage' => 'You must check the captcha field!')), 200);
-        } else {
-            $url = "https://www.google.com/recaptcha/api/siteverify"
-                . "?secret=" . $secret
-                . "&response=" . $captcha
-                . "&remoteip=" . $_SERVER['REMOTE_ADDR'];
+        if ($form->isSubmitted() && $form->isValid()) {
+            $fullName = $form->get('fullName');
+            $email = $form->get('email');
+            $subject = $form->get('subject');
+            $message = $form->get('message');
+//            $secret = "6LeghiUUAAAAAMm0qccLzVGRGNsw0khHLIG8CiAQ";
+//            $captcha = $request->request->get('g-recaptcha-response');
 
-            $ch = curl_init($url);
+            $content = $this->renderView('@Backend/Emails/customer.html.twig', [
+                'content' => sprintf('%s Has sent this message: <br /> <p>(%s)</p>',
+                    $fullName, $message)
+                ,
+                'deals' => []
+            ]);
 
-            curl_setopt($ch, CURLOPT_POST, 3);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $message = \Swift_Message::newInstance()
+                ->setSubject($subject)
+                ->setFrom($this->getParameter('customer.email.from'))
+                ->setTo($this->getParameter('customer.email.to.contact'))
+                ->setReplyTo($email)
+                ->setBody($content, 'text/html');
 
-            $response = json_decode(curl_exec($ch));
-            curl_close($ch);
+            $messageSent = $this->get('swiftmailer.mailer.abstract')->send($message);
 
-            /**
-             * JSON response of the request to Google
-             *  {
-             *      "success": true | false,
-             *      "challenge_ts": timestamp,  // timestamp of the challenge load (ISO format yyyy-MM-dd'T'HH:mm:ssZZ)
-             *      "hostname": string,         // the hostname of the site where the reCAPTCHA was solved
-             *      "error-codes": [...]        // optional
-             *  }
-             */
-
-            if ($response->success == true) {
-                $content = $this->renderView('@Backend/Emails/customer.html.twig', [
-                    'content' => sprintf('%s Has sent this message: <br /> <p>(%s)</p>',
-                        $fullName, $message)
-                    ,
-                    'deals' => []
-                ]);
-
-                $message = \Swift_Message::newInstance()
-                    ->setSubject($subject)
-                    ->setFrom($this->getParameter('customer.email.from'))
-                    ->setTo($this->getParameter('customer.email.to.contact'))
-                    ->setReplyTo($email)
-                    ->setBody($content, 'text/html')
-                    ->attach(null);
-
-                $this->get('mailer')->send($message);
-
-                return new Response(json_encode(array('message' => 'The message was sent successfully')), 200);
+            if ($messageSent === 0) {
+                $this->get('session')->getFlashBag()->add('danger', 'The message was not sent.');
             } else {
-                return new Response(json_encode(array('errorMessage' => 'You are identify as a robot')), 200);
+                $this->get('session')->getFlashBag()->add('success', 'The message was sent successfully.');
             }
+
+            return $this->redirect($this->generateUrl('contact_message'));
         }
+
+//        $this->get('session')->getFlashBag()->add('danger', 'The message was not sent.');
+        return $this->render('FrontendBundle:Static:contact.html.twig', array(
+            'form' => $form->createView(),
+        ));
+
     }
 
     /**
