@@ -181,7 +181,7 @@ class DefaultController extends Controller
                 ->setReplyTo($email)
                 ->setBody($content, 'text/html');
 
-            $messageSent = $this->get('swiftmailer.mailer.abstract')->send($message);
+            $messageSent = $this->get('swiftmailer.mailer')->send($message);
 
             if ($messageSent === 0) {
                 $this->get('session')->getFlashBag()->add('danger', 'The message was not sent.');
