@@ -250,3 +250,10 @@ knp_menu:
     templating: false
     # the renderer to use, list is also available by default
     default_renderer: twig
+
+ewz_recaptcha:
+    public_key:  6LeghiUUAAAAAKQeUM2KoaJVuV8BbOSKQTTBc4Yg
+    private_key: 6LeghiUUAAAAAMm0qccLzVGRGNsw0khHLIG8CiAQ
+    # Not needed as "%kernel.default_locale%" is the default value for the locale key
+    locale_key:  %kernel.default_locale%
+    locale_from_request: true

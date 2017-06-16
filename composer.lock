@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d041bb25d4cce814fc8278111308a4e9",
+    "content-hash": "69c65e8af9437de234f2fd9030cc647d",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -912,6 +912,49 @@
                 "orm"
             ],
             "time": "2015-08-31T13:19:01+00:00"
+        },
+        {
+            "name": "excelwebzone/recaptcha-bundle",
+            "version": "v1.4.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/excelwebzone/EWZRecaptchaBundle.git",
+                "reference": "fff64c4fec283c4d2728f75e45cc1042f46b6876"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/excelwebzone/EWZRecaptchaBundle/zipball/fff64c4fec283c4d2728f75e45cc1042f46b6876",
+                "reference": "fff64c4fec283c4d2728f75e45cc1042f46b6876",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/form": "^2.8 || ^3.0",
+                "symfony/framework-bundle": "^2.8 || ^3.0",
+                "symfony/validator": "^2.8 || ^3.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "EWZ\\Bundle\\RecaptchaBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael H. Arieli",
+                    "email": "excelwebzone@gmail.com",
+                    "homepage": "http://excelwebzone.com/"
+                }
+            ],
+            "description": "This bundle provides easy reCAPTCHA form field integration",
+            "homepage": "https://github.com/excelwebzone/EWZRecaptchaBundle",
+            "keywords": [
+                "recaptcha"
+            ],
+            "time": "2016-09-13T16:29:16+00:00"
         },
         {
             "name": "friendsofsymfony/jsrouting-bundle",
