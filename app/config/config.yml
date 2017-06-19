@@ -38,6 +38,7 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         careers_apply:         %careers.apply.online%
+        captcha_site_key:      %captcha.site.key%
 
 # Doctrine Configuration
 doctrine:
@@ -252,8 +253,8 @@ knp_menu:
     default_renderer: twig
 
 ewz_recaptcha:
-    public_key:  6LeghiUUAAAAAKQeUM2KoaJVuV8BbOSKQTTBc4Yg
-    private_key: 6LeghiUUAAAAAMm0qccLzVGRGNsw0khHLIG8CiAQ
+    public_key:  %captcha.site.key%
+    private_key: %captcha.private.key%
     # Not needed as "%kernel.default_locale%" is the default value for the locale key
     locale_key:  %kernel.default_locale%
     locale_from_request: true
