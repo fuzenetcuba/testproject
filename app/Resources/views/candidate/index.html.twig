@@ -81,16 +81,16 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ 'Brand' | trans({}, 'candidatebackend') }}
-                        </th>
-                        <th class="text-navy">
-                            {{ 'Position' | trans({}, 'candidatebackend') }}
-                        </th>
-                        <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Fullname' | trans({}, 'candidatebackend'), 'e.firstName') }}
                             {% if entities.isSorted('e.firstName') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
+                        </th>
+                        <th class="text-navy">
+                            {{ 'Brand' | trans({}, 'candidatebackend') }}
+                        </th>
+                        <th class="text-navy">
+                            {{ 'Position' | trans({}, 'candidatebackend') }}
                         </th>
                         <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'City' | trans({}, 'candidatebackend'), 'e.city') }}
@@ -159,6 +159,8 @@
                                        name="batch_action_checkbox[]"/>
                             </td>
 
+                            <td>{{ entity.fullName }}</td>
+
                             <td class="text-navy">
                                 <a href="{{ path('candidate_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
                             </td>
@@ -171,8 +173,6 @@
                             </td>
 
                             <td>{{ entity.opening.position }}</td>
-
-                            <td>{{ entity.fullName }}</td>
 
                             <td>{{ entity.city }}</td>
 
