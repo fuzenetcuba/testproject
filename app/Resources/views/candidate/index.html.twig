@@ -75,12 +75,6 @@
                         <th><input id="checkbox-header" type="checkbox" class="i-checks"/></th>
 
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Id', 'e.id') }}
-                            {% if entities.isSorted('e.id') %}
-                                <span class="fa fa-sort"></span>
-                            {% endif %}
-                        </th>
-                        <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Fullname' | trans({}, 'candidatebackend'), 'e.firstName') }}
                             {% if entities.isSorted('e.firstName') %}
                                 <span class="fa fa-sort"></span>
