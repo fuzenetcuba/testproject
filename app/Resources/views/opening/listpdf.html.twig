@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="
+        {%- if app.request.get('_locale') == 'en' -%}
+        {{- 'en' -}}
+        {%- elseif app.request.get('_locale') == 'es' -%}
+        {{- 'es' -}}
+        {%- endif -%}
+        ">
+
+<head>
+    <title>Plaza Mariachi | PDF Open Positions Data</title>
+
+    {#<!-- Bootstrap Styles -->#}
+    <link rel="stylesheet" href="{{ absolute_url(asset('bundles/backend/css/bootstrap-only-css.css')) }}"
+          type="text/css"/>
+    {#<link rel="stylesheet" href="{{ absolute_url(asset('bundles/backend/css/bootstrap.min.css')) }}" type="text/css"/>#}
+    <!-- Template Styles -->
+    <link rel="stylesheet" href="{{ absolute_url(asset('bundles/backend/css/style.css')) }}" type="text/css"/>
+    <!-- PDF Candidate Styles -->
+    {#<link rel="stylesheet" href="{{ absolute_url(asset('bundles/backend/css/pdfCandidate.css')) }}" type="text/css"/>#}
+    <style type="text/css">
+        @media print {
+            @page {
+                size: landscape
+            }
+        }
+
+        @media print {
+            * {
+                font-size: 7pt !important;
+            }
+        }
+
+        span.checked:before {
+            content: url("data:image/gif;base64,R0lGODlhCgAKAJEAAAAAAP///////wAAACH5BAEAAAIALAAAAAAKAAoAAAISlG8AeMq5nnsiSlsjzmpzmj0FADs=");
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="white-bg">
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th class="text-navy">
+                {{ 'Position' | trans({}, 'openingbackend') }}
+            </th>
+            <th class="text-navy">
+                {{ 'Brand' | trans({}, 'openingbackend') }}
+            </th>
+            <th class="text-navy">
+                {{ 'Opening Categories' | trans({}, 'openingcategorybackend') }}
+            </th>
+            <th class="text-navy">
+                {{ 'Description' | trans({}, 'openingbackend') }}
+            </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.position }}</td>
+
+                <td>{{ entity.business }}</td>
+
+                <td>
+                    {% for category in entity.categories %}
+                        {{ category }}<br/>
+                    {% endfor %}
+                </td>
+
+                <td>{{ entity.description }}</td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">
+                    {{ 'There are not entries' | trans({}, 'generalbackend') }}...
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>

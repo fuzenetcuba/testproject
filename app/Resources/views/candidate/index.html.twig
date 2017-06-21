@@ -81,10 +81,10 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ 'Brand' | trans({}, 'candidatebackend') }}
+                            {{ 'Position' | trans({}, 'candidatebackend') }}
                         </th>
                         <th class="text-navy">
-                            {{ 'Position' | trans({}, 'candidatebackend') }}
+                            {{ 'Brand' | trans({}, 'candidatebackend') }}
                         </th>
                         <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'City' | trans({}, 'candidatebackend'), 'e.city') }}
@@ -153,7 +153,13 @@
                                        name="batch_action_checkbox[]"/>
                             </td>
 
+                            <td class="text-navy">
+                                <a href="{{ path('candidate_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
+                            </td>
+
                             <td>{{ entity.fullName }}</td>
+
+                            <td>{{ entity.opening.position }}</td>
 
                             <td>
                                 <img style="max-width: 100px; height: auto;"
@@ -161,8 +167,6 @@
                                      alt="{{ entity.opening.business.logo }}"/>
                                 {{ entity.opening.business.name }}
                             </td>
-
-                            <td>{{ entity.opening.position }}</td>
 
                             <td>{{ entity.city }}</td>
 

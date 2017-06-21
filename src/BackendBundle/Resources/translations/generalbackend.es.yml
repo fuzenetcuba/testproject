@@ -16,6 +16,7 @@ Users: Usuarios
 Settings: Ajustes
 Manage: Administrar
 Categories: Categorías
+Subscribers: Suscripciones
 Feedbacks: Encuestas
 Candidates: Candidatos
 Candidates Resume: Resumen de Candidatos
@@ -23,6 +24,7 @@ Total brands: Total de negocios
 Total deals: Total de ofertas
 Total customers: Total de clientes
 Total categories: Total de categorías
+Total subscribers: Total de suscripciones
 Total feedbacks: Total de contactos
 Total candidates: Total de candidatos
 Top Brands: Mejores Negocios
@@ -72,6 +74,7 @@ Analysis of candidates: Análisis de candidatos
 The value has been changed over time, and to this moment has reached a level of: El valor ha cambiado con el tiempo, y hasta este momento ha alcanzado un nivel de
 candidates.: candidatos.
 Alerts: Notificaciones
+Sitemap: Mapa de sitio
 Start date: Fecha inicio
 End date: Fecha fin
 EXPORT TO PDF: EXPORTAR A PDF
@@ -83,7 +86,7 @@ Pages: Páginas
 Press Room: Sala de Prensa
 Media: Multimedia
 Appereance: Apariencia
-Users & Roles: Usuarsio & Roles
+Users & Roles: Usuarios & Roles
 Business Categories: Categorias de Negocio
 Careers: Empleo
 Applicants: Solicitantes
@@ -92,3 +95,4 @@ Job Categories: Categorías de Empleo
 Audience: Audiencia
 Subscribers: Subscriptores
 Mailer: Correo
+Export to PDF: Exportar a PDF

@@ -27,3 +27,12 @@ Repeat: Repetir
 Customer: Cliente
 Brand: Negocio
 Admin: Administrador
+Roles Hint: Pistas sobre Roles
+Customer: Cliente
+It represent all customer on the system. Currently it has no permission to view, create, edit and delete any data.: Representa todos los clientes en el sistema. Actualmente no tiene permisos para ver, crear, editar ni eliminar ningun dato.
+Business Manager: Administrador de Negocio
+It represent the Business Manager on the system. Currently it has no permission to view, create, edit and delete any data.: Representa todos los Administradores de Negocio en el sistema. Actualmente no tiene permisos para ver, crear, editar ni eliminar ningun dato.
+Supervisor: Supervisor
+This role has permission only to view and export any data, but not to create, edit and delete.: Este rol tiene permisos solo para ver y exportar cualquier dato, pero no para crear, editar ni eliminar.
+Admin: Administrador
+This role has permission to do anything on the system.: Este rol tiene permisos para hacer cualquier cosa en el sistema.

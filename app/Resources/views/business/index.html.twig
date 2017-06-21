@@ -37,7 +37,7 @@
                 <span class="col-sm-2"><b>{{ 'Total items' | trans({}, 'generalbackend') }}
                         : </b> {{ entities.getTotalItemCount }}</span>
 
-                <div class="col-sm-10 form-group form-inline text-right">
+                <div class="col-sm-9 form-group form-inline text-right">
                     <form name="find-form" action="{{ path('business_find') }}" method="post">
                         <div class="input-group">
                             <input id="find-form-text" class="form-control" autofocus="on" name="find-form-text"
@@ -50,6 +50,9 @@
                         </span>
                         </div>
                     </form>
+                </div>
+                <div class="col-sm-1 text-right">
+                    <a class="btn btn-info" href="{{ path('business_export_to_pdf') }}">{{ 'Export to PDF' | trans({}, 'generalbackend') | upper }}</a>
                 </div>
             </div>
 

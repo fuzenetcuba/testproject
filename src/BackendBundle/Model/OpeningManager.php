@@ -84,6 +84,21 @@ class OpeningManager implements ManagerInterface
     }
 
     /**
+     * Return the DQL to fetch all model objects
+     *
+     * @return QueryBuilder
+     */
+    public function findAllActiveQuery()
+    {
+        $query = $this->findAllQuery();
+        $query
+            ->andWhere('o.enabled = :enabled')
+            ->setParameter('enabled', true);
+
+        return $query;
+    }
+
+    /**
      * Return all model objects
      *
      * @return mixed
@@ -291,6 +306,11 @@ class OpeningManager implements ManagerInterface
         }
     }
 
+    public function save(Opening $opening)
+    {
+        $this->em->persist($opening);
+    }
+
     public function saveCandidate(Candidate $candidate)
     {
         // var_dump($candidate); die ;
@@ -317,7 +337,7 @@ class OpeningManager implements ManagerInterface
 
     public function findMatchingOpenings(array $conditions = [])
     {
-        $query = $this->findAllQuery();
+        $query = $this->findAllActiveQuery();
 
         if (isset($conditions['business'])) {
             $query
@@ -444,7 +464,7 @@ class OpeningManager implements ManagerInterface
      */
     public function findOpeningsWithBusiness(Business $business)
     {
-        $query = $this->findAllQuery();
+        $query = $this->findAllActiveQuery();
 
         $query
             ->join('o.business', 'b')

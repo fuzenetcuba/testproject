@@ -1,3 +1,7 @@
+backend_press:
+    resource: "@BackendBundle/Resources/config/routing/presspost.yml"
+    prefix:   /press
+
 backend_post_image:
     resource: "@BackendBundle/Resources/config/routing/postimage.yml"
     prefix:   /post_image
@@ -78,7 +82,3 @@ fos_user_logout_ajax:
 backend_feedback:
     resource: "@BackendBundle/Resources/config/routing/feedback.yml"
     prefix:   /feedback
-
-backend_press:
-    resource: "@BackendBundle/Resources/config/routing/presspost.yml"
-    prefix:   /press

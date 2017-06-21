@@ -22,10 +22,12 @@
         {% endblock %}
 
     {% block page_heading_action_button %}
-        <a class="btn btn-success navbar-btn pull-right" href="{{ path('post_image_new') }}">
-            <span class="fa fa-plus"></span>
-            New post image
-        </a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a class="btn btn-success navbar-btn pull-right" href="{{ path('post_image_new') }}">
+                <span class="fa fa-plus"></span>
+                New post image
+            </a>
+        {% endif %}
     {% endblock %}
 
         {% block page_content %}
@@ -102,13 +104,15 @@
                         {{ knp_pagination_render(entities) }}
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group pagination pull-right">
-                            <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
-                                <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                                    Delete Post images
-                                </option>
-                            </select>
-                        </div>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="form-group pagination pull-right">
+                                <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
+                                    <option value="delete" data-toggle="modal" data-target="#modalBatch">
+                                        Delete Post images
+                                    </option>
+                                </select>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
 

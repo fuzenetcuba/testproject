@@ -20,20 +20,21 @@
                 View
             </a>
 
-            <a class="btn btn-primary"
-               href="{{ path('post_edit', { 'id': entity.id }) }}">
-                <span class="fa fa-pencil"></span>
-                Edit
-            </a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-primary"
+                   href="{{ path('post_edit', { 'id': entity.id }) }}">
+                    <span class="fa fa-pencil"></span>
+                    Edit
+                </a>
 
-            <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
-                <span class="fa fa-remove"></span>
-                Delete
-            </a>
-
+                <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
+                    <span class="fa fa-remove"></span>
+                    Delete
+                </a>
+            {% endif %}
         </div>
     </div>
-    <br />
+    <br/>
     <dl class="dl-horizontal">
         <tbody>
         <div class="hr-line-dashed"></div>
@@ -101,16 +102,18 @@
                 View
             </a>
 
-            <a class="btn btn-primary"
-               href="{{ path('post_edit', { 'id': entity.id }) }}">
-                <span class="fa fa-pencil"></span>
-                Edit
-            </a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-primary"
+                   href="{{ path('post_edit', { 'id': entity.id }) }}">
+                    <span class="fa fa-pencil"></span>
+                    Edit
+                </a>
 
-            <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
-                <span class="fa fa-remove"></span>
-                Delete
-            </a>
+                <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
+                    <span class="fa fa-remove"></span>
+                    Delete
+                </a>
+            {% endif %}
 
         </div>
     </div>

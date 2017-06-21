@@ -82,6 +82,13 @@ class Opening
     private $description;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    private $enabled;
+
+    /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="BackendBundle\Entity\Candidate", mappedBy="opening",
@@ -249,5 +256,69 @@ class Opening
     public function setCategories($categories)
     {
         $this->categories = $categories;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     * @return Opening
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean 
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Toggle the status of the opening
+     */
+    public function toggle()
+    {
+        $this->enabled = !$this->enabled;
+    }
+
+    /**
+     * Add candidates
+     *
+     * @param \BackendBundle\Entity\Candidate $candidates
+     * @return Opening
+     */
+    public function addCandidate(\BackendBundle\Entity\Candidate $candidates)
+    {
+        $this->candidates[] = $candidates;
+
+        return $this;
+    }
+
+    /**
+     * Remove candidates
+     *
+     * @param \BackendBundle\Entity\Candidate $candidates
+     */
+    public function removeCandidate(\BackendBundle\Entity\Candidate $candidates)
+    {
+        $this->candidates->removeElement($candidates);
+    }
+
+    /**
+     * Get candidates
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCandidates()
+    {
+        return $this->candidates;
     }
 }
