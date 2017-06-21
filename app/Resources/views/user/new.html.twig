@@ -140,6 +140,12 @@
                     {{ form_label(roleField) }}
                 </div>
             {% endfor %}
+            <div class="col-md-6 m-t">
+                <a href="#role-hint" id="role-hint" class="btn btn-sm btn-default" role='button' data-html="true"
+                   data-placement="bottom">
+                    <i class="fa fa-info-circle"></i> {{ 'Roles Hint' | trans({}, 'userbackend') }}
+                </a>
+            </div>
             {% if form.roles.vars['errors']|length > 0 %}
                 <ul class="message">
                     {% for error in form.roles.vars['errors'] %}
@@ -222,6 +228,20 @@
     </div>
     {{ form_end(form) }}
 
+
+    <div id="role-hint-content" class="hidden">
+        <strong>{{ 'Customer' | trans({}, 'userbackend') }}</strong>
+        <p>{{ 'It represent all customer on the system. Currently it has no permission to view, create, edit and delete any data.' | trans({}, 'userbackend') }}</p>
+        <hr>
+        <strong>{{ 'Business Manager' | trans({}, 'userbackend') }}</strong>
+        <p>{{ 'It represent the Business Manager on the system. Currently it has no permission to view, create, edit and delete any data.' | trans({}, 'userbackend') }}</p>
+        <hr>
+        <strong>{{ 'Supervisor' | trans({}, 'userbackend') }}</strong>
+        <p>{{ 'This role has permission only to view and export any data, but not to create, edit and delete.' | trans({}, 'userbackend') }}</p>
+        <hr>
+        <strong>{{ 'Admin' | trans({}, 'userbackend') }}</strong>
+        <p>{{ 'This role has permission to do anything on the system.' | trans({}, 'userbackend') }}</p>
+    </div>
 {% endblock %}
 
 {% block custom_js %}
@@ -249,6 +269,15 @@
             //  select2 scripts for batch actions combobox
             $(".select2-field").select2({
                 placeholder: "--- {{ 'Select a value' | trans({}, 'generalbackend') }} ---"
+            });
+
+            $('#role-hint').popover({
+                'title': 'Roles Hint',
+                'content': $('#role-hint-content').html()
+            }).on("show.bs.popover", function() {
+                return $(this).data("bs.popover").tip().css({
+                    maxWidth: "400px"
+                });
             });
 
         });
