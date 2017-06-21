@@ -3,6 +3,7 @@
 namespace BackendBundle\Controller;
 
 use Doctrine\ORM\Query;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;//------------
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -291,11 +292,74 @@ class OpeningController extends Controller
                 if ($recordsSelected) {
                     $this->get('session')->getFlashBag()->add('success', 'Openings deleted successfully.');
                 }
+            } elseif ($action == "enable") {
+                foreach ($ids as $id) {
+                    $entity = $em->getRepository('BackendBundle:Opening')->find($id);
+
+                    if (!$entity) {
+                        throw $this->createNotFoundException('Unable to find Openings entity.');
+                    } else {
+                        $entity->setEnabled(true);
+                        $em->persist($entity);
+                        $recordsSelected = true;
+                    }
+                }
+
+                if ($recordsSelected) {
+                    $this->get('session')->getFlashBag()->add('success', 'Openings enabled successfully.');
+                }
+            } elseif ($action == "disable") {
+                foreach ($ids as $id) {
+                    $entity = $em->getRepository('BackendBundle:Opening')->find($id);
+
+                    if (!$entity) {
+                        throw $this->createNotFoundException('Unable to find Openings entity.');
+                    } else {
+                        $entity->setEnabled(false);
+                        $em->persist($entity);
+                        $recordsSelected = true;
+                    }
+                }
+                if ($recordsSelected) {
+                    $this->get('session')->getFlashBag()->add('success', 'Openings disabled successfully.');
+                }
             }
             $em->flush();
         }
 
 
         return $this->redirect($this->generateUrl('opening'));
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @param         $id
+     *
+     * @return JsonResponse
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function enableAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('BackendBundle:Opening')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Opening entity.');
+        } else {
+
+            $entity->toggle();
+            $em->persist($entity);
+            $em->flush();
+
+//            $entityId = $entity->getId();
+//
+//            $response = '<div class="onoffswitch-ios switch-xs" onclick="userEnabled(' . $entityId . ');">'
+//                . '<label class="onoffswitch-ios-label ' . ($status ? '' : 'checked') . '" for="switch-ios-' . $entityId . '"></label>'
+//                . '</div>';
+//
+            return new Response(""/*$response*/);
+        }
     }
 }

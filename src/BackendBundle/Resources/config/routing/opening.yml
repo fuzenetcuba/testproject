@@ -37,3 +37,10 @@ opening_export_to_pdf:
     path:     /exportpdf
     defaults: { _controller: "BackendBundle:Opening:exportToPdf" }
     methods:  GET
+
+opening_enable:
+    path:     /{id}/toggle
+    defaults: { _controller: "BackendBundle:Opening:enable" }
+    methods:  GET
+    options:
+        expose: true

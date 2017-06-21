@@ -93,6 +93,12 @@
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
+                        <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'Enabled' | trans({}, 'openingbackend'), 'e.enabled') }}
+                            {% if entities.isSorted('e.enabled') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
 
                         <th class="text-navy">{{ 'Actions' | trans({}, 'generalbackend') }}</th>
                     </tr>
@@ -125,6 +131,20 @@
                             </td>
 
                             <td>{{ entity.description }}</td>
+
+                            <td id="value-user-enabled-{{ entity.id }}" class="text-center">
+                                <div class="onoffswitch-ios switch-xs">
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <input type="checkbox" name="switch-ios-{{ entity.id }}"
+                                               class="onoffswitch-ios-checkbox"
+                                               id="switch-ios-{{ entity.id }}" {{ entity.enabled ? 'checked' : '' }}>
+                                        <label class="onoffswitch-ios-label" for="switch-ios-{{ entity.id }}"
+                                               onclick="openingEnabled({{ entity.id }});"></label>
+                                    {% else %}
+                                        <label class="onoffswitch-ios-label {{ entity.enabled ? 'checked' : '' }}"></label>
+                                    {% endif %}
+                                </div>
+                            </td>
 
                             <td>
                                 <div class="btn-group">
@@ -163,6 +183,12 @@
                                 <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
                                     <option value="delete" data-toggle="modal" data-target="#modalBatch">
                                         {{ 'Delete Openings'| trans({}, 'openingbackend') }}
+                                    </option>
+                                    <option value="enable" data-toggle="modal" data-target="#modalBatch">
+                                        {{ 'Enable Openings' | trans({}, 'openingbackend') }}
+                                    </option>
+                                    <option value="disable" data-toggle="modal" data-target="#modalBatch">
+                                        {{ 'Disable Openings' | trans({}, 'openingbackend') }}
                                     </option>
                                 </select>
                             </div>
@@ -244,9 +270,42 @@
                         $("#modalBatch").modal("show");
                         batchActions("delete");
                     }
+                    if (batchValue == "enable") {
+                        $("#modalBatch").modal("show");
+                        batchActions("enable");
+                    }
+                    if (batchValue == "disable") {
+                        $("#modalBatch").modal("show");
+                        batchActions("disable");
+                    }
                 }).val("null").trigger("change");
 
             });
+
+            function openingEnabled(id) {
+
+                var conexion;
+                if (window.XMLHttpRequest) {
+                    conexion = new XMLHttpRequest();
+                } else {
+                    conexion = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+//            conexion.onreadystatechange = function () {
+//                if (conexion.readyState == 4 && conexion.status == 200) {
+//                    /* esta parte donde dice principal, ese es el nombre del div que tenemos
+//                     en la pagina home que es donde se va a mostrar la información cuando
+//                     el usuario de clic en un enlace */
+//                    document.getElementById("value-user-enabled-" + id).innerHTML = conexion.responseText;
+//                }
+//            }
+
+                /* en el segundo parametro puede ir una direccion a la cual se va a dirigir ya
+                 sea web/otra_pagina o mas fácil seria poner el nombre de la ruta que tenemos
+                 en el routing usando la funcion path como esta en el ejemplo */
+                conexion.open("GET", Routing.generate("opening_enable", {id: id}), true);
+                conexion.send();
+            }
 
             function batchActions(action) {
                 var panelTitle = document.getElementById("modal-title");
@@ -257,6 +316,18 @@
                         panelTitle.setAttribute("class", "modal-header red-bg");
                         panelContent.innerHTML = "<strong>{{ 'Are you sure you want to delete items?' | trans({}, 'generalbackend') }}</strong> {{ 'After this action, data will not be restored.' | trans({}, 'generalbackend') }}";
                         panelBtn.setAttribute("class", "btn btn-danger");
+                        break;
+
+                    case "disable":
+                        panelTitle.setAttribute("class", "modal-header yellow-bg");
+                        panelContent.innerHTML = "<strong>{{ 'Are you sure you want to disable items?' | trans({}, 'generalbackend') }}</strong>";
+                        panelBtn.setAttribute("class", "btn btn-warning");
+                        break;
+
+                    case "enable":
+                        panelTitle.setAttribute("class", "modal-header navy-bg");
+                        panelContent.innerHTML = "<strong>{{ 'Are you sure you want to enable items?' | trans({}, 'generalbackend') }}</strong>";
+                        panelBtn.setAttribute("class", "btn btn-primary");
                         break;
                 }
             }
