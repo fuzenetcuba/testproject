@@ -20,6 +20,7 @@
 
         {% block page_heading_title %}
             {{ 'Candidates list' | trans({}, 'candidatebackend') }}
+            <pagination></pagination>
         {% endblock %}
 
     {% block page_heading_action_button %}
@@ -30,7 +31,7 @@
     {% endblock %}
 
         {% block page_content %}
-            
+
                 <div class="col-sm-2"><b>{{ 'Total items' |trans({}, 'generalbackend') }}
                         : </b> {{ entities.getTotalItemCount }}</div>
 

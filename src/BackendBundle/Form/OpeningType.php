@@ -8,6 +8,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use BackendBundle\Entity\Business;
+use BackendBundle\Entity\Opening;
+use BackendBundle\Entity\OpeningCategory;
 
 /**
  * Form class for the Opening entity
@@ -31,7 +34,7 @@ class OpeningType extends AbstractType
                 ->add('position', EntityType::class, [
                     'required' => false,
                     'attr' => ['class' => 'form-control select2-field'],
-                    'class' => 'BackendBundle\Entity\Opening',
+                    'class' => Opening::class,
                     'choice_label' => 'position',
                     'empty_value' => 'All the openings',
                 ]);
@@ -42,12 +45,15 @@ class OpeningType extends AbstractType
                     'attr' => ['class' => 'form-control select2-field'],
                 ]);
         }
+
+        $builder->add('enabled');
+
         if ($this->select) {
             $builder
                 ->add('categories', EntityType::class, [
                     'required' => false,
                     'attr' => ['class' => 'form-control select2-field'],
-                    'class' => 'BackendBundle\Entity\OpeningCategory',
+                    'class' => OpeningCategory::class,
                     'choice_label' => 'name',
                     'empty_value' => 'All opening categories',
                 ]);
@@ -64,7 +70,7 @@ class OpeningType extends AbstractType
         if ($this->select) {
             $builder
                 ->add('business', EntityType::class, [
-                    'class' => 'BackendBundle\Entity\Business',
+                    'class' => Business::class,
                     // 'query_builder' => function (EntityRepository $er) {
                     //     return $er->createQueryBuilder('b')
                     //         ->join('b.openings', 'o')
@@ -78,7 +84,7 @@ class OpeningType extends AbstractType
         } else {
             $builder
                 ->add('business', EntityType::class, [
-                    'class' => 'BackendBundle\Entity\Business',
+                    'class' => Business::class,
                     'query_builder' => function (EntityRepository $er) {
                         return $er->createQueryBuilder('b')
                             // ->join('b.openings', 'o')
@@ -99,7 +105,7 @@ class OpeningType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'BackendBundle\Entity\Opening',
+            'data_class' => Opening::class,
             'translation_domain' => 'careers'
         ));
     }

@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
           type="text/css"/>
 
+    <!-- iCheck Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/iCheck/custom.css') }}"
+          type="text/css"/>
+
 {% endblock %}
 
         {% block active_opening %}active{% endblock %}
@@ -33,6 +37,23 @@
                     {% if form.position.vars['errors']|length > 0 %}
                         <ul class="message">
                             {% for error in form.position.vars['errors'] %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+
+            <div class="form-group{% if(form.enabled.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                <label for=""
+                       class="col-md-2 control-label">{{ form_label(form.enabled) }}</label>
+
+                <div class="col-md-6">
+                    {{ form_widget(form.enabled, { 'attr': {'class' : 'form-control'}}) }}
+                    {% if form.enabled.vars['errors']|length > 0 %}
+                        <ul class="message">
+                            {% for error in form.enabled.vars['errors'] %}
                                 <li>{{ error.message }}</li>
                             {% endfor %}
                         </ul>
@@ -138,6 +159,10 @@
     {% block custom_js %}
         {{ parent() }}
 
+        <!-- iCheck Scripts -->
+        <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
+                type="text/javascript"></script>
+
         <!-- select2 Scripts -->
         <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"
                 type="text/javascript"></script>
@@ -152,6 +177,11 @@
                     placeholder: "--- {{ 'Select a value' |trans({}, 'generalbackend') }} ---"
                 });
 
+                //  iCheck scripts for checkboxes and radios
+                $('input[type="checkbox"]').iCheck({
+                    checkboxClass: "icheckbox_square-green",
+                    radioClass: "iradio_square-green",
+                });
             });
 
         </script>
