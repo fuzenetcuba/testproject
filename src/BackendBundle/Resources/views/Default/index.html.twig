@@ -69,17 +69,17 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <span class="label label-danger pull-right"><i class="fa fa-reorder"></i></span>
-                    <h5>{{ 'Categories' | trans({},'generalbackend') }}</h5>
+                    <h5>{{ 'Subscribers' | trans({},'generalbackend') }}</h5>
                 </div>
                 <div class="ibox-content">
-                    <h1 class="no-margins">{{ cant_category }}</h1>
+                    <h1 class="no-margins">{{ cant_subscriber }}</h1>
 
                     <div class="stat-percent font-bold text-danger">
                         <a title="{{ 'Manage' | trans({}, 'generalbackend') }}"
-                           href="{{ path('category') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
+                           href="{{ path('subscription') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
                                     class="fa fa-cog"></i></a>
                     </div>
-                    <small>{{ 'Total categories' | trans({}, 'generalbackend') }}</small>
+                    <small>{{ 'Total subscribers' | trans({}, 'generalbackend') }}</small>
                 </div>
             </div>
         </div>

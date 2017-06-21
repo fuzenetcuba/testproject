@@ -42,3 +42,8 @@ business_delete_image:
     path:     /{id}/deleteimage
     defaults: { _controller: "BackendBundle:Business:deleteImage" }
     methods:  GET
+
+business_export_to_pdf:
+    path:     /exportpdf
+    defaults: { _controller: "BackendBundle:Business:exportToPdf" }
+    methods:  GET

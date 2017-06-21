@@ -36,7 +36,7 @@
                 <span class="col-sm-2"><b>{{ 'Total items' | trans({}, 'generalbackend') }}
                         : </b> {{ entities.getTotalItemCount }}</span>
 
-                <div class="col-sm-10 form-group form-inline text-right">
+                <div class="col-sm-9 form-group form-inline text-right">
                     <form name="find-form" action="{{ path('opening_find') }}" method="post">
                         <div class="input-group">
                             <input id="find-form-text" class="form-control" autofocus="on" name="find-form-text"
@@ -49,6 +49,9 @@
                         </span>
                         </div>
                     </form>
+                </div>
+                <div class="col-sm-1 text-right">
+                    <a class="btn btn-info" href="{{ path('opening_export_to_pdf') }}">{{ 'Export to PDF' | trans({}, 'generalbackend') | upper }}</a>
                 </div>
             </div>
 
@@ -110,7 +113,7 @@
                             <td>{{ entity.position }}</td>
 
                             <td>
-                                <span class="label label-{{ entity.brand is not empty ? "success" : "warning" }}">{{ entity.brand is not empty ? entity.brand : "No brand related" | trans({}, 'dealbackend') }}</span>
+                                <span class="label label-{{ entity.business is not empty ? "success" : "warning" }}">{{ entity.business is not empty ? entity.business : "No brand related" | trans({}, 'dealbackend') }}</span>
                             </td>
 
                             {# <td>{{ entity.department }}</td> #}

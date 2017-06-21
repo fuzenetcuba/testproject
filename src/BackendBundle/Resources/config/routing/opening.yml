@@ -32,3 +32,8 @@ opening_batch:
     path:     /opening_batch
     defaults: { _controller: "BackendBundle:Opening:batch" }
     methods:  POST
+
+opening_export_to_pdf:
+    path:     /exportpdf
+    defaults: { _controller: "BackendBundle:Opening:exportToPdf" }
+    methods:  GET

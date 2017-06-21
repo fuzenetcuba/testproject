@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use BackendBundle\Entity\Opening;
 use BackendBundle\Form\OpeningType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Opening controller.
@@ -224,6 +225,43 @@ class OpeningController extends Controller
             ->setAction($this->generateUrl('opening_delete', array('id' => $entity->getId())))
             ->setMethod('DELETE')
             ->getForm();
+    }
+
+    /**
+     * Export to PDF the Business list
+     *
+     *
+     */
+    public function exportToPdfAction(Request $request)
+    {
+        $qb = $this->get('opening.manager')->findAllQuery();
+
+        $query = $qb->getQuery()
+            ->setHint(
+                Query::HINT_CUSTOM_OUTPUT_WALKER,
+                'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+            );
+
+        $pdfGenerator = $this->get('spraed.pdf.generator');
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, $request->query->get('page', 1), 1000
+        );
+
+        // export directly the PDF
+        $html = $this->renderView('opening/listpdf.html.twig', array(
+            'entities' => $pagination,
+        ));
+
+        $today = new \DateTime('NOW');
+
+        return new Response($pdfGenerator->generatePDF($html),
+            200,
+            array(
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'attachment;filename="open-position-list-' . $today->format('Ymd') . '.pdf"'
+            )
+        );
     }
 
     /**

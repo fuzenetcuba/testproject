@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use BackendBundle\Entity\Business;
 use BackendBundle\Form\BusinessType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Business controller.
@@ -298,6 +299,43 @@ class BusinessController extends Controller
             ->setAction($this->generateUrl('business_delete', array('id' => $entity->getId())))
             ->setMethod('DELETE')
             ->getForm();
+    }
+
+    /**
+     * Export to PDF the Business list
+     *
+     *
+     */
+    public function exportToPdfAction(Request $request)
+    {
+        $qb = $this->get('business.manager')->findAllQuery();
+
+        $query = $qb->getQuery()
+            ->setHint(
+                Query::HINT_CUSTOM_OUTPUT_WALKER,
+                'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+            );
+
+        $pdfGenerator = $this->get('spraed.pdf.generator');
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, $request->query->get('page', 1), 1000
+        );
+
+        // export directly the PDF
+        $html = $this->renderView('business/listpdf.html.twig', array(
+            'entities' => $pagination,
+        ));
+
+        $today = new \DateTime('NOW');
+
+        return new Response($pdfGenerator->generatePDF($html),
+            200,
+            array(
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'attachment;filename="business-list-' . $today->format('Ymd') . '.pdf"'
+            )
+        );
     }
 
     /**

@@ -17,6 +17,9 @@ class DefaultController extends Controller
         $cMgr = $this->get('category.manager');
         $cantCategory = count($cMgr->findAll());
 
+        $sMgr = $this->get('subscription.manager');
+        $cantSubscriber = count($sMgr->findAll());
+
         $dMgr = $this->get('deal.manager');
         $cantDeal = count($dMgr->findAll());
 
@@ -49,6 +52,7 @@ class DefaultController extends Controller
         return $this->render('BackendBundle:Default:index.html.twig', array(
             'cant_business' => $cantBusiness,
             'cant_category' => $cantCategory,
+            'cant_subscriber' => $cantSubscriber,
             'cant_deal' => $cantDeal,
             'cant_customer' => $cantCustomer,
             'cant_feedback' => $cantFeedback,

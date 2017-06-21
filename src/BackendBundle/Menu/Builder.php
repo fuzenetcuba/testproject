@@ -46,6 +46,7 @@ class Builder implements ContainerAwareInterface
         $menu['Settings']->addChild('Appereance', ['route' => 'settings']);
         $menu['Settings']->addChild('Users & Roles', ['route' => 'user']);
         $menu['Settings']->addChild('Alerts', ['route' => 'alert']);
+        $menu['Settings']->addChild('Sitemap', ['route' => 'app_sitemap'])->setLinkAttribute('target', '_blank');
 
         $menu['Brands']->addChild('All Brands', ['route' => 'business']);
         $menu['Brands']->addChild('Business Categories', ['route' => 'category']);
