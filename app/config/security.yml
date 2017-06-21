@@ -78,6 +78,18 @@ security:
         # --------------------- SUPERVISOR ACTIONS [ONLY VIEW AND DOWNLOAD INFO] ---------------------
         - { path: ^/admin/$, role: ROLE_SUPERVISOR }
 
+        - { path: ^/admin/press/$, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/press/find, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/press/.+/show, role: ROLE_SUPERVISOR }
+
+        - { path: ^/admin/post_image/$, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/post_image/find, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/post_image/.+/show, role: ROLE_SUPERVISOR }
+
+        - { path: ^/admin/post/$, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/post/find, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/post/.+/show, role: ROLE_SUPERVISOR }
+
         - { path: ^/admin/alert/$, role: ROLE_SUPERVISOR }
         - { path: ^/admin/alert/find, role: ROLE_SUPERVISOR }
         - { path: ^/admin/alert/.+/show, role: ROLE_SUPERVISOR }
@@ -115,6 +127,7 @@ security:
         - { path: ^/admin/category/$, role: ROLE_SUPERVISOR }
         - { path: ^/admin/category/find, role: ROLE_SUPERVISOR }
         - { path: ^/admin/category/.+/show, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/category/exportpdf, role: ROLE_SUPERVISOR }
 
         - { path: ^/admin/opening_category/$, role: ROLE_SUPERVISOR }
         - { path: ^/admin/opening_category/find, role: ROLE_SUPERVISOR }
@@ -123,6 +136,7 @@ security:
         - { path: ^/admin/business/$, role: ROLE_SUPERVISOR }
         - { path: ^/admin/business/find, role: ROLE_SUPERVISOR }
         - { path: ^/admin/business/.+/show, role: ROLE_SUPERVISOR }
+        - { path: ^/admin/business/exportpdf, role: ROLE_SUPERVISOR }
 
         - { path: ^/admin/user/$, role: ROLE_SUPERVISOR }
         - { path: ^/admin/user/find, role: ROLE_SUPERVISOR }

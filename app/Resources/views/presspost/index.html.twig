@@ -22,10 +22,12 @@
         {% endblock %}
 
     {% block page_heading_action_button %}
-        <a class="btn btn-success navbar-btn pull-right" href="{{ path('press_new') }}">
-            <span class="fa fa-plus"></span>
-            {{ 'New Press Post' | trans({}, 'press') }}
-        </a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a class="btn btn-success navbar-btn pull-right" href="{{ path('press_new') }}">
+                <span class="fa fa-plus"></span>
+                {{ 'New Press Post' | trans({}, 'press') }}
+            </a>
+        {% endif %}
     {% endblock %}
 
         {% block page_content %}
@@ -80,10 +82,10 @@
                             {% endif %}
                         </th>
                         {#<th class="text-navy">#}
-                            {#{{ knp_pagination_sortable(entities, 'Video' | trans({}, 'press'), 'e.video') }}#}
-                            {#{% if entities.isSorted('e.video') %}#}
-                                {#<span class="fa fa-sort"></span>#}
-                            {#{% endif %}#}
+                        {#{{ knp_pagination_sortable(entities, 'Video' | trans({}, 'press'), 'e.video') }}#}
+                        {#{% if entities.isSorted('e.video') %}#}
+                        {#<span class="fa fa-sort"></span>#}
+                        {#{% endif %}#}
                         {#</th>#}
                         <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Text' | trans({}, 'press'), 'e.text') }}
@@ -106,34 +108,44 @@
 
 
                             <td class="text-navy">
+
                                 <a href="{{ path('press_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
                             </td>
 
-                            <td class="text-navy">
-                                <a href="{{ path('press_edit', { 'id': entity.id }) }}">{{ entity.title }}</a>
+                            <td {% if is_granted('ROLE_ADMIN') %}class="text-navy"{% endif %}>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <a href="{{ path('press_edit', { 'id': entity.id }) }}">{{ entity.title }}</a>
+                                {% else %}
+                                    {{ entity.title }}
+                                {% endif %}
                             </td>
 
                             <td>{{ entity.url }}</td>
 
                             <td>{{ entity.author }}</td>
 
-                            <td>{{ entity.text[:200] | striptags ~ ' ...' | raw}}</td>
+                            <td>{{ entity.text[:200] | striptags ~ ' ...' | raw }}</td>
 
 
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-xs btn-outline btn-primary"
-                                       href="{{ path('press_show', { 'id': entity.id }) }}"> <span
-                                                class="fa fa-search"></span> </a> <a
-                                            class="btn btn-xs btn-outline btn-primary"
-                                            href="{{ path('press_edit', { 'id': entity.id }) }}"> <span
-                                                class="fa fa-pencil"></span> </a></div>
+                                       href="{{ path('press_show', { 'id': entity.id }) }}">
+                                        <span class="fa fa-search"></span>
+                                    </a>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <a class="btn btn-xs btn-outline btn-primary"
+                                           href="{{ path('press_edit', { 'id': entity.id }) }}">
+                                            <span class="fa fa-pencil"></span>
+                                        </a>
+                                    {% endif %}
+                                </div>
                             </td>
 
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="6">
+                            <td colspan="7">
                                 There are not entries...
                             </td>
                         </tr>
@@ -147,13 +159,15 @@
                         {{ knp_pagination_render(entities) }}
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group pagination pull-right">
-                            <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
-                                <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                                    Delete Pressposts
-                                </option>
-                            </select>
-                        </div>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="form-group pagination pull-right">
+                                <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
+                                    <option value="delete" data-toggle="modal" data-target="#modalBatch">
+                                        Delete Pressposts
+                                    </option>
+                                </select>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </form>
