@@ -23,6 +23,7 @@ class CandidateController extends Controller
     /**
      * Lists all Candidate entities.
      *
+     * @throws \LogicException
      */
     public function indexAction(Request $request)
     {
@@ -33,7 +34,7 @@ class CandidateController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
+            $query, $request->query->get('page', 1), $request->query->getInt('limit', $request->query->getInt('limit', $this->getParameter('cruds.pagination.items')))
         );
 
         $dql = "SELECT e FROM BackendBundle:Candidate e ORDER BY e.created";
@@ -117,7 +118,7 @@ class CandidateController extends Controller
 
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
-                $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
+                $query, $request->query->get('page', 1), $request->query->getInt('limit', $this->getParameter('cruds.pagination.items'))
             );
 
             $dql = "SELECT e FROM BackendBundle:Candidate e ORDER BY e.created";

@@ -2,15 +2,14 @@
 
 namespace FrontendBundle\Controller;
 
+use FrontendBundle\Form\ContactForm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
-use FrontendBundle\Form\ContactForm;
 
 class DefaultController extends Controller
 {
@@ -149,6 +148,10 @@ class DefaultController extends Controller
 
     /**
      * Send a contact message
+     *
+     * @throws \Symfony\Component\Form\Exception\AlreadySubmittedException
+     * @throws \Symfony\Component\Form\Exception\LogicException
+     * @throws \Symfony\Component\Form\Exception\UnexpectedTypeException
      */
     public function contactMessageAction(Request $request)
     {
@@ -159,9 +162,6 @@ class DefaultController extends Controller
 
         $form->add('submit', SubmitType::class, array('label' => 'Send'));
         $form->handleRequest($request);
-
-//        var_dump($form->isSubmitted());
-//        var_dump($form->getErrorsAsString()); die ;
 
         if ($form->isSubmitted() && $form->isValid()) {
             $fullName = $form->get('fullName')->getData();
