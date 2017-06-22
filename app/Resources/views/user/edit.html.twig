@@ -142,7 +142,7 @@
                 <div class="col-md-6 m-t">
                     <a href="#role-hint" id="role-hint" class="btn btn-sm btn-default" role='button' data-html="true"
                        data-placement="bottom">
-                        <i class="fa fa-info-circle"></i> {{ 'Roles Hint' | trans({}, 'userbackend') }}
+                        <i class="fa fa-info-circle"></i> {{ 'Roles Descriptions' | trans({}, 'userbackend') }}
                     </a>
                 </div>
                 {% if edit_form.roles.vars['errors']|length > 0 %}
@@ -256,16 +256,16 @@
 
     <div id="role-hint-content" class="hidden">
         <strong>{{ 'Customer' | trans({}, 'userbackend') }}</strong>
-        <p>{{ 'It represent all customer on the system. Currently it has no permission to view, create, edit and delete any data.' | trans({}, 'userbackend') }}</p>
+        <p>{{ 'It represents all customers in the system. Currently it does not have permissions to view, create, edit and delete any data.' | trans({}, 'userbackend') }}</p>
         <hr>
         <strong>{{ 'Business Manager' | trans({}, 'userbackend') }}</strong>
-        <p>{{ 'It represent the Business Manager on the system. Currently it has no permission to view, create, edit and delete any data.' | trans({}, 'userbackend') }}</p>
+        <p>{{ 'It represents the Business Manager in the system. Currently it does not have permissions to view, create, edit and delete any data.' | trans({}, 'userbackend') }}</p>
         <hr>
         <strong>{{ 'Supervisor' | trans({}, 'userbackend') }}</strong>
-        <p>{{ 'This role has permission only to view and export any data, but not to create, edit and delete.' | trans({}, 'userbackend') }}</p>
+        <p>{{ 'This role only has permission to view and export data, but not to create, edit or delete.' | trans({}, 'userbackend') }}</p>
         <hr>
         <strong>{{ 'Admin' | trans({}, 'userbackend') }}</strong>
-        <p>{{ 'This role has permission to do anything on the system.' | trans({}, 'userbackend') }}</p>
+        <p>{{ 'This role has permission to do anything in the system.' | trans({}, 'userbackend') }}</p>
     </div>
 {% endblock %}
 
