@@ -31,7 +31,7 @@ class OpeningController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
+            $query, $request->query->get('page', 1), $request->query->getInt('limit', $this->getParameter('cruds.pagination.items'))
         );
 
         return $this->render('opening/index.html.twig', array(
@@ -64,7 +64,7 @@ class OpeningController extends Controller
 
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
-                $query, $request->query->get('page', 1), $this->getParameter('cruds.pagination.items')
+                $query, $request->query->get('page', 1), $request->query->getInt('limit', $this->getParameter('cruds.pagination.items'))
             );
 
             return $this->render('opening/index.html.twig', array(

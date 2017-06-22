@@ -20,7 +20,6 @@
 
         {% block page_heading_title %}
             {{ 'Candidates list' | trans({}, 'candidatebackend') }}
-            <pagination></pagination>
         {% endblock %}
 
     {% block page_heading_action_button %}
@@ -159,7 +158,7 @@
                                 <img style="max-width: 100px; height: auto;"
                                      src="{{ asset('images/business//' ~ entity.opening.business.logo) }}"
                                      alt="{{ entity.opening.business.logo }}"/>
-                                {{ entity.opening.business.name }}
+                                {#{{ entity.opening.business.name }}#}
                             </td>
 
                             <td>{{ entity.city }}</td>
@@ -229,8 +228,8 @@
 
 
                 <div class="form-group">
-                    <div class="col-md-8">
-                        {{ knp_pagination_render(entities) }}
+                    <div class="col-md-8 pagination--items">
+                        {{ knp_pagination_render(entities) }} <pagination></pagination>
                     </div>
                     <div class="col-md-4">
                         {% if is_granted('ROLE_ADMIN') %}
