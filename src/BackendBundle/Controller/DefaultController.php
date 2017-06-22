@@ -68,4 +68,9 @@ class DefaultController extends Controller
         $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
         return new Response($csrfToken);
     }
+
+    public function staticPageAction($name)
+    {
+        return $this->render("BackendBundle:Static:" . $name . ".html.twig");
+    }
 }

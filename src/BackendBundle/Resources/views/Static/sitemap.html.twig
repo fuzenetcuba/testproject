@@ -1,0 +1,31 @@
+{% extends 'BackendBundle::layout.html.twig' %}
+
+{% block custom_css %}
+    {{ parent() }}
+
+    <!-- Data Tables Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/dataTables/datatables.min.css') }}"
+          type="text/css"/>
+    <!-- iCheck Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/iCheck/custom.css') }}"
+          type="text/css"/>
+    <!-- select2 Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/select2/select2.min.css') }}"
+          type="text/css"/>
+
+{% endblock %}
+
+{% block active_brands %}active{% endblock %}
+{% block active_business %}active{% endblock %}
+
+{% block page_heading_title %}
+    {{ 'Sitemap' | trans({}, 'generalbackend') }}
+{% endblock %}
+
+{% block page_content %}
+
+    <iframe src="{{ path('app_sitemap') }}" frameborder="0"
+            style="overflow:hidden;height:100%;width:100%;position:absolute;top:145px;left:0;right:0;bottom:0;"
+            height="100%" width="100%"></iframe>
+
+{% endblock %}

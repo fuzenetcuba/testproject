@@ -82,3 +82,7 @@ fos_user_logout_ajax:
 backend_feedback:
     resource: "@BackendBundle/Resources/config/routing/feedback.yml"
     prefix:   /feedback
+
+backend_static_page:
+    path:     /base/{name}
+    defaults: { _controller: BackendBundle:Default:staticPage }

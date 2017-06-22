@@ -78,6 +78,11 @@ h5 {
     background-color: transparent;
 }
 
+.navbar-btn {
+    margin-bottom: 0;
+    margin-top: 16px;
+}
+
 .nav > li > a i {
     margin-right: 6px;
 }
