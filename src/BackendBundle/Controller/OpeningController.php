@@ -51,8 +51,10 @@ class OpeningController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             $dql = "SELECT e FROM BackendBundle:Opening e "
+                . "LEFT JOIN e.business b "
                 . "WHERE "
                 . "e.position LIKE '%" . $find . "%' OR "
+                . "b.name LIKE '%" . $find . "%' OR "
                 . "e.department LIKE '%" . $find . "%' OR "
                 . "e.description LIKE '%" . $find . "%' "
                 . "ORDER BY e.id ASC";
