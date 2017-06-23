@@ -48,7 +48,7 @@ backend_category:
 
 backend_opening_category:
     resource: "@BackendBundle/Resources/config/routing/opening_category.yml"
-    prefix:   /opening_category
+    prefix:   /opening-category
 
 backend_business:
     resource: "@BackendBundle/Resources/config/routing/business.yml"

@@ -288,6 +288,29 @@
                             </div>
                             <div class="hr-line-dashed"></div>
 
+                            <div class="form-group{% if(edit_form.featured.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for="featured"
+                                       class="col-md-2 control-label">{{ form_label(edit_form.featured) }}</label>
+
+                                <div class="col-md-1">
+                                    <div class="checkbox-inline">
+                                        {{ form_widget(edit_form.featured, { 'attr': {'class' : 'form-control i-checks' }}) }}
+                                        {% if edit_form.featured.vars['errors']|length > 0 %}
+                                            <ul class="message">
+                                                {% for error in edit_form.featured.vars['errors'] %}
+                                                    <li>{{ error.message }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <span class="text-muted">
+                                    <i class="fa fa-info-circle"></i>
+                                    {{ 'Show this brand on the Homepage' | trans({}, 'businessbackend') }}
+                                </span>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
                             <div class="form-group{% if(edit_form.mallMapDirections.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
                                 <label for=""
                                        class="col-md-2 control-label">{{ form_label(edit_form.mallMapDirections) }}</label>

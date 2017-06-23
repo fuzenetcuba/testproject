@@ -33,6 +33,17 @@
         <dt>{{ 'Points' | trans({}, 'dealbackend') }}</dt>
         <dd>{{ entity.points }}</dd>
         <div class="hr-line-dashed"></div>
+        <dt>{{ 'Is active' | trans({}, 'dealbackend') }}</dt>
+        <dd>
+            <div class="onoffswitch-ios switch-xs">
+                {% if (entity.active) %}
+                    <label class="onoffswitch-ios-label checked"></label>
+                {% else %}
+                    <label class="onoffswitch-ios-label"></label>
+                {% endif %}
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
         <dt>{{ 'Created At' | trans({}, 'dealbackend') }}</dt>
         <dd>{{ entity.createdAt|date('d-M-Y h:i A') }}</dd>
         <div class="hr-line-dashed"></div>

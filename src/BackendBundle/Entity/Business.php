@@ -273,6 +273,12 @@ class Business
      */
     private $isPublic = true;
 
+    /**
+     * @var boolean
+     * @ORM\Column(type="boolean")
+     */
+    private $featured = false;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -1005,5 +1011,28 @@ class Business
     public function setImages($images)
     {
         $this->images = $images;
+    }
+
+    /**
+     * Set featured
+     *
+     * @param boolean $featured
+     * @return Business
+     */
+    public function setFeatured($featured)
+    {
+        $this->featured = $featured;
+
+        return $this;
+    }
+
+    /**
+     * Get featured
+     *
+     * @return boolean 
+     */
+    public function getFeatured()
+    {
+        return $this->featured;
     }
 }

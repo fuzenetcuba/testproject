@@ -79,6 +79,17 @@
                     {% endfor %}
                 </dd>
                 <div class="hr-line-dashed"></div>
+                <dt>{{ 'Public' | trans({}, 'businessbackend') }}</dt>
+                <dd>
+                    <div class="onoffswitch-ios switch-xs">
+                        {% if (entity.public) %}
+                            <label class="onoffswitch-ios-label checked"></label>
+                        {% else %}
+                            <label class="onoffswitch-ios-label"></label>
+                        {% endif %}
+                    </div>
+                </dd>
+                <div class="hr-line-dashed"></div>
                 <dt>{{ 'Created At' | trans({}, 'businessbackend') }}</dt>
                 <dd>{{ entity.createdAt|date('d-M-Y h:i A') }}</dd>
                 <div class="hr-line-dashed"></div>
