@@ -27,21 +27,23 @@ Vue.component('pagination', {
 
 $(document).ready(function () {
 
-    var url = new Url;
+    if ($("#select_pagination").length) {
+        var url = new Url;
 
-    $("#select_pagination").select2({
-        minimumResultsForSearch: Infinity,
-        data: [
-            {id: '5', text: '5'},
-            {id: '10', text: '10'},
-            {id: '20', text: '20'},
-            {id: '25', text: '25'},
-            {id: '50', text: '50'},
-        ],
-        val: '10'
-    }).on("select2:select", function (e) {
-        url.query.limit = $("#select_pagination").val();
-        window.location = url.toString();
+        $("#select_pagination").select2({
+            minimumResultsForSearch: Infinity,
+            data: [
+                {id: '5', text: '5'},
+                {id: '10', text: '10'},
+                {id: '20', text: '20'},
+                {id: '25', text: '25'},
+                {id: '50', text: '50'},
+            ],
+            val: '10'
+        }).on("select2:select", function (e) {
+            url.query.limit = $("#select_pagination").val();
+            window.location = url.toString();
 
-    }).val(url.query.limit || "10").trigger("change");
+        }).val(url.query.limit || "10").trigger("change");
+    }
 });

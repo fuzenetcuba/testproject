@@ -347,6 +347,7 @@ class CustomerController extends Controller
      * Crea el formulario de eliminar Etiqueta
      *
      * @param String $id ID de la Etiqueta
+     * @return mixed
      */
     private function createDeleteForm($id)
     {
@@ -355,6 +356,24 @@ class CustomerController extends Controller
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm();
+    }
+
+    /**
+     * Export to CSV the Customers list
+     */
+    public function exportToCsvAction(Request $request)
+    {
+        $customer = $this->get('customer.manager')->findAll();
+
+        $today = new \DateTime('NOW');
+
+        $exporter = $this->get('ee.dataexporter');
+
+        $exporter->setOptions('csv', array('fileName' => 'customers-' . $today->format('Ymd'), 'separator' => ';'));
+        $exporter->setColumns(array('id' => 'ID','firstName' => 'FIRST NAME','lastName' => 'LAST NAME','email' => 'EMAIL','phone' => 'PHONE'));
+        $exporter->setData($customer);
+
+        return $exporter->render();
     }
 
     /**

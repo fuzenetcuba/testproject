@@ -224,6 +224,34 @@ class SubscriptionController extends Controller
     }
 
     /**
+     * Export to CSV the Subscription list
+     *
+     *
+     */
+    public function exportToCsvAction(Request $request)
+    {
+        $subscriptions = $this->get('subscription.manager')->findAll();
+
+        foreach ($subscriptions as $subs){
+            $catString = '';
+            foreach ($subs->getCategories() as $cat){
+                $catString .= '[' . $cat->getName() . ']';
+            }
+            $subs->setCategories($catString);
+        }
+
+        $today = new \DateTime('NOW');
+
+        $exporter = $this->get('ee.dataexporter');
+
+        $exporter->setOptions('csv', array('fileName' => 'subscriptions-' . $today->format('Ymd'), 'separator' => ';'));
+        $exporter->setColumns(array('id' => 'ID','email' => 'EMAIL','categories' => 'CATEGORIES'));
+        $exporter->setData($subscriptions);
+
+        return $exporter->render();
+    }
+
+    /**
      * Do several batch actions over Subscription entities.
      *
      */

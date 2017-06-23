@@ -32,3 +32,8 @@ subscription_batch:
     path:     /subscription_batch
     defaults: { _controller: "BackendBundle:Subscription:batch" }
     methods:  POST
+
+subscription_export_csv:
+    path:     /exportcsv
+    defaults: { _controller: "BackendBundle:Subscription:exportToCsv" }
+    methods:  GET

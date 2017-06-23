@@ -30,7 +30,8 @@
         "djamy/google-calendar-bundle": "dev-master",
         "urodoz/truncate-html": "@stable",
         "knplabs/knp-menu-bundle": "^2.0",
-        "excelwebzone/recaptcha-bundle": "^1.4"
+        "excelwebzone/recaptcha-bundle": "^1.4",
+        "ee/dataexporter-bundle": "^0.4.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
