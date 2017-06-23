@@ -19,7 +19,7 @@ class Builder implements ContainerAwareInterface
 
         $menu->addChild('Pages', array('route' => 'post'))
             ->setAttribute('icon', 'fa fa-files-o');
-        $menu->addChild('Media', array('route' => 'post_image'))
+        $menu->addChild('Media', array('route' => 'postimage'))
             ->setAttribute('icon', 'fa fa-picture-o');
         $menu->addChild('Settings', array('route' => 'settings'))
             ->setAttribute('icon', 'fa fa-cog');
