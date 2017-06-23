@@ -9,10 +9,10 @@
 
 {% endblock %}
 
-        {% block active_opening_category %}active{% endblock %}
+        {% block active_openingcategory %}active{% endblock %}
 
         {% block page_heading_title %}
-            <a class="btn btn-default navbar-btn" href="{{ path('opening_category') }}"
+            <a class="btn btn-default navbar-btn" href="{{ path('openingcategory') }}"
                style="margin-bottom: 7px;">
                 <span class="glyphicon glyphicon-chevron-up"></span>
             </a>
@@ -95,7 +95,7 @@
 
             <div class="form-group">
                 <div class="col-md-2 text-right">
-                    <a class="btn btn-success" href="{{ path('opening_category') }}">
+                    <a class="btn btn-success" href="{{ path('openingcategory') }}">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                         {{ 'Back to the list' | trans({},'generalbackend') }}
                     </a>
