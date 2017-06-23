@@ -31,6 +31,17 @@
         <dt>{{ 'Description' | trans({}, 'openingbackend') }}</dt>
         <dd>{{ entity.description }}</dd>
         <div class="hr-line-dashed"></div>
+        <dt>{{ 'Enabled' | trans({}, 'openingbackend') }}</dt>
+        <dd>
+            <div class="onoffswitch-ios switch-xs">
+                {% if (entity.enabled) %}
+                    <label class="onoffswitch-ios-label checked"></label>
+                {% else %}
+                    <label class="onoffswitch-ios-label"></label>
+                {% endif %}
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
         </tbody>
     </dl>
     <div class="form-group">

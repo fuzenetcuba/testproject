@@ -211,4 +211,19 @@ class AlertManager implements ManagerInterface
             ->getResult();
     }
 
+    /**
+     * Remove all alert older than # months
+     *
+     * @return mixed
+     */
+    public function deleteAllAlerts()
+    {
+        return $this->em
+            ->createQueryBuilder('q')
+            ->delete('BackendBundle:Alert', 'a')
+            ->where('a.checked = true')
+            ->getQuery()
+            ->getResult();
+    }
+
 }

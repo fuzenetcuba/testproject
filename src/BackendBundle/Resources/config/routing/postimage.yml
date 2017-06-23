@@ -1,34 +1,34 @@
-post_image:
+postimage:
     path:     /
     defaults: { _controller: "BackendBundle:PostImage:index" }
     methods:  GET
 
-post_image_find:
+postimage_find:
     path:     /find
     defaults: { _controller: "BackendBundle:PostImage:find" }
     methods:  [POST, GET]
 
-post_image_show:
+postimage_show:
     path:     /{id}/show
     defaults: { _controller: "BackendBundle:PostImage:show" }
     methods:  GET
 
-post_image_new:
+postimage_new:
     path:     /new
     defaults: { _controller: "BackendBundle:PostImage:new" }
     methods:  [GET, POST]
 
-post_image_edit:
+postimage_edit:
     path:     /{id}/edit
     defaults: { _controller: "BackendBundle:PostImage:edit" }
     methods:  [GET, POST, PUT]
 
-post_image_delete:
+postimage_delete:
     path:     /{id}/delete
     defaults: { _controller: "BackendBundle:PostImage:delete" }
     methods:  [POST, DELETE]
     
-post_image_batch:
+postimage_batch:
     path:     /post_image_batch
     defaults: { _controller: "BackendBundle:PostImage:batch" }
     methods:  POST

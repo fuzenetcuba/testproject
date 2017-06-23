@@ -52,6 +52,7 @@ class BusinessType extends AbstractType
             ->add('notifyEmails', TextType::class, ['required' => false])
             ->add('phone')
             ->add('isPublic', null, ['label' => 'Public'])
+            ->add('featured', null, ['label' => 'Featured'])
             ->add('mallMapDirections', TextareaType::class, array(
                 'required' => false
             ))

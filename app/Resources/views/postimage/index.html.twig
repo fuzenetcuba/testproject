@@ -23,7 +23,7 @@
 
     {% block page_heading_action_button %}
         {% if is_granted('ROLE_ADMIN') %}
-            <a class="btn btn-success navbar-btn pull-right" href="{{ path('post_image_new') }}">
+            <a class="btn btn-success navbar-btn pull-right" href="{{ path('postimage_new') }}">
                 <span class="fa fa-plus"></span>
                 New post image
             </a>
@@ -42,7 +42,7 @@
                 </span>
 
                 <div class="col-sm-9 form-group form-inline text-right">
-                    <form name="find-form" action="{{ path('post_image_find') }}" method="post">
+                    <form name="find-form" action="{{ path('postimage_find') }}" method="post">
                         <div class="input-group">
                             <input id="find-form-text" class="form-control" autofocus="on" name="find-form-text"
                                    autocomplete="off"
@@ -56,14 +56,14 @@
                 </div>
             </div>
 
-            <form id="batch_action_form" action="{{ path('post_image_batch') }}" method="post">
+            <form id="batch_action_form" action="{{ path('postimage_batch') }}" method="post">
 
                 <div class="clearfix">
                     {% for entity in entities %}
 
                         <div class="file-box">
                             <div class="file">
-                                <a href="{{ path('post_image_show', { 'id': entity.id }) }}">
+                                <a href="{{ path('postimage_show', { 'id': entity.id }) }}">
                                     <span class="corner"></span>
 
                                     <div class="image">
@@ -81,12 +81,12 @@
 
                                 <div class="btn-group button-group-right">
                                     <a class="btn btn-xs btn-primary"
-                                       href="{{ path('post_image_show', { 'id': entity.id }) }}">
+                                       href="{{ path('postimage_show', { 'id': entity.id }) }}">
                                         <span class="fa fa-search"></span>
                                     </a>
                                     {% if is_granted('ROLE_ADMIN') %}
                                         <a class="btn btn-xs btn-success"
-                                           href="{{ path('post_image_edit', { 'id': entity.id }) }}">
+                                           href="{{ path('postimage_edit', { 'id': entity.id }) }}">
                                             <span class="fa fa-pencil"></span>
                                         </a>
                                     {% endif %}

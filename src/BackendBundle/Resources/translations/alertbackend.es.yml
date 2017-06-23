@@ -1,5 +1,6 @@
 Alert list: Lista de alertas
 Delete alert older than %months% months: Eliminar alertas mayores a %months% meses
+Delete all alerts: Eliminar todas las alertas
 Message: Mensaje
 Checked: Chequeado
 Date: Fecha

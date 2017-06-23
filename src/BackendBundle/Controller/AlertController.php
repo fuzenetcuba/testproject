@@ -258,6 +258,19 @@ class AlertController extends Controller
     /**
      * Remove all alert with more antiquity than #month
      */
+    public function deleteAllAction()
+    {
+        $am = $this->get('alert.manager');
+        $am->deleteAllAlerts();
+
+        $this->get('session')->getFlashBag()->add('success', 'Alerts deleted successfully.');
+
+        return $this->redirect($this->generateUrl('alert'));
+    }
+
+    /**
+     * Remove all alert with more antiquity than #month
+     */
     public function deleteOlderAction()
     {
         $am = $this->get('alert.manager');

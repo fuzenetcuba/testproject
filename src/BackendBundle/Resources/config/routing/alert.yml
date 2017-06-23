@@ -34,6 +34,11 @@ alert_batch:
     defaults: { _controller: "BackendBundle:Alert:batch" }
     methods:  POST
 
+alert_delete_all:
+    path:     /alert_delete_all
+    defaults: { _controller: "BackendBundle:Alert:deleteAll" }
+    methods:  GET
+
 alert_delete_older:
     path:     /alert_delete_older
     defaults: { _controller: "BackendBundle:Alert:deleteOlder" }

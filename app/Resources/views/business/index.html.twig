@@ -24,7 +24,8 @@
 
     {% block page_heading_action_button %}
         {% if is_granted('ROLE_ADMIN') %}
-            <a class="btn btn-info navbar-btn pull-right" href="{{ path('business_export_to_pdf') }}">{{ 'Export to PDF' | trans({}, 'generalbackend') | upper }}</a>
+            <a class="btn btn-info navbar-btn pull-right"
+               href="{{ path('business_export_to_pdf') }}">{{ 'Export to PDF' | trans({}, 'generalbackend') | upper }}</a>
 
             <a class="btn btn-success navbar-btn pull-right m-r" href="{{ path('business_new') }}">
                 <span class="fa fa-plus"></span>
@@ -97,6 +98,12 @@
                                 <span class="fa fa-sort"></span>
                             {% endif %}
                         </th>
+                        <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'Featured' | trans({}, 'businessbackend'), 'e.featured') }}
+                            {% if entities.isSorted('e.featured') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
 
                         <th class="text-navy">{{ 'Actions' | trans({}, 'generalbackend') }}</th>
                     </tr>
@@ -136,6 +143,16 @@
                             </td>
 
                             <td>
+                                <div class="onoffswitch-ios switch-xs">
+                                    {% if (entity.featured) %}
+                                        <label class="onoffswitch-ios-label checked"></label>
+                                    {% else %}
+                                        <label class="onoffswitch-ios-label"></label>
+                                    {% endif %}
+                                </div>
+                            </td>
+
+                            <td>
                                 <div class="btn-group">
                                     <a class="btn btn-xs btn-outline btn-primary"
                                        href="{{ path('business_show', { 'id': entity.id }) }}">
@@ -164,7 +181,8 @@
 
                 <div class="form-group">
                     <div class="col-md-8 pagination--items">
-                        {{ knp_pagination_render(entities) }} <pagination></pagination>
+                        {{ knp_pagination_render(entities) }}
+                        <pagination></pagination>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group pagination pull-right">

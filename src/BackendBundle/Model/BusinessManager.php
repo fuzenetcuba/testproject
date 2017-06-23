@@ -54,6 +54,26 @@ class BusinessManager implements ManagerInterface
     }
 
     /**
+     * Fetchs a list of featured businesses
+     *
+     * @return array            List of businesses
+     */
+    public function findAllFeatured()
+    {
+        $query = $this->findAllQuery();
+
+        $query->where('b.featured = true');
+
+        // multilanguage search criterias done introspecting the default locale
+        $query = $query->getQuery()->setHint(
+            Query::HINT_CUSTOM_OUTPUT_WALKER,
+            'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+        );
+
+        return $query->getResult();
+    }
+
+    /**
      * Return a new empty model object
      *
      * @return \BackendBundle\Entity\Business

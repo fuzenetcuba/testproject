@@ -2,9 +2,9 @@ backend_press:
     resource: "@BackendBundle/Resources/config/routing/presspost.yml"
     prefix:   /press
 
-backend_post_image:
+backend_postimage:
     resource: "@BackendBundle/Resources/config/routing/postimage.yml"
-    prefix:   /post_image
+    prefix:   /postimage
 
 backend_post:
     resource: "@BackendBundle/Resources/config/routing/post.yml"
@@ -48,7 +48,7 @@ backend_category:
 
 backend_opening_category:
     resource: "@BackendBundle/Resources/config/routing/opening_category.yml"
-    prefix:   /opening_category
+    prefix:   /opening-category
 
 backend_business:
     resource: "@BackendBundle/Resources/config/routing/business.yml"

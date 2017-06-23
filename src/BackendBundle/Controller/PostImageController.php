@@ -62,7 +62,7 @@ class PostImageController extends Controller
                 'textFind' => $find
             ));
         } else {
-            return $this->redirect($this->generateUrl('post_image'));
+            return $this->redirect($this->generateUrl('postimage'));
         }
     }
 
@@ -85,9 +85,9 @@ class PostImageController extends Controller
             $this->get('session')->getFlashBag()->add('success', 'The postimage was created successfully.');
 
             if ($form->get('submitback')->isClicked()) {
-                return $this->redirect($this->generateUrl('post_image_new'));
+                return $this->redirect($this->generateUrl('postimage_new'));
             } else {
-            return $this->redirectToRoute('post_image_show', array('id' => $entity->getId()));            }
+            return $this->redirectToRoute('postimage_show', array('id' => $entity->getId()));            }
 
         }
 
@@ -107,7 +107,7 @@ class PostImageController extends Controller
         private function createCreateForm(PostImage $entity)
         {
             $form = $this->createForm('BackendBundle\Form\PostImageType', $entity, array(
-                'action' => $this->generateUrl('post_image_new'),
+                'action' => $this->generateUrl('postimage_new'),
                 'method' => 'POST',
             ));
 
@@ -148,7 +148,7 @@ class PostImageController extends Controller
 
             // Mostrando mensaje
             $this->get('session')->getFlashBag()->add('success', 'The postimage was updated successfully.');
-            return $this->redirectToRoute('post_image_show', array('id' => $entity->getId()));
+            return $this->redirectToRoute('postimage_show', array('id' => $entity->getId()));
         }
 
     return $this->render('postimage/edit.html.twig', array(
@@ -168,7 +168,7 @@ class PostImageController extends Controller
     private function createEditForm(PostImage $entity)
     {
         $form = $this->createForm('BackendBundle\Form\PostImageType', $entity, array(
-            'action' => $this->generateUrl('post_image_edit', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('postimage_edit', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -197,7 +197,7 @@ class PostImageController extends Controller
 
         // Mostrando mensaje
         $this->get('session')->getFlashBag()->add('success', 'The postimage was deleted successfully.');
-        return $this->redirect($this->generateUrl('post_image'));
+        return $this->redirect($this->generateUrl('postimage'));
 
 
 
@@ -213,7 +213,7 @@ class PostImageController extends Controller
     private function createDeleteForm(PostImage $entity)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('post_image_delete', array('id' => $entity->getId())))
+            ->setAction($this->generateUrl('postimage_delete', array('id' => $entity->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
@@ -250,6 +250,6 @@ class PostImageController extends Controller
         }
 
 
-        return $this->redirect($this->generateUrl('post_image'));
+        return $this->redirect($this->generateUrl('postimage'));
     }
 }

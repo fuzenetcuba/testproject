@@ -24,10 +24,7 @@ class DefaultController extends Controller
 
         $topDeals = $this->get('deal.manager')->findTopDeals();
 
-        $featuredBrands = [];
-        $featuredBrands[] = $this->get('business.manager')->findBySlug('xenote-restaurant');
-        $featuredBrands[] = $this->get('business.manager')->findBySlug('tito-s-playland');
-        $featuredBrands[] = $this->get('business.manager')->findBySlug('maz-fresco');
+        $featuredBrands = $this->get('business.manager')->findAllFeatured();
 
         return $this->render('FrontendBundle:Default:index.html.twig',
             array(
