@@ -205,7 +205,7 @@ class AlertManager implements ManagerInterface
             ->createQueryBuilder('q')
             ->delete('BackendBundle:Alert', 'a')
             ->where('a.date <= :date')
-            ->andWhere('a.checked = true')
+//            ->andWhere('a.checked = true')
             ->setParameter('date', $monthsDate->format('Y-m-d'))
             ->getQuery()
             ->getResult();
@@ -221,7 +221,7 @@ class AlertManager implements ManagerInterface
         return $this->em
             ->createQueryBuilder('q')
             ->delete('BackendBundle:Alert', 'a')
-            ->where('a.checked = true')
+//            ->where('a.checked = true')
             ->getQuery()
             ->getResult();
     }
