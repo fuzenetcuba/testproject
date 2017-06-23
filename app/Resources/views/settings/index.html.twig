@@ -138,7 +138,8 @@
 
             <div class="form-group">
                 <div class="col-md-12 pagination--items">
-                    {{ knp_pagination_render(entities) }} <pagination></pagination>
+                    {{ knp_pagination_render(entities) }}
+                    {#<pagination></pagination>#}
                 </div>
             </div>
 
@@ -146,10 +147,12 @@
 
     {% block custom_js %}
         {{ parent() }}
+{#
 
         <!-- select2 Scripts -->
         <script src="{{ asset('bundles/backend/js/plugins/select2/select2.full.min.js') }}"
                 type="text/javascript"></script>
+#}
 
     {% endblock %}
 
