@@ -23,14 +23,25 @@
 
     {% block page_heading_action_button %}
         {% if is_granted('ROLE_ADMIN') %}
-            <a class="btn btn-danger navbar-btn pull-right" data-toggle="modal" data-target="#modalDelete">
-                <span class="fa fa-remove"></span>
-                {{ 'Delete alert older than %months% months' | trans({ '%months%' : older_than }, 'alertbackend') }}
-            </a>
-            <a class="btn btn-danger navbar-btn pull-right m-r" data-toggle="modal" data-target="#modalAllDelete">
-                <span class="fa fa-remove"></span>
-                {{ 'Delete all alerts' | trans({ '%months%' : older_than }, 'alertbackend') }}
-            </a>
+            <div class="btn-group pull-right">
+                <button class="btn btn-danger dropdown-toggle navbar-btn" data-toggle="dropdown" aria-expanded="false">
+                    {{ 'Delete alerts' | trans({ '%months%' : older_than }, 'alertbackend') }}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a data-toggle="modal" data-target="#modalDelete">
+                            {{ 'Older than %months% months' | trans({ '%months%' : older_than }, 'alertbackend') }}
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a data-toggle="modal" data-target="#modalAllDelete">
+                            {{ 'All alerts' | trans({ '%months%' : older_than }, 'alertbackend') }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
         {% endif %}
     {% endblock %}
 
