@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "69c65e8af9437de234f2fd9030cc647d",
+    "content-hash": "b55ca6a5a27190dffc7f5c6392e31048",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -912,6 +912,59 @@
                 "orm"
             ],
             "time": "2015-08-31T13:19:01+00:00"
+        },
+        {
+            "name": "ee/dataexporter-bundle",
+            "version": "v0.4.2",
+            "target-dir": "EE/DataExporterBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/EE/DataExporter.git",
+                "reference": "c0f78ab21dc1752ff9232b8f24d0976459b6330d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/EE/DataExporter/zipball/c0f78ab21dc1752ff9232b8f24d0976459b6330d",
+                "reference": "c0f78ab21dc1752ff9232b8f24d0976459b6330d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": "~2.1",
+                "symfony/http-foundation": "~2.1",
+                "symfony/property-access": "~2.1"
+            },
+            "require-dev": {
+                "symfony/yaml": "~2.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "EE\\DataExporterBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Piotr Antosik",
+                    "email": "mail@piotrantosik.com",
+                    "homepage": "http://piotrantosik.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easy export data to CSV, XML, HTML, JSON or XLS",
+            "homepage": "http://laboratorium.ee",
+            "keywords": [
+                "csv",
+                "exporter",
+                "json",
+                "xls",
+                "xml"
+            ],
+            "time": "2013-06-27T18:50:02+00:00"
         },
         {
             "name": "excelwebzone/recaptcha-bundle",

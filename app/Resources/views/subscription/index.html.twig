@@ -23,7 +23,10 @@
 
     {% block page_heading_action_button %}
         {% if is_granted('ROLE_ADMIN') %}
-            <a class="btn btn-success navbar-btn pull-right" href="{{ path('subscription_new') }}">
+            <a class="btn btn-info navbar-btn pull-right"
+               href="{{ path('subscription_export_csv') }}">{{ 'Export to CSV' | trans({}, 'generalbackend') | upper }}</a>
+
+            <a class="btn btn-success navbar-btn pull-right m-r" href="{{ path('subscription_new') }}">
                 <span class="fa fa-plus"></span>
                 {{ 'New subscription' | trans({}, 'subscriptionbackend') }}
             </a>

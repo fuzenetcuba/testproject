@@ -44,3 +44,8 @@ customer_find:
     path:  /find
     defaults: { _controller: "BackendBundle:Customer:find" }
     methods:  [POST, GET]
+
+customer_export_csv:
+    path:     /exportcsv
+    defaults: { _controller: "BackendBundle:Customer:exportToCsv" }
+    methods:  GET

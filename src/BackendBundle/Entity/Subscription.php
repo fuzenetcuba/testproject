@@ -151,4 +151,15 @@ class Subscription
     {
         return $this->categories;
     }
+
+    /**
+     * Get categories
+     *
+     * @param $categories
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function setCategories($categories)
+    {
+        return $this->categories = $categories;
+    }
 }
