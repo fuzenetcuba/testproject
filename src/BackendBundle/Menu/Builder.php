@@ -45,7 +45,7 @@ class Builder implements ContainerAwareInterface
 
         $menu['Careers']->addChild('Applicants', ['route' => 'candidate']);
         $menu['Careers']->addChild('Open Positions', ['route' => 'opening']);
-        $menu['Careers']->addChild('Job Categories', ['route' => 'opening_category']);
+        $menu['Careers']->addChild('Job Categories', ['route' => 'openingcategory']);
 
         $menu['Audience']->addChild('Customers', ['route' => 'customer']);
         $menu['Audience']->addChild('Subscribers', ['route' => 'subscription']);

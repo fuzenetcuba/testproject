@@ -69,7 +69,7 @@ class OpeningCategoryController extends Controller
                 'textFind' => $find
             ));
         } else {
-            return $this->redirect($this->generateUrl('opening_category'));
+            return $this->redirect($this->generateUrl('openingcategory'));
         }
     }
 
@@ -92,9 +92,9 @@ class OpeningCategoryController extends Controller
             $this->get('session')->getFlashBag()->add('success', 'The opening category was created successfully.');
 
             if ($form->get('submitback')->isClicked()) {
-                return $this->redirect($this->generateUrl('opening_category_new'));
+                return $this->redirect($this->generateUrl('openingcategory_new'));
             } else {
-                return $this->redirectToRoute('opening_category_show', array('id' => $entity->getId()));
+                return $this->redirectToRoute('openingcategory_show', array('id' => $entity->getId()));
             }
 
         }
@@ -115,7 +115,7 @@ class OpeningCategoryController extends Controller
     private function createCreateForm(OpeningCategory $entity)
     {
         $form = $this->createForm('BackendBundle\Form\OpeningCategoryType', $entity, array(
-            'action' => $this->generateUrl('opening_category_new'),
+            'action' => $this->generateUrl('openingcategory_new'),
             'method' => 'POST',
         ));
 
@@ -166,7 +166,7 @@ class OpeningCategoryController extends Controller
 
             // Mostrando mensaje
             $this->get('session')->getFlashBag()->add('success', 'The opening category was updated successfully.');
-            return $this->redirectToRoute('opening_category_show', array('id' => $entity->getId()));
+            return $this->redirectToRoute('openingcategory_show', array('id' => $entity->getId()));
         }
 
         return $this->render('openingcategory/edit.html.twig', array(
@@ -186,7 +186,7 @@ class OpeningCategoryController extends Controller
     private function createEditForm(OpeningCategory $entity)
     {
         $form = $this->createForm('BackendBundle\Form\OpeningCategoryType', $entity, array(
-            'action' => $this->generateUrl('opening_category_edit', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('openingcategory_edit', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -215,7 +215,7 @@ class OpeningCategoryController extends Controller
 
         // Mostrando mensaje
         $this->get('session')->getFlashBag()->add('success', 'The opening category was deleted successfully.');
-        return $this->redirect($this->generateUrl('opening_category'));
+        return $this->redirect($this->generateUrl('openingcategory'));
 
 
     }
@@ -230,7 +230,7 @@ class OpeningCategoryController extends Controller
     private function createDeleteForm(OpeningCategory $entity)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('opening_category_delete', array('id' => $entity->getId())))
+            ->setAction($this->generateUrl('openingcategory_delete', array('id' => $entity->getId())))
             ->setMethod('DELETE')
             ->getForm();
     }
@@ -267,6 +267,6 @@ class OpeningCategoryController extends Controller
         }
 
 
-        return $this->redirect($this->generateUrl('opening_category'));
+        return $this->redirect($this->generateUrl('openingcategory'));
     }
 }

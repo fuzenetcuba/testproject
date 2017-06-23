@@ -33,7 +33,7 @@
         {% block page_content %}
 
             <div>
-                <span class="col-sm-1">
+                <span class="col-sm-2">
                     <b>Total items: </b> {{ entities.getTotalItemCount }}
                 </span>
 
@@ -41,7 +41,7 @@
                     <input id="checkbox-header" type="checkbox" class="i-checks"/>&nbsp;&nbsp;<b>Select all images</b>
                 </span>
 
-                <div class="col-sm-9 form-group form-inline text-right">
+                <div class="col-sm-8 form-group form-inline text-right">
                     <form name="find-form" action="{{ path('postimage_find') }}" method="post">
                         <div class="input-group">
                             <input id="find-form-text" class="form-control" autofocus="on" name="find-form-text"

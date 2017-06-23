@@ -42,7 +42,7 @@ class OpeningCategoryType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'backendbundle_opening_category';
+        return 'backendbundle_openingcategory';
     }
 
 
