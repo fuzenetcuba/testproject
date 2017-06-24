@@ -35,7 +35,7 @@ class Builder implements ContainerAwareInterface
         $menu['Pages']->addChild('Posts', ['route' => 'post']);
         $menu['Pages']->addChild('Press Room', ['route' => 'press']);
 
-        $menu['Settings']->addChild('Appereance', ['route' => 'settings']);
+        $menu['Settings']->addChild('Appearance', ['route' => 'settings']);
         $menu['Settings']->addChild('Users & Roles', ['route' => 'user']);
         $menu['Settings']->addChild('Alerts', ['route' => 'alert']);
         $menu['Settings']->addChild('Sitemap', ['route' => 'backend_static_page', 'routeParameters' => ['name' => 'sitemap']]);

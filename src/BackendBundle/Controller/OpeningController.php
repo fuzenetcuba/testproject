@@ -94,7 +94,7 @@ class OpeningController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The opening was created successfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The open position was created successfully.');
 
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('opening_new'));
@@ -160,7 +160,7 @@ class OpeningController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The opening was updated successfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The open position was updated successfully.');
             return $this->redirectToRoute('opening_show', array('id' => $entity->getId()));
         }
 
@@ -202,14 +202,14 @@ class OpeningController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Opening entity.');
+            throw $this->createNotFoundException('Unable to find Open Position entity.');
         }
 
         $em->remove($entity);
         $em->flush();
 
         // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('success', 'The opening was deleted successfully.');
+        $this->get('session')->getFlashBag()->add('success', 'The open position was deleted successfully.');
         return $this->redirect($this->generateUrl('opening'));
 
 
@@ -285,21 +285,21 @@ class OpeningController extends Controller
                     $entity = $em->getRepository('BackendBundle:Opening')->find($id);
 
                     if (!$entity) {
-                        throw $this->createNotFoundException('Unable to find Opening entity.');
+                        throw $this->createNotFoundException('Unable to find Open Position entity.');
                     } else {
                         $em->remove($entity);
                         $recordsSelected = true;
                     }
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Openings deleted successfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Open Position deleted successfully.');
                 }
             } elseif ($action == "enable") {
                 foreach ($ids as $id) {
                     $entity = $em->getRepository('BackendBundle:Opening')->find($id);
 
                     if (!$entity) {
-                        throw $this->createNotFoundException('Unable to find Openings entity.');
+                        throw $this->createNotFoundException('Unable to find Open Position entity.');
                     } else {
                         $entity->setEnabled(true);
                         $em->persist($entity);
@@ -308,14 +308,14 @@ class OpeningController extends Controller
                 }
 
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Openings enabled successfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Open Positions enabled successfully.');
                 }
             } elseif ($action == "disable") {
                 foreach ($ids as $id) {
                     $entity = $em->getRepository('BackendBundle:Opening')->find($id);
 
                     if (!$entity) {
-                        throw $this->createNotFoundException('Unable to find Openings entity.');
+                        throw $this->createNotFoundException('Unable to find Open Positions entity.');
                     } else {
                         $entity->setEnabled(false);
                         $em->persist($entity);
@@ -323,7 +323,7 @@ class OpeningController extends Controller
                     }
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Openings disabled successfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Open Positions disabled successfully.');
                 }
             }
             $em->flush();
@@ -348,7 +348,7 @@ class OpeningController extends Controller
         $entity = $em->getRepository('BackendBundle:Opening')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Opening entity.');
+            throw $this->createNotFoundException('Unable to find Open Position entity.');
         } else {
 
             $entity->toggle();

@@ -89,7 +89,7 @@ class OpeningCategoryController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The opening category was created successfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The job category was created successfully.');
 
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('openingcategory_new'));
@@ -165,7 +165,7 @@ class OpeningCategoryController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The opening category was updated successfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The job category was updated successfully.');
             return $this->redirectToRoute('openingcategory_show', array('id' => $entity->getId()));
         }
 
@@ -207,14 +207,14 @@ class OpeningCategoryController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Opening Category entity.');
+            throw $this->createNotFoundException('Unable to find Job Category entity.');
         }
 
         $em->remove($entity);
         $em->flush();
 
         // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('success', 'The opening category was deleted successfully.');
+        $this->get('session')->getFlashBag()->add('success', 'The job category was deleted successfully.');
         return $this->redirect($this->generateUrl('openingcategory'));
 
 
@@ -253,14 +253,14 @@ class OpeningCategoryController extends Controller
                     $entity = $em->getRepository('BackendBundle:OpeningCategory')->find($id);
 
                     if (!$entity) {
-                        throw $this->createNotFoundException('Unable to find Opening Category entity.');
+                        throw $this->createNotFoundException('Unable to find Job Category entity.');
                     } else {
                         $em->remove($entity);
                         $recordsSelected = true;
                     }
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Opening categories deleted successfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Job categories deleted successfully.');
                 }
             }
             $em->flush();
