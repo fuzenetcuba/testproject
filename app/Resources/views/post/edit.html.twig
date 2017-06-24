@@ -29,7 +29,7 @@
                style="margin-bottom: 7px;">
                 <span class="glyphicon glyphicon-chevron-up"></span>
             </a>
-            Post edition
+            {{ 'Post edition' | trans({}, 'postbackend') }}
         {% endblock %}
 
         {% block page_content %}
@@ -39,16 +39,16 @@
             <div class="tabs-container">
                 <ul id="post-tabs" class="nav nav-tabs">
                     <li class="active">
-                        <a data-toggle="tab" href="#post-basic" aria-expanded="true">Basic Data</a>
+                        <a data-toggle="tab" href="#post-basic" aria-expanded="true">{{ 'Basic Data' | trans({}, 'postbackend') }}</a>
                     </li>
                     <li class="">
-                        <a data-toggle="tab" href="#post-optional-metas" aria-expanded="false">Optional Metas</a>
+                        <a data-toggle="tab" href="#post-optional-metas" aria-expanded="false">{{ 'Optional Metas' | trans({}, 'postbackend') }}</a>
                     </li>
                     <li class="">
-                        <a data-toggle="tab" href="#post-custom-css" aria-expanded="false">Custom CSS</a>
+                        <a data-toggle="tab" href="#post-custom-css" aria-expanded="false">{{ 'Custom CSS' | trans({}, 'postbackend') }}</a>
                     </li>
                     <li class="">
-                        <a data-toggle="tab" href="#post-custom-js" aria-expanded="false">Custom JS</a>
+                        <a data-toggle="tab" href="#post-custom-js" aria-expanded="false">{{ 'Custom JS' | trans({}, 'postbackend') }}</a>
                     </li>
                 </ul>
 
@@ -265,7 +265,7 @@
                     <div class="col-md-2 text-right">
                         <a class="btn btn-success" href="{{ path('post') }}">
                             <span class="glyphicon glyphicon-chevron-left"></span>
-                            Back to the list
+                            {{ 'Back to the list' | trans({}, 'generalbackend') }}
                         </a>
                     </div>
                     <div class="col-md-10">
@@ -274,7 +274,7 @@
 
                         <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
                             <span class="fa fa-remove"></span>
-                            Delete
+                            {{ 'Delete' | trans({}, 'generalbackend') }}
                         </a>
 
                         {{ form(edit_form) }}
@@ -288,21 +288,21 @@
                     <div class="modal-content animated bounceInRight">
                         <div id="modal-title" class="modal-header red-bg">
                             <button type="button" class="close" data-dismiss="modal"><span
-                                        aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                        aria-hidden="true">&times;</span><span class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
                             </button>
                             <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
-                            <h4 class="modal-title">Attention!!!</h4>
+                            <h4 class="modal-title">{{ 'Attention' | trans({}, 'generalbackend') }}!!!</h4>
                         </div>
                         <div id="modal-content" class="modal-body">
-                            <strong>Are you sure you want to delete this data?</strong>
+                            <strong>{{ 'Are you sure you want to delete this data?' | trans({}, 'generalbackend') }}</strong>
                         </div>
                         <div class="modal-footer">
                             <form action="{{ path('post_delete', { 'id': entity.id }) }}"
                                   name="form-delete" method="post">
-                                <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
                                 <button id="modal-btn" type="submit" class="btn btn-danger" name="post-id"
                                         value="{{ entity.id }}">
-                                    <span class="glyphicon glyphicon-ok"></span> Save changes
+                                    <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}
                                 </button>
                             </form>
                         </div>
@@ -320,12 +320,12 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal"><span
-                                        aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                        aria-hidden="true">&times;</span><span class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
                             </button>
-                            <h4 class="modal-title">Image Gallery</h4>
+                            <h4 class="modal-title">{{ 'Image Gallery' | trans({}, 'generalbackend') }}</h4>
                             <small class="font-bold">
-                                Manage all images of the Gallery. <br/>
-                                You can remove only the images that have been added in the creating/editing context.
+                                {{ 'Manage all images of the Gallery.' | trans({}, 'generalbackend') }} <br/>
+                                {{ 'You can remove only the images that have been added in the creating/editing context.' | trans({}, 'generalbackend') }}
                             </small>
                         </div>
                         <div class="modal-body">
@@ -354,7 +354,7 @@
 
                             <div class="ibox collapsed">
                                 <div class="ibox-title">
-                                    <h5>Upload Image</h5>
+                                    <h5>{{ 'Upload Image' | trans({}, 'generalbackend') }}</h5>
                                     <div class="ibox-tools">
                                         <a class="btn btn-xs collapse-link">
                                             <i class="fa fa-chevron-up"></i>
@@ -423,8 +423,8 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                            <button id="image-gallery-attach" type="button" class="btn btn-primary">Insert file</button>
+                            <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
+                            <button id="image-gallery-attach" type="button" class="btn btn-primary">{{ 'Insert file' | trans({}, 'generalbackend') }}</button>
                         </div>
                     </div>
                 </div>
