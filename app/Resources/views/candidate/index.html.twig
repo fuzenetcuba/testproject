@@ -19,7 +19,7 @@
         {% block active_candidate %}active{% endblock %}
 
         {% block page_heading_title %}
-            {{ 'Candidates list' | trans({}, 'candidatebackend') }}
+            {{ 'Applicants list' | trans({}, 'candidatebackend') }}
         {% endblock %}
 
     {% block page_heading_action_button %}
@@ -235,7 +235,7 @@
                             <div class="form-group pagination pull-right">
                                 <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
                                     <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                                        {{ 'Delete Candidates' | trans({}, 'candidatebackend') }}
+                                        {{ 'Delete Applicants' | trans({}, 'candidatebackend') }}
                                     </option>
                                 </select>
                             </div>

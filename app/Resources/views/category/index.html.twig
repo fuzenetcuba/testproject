@@ -19,14 +19,14 @@
         {% block active_category %}active{% endblock %}
 
         {% block page_heading_title %}
-            {{ 'Brand Category list' | trans({}, 'categorybackend') }}
+            {{ 'Business Category list' | trans({}, 'categorybackend') }}
         {% endblock %}
 
     {% block page_heading_action_button %}
         {% if is_granted('ROLE_ADMIN') %}
             <a class="btn btn-success navbar-btn pull-right" href="{{ path('category_new') }}">
                 <span class="fa fa-plus"></span>
-                {{ 'New brand category' | trans({}, 'categorybackend') }}
+                {{ 'New business category' | trans({}, 'categorybackend') }}
             </a>
         {% endif %}
     {% endblock %}
@@ -151,7 +151,7 @@
                             <div class="form-group pagination pull-right">
                                 <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
                                     <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                                        {{ 'Delete Brand Category' | trans({}, 'categorybackend') }}
+                                        {{ 'Delete Business Category' | trans({}, 'categorybackend') }}
                                     </option>
                                 </select>
                             </div>

@@ -134,58 +134,58 @@ class CandidateController extends Controller
             return $this->redirect($this->generateUrl('candidate'));
         }
     }
-
-    /**
-     * Displays a form to create a new Candidate entity.
-     *
-     */
-    public function newAction(Request $request)
-    {
-        $entity = new Candidate();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-
-            // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The candidate was created successfully.');
-
-            if ($form->get('submitback')->isClicked()) {
-                return $this->redirect($this->generateUrl('candidate_new'));
-            } else {
-                return $this->redirectToRoute('candidate_show', array('id' => $entity->getId()));
-            }
-
-        }
-
-        return $this->render('candidate/new.html.twig', array(
-            'entity' => $entity,
-            'form' => $form->createView(),
-        ));
-    }
-
-    /**
-     * Creates a form to create a Candidate entity.
-     *
-     * @param Candidate $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createCreateForm(Candidate $entity)
-    {
-        $form = $this->createForm('BackendBundle\Form\CandidateType', $entity, array(
-            'action' => $this->generateUrl('candidate_new'),
-            'method' => 'POST',
-        ));
-
-        $form->add('submit', SubmitType::class, array('label' => 'Create'));
-        $form->add('submitback', SubmitType::class, array('label' => 'Create & Back'));
-
-        return $form;
-    }
+//
+//    /**
+//     * Displays a form to create a new Candidate entity.
+//     *
+//     */
+//    public function newAction(Request $request)
+//    {
+//        $entity = new Candidate();
+//        $form = $this->createCreateForm($entity);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $em = $this->getDoctrine()->getManager();
+//            $em->persist($entity);
+//            $em->flush();
+//
+//            // Mostrando mensaje
+//            $this->get('session')->getFlashBag()->add('success', 'The applicant was created successfully.');
+//
+//            if ($form->get('submitback')->isClicked()) {
+//                return $this->redirect($this->generateUrl('candidate_new'));
+//            } else {
+//                return $this->redirectToRoute('candidate_show', array('id' => $entity->getId()));
+//            }
+//
+//        }
+//
+//        return $this->render('candidate/new.html.twig', array(
+//            'entity' => $entity,
+//            'form' => $form->createView(),
+//        ));
+//    }
+//
+//    /**
+//     * Creates a form to create a Candidate entity.
+//     *
+//     * @param Candidate $entity The entity
+//     *
+//     * @return \Symfony\Component\Form\Form The form
+//     */
+//    private function createCreateForm(Candidate $entity)
+//    {
+//        $form = $this->createForm('BackendBundle\Form\CandidateType', $entity, array(
+//            'action' => $this->generateUrl('candidate_new'),
+//            'method' => 'POST',
+//        ));
+//
+//        $form->add('submit', SubmitType::class, array('label' => 'Create'));
+//        $form->add('submitback', SubmitType::class, array('label' => 'Create & Back'));
+//
+//        return $form;
+//    }
 
     /**
      * Finds and displays a Candidate entity.
@@ -229,52 +229,52 @@ class CandidateController extends Controller
             )
         );
     }
-
-    /**
-     * Displays a form to edit an existing Candidate entity.
-     *
-     */
-    public function editAction(Request $request, Candidate $entity)
-    {
-        $deleteForm = $this->createDeleteForm($entity);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-
-            // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The candidate was updated successfully.');
-            return $this->redirectToRoute('candidate_show', array('id' => $entity->getId()));
-        }
-
-        return $this->render('candidate/edit.html.twig', array(
-            'entity' => $entity,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
-     * Creates a form to edit a Candidate entity.
-     *
-     * @param Candidate $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createEditForm(Candidate $entity)
-    {
-        $form = $this->createForm('BackendBundle\Form\CandidateType', $entity, array(
-            'action' => $this->generateUrl('candidate_edit', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
-
-        $form->add('submit', SubmitType::class, array('label' => 'Update'));
-
-        return $form;
-    }
+//
+//    /**
+//     * Displays a form to edit an existing Candidate entity.
+//     *
+//     */
+//    public function editAction(Request $request, Candidate $entity)
+//    {
+//        $deleteForm = $this->createDeleteForm($entity);
+//        $editForm = $this->createEditForm($entity);
+//        $editForm->handleRequest($request);
+//
+//        if ($editForm->isSubmitted() && $editForm->isValid()) {
+//            $em = $this->getDoctrine()->getManager();
+//            $em->persist($entity);
+//            $em->flush();
+//
+//            // Mostrando mensaje
+//            $this->get('session')->getFlashBag()->add('success', 'The applicant was updated successfully.');
+//            return $this->redirectToRoute('candidate_show', array('id' => $entity->getId()));
+//        }
+//
+//        return $this->render('candidate/edit.html.twig', array(
+//            'entity' => $entity,
+//            'edit_form' => $editForm->createView(),
+//            'delete_form' => $deleteForm->createView(),
+//        ));
+//    }
+//
+//    /**
+//     * Creates a form to edit a Candidate entity.
+//     *
+//     * @param Candidate $entity The entity
+//     *
+//     * @return \Symfony\Component\Form\Form The form
+//     */
+//    private function createEditForm(Candidate $entity)
+//    {
+//        $form = $this->createForm('BackendBundle\Form\CandidateType', $entity, array(
+//            'action' => $this->generateUrl('candidate_edit', array('id' => $entity->getId())),
+//            'method' => 'PUT',
+//        ));
+//
+//        $form->add('submit', SubmitType::class, array('label' => 'Update'));
+//
+//        return $form;
+//    }
 
     /**
      * Deletes a Candidate entity.
@@ -288,20 +288,20 @@ class CandidateController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Candidate entity.');
+            throw $this->createNotFoundException('Unable to find Applicant entity.');
         }
 
         // removing files
         if (!$this->removeFilesOfCandidate($entity)) {
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('warning', 'The CV and/or Cover Letter files of the candidate do not exist or was not removed because an error.');
+            $this->get('session')->getFlashBag()->add('warning', 'The CV and/or Cover Letter files of the applicant do not exist or was not removed because an error.');
         }
 
         $em->remove($entity);
         $em->flush();
 
         // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('success', 'The candidate was deleted successfully.');
+        $this->get('session')->getFlashBag()->add('success', 'The applicant was deleted successfully.');
 
         return $this->redirect($this->generateUrl('candidate'));
 
@@ -377,7 +377,7 @@ class CandidateController extends Controller
                     $entity = $em->getRepository('BackendBundle:Candidate')->find($id);
 
                     if (!$entity) {
-                        throw $this->createNotFoundException('Unable to find Candidate entity.');
+                        throw $this->createNotFoundException('Unable to find Applicant entity.');
                     } else {
 
                         // removing files
@@ -390,10 +390,10 @@ class CandidateController extends Controller
                     }
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Candidates deleted successfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Applicants deleted successfully.');
                 }
                 if ($errorRemoving) {
-                    $this->get('session')->getFlashBag()->add('warning', 'One or more files of candidates do not exist or was not removed because an error.');
+                    $this->get('session')->getFlashBag()->add('warning', 'One or more files of applicants do not exist or was not removed because an error.');
                 }
             }
             $em->flush();

@@ -1,5 +1,5 @@
-Candidates list: Lista de candidatos
-New candidate: Nuevo candidato
+Applicants list: Lista de solicitantes
+New applicant: Nuevo solicitante
 Position: Posición
 Brand: Negocio
 Fullname: Nombre completo
@@ -75,10 +75,10 @@ No Cover Letter related: No hay Carta de Presentación
 YES: SI
 
 Description: Descripción
-Delete Candidates: Eliminar Candidatos
-Candidate data: Datos del Candidato
-Candidate edition: Editar candidato
-Candidate creation: Crear candidato
+Delete Applicants: Eliminar Solicitantes
+Applicant data: Datos del Solicitante
+Applicant edition: Editar solicitante
+Applicant creation: Crear solicitante
 Update: Actualizar
 Create: Crear
 Create & Back: Crear y volver

@@ -18,7 +18,7 @@
         {% block active_subscription %}active{% endblock %}
 
         {% block page_heading_title %}
-            {{ 'Subscription list' | trans({}, 'subscriptionbackend') }}
+            {{ 'Subscriber list' | trans({}, 'subscriptionbackend') }}
         {% endblock %}
 
     {% block page_heading_action_button %}
@@ -28,7 +28,7 @@
 
             <a class="btn btn-success navbar-btn pull-right m-r" href="{{ path('subscription_new') }}">
                 <span class="fa fa-plus"></span>
-                {{ 'New subscription' | trans({}, 'subscriptionbackend') }}
+                {{ 'New subscriber' | trans({}, 'subscriptionbackend') }}
             </a>
         {% endif %}
     {% endblock %}
@@ -148,7 +148,7 @@
                             <div class="form-group pagination pull-right">
                                 <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
                                     <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                                        {{ 'Delete Subscriptions' | trans({}, 'subscriptionbackend') }}
+                                        {{ 'Delete Subscribers' | trans({}, 'subscriptionbackend') }}
                                     </option>
                                 </select>
                             </div>

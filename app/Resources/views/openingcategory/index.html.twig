@@ -18,14 +18,14 @@
         {% block active_openingcategory %}active{% endblock %}
 
         {% block page_heading_title %}
-            {{ 'Opening Category list' | trans({}, 'openingcategorybackend') }}
+            {{ 'Job Category list' | trans({}, 'openingcategorybackend') }}
         {% endblock %}
 
     {% block page_heading_action_button %}
         {% if is_granted('ROLE_ADMIN') %}
             <a class="btn btn-success navbar-btn pull-right" href="{{ path('openingcategory_new') }}">
                 <span class="fa fa-plus"></span>
-                {{ 'New opening category' | trans({}, 'openingcategorybackend') }}
+                {{ 'New job category' | trans({}, 'openingcategorybackend') }}
             </a>
         {% endif %}
     {% endblock %}
@@ -150,7 +150,7 @@
                             <div class="form-group pagination pull-right">
                                 <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
                                     <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                                        {{ 'Delete Opening Category' | trans({}, 'openingcategorybackend') }}
+                                        {{ 'Delete Job Category' | trans({}, 'openingcategorybackend') }}
                                     </option>
                                 </select>
                             </div>

@@ -87,7 +87,7 @@ class SubscriptionController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The subscription was created successfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The subscriber was created successfully.');
 
             if ($form->get('submitback')->isClicked()) {
                 return $this->redirect($this->generateUrl('subscription_new'));
@@ -153,7 +153,7 @@ class SubscriptionController extends Controller
             $em->flush();
 
             // Mostrando mensaje
-            $this->get('session')->getFlashBag()->add('success', 'The subscription was updated successfully.');
+            $this->get('session')->getFlashBag()->add('success', 'The subscriber was updated successfully.');
             return $this->redirectToRoute('subscription_show', array('id' => $entity->getId()));
         }
 
@@ -195,14 +195,14 @@ class SubscriptionController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Subscription entity.');
+            throw $this->createNotFoundException('Unable to find Subscriber entity.');
         }
 
         $em->remove($entity);
         $em->flush();
 
         // Mostrando mensaje
-        $this->get('session')->getFlashBag()->add('success', 'The subscription was deleted successfully.');
+        $this->get('session')->getFlashBag()->add('success', 'The subscriber was deleted successfully.');
         return $this->redirect($this->generateUrl('subscription'));
 
 
@@ -269,14 +269,14 @@ class SubscriptionController extends Controller
                     $entity = $em->getRepository('BackendBundle:Subscription')->find($id);
 
                     if (!$entity) {
-                        throw $this->createNotFoundException('Unable to find Subscription entity.');
+                        throw $this->createNotFoundException('Unable to find Subscriber entity.');
                     } else {
                         $em->remove($entity);
                         $recordsSelected = true;
                     }
                 }
                 if ($recordsSelected) {
-                    $this->get('session')->getFlashBag()->add('success', 'Subscriptions deleted successfully.');
+                    $this->get('session')->getFlashBag()->add('success', 'Subscribers deleted successfully.');
                 }
             }
             $em->flush();
