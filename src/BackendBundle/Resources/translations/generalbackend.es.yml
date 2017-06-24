@@ -41,6 +41,7 @@ Next: Siguiente
 Select an action: Seleccionar una acción
 Text to find: Texto a buscar
 Find: Buscar
+View: Ver
 Actions: Acciones
 There are not entries: No hay entradas
 Close: Cerrar
@@ -98,3 +99,9 @@ Mailer: Correo
 Export to PDF: Exportar a PDF
 Export to CSV: Exportar a CSV
 Sitemap: Mapa de sitio
+Image Gallery: Galería de Imágenes
+Manage all images of the Gallery.: Administra las imágenes de la Galería.
+You can remove only the images that have been added in the creating/editing context.: Solo puede eliminar imágenes que han sido agregadas en el contexto de creación/edición.
+Upload Image: Subir Imagen
+Insert file: Insertar archivo
+You can upload images with a 5MB max of weight and a quadratic max dimentions of 2500 pixels.: Puede subir imágenes con un peso máximo de 5MB y dimensiones cuadráticas máximas de 2500 píxeles.

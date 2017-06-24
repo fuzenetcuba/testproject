@@ -3,13 +3,13 @@
        style="margin-bottom: 7px;">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a>
-    Post data
+    {{ 'Post data' | trans({}, 'postbackend') }}
 {% endblock %}{% block page_content %}
     <div class="form-group m-b-lg">
         <div class="col-md-2 text-right">
             <a class="btn btn-success" href="{{ path('post') }}">
                 <span class="glyphicon glyphicon-chevron-left"></span>
-                Back to the list
+                {{ 'Back to the list' | trans({}, 'generalbackend') }}
             </a>
         </div>
         <div class="col-md-10">
@@ -17,19 +17,19 @@
             <a class="btn btn-success" target="_blank"
                href="{{ path('frontend_post_page', { 'route': entity.route }) }}">
                 <span class="fa fa-globe"></span>
-                View
+                {{ 'View' | trans({}, 'generalbackend') }}
             </a>
 
             {% if is_granted('ROLE_ADMIN') %}
                 <a class="btn btn-primary"
                    href="{{ path('post_edit', { 'id': entity.id }) }}">
                     <span class="fa fa-pencil"></span>
-                    Edit
+                    {{ 'Edit' | trans({}, 'generalbackend') }}
                 </a>
 
                 <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
                     <span class="fa fa-remove"></span>
-                    Delete
+                    {{ 'Delete' | trans({}, 'generalbackend') }}
                 </a>
             {% endif %}
         </div>
@@ -41,16 +41,16 @@
         <dt>Id</dt>
         <dd>{{ entity.id }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Title</dt>
+        <dt>{{ 'Title' | trans({}, 'postbackend') }}</dt>
         <dd>{{ entity.title }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Route</dt>
+        <dt>{{ 'Route' | trans({}, 'postbackend') }}</dt>
         <dd>{{ entity.route }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Content</dt>
+        <dt>{{ 'Content' | trans({}, 'postbackend') }}</dt>
         <dd>{{ entity.content | nl2br }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Published</dt>
+        <dt>{{ 'Published' | trans({}, 'postbackend') }}</dt>
         <dd>
             <div class="onoffswitch-ios switch-xs">
                 {% if (entity.published) %}
@@ -61,28 +61,28 @@
             </div>
         </dd>
         <div class="hr-line-dashed"></div>
-        <dt>Created At</dt>
+        <dt>{{ 'Created At' | trans({}, 'postbackend') }}</dt>
         <dd>{{ entity.createdAt|date('d-M-Y h:i A') }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Updated At</dt>
+        <dt>{{ 'Updated At' | trans({}, 'postbackend') }}</dt>
         <dd>{{ entity.updatedAt|date('d-M-Y h:i A') }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Meta Title</dt>
+        <dt>{{ 'Meta Title' | trans({}, 'postbackend') }}</dt>
         <dd>{{ entity.metaTitle }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Meta Keywords</dt>
+        <dt>{{ 'Meta Keywords' | trans({}, 'postbackend') }}</dt>
         <dd>{{ entity.metaKeywords }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Meta Description</dt>
+        <dt>{{ 'Meta Description' | trans({}, 'postbackend') }}</dt>
         <dd><p>{{ entity.metaDescription }}</p></dd>
         <div class="hr-line-dashed"></div>
-        <dt>Optional Metas</dt>
+        <dt>{{ 'Optional Metas' | trans({}, 'postbackend') }}</dt>
         <dd>{{ entity.optionalMetas | nl2br }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Custom CSS</dt>
+        <dt>{{ 'Custom CSS' | trans({}, 'postbackend') }}</dt>
         <dd>{{ entity.customCss | nl2br }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>Custom JS</dt>
+        <dt>{{ 'Custom JS' | trans({}, 'postbackend') }}</dt>
         <dd>{{ entity.customJs | nl2br }}</dd>
         <div class="hr-line-dashed"></div>
         </tbody>
@@ -91,7 +91,7 @@
         <div class="col-md-2 text-right">
             <a class="btn btn-success" href="{{ path('post') }}">
                 <span class="glyphicon glyphicon-chevron-left"></span>
-                Back to the list
+                {{ 'Back to the list' | trans({}, 'generalbackend') }}
             </a>
         </div>
         <div class="col-md-10">
@@ -99,19 +99,19 @@
             <a class="btn btn-success" target="_blank"
                href="{{ path('frontend_post_page', { 'route': entity.route }) }}">
                 <span class="fa fa-globe"></span>
-                View
+                {{ 'View' | trans({}, 'generalbackend') }}
             </a>
 
             {% if is_granted('ROLE_ADMIN') %}
                 <a class="btn btn-primary"
                    href="{{ path('post_edit', { 'id': entity.id }) }}">
                     <span class="fa fa-pencil"></span>
-                    Edit
+                    {{ 'Edit' | trans({}, 'generalbackend') }}
                 </a>
 
                 <a class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
                     <span class="fa fa-remove"></span>
-                    Delete
+                    {{ 'Delete' | trans({}, 'generalbackend') }}
                 </a>
             {% endif %}
 
@@ -124,21 +124,21 @@
             <div class="modal-content animated bounceInRight">
                 <div id="modal-title" class="modal-header red-bg">
                     <button type="button" class="close" data-dismiss="modal"><span
-                                aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                aria-hidden="true">&times;</span><span class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
                     </button>
                     <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
-                    <h4 class="modal-title">Attention!!!</h4>
+                    <h4 class="modal-title">{{ 'Attention' | trans({}, 'generalbackend') }}!!!</h4>
                 </div>
                 <div id="modal-content" class="modal-body">
-                    <strong>Are you sure you want to delete this data?</strong>
+                    <strong>{{ 'Are you sure you want to delete this data?' | trans({}, 'generalbackend') }}</strong>
                 </div>
                 <div class="modal-footer">
                     <form action="{{ path('post_delete', { 'id': entity.id }) }}"
                           name="form-delete" method="post">
-                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
                         <button id="modal-btn" type="submit" class="btn btn-danger" name="post-id"
                                 value="{{ entity.id }}">
-                            <span class="glyphicon glyphicon-ok"></span> Save changes
+                            <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}
                         </button>
                     </form>
                 </div>
