@@ -105,7 +105,7 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <span class="label label-success pull-right"><i class="fa fa-user"></i></span>
-                    <h5>{{ 'Candidates' | trans({},'generalbackend') }}</h5>
+                    <h5>{{ 'Applicants' | trans({},'generalbackend') }}</h5>
                 </div>
                 <div class="ibox-content">
                     <h1 class="no-margins">{{ cant_candidate }}</h1>
@@ -115,7 +115,7 @@
                            href="{{ path('candidate') }}">{{ 'Manage' | trans({}, 'generalbackend') }} <i
                                     class="fa fa-cog"></i></a>
                     </div>
-                    <small>{{ 'Total candidates' | trans({}, 'generalbackend') }}</small>
+                    <small>{{ 'Total applicants' | trans({}, 'generalbackend') }}</small>
                 </div>
             </div>
         </div>
@@ -125,7 +125,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>{{ 'Candidates Resume' | trans({},'generalbackend') }}</h5>
+                    <h5>{{ 'Applicants Resume' | trans({},'generalbackend') }}</h5>
 
                     <div class="ibox-tools">
                         <a title="Collapse" class="collapse-link">
@@ -137,14 +137,14 @@
                     <div>
                         <span class="pull-right text-right">
                             <h3 class="font-bold no-margins">
-                                {{ 'Amount applying candidates per brand' | trans({},'generalbackend') }}
+                                {{ 'Amount applicants per brand' | trans({},'generalbackend') }}
                             </h3>
                             <small>
-                                {{ 'Total candidates' | trans({},'generalbackend') }}: {{ cant_candidate }}
+                                {{ 'Total applicants' | trans({},'generalbackend') }}: {{ cant_candidate }}
                             </small>
                         </span>
                         <h3 class="font-bold no-margins">
-                            {{ 'Behavior of applying candidates' | trans({},'generalbackend') }}
+                            {{ 'Behavior of applicants' | trans({},'generalbackend') }}
                         </h3>
                         <small>{{ 'Past' | trans({},'generalbackend') }} {{ candidates_of_lasts_months[0]|length }} {{ 'months' | trans({},'generalbackend') }}</small>
                     </div>
@@ -201,8 +201,8 @@
                             {{ 'Updated on' | trans({},'generalbackend') }} {{ date('today')|date('F d, Y') }}
                         </small>
                         <small>
-                            <strong>{{ 'Analysis of candidates' | trans({},'generalbackend') }}: </strong>
-                            {{ 'The value has been changed over time, and to this moment has reached a level of' | trans({},'generalbackend') }} {{ cant_candidate }} {{ 'candidates.' | trans({},'generalbackend') }}
+                            <strong>{{ 'Analysis of applicants' | trans({},'generalbackend') }}: </strong>
+                            {{ 'The value has been changed over time, and to this moment has reached a level of' | trans({},'generalbackend') }} {{ cant_candidate }} {{ 'applicants.' | trans({},'generalbackend') }}
                         </small>
                     </div>
                 </div>
@@ -344,7 +344,7 @@
                     ],
                     datasets: [
                         {
-                            label: "{{ 'Candidates Resume' | trans({},'generalbackend') }}",
+                            label: "{{ 'Applicants Resume' | trans({},'generalbackend') }}",
                             fillColor: "rgba(26,179,148,0.5)",
                             strokeColor: "rgba(26,179,148,0.7)",
                             pointColor: "rgba(26,179,148,1)",
