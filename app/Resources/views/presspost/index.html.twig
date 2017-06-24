@@ -18,7 +18,7 @@
         {% block active_presspost %}active{% endblock %}
 
         {% block page_heading_title %}
-            PressPost list
+            {{ 'Press Post list' | trans({}, 'press') }}
         {% endblock %}
 
     {% block page_heading_action_button %}
@@ -41,9 +41,9 @@
                         <div class="input-group">
                             <input id="find-form-text" class="form-control" autofocus="on" name="find-form-text"
                                    autocomplete="off"
-                                   type="text" placeholder="Text to find..."/>
+                                   type="text" placeholder="{{ 'Text to find' | trans({}, 'generalbackend') }}..."/>
                             <span class="input-group-btn">
-                            <button type="submit" name="find-form-send" value="sending" class="btn btn-primary">Find
+                            <button type="submit" name="find-form-send" value="sending" class="btn btn-primary">{{ 'Find' | trans({}, 'generalbackend') }}
                             </button>
                         </span>
                         </div>
@@ -64,7 +64,7 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Title', 'e.title') }}
+                            {{ knp_pagination_sortable(entities, 'Title' | trans({}, 'press'), 'e.title') }}
                             {% if entities.isSorted('e.title') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
@@ -76,7 +76,7 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Publication' | trans({}, 'press'), 'e.author') }}
+                            {{ knp_pagination_sortable(entities, 'Publication' | trans({}, 'press') | trans({}, 'press'), 'e.author') }}
                             {% if entities.isSorted('e.author') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
@@ -88,7 +88,7 @@
                         {#{% endif %}#}
                         {#</th>#}
                         <th class="text-navy">
-                            {{ knp_pagination_sortable(entities, 'Text' | trans({}, 'press'), 'e.text') }}
+                            {{ knp_pagination_sortable(entities, 'Text' | trans({}, 'press') | trans({}, 'press'), 'e.text') }}
                             {% if entities.isSorted('e.text') %}
                                 <span class="fa fa-sort"></span>
                             {% endif %}
@@ -156,14 +156,15 @@
 
                 <div class="form-group">
                     <div class="col-md-8 pagination--items">
-                        {{ knp_pagination_render(entities) }} <pagination></pagination>
+                        {{ knp_pagination_render(entities) }}
+                        <pagination></pagination>
                     </div>
                     <div class="col-md-4">
                         {% if is_granted('ROLE_ADMIN') %}
                             <div class="form-group pagination pull-right">
                                 <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
                                     <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                                        Delete Pressposts
+                                        {{ 'Delete Press Posts' | trans({}, 'press') }}
                                     </option>
                                 </select>
                             </div>
@@ -178,19 +179,19 @@
                         <div id="modal-title" class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">
                                 <span aria-hidden="true">&times;</span>
-                                <span class="sr-only">Close</span>
+                                <span class="sr-only">{{ 'Close' | trans({}, 'generalbackend') }}</span>
                             </button>
                             <i class="fa fa-exclamation-triangle modal-icon text-white"></i>
-                            <h4 class="modal-title">Antention!!!</h4>
+                            <h4 class="modal-title">{{ 'Attention' | trans({}, 'generalbackend') }}!!!</h4>
                         </div>
                         <div id="modal-content" class="modal-body">
                             Modal message
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-white" data-dismiss="modal">{{ 'Close' | trans({}, 'generalbackend') }}</button>
                             <button id="modal-btn" type="submit" class="btn btn-success"
                                     onclick="$('#batch_action_form').submit();">
-                                <span class="glyphicon glyphicon-ok"></span> Save changes
+                                <span class="glyphicon glyphicon-ok"></span> {{ 'Save changes' | trans({}, 'generalbackend') }}
                             </button>
                         </div>
                     </div>
@@ -236,7 +237,7 @@
                 //  select2 scripts for batch actions combobox
                 $("#batch_action_do").select2({
                     minimumResultsForSearch: Infinity,
-                    placeholder: "--- Select an action ---"
+                    placeholder: "--- {{ 'Select an action' | trans({}, 'generalbackend') }} ---"
                 }).on("select2:select", function (e) {
                     var batchValue = $("#batch_action_do").val();
 
