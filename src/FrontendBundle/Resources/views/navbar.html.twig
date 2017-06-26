@@ -204,7 +204,8 @@
                         <a title="{{ 'Press' | trans({}, 'menu') }}"
                            href="{{ path('press_page') }}">{{ 'Press' | trans({}, 'menu') }}</a>
                     </li>
-                    <li id="contact-link" class="{% if current_static is defined and current_static == 'contact' %}active{% endif %}">
+                    <li id="contact-link"
+                        class="{% if current_static is defined and current_static == 'contact' %}active{% endif %}">
                         <a title="{{ 'Contact' | trans({}, 'menu') }}" class="page-scroll"
                            href="{{ path('contact_message') }}">{{ 'Contact' | trans({}, 'menu') }}</a>
                     </li>
@@ -277,14 +278,16 @@
         </div>
         <!-- Your share button code -->
         <div class="container-fb-share-button">
-            <a href="http://www.facebook.com/share.php?u=http://plazamariachi.com&title=Plaza%20Mariachi%20Music%20City"
-               data-toggle="tooltip"
-               data-placement="bottom"
-               title="{{ 'Share on Facebook' | trans({}, 'general') }}"
-               class="btn btn-social-icon btn-facebook"
-               onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,' +
-                                'scrollbars=yes,height=600,width=600');return false;"
-               target="_blank">
+            <a
+                    href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteUrlFacebook' })) }}"
+                    {#href="http://www.facebook.com/share.php?u=http://plazamariachi.com&title=Plaza%20Mariachi%20Music%20City"#}
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="{{ 'Follow us on Facebook' | trans({}, 'general') }}"
+                    class="btn btn-social-icon btn-facebook"
+                    {#onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,' +
+                                     'scrollbars=yes,height=600,width=600');return false;"#}
+                    target="_blank">
                 <span class="fa fa-facebook"></span>
             </a>
 
