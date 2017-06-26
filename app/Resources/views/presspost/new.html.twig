@@ -24,10 +24,10 @@
 
         {% block page_heading_title %}
             <a class="btn btn-default navbar-btn" href="{{ path('press') }}"
-               style="margin-bottom: 7px;">
+                >
                 <span class="glyphicon glyphicon-chevron-up"></span>
             </a>
-            PressPost creation
+            {{ 'Press Post creation' | trans({}, 'press')}}
         {% endblock %}
 
         {% block page_content %}

@@ -2,11 +2,10 @@
 {% block active_brands %}active{% endblock %}
 {% block active_category %}active{% endblock %}
 {% block page_heading_title %}
-    <a class="btn btn-default navbar-btn" href="{{ path('category') }}"
-       style="margin-bottom: 7px;">
+    <a class="btn btn-default navbar-btn" href="{{ path('category') }}" >
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a>
-    {{ 'Brand Category data' | trans({}, 'categorybackend') }}
+    {{ 'Business Category data' | trans({}, 'categorybackend') }}
 {% endblock %}{% block page_content %}
     <dl class="dl-horizontal">
         <tbody>
@@ -22,7 +21,7 @@
         <dt>{{ 'Description' | trans({}, 'categorybackend') }}</dt>
         <dd>{{ entity.description }}</dd>
         <div class="hr-line-dashed"></div>
-        <dt>{{ 'Brands' | trans({}, 'categorybackend') }}</dt>
+        <dt>{{ 'Businesses' | trans({}, 'categorybackend') }}</dt>
         <dd>
             {% for business in entity.businesses %}
                 <span class="label label-primary">{{ business }}</span>

@@ -18,7 +18,7 @@
         {% block active_opening %}active{% endblock %}
 
         {% block page_heading_title %}
-            {{ 'Openings list' | trans({}, 'openingbackend') }}
+            {{ 'Open Positions list' | trans({}, 'openingbackend') }}
         {% endblock %}
 
     {% block page_heading_action_button %}
@@ -27,7 +27,7 @@
                href="{{ path('opening_export_to_pdf') }}">{{ 'Export to PDF' | trans({}, 'generalbackend') | upper }}</a>
             <a class="btn btn-success navbar-btn pull-right m-r" href="{{ path('opening_new') }}">
                 <span class="fa fa-plus"></span>
-                {{ 'New opening' | trans({}, 'openingbackend') }}
+                {{ 'New open position' | trans({}, 'openingbackend') }}
             </a>
         {% endif %}
     {% endblock %}
@@ -181,13 +181,13 @@
                             <div class="form-group pagination pull-right">
                                 <select id="batch_action_do" name="batch_action_do" class="form-control col-md-12">
                                     <option value="delete" data-toggle="modal" data-target="#modalBatch">
-                                        {{ 'Delete Openings'| trans({}, 'openingbackend') }}
+                                        {{ 'Delete Open Positions'| trans({}, 'openingbackend') }}
                                     </option>
                                     <option value="enable" data-toggle="modal" data-target="#modalBatch">
-                                        {{ 'Enable Openings' | trans({}, 'openingbackend') }}
+                                        {{ 'Enable Open Positions' | trans({}, 'openingbackend') }}
                                     </option>
                                     <option value="disable" data-toggle="modal" data-target="#modalBatch">
-                                        {{ 'Disable Openings' | trans({}, 'openingbackend') }}
+                                        {{ 'Disable Open Positions' | trans({}, 'openingbackend') }}
                                     </option>
                                 </select>
                             </div>

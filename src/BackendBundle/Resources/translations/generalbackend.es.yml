@@ -18,18 +18,18 @@ Manage: Administrar
 Categories: Categorías
 Subscribers: Suscripciones
 Feedbacks: Encuestas
-Candidates: Candidatos
-Candidates Resume: Resumen de Candidatos
-Total brands: Total de negocios
+Applicants: Solicitantes
+Applicants Resume: Resumen de Solicitantes
+Total brands: Total de marcas
 Total deals: Total de ofertas
 Total customers: Total de clientes
 Total categories: Total de categorías
 Total subscribers: Total de suscripciones
 Total feedbacks: Total de contactos
-Total candidates: Total de candidatos
+Total applicants: Total de solicitantes
 Top Brands: Mejores Negocios
 by number of Deals: por número de Ofertas
-There are no brand: No hay negocios
+There are no brand: No hay marcas
 Top Deals: Últimas Ofertas
 by created date: por fecha de creado
 Description: Descripción
@@ -41,6 +41,7 @@ Next: Siguiente
 Select an action: Seleccionar una acción
 Text to find: Texto a buscar
 Find: Buscar
+View: Ver
 Actions: Acciones
 There are not entries: No hay entradas
 Close: Cerrar
@@ -61,18 +62,17 @@ Select a value: Seleccionar un valor
 Total items: Total de elementos
 Batch actions: Acciones en lote
 Openings: Empleos
-Candidates: Candidatos
 Export to PDF: Exportar a PDF
-Amount applying candidates per brand: Cantidad de candidatos por negocio
-Total candidates: Total de candidatos
-Others brands: Otros negocios
-Behavior of applying candidates: Comportamiento de los candidatos
+Amount applicants per brand: Cantidad de solicitantes por marca
+Total applicants: Total de solicitantes
+Others brands: Otras marcas
+Behavior of applicants: Comportamiento de los solicitantes
 Past: Últimos
 months: meses
 Updated on: Actualizado el
-Analysis of candidates: Análisis de candidatos
+Analysis of applicants: Análisis de solicitantes
 The value has been changed over time, and to this moment has reached a level of: El valor ha cambiado con el tiempo, y hasta este momento ha alcanzado un nivel de
-candidates.: candidatos.
+applicants.: solicitantes.
 Alerts: Notificaciones
 Sitemap: Mapa de sitio
 Start date: Fecha inicio
@@ -85,7 +85,7 @@ Press: Prensa
 Pages: Páginas
 Press Room: Sala de Prensa
 Media: Multimedia
-Appereance: Apariencia
+Appearance: Apariencia
 Users & Roles: Usuarios & Roles
 Business Categories: Categorias de Negocio
 Careers: Empleo
@@ -98,3 +98,9 @@ Mailer: Correo
 Export to PDF: Exportar a PDF
 Export to CSV: Exportar a CSV
 Sitemap: Mapa de sitio
+Image Gallery: Galería de Imágenes
+Manage all images of the Gallery.: Administra las imágenes de la Galería.
+You can remove only the images that have been added in the creating/editing context.: Solo puede eliminar imágenes que han sido agregadas en el contexto de creación/edición.
+Upload Image: Subir Imagen
+Insert file: Insertar archivo
+You can upload images with a 5MB max of weight and a quadratic max dimentions of 2500 pixels.: Puede subir imágenes con un peso máximo de 5MB y dimensiones cuadráticas máximas de 2500 píxeles.

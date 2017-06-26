@@ -12,11 +12,10 @@
         {% block active_subscription %}active{% endblock %}
 
         {% block page_heading_title %}
-            <a class="btn btn-default navbar-btn" href="{{ path('subscription') }}"
-               style="margin-bottom: 7px;">
+            <a class="btn btn-default navbar-btn" href="{{ path('subscription') }}" >
                 <span class="glyphicon glyphicon-chevron-up"></span>
             </a>
-            {{ 'Subscription edition' | trans({}, 'subscriptionbackend') }}
+            {{ 'Subscriber edition' | trans({}, 'subscriptionbackend') }}
         {% endblock %}
 
         {% block page_content %}
