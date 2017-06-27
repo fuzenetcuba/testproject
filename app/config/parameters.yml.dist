@@ -77,3 +77,7 @@ parameters:
     # Google captcha keys
     captcha.site.key: 6LdeyCUUAAAAAI6VITn-tZ0Qs-cPgTacQJhCPaBS
     captcha.private.key: 6LdeyCUUAAAAAHNYEGOQsBtOmT0ecgLLZcGQty5f
+
+    # Google Spreadsheet parameters
+     google_spreadsheet_api_key_file: "%kernel.root_dir%/Resources/keys/google.p12"
+     google_spreadsheet_client_email: "pm-test@test-452.iam.gserviceaccount.com"

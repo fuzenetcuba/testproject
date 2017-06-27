@@ -4,8 +4,107 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b55ca6a5a27190dffc7f5c6392e31048",
+    "content-hash": "f319642b142049e0882547d9ebe7b3ea",
     "packages": [
+        {
+            "name": "asgoodasnu/google-spreadsheet-bundle",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/asgoodasnu/google-spreadsheet-bundle.git",
+                "reference": "ca5010c305e79ae9838c411279b7966b0b4cbe50"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/asgoodasnu/google-spreadsheet-bundle/zipball/ca5010c305e79ae9838c411279b7966b0b4cbe50",
+                "reference": "ca5010c305e79ae9838c411279b7966b0b4cbe50",
+                "shasum": ""
+            },
+            "require": {
+                "asimlqt/php-google-spreadsheet-client": "2.3.7",
+                "google/apiclient": "1.1.6",
+                "symfony/framework-bundle": "~2.6",
+                "symfony/yaml": "~2.6"
+            },
+            "require-dev": {
+                "matthiasnoback/symfony-dependency-injection-test": "~0.7",
+                "phpunit/phpunit": "~4.8"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Wk\\GoogleSpreadsheetBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Annika Flemming",
+                    "email": "annika.flemming@wirkaufens.de"
+                },
+                {
+                    "name": "Github Community",
+                    "homepage": "https://github.com/asgoodasnu/google-spreadsheet-bundle/contributors"
+                }
+            ],
+            "description": "Integrates asimlqt/php-google-spreadsheet-client with Symfony2 and google/apiclient",
+            "homepage": "https://github.com/asgoodasnu/google-spreadsheet-bundle",
+            "time": "2016-02-03T18:16:48+00:00"
+        },
+        {
+            "name": "asimlqt/php-google-spreadsheet-client",
+            "version": "2.3.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/asimlqt/php-google-spreadsheet-client.git",
+                "reference": "05527b328b2cf08c4b1992bdb531116305c1b711"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/asimlqt/php-google-spreadsheet-client/zipball/05527b328b2cf08c4b1992bdb531116305c1b711",
+                "reference": "05527b328b2cf08c4b1992bdb531116305c1b711",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.4.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Google\\": "src/Google"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Asim Liaquat",
+                    "email": "asimlqt22@gmail.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Martin Czygan",
+                    "email": "martin.czygan@gmail.com",
+                    "homepage": "http://twitter.com/cvvfj",
+                    "role": "Packager"
+                }
+            ],
+            "description": "Google Spreadsheet PHP Client",
+            "homepage": "https://github.com/asimlqt/php-google-spreadsheet-client",
+            "keywords": [
+                "google",
+                "spreadsheet"
+            ],
+            "time": "2015-12-13T15:13:17+00:00"
+        },
         {
             "name": "behat/transliterator",
             "version": "v1.1.0",
@@ -45,49 +144,6 @@
                 "transliterator"
             ],
             "time": "2015-09-28T16:26:35+00:00"
-        },
-        {
-            "name": "djamy/google-calendar-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Djamy/GoogleCalendarBundle.git",
-                "reference": "78b659294fabb20f35011ae98f2cb09aaf6be018"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Djamy/GoogleCalendarBundle/zipball/78b659294fabb20f35011ae98f2cb09aaf6be018",
-                "reference": "78b659294fabb20f35011ae98f2cb09aaf6be018",
-                "shasum": ""
-            },
-            "require": {
-                "google/apiclient": "1.1.2",
-                "php": ">=5.3",
-                "symfony/framework-bundle": "~2.3"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Djamy\\GoogleCalendarBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Djamy Tirouche",
-                    "email": "yo@djamy.me",
-                    "homepage": "http://github.com/Djamy"
-                }
-            ],
-            "description": "GoogleCalendar Service with useful functions to manage google events",
-            "keywords": [
-                "google api",
-                "google calendar"
-            ],
-            "time": "2016-06-29 13:55:14"
         },
         {
             "name": "doctrine/annotations",
@@ -1220,23 +1276,24 @@
         },
         {
             "name": "google/apiclient",
-            "version": "1.1.2",
+            "version": "1.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-api-php-client.git",
-                "reference": "9c35bbbbaf04a5236d763560dab1e2f6e672a724"
+                "reference": "a25dc9d5c109ebb02945ba1ff6336cc937c27628"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/9c35bbbbaf04a5236d763560dab1e2f6e672a724",
-                "reference": "9c35bbbbaf04a5236d763560dab1e2f6e672a724",
+                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/a25dc9d5c109ebb02945ba1ff6336cc937c27628",
+                "reference": "a25dc9d5c109ebb02945ba1ff6336cc937c27628",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "3.7.*"
+                "phpunit/phpunit": "3.7.*",
+                "squizlabs/php_codesniffer": "~2.3"
             },
             "type": "library",
             "extra": {
@@ -1258,7 +1315,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2014-11-25T14:35:03+00:00"
+            "time": "2015-10-16T22:11:08+00:00"
         },
         {
             "name": "hwi/oauth-bundle",
@@ -3590,7 +3647,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
-        "djamy/google-calendar-bundle": 20,
         "urodoz/truncate-html": 0
     },
     "prefer-stable": false,
