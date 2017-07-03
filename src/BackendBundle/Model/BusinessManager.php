@@ -151,7 +151,7 @@ class BusinessManager implements ManagerInterface
     public function findBySlug($slug)
     {
         $object = $this->em
-            ->createQuery('SELECT d FROM BackendBundle:Business d WHERE d.slug = :slug')
+            ->createQuery('SELECT d FROM BackendBundle:Business d WHERE d.slug = :slug AND d.isPublic = TRUE')
             ->setParameter('slug', $slug)
             ->setHint(
                 Query::HINT_CUSTOM_OUTPUT_WALKER,
@@ -162,13 +162,12 @@ class BusinessManager implements ManagerInterface
 
         if (!$object) {
             $object = $this->em
-                ->createQuery('SELECT d FROM BackendBundle:Business d WHERE d.slug = :slug')
+                ->createQuery('SELECT d FROM BackendBundle:Business d WHERE d.slug = :slug AND d.isPublic = TRUE')
                 ->setParameter('slug', $slug)
                 ->getOneOrNullResult()
             ;
 
             if (!$object) {
-
                 $qb = $this->em
                 ->getRepository('Gedmo\Translatable\Entity\Translation')
                 ->createQueryBuilder('t');
