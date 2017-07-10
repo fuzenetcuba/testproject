@@ -306,6 +306,7 @@ body.landing-page {
 .landing-page .navbar-default .navbar-nav > .active > a,
 .landing-page .navbar-default .navbar-nav > .active > a:hover {
     border-top: 4px solid #B0B42B;
+    color: #b0b42b !important;
 }
 
 .landing-page .navbar-fixed-top {
