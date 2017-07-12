@@ -7,6 +7,7 @@ use BackendBundle\Model\EmailGroups;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -79,6 +80,9 @@ class MailsType extends AbstractType
                 'multiple' => true,
                 'choices_as_values' => true
             ))
+            ->add('template', CheckboxType::class, ['required' => false, 'attr' => [
+                'class' => '.i-checks'
+            ]])
             ->get('customAddresses')->addModelTransformer(new ArrayToDelimitedStringTransformer(';', 0, 0));
     }
 

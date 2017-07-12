@@ -160,7 +160,29 @@
                             {% endif %}
                         </div>
                     </div>
+                    <div class="hr-line-dashed"></div>
 
+                    <div class="form-group{% if(form.template.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                        <label for=""
+                               class="col-md-2 control-label">{{ form_label(form.template) }}</label>
+
+                        <div class="col-md-1">
+                            {{ form_widget(form.template, { 'attr': {
+                                'class' : 'form-control i-checks',
+                                'style' : 'width: 100%'}}) }}
+                            {% if form.template.vars['errors']|length > 0 %}
+                                <ul class="message">
+                                    {% for error in form.template.vars['errors'] %}
+                                        <li>{{ error.message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                        <span class="text-muted">
+                            <i class="fa fa-info-circle"></i>
+                            {{ 'Send template email to the recipients' | trans({}, 'businessbackend') }}
+                        </span>
+                    </div>
                 </div>
 
                 <div class="mail-text h-200">
