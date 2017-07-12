@@ -87,11 +87,13 @@ class MailsController extends Controller
                         'content' => $data['message'],
                         'deals' => $data['deals']
                     ]);
+                    $msgSubject = $this->getParameter('customer.email.subject');
                 } else {
                     $content = $this->renderView('@Backend/Emails/salon.html.twig', [
                         'content' => $data['message'],
                         'deals' => $data['deals']
                     ]);
+                    $msgSubject = "Here is a special offer from Plaza Mariachi";
                 }
 
                // echo $content; die ;
@@ -100,7 +102,7 @@ class MailsController extends Controller
                     $users,
                     $customEmails,
                     $this->getParameter('customer.email.from'),
-                    $this->getParameter('customer.email.subject'),
+                    $msgSubject,
                     $content
                 );
 
