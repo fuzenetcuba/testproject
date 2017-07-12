@@ -36,6 +36,7 @@ parameters:
     # Emails
     customer.email.subject: Hello there!! from Plaza Mariachi
     customer.email.from: noreply@test.com
+    customer.email.to: info@test.coms
     customer.email.register.subject: 'Thank you for registering'
     customer.email.register.message: |
         Welcome to the Plaza Mariachi website, we which you well!
