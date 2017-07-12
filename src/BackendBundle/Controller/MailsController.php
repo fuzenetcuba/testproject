@@ -82,12 +82,19 @@ class MailsController extends Controller
                     )
                 );
 
-                $content = $this->renderView('@Backend/Emails/customer.html.twig', [
-                    'content' => $data['message'],
-                    'deals' => $data['deals']
-                ]);
+                if (!isset($dataRequest['template'])) {
+                    $content = $this->renderView('@Backend/Emails/customer.html.twig', [
+                        'content' => $data['message'],
+                        'deals' => $data['deals']
+                    ]);
+                } else {
+                    $content = $this->renderView('@Backend/Emails/salon.html.twig', [
+                        'content' => $data['message'],
+                        'deals' => $data['deals']
+                    ]);
+                }
 
-//                echo $content; die ;
+               // echo $content; die ;
 
                 $this->get('customer.manager')->sendEmail(
                     $users,
