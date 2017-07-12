@@ -171,7 +171,7 @@ class CustomerManager implements ManagerInterface
             ->getResult();
     }
 
-    public function sendEmail(ArrayCollection $users, ArrayCollection $customEmails, $from, $subject, $content, $bcc = false)
+    public function sendEmail(ArrayCollection $users, ArrayCollection $customEmails, $from, $subject, $content, $to = null, $bcc = false)
     {
         $emailUsers = $users->map(function ($user) {
             return $user->getEmail();
@@ -190,7 +190,7 @@ class CustomerManager implements ManagerInterface
         ;
 
         if($bcc){
-            $message->setTo($from);
+            $message->setTo($to);
             $message->setBcc($emailUsers->toArray());
         } else {
             $message->setTo($emailUsers->toArray());

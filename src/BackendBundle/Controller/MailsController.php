@@ -104,7 +104,8 @@ class MailsController extends Controller
                     $this->getParameter('customer.email.from'),
                     $msgSubject,
                     $content,
-                    true    // setting To with the BCC
+                    $this->getParameter('customer.email.to'),    // setting TO with parameter
+                    true                                         // setting TO with the BCC
                 );
 
                 // Show the success message
