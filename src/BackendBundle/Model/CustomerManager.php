@@ -171,7 +171,7 @@ class CustomerManager implements ManagerInterface
             ->getResult();
     }
 
-    public function sendEmail(ArrayCollection $users, ArrayCollection $customEmails, $from, $subject, $content)
+    public function sendEmail(ArrayCollection $users, ArrayCollection $customEmails, $from, $subject, $content, $bcc = false)
     {
         $emailUsers = $users->map(function ($user) {
             return $user->getEmail();
@@ -186,9 +186,15 @@ class CustomerManager implements ManagerInterface
         $message = \Swift_Message::newInstance()
             ->setSubject($subject)
             ->setFrom($from)
-            ->setTo($emailUsers->toArray())
             ->setBody($content, 'text/html')
         ;
+
+        if($bcc){
+            $message->setTo(array_slice($emailUsers->toArray(), 0, 1));
+            $message->setBcc(array_slice($emailUsers->toArray(), 1, count($emailUsers->toArray())));
+        } else {
+            $message->setTo($emailUsers->toArray());
+        }
 
         $this->mailer->send($message);
     }
