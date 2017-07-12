@@ -190,8 +190,8 @@ class CustomerManager implements ManagerInterface
         ;
 
         if($bcc){
-            $message->setTo(array_slice($emailUsers->toArray(), 0, 1));
-            $message->setBcc(array_slice($emailUsers->toArray(), 1, count($emailUsers->toArray())));
+//            $message->setTo(array_slice($emailUsers->toArray(), 0, 1));
+            $message->setBcc($emailUsers->toArray());
         } else {
             $message->setTo($emailUsers->toArray());
         }
