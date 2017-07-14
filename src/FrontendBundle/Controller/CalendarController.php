@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  */
 class CalendarController extends Controller
 {
-    const ALLOWED_STATES = ['booked', 'paid'];
+    const ALLOWED_STATES = ['booked'];
 
     private static function checkValue($row, $col, &$entries)
     {
