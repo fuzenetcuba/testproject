@@ -41,7 +41,7 @@ class CalendarController extends Controller
 
         $now = new \DateTime();
         for ($i = 0; $i < $worksheet->getRowCount(); $i++) {
-            $startTime = \DateTime::createFromFormat('D, M d h:i a', sprintf('%s %s',
+            $startTime = \DateTime::createFromFormat('m/d/Y h:i a', sprintf('%s %s',
                 self::getValue($i, 1, $entries), self::getValue($i, 2, $entries)));
 
             if (false === $startTime || $startTime < $now) {
@@ -92,7 +92,7 @@ class CalendarController extends Controller
 
         $now = new \DateTime();
         for ($i = 0; $i < $worksheet->getRowCount(); $i++) {
-            $startTime = \DateTime::createFromFormat('D, M d h:i a', sprintf('%s %s',
+            $startTime = \DateTime::createFromFormat('m/d/Y h:i a', sprintf('%s %s',
                 self::getValue($i, 1, $entries), self::getValue($i, 2, $entries)));
 
             if (false === $startTime || $startTime < $now) {
