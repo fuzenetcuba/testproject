@@ -32,7 +32,7 @@ class CalendarController extends Controller
     {
         $service = $this->get('wk_google_spreadsheet');
 
-        $spreadsheet = $service->getSpreadsheets()->getByTitle('SCHEDULE entertaiment (version 1)');
+        $spreadsheet = $service->getSpreadsheets()->getByTitle('SCHEDULE entertaiment');
         $worksheet   = $spreadsheet->getWorksheets()->getByTitle('Scheduling');
         $cellFeed = $worksheet->getCellFeed();
         $entries  = $cellFeed->getEntries();
