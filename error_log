@@ -15,3 +15,9 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/pmmusiccity/public_html/src/FrontendBundle/Controller/CalendarController.php on line 80
+[23-Jun-2017 19:13:52 UTC] PHP Fatal error:  Class 'EE\DataExporterBundle\EEDataExporterBundle' not found in /home/pmmusiccity/public_html/app/AppKernel.php on line 35
+[23-Jun-2017 19:13:52 UTC] PHP Fatal error:  Uncaught exception 'Symfony\Component\Debug\Exception\ClassNotFoundException' with message 'Attempted to load class "EEDataExporterBundle" from namespace "EE\DataExporterBundle".
+Did you forget a "use" statement for another namespace?' in /home/pmmusiccity/public_html/app/AppKernel.php:35
+Stack trace:
+#0 {main}
+  thrown in /home/pmmusiccity/public_html/app/AppKernel.php on line 35

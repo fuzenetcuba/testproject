@@ -73,7 +73,7 @@
                         {# <a href="timeline_2.html#" class="btn btn-sm btn-primary"> More info</a> #}
                         <span class="vertical-date">
                             <div></div>
-                            <small data-date="{{ event.start.dateTime }}"></small><br/>
+                            <small data-date="{{ event.start.dateTime | date }}"></small><br/>
                             {# <small><i class="fa fa-clock-o"></i> {{ event.start.dateTime | date('h:i A')  }}</small> #}
                         </span>
                     </div>

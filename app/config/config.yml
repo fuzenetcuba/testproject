@@ -258,3 +258,8 @@ ewz_recaptcha:
     # Not needed as "%kernel.default_locale%" is the default value for the locale key
     locale_key:  %kernel.default_locale%
     locale_from_request: true
+
+wk_google_spreadsheet:
+    credentials:
+        client_email: %google_spreadsheet_client_email%
+        private_key: %google_spreadsheet_api_key_file%
