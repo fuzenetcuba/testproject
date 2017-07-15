@@ -119,6 +119,8 @@
                                     <a class="btn btn-sm btn-blue btn-block"
                                        href="{{ path('fos_user_registration_register') }}">Create an account</a>
                                     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                                    {#<input type="hidden" name="_target_path" value="{{ app.request.headers.get('referer') }}" />#}
+                                    {#<input type="hidden" name="_target_path" value="{{ app.session.get("_security.backend.target_path") }}">#}
                                     <br/>
                                     <a class="btn btn-block btn-social btn-facebook" onclick="fb_login();" href="#">
                                         <span class="fa fa-facebook pull-left ali"></span>

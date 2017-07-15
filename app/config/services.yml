@@ -18,3 +18,7 @@ services:
         class: BackendBundle\Menu\RouteKeyVoter
         tags:
             - { name: knp_menu.voter, request: true }
+
+    app.login_handler:
+        class: BackendBundle\Service\LoginHandler
+        arguments: ['@router', '@doctrine.orm.entity_manager', '@service_container']
