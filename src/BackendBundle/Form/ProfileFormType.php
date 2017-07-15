@@ -66,6 +66,10 @@ class ProfileFormType extends BaseType
                 'label' => 'Phone',
                 'translation_domain' => 'fosuser'
             ))
+            ->add('subscribed', null, array(
+                'label' => 'Email subscribed',
+                'translation_domain' => 'fosuser'
+            ))
             ->add('imageFile', FileType::class, array(
                 'label' => 'Photo',
                 'translation_domain' => 'fosuser',

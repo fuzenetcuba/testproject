@@ -100,6 +100,12 @@
                         <span class="fa fa-sort"></span>
                     {% endif %}
                 </th>
+                <th class="text-navy">
+                    {{ knp_pagination_sortable(entities, 'Email subscribed' | trans({}, 'fosuser'), 'e.subscribed') }}
+                    {% if entities.isSorted('e.subscribed') %}
+                        <span class="fa fa-sort"></span>
+                    {% endif %}
+                </th>
                 <th class="text-navy">{{ 'Actions' | trans({}, 'generalbackend') }}</th>
             </tr>
             </thead>
@@ -134,6 +140,11 @@
                         </div>
                     </td>
                     <td>{{ entity.email }}</td>
+                    <td class="text-center">
+                        <div class="onoffswitch-ios switch-xs">
+                            <label class="onoffswitch-ios-label {{ entity.subscribed ? 'checked' : '' }}"></label>
+                        </div>
+                    </td>
 
                     <td>
                         <div class="btn-group">
@@ -163,7 +174,8 @@
 
         <div class="form-group">
             <div class="col-md-8 pagination--items">
-                {{ knp_pagination_render(entities) }} <pagination></pagination>
+                {{ knp_pagination_render(entities) }}
+                <pagination></pagination>
             </div>
             <div class="col-md-4">
                 <div class="form-group pagination pull-right">

@@ -31,10 +31,11 @@
             </div>
         </div>
         <div class="col-lg-8 p-lg">
+            <p><span class="fa fa-envelope"></span> {{ user.email }}</p>
             {% if(user.phone is not null) %}
                 <p><span class="fa fa-phone"></span> {{ user.phone }}</p>
             {% endif %}
-            <p><span class="fa fa-envelope"></span> {{ user.email }}</p>
+            <p><span class="fa fa-rss"></span> <span class="label {{ user.subscribed ? 'label-primary' : 'label-default' }}">{{ user.subscribed ? 'Email subscribed' | trans({}, 'fosuser') : 'Not email subscribed' | trans({}, 'fosuser') }}</span></p>
             <div class="m-t-lg">
                 <a class="btn btn-sm btn-success" role="button" href="{{ path('fos_user_profile_edit') }}">
                     <span class="fa fa-pencil"></span> {{ 'Edit profile' | trans({}, 'fosuser') }}
