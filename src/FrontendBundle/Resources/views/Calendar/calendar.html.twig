@@ -74,6 +74,7 @@
             $('#calendar').fullCalendar({
                 events: "{{ path('calendar_json') }}",
                 lang: '{{ app.request.get('_locale') }}',
+                timeFormat: 'h:mm A',
                 header: {
                     left: '',
                     center: 'title',

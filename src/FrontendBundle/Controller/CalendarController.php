@@ -40,7 +40,7 @@ class CalendarController extends Controller
         $events = [];
 
         $now = new \DateTime();
-        for ($i = 0; $i < $worksheet->getRowCount(); $i++) {
+        for ($i = 0, $max = count($entries); $i < $max; $i++) {
             $startTime = \DateTime::createFromFormat('m/d/Y h:i a', sprintf('%s %s',
                 self::getValue($i, 1, $entries), self::getValue($i, 2, $entries)));
 
@@ -122,7 +122,7 @@ class CalendarController extends Controller
         $events = array_map(function ($event) {
             return [
                 'title'       => $event['summary'],
-                'start'       => $event['start']['dateTime']->format('Y-m-dTH:i:s'),
+                'start'       => $event['start']['dateTime']->format('Y-m-d H:i:s'),
                 'description' => $event['description'],
                 'location'    => isset($event['location']) ? $event['location'] : '',
             ];
