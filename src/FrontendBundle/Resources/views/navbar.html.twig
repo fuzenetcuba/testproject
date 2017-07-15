@@ -127,6 +127,12 @@
                                 {#</li>#}
                                 {#<li class="divider"></li>#}
                                 <li>
+                                    <a title="{{ 'Profile' | trans({}, 'generalbackend') }}"
+                                       href="{{ path('fos_user_profile_show') }}">
+                                        <i class="fa fa-fw fa-clipboard"></i> {{ 'Profile' | trans({}, 'generalbackend') }}
+                                    </a>
+                                </li>
+                                <li>
                                     <a title="{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}"
                                        href="{{ path('fos_user_security_logout') }}">
                                         <i class="fa fa-sign-out"></i> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
@@ -238,6 +244,12 @@
                                 {#</a>#}
                                 {#</li>#}
                                 {#<li class="divider"></li>#}
+                                <li>
+                                    <a title="{{ 'Profile' | trans({}, 'generalbackend') }}"
+                                       href="{{ path('fos_user_profile_show') }}">
+                                        <i class="fa fa-fw fa-clipboard"></i> {{ 'Profile' | trans({}, 'generalbackend') }}
+                                    </a>
+                                </li>
                                 <li>
                                     <a title="{{ 'layout.logout' | trans({}, 'FOSUserBundle') }}"
                                        href="{{ path('fos_user_security_logout') }}">
