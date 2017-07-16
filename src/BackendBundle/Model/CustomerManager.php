@@ -63,7 +63,25 @@ class CustomerManager implements ManagerInterface
             ->getResult();
     }
 
-    public function findAllSubscribedUsers()
+    /**
+     * Return all model objects
+     *
+     * @return mixed
+     */
+    public function findAllSubscribed()
+    {
+        return $this->em
+            ->createQueryBuilder('q')
+            ->select('f')
+            ->from('BackendBundle:SystemUser', 'f')
+            ->where('f.roles LIKE :find')
+            ->andWhere('f.subscribed = true')
+            ->setParameter('find', '%ROLE_CUSTOMER%')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findAllSubscribedByEmail()
     {
         return $this->em->createQueryBuilder('q')
             ->select('s')

@@ -36,6 +36,7 @@ class MailsType extends AbstractType
                         ->select('f')
                         ->from('BackendBundle:SystemUser', 'f')
                         ->where('f.roles LIKE :find')
+                        ->andWhere('f.subscribed = true')
                         ->setParameter('find', '%ROLE_CUSTOMER%');
                 },
                 'choice_label' => 'email',
