@@ -86,6 +86,7 @@ class CustomerManager implements ManagerInterface
         return $this->em->createQueryBuilder('q')
             ->select('s')
             ->from('BackendBundle:Subscription', 's')
+            ->where('s.subscribed = true')
             ->getQuery()
             ->getResult()
         ;

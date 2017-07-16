@@ -46,6 +46,13 @@ class MailsType extends AbstractType
             ->add('subscribedUsers', EntityType::class, array(
                 'required' => false,
                 'class' => 'BackendBundle\Entity\Subscription',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er
+                        ->createQueryBuilder('q')
+                        ->select('s')
+                        ->from('BackendBundle:Subscription', 's')
+                        ->where('s.subscribed = true');
+                },
                 'choice_label' => 'email',
                 'multiple' => true,
                 'choices_as_values' => true

@@ -18,6 +18,7 @@ class SubscriptionType extends AbstractType
     {
         $builder
             ->add('email')
+            ->add('subscribed')
             ->add('categories', EntityType::class, [
                 'class' => 'BackendBundle\Entity\Category',
                 'multiple' => true,

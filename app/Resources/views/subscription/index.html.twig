@@ -82,6 +82,12 @@
                         <th class="text-navy">
                             {{ 'Categories' | trans({}, 'subscriptionbackend') }}
                         </th>
+                        <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'Subscribed' | trans({}, 'subscriptionbackend'), 'e.subscribed') }}
+                            {% if entities.isSorted('e.subscribed') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
 
                         <th class="text-navy">{{ 'Actions' | trans({}, 'generalbackend') }}</th>
                     </tr>
@@ -110,6 +116,11 @@
                                 {% for category in entity.categories %}
                                     <span class="label label-primary">{{ category }}</span>
                                 {% endfor %}
+                            </td>
+                            <td class="text-center">
+                                <div class="onoffswitch-ios switch-xs">
+                                    <label class="onoffswitch-ios-label {{ entity.subscribed ? 'checked' : '' }}"></label>
+                                </div>
                             </td>
 
                             <td>

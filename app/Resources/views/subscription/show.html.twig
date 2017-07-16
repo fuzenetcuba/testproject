@@ -24,6 +24,17 @@
             {% endfor %}
         </dd>
         <div class="hr-line-dashed"></div>
+        <dt>{{ 'Subscribed' | trans({}, 'subscriptionbackend') }}</dt>
+        <dd>
+            <div class="onoffswitch-ios switch-xs">
+                {% if (entity.subscribed) %}
+                    <label class="onoffswitch-ios-label checked"></label>
+                {% else %}
+                    <label class="onoffswitch-ios-label"></label>
+                {% endif %}
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
         </tbody>
     </dl>
     <div class="form-group">
