@@ -61,7 +61,7 @@ class DefaultController extends Controller
     public function staticPageAction($name)
     {
 //        return $this->render("FrontendBundle:Static:" . $name . ".html.twig");
-        return $this->render("BackendBundle:Emails:salon.html.twig");
+        return $this->render("BackendBundle:Emails:customer.html.twig");
     }
 
     public function postPageAction($route)

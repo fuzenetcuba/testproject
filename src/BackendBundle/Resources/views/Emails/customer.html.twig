@@ -156,9 +156,9 @@
 <center style="width: 100%; background: #f6f6f6;">
 
     <!-- Visually Hidden Preheader Text : BEGIN -->
-{#     <div style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: sans-serif;">
-        (Optional) This text will appear in the inbox preview, but not the email body.
-    </div> #}
+    {#     <div style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: sans-serif;">
+            (Optional) This text will appear in the inbox preview, but not the email body.
+        </div> #}
     <!-- Visually Hidden Preheader Text : END -->
 
     <!-- Email Header : BEGIN -->
@@ -166,7 +166,8 @@
            class="email-container" role="presentation">
         <tr>
             <td style="padding: 20px 0; text-align: left">
-                <img src="{{ app.request.getSchemeAndHttpHost() ~ asset('bundles/frontend/img/plaza_mariachi.png') }}" width="200" height="50" alt="alt_text" border="0">
+                <img src="{{ app.request.getSchemeAndHttpHost() ~ asset('bundles/frontend/img/plaza_mariachi.png') }}"
+                     width="200" height="50" alt="alt_text" border="0">
             </td>
         </tr>
     </table>
@@ -179,7 +180,8 @@
         <!-- Hero Image, Flush : BEGIN -->
         <tr>
             <td bgcolor="#ffffff" align="center">
-                <img src="{{ app.request.getSchemeAndHttpHost() ~ asset('bundles/frontend/img/mail.png') }}" width="200" height="" alt="alt_text" border="0" align="center"
+                <img src="{{ app.request.getSchemeAndHttpHost() ~ asset('bundles/frontend/img/mail.png') }}" width="200"
+                     height="" alt="alt_text" border="0" align="center"
                      style="width: 100%; max-width: 200px; margin-top: 10px">
             </td>
         </tr>
@@ -193,15 +195,15 @@
                 <br><br>
                 <!-- Button : Begin -->
                 {#<table cellspacing="0" cellpadding="0" border="0" align="center" style="margin: auto">#}
-                    {#<tr>#}
-                        {#<td style="border-radius: 3px; background: #FDB125; text-align: center;" class="button-td">#}
-                            {#<a title="Google" href="http://www.google.com"#}
-                               {#style="background: #FDB125; border: 15px solid #FDB125; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;"#}
-                               {#class="button-a">#}
-                                {#&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff">A Button</span>&nbsp;&nbsp;&nbsp;&nbsp;#}
-                            {#</a>#}
-                        {#</td>#}
-                    {#</tr>#}
+                {#<tr>#}
+                {#<td style="border-radius: 3px; background: #FDB125; text-align: center;" class="button-td">#}
+                {#<a title="Google" href="http://www.google.com"#}
+                {#style="background: #FDB125; border: 15px solid #FDB125; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;"#}
+                {#class="button-a">#}
+                {#&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff">A Button</span>&nbsp;&nbsp;&nbsp;&nbsp;#}
+                {#</a>#}
+                {#</td>#}
+                {#</tr>#}
                 {#</table>#}
                 <!-- Button : END -->
             </td>
@@ -216,82 +218,99 @@
 
         <!-- 3 Even Columns : BEGIN -->
         {#<tr>#}
-            {#<td bgcolor="#ffffff" align="center" valign="top" style="padding: 10px;">#}
-                {#<table cellspacing="0" cellpadding="0" border="0" width="100%">#}
-                    {#{% for row in deals | batch(3) %}#}
-                    {#<tr>#}
-                        {#{% for deal in row %}#}
-                            {#<!-- Column : BEGIN -->#}
-                            {#<!-- Column : END -->#}
-                        {#{% endfor %}#}
-                    {#</tr>#}
-                    {#{% endfor %}#}
-                {#</table>#}
-            {#</td>#}
+        {#<td bgcolor="#ffffff" align="center" valign="top" style="padding: 10px;">#}
+        {#<table cellspacing="0" cellpadding="0" border="0" width="100%">#}
+        {#{% for row in deals | batch(3) %}#}
+        {#<tr>#}
+        {#{% for deal in row %}#}
+        {#<!-- Column : BEGIN -->#}
+        {#<!-- Column : END -->#}
+        {#{% endfor %}#}
+        {#</tr>#}
+        {#{% endfor %}#}
+        {#</table>#}
+        {#</td>#}
         {#</tr>#}
         <!-- 3 Even Columns : END -->
 
         {% for deal in deals %}
-        <tr>
-            <td dir="{{ cycle(['ltr', 'rtl'], loop.index0) }}" style="padding: 10px;" align="center" bgcolor="#ffffff" valign="top" width="100%">
-                <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
-                    <tbody><tr>
-                        <!-- Column : BEGIN -->
-                        <td class="stack-column-center" width="33.33%">
-                            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                <tbody><tr>
-                                    <td dir="ltr" style="padding: 0 10px;" valign="top">
-                                        <img src="{{ app.request.getSchemeAndHttpHost() ~ asset('images/deals/' ~ deal.image) }}" alt="{{ deal.name }}" class="center-on-narrow" border="0" width="170" height="200">
-                                    </td>
-                                </tr>
-                                </tbody></table>
-                        </td>
-                        <!-- Column : END -->
-                        <!-- Column : BEGIN -->
-                        <td class="stack-column-center" width="66.66%">
-                            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                <tbody><tr>
-                                    <td dir="ltr" style="font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555; padding: 10px; text-align: left;" class="center-on-narrow" valign="top">
-                                        <strong style="color:#111111;">{{ deal.name }}</strong>
-                                        <br><br>
-                                        {{ deal.description | truncate(130) | nl2br }}
-                                        <br><br>
-                                        <!-- Button : Begin -->
-                                        <table class="center-on-narrow" style="float:left;" border="0" cellpadding="0" cellspacing="0">
-                                            <tbody><tr>
-                                                <td style="border-radius: 3px; background: #222222; text-align: center;" class="button-td">
-                                                    <a title="VIEW DEAL" href="http://www.google.com" style="background: #FDB125; border: 15px solid #FDB125; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a">
-                                                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff">VIEW DEAL</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            </tbody></table>
-                                        <!-- Button : END -->
-                                    </td>
-                                </tr>
-                                </tbody></table>
-                        </td>
-                        <!-- Column : END -->
-                    </tr>
-                    </tbody></table>
-            </td>
-        </tr>
+            <tr>
+                <td dir="{{ cycle(['ltr', 'rtl'], loop.index0) }}" style="padding: 10px;" align="center"
+                    bgcolor="#ffffff" valign="top" width="100%">
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+                        <tr>
+                            <!-- Column : BEGIN -->
+                            <td class="stack-column-center" width="33.33%">
+                                <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tbody>
+                                    <tr>
+                                        <td dir="ltr" style="padding: 0 10px;" valign="top">
+                                            <img src="{{ app.request.getSchemeAndHttpHost() ~ asset('images/deals/' ~ deal.image) }}"
+                                                 alt="{{ deal.name }}" class="center-on-narrow" border="0" width="170"
+                                                 height="200">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <!-- Column : END -->
+                            <!-- Column : BEGIN -->
+                            <td class="stack-column-center" width="66.66%">
+                                <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tbody>
+                                    <tr>
+                                        <td dir="ltr"
+                                            style="font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555; padding: 10px; text-align: left;"
+                                            class="center-on-narrow" valign="top">
+                                            <strong style="color:#111111;">{{ deal.name }}</strong>
+                                            <br><br>
+                                            {{ deal.description | truncate(130) | nl2br }}
+                                            <br><br>
+                                            <!-- Button : Begin -->
+                                            <table class="center-on-narrow" style="float:left;" border="0"
+                                                   cellpadding="0" cellspacing="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-radius: 3px; background: #222222; text-align: center;"
+                                                        class="button-td">
+                                                        <a title="VIEW DEAL" href="http://www.google.com"
+                                                           style="background: #FDB125; border: 15px solid #FDB125; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;"
+                                                           class="button-a">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff">VIEW DEAL</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <!-- Button : END -->
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <!-- Column : END -->
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
         {% endfor %}
 
         <!-- 1 Column Text + Button : BEGIN -->
         {#<tr>#}
-            {#<td bgcolor="#ffffff">#}
-                {#<table cellspacing="0" cellpadding="0" border="0" width="100%">#}
-                    {#<tr>#}
-                        {#<td style="padding: 40px; font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555;">#}
-                            {#Maecenas sed ante pellentesque, posuere leo id, eleifend dolor. Class aptent taciti sociosqu#}
-                            {#ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent laoreet malesuada#}
-                            {#cursus. Maecenas scelerisque congue eros eu posuere. Praesent in felis ut velit pretium#}
-                            {#lobortis rhoncus ut&nbsp;erat.#}
-                        {#</td>#}
-                    {#</tr>#}
-                {#</table>#}
-            {#</td>#}
+        {#<td bgcolor="#ffffff">#}
+        {#<table cellspacing="0" cellpadding="0" border="0" width="100%">#}
+        {#<tr>#}
+        {#<td style="padding: 40px; font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555;">#}
+        {#Maecenas sed ante pellentesque, posuere leo id, eleifend dolor. Class aptent taciti sociosqu#}
+        {#ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent laoreet malesuada#}
+        {#cursus. Maecenas scelerisque congue eros eu posuere. Praesent in felis ut velit pretium#}
+        {#lobortis rhoncus ut&nbsp;erat.#}
+        {#</td>#}
+        {#</tr>#}
+        {#</table>#}
+        {#</td>#}
         {#</tr>#}
         <!-- 1 Column Text + Button : BEGIN -->
 
@@ -306,8 +325,26 @@
                 Plaza Mariachi<br><span
                         class="mobile-link--footer">3955 Nolensville Pk, Nashville TN 37211 USA</span><br><span
                         class="mobile-link--footer">1-800-0000-0000</span>
-                <br><br>
                 {#<unsubscribe style="color:#888888; text-decoration:underline;">{{unsubscribe}}</unsubscribe>#}
+            </td>
+        </tr>
+        <tr>
+            <td style="border-top: #ccc solid 1px; padding: 0 10px;width: 100%;font-size: 10px; font-family: sans-serif; mso-height-rule: exactly; line-height:18px; text-align: center; color: #888888;">
+                <p>
+                    You are receiving this email because you are user of the Plaza Mariachi website
+                    and by default you are subscribed to our newsletters.
+                    If you do not want to receive this emails anymore, please <a target="_blank"
+                                                                                 href="{{ path('fos_user_profile_show') }}">change
+                        your preferences</a>.
+                </p>
+                <p>
+                    On the other hand, if you are not user of Plaza Mariachi website, maybe you were
+                    subscribed to our newsletters in the past, in that case, you must <a target="_blank"
+                                                                                         href="{{ path('subscription_cancel') }}">cancel
+                        your subscription</a> from
+                    our newsletters.
+                </p>
+                <br><br>
             </td>
         </tr>
     </table>

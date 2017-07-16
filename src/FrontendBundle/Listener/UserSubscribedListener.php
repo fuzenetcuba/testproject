@@ -35,15 +35,15 @@ class UserSubscribedListener implements EventSubscriberInterface
     /**
      * @var string
      */
-    private $message;
+    private $messages;
 
-    public function __construct(\Swift_Mailer $mailer, EngineInterface $templating, $from, $subject, $message) 
+    public function __construct(\Swift_Mailer $mailer, EngineInterface $templating, $from, $subject, $messages)
     {
         $this->mailer = $mailer;
         $this->templating = $templating;
         $this->from = $from;
         $this->subject = $subject;
-        $this->message = $message;
+        $this->messages = $messages;
     }
 
     /**
@@ -68,6 +68,8 @@ class UserSubscribedListener implements EventSubscriberInterface
     {
         return [
             SubscriptionController::USER_SUBSCRIBED => 'onUserSubscribed',
+            SubscriptionController::USER_DESUBSCRIBED => 'onUserDesubscribed',
+            SubscriptionController::USER_RESUBSCRIBED => 'onUserResubscribed',
         ];
     }
 
@@ -76,7 +78,7 @@ class UserSubscribedListener implements EventSubscriberInterface
         $user = $event->getForm()->getData();
 
         $content = $this->templating->render('@Backend/Emails/customer.html.twig', [
-            'content' => $this->message,
+            'content' => $this->messages['subscribe'],
             'deals' => []
         ]);
 
@@ -84,6 +86,44 @@ class UserSubscribedListener implements EventSubscriberInterface
             ->setSubject($this->subject)
             ->setFrom($this->from)
             ->setTo($user->getEmail())
+            ->setBody($content, 'text/html')
+        ;
+
+        $this->mailer->send($message);
+    }
+
+    public function onUserDesubscribed(FormEvent $event)
+    {
+        $user = $event->getForm()->getData();
+
+        $content = $this->templating->render('@Backend/Emails/customer.html.twig', [
+            'content' => $this->messages['desubscribe'],
+            'deals' => []
+        ]);
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject($this->subject)
+            ->setFrom($this->from)
+            ->setTo($user['email'])
+            ->setBody($content, 'text/html')
+        ;
+
+        $this->mailer->send($message);
+    }
+
+    public function onUserResubscribed(FormEvent $event)
+    {
+        $user = $event->getForm()->getData();
+
+        $content = $this->templating->render('@Backend/Emails/customer.html.twig', [
+            'content' => $this->messages['resubscribe'],
+            'deals' => []
+        ]);
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject($this->subject)
+            ->setFrom($this->from)
+            ->setTo($user['email'])
             ->setBody($content, 'text/html')
         ;
 

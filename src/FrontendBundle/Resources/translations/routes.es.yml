@@ -5,7 +5,7 @@ business_details: /directorio/{slug}
 frontend_static_page: /contenido/{name}
 membership: /miembros
 subscription_request: /suscribirse
-subscription_confirm: /suscribirse/confirmar/{id}
+subscription_confirm: /suscribirse/confirmar/{id}/{option}
 mall_map: /mapa
 careers_index: /empleos
 careers_find: /empleos/buscar/{business}

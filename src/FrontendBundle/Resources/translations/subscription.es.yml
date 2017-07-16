@@ -1,9 +1,16 @@
 Subscribe for new deals: Suscribirse para recibir nuevas ofertas
+Cancel subscription: Cancelar suscripción
+Re-subscribe for new deals: Resuscribirse para recibir nuevas ofertas
 SELECT A CATEGORY: SELECCIONA UNA CATEGORIA
 EMAIL: TU CORREO
 SUBSCRIBE: SUSCRIBIRSE
+DESUBSCRIBE: DESUSCRIBIRSE
+RESUBSCRIBE: RESUSCRIBIRSE
 CONGRATULATIONS!: ¡FELICITACIONES!
 You have been subscribed for the following categories: Has sido suscrito a las siguientes categorías
+You have been re-subscribed for the following categories: Has sido resuscrito a las siguientes categorías
+Your subscription for newsletters has been canceled successfully: Su suscripción a los boletines ha sido cancelada con éxito
+If you shoose cancel your subscription, you will not receive deals and coupons by emails in the future: Si elige cancelar su suscripción, no recibira ofertas ni cupones por correo en el futuro
 No category: Ninguna categoría
 BECOME A MEMBER: HAZTE MIEMBRO
 or: o
@@ -14,3 +21,6 @@ Update: Actualizar
 We’re glad you want to know what is happening at Plaza Mariachi.: Nos complace que desee conocer lo que acontece en Plaza Mariachi.
 Please select what categories you are interested in and we will send you deals, coupon and more: Por favor seleccione las categorías en la que está interesado y le enviaremos ofertas, cupones y más
 Please select what categories you're interested in and we'll send you deals, coupon and more...: Por favor seleccione las categorías en la que está interesado y le enviaremos ofertas, cupones y más...
+Cancel subscription for newsletters: Cancelar suscripción de los boletines
+Re-subscribe for newsletters: Resuscribirse a los boletines
+SUBSCRIPTION CANCELED SUCCESSFULLY!: SUSCRIPCIÓN CANCELADA CON ÉXITO
