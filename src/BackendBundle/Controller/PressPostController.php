@@ -50,8 +50,8 @@ class PressPostController extends Controller
 
             $dql = "SELECT e FROM BackendBundle:PressPost e WHERE "
                     . "e.title LIKE '%" . $find . "%' OR "
-                    . "e.author LIKE '%" . $find . "%' "
-                    . "e.text LIKE '%" . $find . "%' "
+                    . "e.author LIKE '%" . $find . "%' OR "
+                    . "e.text LIKE '%" . $find . "%' OR "
                     . "e.url LIKE '%" . $find . "%' "
                     . "ORDER BY e.id ASC";
             $query = $em->createQuery($dql);
