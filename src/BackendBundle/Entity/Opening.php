@@ -5,6 +5,7 @@ namespace BackendBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
@@ -87,6 +88,14 @@ class Opening
      * @ORM\Column(type="boolean")
      */
     private $enabled;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bamboo_hr_link", type="string", nullable=true)
+     * @Assert\Url()
+     */
+    private $bambooHRLink;
 
     /**
      * @var ArrayCollection
@@ -320,5 +329,28 @@ class Opening
     public function getCandidates()
     {
         return $this->candidates;
+    }
+
+    /**
+     * Set bambooHRLink
+     *
+     * @param string $bambooHRLink
+     * @return Opening
+     */
+    public function setBambooHRLink($bambooHRLink)
+    {
+        $this->bambooHRLink = $bambooHRLink;
+
+        return $this;
+    }
+
+    /**
+     * Get bambooHRLink
+     *
+     * @return string 
+     */
+    public function getBambooHRLink()
+    {
+        return $this->bambooHRLink;
     }
 }

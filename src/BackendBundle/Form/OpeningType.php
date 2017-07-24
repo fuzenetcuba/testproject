@@ -4,6 +4,7 @@ namespace BackendBundle\Form;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -63,8 +64,12 @@ class OpeningType extends AbstractType
         }
         $builder
             // ->add('department')
-            ->add('description', 'textarea', [
+            ->add('description', TextareaType::class, [
                 'attr' => ['rows' => '10']
+            ])
+            ->add('bambooHRLink', TextType::class, [
+                'required' => false,
+                'label' => 'BambooHR Link'
             ]);
 
         if ($this->select) {

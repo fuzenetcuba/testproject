@@ -30,6 +30,17 @@
         <dt>{{ 'Description' | trans({}, 'openingbackend') }}</dt>
         <dd>{{ entity.description }}</dd>
         <div class="hr-line-dashed"></div>
+        <dt>{{ 'BambooHR Link' | trans({}, 'openingbackend') }}</dt>
+        <dd class="text-navy">
+            {% if(entity.bambooHRLink is not empty) %}
+                <a href="{{ entity.bambooHRLink }}" title="{{ entity.bambooHRLink }}" target="_blank">
+                    {{ entity.bambooHRLink | truncate(25) }} <sub><span class="fa fa-external-link"></span></sub>
+                </a>
+            {% else %}
+                <span class="label label-default">No Link</span>
+            {% endif %}
+        </dd>
+        <div class="hr-line-dashed"></div>
         <dt>{{ 'Enabled' | trans({}, 'openingbackend') }}</dt>
         <dd>
             <div class="onoffswitch-ios switch-xs">

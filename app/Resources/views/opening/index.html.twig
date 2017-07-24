@@ -93,6 +93,12 @@
                             {% endif %}
                         </th>
                         <th class="text-navy">
+                            {{ knp_pagination_sortable(entities, 'BambooHR', 'e.bambooHRLink') }}
+                            {% if entities.isSorted('e.bambooHRLink') %}
+                                <span class="fa fa-sort"></span>
+                            {% endif %}
+                        </th>
+                        <th class="text-navy">
                             {{ knp_pagination_sortable(entities, 'Enabled' | trans({}, 'openingbackend'), 'e.enabled') }}
                             {% if entities.isSorted('e.enabled') %}
                                 <span class="fa fa-sort"></span>
@@ -130,6 +136,16 @@
                             </td>
 
                             <td>{{ entity.description }}</td>
+
+                            <td class="text-navy">
+                                {% if(entity.bambooHRLink is not empty) %}
+                                <a href="{{ entity.bambooHRLink }}" title="{{ entity.bambooHRLink }}" target="_blank">
+                                    {{ entity.bambooHRLink | truncate(25) }} <sub><span class="fa fa-external-link"></span></sub>
+                                </a>
+                                {% else %}
+                                    <span class="label label-default">No Link</span>
+                                {% endif %}
+                            </td>
 
                             <td id="value-user-enabled-{{ entity.id }}" class="text-center">
                                 <div class="onoffswitch-ios switch-xs">
@@ -174,7 +190,8 @@
 
                 <div class="form-group">
                     <div class="col-md-8 pagination--items">
-                        {{ knp_pagination_render(entities) }} <pagination></pagination>
+                        {{ knp_pagination_render(entities) }}
+                        <pagination></pagination>
                     </div>
                     <div class="col-md-4">
                         {% if is_granted('ROLE_ADMIN') %}

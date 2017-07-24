@@ -139,6 +139,23 @@
                                     {% endif %}
                                 </div>
                             </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.bambooHRLink.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.bambooHRLink) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.bambooHRLink, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.bambooHRLink.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.bambooHRLink.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
