@@ -94,10 +94,22 @@
                             {% if careers_apply %}
                                 <tr class="hidden-sm hidden-md hidden-lg">
                                     <td colspan="3">
-                                        <a title="{{ 'APPLY' | trans({}, 'careers') }}" class="btn btn-amber btn-block"
+                                        {#<a title="{{ 'APPLY' | trans({}, 'careers') }}" class="btn btn-amber btn-block"
                                            href="{{ path('careers_apply', {'slug':opening.slug}) }}">
                                             {{ 'APPLY' | trans({}, 'careers') }}
-                                        </a>
+                                        </a>#}
+
+                                        {% if(opening.bambooHRLink is not empty) %}
+                                            <a title="{{ 'APPLY' | trans({}, 'careers') }}" target="_blank" class="btn btn-amber btn-block"
+                                               href="{{ opening.bambooHRLink }}">
+                                                {{ 'APPLY' | trans({}, 'careers') }}
+                                            </a>
+                                        {% else %}
+                                            <a title="{{ 'APPLY' | trans({}, 'careers') }}" class="btn btn-default btn-block disabled"
+                                               href="#">
+                                                {{ 'APPLY' | trans({}, 'careers') }}
+                                            </a>
+                                        {% endif %}
                                     </td>
                                 </tr>
                             {% endif %}
@@ -113,10 +125,22 @@
                                 <td>{{ opening.description }}</td>
                                 {% if careers_apply %}
                                     <td>
-                                        <a title="{{ 'APPLY' | trans({}, 'careers') }}" class="btn btn-amber btn-block"
+                                        {#<a title="{{ 'APPLY' | trans({}, 'careers') }}" class="btn btn-amber btn-block"
                                            href="{{ path('careers_apply', {'slug':opening.slug}) }}">
                                             {{ 'APPLY' | trans({}, 'careers') }}
-                                        </a>
+                                        </a>#}
+
+                                        {% if(opening.bambooHRLink is not empty) %}
+                                            <a title="{{ 'APPLY' | trans({}, 'careers') }}" target="_blank" class="btn btn-amber btn-block"
+                                               href="{{ opening.bambooHRLink }}">
+                                                {{ 'APPLY' | trans({}, 'careers') }}
+                                            </a>
+                                        {% else %}
+                                            <a title="{{ 'APPLY' | trans({}, 'careers') }}" class="btn btn-default btn-block disabled"
+                                               href="#">
+                                                {{ 'APPLY' | trans({}, 'careers') }}
+                                            </a>
+                                        {% endif %}
                                     </td>
                                 {% endif %}
                             </tr>

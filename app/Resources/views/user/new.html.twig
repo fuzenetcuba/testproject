@@ -130,6 +130,23 @@
         </div>
     </div>
     <div class="hr-line-dashed"></div>
+    <div class="form-group{% if(form.subscribed.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+        <label for="enabled" class="col-md-2 control-label">{{ form_label(form.subscribed) }}</label>
+
+        <div class="col-md-1">
+            <div class="checkbox-inline">
+                {{ form_widget(form.subscribed, { 'attr': {'class' : 'form-control i-checks' }}) }}
+                {% if form.subscribed.vars['errors']|length > 0 %}
+                    <ul class="message">
+                        {% for error in form.subscribed.vars['errors'] %}
+                            <li>{{ error.message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="hr-line-dashed"></div>
     <div class="form-group{% if(form.roles.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
         <label for="roles" class="col-md-2 control-label">{{ form_label(form.roles) }} </label>
 

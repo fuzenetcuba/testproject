@@ -34,19 +34,19 @@ class MailsController extends Controller
 
                     // ignore the registered users email, they will be duplicated
                     $users = $data['subscribedUsers']->toArray();
-                    $users = array_merge($users, $this->get('customer.manager')->findAll());
+                    $users = array_merge($users, $this->get('customer.manager')->findAllSubscribed());
 
                 } elseif (EmailGroups::SUBSCRIBED_USERS === $data['groupOfUsers']) {
 
                     // ignore the subscribed users
                     $users = $data['registeredUsers']->toArray();
-                    $users = array_merge($users, $this->get('customer.manager')->findAllSubscribedUsers());
+                    $users = array_merge($users, $this->get('customer.manager')->findAllSubscribedByEmail());
 
                 } elseif (EmailGroups::ALL_USERS === $data['groupOfUsers']) {
 
                     // ignore both
-                    $users = $this->get('customer.manager')->findAll();
-                    $users = array_merge($users, $this->get('customer.manager')->findAllSubscribedUsers());
+                    $users = $this->get('customer.manager')->findAllSubscribed();
+                    $users = array_merge($users, $this->get('customer.manager')->findAllSubscribedByEmail());
                 } else {
 
                     // left blank, collect both fields and deduplicate

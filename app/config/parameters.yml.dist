@@ -41,8 +41,10 @@ parameters:
     customer.email.register.message: |
         Welcome to the Plaza Mariachi website, we which you well!
     customer.email.subscribe.subject: 'Thank you for subscribing'
-    cutomer.email.subscribe.message: |
-        You're now subscribed to the Plaza Mariachi website, we which you well!
+    customer.email.subscribe.messages:
+        subscribe: "You're now subscribed to the Plaza Mariachi website, we which you well!\n"
+        desubscribe: "Your subscription to the Plaza Mariachi website has been canceled!\n"
+        resubscribe: "You're now re-subscribed to the Plaza Mariachi website, we which you well!\n"
     customer.email.to.contact: noreply@test.com
     careers.pdf.store: '%kernel.root_dir%/../web/uploads'
     careers.pdf.store.report: '%kernel.root_dir%/../web/reports'

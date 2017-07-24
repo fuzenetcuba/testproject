@@ -3,7 +3,8 @@
 {% block title %} {{- "Subscribe for Deals" | trans({}, 'general') -}} {% endblock %}
 
 {% block metatags %}
-    <meta name="keywords" content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
+    <meta name="keywords"
+          content="{{- render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteBrand' })) -}},
     {{- 'Subscription request' | trans({}, 'general') -}},
     {{- 'Mall' | trans({}, 'homepage') -}},
     {{- 'Businesses' | trans({}, 'homepage') -}},
@@ -34,12 +35,23 @@
             <div class="row m-b">
                 <div class="col-lg-12 text-center">
                     <div class="section-line amber-line"></div>
-                    <h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerSubscribeForDeals' })) }}</h1>
-                    <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderSubscribeForDeals' })) }}</p>
-                    <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'textSubscribeForDeals' })) }}...</p>
+
+                    {% if(option == 'subscribe') %}
+                        <h1>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'headerSubscribeForDeals' })) }}</h1>
+                        <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'subheaderSubscribeForDeals' })) }}</p>
+                        <p>{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'textSubscribeForDeals' })) }}
+                            ...</p>
+                    {% elseif(option == 'desubscribe') %}
+                        <h1>{{ 'Cancel subscription' | trans({}, 'subscription') }}</h1>
+                        <p>{{ 'If you shoose cancel your subscription, you will not receive deals and coupons by emails in the future' | trans({}, 'subscription') }}...</p>
+                    {% elseif(option == 'resubscribe') %}
+                        <h1>{{ 'Re-subscribe for new deals' | trans({}, 'subscription') }}</h1>
+                        <p>{{ 'Please select what categories you are interested in and we will send you deals, coupon and more' | trans({}, 'subscription') }}...</p>
+                    {% endif %}
                 </div>
             </div>
             <div class="col-sm-6 col-sm-offset-3 text-center">
+
                 {{ form_start(form) }}
 
                 <div class="form-group{% if(form.email.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
@@ -55,21 +67,33 @@
 
                 </div>
 
-                <div class="form-group{% if(form.categories.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                {% if(option == 'subscribe' or option == 'resubscribe') %}
 
-                    {{ form_widget(form.categories, { 'attr': {
-                        'class' : 'form-control select2-field',
-                        'style' : 'width: 100%',
-                    }}) }}
-                    {% if form.categories.vars['errors']|length > 0 %}
-                        <ul class="message">
-                            {% for error in form.categories.vars['errors'] %}
-                                <li>{{ error.message | trans({}, 'subscription') }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
+                    <div class="form-group{% if(form.categories.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
 
-                </div>
+                        {{ form_widget(form.categories, { 'attr': {
+                            'class' : 'form-control select2-field',
+                            'style' : 'width: 100%',
+                        }}) }}
+                        {% if form.categories.vars['errors']|length > 0 %}
+                            <ul class="message">
+                                {% for error in form.categories.vars['errors'] %}
+                                    <li>{{ error.message | trans({}, 'subscription') }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
+                    </div>
+
+                {% endif %}
+
+                {% if(option == 'subscribe') %}
+
+                    <div class="hidden">
+                        {{ form_widget(form.subscribed) }}
+                    </div>
+
+                {% endif %}
 
                 <div class="form-group m-t-lg">
                     <div class="col-md-12">
@@ -82,6 +106,7 @@
                 </div>
 
                 {{ form_end(form) }}
+
             </div>
         </div>
     </section>

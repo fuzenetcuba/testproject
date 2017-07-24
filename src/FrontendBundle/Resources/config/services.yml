@@ -1,13 +1,13 @@
 services:
     kernel.request.remove.deal.filter:
         class: FrontendBundle\Listener\RequestListener
-        arguments: [@session, 'deals', 'deal_filter']
+        arguments: ['@session', 'deals', 'deal_filter']
         tags:
             - { name: 'kernel.event_listener', event: 'kernel.request' }
 
     kernel.request.remove.business.filter:
         class: FrontendBundle\Listener\RequestListener
-        arguments: [@session, 'businesses', 'business_filter']
+        arguments: ['@session', 'businesses', 'business_filter']
         tags:
             - { name: 'kernel.event_listener', event: 'kernel.request' }
 
@@ -20,18 +20,18 @@ services:
 
     user.registered.reward.listener:
         class: FrontendBundle\Listener\UserRegisteredRewardListener
-        arguments: [@fos_user.user_manager, @reward.repository]
+        arguments: ['@fos_user.user_manager', '@reward.repository']
         tags:
             - { name: kernel.event_subscriber }
 
     user.registered.listener:
         class: FrontendBundle\Listener\UserRegisteredListener
-        arguments: [@mailer, @templating, %customer.email.from%, %customer.email.register.subject%, %customer.email.register.message%]
+        arguments: ['@mailer', '@templating', '%customer.email.from%', '%customer.email.register.subject%', '%customer.email.register.message%']
         tags:
             - { name: kernel.event_subscriber }
 
     user.subscribed.listener:
         class: FrontendBundle\Listener\UserSubscribedListener
-        arguments: [@mailer, @templating, %customer.email.from%, %customer.email.subscribe.subject%, %cutomer.email.subscribe.message%]
+        arguments: ['@mailer', '@templating', '%customer.email.from%', '%customer.email.subscribe.subject%', '%customer.email.subscribe.messages%']
         tags:
             - { name: kernel.event_subscriber }

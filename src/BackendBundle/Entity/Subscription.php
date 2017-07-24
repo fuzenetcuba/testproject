@@ -40,6 +40,13 @@ class Subscription
     private $date;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    private $subscribed;
+
+    /**
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="subscriptions")
@@ -50,6 +57,7 @@ class Subscription
     public function __construct()
     {
         $this->date = new \DateTime("NOW");
+        $this->subscribed = true;
 
         $this->categories = new ArrayCollection();
     }
@@ -161,5 +169,28 @@ class Subscription
     public function setCategories($categories)
     {
         return $this->categories = $categories;
+    }
+
+    /**
+     * Set subscribed
+     *
+     * @param boolean $subscribed
+     * @return Subscription
+     */
+    public function setSubscribed($subscribed)
+    {
+        $this->subscribed = $subscribed;
+
+        return $this;
+    }
+
+    /**
+     * Get subscribed
+     *
+     * @return boolean 
+     */
+    public function getSubscribed()
+    {
+        return $this->subscribed;
     }
 }

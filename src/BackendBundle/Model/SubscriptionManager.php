@@ -146,6 +146,7 @@ class SubscriptionManager implements ManagerInterface
             ->from('BackendBundle:Subscription', 's')
             ->leftJoin('s.categories', 'c')
             ->where('c.id = :id')
+            ->andWhere('s.subscribed = true')
             ->setParameter('id', $category->getId())
             ->getQuery()
             ->getResult();

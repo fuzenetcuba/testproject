@@ -36,6 +36,17 @@
             </div>
         </dd>
         <div class="hr-line-dashed"></div>
+        <dt>{{ 'Email subscribed' | trans({}, 'fosuser') }}</dt>
+        <dd>
+            <div class="onoffswitch-ios switch-xs">
+                {% if (entity.subscribed) %}
+                    <label class="onoffswitch-ios-label checked"></label>
+                {% else %}
+                    <label class="onoffswitch-ios-label"></label>
+                {% endif %}
+            </div>
+        </dd>
+        <div class="hr-line-dashed"></div>
         {% if(entity.image is not null) %}
             <dt>{{ 'Photo' | trans({}, 'customerbackend') }}</dt>
             <dd>

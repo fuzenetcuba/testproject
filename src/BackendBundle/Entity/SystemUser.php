@@ -95,6 +95,13 @@ class SystemUser extends BaseUser
     private $lastName;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    private $subscribed;
+
+    /**
      * @var string
      *
      * @Assert\Length(
@@ -158,6 +165,8 @@ class SystemUser extends BaseUser
     public function __construct()
     {
         parent::__construct();
+
+        $this->subscribed = true;
 
         $this->business = new ArrayCollection();
         $this->rewards = new ArrayCollection();
@@ -633,5 +642,28 @@ class SystemUser extends BaseUser
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * Set subscribed
+     *
+     * @param boolean $subscribed
+     * @return SystemUser
+     */
+    public function setSubscribed($subscribed)
+    {
+        $this->subscribed = $subscribed;
+
+        return $this;
+    }
+
+    /**
+     * Get subscribed
+     *
+     * @return boolean 
+     */
+    public function getSubscribed()
+    {
+        return $this->subscribed;
     }
 }

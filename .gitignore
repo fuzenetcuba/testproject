@@ -9,7 +9,7 @@ vendor/*
 web/bundles/*
 web/images/business/*
 web/images/business/gallery/*
-web/images/post/gallery*
+web/images/post/gallery/*
 web/images/settings/*
 web/images/deals/*
 web/images/users/*

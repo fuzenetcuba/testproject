@@ -26,6 +26,10 @@ class customerType extends AbstractType
             ))
             ->add('email', EmailType::class, array('required' => true, 'attr' => array('autocomplete' => 'off')))
             ->add('enabled')
+            ->add('subscribed', null, array(
+                'label' => 'Email subscribed',
+                'translation_domain' => 'fosuser'
+            ))
             ->add('business')
             ->add('rewards')
             ->add('firstName')

@@ -29,8 +29,10 @@ security:
                 login_path:             fos_user_security_login
                 check_path:             fos_user_security_check
                 always_use_default_target_path: true
+                target_path_parameter:          _target_path
                 default_target_path:            /
                 use_referer: true
+                success_handler: app.login_handler
             logout:       true
             anonymous:    true
 
