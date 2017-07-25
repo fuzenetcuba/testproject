@@ -43,7 +43,7 @@ parameters:
     customer.email.subscribe.subject: 'Thank you for subscribing'
     customer.email.subscribe.messages:
         subscribe: "You're now subscribed to the Plaza Mariachi website, we which you well!\n"
-        desubscribe: "Your subscription to the Plaza Mariachi website has been canceled!\n"
+        desubscribe: "Your subscription to the Plaza Mariachi website has been canceled!\nIf you want to re-active your subscription in the future, you must go to the Plaza Mariachi website, and use the same link to subscribe.\n"
         resubscribe: "You're now re-subscribed to the Plaza Mariachi website, we which you well!\n"
     customer.email.to.contact: noreply@test.com
     careers.pdf.store: '%kernel.root_dir%/../web/uploads'
