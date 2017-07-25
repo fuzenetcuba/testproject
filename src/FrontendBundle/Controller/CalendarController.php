@@ -64,16 +64,16 @@ class CalendarController extends Controller
             ];
         }
 
-        if (0 === count($events) && 'calendar' !== $view) {
+        if ('calendar' !== $view && 0 === count($events)) {
             return new RedirectResponse(
                 $this->generateUrl('calendar', ['view' => 'calendar'])
             );
         }
 
         usort($events, function($a, $b) {
-            return new $a['start']['dateTime'] >= $b['start']['dateTime'];
+            return $a['start']['dateTime'] > $b['start']['dateTime'];
         });
-
+        
         return $this->render(sprintf('FrontendBundle:Calendar:%s.html.twig', $view), [
             'events' => $events,
         ]);
@@ -116,7 +116,7 @@ class CalendarController extends Controller
         }
 
         usort($events, function($a, $b) {
-            return new $a['start']['dateTime'] >= $b['start']['dateTime'];
+            return $a['start']['dateTime'] >= $b['start']['dateTime'];
         });
 
         $events = array_map(function ($event) {
