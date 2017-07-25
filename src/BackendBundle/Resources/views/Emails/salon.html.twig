@@ -621,16 +621,12 @@
 
                             <div style="text-align: center; background-color: #ccc; color: #000; font-size: 10px; padding: 3px 20px;">
                                 <p>
-                                    You are receiving this email because you are user of the Plaza Mariachi website
-                                    and by default you are subscribed to our newsletters.
-                                    If you do not want to receive this emails anymore, please <a target="_blank"
-                                            href="{{ path('fos_user_profile_show') }}">change your preferences</a>.
-                                </p>
-                                <p>
-                                    On the other hand, if you are not user of Plaza Mariachi website, maybe you were
-                                    subscribed to our newsletters in the past, in that case, you must <a target="_blank"
-                                            href="{{ path('subscription_cancel') }}">cancel your subscription</a> from
-                                    our newsletters.
+                                    You are receiving this email because you are a registered user of the Plaza Mariachi
+                                    website or indicated that you would like to receive offers from us and, by default,
+                                    you are subscribed to our emails. If you do not want to receive our emails anymore,
+                                    you can unsubscribe at any time at this link
+                                    <a target="_blank"
+                                       href="{{ absolute_url(path('subscription_cancel')) }}">cancel subscription</a>
                                 </p>
                             </div>
 

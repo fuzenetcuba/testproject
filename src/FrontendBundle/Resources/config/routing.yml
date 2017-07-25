@@ -44,10 +44,6 @@ subscription_cancel:
     path:     /subscribe/cancel
     defaults: { _controller: FrontendBundle:Subscription:desubscribe }
 
-subscription_resubscribe:
-    path:     /subscribe/resubscribe
-    defaults: { _controller: FrontendBundle:Subscription:resubscribe }
-
 subscription_confirm:
     path:     /subscribe/confirm/{id}/{option}
     defaults: { _controller: FrontendBundle:Subscription:confirm, option: subscribe|desubscribe|resubscribe }
