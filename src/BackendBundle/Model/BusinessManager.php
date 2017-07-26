@@ -333,6 +333,7 @@ class BusinessManager implements ManagerInterface
 
         $query
             ->join('b.openings', 'o')
+            ->andWhere('o.enabled = true')
             ->addGroupBy('o.id')
             ->andHaving('count(o) > 0')
         ;
