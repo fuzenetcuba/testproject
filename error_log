@@ -21,3 +21,11 @@ Did you forget a "use" statement for another namespace?' in /home/pmmusiccity/pu
 Stack trace:
 #0 {main}
   thrown in /home/pmmusiccity/public_html/app/AppKernel.php on line 35
+[24-Jul-2017 20:48:00 UTC] PHP Fatal error:  Uncaught Symfony\Component\Debug\Exception\ClassNotFoundException: Attempted to load class "WkGoogleSpreadsheetBundle" from namespace "Wk\GoogleSpreadsheetBundle".
+Did you forget a "use" statement for another namespace? in /home/pmmusiccity/public_html/app/AppKernel.php:32
+Stack trace:
+#0 /home/pmmusiccity/public_html/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php(430): AppKernel->registerBundles()
+#1 /home/pmmusiccity/public_html/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Kernel.php(130): Symfony\Component\HttpKernel\Kernel->initializeBundles()
+#2 /home/pmmusiccity/public_html/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Console/Application.php(70): Symfony\Component\HttpKernel\Kernel->boot()
+#3 /home/pmmusiccity/public_html/vendor/symfony/symfony/src/Symfony/Component/Console/Application.php(123): Symfony\Bundle\FrameworkBundle\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 in /home/pmmusiccity/public_html/app/AppKernel.php on line 32
