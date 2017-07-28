@@ -327,7 +327,9 @@ class DefaultController extends Controller
             }
 
             // Include url of Business from DB
-            $businesses = $em->getRepository('BackendBundle:Business')->findAll();
+            $businesses = $em->getRepository('BackendBundle:Business')->findBy([
+                'isPublic' => true
+            ]);
             foreach ($businesses as $business) {
                 $urls[] = array(
                     'loc' => $this->get('router')->generate('business_details', array(
