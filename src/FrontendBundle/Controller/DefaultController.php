@@ -341,19 +341,6 @@ class DefaultController extends Controller
                 );
             }
 
-            // Include url of Careers from DB
-            $openings = $em->getRepository('BackendBundle:Opening')->findAll();
-            foreach ($openings as $opening) {
-                $urls[] = array(
-                    'loc' => $this->get('router')->generate('careers_apply', array(
-                        '_locale' => $lang,
-                        'slug' => $opening->getSlug()
-                    )),
-                    'changefreq' => 'weekly',
-                    'priority' => '0.5'
-                );
-            }
-
             // Include url of Posts from DB
             $posts = $em->getRepository('BackendBundle:Post')->findAll();
             foreach ($posts as $post) {
