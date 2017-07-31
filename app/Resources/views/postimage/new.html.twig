@@ -50,6 +50,10 @@
 
                 <div class="col-md-6">
                     {{ form_widget(form.name, { 'attr': {'class' : 'form-control'}}) }}
+                    <span id="helpBlock" class="help-block">
+                        <i class="fa fa-info-circle"></i>
+                        {{ 'The title must be all lowercase and use hyphen instead of spaces' | trans({}, 'postbackend') }}
+                    </span>
                     {% if form.name.vars['errors']|length > 0 %}
                         <ul class="message">
                             {% for error in form.name.vars['errors'] %}

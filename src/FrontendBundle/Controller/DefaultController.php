@@ -327,25 +327,14 @@ class DefaultController extends Controller
             }
 
             // Include url of Business from DB
-            $businesses = $em->getRepository('BackendBundle:Business')->findAll();
+            $businesses = $em->getRepository('BackendBundle:Business')->findBy([
+                'isPublic' => true
+            ]);
             foreach ($businesses as $business) {
                 $urls[] = array(
                     'loc' => $this->get('router')->generate('business_details', array(
                         '_locale' => $lang,
                         'slug' => $business->getSlug()
-                    )),
-                    'changefreq' => 'weekly',
-                    'priority' => '0.5'
-                );
-            }
-
-            // Include url of Careers from DB
-            $openings = $em->getRepository('BackendBundle:Opening')->findAll();
-            foreach ($openings as $opening) {
-                $urls[] = array(
-                    'loc' => $this->get('router')->generate('careers_apply', array(
-                        '_locale' => $lang,
-                        'slug' => $opening->getSlug()
                     )),
                     'changefreq' => 'weekly',
                     'priority' => '0.5'

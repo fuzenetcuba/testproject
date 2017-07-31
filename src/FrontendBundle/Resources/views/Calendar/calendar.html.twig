@@ -41,9 +41,13 @@
             </div>
 
             <p class="text-muted-strong text-justify">
-                {{ 'Come to the Plaza Mariachi to enjoy great food and beverages, art, shopping and live entertainment. Below you will find a list of the acts that are scheduled to perform at Plaza Mariachi to help you plan your visit. Please note that dates and times are subject to change.' | trans({}, 'calendar') }}
+                {% trans with {'%link%' : 'https://plazamariachi.com/special-events-in-nashville'} from 'calendar' %}
+                Come to the Plaza Mariachi to enjoy great food and beverages, art, shopping and live entertainment.
+                Below you will find a list of the acts that are scheduled to perform at Plaza Mariachi to help you plan
+                your visit. You can check our <a href="%link%">special events here</a>. Please note that dates and times are subject to
+                change.
+                {% endtrans %}
             </p>
-
             <div class="row calendar--buttons m-b-md m-t-md text-center">
                 <div class="pull-right calendar--selector m-r-md">
                     {{ 'VIEW AS' | trans({}, 'calendar') }}
