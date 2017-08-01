@@ -4297,3 +4297,14 @@ my-email::before {
 .no-pointer-event iframe {
  pointer-events: none;
 }
+
+#map {
+    background-color: transparent !important;
+}
+
+@media (max-width: 1024px) {
+    #map {
+        /*background-color: transparent !important;*/
+        margin-top: 60px !important;
+    }
+}
