@@ -4308,3 +4308,11 @@ my-email::before {
         margin-top: 60px !important;
     }
 }
+
+.flex-container {
+    display: flex;
+}
+
+.flex-center-h {
+    justify-content: center;
+}
