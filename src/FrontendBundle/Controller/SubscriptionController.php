@@ -179,7 +179,7 @@ class SubscriptionController extends Controller
 
         $form
             ->add('email', EmailType::class)
-            ->add('submit', SubmitType::class, array('label' => 'DESUBSCRIBE', 'translation_domain' => 'subscription'));
+            ->add('submit', SubmitType::class, array('label' => 'CANCEL SUBSCRIPTION', 'translation_domain' => 'subscription'));
 
         return $form;
     }
