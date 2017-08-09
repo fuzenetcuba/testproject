@@ -152,7 +152,7 @@ class SubscriptionController extends Controller
                     $form->get('email')->addError(new FormError('Does not exist a subscription with with email'));
                 } else {
                     // notify a custom event to handle a new subscribed user
-                    $this->get('event_dispatcher')->dispatch(self::USER_DESUBSCRIBED, new FormEvent($form, $request));
+//                    $this->get('event_dispatcher')->dispatch(self::USER_DESUBSCRIBED, new FormEvent($form, $request));
 
                     return $this->redirectToRoute('subscription_confirm', array('id' => (!!$subscription ? $subscription->getId() : null), 'option' => 'desubscribe'));
                 }
