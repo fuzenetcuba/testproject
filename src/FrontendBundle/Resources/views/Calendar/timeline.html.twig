@@ -77,10 +77,10 @@
                             {% endif %}
                             {# <a href="timeline_2.html#" class="btn btn-sm btn-primary"> More info</a> #}
                             <span class="vertical-date">
-                            <div></div>
-                            <small data-date="{{ event.start.dateTime | date }}"></small><br/>
-                                {# <small><i class="fa fa-clock-o"></i> {{ event.start.dateTime | date('h:i A')  }}</small> #}
-                        </span>
+                                <div></div>
+                                <small data-date="{{ event.start.dateTime | date }}" data-end="{{ event.end.dateTime | date }}"></small><br/>
+                                    {# <small><i class="fa fa-clock-o"></i> {{ event.start.dateTime | date('h:i A')  }}</small> #}
+                            </span>
                         </div>
                     </div>
                 {% endfor %}
@@ -104,10 +104,12 @@
             $('.vertical-date small:first-of-type').each(function () {
                 var str = $(this).data('date');
                 var date = moment(str);
+                str = $(this).data('end');
+                var end = moment(str);
 
                 $(this).text(date.locale('{{ app.request.get('_locale') }}').from(now));
                 $(this).prev().html(
-                    date.format('MM/DD/YYYY h:mm A')
+                    date.format('MM/DD/YYYY h:mm A') + " - " + end.format('h:mm A')
                 )
             });
         });

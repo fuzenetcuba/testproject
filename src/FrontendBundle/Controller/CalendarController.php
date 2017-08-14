@@ -34,8 +34,8 @@ class CalendarController extends Controller
 
         $spreadsheet = $service->getSpreadsheets()->getByTitle('SCHEDULE entertaiment');
         $worksheet   = $spreadsheet->getWorksheets()->getByTitle('Scheduling');
-        $cellFeed = $worksheet->getCellFeed();
-        $entries  = $cellFeed->getEntries();
+        $cellFeed    = $worksheet->getCellFeed();
+        $entries     = $cellFeed->getEntries();
 
         $events = [];
 
@@ -44,23 +44,25 @@ class CalendarController extends Controller
             $startTime = \DateTime::createFromFormat('m/d/Y h:i a', sprintf('%s %s',
                 self::getValue($i, 1, $entries), self::getValue($i, 2, $entries)));
 
-            if (false === $startTime || $startTime < $now) {
+            $endTime = \DateTime::createFromFormat('m/d/Y h:i a', sprintf('%s %s',
+                self::getValue($i, 1, $entries), self::getValue($i, 3, $entries)));
+
+            if (false === $endTime || $endTime < $now) {
                 continue;
             }
 
             $status = self::getValue($i, 10, $entries);
 
             if (null === $status || !in_array(strtolower($status), self::ALLOWED_STATES)) {
-                continue ;
+                continue;
             }
 
             $events[] = [
                 'summary'     => self::getValue($i, 5, $entries),
                 'description' => self::getValue($i, 7, $entries),
                 'location'    => self::getValue($i, 8, $entries),
-                'start'       => [
-                    'dateTime' => $startTime,
-                ],
+                'start'       => ['dateTime' => $startTime,],
+                'end'         => ['dateTime' => $endTime,],
             ];
         }
 
@@ -70,10 +72,10 @@ class CalendarController extends Controller
             );
         }
 
-        usort($events, function($a, $b) {
+        usort($events, function ($a, $b) {
             return $a['start']['dateTime'] > $b['start']['dateTime'];
         });
-        
+
         return $this->render(sprintf('FrontendBundle:Calendar:%s.html.twig', $view), [
             'events' => $events,
         ]);
@@ -85,8 +87,8 @@ class CalendarController extends Controller
 
         $spreadsheet = $service->getSpreadsheets()->getByTitle('SCHEDULE entertaiment');
         $worksheet   = $spreadsheet->getWorksheets()->getByTitle('Scheduling');
-        $cellFeed = $worksheet->getCellFeed();
-        $entries  = $cellFeed->getEntries();
+        $cellFeed    = $worksheet->getCellFeed();
+        $entries     = $cellFeed->getEntries();
 
         $events = [];
 
@@ -95,27 +97,28 @@ class CalendarController extends Controller
             $startTime = \DateTime::createFromFormat('m/d/Y h:i a', sprintf('%s %s',
                 self::getValue($i, 1, $entries), self::getValue($i, 2, $entries)));
 
-            if (false === $startTime || $startTime < $now) {
+            $endTime = \DateTime::createFromFormat('m/d/Y h:i a', sprintf('%s %s',
+                self::getValue($i, 1, $entries), self::getValue($i, 3, $entries)));
+
+            if (false === $endTime || $endTime < $now) {
                 continue;
             }
-
             $status = self::getValue($i, 10, $entries);
 
             if (null === $status || !in_array(strtolower($status), self::ALLOWED_STATES)) {
-                continue ;
+                continue;
             }
 
             $events[] = [
                 'summary'     => self::getValue($i, 5, $entries),
                 'description' => self::getValue($i, 7, $entries),
                 'location'    => self::getValue($i, 8, $entries),
-                'start'       => [
-                    'dateTime' => $startTime,
-                ],
+                'start'       => ['dateTime' => $startTime,],
+                'end'         => ['dateTime' => $endTime,],
             ];
         }
 
-        usort($events, function($a, $b) {
+        usort($events, function ($a, $b) {
             return $a['start']['dateTime'] >= $b['start']['dateTime'];
         });
 
@@ -123,6 +126,7 @@ class CalendarController extends Controller
             return [
                 'title'       => $event['summary'],
                 'start'       => $event['start']['dateTime']->format('Y-m-d H:i:s'),
+                'end'         => $event['start']['dateTime']->format('Y-m-d H:i:s'),
                 'description' => $event['description'],
                 'location'    => isset($event['location']) ? $event['location'] : '',
             ];
