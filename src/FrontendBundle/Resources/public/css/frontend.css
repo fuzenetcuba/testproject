@@ -4404,7 +4404,7 @@ my-email::before {
 
 blockquote {
     border: none;
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: "Palatyno", Georgia, "Times New Roman", Times, serif;
     margin-bottom: -30px;
     position: relative;
     max-width: 400px;
@@ -4424,7 +4424,7 @@ blockquote h3:before {
     position: absolute;
     top: -0.2em;
     left: -0.5em;
-    font-family: 'Georgia';
+    font-family: "Palatyno", 'Georgia';
 }
 
 blockquote h3:after {
