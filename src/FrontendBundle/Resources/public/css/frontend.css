@@ -4295,7 +4295,7 @@ my-email::before {
 }
 
 .no-pointer-event iframe {
- pointer-events: none;
+    pointer-events: none;
 }
 
 #map {
@@ -4317,57 +4317,56 @@ my-email::before {
     justify-content: center;
 }
 
-.alert-message
-{
+.alert-message {
     margin: 20px 0;
     padding: 20px;
     border-left: 3px solid #eee;
 }
-.alert-message h4
-{
+
+.alert-message h4 {
     margin-top: 0;
     margin-bottom: 5px;
 }
-.alert-message p:last-child
-{
+
+.alert-message p:last-child {
     font-size: 1.2em;
     margin-bottom: 0;
     line-height: 1.8;
 }
-.alert-message code
-{
+
+.alert-message code {
     background-color: #fff;
     border-radius: 3px;
 }
-.alert-message-success
-{
+
+.alert-message-success {
     background-color: #F4FDF0;
     border-color: #3C763D;
 }
-.alert-message-success h4
-{
+
+.alert-message-success h4 {
     color: #3C763D;
 }
-.alert-message-danger
-{
+
+.alert-message-danger {
     background-color: #fdf7f7;
     border-color: #d9534f;
 }
-.alert-message-danger h4
-{
+
+.alert-message-danger h4 {
     color: #d9534f;
 }
-.alert-message-warning
-{
+
+.alert-message-warning {
     background-color: #fcf8f2;
     border-color: #f0ad4e;
 }
-.alert-message-warning h4
-{
+
+.alert-message-warning h4 {
     color: #f0ad4e;
 }
-.alert-message-info
-{
+
+.alert-message-info {
     background-color: #f4f8fa;
     border-color: #D89802;
 }
@@ -4376,30 +4375,65 @@ my-email::before {
     color: #565656;
 }
 
-.alert-message-info h4
-{
+.alert-message-info h4 {
     color: #D89802;
 }
-.alert-message-default
-{
+
+.alert-message-default {
     background-color: #EEE;
     border-color: #B4B4B4;
 }
-.alert-message-default h4
-{
+
+.alert-message-default h4 {
     color: #000;
 }
-.alert-message-notice
-{
+
+.alert-message-notice {
     background-color: #FCFCDD;
     border-color: #BDBD89;
 }
-.alert-message-notice h4
-{
+
+.alert-message-notice h4 {
     color: #444;
 }
 
 .alert-icon i {
     font-size: 4em;
     margin-right: 20px;
+}
+
+blockquote {
+    border: none;
+    font-family: "Palatyno", Georgia, "Times New Roman", Times, serif;
+    margin-bottom: -30px;
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+    padding-left: 0.4em;
+}
+
+blockquote h3 {
+    font-size: 21px;
+}
+
+blockquote h3:before {
+    content: "\201C";
+    font-weight: bold;
+    font-size: 100px;
+    color: #FFB200;
+    position: absolute;
+    top: -0.2em;
+    left: -0.5em;
+    font-family: "Palatyno", 'Georgia';
+}
+
+blockquote h3:after {
+    content: "\201D";
+    font-weight: bold;
+    font-size: 100px;
+    color: #FFB200;
+    position: absolute;
+    bottom: -0.6em;
+    right: 0;
+    fonxt-family: 'Georgia';
 }
