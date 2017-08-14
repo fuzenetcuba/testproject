@@ -34,8 +34,8 @@ class CalendarController extends Controller
 
         $spreadsheet = $service->getSpreadsheets()->getByTitle('SCHEDULE entertaiment');
         $worksheet   = $spreadsheet->getWorksheets()->getByTitle('Scheduling');
-        $cellFeed = $worksheet->getCellFeed();
-        $entries  = $cellFeed->getEntries();
+        $cellFeed    = $worksheet->getCellFeed();
+        $entries     = $cellFeed->getEntries();
 
         $events = [];
 
@@ -44,14 +44,17 @@ class CalendarController extends Controller
             $startTime = \DateTime::createFromFormat('m/d/Y h:i a', sprintf('%s %s',
                 self::getValue($i, 1, $entries), self::getValue($i, 2, $entries)));
 
-            if (false === $startTime || $startTime < $now) {
+            $endTime = \DateTime::createFromFormat('m/d/Y h:i a', sprintf('%s %s',
+                self::getValue($i, 1, $entries), self::getValue($i, 3, $entries)));
+
+            if (false === $endTime || $endTime < $now) {
                 continue;
             }
 
             $status = self::getValue($i, 10, $entries);
 
             if (null === $status || !in_array(strtolower($status), self::ALLOWED_STATES)) {
-                continue ;
+                continue;
             }
 
             $events[] = [
@@ -70,10 +73,10 @@ class CalendarController extends Controller
             );
         }
 
-        usort($events, function($a, $b) {
+        usort($events, function ($a, $b) {
             return $a['start']['dateTime'] > $b['start']['dateTime'];
         });
-        
+
         return $this->render(sprintf('FrontendBundle:Calendar:%s.html.twig', $view), [
             'events' => $events,
         ]);
@@ -85,8 +88,8 @@ class CalendarController extends Controller
 
         $spreadsheet = $service->getSpreadsheets()->getByTitle('SCHEDULE entertaiment');
         $worksheet   = $spreadsheet->getWorksheets()->getByTitle('Scheduling');
-        $cellFeed = $worksheet->getCellFeed();
-        $entries  = $cellFeed->getEntries();
+        $cellFeed    = $worksheet->getCellFeed();
+        $entries     = $cellFeed->getEntries();
 
         $events = [];
 
@@ -95,14 +98,16 @@ class CalendarController extends Controller
             $startTime = \DateTime::createFromFormat('m/d/Y h:i a', sprintf('%s %s',
                 self::getValue($i, 1, $entries), self::getValue($i, 2, $entries)));
 
-            if (false === $startTime || $startTime < $now) {
+            $endTime = \DateTime::createFromFormat('m/d/Y h:i a', sprintf('%s %s',
+                self::getValue($i, 1, $entries), self::getValue($i, 3, $entries)));
+
+            if (false === $endTime || $endTime < $now) {
                 continue;
             }
-
             $status = self::getValue($i, 10, $entries);
 
             if (null === $status || !in_array(strtolower($status), self::ALLOWED_STATES)) {
-                continue ;
+                continue;
             }
 
             $events[] = [
@@ -115,7 +120,7 @@ class CalendarController extends Controller
             ];
         }
 
-        usort($events, function($a, $b) {
+        usort($events, function ($a, $b) {
             return $a['start']['dateTime'] >= $b['start']['dateTime'];
         });
 
