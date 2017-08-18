@@ -222,10 +222,13 @@ body.landing-page {
     color: inherit;
 }
 
-.landing-page .navbar-default .navbar-brand:hover,
-.landing-page .navbar-default .navbar-brand:focus {
+.landing-page .navbar-default .navbar-brand:hover {
     background: #B0B42B;
     color: #fff;
+}
+
+.landing-page .navbar-default .navbar-brand:focus {
+    background: transparent !important;
 }
 
 .landing-page .navbar-default .navbar-brand {
