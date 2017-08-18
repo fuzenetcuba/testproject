@@ -4440,3 +4440,8 @@ blockquote h3:after {
     right: 0;
     fonxt-family: 'Georgia';
 }
+
+.home-banner {
+    padding-top: 40px;
+    max-height: 200px;
+}
