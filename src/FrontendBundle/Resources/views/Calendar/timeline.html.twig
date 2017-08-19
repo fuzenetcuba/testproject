@@ -80,6 +80,12 @@
                                 <div></div>
                                 <small data-date="{{ event.start.dateTime | date }}" data-end="{{ event.end.dateTime | date }}"></small><br/>
                                     {# <small><i class="fa fa-clock-o"></i> {{ event.start.dateTime | date('h:i A')  }}</small> #}
+
+                                {% if event.url %}
+                                    <a href="{{ event.url }}" class="btn btn-amber m-t-md">
+                                        {{ 'BUY TICKETS' | trans({}, 'calendar') }}
+                                    </a>
+                                {% endif %}
                             </span>
                         </div>
                     </div>
