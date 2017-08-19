@@ -89,14 +89,19 @@
                     var closeButton = $('<span />', {'class': 'event--close'}).html("&times;");
                     var description = $('<span />', {'class': 'event--description'}).text(calEvent.description);
                     var location = calEvent.location;
+                    var tickets = calEvent.tickets_url;
 
                     if (calEvent.location) {
-                        var location = $('<small />', {'class': 'event--location'}).html('<i class="fa fa-map-marker"></i> ' + calEvent.location);
+                        location = $('<small />', {'class': 'event--location'}).html('<i class="fa fa-map-marker"></i> ' + calEvent.location);
+                    }
+
+                    if (calEvent.tickets_url) {
+                        tickets = '<a class="btn btn-primary btn-sm" target="_blank" href="' + calEvent.tickets_url + '">{{ "Buy Tickets" | trans({}, "calendar" ) }}</a>';
                     }
 
                     if ($(this).data("bs.popover") == undefined) {
                         $(this).popover({
-                            content: description.append(location),
+                            content: description.append(location).append(tickets),
                             title: title.append(closeButton),
                             html: true,
                             placement: 'auto top'

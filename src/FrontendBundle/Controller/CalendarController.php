@@ -63,6 +63,7 @@ class CalendarController extends Controller
                 'location'    => self::getValue($i, 8, $entries),
                 'start'       => ['dateTime' => $startTime,],
                 'end'         => ['dateTime' => $endTime,],
+                'tickets_url' => self::getValue($i, 13, $entries),
             ];
         }
 
@@ -115,6 +116,7 @@ class CalendarController extends Controller
                 'location'    => self::getValue($i, 8, $entries),
                 'start'       => ['dateTime' => $startTime,],
                 'end'         => ['dateTime' => $endTime,],
+                'tickets_url' => self::getValue($i, 13, $entries),
             ];
         }
 
