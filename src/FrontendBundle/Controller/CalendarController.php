@@ -61,9 +61,9 @@ class CalendarController extends Controller
                 'summary'     => self::getValue($i, 5, $entries),
                 'description' => self::getValue($i, 7, $entries),
                 'location'    => self::getValue($i, 8, $entries),
+                'url'         => self::getValue($i, 13, $entries),
                 'start'       => ['dateTime' => $startTime,],
                 'end'         => ['dateTime' => $endTime,],
-                'tickets_url' => self::getValue($i, 13, $entries),
             ];
         }
 
@@ -114,9 +114,9 @@ class CalendarController extends Controller
                 'summary'     => self::getValue($i, 5, $entries),
                 'description' => self::getValue($i, 7, $entries),
                 'location'    => self::getValue($i, 8, $entries),
+                'url'         => self::getValue($i, 13, $entries),
                 'start'       => ['dateTime' => $startTime,],
                 'end'         => ['dateTime' => $endTime,],
-                'tickets_url' => self::getValue($i, 13, $entries),
             ];
         }
 
@@ -129,6 +129,7 @@ class CalendarController extends Controller
                 'title'       => $event['summary'],
                 'start'       => $event['start']['dateTime']->format('Y-m-d H:i:s'),
                 'end'         => $event['start']['dateTime']->format('Y-m-d H:i:s'),
+                'url'         => $event['url'],
                 'description' => $event['description'],
                 'location'    => isset($event['location']) ? $event['location'] : '',
             ];

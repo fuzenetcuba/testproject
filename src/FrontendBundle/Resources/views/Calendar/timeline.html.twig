@@ -75,14 +75,17 @@
                                     <i class="fa fa-map-marker"></i> {{ event.location }}
                                 </p>
                             {% endif %}
-                            {% if event.tickets_url is defined and event.tickets_url is not empty %}
-                                <a class="btn btn-primary btn-sm" target="_blank" href="{{ event.tickets_url }}">{{ 'Buy Tickets' | trans({}, 'calendar' ) }}</a>
-                            {% endif %}
                             {# <a href="timeline_2.html#" class="btn btn-sm btn-primary"> More info</a> #}
                             <span class="vertical-date">
                                 <div></div>
                                 <small data-date="{{ event.start.dateTime | date }}" data-end="{{ event.end.dateTime | date }}"></small><br/>
                                     {# <small><i class="fa fa-clock-o"></i> {{ event.start.dateTime | date('h:i A')  }}</small> #}
+
+                                {% if event.url is defined and event.url is not empty %}
+                                    <a href="{{ event.url }}" target="_blank" class="btn btn-amber m-t-md">
+                                        {{ 'BUY TICKETS' | trans({}, 'calendar') }}
+                                    </a>
+                                {% endif %}
                             </span>
                         </div>
                     </div>
