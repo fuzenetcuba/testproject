@@ -70,7 +70,7 @@
                             {# <p class="col-sm-4">
                                 <i class="fa fa-clock-o"></i> {{ event.start.dateTime | date('h:i A')  }}
                             </p> #}
-                            {% if event.location is defined %}
+                            {% if event.location is defined and event.location is not empty %}
                                 <p class="col-sm-8">
                                     <i class="fa fa-map-marker"></i> {{ event.location }}
                                 </p>
@@ -80,6 +80,12 @@
                                 <div></div>
                                 <small data-date="{{ event.start.dateTime | date }}" data-end="{{ event.end.dateTime | date }}"></small><br/>
                                     {# <small><i class="fa fa-clock-o"></i> {{ event.start.dateTime | date('h:i A')  }}</small> #}
+
+                                {% if event.url is defined and event.url is not empty %}
+                                    <a href="{{ event.url }}" target="_blank" class="btn btn-amber m-t-md">
+                                        {{ 'BUY TICKETS' | trans({}, 'calendar') }}
+                                    </a>
+                                {% endif %}
                             </span>
                         </div>
                     </div>
