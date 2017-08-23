@@ -89,11 +89,13 @@ class MailsController extends Controller
                     ]);
                     $msgSubject = $this->getParameter('customer.email.subject');
                 } else {
-                    $content = $this->renderView('@Backend/Emails/salon.html.twig', [
+//                    $content = $this->renderView('@Backend/Emails/salon.html.twig', [
+                    $content = $this->renderView('@Backend/Emails/fight.html.twig', [
                         'content' => $data['message'],
                         'deals' => $data['deals']
                     ]);
-                    $msgSubject = "Here is a special offer from Plaza Mariachi";
+//                    $msgSubject = "Here is a special offer from Plaza Mariachi";
+                    $msgSubject = "Mayweather VS McGregor fight in Plaza Mariachi viewing party";
                 }
 
                // echo $content; die ;
