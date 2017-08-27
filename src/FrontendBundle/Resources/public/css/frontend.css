@@ -4443,5 +4443,7 @@ blockquote h3:after {
 
 .home-banner {
     padding-top: 40px;
-    max-height: 200px;
+    /*max-height: 200px;*/
+    height: auto;
+    width: 100%;
 }

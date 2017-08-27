@@ -531,6 +531,56 @@ class Settings
     /**
      * @var string
      *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $websiteAdsBanner;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @var File
+     *
+     * @Vich\UploadableField(mapping="setting_image", fileNameProperty="websiteAdsBanner")
+     * @Assert\Image(
+     *     minWidth="16",
+     *     maxWidth="3000",
+     *     minWidthMessage="The image must have a with between 16 and 3000 pixels",
+     *     maxWidthMessage="The image must have a with between 16 and 3000 pixels",
+     *     minHeight="16",
+     *     maxHeight="3000",
+     *     minHeightMessage="The image must have a height between 16 and 3000 pixels",
+     *     maxHeightMessage="The image must have a height between 16 and 3000 pixels",
+     *     maxSize="2M",
+     *     maxSizeMessage="The image must have 2 MB (megabytes) or less"
+     * )
+     */
+    private $websiteAdsBannerImage;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url()
+     */
+    private $websiteAdsBannerUrl;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $websiteAdsHtml;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $websiteAdsOption;
+
+    /**
+     * @var string
+     *
      * @Gedmo\Locale
      */
     private $locale;
@@ -1711,5 +1761,125 @@ class Settings
     public function getMobileBannerImage()
     {
         return $this->mobileBannerImage;
+    }
+
+    /**
+     * Set websiteAdsBanner
+     *
+     * @param string $websiteAdsBanner
+     * @return Settings
+     */
+    public function setWebsiteAdsBanner($websiteAdsBanner)
+    {
+        $this->websiteAdsBanner = $websiteAdsBanner;
+
+        return $this;
+    }
+
+    /**
+     * Get websiteAdsBanner
+     *
+     * @return string 
+     */
+    public function getWebsiteAdsBanner()
+    {
+        return $this->websiteAdsBanner;
+    }
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\File $websiteAdsBannerImage
+     */
+    public function setWebsiteAdsBannerImage(File $websiteAdsBannerImage = null)
+    {
+        $this->websiteAdsBannerImage = $websiteAdsBannerImage;
+
+        if ($websiteAdsBannerImage) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    /**
+     * @return File
+     */
+    public function getWebsiteAdsBannerImage()
+    {
+        return $this->websiteAdsBannerImage;
+    }
+
+    /**
+     * Set websiteAdsHtml
+     *
+     * @param string $websiteAdsHtml
+     * @return Settings
+     */
+    public function setWebsiteAdsHtml($websiteAdsHtml)
+    {
+        $this->websiteAdsHtml = $websiteAdsHtml;
+
+        return $this;
+    }
+
+    /**
+     * Get websiteAdsHtml
+     *
+     * @return string
+     */
+    public function getWebsiteAdsHtml()
+    {
+        return $this->websiteAdsHtml;
+    }
+
+    /**
+     * Set websiteAdsOption
+     *
+     * @param string $websiteAdsOption
+     * @return Settings
+     */
+    public function setWebsiteAdsOption($websiteAdsOption)
+    {
+        $this->websiteAdsOption = $websiteAdsOption;
+
+        return $this;
+    }
+
+    /**
+     * Get websiteAdsOption
+     *
+     * @return string 
+     */
+    public function getWebsiteAdsOption()
+    {
+        return $this->websiteAdsOption;
+    }
+
+    /**
+     * Set websiteAdsBannerUrl
+     *
+     * @param string $websiteAdsBannerUrl
+     * @return Settings
+     */
+    public function setWebsiteAdsBannerUrl($websiteAdsBannerUrl)
+    {
+        $this->websiteAdsBannerUrl = $websiteAdsBannerUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get websiteAdsBannerUrl
+     *
+     * @return string 
+     */
+    public function getWebsiteAdsBannerUrl()
+    {
+        return $this->websiteAdsBannerUrl;
     }
 }
