@@ -3,7 +3,9 @@
 namespace BackendBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -68,7 +70,21 @@ class SettingsType extends AbstractType
             ->add('textAbout')
             ->add('headerSubscribeForDeals')
             ->add('subheaderSubscribeForDeals')
-            ->add('textSubscribeForDeals');
+            ->add('textSubscribeForDeals')
+            ->add('websiteAdsBannerImage', FileType::class, array('required' => false))
+            ->add('websiteAdsBannerUrl')
+            ->add('websiteAdsHtml', TextareaType::class)
+            ->add('websiteAdsOption', ChoiceType::class, array(
+                'label' => 'Ads Option', 'attr' => array('autocomplete' => 'off'),
+                'choices' => array(
+                    'none' => 'None',
+                    'image' => 'Image',
+                    'html' => 'HTML'
+                ),
+                'expanded' => true,
+                'multiple' => false,
+                'placeholder' => 'Choose the Ads option',
+            ));
     }
 
     /**

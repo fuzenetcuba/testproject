@@ -89,16 +89,29 @@
         </div>
     </div>
 
-    <section class="section-spaces-line hidden-print">
-        <div class="container">
-            <a target="_blank"
-               href="https://www.eventbrite.com/e/mayweather-vs-mcgregor-fight-at-plaza-mariachi-tickets-37078146735?aff=efbeventtix"
-               class="flex-container flex-center-h">
-                <img class="home-banner img-responsive" src="{{ asset('bundles/frontend/img/mayweather-mcgregor.jpg') }}"
-                     alt="Mayweather VS McGregor fight in Plaza Mariachi the August 26, 2017 at 8:30pm">
-            </a>
-        </div>
-    </section>
+    {% set ads_option = render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteAdsOption' })) %}
+    {% if(ads_option == "image") %}
+        <section class="section-spaces-line hidden-print">
+            <div class="container">
+                <a target="_blank"
+                   href="{{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteAdsBannerUrl' })) }}"
+                   class="flex-container flex-center-h">
+                    <img class="home-banner img-responsive"
+                         src="{{ asset('images/settings/' ~ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteAdsBanner' }))) }}"
+                         alt="Ads banner">
+                </a>
+            </div>
+        </section>
+    {% elseif(ads_option == "html") %}
+        <section id="features" class="container section-spaces-line top-deals">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-line"></div>
+                    {{ render(controller('BackendBundle:Settings:getSettings', { 'property' : 'websiteAdsHtml' })) }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
 
     <section id="features" class="container section-spaces-line top-deals">
         <div class="row">

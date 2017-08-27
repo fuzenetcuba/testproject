@@ -3,6 +3,10 @@
 {% block custom_css %}
     {{ parent() }}
 
+    <!-- iCheck Styles -->
+    <link rel="stylesheet" href="{{ asset('bundles/backend/css/plugins/iCheck/custom.css') }}"
+          type="text/css"/>
+
 {% endblock %}
 
         {% block active_settings %}active{% endblock %}
@@ -780,6 +784,79 @@
                             </div>
                             <div class="hr-line-dashed"></div>
 
+
+                            <div class="form-group{% if(edit_form.websiteAdsBannerImage.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteAdsBannerImage) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteAdsBannerImage, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteAdsBannerImage.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteAdsBannerImage.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websiteAdsBannerUrl.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteAdsBannerUrl) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteAdsBannerUrl, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteAdsBannerUrl.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteAdsBannerUrl.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websiteAdsHtml.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for=""
+                                       class="col-md-2 control-label">{{ form_label(edit_form.websiteAdsHtml) }}</label>
+
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.websiteAdsHtml, { 'attr': {'class' : 'form-control'}}) }}
+                                    {% if edit_form.websiteAdsHtml.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteAdsHtml.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group{% if(edit_form.websiteAdsOption.vars['errors']|length > 0) %} {{ ' has-error' }} {% endif %}">
+                                <label for="roles" class="col-md-2 control-label">{{ form_label(edit_form.websiteAdsOption) }}</label>
+
+                                <div class="col-md-6">
+                                    {% for optField in edit_form.websiteAdsOption %}
+                                        <div class="checkbox col-md-6">
+                                            {{ form_widget(optField, { 'attr': {'class' : 'i-checks'}}) }}
+                                            {{ form_label(optField) }}
+                                        </div>
+                                    {% endfor %}
+                                    {% if edit_form.websiteAdsOption.vars['errors']|length > 0 %}
+                                        <ul class="message">
+                                            {% for error in edit_form.websiteAdsOption.vars['errors'] %}
+                                                <li>{{ error.message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
                         </div>
                     </div>
                 </div>
@@ -806,6 +883,9 @@
     {% block custom_js %}
         {{ parent() }}
 
+        <!-- iCheck Scripts -->
+        <script src="{{ asset('bundles/backend/js/plugins/iCheck/icheck.min.js') }}"
+                type="text/javascript"></script>
     {% endblock %}
 
     {% block inline_js %}
@@ -813,7 +893,11 @@
 
             $(document).ready(function () {
 
-
+                //  iCheck scripts for checkboxes and radios
+                $('.i-checks').iCheck({
+                    checkboxClass: 'icheckbox_square-green',
+                    radioClass: 'iradio_square-green',
+                });
             });
 
         </script>
