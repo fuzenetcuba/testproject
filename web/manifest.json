@@ -1,7 +1,7 @@
 {
 	"name": "Plaza Mariachi",
 	"short_name": "Plaza_Mariachi",
-	"start_url": "/web/",
+	"start_url": "/",
 	"icons": [
 		{
 			"src": "\/android-chrome-192x192.png",
