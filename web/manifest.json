@@ -1,5 +1,7 @@
 {
 	"name": "Plaza Mariachi",
+	"short_name": "Plaza_Mariachi",
+	"start_url": "/web/",
 	"icons": [
 		{
 			"src": "\/android-chrome-192x192.png",
@@ -8,5 +10,6 @@
 		}
 	],
 	"theme_color": "#ffffff",
-	"display": "standalone"
+	"display": "standalone",
+	"gcm_sender_id": "482941778795"
 }
