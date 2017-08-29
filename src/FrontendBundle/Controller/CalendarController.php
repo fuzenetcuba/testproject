@@ -50,13 +50,7 @@ class CalendarController extends Controller
             if (false === $endTime || $endTime < $now) {
                 continue;
             }
-
-            var_dump(sprintf('%s %s',
-                self::getValue($i, 1, $entries), self::getValue($i, 2, $entries)));
-
-            var_dump(sprintf('%s %s',
-                self::getValue($i, 1, $entries), self::getValue($i, 3, $entries)));
-die ;
+            
             $status = self::getValue($i, 10, $entries);
 
             if (null === $status || !in_array(strtolower($status), self::ALLOWED_STATES)) {
