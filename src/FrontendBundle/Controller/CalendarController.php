@@ -41,16 +41,22 @@ class CalendarController extends Controller
 
         $now = new \DateTime();
         for ($i = 0, $max = count($entries); $i < $max; $i++) {
-            $startTime = \DateTime::createFromFormat('m/d/Y h:i a', sprintf('%s %s',
+            $startTime = \DateTime::createFromFormat('l, F j h:i a', sprintf('%s %s',
                 self::getValue($i, 1, $entries), self::getValue($i, 2, $entries)));
 
-            $endTime = \DateTime::createFromFormat('m/d/Y h:i a', sprintf('%s %s',
+            $endTime = \DateTime::createFromFormat('l, F j h:i a', sprintf('%s %s',
                 self::getValue($i, 1, $entries), self::getValue($i, 3, $entries)));
 
             if (false === $endTime || $endTime < $now) {
                 continue;
             }
 
+            var_dump(sprintf('%s %s',
+                self::getValue($i, 1, $entries), self::getValue($i, 2, $entries)));
+
+            var_dump(sprintf('%s %s',
+                self::getValue($i, 1, $entries), self::getValue($i, 3, $entries)));
+die ;
             $status = self::getValue($i, 10, $entries);
 
             if (null === $status || !in_array(strtolower($status), self::ALLOWED_STATES)) {
@@ -95,10 +101,10 @@ class CalendarController extends Controller
 
         $now = new \DateTime();
         for ($i = 0; $i < $worksheet->getRowCount(); $i++) {
-            $startTime = \DateTime::createFromFormat('m/d/Y h:i a', sprintf('%s %s',
+            $startTime = \DateTime::createFromFormat('l, F j h:i a', sprintf('%s %s',
                 self::getValue($i, 1, $entries), self::getValue($i, 2, $entries)));
 
-            $endTime = \DateTime::createFromFormat('m/d/Y h:i a', sprintf('%s %s',
+            $endTime = \DateTime::createFromFormat('l, F j h:i a', sprintf('%s %s',
                 self::getValue($i, 1, $entries), self::getValue($i, 3, $entries)));
 
             if (false === $endTime || $endTime < $now) {
