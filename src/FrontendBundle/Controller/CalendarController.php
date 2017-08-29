@@ -40,32 +40,15 @@ class CalendarController extends Controller
         $events = [];
 
         $now = new \DateTime();
-        $firstFutureEvent = -1;
         for ($i = 0, $max = count($entries); $i < $max; $i++) {
-            $startTime = \DateTime::createFromFormat('l, F j h:i a', sprintf('%s %s',
+            $startTime = \DateTime::createFromFormat('l, F j, Y h:i a', sprintf('%s %s',
                 self::getValue($i, 1, $entries), self::getValue($i, 2, $entries)));
 
-            $endTime = \DateTime::createFromFormat('l, F j h:i a', sprintf('%s %s',
+            $endTime = \DateTime::createFromFormat('l, F j, Y h:i a', sprintf('%s %s',
                 self::getValue($i, 1, $entries), self::getValue($i, 3, $entries)));
-
-            if ($firstFutureEvent !== -1) {
-                if ($startTime !== false && $startTime < $now) {
-                    var_dump($startTime); die ;
-                    die ('pepe');
-                    $startTime->add(new DateInterval('P1Y'));
-                }
-
-                if ($endTime !== false && $endTime < $now) {
-                    $startTime->add(new DateInterval('P1Y'));
-                }
-            }
 
             if (false === $endTime || $endTime < $now) {
                 continue;
-            }
-
-            if ($firstFutureEvent === -1) {
-                $firstFutureEvent = $i;
             }
 
             $status = self::getValue($i, 10, $entries);
@@ -112,10 +95,10 @@ class CalendarController extends Controller
 
         $now = new \DateTime();
         for ($i = 0; $i < $worksheet->getRowCount(); $i++) {
-            $startTime = \DateTime::createFromFormat('l, F j h:i a', sprintf('%s %s',
+            $startTime = \DateTime::createFromFormat('l, F j, Y h:i a', sprintf('%s %s',
                 self::getValue($i, 1, $entries), self::getValue($i, 2, $entries)));
 
-            $endTime = \DateTime::createFromFormat('l, F j h:i a', sprintf('%s %s',
+            $endTime = \DateTime::createFromFormat('l, F j, Y h:i a', sprintf('%s %s',
                 self::getValue($i, 1, $entries), self::getValue($i, 3, $entries)));
 
             if (false === $endTime || $endTime < $now) {
