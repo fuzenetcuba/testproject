@@ -77,10 +77,10 @@
                             {% endif %}
                             {# <a href="timeline_2.html#" class="btn btn-sm btn-primary"> More info</a> #}
                             <span class="vertical-date">
+                                {{ event.start.dateTime | date('l') }}
                                 <div></div>
                                 <small data-date="{{ event.start.dateTime | date }}" data-end="{{ event.end.dateTime | date }}"></small><br/>
                                     {# <small><i class="fa fa-clock-o"></i> {{ event.start.dateTime | date('h:i A')  }}</small> #}
-
                                 {% if event.url is defined and event.url is not empty %}
                                     <a href="{{ event.url }}" target="_blank" class="btn btn-amber m-t-md">
                                         {{ 'BUY TICKETS' | trans({}, 'calendar') }}
