@@ -62,7 +62,7 @@ class Builder implements ContainerAwareInterface
 
 //        // access services from the container!
 //        $em = $this->container->get('doctrine')->getManager();
-//        // findMostRecent and Blog are just imaginary examples
+//        // findMostRecent and Blog are juØst imaginary examples
 //        $blog = $em->getRepository('AppBundle:Blog')->findMostRecent();
 //
 //        $menu->addChild('Latest Blog Post', array(

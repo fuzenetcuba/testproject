@@ -53,14 +53,21 @@ class RouteKeyVoter implements VoterInterface
             return null;
         }
 
-        $routeKey = explode('_', $this->request->get('_route'))[0];
-        $itemKey = explode('_', $item->getExtra('routes')[0]['route'])[0];
+        $routeKey = explode('_', $this->request->get('_route'));
+        $itemKey  = explode('_', $item->getExtra('routes')[0]['route']);
 
-//        var_dump($routeKey);
-//        var_dump($itemKey);
+        // var_dump($routeKey);
+        // var_dump($itemKey);
 
-        if ($routeKey === $itemKey) {
-            return true;
+        if ($routeKey[0] === $itemKey[0] && $routeKey[0] === "backend" &&
+            count($routeKey) > 1 && count($itemKey) > 1) {
+            if ($routeKey[1] === $itemKey[1]) {
+                return true;
+            }
+        } else {
+            if ($routeKey[0] === $itemKey[0]) {
+                return true;
+            }
         }
     }
 }

@@ -2,21 +2,34 @@
 
 namespace BackendBundle\Controller;
 
+use BackendBundle\Entity\PostImage;
 use BackendBundle\Model\EmailGroups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use BackendBundle\Form\PostImageType;
 
 class MailsController extends Controller
 {
     public function sendAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         $form = $this->createForm('BackendBundle\Form\MailsType', null, array(
             'action' => $this->generateUrl('mails_send'),
             'method' => 'POST',
         ));
 
         $form->handleRequest($request);
+
+        // Image functions
+        $imageEntity = new PostImage();
+
+        $imageForm = $this->createForm(PostImageType::class, $imageEntity, array(
+            'action' => $this->generateUrl('post_upload_image'),
+            'method' => 'POST',
+        ));
+
+        $postImages = $em->getRepository('BackendBundle:PostImage')->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $dataRequest = $request->request->get("frontend_bundle_mails_send");
@@ -118,7 +131,9 @@ class MailsController extends Controller
         }
 
         return $this->render('mails/send.html.twig', array(
+            'image_form' => $imageForm->createView(),
             'form' => $form->createView(),
+            'post_images' => [],
         ));
     }
 }

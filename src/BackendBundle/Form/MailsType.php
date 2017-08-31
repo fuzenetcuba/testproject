@@ -89,8 +89,9 @@ class MailsType extends AbstractType
                 'choices_as_values' => true
             ))
             ->add('template', CheckboxType::class, ['required' => false, 'attr' => [
-                'class' => '.i-checks'
             ]])
+            ->add('subject', TextType::class, ['required' => false,])
+            ->add('htmlText', TextareaType::class, ['required' => false,])
             ->get('customAddresses')->addModelTransformer(new ArrayToDelimitedStringTransformer(';', 0, 0));
     }
 
