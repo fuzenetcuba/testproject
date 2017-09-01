@@ -91,7 +91,9 @@ class MailsType extends AbstractType
             ->add('template', CheckboxType::class, ['required' => false, 'attr' => [
             ]])
             ->add('subject', TextType::class, ['required' => false,])
-            ->add('htmlText', TextareaType::class, ['required' => false,])
+            ->add('htmlText', TextareaType::class, ['required' => false,
+                'label' => 'HTML',
+            ])
             ->get('customAddresses')->addModelTransformer(new ArrayToDelimitedStringTransformer(';', 0, 0));
     }
 

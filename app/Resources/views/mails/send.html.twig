@@ -525,6 +525,11 @@
                     placeholder: "-- {{ 'SELECT DEALS' | trans({}, 'mailsbackend') }} --"
                 });
 
+                // launch native events
+                $('#frontend_bundle_mails_send_template').on('ifChanged', function (event) {
+                    $(event.target).trigger('change');
+                });
+
                 // For oncheck callback
                 $('#frontend_bundle_mails_send_template').on('ifChecked', function () {
                     $('#email-template').toggleClass('hidden');
@@ -547,6 +552,8 @@
                     var messageContent = $('.note-editable').html();
                     var textmessageContent = $('.note-editable').text();
                     $('#frontend_bundle_mails_send_message').html(messageContent);
+                    var sendTemplate = $('#frontend_bundle_mails_send_template').is(':checked');
+                    var htmlTemplate = editorContent.getValue();
 
 //                    alert(textmessageContent);
 
@@ -565,7 +572,8 @@
                             + '</div>'
                         );
                         return false;
-                    } else if (textmessageContent == null || textmessageContent == '') {     // if message content is null
+                    } else if (false == sendTemplate && (textmessageContent == null || textmessageContent == '')) {
+                        // if message content is null
                         $('#flashbag-block').html(
                             '<div class="alert alert-danger fade in">'
                             + '<button class="close" type="button" data-dismiss="alert" aria-hidden="true">×</button>'
@@ -574,7 +582,18 @@
                             + '</div>'
                         );
                         return false;
-                    } else {
+                    } else if (true == sendTemplate && htmlTemplate == '') {
+                        // if template content is null
+                        $('#flashbag-block').html(
+                            '<div class="alert alert-danger fade in">'
+                            + '<button class="close" type="button" data-dismiss="alert" aria-hidden="true">×</button>'
+                            + '<span class="fa fa-exclamation-triangle"></span>'
+                            + '{{ 'You must write the content of the template.' | trans({}, 'mailsbackend') }}'
+                            + '</div>'
+                        );
+                        return false;
+                    }
+                    else {
                         return true;
                     }
                 });

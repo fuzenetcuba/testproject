@@ -13,7 +13,6 @@ class MailsController extends Controller
 {
     public function sendAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
         $form = $this->createForm('BackendBundle\Form\MailsType', null, array(
             'action' => $this->generateUrl('mails_send'),
             'method' => 'POST',
@@ -28,8 +27,6 @@ class MailsController extends Controller
             'action' => $this->generateUrl('post_upload_image'),
             'method' => 'POST',
         ));
-
-        $postImages = $em->getRepository('BackendBundle:PostImage')->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $dataRequest = $request->request->get("frontend_bundle_mails_send");
@@ -103,12 +100,13 @@ class MailsController extends Controller
                     $msgSubject = $this->getParameter('customer.email.subject');
                 } else {
 //                    $content = $this->renderView('@Backend/Emails/salon.html.twig', [
-                    $content = $this->renderView('@Backend/Emails/fight.html.twig', [
+                    $template = $this->get('twig')->createTemplate($dataRequest['htmlText']);
+                    $content = $template->render([
                         'content' => $data['message'],
                         'deals' => $data['deals']
                     ]);
-//                    $msgSubject = "Here is a special offer from Plaza Mariachi";
-                    $msgSubject = "Mayweather VS McGregor fight in Plaza Mariachi viewing party";
+
+                    $msgSubject = $dataRequest['subject'];
                 }
 
                // echo $content; die ;
@@ -122,7 +120,6 @@ class MailsController extends Controller
                     $this->getParameter('customer.email.to'),    // setting TO with parameter
                     true                                         // setting TO with the BCC
                 );
-
                 // Show the success message
                 $this->get('session')->getFlashBag()->add('success', 'The mail was sent successfully.');
 
